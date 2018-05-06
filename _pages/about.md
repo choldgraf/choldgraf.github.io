@@ -1,5 +1,5 @@
 ---
-permalink: /about
+permalink: /about/
 title: "Open Source, Open Communities, Science, Technology"
 excerpt: "About me"
 author_profile: true

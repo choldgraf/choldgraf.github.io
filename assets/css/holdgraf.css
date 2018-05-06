@@ -18,3 +18,8 @@ article a, p a {
 a.paper_link {
   color: #c85252 !important;
 }
+
+
+body {
+  margin-left: 5%;
+}
