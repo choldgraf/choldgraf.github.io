@@ -1,0 +1,15 @@
+---
+layout: archive
+title: "Open Source"
+permalink: /opensource/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p>This is a page to keep track of some of the open-source projects I've spent
+the most time on. I'm a core contributor on each of the projects on this page.</p>
+
+{% for post in site.opensource reversed %}
+  {% include archive-single.html %}
+{% endfor %}

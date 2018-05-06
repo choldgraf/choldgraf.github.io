@@ -1,0 +1,20 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+body {
+  font-family: Source Sans Pro,Verdana,sans-serif;
+}
+
+pre.highlight {
+  font-size: 1em !important;
+}
+
+article a, p a {
+  color: #52adc8 !important;
+}
+
+a.paper_link {
+  color: #c85252 !important;
+}
