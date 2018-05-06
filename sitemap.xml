@@ -161,10 +161,17 @@
 <loc>http://localhost:4000/content/extras/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/extras/</loc>
+</url>
+<url>
 <loc>http://localhost:4000/markdown_generator/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/content/extras/cv.pdf</loc>
+<lastmod>2017-11-02T13:08:44-07:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/extras/cv.pdf</loc>
 <lastmod>2017-11-02T13:08:44-07:00</lastmod>
 </url>
 <url>
