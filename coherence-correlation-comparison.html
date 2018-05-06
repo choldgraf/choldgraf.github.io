@@ -1,0 +1,677 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Coherence correlation - Predictably Noisy</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Predictably Noisy">
+<meta property="og:title" content="Coherence correlation">
+
+
+  <link rel="canonical" href="http://localhost:4000/coherence-correlation-comparison">
+  <meta property="og:url" content="http://localhost:4000/coherence-correlation-comparison">
+
+
+
+  <meta property="og:description" content="Note - you can find the nbviewer of this post here">
+
+
+
+  <meta name="twitter:site" content="@choldgraf">
+  <meta name="twitter:title" content="Coherence correlation">
+  <meta name="twitter:description" content="Note - you can find the nbviewer of this post here">
+  <meta name="twitter:url" content="http://localhost:4000/coherence-correlation-comparison">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2015-05-27T00:00:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chris Holdgraf",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/holdgraf.css">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+
+
+<meta http-equiv="cleartype" content="on">
+
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Predictably Noisy</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/opensource/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/talks/">Talks</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Chris Holdgraf</h3>
+    <p class="author__bio">Data Science | Open Science | Brains</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
+      
+      
+      
+      
+        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Coherence correlation">
+    <meta itemprop="description" content="Note - you can find the nbviewer of this post here">
+    <meta itemprop="datePublished" content="May 27, 2015">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Coherence correlation
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  6 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2015-05-27T00:00:00-07:00">May 27, 2015</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p><em>Note - you can find the nbviewer of this post <a href="https://github.com/choldgraf/write-ups/blob/master/neuro/coherence_correlation.ipynb">here</a></em></p>
+
+<h1 id="coherence-vs-correlation---a-simple-simulation">Coherence vs. Correlation - a simple simulation</h1>
+<p>A big question that I’ve always wrestled with is the difference between correlation and coherence. Intuitively, I think of these two things as very similar to one another. Correlation is a way to determine the extent to which two variables covary (normalized to be between -1 and 1). Coherence is similar, but instead assesses “similarity” by looking at the similarity for two variables in frequency space, rather than time space.</p>
+
+<p>There was a nice paper that came out a while back that basically compared these two methods in order to see when they’d produce the same result, when they’d produce different results, and when they’d break down [1]. They made a lot of nice plots like this:</p>
+
+<p><img src="/images/2015/eeg_coh.png" style="width:300px" /></p>
+
+<p>Here I am recreating this result in the hopes of giving people a set of scripts to play around with, and giving a bit more intuition.</p>
+
+<p>[1] http://www.ncbi.nlm.nih.gov/pubmed/8947780</p>
+
+<hr />
+
+<p>First things first, we’ll import some tools to use</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">mne</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">'white'</span><span class="p">)</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div></div>
+
+<h2 id="creating-our-sine-waves">Creating our sine waves</h2>
+<p>Recall that the equation for a sinusoidal wave is:</p>
+
+<script type="math/tex; mode=display">Asin(2{\pi}ft + 2\pi\phi)</script>
+
+<p>Where $f$ is the frequency of the wave, <script type="math/tex">t</script> indexes time, and <script type="math/tex">2\pi\phi</script> defines a phase offset of the wave. Then, <script type="math/tex">A</script> scales the wave’s amplitude.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We can generate these sine wave parameters, then stitch them together</span>
+<span class="n">amplitude_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">phase_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">25</span><span class="p">,</span> <span class="o">.</span><span class="mi">33</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">signal_vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">amplitude_values</span><span class="p">,</span> <span class="n">phase_values</span><span class="p">))</span>
+<span class="n">amps</span><span class="p">,</span> <span class="n">phases</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">signal_vals</span><span class="p">)</span>
+
+<span class="c"># We'll also define some noise levels to see how this affects results</span>
+<span class="n">noise_levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="c"># Now define how long these signals will be</span>
+<span class="n">t_stop</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">)</span>
+
+<span class="c"># We're storing everything in dataframes, so create some indices</span>
+<span class="n">ix_amp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">amps</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'amp'</span><span class="p">)</span>
+<span class="n">ix_phase</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">phases</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">'phase'</span><span class="p">)</span>
+
+<span class="c"># Create all our signals</span>
+<span class="n">signals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">noise_level</span> <span class="ow">in</span> <span class="n">noise_levels</span><span class="p">:</span>
+    <span class="n">sig_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">amp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">freq</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">time</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">phase</span><span class="p">)</span> <span class="k">for</span> <span class="n">amp</span><span class="p">,</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">signal_vals</span><span class="p">])</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">noise_level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">sig_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">sig_</span> <span class="o">+=</span> <span class="n">noise</span>
+    <span class="n">ix_noise</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="n">noise_level</span><span class="p">]</span><span class="o">*</span><span class="n">sig_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s">'noise_level'</span><span class="p">)</span>
+    <span class="n">ix_multi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([</span><span class="n">ix_amp</span><span class="p">,</span> <span class="n">ix_phase</span><span class="p">,</span> <span class="n">ix_noise</span><span class="p">])</span>
+    <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sig_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ix_multi</span><span class="p">))</span>
+<span class="n">signals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">signals</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'time'</span>
+</code></pre></div></div>
+
+<h2 id="computing-connectivity">Computing connectivity</h2>
+<p>Now we’ve got a bunch of sinewaves with the parameters chosen above. Next, we will calculate the coherence and the correlation between all pairs of signals. This way we can see how these values change for different kinds of input signals.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">con_all</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ix_noise</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">signals</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s">'noise_level'</span><span class="p">):</span>
+    <span class="c"># Setting up output indices</span>
+    <span class="n">this_noise_level</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s">'noise_level'</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ix_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="nb">eval</span><span class="p">(</span><span class="s">'amp==3 and phase==0'</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ix_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s">'time'</span><span class="p">)</span>
+    <span class="n">ix_cc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s">'cc'</span><span class="p">]</span><span class="o">*</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s">'con'</span><span class="p">)</span>
+    <span class="n">ix_coh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s">'coh'</span><span class="p">]</span><span class="o">*</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s">'con'</span><span class="p">)</span>
+
+    <span class="c"># Calculating correlation is easy with pandas</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">ix_ref</span><span class="p">]</span>
+    <span class="n">cc</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cc</span><span class="p">)</span>
+    <span class="c"># We'll use MNE for coherenece</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">ix_ref</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">con</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">tapers</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">connectivity</span><span class="o">.</span><span class="n">spectral_connectivity</span><span class="p">(</span>
+        <span class="n">sig</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">indices</span><span class="p">)</span>
+    <span class="n">con_mn</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">con_mn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">con_mn</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cc</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    
+    <span class="c"># Final prep</span>
+    <span class="n">con_mn</span> <span class="o">=</span> <span class="n">con_mn</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ix_coh</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">cc</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ix_cc</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">con_all</span> <span class="o">+=</span> <span class="p">([</span><span class="n">con_mn</span><span class="p">,</span> <span class="n">cc</span><span class="p">])</span>
+<span class="n">con_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">con_all</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'noise_level'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="visualizing-results">Visualizing results</h2>
+<p>First off, we’ll look at what happens to sine waves of varying parameters, for different levels of noise.</p>
+
+<p>Remember, each tuple is (amplitude, phase_lag). The first number controls how large the signal is, and the second controls the difference in phase between two sine waves.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">con_all</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'con'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Noise level: {0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">noise</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-05-27-coherence_correlation_10_0.png" alt="png" /></p>
+
+<p>That’s already an interesting picture - as you can see, coherence is far more robust to differences between the two signals. Here are a few thoughts:</p>
+
+<ol>
+  <li>Correlation varies widely (between 0 and 1) for differences in phase lag. However, coherence remains relatively stable.</li>
+  <li>Coherence values are smaller in general for a signal with any noise</li>
+  <li>However, coherence is more robust for increasing levels of noise, while correlations start to drop to 0</li>
+</ol>
+
+<p>To illustrate number 1, let’s plot correlation and coherence against each other:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s">'noise_level'</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'con'</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="s">'noise_level'</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s">'cc'</span><span class="p">,</span> <span class="s">'coh'</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'noise_level'</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s">'scatter'</span><span class="p">,</span>
+                 <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'CC vs Coherence'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-05-27-coherence_correlation_12_1.png" alt="png" /></p>
+
+<p>As you can see here, coherence remains the same (except for when it occasionally increases to 1) while correlation is much more dependent on the phase relationship between the signals. Moreover, as the signal SNR degrades, the correlation shrinks to 0, while the coherence remains the same.</p>
+
+<p>Let’s take a look at how the correlation and coherence relate to the actual shape of the signals:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set up a dataframe for plotting</span>
+<span class="n">noise_level</span> <span class="o">=</span> <span class="n">noise_levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="p">[</span><span class="n">noise_level</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'con'</span><span class="p">)</span>
+
+<span class="c"># Define 16 signals to plot</span>
+<span class="n">sig_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">([</span><span class="n">ix_ref</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)))</span>
+
+<span class="n">plt_sig</span> <span class="o">=</span> <span class="n">signals</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">noise_level</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s">'noise_level'</span><span class="p">)</span>
+<span class="n">n_combs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_combs</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_combs</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">),</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">,</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="n">plt_sig</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'CC: {0}</span><span class="se">\n</span><span class="s">Coh: {1}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">plt_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">comp_b</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-05-27-coherence_correlation_14_0.png" alt="png" /></p>
+
+<p>Another way of looking at it with scatterplots…</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set up a dataframe for plotting</span>
+<span class="n">noise_level</span> <span class="o">=</span> <span class="n">noise_levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="p">[</span><span class="n">noise_level</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'con'</span><span class="p">)</span>
+
+<span class="c"># Define 16 signals to plot</span>
+<span class="n">sig_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">([</span><span class="n">ix_ref</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)))</span>
+
+<span class="n">plt_sig</span> <span class="o">=</span> <span class="n">signals</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">noise_level</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s">'noise_level'</span><span class="p">)</span>
+<span class="n">n_combs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_combs</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_combs</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">),</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">,</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="n">iia</span><span class="p">,</span> <span class="n">iib</span> <span class="o">=</span> <span class="n">plt_sig</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iia</span><span class="p">,</span> <span class="n">iib</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'CC: {0}</span><span class="se">\n</span><span class="s">Coh: {1}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">plt_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">comp_b</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-05-27-coherence_correlation_16_0.png" alt="png" /></p>
+
+<p>Finally, for a more direct comparison, we can look directly at the difference between the two as a function of both noise level and the sine wave parameters.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">diff_con</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s">'noise_level'</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'con'</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">diff_con</span><span class="p">[</span><span class="s">'cc'</span><span class="p">]</span> <span class="o">-</span> <span class="n">diff_con</span><span class="p">[</span><span class="s">'coh'</span><span class="p">]</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'noise_level'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-05-27-coherence_correlation_19_1.png" alt="png" /></p>
+
+<p>So what does this mean? Well, the relationship between coherence and correlation is too complicated to sum it up in a single line or two. However, it is clear that correlation is more sensitive to differences between signals in time. Coherence, on the other hand, is more reliable for these differences. Moreover, correlation degrades quickly with an increase in noise, while coherence remains the same.</p>
+
+<p>As such, if you care about understanding the relationship between two signals as it pertains to time, then perhaps correlation is the way to go. On the other hand, if you want a robust estimate of the amount of overlap in the structure of two signals, then coherence may be the best bet.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#programming" class="page__taxonomy-item" rel="tag">programming</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#timeseries" class="page__taxonomy-item" rel="tag">timeseries</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#correlation" class="page__taxonomy-item" rel="tag">correlation</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#neuroscience" class="page__taxonomy-item" rel="tag">neuroscience</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/coherence-correlation-comparison" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/coherence-correlation-comparison" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/coherence-correlation-comparison" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/coherence-correlation-comparison" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="http://localhost:4000/craigslist-scrape" class="pagination--pager" title="Scraping craigslist
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Chris Holdgraf. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

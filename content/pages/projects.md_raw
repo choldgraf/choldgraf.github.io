@@ -1,0 +1,26 @@
+Title: Projects
+Date: 2016-11-30 10:20
+Modified: 2016-11-30 18:40
+Tags: projects
+Category: info
+Slug: projects
+Authors: Chris Holdgraf
+Summary: Some projects that I'm working on.
+
+Here's a place to keep track of some projects that I'm currently working on, past and present.
+
+## Papers
+Below is a list of papers and proceedings I've published. You can check out the full list at my google scholar page [here](https://scholar.google.com/citations?hl=en&user=fJmcIEIAAAAJ).
+
+## Neuroscience Projects
+* I recently published [a paper](http://www.nature.com/articles/ncomms13654) that uses encoding models of brain activity to detect a change in how your auditory cortex tunes itself to speech in order to understand noisy speech.
+* I'm working on an [introduction to data science in cognitive neuroscience](https://github.com/data-8/cogneuro-connector) class for undergraduates
+* I'm writing a tutorial/methods paper along with [example jupyter notebooks](https://github.com/choldgraf/methods_encoding_model) on predictive models for cognitive neuroscience.
+* I'm working to build an [open course in data science for neuroscience](https://github.com/neuro-data-science/neuro_data_science) to be a public repository of tutorials and how-tos on studying the brain.
+
+## Meta- and Open-Science Projects
+* The [docathon](https://bids.github.io/docathon/) is a week-long hackathon centered around improving documentation in the open-source world.
+* I've been an advisor and manager for the UC Berkeley Data8 [connector courses](http://data8.org/connector/), which aim to teach students how data science is used in scientific fields.
+* I'm also an instructor for [software carpentry](https://software-carpentry.org/), which aims to teach scientists how to code and analyze their data more effectively.
+
+*Alternatively, if you want an old-fashioned CV, [you can find a sort of up-to-date one here](http://predictablynoisy.com/extras/cv.pdf)*

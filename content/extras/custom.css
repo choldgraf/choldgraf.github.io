@@ -1,0 +1,29 @@
+aside {
+    background-image: url("sidebar.png");
+    background-size: cover;
+}
+
+aside div {
+    background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+/* Move buttons so they don't overlap w text */
+div.text_cell_render a.btn {
+    position: relative;
+    top: 1em;
+}
+
+/* Center images */
+.output_png, .output_png img {
+    width: 80%;
+    margin: 0 auto; 
+}
+
+/* To remove input/output numbers*/
+.input_prompt, .output_prompt, .prompt {
+    display:none;
+}
+
+div.output_text {
+    margin-left: 2%;
+}

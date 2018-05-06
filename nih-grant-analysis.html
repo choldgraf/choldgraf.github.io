@@ -1,0 +1,791 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>NIH grant analysis - Predictably Noisy</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Predictably Noisy">
+<meta property="og:title" content="NIH grant analysis">
+
+
+  <link rel="canonical" href="http://localhost:4000/nih-grant-analysis">
+  <meta property="og:url" content="http://localhost:4000/nih-grant-analysis">
+
+
+
+  <meta property="og:description" content="NIH Fellowship Success RatesAs I’m entering the final years of graduate school, I’ve been applying for a few typical “pre-doc” fellowships. One of these is the NRSA, which is notorious for requiring you to wade through forests of beaurocratic documents (seriously, their “guidelines” for writing an NRSA are over 100 pages!). Doing so ends up taking a LOT of time.">
+
+
+
+  <meta name="twitter:site" content="@choldgraf">
+  <meta name="twitter:title" content="NIH grant analysis">
+  <meta name="twitter:description" content="NIH Fellowship Success RatesAs I’m entering the final years of graduate school, I’ve been applying for a few typical “pre-doc” fellowships. One of these is the NRSA, which is notorious for requiring you to wade through forests of beaurocratic documents (seriously, their “guidelines” for writing an NRSA are over 100 pages!). Doing so ends up taking a LOT of time.">
+  <meta name="twitter:url" content="http://localhost:4000/nih-grant-analysis">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2015-10-29T00:00:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chris Holdgraf",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/holdgraf.css">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+
+
+<meta http-equiv="cleartype" content="on">
+
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Predictably Noisy</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/opensource/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/talks/">Talks</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Chris Holdgraf</h3>
+    <p class="author__bio">Data Science | Open Science | Brains</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
+      
+      
+      
+      
+        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="NIH grant analysis">
+    <meta itemprop="description" content="NIH Fellowship Success RatesAs I’m entering the final years of graduate school, I’ve been applying for a few typical “pre-doc” fellowships. One of these is the NRSA, which is notorious for requiring you to wade through forests of beaurocratic documents (seriously, their “guidelines” for writing an NRSA are over 100 pages!). Doing so ends up taking a LOT of time.">
+    <meta itemprop="datePublished" content="October 29, 2015">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">NIH grant analysis
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  9 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2015-10-29T00:00:00-07:00">October 29, 2015</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <h1 id="nih-fellowship-success-rates">NIH Fellowship Success Rates</h1>
+<p>As I’m entering the final years of graduate school, I’ve been applying for a few typical “pre-doc” fellowships. One of these is the NRSA, which is notorious for requiring you to wade through forests of beaurocratic documents (seriously, their “guidelines” for writing an NRSA are over 100 pages!). Doing so ends up taking a LOT of time.</p>
+
+<p>This got me wondering what kind of success rates these grants have in the first place. For those who haven’t gone through the process before, it’s a bit opaque:</p>
+
+<h2 id="how-the-nrsa-works">How the NRSA works</h2>
+<p>Basically, each NRSA grant is reviewed by a panel of people. They individually review your proposal (which is upwards of 20 pages), and assign it a score in one of several categories. The group then meets, and they give your proposal an “impact score”. This score is then compared with the distribution of scores for all the other proposals in your category, and then a cutoff is made based on the percentiles that they will fund.</p>
+
+<p>Each year, they change the cutoff, and thus the number of NRSAs, that will be funded. Importantly, this also differs significantly by the NIH branch that oversees your application. Some have much higher success rates than others. For those who are curious, I’m putting a list of the NIH acronyms and their respective centers at the end.</p>
+
+<h2 id="some-data">Some data!</h2>
+<p>I did a bit of digging and found a dataset for NRSA success rates over the last few years. It’s broken down by grant type, as well as by NIH branch. The results are interesting so I thought I’d put them out there.</p>
+
+<p><strong>Note</strong> - this dataset and a few others can be found on the NIH website <a href="'http://report.nih.gov/success_rates/index.aspx'">here</a>. I encourage you to check it out! Thank god for open data (even if it’s really hard to find).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First we'll import a few helpful tools for cleaning and plotting</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Load the data - note that each row is a grant type/year/agency</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s">'./data/nih_nrsa_success_rates.xls'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">convert_objects</span><span class="p">(</span><span class="n">convert_numeric</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fiscal Year</th>
+      <th>Activity Code</th>
+      <th>NIH Institute/Center</th>
+      <th>Number of Applications Reviewed</th>
+      <th>Number of Applications Awarded</th>
+      <th>Success Rate2</th>
+      <th>Total Funding3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2005</td>
+      <td>F05</td>
+      <td>NCCAM</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0.285714</td>
+      <td>123572</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2005</td>
+      <td>F05</td>
+      <td>NINDS</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0.750000</td>
+      <td>163368</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2005</td>
+      <td>F05</td>
+      <td>Total</td>
+      <td>11</td>
+      <td>5</td>
+      <td>0.454545</td>
+      <td>286940</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2005</td>
+      <td>F30</td>
+      <td>NIDA</td>
+      <td>11</td>
+      <td>6</td>
+      <td>0.545455</td>
+      <td>189408</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2005</td>
+      <td>F30</td>
+      <td>NIDCD</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0.285714</td>
+      <td>53713</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>First, we’ll do some cleaning to remove annoying things like special characters and spaces. We’ll focus on the “success rate2” variable, which describes the % of proposals that were funded that year.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Make the columns easier to play with</span>
+<span class="n">col_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="n">col</span><span class="p">:</span> <span class="n">col</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">' '</span><span class="p">,</span> <span class="s">'_'</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="s">'_'</span><span class="p">)</span><span class="o">.</span>\
+               <span class="n">strip</span><span class="p">()</span><span class="o">.</span>\
+               <span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">}</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">col_mapping</span><span class="p">)</span>
+
+<span class="c"># Remove missing values for success rate</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s">'success_rate2'</span><span class="p">,</span>
+                           <span class="s">'fiscal_year'</span><span class="p">,</span>
+                           <span class="s">'nih_institute_center'</span><span class="p">])</span>
+
+<span class="c"># Remove all non-word characters from names</span>
+<span class="n">data</span><span class="p">[</span><span class="s">'nih_institute_center'</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s">'nih_institute_center'</span><span class="p">]</span><span class="o">.</span>\
+    <span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s">'[^a-zA-Z]'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+
+<span class="c"># Remove center values that aren't as useful</span>
+<span class="n">remove_centers</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Total"</span><span class="p">,</span> <span class="s">"ODOther"</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">'nih_institute_center not in @remove_centers'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>First, let’s take a look at some general trends over time</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">combined</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'fiscal_year'</span><span class="p">)</span><span class="o">.</span><span class="nb">sum</span><span class="p">()</span>
+<span class="n">coltypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">'number_of_applications_reviewed'</span><span class="p">,</span>
+            <span class="s">'number_of_applications_awarded'</span><span class="p">,</span>
+            <span class="s">'total_funding3'</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">coltype</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">coltypes</span><span class="p">):</span>
+    <span class="n">combined</span><span class="p">[</span><span class="n">coltype</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">coltype</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_7_0.png" alt="png" /></p>
+
+<p>Eyeballing it, it looks like applications have been slightly increasing per year, while applications awarded have remained relatively flat. Let’s dig into that a little bit more. Rather than looking at the raw numbers, we’ll focus on the success rate, or the % of applications that were funded.</p>
+
+<p>We’ll plot the success rates per year, per activity code. I’ll plot a scatter + line for each NIH institute (in color) as well as the mean + a 3rd order polynomial fit for all of them lumped together (in black)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">grant</span><span class="p">,</span> <span class="n">gvals</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'activity_code'</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">gvals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">mn_grp</span> <span class="o">=</span> <span class="n">gvals</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'fiscal_year'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">lm</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="s">'fiscal_year'</span><span class="p">,</span> <span class="s">'success_rate2'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gvals</span><span class="p">,</span>
+                        <span class="n">hue</span><span class="o">=</span><span class="s">'nih_institute_center'</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+                        <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s">'alpha'</span><span class="p">:</span> <span class="o">.</span><span class="mi">5</span><span class="p">},</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s">'alpha'</span><span class="p">:</span> <span class="o">.</span><span class="mi">5</span><span class="p">},</span>
+                        <span class="n">legend</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">ax</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+        <span class="c"># If we have enough data, fit a fancier function to all points</span>
+        <span class="k">if</span> <span class="n">gvals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="n">mn_reg</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+                <span class="s">'fiscal_year'</span><span class="p">,</span> <span class="s">'success_rate2'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">gvals</span><span class="p">,</span>
+                <span class="n">scatter</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s">'linewidth'</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="s">'k'</span><span class="p">},</span>
+                <span class="n">order</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Grant Activity Code: {0}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">grant</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">mn_reg</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">),</span>
+          <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_0.png" alt="png" /></p>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_1.png" alt="png" /></p>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_2.png" alt="png" /></p>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_3.png" alt="png" /></p>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_4.png" alt="png" /></p>
+
+<p>As you can see - some of these data aren’t well-modeled by a line in the first place. That’s because there’s a lot of missing data in here. However, especially for the more common grants (F31, F32) you can see some interesting (and mostly downward) trends.</p>
+
+<h1 id="digging-in-to-specific-grants">Digging in to specific grants</h1>
+<p>Next, we’ll take a look at some more specific information about a select grant type. I’ll focus on the F31 and F32 because that’s most related to what I’m applying for.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Pull the subset of data we want</span>
+<span class="n">grant_type</span> <span class="o">=</span> <span class="p">[</span><span class="s">'F31'</span><span class="p">,</span> <span class="s">'F32'</span><span class="p">]</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">'activity_code in @grant_type'</span><span class="p">)</span>
+
+<span class="c"># Average out the grant type column</span>
+<span class="n">subset</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'fiscal_year'</span><span class="p">,</span> <span class="s">'nih_institute_center'</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We’ll plot the successrate (y-axis) as a function of year (color) for each NIH center (x-axis).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">variable_types</span> <span class="o">=</span> <span class="p">[</span><span class="s">'success_rate2'</span><span class="p">,</span> <span class="s">'number_of_applications_reviewed'</span><span class="p">]</span>
+<span class="n">n_yrs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset</span><span class="o">.</span><span class="n">fiscal_year</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">pal</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s">'RdBu_r'</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="n">n_yrs</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variable_types</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s">'nih_institute_center'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">var</span><span class="p">,</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">subset</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">'fiscal_year'</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">pal</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'right'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">),</span>
+          <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_0.png" alt="png" /></p>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_1.png" alt="png" /></p>
+
+<p>Is there anything that we can learn from this? Let’s look at how the finding changed for each year:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">yearly_change</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s">'nih_institute_center'</span><span class="p">,</span> <span class="s">'fiscal_year'</span><span class="p">])[</span><span class="s">'success_rate2'</span><span class="p">]</span><span class="o">.</span>\
+    <span class="n">unstack</span><span class="p">(</span><span class="s">'nih_institute_center'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s">'rainbow'</span><span class="p">,</span> <span class="n">yearly_change</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">yearly_change</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'upper center'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">),</span>
+          <span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_16_1.png" alt="png" /></p>
+
+<p>To make things more comparable, we can normalize each timeseries by its first value, this will give everything the same starting point. We’ll also smooth the curves a little bit to get an idea for general trends. We’ll apply an exponentially-weighted moving average so recent points factor more into the average</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Normalize data and apply a bit of smoothing</span>
+<span class="n">yearly_change_norm</span> <span class="o">=</span> <span class="n">yearly_change</span> <span class="o">/</span> <span class="n">yearly_change</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">yearly_change_norm</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">moments</span><span class="o">.</span><span class="n">ewma</span><span class="p">,</span> <span class="n">span</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'upper center'</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">),</span>
+          <span class="n">ncol</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">fancybox</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_18_1.png" alt="png" /></p>
+
+<p>It seems like some NIH groups have made out better than others. Maybe this simply because the number of total applications each received changed from one year to another.</p>
+
+<p>As a final analysis, we can look at how the yearly change in applications is correlated with a success rate.</p>
+
+<p>Positive lines mean that more applications tend to have a higher success rate, negative lines mean more apps have a lower success rate. I’ll also color each point by the fiscal year it came from - hotter colors mean more recent years.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grp_cent</span> <span class="o">=</span> <span class="n">subset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'nih_institute_center'</span><span class="p">)</span>
+<span class="n">n_cl</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">n_rw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grp_cent</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_cl</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_rw</span><span class="p">,</span> <span class="n">n_cl</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">n_cl</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">n_rw</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">cent</span><span class="p">,</span> <span class="n">vals</span><span class="p">),</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">grp_cent</span><span class="p">,</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
+    <span class="n">yr</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="s">'fiscal_year'</span><span class="p">]</span> <span class="o">/</span> <span class="mi">100</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="o">*</span><span class="n">vals</span><span class="p">[[</span><span class="s">'number_of_applications_reviewed'</span><span class="p">,</span> <span class="s">'success_rate2'</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">lc</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">corr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'g'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="s">'number_of_applications_reviewed'</span><span class="p">,</span> <span class="s">'success_rate2'</span><span class="p">,</span>
+                <span class="n">data</span><span class="o">=</span><span class="n">vals</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s">'s'</span><span class="p">:</span> <span class="n">yr</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span> <span class="s">'c'</span><span class="p">:</span> <span class="n">yr</span><span class="p">,</span> <span class="s">'cmap'</span><span class="p">:</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">RdBu_r</span><span class="p">},</span>
+                <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s">'c'</span><span class="p">:</span> <span class="n">lc</span><span class="p">},</span> <span class="n">ci</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">])</span>
+<span class="c">#     sns.corrplot(vals.set_index(['fiscal_year']), cbar=False, ax=ax)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">cent</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">'Corr: {0: .02f}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">corr</span><span class="p">),</span> <span class="p">(</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="o">.</span><span class="mi">9</span><span class="p">),</span>
+                <span class="n">xycoords</span><span class="o">=</span><span class="s">'axes fraction'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span> <span class="o">+</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">()</span>
+              <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">label</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2015/ntbk/2015-10-29-nih_grant_analysis_20_0.png" alt="png" /></p>
+
+<p>So what did we learn from any of this? Well, it seems like the funding landscape at the NIH is changing, and some groups are making out better than others.</p>
+
+<p>There are power players who’ve been around for a while, like the NINDS, who haven’t seen a huge change in their granting behavior. Other groups, such as NIAAA, have seen their success rates decline steadily w/ increased applications. On the other hand, there are some centers that have actually shown both an increase in applications AND an increase in success rates (such as the NHGRI), which may reflect increased interest in those research endeavors from congress etc.</p>
+
+<p>There’s a lot more to be read into this data, so I encourage people to check it out for themselves, or suggest things to try out on top of what’s already here. It’s been fun learning a bit about the landscape of grants at the NIH.</p>
+
+<h1 id="appendix">Appendix</h1>
+<h2 id="nih-acronym-lookup">NIH acronym lookup</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="p">[</span><span class="s">'nih_institute_center'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">nih_centers</span> <span class="o">=</span> <span class="p">{</span><span class="s">u'NCCAM'</span><span class="p">:</span> <span class="s">'National Center for Complementary and Alternative Medicine'</span><span class="p">,</span>
+                 <span class="s">u'NINDS'</span><span class="p">:</span> <span class="s">'National Institute on Neurological Disorders and Stroke'</span><span class="p">,</span>
+                 <span class="s">u'NIDA'</span><span class="p">:</span> <span class="s">'National Institute on Drug Abuse'</span><span class="p">,</span>
+                 <span class="s">u'NIDCD'</span><span class="p">:</span> <span class="s">'National Institute on Deafness and Other Communication Disorders'</span><span class="p">,</span>
+                 <span class="s">u'NIDCR'</span><span class="p">:</span> <span class="s">'National Institute of Dental and Craniofacial Research'</span><span class="p">,</span>
+                 <span class="s">u'NIEHS'</span><span class="p">:</span> <span class="s">'National Institute of Environmental Health Sciences'</span><span class="p">,</span>
+                 <span class="s">u'NIMH'</span><span class="p">:</span>  <span class="s">'National Institute of Mental Health'</span><span class="p">,</span>
+                 <span class="s">u'NIAAA'</span><span class="p">:</span> <span class="s">'National Institute on Alcohol Abuse and Alcoholism'</span><span class="p">,</span>
+                 <span class="s">u'NIA'</span><span class="p">:</span> <span class="s">'National Institute on Aging'</span><span class="p">,</span>
+                 <span class="s">u'NIAID'</span><span class="p">:</span> <span class="s">'National Institute of Allergy and Infectious Diseases'</span><span class="p">,</span>
+                 <span class="s">u'NIAMS'</span><span class="p">:</span> <span class="s">'National Institute of Arthritis and Musculoskeletal and Skin Diseases'</span><span class="p">,</span>
+                 <span class="s">u'NCI'</span><span class="p">:</span> <span class="s">'National Cancer Institute'</span><span class="p">,</span>
+                 <span class="s">u'NIDDK'</span><span class="p">:</span> <span class="s">'National Institute of Diabetes and Digestive and Kidney Diseases'</span><span class="p">,</span>
+                 <span class="s">u'NIBIB'</span><span class="p">:</span> <span class="s">'National Institute of Biomedical Imaging and Bioengineering'</span><span class="p">,</span>
+                 <span class="s">u'NEI'</span><span class="p">:</span> <span class="s">'National Eye Institute'</span><span class="p">,</span>
+                 <span class="s">u'NIGMS'</span><span class="p">:</span> <span class="s">'National Institute of General Medical Sciences'</span><span class="p">,</span>
+                 <span class="s">u'NICHD'</span><span class="p">:</span> <span class="s">'National Institute of Child Health and Human Development'</span><span class="p">,</span>
+                 <span class="s">u'NHGRI'</span><span class="p">:</span> <span class="s">'National Human Genome Research Institute'</span><span class="p">,</span>
+                 <span class="s">u'NHLBI'</span><span class="p">:</span> <span class="s">'National Heart, Lung, and Bloog Institute'</span><span class="p">,</span>
+                 <span class="s">u'NINR'</span><span class="p">:</span> <span class="s">'National Institute of Nursing Research'</span><span class="p">,</span>
+                 <span class="s">u'NCRR'</span><span class="p">:</span> <span class="s">'National Center for Research Resources'</span><span class="p">,</span>
+                 <span class="s">u'NLM'</span><span class="p">:</span> <span class="s">'National Library of Medicine'</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">ac</span><span class="p">,</span> <span class="n">cent</span> <span class="ow">in</span> <span class="n">nih_centers</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'{0}:</span><span class="se">\t</span><span class="s">{1}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ac</span><span class="p">,</span> <span class="n">cent</span><span class="p">))</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#statistics" class="page__taxonomy-item" rel="tag">statistics</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#visualization" class="page__taxonomy-item" rel="tag">visualization</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#grants" class="page__taxonomy-item" rel="tag">grants</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#computation" class="page__taxonomy-item" rel="tag">computation</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/nih-grant-analysis" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/nih-grant-analysis" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/nih-grant-analysis" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/nih-grant-analysis" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/craigslist-data-analysis" class="pagination--pager" title="Craigslist data analysis
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/fast-fourier-transform-efficiency" class="pagination--pager" title="The beauty of computational efficiency
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Chris Holdgraf. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

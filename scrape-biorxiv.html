@@ -1,0 +1,782 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>The bleeding edge of publishing, Scraping publication amounts at biorxiv - Predictably Noisy</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Predictably Noisy">
+<meta property="og:title" content="The bleeding edge of publishing, Scraping publication amounts at biorxiv">
+
+
+  <link rel="canonical" href="http://localhost:4000/scrape-biorxiv">
+  <meta property="og:url" content="http://localhost:4000/scrape-biorxiv">
+
+
+
+  <meta property="og:description" content="Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the biorxiv, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.">
+
+
+
+  <meta name="twitter:site" content="@choldgraf">
+  <meta name="twitter:title" content="The bleeding edge of publishing, Scraping publication amounts at biorxiv">
+  <meta name="twitter:description" content="Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the biorxiv, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.">
+  <meta name="twitter:url" content="http://localhost:4000/scrape-biorxiv">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-12-19T00:00:00-08:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chris Holdgraf",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/holdgraf.css">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+
+
+<meta http-equiv="cleartype" content="on">
+
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Predictably Noisy</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/opensource/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/talks/">Talks</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Chris Holdgraf</h3>
+    <p class="author__bio">Data Science | Open Science | Brains</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
+      
+      
+      
+      
+        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="The bleeding edge of publishing, Scraping publication amounts at biorxiv">
+    <meta itemprop="description" content="Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the biorxiv, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.">
+    <meta itemprop="datePublished" content="December 19, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">The bleeding edge of publishing, Scraping publication amounts at biorxiv
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  8 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-12-19T00:00:00-08:00">December 19, 2016</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the <a href="http://biorxiv.org/">biorxiv</a>, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.</p>
+
+<p>A big benefit of open science is the ability to use modern technologies (like web scraping) to make new use of data that would originally be unavailable to the public. One simple example of this is information and metadata about published articles. While we’re not going to dive too deeply here, maybe this will serve as inspiration for somebody else interested in scraping the web.</p>
+
+<p>First we’ll do a few imports. We’ll rely heavily on the <code class="highlighter-rouge">requests</code> and <code class="highlighter-rouge">BeautifulSoup</code> packages, which together make an excellent one-two punch for doing web scraping. We coud use something like <code class="highlighter-rouge">scrapy</code>, but that seems a little overkill for this small project.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div></div>
+
+<p>From a quick look at the biorxiv we can see that its search API works in a pretty simple manner. I tried typing in a simple search query and got something like this:</p>
+
+<p><code class="highlighter-rouge">http://biorxiv.org/search/neuroscience%20numresults%3A100%20sort%3Arelevance-rank</code></p>
+
+<p>Here we can see that the term you search for comes just after <code class="highlighter-rouge">/search/</code>, and parameters for the search, like <code class="highlighter-rouge">numresults</code>. The keyword/value pairs are separated by a <code class="highlighter-rouge">%3A</code> character, which corresponds to <code class="highlighter-rouge">:</code> (see <a href="http://www.degraeve.com/reference/urlencoding.php">this site</a> for a reference of url encoding characters), and these key/value pairs are separated by <code class="highlighter-rouge">%20</code>, which corresponds to a space.</p>
+
+<p>So, let’s do a simple scrape and see what the results look like. We’ll query the biorxiv API to see what kind of structure the result will have.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_results</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://biorxiv.org/search/neuroscience</span><span class="si">%20</span><span class="s">numresults</span><span class="si">%3</span><span class="s">A{}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">n_results</span><span class="p">)</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c"># I'm not going to print this because it messes up the HTML rendering</span>
+<span class="c"># But you get the idea...probably better to look in Chrome anyway ;)</span>
+<span class="c"># text = bs(resp.text)</span>
+</code></pre></div></div>
+
+<p>If we search through the result, you may notice that search results are organized into a list (denoted by <code class="highlighter-rouge">li</code> for each item). Inside each item is information about the article’s title (in a <code class="highlighter-rouge">div</code> of class <code class="highlighter-rouge">highwire-cite-title</code>) and author information (in a <code class="highlighter-rouge">div</code> of calss <code class="highlighter-rouge">highwire-cite-authors</code>).</p>
+
+<p>Let’s use this information to ask three questions:</p>
+
+<ol>
+  <li>How has the rate of publications for a term changed over the years</li>
+  <li>Who’s been publishing under that term.</li>
+  <li>What kinds of things are people publishing?</li>
+</ol>
+
+<p>For each, we’ll simply use the phrase “neuroscience”, although you could use whatever you like.</p>
+
+<p>To set up this query, we’ll need to use another part of the biorxiv API, the <code class="highlighter-rouge">limit_from</code> paramter. This lets us constrain the search to a specific month of the year. That way we can see the monthly submissions going back several years.</p>
+
+<p>We’ll loop through years / months, and pull out the author and title information. We’ll do this with two dataframes, one for authors, one for articles.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define the URL and start/stop years</span>
+<span class="n">stt_year</span> <span class="o">=</span> <span class="mi">2012</span>
+<span class="n">stp_year</span> <span class="o">=</span> <span class="mi">2016</span>
+<span class="n">search_term</span> <span class="o">=</span> <span class="s">"neuroscience"</span>
+<span class="n">url_base</span> <span class="o">=</span> <span class="s">"http://biorxiv.org/search/{}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
+<span class="n">url_params</span> <span class="o">=</span> <span class="s">"</span><span class="si">%20</span><span class="s">limit_from</span><span class="si">%3</span><span class="s">A{0}-{1}-01</span><span class="si">%20</span><span class="s">limit_to</span><span class="si">%3</span><span class="s">A{0}-{2}-01</span><span class="si">%20</span><span class="s">numresults</span><span class="si">%3</span><span class="s">A100</span><span class="si">%20</span><span class="s">format_result</span><span class="si">%3</span><span class="s">Astandard"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">url_base</span> <span class="o">+</span> <span class="n">url_params</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Now we'll do the scraping...</span>
+<span class="n">all_articles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">all_authors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">yr</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stt_year</span><span class="p">,</span> <span class="n">stp_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">mn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">):</span>
+        <span class="c"># Populate the fields with our current query and post it</span>
+        <span class="n">this_url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
+        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">this_url</span><span class="p">)</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+        
+        <span class="c"># Collect the articles in the result in a list</span>
+        <span class="n">articles</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'li'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'search-result'</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+            <span class="c"># Pull the title, if it's empty then skip it</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'highwire-cite-title'</span><span class="p">})</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            
+            <span class="c"># Collect year / month / title information</span>
+            <span class="n">all_articles</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">title</span><span class="p">])</span>
+            
+            <span class="c"># Now collect author information</span>
+            <span class="n">authors</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'highwire-citation-author'</span><span class="p">})</span>
+            <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">authors</span><span class="p">:</span>
+                <span class="n">all_authors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">author</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">title</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll collect these into DataFrames for subsequent use</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_authors</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_articles</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>To make things easier to cross-reference, we’ll add an <code class="highlighter-rouge">id</code> column that’s unique for each title. This way we can more simply join the dataframes to do cool things:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define a dictionary of title: ID mappings</span>
+<span class="n">unique_ids</span> <span class="o">=</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">articles</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())}</span>
+<span class="n">articles</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">unique_ids</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">[</span><span class="s">'title'</span><span class="p">]]</span>
+<span class="n">authors</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">unique_ids</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">authors</span><span class="p">[</span><span class="s">'title'</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>Now, we can easily join these two dataframes together if we so wish:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">articles</span><span class="p">,</span> <span class="n">authors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>title</th>
+      <th>id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>11</td>
+      <td>Simultaneous optogenetic manipulation and calc...</td>
+      <td>0</td>
+      <td>Frederick B. Shipley</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>11</td>
+      <td>Simultaneous optogenetic manipulation and calc...</td>
+      <td>0</td>
+      <td>Christopher M. Clark</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>11</td>
+      <td>Simultaneous optogenetic manipulation and calc...</td>
+      <td>0</td>
+      <td>Mark J. Alkema</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>11</td>
+      <td>Simultaneous optogenetic manipulation and calc...</td>
+      <td>0</td>
+      <td>Andrew M. Leifer</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>11</td>
+      <td>Functional connectivity networks with and with...</td>
+      <td>1</td>
+      <td>Satoru Hayasaka</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h1 id="question-1-how-has-the-published-articles-rate-changed">Question 1: How has the published articles rate changed?</h1>
+<p>This one is pretty easy to ask. Since we have both year / month data about each article, we can plot the number or articles for each group of time. To do this, let’s first turn these numbers into an actual “datetime” object. This let’s us do some clever plotting magic with pandas</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add a "date" column</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+         <span class="k">for</span> <span class="n">yr</span><span class="p">,</span> <span class="n">mn</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">[[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
+<span class="n">articles</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span>
+
+<span class="c"># Now drop the year / month columns because they're redundant</span>
+<span class="n">articles</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Now, we can simply group by month, sum the number of results, and plot this over time:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">monthly</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'date'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Articles published per month for term</span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png" alt="png" /></p>
+
+<p>We can also plot the cumulative number of papers published:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cumulative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthly</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">monthly</span><span class="p">[</span><span class="s">'cumulative'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative</span>
+
+<span class="c"># Now plot cumulative totals</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="s">'cumulative'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Cumulative number of papers matching term </span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Number of Papers'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_18_1.png" alt="png" /></p>
+
+<h1 id="question-2-which-author-uses-pre-prints-the-most">Question 2: Which author uses pre-prints the most?</h1>
+<p>For this one, we can use the “authors” dataframe. We’ll group by author name, and count the number of publications per author:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Group by author and count the number of items</span>
+<span class="n">author_counts</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'name'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s">'count'</span><span class="p">)</span>
+
+<span class="c"># We'll take the top 30 authors</span>
+<span class="n">author_counts</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'count'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">author_counts</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>We’ll use some <code class="highlighter-rouge">pandas</code> magical gugu to get this one done. Who is the greatest pre-print neuroscientist of them all?</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># So we can plot w/ pretty colors</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">author_counts</span><span class="p">[</span><span class="s">'count'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">author_counts</span><span class="p">[</span><span class="s">'count'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">()))</span>
+
+<span class="c"># Make the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_22_0.png" alt="png" /></p>
+
+<p>Rather than saying congratulations to #1 etc here, I’ll just take this space to say that all of these researchers are awesome for helping push scientific publishing technologies into the 21st century ;)</p>
+
+<h1 id="question-3-what-topics-are-covered-in-the-titles">Question 3: What topics are covered in the titles?</h1>
+<p>For this one we’ll use a super floofy answer, but maybe it’ll give us something pretty. We’ll use the wordcloud module, which implements <code class="highlighter-rouge">fit</code> and <code class="highlighter-rouge">predict</code> methods similar to scikit-learn. We can train it on the words in the titles, and then create a pretty word cloud using these words.</p>
+
+<p>To do this, we’ll use the <code class="highlighter-rouge">wordcloud</code> module along with <code class="highlighter-rouge">sklearn</code>’s stop words (which are also useful for text analysis, incidentally)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">wordcloud</span> <span class="k">as</span> <span class="n">wc</span> 
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">ENGLISH_STOP_WORDS</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll collect the titles and turn them into one giant string</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="n">articles</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">titles</span> <span class="o">=</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+
+<span class="c"># Then define stop words to use...we'll include some "typical" brain words</span>
+<span class="n">our_stop_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ENGLISH_STOP_WORDS</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s">'brain'</span><span class="p">,</span> <span class="s">'neural'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Now, generating a word cloud is as easy as a call to <code class="highlighter-rouge">generate_from_text</code>. Then we can output in whatever format we like</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This function takes a buch of dummy arguments and returns random colors</span>
+<span class="k">def</span> <span class="nf">color_func</span><span class="p">(</span><span class="n">word</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+               <span class="n">orientation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">font_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">rand</span><span class="p">)[:</span><span class="mi">3</span><span class="p">])</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span> <span class="o">*</span> <span class="mi">255</span>
+    <span class="k">return</span> <span class="s">'rgb({:.0f}, {:.0f}, {:.0f})'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">cols</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fit the cloud</span>
+<span class="n">cloud</span> <span class="o">=</span> <span class="n">wc</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">stopwords</span><span class="o">=</span><span class="n">our_stop_words</span><span class="p">,</span>
+                     <span class="n">color_func</span><span class="o">=</span><span class="n">color_func</span><span class="p">)</span>
+<span class="n">cloud</span><span class="o">.</span><span class="n">generate_from_text</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+
+<span class="c"># Now make a pretty picture</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">cloud</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_28_0.png" alt="png" /></p>
+
+<p>Looks like those cognitive neuroscience folks are leading the charge towards pre-print servers. Hopefully in the coming years we’ll see increased adoption from the systems and cellular fields as well.</p>
+
+<h1 id="wrapup">Wrapup</h1>
+<p>Here we played with just a few questions that you can ask with some simple web scraping and the useful tools in python. There’s a lot more that you could do with it, but I’ll leave that up to readers to figure out for themselves :)</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#science" class="page__taxonomy-item" rel="tag">science</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#scraping" class="page__taxonomy-item" rel="tag">scraping</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#visualizations" class="page__taxonomy-item" rel="tag">visualizations</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#open" class="page__taxonomy-item" rel="tag">open</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#preprints" class="page__taxonomy-item" rel="tag">preprints</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#web" class="page__taxonomy-item" rel="tag">web</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#open-science" class="page__taxonomy-item" rel="tag">open science</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/scrape-biorxiv" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/scrape-biorxiv" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/scrape-biorxiv" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/scrape-biorxiv" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/funnel-plots" class="pagination--pager" title="Visualizing publication bias
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/jingle-bells-brain" class="pagination--pager" title="Brainy Jingle Bells
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Chris Holdgraf. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

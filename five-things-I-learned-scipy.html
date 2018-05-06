@@ -1,0 +1,524 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>5 things I learned at SciPy - Predictably Noisy</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Predictably Noisy">
+<meta property="og:title" content="5 things I learned at SciPy">
+
+
+  <link rel="canonical" href="http://localhost:4000/five-things-I-learned-scipy">
+  <meta property="og:url" content="http://localhost:4000/five-things-I-learned-scipy">
+
+
+
+  <meta property="og:description" content="I’ve finally decompressed after my first go-around with Scipy. For those who haven’t heard of this conference before, Scipy is an annual meeting where members of scientific community get together to discuss their love of Python, scientific programming, and open science. It spans both academics and people from industry, making it a unique place in terms of how software interfaces with scientific research. (if you’re interested the full set of Scipy conferences, check out here.">
+
+
+
+  <meta name="twitter:site" content="@choldgraf">
+  <meta name="twitter:title" content="5 things I learned at SciPy">
+  <meta name="twitter:description" content="I’ve finally decompressed after my first go-around with Scipy. For those who haven’t heard of this conference before, Scipy is an annual meeting where members of scientific community get together to discuss their love of Python, scientific programming, and open science. It spans both academics and people from industry, making it a unique place in terms of how software interfaces with scientific research. (if you’re interested the full set of Scipy conferences, check out here.">
+  <meta name="twitter:url" content="http://localhost:4000/five-things-I-learned-scipy">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-11-01T00:00:00-07:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Chris Holdgraf",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/holdgraf.css">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+
+
+<meta http-equiv="cleartype" content="on">
+
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Predictably Noisy</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/about/">About</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/opensource/">Open Source</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/talks/">Talks</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Chris Holdgraf</h3>
+    <p class="author__bio">Data Science | Open Science | Brains</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
+      
+      
+      
+      
+        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
+      
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="5 things I learned at SciPy">
+    <meta itemprop="description" content="I’ve finally decompressed after my first go-around with Scipy. For those who haven’t heard of this conference before, Scipy is an annual meeting where members of scientific community get together to discuss their love of Python, scientific programming, and open science. It spans both academics and people from industry, making it a unique place in terms of how software interfaces with scientific research. (if you’re interested the full set of Scipy conferences, check out here.">
+    <meta itemprop="datePublished" content="November 01, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">5 things I learned at SciPy
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-11-01T00:00:00-07:00">November 01, 2016</time></p>
+        
+        
+             
+        
+    
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>I’ve finally decompressed after my first go-around with Scipy. For those who haven’t heard of this conference before, Scipy is an annual meeting where members of scientific community get together to discuss their love of Python, scientific programming, and open science. It spans both academics and people from industry, making it a unique place in terms of how software interfaces with scientific research. (if you’re interested the full set of Scipy conferences, <a href="http://conference.scipy.org/index.html">check out here</a>.</p>
+
+<p>It was an eye-opening experience that I learned a lot from, so here’s a quick recap of some things that I learned during my first rodeo.</p>
+
+<h1 id="1-scientific-conferences-can-be-fun">1. Scientific conferences can be fun</h1>
+<p>I know I know, everybody has fun at conferences because they’re kind of like mini-vacations. But this is one of the only conferences I’ve been to where people seemed legitimately excited to be <em>at the conference itself</em>. Austin is a really cool city, but rooms were packed full of people whether it was morning or evening. Everybody was enthusiastic about one another’s work, and it was a rare feeling of community over competitiveness.</p>
+
+<h1 id="2-open-science-feels-great">2. Open science feels great</h1>
+<p>Speaking of competition…you know that feeling when you’re walking around a conference, and you’re kind of terrified that you’ll run into somebody else’s poster that covers the same thing you’re studying? That feeling doesn’t exist at scipy. In fact, discovering that somebody has already done what you were working on is <em>great</em>. It means that you can start building off of their hard work, instead of laying a bunch of groundwork yourself. That’s how science is supposed to work, and is really refreshing coming from a field (neuroscience) that tends to be very cagey and protective of both its data and analyses. It makes me want to encourage these open and collaborative practices in my own field.</p>
+
+<h1 id="3-its-actually-cutting-edge">3. It’s actually “cutting edge”</h1>
+<p>In the sense that people talk about things that they’re actively developing <em>right now</em>. A number of times people gave presentations where they explained that they literally just built in XXX feature thirty minutes before the talk began. When I go to scientific conferences I get the feeling that people are mostly talking about projects that are nearly complete or already submitted. Having a conference that is more about where the field is going, rather than just showcasing what it’s already accomplished, makes for a great experience and focuses on what to do next.</p>
+
+<h1 id="4-project-jupyter-is-going-to-take-over-the-world">4. Project Jupyter is going to take over the world</h1>
+<p>What began as a side project (IPython) has clearly evolved into an organization/project that is impressively ambitious and productive. Jupyter unveiled their next iteration, called JupyterLab, that makes their browser-based platform <em>much</em> more flexible and extensible. I’m excited to see what the community starts to cook up. Jupyter also made its way into a ton of other presentations and projects. For example, Jupyter has been used to <a href="https://www.youtube.com/watch?v=bNq8_nSiQXc&amp;index=11&amp;list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6">manage a cluster of nodes</a> for parallel computing, to create <a href="https://www.youtube.com/watch?v=Fc2W930NJs8&amp;index=7&amp;list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6">one-button reproducible workflows</a>, and to <a href="https://www.youtube.com/watch?v=tKAmwC8ay8E&amp;index=12&amp;list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6">diff and merge</a> notebooks. We also showcased our own use of JupyterHub for <a href="https://www.youtube.com/watch?v=4I3ZFbEF7t0&amp;index=25&amp;list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6">teaching data science to undergraduates at UC Berkeley</a>.</p>
+
+<h1 id="5-theres-a-lot-of-energy-and-excitement-in-science">5. There’s a lot of energy and excitement in science</h1>
+<p>At least, when people have an outlet to show it. I heard all kinds of people excited to share their analyses, projects, and findings from their scientific work (as opposed to their software development). It didn’t have the obligatory “I’m doing this for the purpose of networking” feel that I’ve gotten from many conferences. Instead, people were looking forward to showing off the cool work that they’d done and get feedback from others.</p>
+
+<p>At the end of the day, Scipy is less of a conference and more of a celebration of the principles that guide the open source and open science community. It turns out that when you base a field off of openness, collaboration, iteration, and empowerment, you create a very energetic and exciting culture. I really enjoyed my first go-around with the scipy community, and I’m looking forward to what comes next.</p>
+
+<h1 id="some-quick-extras">Some quick extras</h1>
+<ul>
+  <li>Scipy still has a <a href="https://gist.github.com/jiffyclub/c1c75641b50a9370bb144f5623e177c4">long way to go</a> when it comes to gender parity at Scipy. And it felt even worse for racial diversity.</li>
+  <li>People seem really excited about Dask for parallel computing. Here are <a href="https://www.youtube.com/watch?v=PAGjm4BMKlk&amp;index=15&amp;list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6">two</a> <a href="https://www.youtube.com/watch?v=jLQ2wAwapRg&amp;index=43&amp;list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6">talks</a> that got a lot of buzz.</li>
+  <li>Austin is <a href="https://www.wunderground.com/history/airport/KATT/2016/7/20/MonthlyCalendar.html?req_city=Austin&amp;req_state=TX&amp;reqdb.zip=78701&amp;reqdb.magic=1&amp;reqdb.wmo=99999#calendar">really, really hot</a> in the summertime. Especially when your AirBnB is a 2 mile walk away.</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#programming" class="page__taxonomy-item" rel="tag">programming</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#science" class="page__taxonomy-item" rel="tag">science</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#conferences" class="page__taxonomy-item" rel="tag">conferences</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#open" class="page__taxonomy-item" rel="tag">open</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#" class="page__taxonomy-item" rel="tag"></a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#open-science" class="page__taxonomy-item" rel="tag">open science</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/five-things-I-learned-scipy" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/five-things-I-learned-scipy" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/five-things-I-learned-scipy" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/five-things-I-learned-scipy" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/brexit-voting-randomness" class="pagination--pager" title="Could Brexit have happened by chance?
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/funnel-plots" class="pagination--pager" title="Visualizing publication bias
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    </script>
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Chris Holdgraf. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+
