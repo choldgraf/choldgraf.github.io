@@ -1,5 +1,5 @@
 ---
-tags: python, open science
+tags: python open-science
 interactive: True
 title: Combining dates with analysis visualization in python
 permalink: date-analysis-viz-python

@@ -1,17 +1,30 @@
 from subprocess import check_call
 import os
+import shutil as sh
 from glob import glob
 import nbformat as nbf
+from nbclean import NotebookCleaner
 
-POSTS_FOLDER = '../_posts/'
-IMAGES_FOLDER = '../images/'
-JUPYBLOG = os.path.expanduser('~/Dropbox/github/publicRepos/jupyterblog/jupyter_to_blog.py')
-ipynb_files = glob('../notebooks/**/*.ipynb', recursive=True)
+SITE_ROOT = os.path.expanduser('~/github/publicRepos/choldgraf.github.io')
+POSTS_FOLDER = os.path.join(SITE_ROOT, '_posts')
+IMAGES_FOLDER = os.path.join(SITE_ROOT, '../images/')
+REPLACE = False
+ipynb_files = glob(os.path.join(SITE_ROOT, 'notebooks/**/*.ipynb'), recursive=True)
+markdown_files = glob(os.path.join(SITE_ROOT, 'notebooks/**/*.md'), recursive=True)
+if REPLACE is False:
+    new_ipynb_files = [ii for ii in ipynb_files
+                       if not os.path.exists(os.path.join(POSTS_FOLDER, os.path.basename(ii).replace('.ipynb', '.md')))]
+    print("Skipping {} ipynb files".format(len(ipynb_files) - len(new_ipynb_files)))
+    ipynb_files = new_ipynb_files
+
 for ifile in ipynb_files:
     year = int(os.path.basename(ifile).split('-')[0])
 
     # Clean up the file before converting
-    check_call(['python', JUPYBLOG, ifile, '--inplace'])
+    cleaner = NotebookCleaner(ifile)
+    cleaner.remove_cells(empty=True)
+    cleaner.clear('stderr')
+    cleaner.save(ifile)
 
     # Run nbconvert moving it to the output folder
     build_call = '--FilesWriter.build_directory={}'.format(POSTS_FOLDER)
@@ -19,7 +32,7 @@ for ifile in ipynb_files:
     check_call(['jupyter', 'nbconvert',
                 '--to', 'markdown',
                 images_call, build_call, ifile])
-    
+
     # Read in the markdown and replace each image file with the site URL
     IMG_STRINGS = ['../../../images', '../../images']
     path_md = os.path.join(POSTS_FOLDER, os.path.basename(ifile).replace('.ipynb', '.md'))
@@ -27,8 +40,13 @@ for ifile in ipynb_files:
         lines = ff.readlines()
     for ii, line in enumerate(lines):
         for IMG_STRING in IMG_STRINGS:
-            if IMG_STRING in line:
-                line = line.replace(IMG_STRING, '{{ base.url }}/images')
-                lines[ii] = line
+            line = line.replace(IMG_STRING, '{{ base.url }}/images')
+        lines[ii] = line
     with open(path_md, 'w') as ff:
         ff.writelines(lines)
+
+# Copy the markdown files
+print('Copying {} markdown files'.format(len(markdown_files)))
+for ifile in markdown_files:
+    file_name = os.path.basename(ifile)
+    sh.copy2(ifile, os.path.join(POSTS_FOLDER, file_name))

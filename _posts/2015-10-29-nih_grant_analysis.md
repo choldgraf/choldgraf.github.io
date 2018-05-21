@@ -153,7 +153,7 @@ plt.tight_layout()
 ```
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_7_0.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_7_0.png)
 
 
 Eyeballing it, it looks like applications have been slightly increasing per year, while applications awarded have remained relatively flat. Let's dig into that a little bit more. Rather than looking at the raw numbers, we'll focus on the success rate, or the % of applications that were funded.
@@ -187,23 +187,23 @@ for grant, gvals in data.groupby('activity_code'):
 ```
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_0.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_0.png)
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_1.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_1.png)
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_2.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_2.png)
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_3.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_3.png)
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_4.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_4.png)
 
 
 As you can see - some of these data aren't well-modeled by a line in the first place. That's because there's a lot of missing data in here. However, especially for the more common grants (F31, F32) you can see some interesting (and mostly downward) trends.
@@ -240,11 +240,11 @@ for var in variable_types:
 ```
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_0.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_0.png)
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_1.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_1.png)
 
 
 Is there anything that we can learn from this? Let's look at how the finding changed for each year: 
@@ -269,7 +269,7 @@ ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_16_1.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_16_1.png)
 
 
 To make things more comparable, we can normalize each timeseries by its first value, this will give everything the same starting point. We'll also smooth the curves a little bit to get an idea for general trends. We'll apply an exponentially-weighted moving average so recent points factor more into the average
@@ -291,7 +291,7 @@ ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
 
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_18_1.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_18_1.png)
 
 
 It seems like some NIH groups have made out better than others. Maybe this simply because the number of total applications each received changed from one year to another. 
@@ -325,7 +325,7 @@ _ = plt.setp([ax.xaxis.label, ax.yaxis.label], fontsize=10)
 ```
 
 
-![png](../images/2015/ntbk/2015-10-29-nih_grant_analysis_20_0.png)
+![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_20_0.png)
 
 
 So what did we learn from any of this? Well, it seems like the funding landscape at the NIH is changing, and some groups are making out better than others.

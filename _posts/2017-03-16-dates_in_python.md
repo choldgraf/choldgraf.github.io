@@ -1,9 +1,9 @@
 ---
-tags: python, open science
+tags: python open-science
 interactive: True
 title: Dates in python
 permalink: date-time-python
-category: dates, formatting
+category: dates formatting
 date: 2017-03-16
 ---
 As a part of setting up the website for the [Docathon](http://docathon.org) I've had to re-learn all of my date string formatting rules. It's one of those little problems you don't really think about - turning an arbitrary string into something structured like a date - until you've actually got to do it.
@@ -68,17 +68,17 @@ for ii in attrs:
     print(ii, getattr(date, ii))
 ```
 
-    
+
     ---
-    
+
     year 2016
-    
+
     ---
-    
+
     month 2
-    
+
     ---
-    
+
     day 12
 
 

@@ -50,7 +50,7 @@ The funnel plot is one tool for visualizing and determining whether there is a p
 
 It's a bit busy, but the underlying ideas here are pretty simple.
 
-* The x-axis is the size of an effect (here it's correlation but it could be any other statistic). 0 in the middle representing "no effect" and the extremes on either end representing the maximum possible effect for correlation values (in this case).
+* The x-axis is the size of an effect (here it's correlation but it could be any other statistic). 0 in the middle representing "no effect" and the extremes on either end representing the maximum possible effect for correlation values (in this case). 
 * The right y-axis is the statistical power of the study. That is, the likelihood of concluding that an effect is "significantly" different from 0. As power increases and for a fixed effect size, it becomes more likely that we conclude significance.
 * This is related to the left y-axis, which is the inverse of the sample size. AKA, smaller samples -> higher standard error -> less power -> smaller y-values. Larger samples -> lower standard error -> more power -> higher y-values.
 * Finally, the shaded region tells us combinations of effect sizes / sample sizes that would be deemed "significant" (and publishable). If we assume a (two-sided) p-value threshold of .05, the area in white wouldn't make it into literature, while the area in grey would.
@@ -76,7 +76,7 @@ The reason that data points follow the boundary between white / grey isn't becau
 There's another problem with this plot. As we've noted, small sample sizes means that you can only write papers with really large effect sizes. Seems reasonable, but if you can't report non-significant results, it means that studies with a smaller N are the most likely to throw off our belief about the true effect size.
 
 ## Getting our hands dirty with some code
-But this is all very theoretical...to show how this works, we'll investigate funnel plots with a quick simulation to drive the point home.
+But this is all very theoretical...to show how this works, we'll investigate funnel plots with a quick simulation to drive the point home. 
 
 We'll simulate 10,000 studies, each with an N ranging from 2 to 50. We'll ignore all of the "questionable scientific practices" that the article mentions, and only focus on the problem of not reporting scientific results. Let's see what happens:
 
@@ -95,11 +95,11 @@ def simulate_data(effect, variance, n):
 def simulate_experiments(data, n_min=10, n_max=50, prefer_low_n=False,
                          n_simulations=100):
     """Randomly simulates data collection and analyses of many experiments.
-
+    
     On each iteration, it chooses a random sample from data, calculates the
     mean of that sample, as well as a p-value associated with that mean's
     difference from 0.
-
+    
     data : the full population dataset
     n_min : the minimum sample size for each study.
     n_max : the maximum sample size for each study.
@@ -126,7 +126,7 @@ def simulate_experiments(data, n_min=10, n_max=50, prefer_low_n=False,
 
 def calculate_stat(mean, std, n, h0=0):
     """Calculate a p-value using a t-test.
-
+    
     Note that this probably *isn't* the right test to run with data that
     is bounded on either side (in this case, -1 and 1). However, luckily
     this is not a statistics tutorial so I'm just going to be blissfully
@@ -154,10 +154,10 @@ def plot_funnel_plot(effects, sample_sizes,
     std_full = effects.std()
     mn_pub = effects_reported.mean()
     std_pub = effects_reported.std()
-
+    
     mn_diff = np.abs(mn_full - mn_pub)
     std_diff = np.abs(std_full - std_pub)
-
+    
     # First axis is a histogram of the distribution for true/experimental effects
     bins = np.arange(-2, 2, .1)
     _ = axdist.hist(effects, color='k', histtype='stepfilled',
@@ -177,7 +177,7 @@ def plot_funnel_plot(effects, sample_sizes,
     sig = pvals < .05
     mesh = axmesh.contour(combinations[0], combinations[1], sig, cmap=plt.cm.Greys,
                           vmin=0, vmax=3, rasterized=True)
-
+    
     inv_p_effects = 1 - p_effects_reported
     axmesh.scatter(effects, sample_sizes,
                    s=100, c='k', alpha=.1)
@@ -391,7 +391,7 @@ def plot_simulated_data(null_perc=.05, pos_perc=.5, super_p_perc=1.):
     n_reported = n[mask_reported]
     p_reported = p[mask_reported]
     plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
-
+    
 interact(plot_simulated_data,
          null_perc=[0., 1., .01],
          pos_perc=[0., 1., .01],
@@ -405,3 +405,4 @@ interact(plot_simulated_data,
 
 
 ![png](../images/2016/ntbk/2016-11-30-funnel_plots_19_1.png)
+

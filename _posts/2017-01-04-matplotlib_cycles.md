@@ -1,5 +1,5 @@
 ---
-tags: python, open science, visualizations
+tags: python open-science visualizations
 interactive: False
 title: Matplotlib Cyclers are Great
 permalink: matplotlib-cycles
