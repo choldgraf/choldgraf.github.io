@@ -1,5 +1,5 @@
 ---
-tags: python open-science visualizations
+tags: python, open science, visualizations
 interactive: False
 title: Matplotlib Cyclers are Great
 permalink: matplotlib-cycles
@@ -12,6 +12,8 @@ This is a quick demo of one such feature: the **cycler**.
 
 Have you ever had to loop through a number of plotting parameters in matplotlib? Say you have two datasets and you'd like to compare them to one another. Maybe something like this:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 import matplotlib.pyplot as plt
@@ -33,12 +35,16 @@ for i_data, color, lw, alpha in zip([data1, data2], colors, linewidths, alphas):
     ax.plot(i_data[50:450], c=color, lw=lw, alpha=alpha)
 ```
 
+</div>
 
-![png](../images/2017/ntbk/2017-01-04-matplotlib_cycles_2_0.png)
+
+![png](images/2017/ntbk/2017-01-04-matplotlib_cycles_2_0.png)
 
 
 There's really a lot of unnecessary code going on above. We're defining objects that share the same name as the kwarg that they represent. We can't store them as dictionaries, because then we'd have to do some python-fu in order to get them to iterate properly. This is where `cycler` is handy:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Plot the same thing, but now it's more readable and compact
@@ -48,12 +54,16 @@ for i_data, kwargs in zip([data1, data2], cycler):
     ax.plot(i_data[50:450], **kwargs)
 ```
 
+</div>
 
-![png](../images/2017/ntbk/2017-01-04-matplotlib_cycles_4_0.png)
+
+![png](images/2017/ntbk/2017-01-04-matplotlib_cycles_4_0.png)
 
 
 You can even cycle through more complex properties like colormaps. Let's create one that cycles through several colormaps for a plot:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 cyc = plt.cycler(s=np.linspace(200, 50, 3),
@@ -66,7 +76,12 @@ print(cyc)
 cyc
 ```
 
-    %25252528%25252528%25252528cycler%25252528%25252527lw%25252527%2525252C%25252520%2525255B0%2525252C%252525200.1%2525252C%252525200.5%2525255D%25252529%25252520%2525252B%25252520cycler%25252528%25252527s%25252527%2525252C%25252520%2525255B200.0%2525252C%25252520125.0%2525252C%2525252050.0%2525255D%25252529%25252529%25252520%2525252B%25252520cycler%25252528%25252527alpha%25252527%2525252C%25252520%2525255B0.25%2525252C%252525200.5%2525252C%252525200.75%2525255D%25252529%25252529%25252520%2525252B%25252520cycler%25252528%25252527cmap%25252527%2525252C%25252520%2525255B%25252527viridis%25252527%2525252C%25252520%25252527magma%25252527%2525252C%25252520%25252527coolwarm%25252527%2525255D%25252529%25252529%2525250A
+</div>
+
+{:.output_stream}
+```
+%25252528%25252528%25252528cycler%25252528%25252527lw%25252527%2525252C%25252520%2525255B0%2525252C%252525200.1%2525252C%252525200.5%2525255D%25252529%25252520%2525252B%25252520cycler%25252528%25252527s%25252527%2525252C%25252520%2525255B200.0%2525252C%25252520125.0%2525252C%2525252050.0%2525255D%25252529%25252529%25252520%2525252B%25252520cycler%25252528%25252527alpha%25252527%2525252C%25252520%2525255B0.25%2525252C%252525200.5%2525252C%252525200.75%2525255D%25252529%25252529%25252520%2525252B%25252520cycler%25252528%25252527cmap%25252527%2525252C%25252520%2525255B%25252527viridis%25252527%2525252C%25252520%25252527magma%25252527%2525252C%25252520%25252527coolwarm%25252527%2525255D%25252529%25252529%2525250A
+```
 
 
 
@@ -76,6 +91,8 @@ cyc
 
 
 
+<div class="input_area" markdown="1">
+
 ```python
 fig, ax = plt.subplots()
 for args in cyc:
@@ -83,8 +100,10 @@ for args in cyc:
     ax.scatter(x, y, c=x, **args)
 ```
 
+</div>
 
-![png](../images/2017/ntbk/2017-01-04-matplotlib_cycles_7_0.png)
+
+![png](images/2017/ntbk/2017-01-04-matplotlib_cycles_7_0.png)
 
 
 So there you have it - cyclers are pretty neat. Give them a shot, and buy a `matplotlib` dev a beer next time you see them for making such an awesome and often under-appreciated package!

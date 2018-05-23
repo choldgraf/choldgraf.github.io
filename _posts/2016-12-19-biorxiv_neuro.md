@@ -13,6 +13,8 @@ A big benefit of open science is the ability to use modern technologies (like we
 First we'll do a few imports. We'll rely heavily on the `requests` and `BeautifulSoup` packages, which together make an excellent one-two punch for doing web scraping. We coud use something like `scrapy`, but that seems a little overkill for this small project.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 import requests
 import pandas as pd
@@ -24,6 +26,8 @@ from tqdm import tqdm
 %matplotlib inline
 ```
 
+</div>
+
 From a quick look at the biorxiv we can see that its search API works in a pretty simple manner. I tried typing in a simple search query and got something like this:
 
 `http://biorxiv.org/search/neuroscience%20numresults%3A100%20sort%3Arelevance-rank`
@@ -32,6 +36,8 @@ Here we can see that the term you search for comes just after `/search/`, and pa
 
 So, let's do a simple scrape and see what the results look like. We'll query the biorxiv API to see what kind of structure the result will have.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 n_results = 20
@@ -43,6 +49,8 @@ resp = requests.post(url)
 # But you get the idea...probably better to look in Chrome anyway ;)
 # text = bs(resp.text)
 ```
+
+</div>
 
 If we search through the result, you may notice that search results are organized into a list (denoted by `li` for each item). Inside each item is information about the article's title (in a `div` of class `highwire-cite-title`) and author information (in a `div` of calss `highwire-cite-authors`).
 
@@ -59,6 +67,8 @@ To set up this query, we'll need to use another part of the biorxiv API, the `li
 We'll loop through years / months, and pull out the author and title information. We'll do this with two dataframes, one for authors, one for articles.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Define the URL and start/stop years
 stt_year = 2012
@@ -69,6 +79,10 @@ url_params = "%20limit_from%3A{0}-{1}-01%20limit_to%3A{0}-{2}-01%20numresults%3A
 url = url_base + url_params
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Now we'll do the scraping...
@@ -99,6 +113,10 @@ for yr in tqdm(range(stt_year, stp_year + 1)):
                 all_authors.append((author.text, title))
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # We'll collect these into DataFrames for subsequent use
@@ -106,8 +124,12 @@ authors = pd.DataFrame(all_authors, columns=['name', 'title'])
 articles = pd.DataFrame(all_articles, columns=['year', 'month', 'title'])
 ```
 
+</div>
+
 To make things easier to cross-reference, we'll add an `id` column that's unique for each title. This way we can more simply join the dataframes to do cool things:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Define a dictionary of title: ID mappings
@@ -116,12 +138,18 @@ articles['id'] = [unique_ids[title] for title in articles['title']]
 authors['id'] = [unique_ids[title] for title in authors['title']]
 ```
 
+</div>
+
 Now, we can easily join these two dataframes together if we so wish:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 pd.merge(articles, authors, on=['id', 'title']).head()
 ```
+
+</div>
 
 
 
@@ -189,6 +217,8 @@ pd.merge(articles, authors, on=['id', 'title']).head()
 This one is pretty easy to ask. Since we have both year / month data about each article, we can plot the number or articles for each group of time. To do this, let's first turn these numbers into an actual "datetime" object. This let's us do some clever plotting magic with pandas
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Add a "date" column
 dates = [pd.datetime(yr, mn, day=1)
@@ -199,8 +229,12 @@ articles['date'] = dates
 articles = articles.drop(['year', 'month'], axis=1)
 ```
 
+</div>
+
 Now, we can simply group by month, sum the number of results, and plot this over time:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 monthly = articles.groupby('date').count()['title'].to_frame()
@@ -208,17 +242,21 @@ ax = monthly['title'].plot()
 ax.set_title('Articles published per month for term\n{}'.format(search_term))
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png)
+
+![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png)
 
 
 We can also plot the cumulative number of papers published:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 cumulative = np.cumsum(monthly.values)
@@ -230,18 +268,22 @@ ax.set_title('Cumulative number of papers matching term \n{}'.format(search_term
 ax.set_ylabel('Number of Papers')
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_18_1.png)
+
+![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_18_1.png)
 
 
 # Question 2: Which author uses pre-prints the most?
 For this one, we can use the "authors" dataframe. We'll group by author name, and count the number of publications per author:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Group by author and count the number of items
@@ -252,8 +294,12 @@ author_counts = author_counts.sort_values('count', ascending=False)
 author_counts = author_counts.iloc[:30].reset_index()
 ```
 
+</div>
+
 We'll use some `pandas` magical gugu to get this one done. Who is the greatest pre-print neuroscientist of them all?
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # So we can plot w/ pretty colors
@@ -266,8 +312,10 @@ ax = author_counts.plot.bar('name', 'count', color=colors, ax=ax)
 _ = plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_22_0.png)
+
+![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_22_0.png)
 
 
 Rather than saying congratulations to #1 etc here, I'll just take this space to say that all of these researchers are awesome for helping push scientific publishing technologies into the 21st century ;)
@@ -278,11 +326,17 @@ For this one we'll use a super floofy answer, but maybe it'll give us something 
 To do this, we'll use the `wordcloud` module along with `sklearn`'s stop words (which are also useful for text analysis, incidentally)
 
 
+<div class="input_area" markdown="1">
+
 ```python
 import wordcloud as wc 
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # We'll collect the titles and turn them into one giant string
@@ -293,8 +347,12 @@ titles = ' '.join(titles)
 our_stop_words = list(ENGLISH_STOP_WORDS) + ['brain', 'neural']
 ```
 
+</div>
+
 Now, generating a word cloud is as easy as a call to `generate_from_text`. Then we can output in whatever format we like
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # This function takes a buch of dummy arguments and returns random colors
@@ -306,6 +364,10 @@ def color_func(word=None, font_size=None, position=None,
     return 'rgb({:.0f}, {:.0f}, {:.0f})'.format(*cols)
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Fit the cloud
@@ -320,8 +382,10 @@ ax.imshow(im, cmap=plt.cm.viridis)
 ax.set_axis_off()
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_28_0.png)
+
+![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_28_0.png)
 
 
 Looks like those cognitive neuroscience folks are leading the charge towards pre-print servers. Hopefully in the coming years we'll see increased adoption from the systems and cellular fields as well.

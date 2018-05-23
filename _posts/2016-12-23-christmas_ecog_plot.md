@@ -9,10 +9,14 @@ date: 2016-12-23
 This is a quick demo of how I created [this video](https://www.youtube.com/watch?v=lZS4uaTBrh8). Check it out below, or read on to see the code that made it!
 
 
+<div class="input_area" markdown="1">
+
 ```python
 from IPython.display import YouTubeVideo
 YouTubeVideo('lZS4uaTBrh8')
 ```
+
+</div>
 
 
 
@@ -30,6 +34,8 @@ YouTubeVideo('lZS4uaTBrh8')
 
 
 
+<div class="input_area" markdown="1">
+
 ```python
 import pandas as pd
 import mne
@@ -43,11 +49,15 @@ import colorbabel as cb
 %matplotlib inline
 ```
 
+</div>
+
 # Jingle Bells!
 Here's a quick viz to show off some brainy holiday spirit.
 
 We'll use `matplotlib` and `MoviePy` to read in an audio file and generate a scatterplot that responds to the audio qualities.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Load the audio clip with MoviePy to save to the movie later
@@ -68,8 +78,12 @@ print('Total time: {}'.format(time_audio))
 # im = plt.imread('../../../../data/brain/brain.png')
 ```
 
+</div>
+
 We'll use the spectral content in the audio to drive activity in the electrodes. Here's what I'm talking about by spectral content:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # A pretty spectrogram of audio
@@ -80,19 +94,26 @@ ax.set(ylim=[None, 8000])
 
 ```
 
-
-
-
-    [(0.0, 8000)]
+</div>
 
 
 
 
-![png](../images/2016/ntbk/2016-12-23-christmas_ecog_plot_7_1.png)
+{:.output_data_text}
+```
+[(0.0, 8000)]
+```
+
+
+
+
+![png](images/2016/ntbk/2016-12-23-christmas_ecog_plot_7_1.png)
 
 
 We'll extract this information again below so we can make the viz...
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Resample the audio so that it's not so long to process
@@ -100,6 +121,10 @@ sfreq_new = 11025
 audio = mne.filter.resample(audio, sfreq_new, sfreq)
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Now extract a spectrogram of the audio
@@ -111,14 +136,22 @@ spec = mne.time_frequency.tfr._compute_tfr(
 spec = np.abs(spec).squeeze()
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Low-pass filter the spectrogram so it varies more smoothly
 spec = mne.filter.filter_data(spec, sfreq_amp, None, 5)
 ```
 
+</div>
+
 Now, we'll assign each electrode to a particular point on the y-axis of the spectrogram. We'll assign based off of the height of each electrode.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Now bin the y-point of each electrode and assign it to a specotrogram bin
@@ -136,6 +169,10 @@ amplitudes_sizes **= 2
 amplitudes_sizes *= 1  # Set to 1 to not change size at all
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Set the sampling frequency for the video so it fills up all the audio time
@@ -145,10 +182,17 @@ sfreq_video = n_frames / duration
 print(sfreq_video)
 ```
 
-    27.5642161205%2525250A
+</div>
+
+{:.output_stream}
+```
+27.5642161205%2525250A
+```
 
 # Making the movie
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Here is our colorbar
@@ -157,10 +201,14 @@ cmap = trans.to_diverging(mid_spread=.8)
 cb.ColorTranslator(cmap).show_colors()
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-12-23-christmas_ecog_plot_16_0.png)
+
+![png](images/2016/ntbk/2016-12-23-christmas_ecog_plot_16_0.png)
 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Here's an example of what the plot looks like
@@ -170,10 +218,14 @@ ax.set_axis_off()
 scat = ax.scatter(*melec[['x_2d', 'y_2d']].values.T, s=100)
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-12-23-christmas_ecog_plot_17_0.png)
+
+![png](images/2016/ntbk/2016-12-23-christmas_ecog_plot_17_0.png)
 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # This function maps a time (in seconds) onto an index
@@ -195,7 +247,12 @@ clip.audio = audio_clip
 clip.write_videofile('../data/jinglebells.mp4', fps=sfreq_video, audio=True)
 ```
 
-    %2525255BMoviePy%2525255D%25252520%25252526gt%25252526gt%25252526gt%25252526gt%25252520Building%25252520video%25252520../data/jinglebells.mp4%2525250A%2525255BMoviePy%2525255D%25252520Writing%25252520audio%25252520in%25252520jinglebellsTEMP_MPY_wvf_snd.mp3%2525250A%2525255BMoviePy%2525255D%25252520Done.%2525250A%2525255BMoviePy%2525255D%25252520Writing%25252520video%25252520../data/jinglebells.mp4%2525250A%2525255BMoviePy%2525255D%25252520Done.%2525250A%2525255BMoviePy%2525255D%25252520%25252526gt%25252526gt%25252526gt%25252526gt%25252520Video%25252520ready%2525253A%25252520../data/jinglebells.mp4%25252520%2525250A%2525250A
+</div>
+
+{:.output_stream}
+```
+%2525255BMoviePy%2525255D%25252520%25252526gt%25252526gt%25252526gt%25252526gt%25252520Building%25252520video%25252520../data/jinglebells.mp4%2525250A%2525255BMoviePy%2525255D%25252520Writing%25252520audio%25252520in%25252520jinglebellsTEMP_MPY_wvf_snd.mp3%2525250A%2525255BMoviePy%2525255D%25252520Done.%2525250A%2525255BMoviePy%2525255D%25252520Writing%25252520video%25252520../data/jinglebells.mp4%2525250A%2525255BMoviePy%2525255D%25252520Done.%2525250A%2525255BMoviePy%2525255D%25252520%25252526gt%25252526gt%25252526gt%25252526gt%25252520Video%25252520ready%2525253A%25252520../data/jinglebells.mp4%25252520%2525250A%2525250A
+```
 
 And now you've got a great video!
 

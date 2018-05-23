@@ -21,6 +21,8 @@ For a referendum vote to go through, it seems reasonable to say "the people need
 We'll take on the task of assessing what national votes might look like if they happened completely randomly. Then, we can compare the actual results to our simulation in order to decide if we've got a "real" result or not.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # First, import a bunch of stuff that we'll use later
 import numpy as np
@@ -33,6 +35,10 @@ sns.set_style('white')
 %matplotlib inline
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Initializing the simulation
@@ -44,8 +50,12 @@ n_votes = 10000
 actual_diff = 51.9 - 48.1
 ```
 
+</div>
+
 First, we'll create a completely random vote. Each person randomly chooses between the two options: *yes* and *no*. Then, we compare the difference in percentage points between the two.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Create 10,000 citizens and assign each a random vote
@@ -60,15 +70,21 @@ for ii in tqdm(range(n_votes)):
     diff[ii] = (yes - no) * 100
 ```
 
+</div>
+
 `diff` is a list of numbers representing the lead that "yes" has over "no".  Remember, we've randomly chosen these values, so they are the results you'd get if every single person in the country voted completely randomly.
 
 How can we summarize the "limits of uncertainty" that `diff` defines? We can use percentiles to get an idea for the variability of this number. We'll take the 1st and the 99th percentile of our simulated differences as a proxy for the limits of what we'd expect if there were *no* true opinion in the population
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Here we calculate 98% confidence interval on the difference
 clo, chi = np.percentile(diff, [1, 99])
 ```
+
+</div>
 
 Now, we'll make a plot with 3 things:
 
@@ -76,6 +92,8 @@ Now, we'll make a plot with 3 things:
 2. A vertical black line for each limit of the confidence interval.
 3. A vertical red line representing the actual difference between yes/no that was reported
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Let's look at the distribution of differences when voting is *totally* random
@@ -88,8 +106,10 @@ ax.legend([ax.lines[0], axfill], ['Actual Difference', 'Confidence Interval'], f
 _ = plt.setp(ax, xlim=[-15, 15])
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-07-08-voting_randomness_9_0.png)
+
+![png](images/2016/ntbk/2016-07-08-voting_randomness_9_0.png)
 
 
 For a vote to be "different" than 50%, it'd need to be outside our margin of error described by the grey rectangle. In this case, it seems that a totally random vote yields about 2% points of spread around 0, and that the recorded vote difference (~4%) is outside of the margin of error for 50%. So maybe we can conclude that the Brexit vote was significantly different from a random 50/50 vote.
@@ -103,6 +123,8 @@ So how exactly do we simulate the fact that people don't vote *totally* randomly
 
 First, I grabbed a list of each UK voting district, along with its size...
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # UK Population data pulled from
@@ -124,17 +146,21 @@ plt.xlabel('District number')
 plt.ylabel('Population percentage')
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2016/ntbk/2016-07-08-voting_randomness_11_1.png)
+
+![png](images/2016/ntbk/2016-07-08-voting_randomness_11_1.png)
 
 
 Now, we'll run the simulation. On each iteration, all the districts vote totally randomly. Then, the difference between "yes" and "no" is calculated for each. Finally, these differences are combined in a weighted average, where the weights are proportional to the district sizes. This means that bigger districts have a larger influence on the outcome, mimicking the way that the UK tallies votes.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 diff = np.zeros(n_votes)
@@ -150,12 +176,20 @@ for ii in tqdm(range(n_votes)):
     diff[ii] = diffs * 100
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Here we calculate 99% confidence interval on the difference
 clo, chi = np.percentile(diff, [.5, 99.5])
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Let's look at the distribution of differences
@@ -169,8 +203,10 @@ ax.legend([ax.lines[0], axfill], ['Actual Difference', 'Confidence Interval'], f
 _ = plt.setp(ax, xlim=[-15, 15])
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-07-08-voting_randomness_15_0.png)
+
+![png](images/2016/ntbk/2016-07-08-voting_randomness_15_0.png)
 
 
 Now we see a different sort of picture. Randomizing votes by district instead of by individual greatly increased the variability in the outcome. So much so that the "true" results from the Brexit now fall well within our confidence interval.
@@ -190,6 +226,8 @@ For example, what if we chose a random subset of districts in the UK and swung t
 We can build this into our simulation...
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Here we define a percentage of districts that undergo a sudden swing in voter opinion
 perc_swing_amt = .1
@@ -197,6 +235,10 @@ perc_swing_districts = .2
 n_perc_swing_districts = int(n_areas * perc_swing_districts)
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Now, re-run the simulation including the random swing.
@@ -220,12 +262,20 @@ for ii in tqdm(range(n_votes)):
     diff[ii] = diffs * 100
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Here we calculate 99% confidence interval on the difference
 clo, chi = np.percentile(diff, [.5, 99.5])
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Let's look at the distribution of differences
@@ -238,8 +288,10 @@ ax.legend([ax.lines[0], axfill], ['Actual Difference', 'Confidence Interval'], f
 _ = plt.setp(ax, xlim=[-15, 15])
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-07-08-voting_randomness_21_0.png)
+
+![png](images/2016/ntbk/2016-07-08-voting_randomness_21_0.png)
 
 
 It looks like now our confidence intervals are even wider than before. This is becase basically any change to our voting system that deviates away from a completely random 50/50 split will increase the variability in the outcome.

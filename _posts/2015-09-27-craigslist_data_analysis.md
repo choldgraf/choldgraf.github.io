@@ -13,6 +13,8 @@ In the [last post](http://chrisholdgraf.com/querying-craigslist-with-python/) I 
 Now that we've got some craigslist data, what questions can we ask? Well, a good start would be to see where we want (or don't want) to rent our house. Let's compare the housing market in a few different regions of the Bay Area.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Seaborn can help create some pretty plots
 import seaborn as sns
@@ -25,32 +27,44 @@ sns.set_palette('colorblind')
 sns.set_style('white')
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # First we'll load the data we pulled from before
 results = pd.read_csv('../data/craigslist_results.csv')
 ```
 
+</div>
+
 # Price distributions
 As a start, let's take a look at the distribution of home prices to get an idea for what we're dealing with:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 f, ax = plt.subplots(figsize=(10, 5))
 sns.distplot(results['price'].dropna())
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_5_1.png)
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_5_1.png)
 
 
 That's not super useful - it looks like we have a highly skewed distribution with a few instances way out to the right. We'll convert to a log scale from here on to make it easier to comprehend:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 f, ax = plt.subplots(figsize=(10, 5))
@@ -59,25 +73,36 @@ sns.distplot(results['logprice'].dropna())
 ax.set(title="Log plots are nicer for skewed data")
 ```
 
-
-
-
-    [<matplotlib.text.Text at 0x1141cb690>]
+</div>
 
 
 
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_7_1.png)
+{:.output_data_text}
+```
+[<matplotlib.text.Text at 0x1141cb690>]
+```
 
 
+
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_7_1.png)
+
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Don't forget the log mappings:
 print(['10**{0} = {1}'.format(i, 10**i) for i in ax.get_xlim()])
 ```
 
+</div>
+
 However, what we really want is to look at the breakdown of prices for a few locations in the bay area. Luckily Craigslist stores this in the URL of our search, so we can easily split this up with a pandas `groupby`:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 f, ax_hist = plt.subplots(figsize=(10, 5))
@@ -87,10 +112,14 @@ for loc, vals in results.groupby('loc'):
     ax_hist.set(title='San Francisco is too damn expensive')
 ```
 
+</div>
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_10_0.png)
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_10_0.png)
 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 summary = results.groupby('loc').describe()['logprice'].unstack('loc')
@@ -100,6 +129,8 @@ for loc, vals in summary.iteritems():
 print('Differences on the order of: $' + str(10**3.65 - 10**3.4))
 ```
 
+</div>
+
 That's a bit unsurprising - San Francisco is significantly more expensive than any other region in the area. Note that this is a log scale, so small differences at this scale == large differences in the raw values.
 
 However, it looks like the shapes of these prices are different as well. If any of these distributions aren't symmetric around the center, then describing it with the mean +/- standard deviation isn't so great.
@@ -107,11 +138,17 @@ However, it looks like the shapes of these prices are different as well. If any 
 Perhaps a better way to get an idea for what kind of deal we're getting is to directly calculate price per square foot. Let's see how this scales as the houses go up.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # We'll quickly create a new variable to use here
 results['ppsf'] = results['price'] / results['size']
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # These switches will turn on/off the KDE vs. histogram
@@ -127,21 +164,28 @@ ax_ppsf.set(xlim=[0, 10], title='Price per square foot')
 ax_sze.set(title='Size')
 ```
 
-
-
-
-    [<matplotlib.text.Text at 0x114f59090>]
+</div>
 
 
 
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_14_1.png)
+{:.output_data_text}
+```
+[<matplotlib.text.Text at 0x114f59090>]
+```
+
+
+
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_14_1.png)
 
 
 So it looks like size-wise, there aren't many differences here. However, with price per square foot, you'll be paying a lot more for the same space in SF.
 
 Finally, let's take a look at how the price scales with the size. For this, we'll use a `regplot` to fit a line to each distribution.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Split up by location, then plot summaries of the data for each
@@ -160,12 +204,16 @@ _ = plt.setp(axs[:, 1], xlim=[0, 10], ylim=[0, 1])
 _ = plt.setp(axs[:, 2], xlim=[0, 4000], ylim=[0, .002])
 ```
 
+</div>
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_16_0.png)
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_16_0.png)
 
 
 And now on top of one another
 
+
+<div class="input_area" markdown="1">
 
 ```python
 f, ax = plt.subplots()
@@ -184,15 +232,20 @@ ax.set_xlim([0, 4000])
 ax.set_ylim([0, 10])
 ```
 
-
-
-
-    (0, 10)
+</div>
 
 
 
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_18_1.png)
+{:.output_data_text}
+```
+(0, 10)
+```
+
+
+
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_18_1.png)
 
 
 Basically, lines that go down more steeply mean you get a better deal the bigger the place is.
@@ -207,6 +260,8 @@ Finally, we can also learn a bit from the text in the post titles. We could prob
 To do this, we'll use some text analysis tools in `scikit-learn`. This is good enough for our purposes, though if we wanted to do something fancier we could use something like `gensim`, `word2vec`, or `nltk`. (we'd also probably need a lot more data).
 
 
+<div class="input_area" markdown="1">
+
 ```python
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.preprocessing import LabelEncoder
@@ -216,8 +271,12 @@ from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 import string
 ```
 
+</div>
+
 First we'll do some quick data cleaning - we'll only keep datapoints with a title, and then define some characters to remove so that the definition of "a word" makes more sense.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 word_data = results.dropna(subset=['title'])
@@ -228,8 +287,12 @@ rem_chars = lambda a: ''.join([i for i in a if i not in rem])
 word_data['title'] = word_data['title'].apply(rem_chars)
 ```
 
+</div>
+
 Next, we'll remove words that are too specific (from a geographical standpoint) to the regions we're using. Otherwise you'll just get a bunch of clusters with streetnames etc. predicting the Bay Area region.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 loc_words = {'eby': ['antioch', 'berkeley', 'dublin', 'fremont', 'rockridge',
@@ -248,8 +311,12 @@ stop_words = [i for j in loc_words.values() for i in j] + rand_words
 stop_words = ENGLISH_STOP_WORDS.union(stop_words)
 ```
 
+</div>
+
 Finally, we will vectorize this data so that it can be used with sklearn algorithms. This takes a list of "bags" of words, and turns it into a list of vectors, where the length of each vector is the total number of words we've got. Each position of the vector corresponds to 1 word. It will be "1" if that word is present in the current item, and 0 otherwise:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 vec = CountVectorizer(max_df=.6, stop_words=stop_words)
@@ -262,17 +329,21 @@ plt.ylim([-1, 2])
 plt.title('Each row is a post, with 1s representing presence of a word in that post')
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_27_1.png)
+
+![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_27_1.png)
 
 
 Let's do a quick description of the most common words in each region. We can use our vectorized vocabulary and see which words were most common.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 top_words = {}
@@ -288,8 +359,12 @@ for itrg in np.unique(targets):
     top_words[loc] = vec.inverse_transform(msk_top_words)[0]
 ```
 
+</div>
+
 Then, we'll print the words that are unique to each area by filtering out ones that are common across locations:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 unique_words = {}
@@ -302,10 +377,14 @@ for loc, words in unique_words.iteritems():
     print('{0}: {1}\n\n---\n'.format(loc, words))
 ```
 
+</div>
+
 Apparently people in the North Bay like appliances, people in Santa Cruz like the beach, people in the East Bay need the Bart, and people in San Francisco have victorians...who knew.
 
 Just for fun we'll also do a quick classification algorithm to see if some machine learning can find structure in these words that separates one location from another:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 mod = LinearSVC(C=.1)
@@ -319,8 +398,12 @@ for tr, tt in cv:
 coefs = np.array(coefs).mean(0)
 ```
 
+</div>
+
 Doesn't look like it (those are horrible generalization scores), but we'll look at what coefficients it considered important anyway:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 for loc, icoef in zip(vec_tar.classes_, coefs):
@@ -328,6 +411,8 @@ for loc, icoef in zip(vec_tar.classes_, coefs):
     important = icoef > cut
     print('{0}: {1}'.format(loc, vec.inverse_transform(important)))
 ```
+
+</div>
 
 You may note that these are quite similar to the words that were unique to each location as noted above - such is the power of machine learning :)
 

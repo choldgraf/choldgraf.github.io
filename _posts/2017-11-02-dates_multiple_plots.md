@@ -1,5 +1,5 @@
 ---
-tags: python open-science
+tags: python, open science
 interactive: True
 title: Combining dates with analysis visualization in python
 permalink: date-analysis-viz-python
@@ -19,6 +19,8 @@ To demonstrate this, let's grab the latest stock market prices for a couple comp
 fit regression lines to them...
 
 
+<div class="input_area" markdown="1">
+
 ```python
 import pandas as pd
 import seaborn as sns
@@ -29,6 +31,10 @@ import datetime
 plt.ion()
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 start = datetime.datetime(2010, 1, 1)
@@ -37,6 +43,10 @@ companies = ['AAPL', 'IBM']
 data = web.DataReader(companies, 'google', start, end)
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 def prep_data(data):
@@ -47,6 +57,10 @@ def prep_data(data):
     return data
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -55,12 +69,16 @@ for company in companies:
     this_data.plot.line('Date', 'High', ax=ax, label=company)
 ```
 
+</div>
 
-![png](../images/2017/ntbk/2017-11-02-dates_multiple_plots_5_0.png)
+
+![png](images/2017/ntbk/2017-11-02-dates_multiple_plots_5_0.png)
 
 
 Let's say we want to fit a regression line to each stock, should be simple, right?
 
+
+<div class="input_area" markdown="1">
 
 ```python
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -73,12 +91,17 @@ for company in companies:
         print('***ERROR: ',  ee, '***')
 ```
 
-    ***ERROR:  reduction operation 'mean' not allowed for this dtype ***
-    ***ERROR:  reduction operation 'mean' not allowed for this dtype ***
+</div>
+
+{:.output_stream}
+```
+***ERROR:  reduction operation 'mean' not allowed for this dtype ***
+***ERROR:  reduction operation 'mean' not allowed for this dtype ***
+
+```
 
 
-
-![png](../images/2017/ntbk/2017-11-02-dates_multiple_plots_7_1.png)
+![png](images/2017/ntbk/2017-11-02-dates_multiple_plots_7_1.png)
 
 
 We got an error! That's because seaborn was treating the `Date` column as a number, when in fact it was a datetime object.
@@ -88,18 +111,27 @@ We got an error! That's because seaborn was treating the `Date` column as a numb
 To fix this, we need to convert the datetime labels to their ordinal (numeric) representation. There are a number of ways to convert dates to numbers. Fortunately, Matplotlib has a convenience function to convert datetime objects to their numeric representation.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 from matplotlib.dates import date2num
 date2num(this_data['Date'][0])
 ```
 
+</div>
 
 
 
-    736270.0
+
+{:.output_data_text}
+```
+736270.0
+```
 
 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Here's how we convert the Period object to a date:
@@ -107,20 +139,27 @@ sample_ordinal = this_data['Date'].map(lambda a: date2num(a))
 sample_ordinal.head()
 ```
 
+</div>
 
 
 
-    0    736270.0
-    1    736271.0
-    2    736272.0
-    5    736275.0
-    6    736276.0
-    Name: Date, dtype: float64
+
+{:.output_data_text}
+```
+0    736270.0
+1    736271.0
+2    736272.0
+5    736275.0
+6    736276.0
+Name: Date, dtype: float64
+```
 
 
 
 Below we'll insert this into our plotting code to see what happens.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -132,8 +171,10 @@ for ii, company in enumerate(companies):
                 truncate=True, color='C{}'.format(ii))
 ```
 
+</div>
 
-![png](../images/2017/ntbk/2017-11-02-dates_multiple_plots_12_0.png)
+
+![png](images/2017/ntbk/2017-11-02-dates_multiple_plots_12_0.png)
 
 
 And there you have it - mixed datetime visualization across multiple libraries.

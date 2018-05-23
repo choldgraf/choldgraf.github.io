@@ -21,6 +21,8 @@ I did a bit of digging and found a dataset for NRSA success rates over the last 
 **Note** - this dataset and a few others can be found on the NIH website [here]('http://report.nih.gov/success_rates/index.aspx'). I encourage you to check it out! Thank god for open data (even if it's really hard to find).
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # First we'll import a few helpful tools for cleaning and plotting
 import pandas as pd
@@ -31,6 +33,10 @@ import numpy as np
 %matplotlib inline
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # Load the data - note that each row is a grant type/year/agency
@@ -38,6 +44,8 @@ data = pd.read_excel('./data/nih_nrsa_success_rates.xls', header=2)
 data = data.convert_objects(convert_numeric=True)
 data.head()
 ```
+
+</div>
 
 
 
@@ -116,6 +124,8 @@ data.head()
 First, we'll do some cleaning to remove annoying things like special characters and spaces. We'll focus on the "success rate2" variable, which describes the % of proposals that were funded that year.
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Make the columns easier to play with
 col_mapping = {col: col.strip(' ').replace(' ', '_').replace('/', '_').\
@@ -137,8 +147,12 @@ remove_centers = ["Total", "ODOther"]
 data = data.query('nih_institute_center not in @remove_centers')
 ```
 
+</div>
+
 First, let's take a look at some general trends over time
 
+
+<div class="input_area" markdown="1">
 
 ```python
 f, axs = plt.subplots(3, 1, figsize=(8, 9))
@@ -152,14 +166,18 @@ for ax, coltype in zip(axs, coltypes):
 plt.tight_layout()
 ```
 
+</div>
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_7_0.png)
+
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_7_0.png)
 
 
 Eyeballing it, it looks like applications have been slightly increasing per year, while applications awarded have remained relatively flat. Let's dig into that a little bit more. Rather than looking at the raw numbers, we'll focus on the success rate, or the % of applications that were funded.
 
 We'll plot the success rates per year, per activity code. I'll plot a scatter + line for each NIH institute (in color) as well as the mean + a 3rd order polynomial fit for all of them lumped together (in black)
 
+
+<div class="input_area" markdown="1">
 
 ```python
 for grant, gvals in data.groupby('activity_code'):
@@ -186,24 +204,26 @@ for grant, gvals in data.groupby('activity_code'):
         plt.tight_layout()
 ```
 
-
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_0.png)
-
+</div>
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_1.png)
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_9_0.png)
 
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_2.png)
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_9_1.png)
 
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_3.png)
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_9_2.png)
 
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_9_4.png)
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_9_3.png)
+
+
+
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_9_4.png)
 
 
 As you can see - some of these data aren't well-modeled by a line in the first place. That's because there's a lot of missing data in here. However, especially for the more common grants (F31, F32) you can see some interesting (and mostly downward) trends.
@@ -211,6 +231,8 @@ As you can see - some of these data aren't well-modeled by a line in the first p
 # Digging in to specific grants
 Next, we'll take a look at some more specific information about a select grant type. I'll focus on the F31 and F32 because that's most related to what I'm applying for.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Pull the subset of data we want
@@ -221,8 +243,12 @@ subset = data.query('activity_code in @grant_type')
 subset = subset.groupby(['fiscal_year', 'nih_institute_center']).mean().reset_index()
 ```
 
+</div>
+
 We'll plot the successrate (y-axis) as a function of year (color) for each NIH center (x-axis).
 
+
+<div class="input_area" markdown="1">
 
 ```python
 variable_types = ['success_rate2', 'number_of_applications_reviewed']
@@ -239,22 +265,30 @@ for var in variable_types:
     ax.set_title(var, fontsize=20)
 ```
 
-
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_0.png)
-
+</div>
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_13_1.png)
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_13_0.png)
+
+
+
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_13_1.png)
 
 
 Is there anything that we can learn from this? Let's look at how the finding changed for each year: 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 yearly_change = subset.set_index(['nih_institute_center', 'fiscal_year'])['success_rate2'].\
     unstack('nih_institute_center')
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 sns.set_palette(sns.color_palette('rainbow', yearly_change.shape[1]))
@@ -263,18 +297,22 @@ ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
           ncol=7, fancybox=True, shadow=True, frameon=True)
 ```
 
+</div>
 
 
 
 
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_16_1.png)
+
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_16_1.png)
 
 
 To make things more comparable, we can normalize each timeseries by its first value, this will give everything the same starting point. We'll also smooth the curves a little bit to get an idea for general trends. We'll apply an exponentially-weighted moving average so recent points factor more into the average
 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Normalize data and apply a bit of smoothing
@@ -285,13 +323,15 @@ ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.05),
           ncol=7, fancybox=True, shadow=True, frameon=True)
 ```
 
+</div>
 
 
 
 
 
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_18_1.png)
+
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_18_1.png)
 
 
 It seems like some NIH groups have made out better than others. Maybe this simply because the number of total applications each received changed from one year to another. 
@@ -300,6 +340,8 @@ As a final analysis, we can look at how the yearly change in applications is cor
 
 Positive lines mean that more applications tend to have a higher success rate, negative lines mean more apps have a lower success rate. I'll also color each point by the fiscal year it came from - hotter colors mean more recent years.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 grp_cent = subset.groupby('nih_institute_center')
@@ -324,8 +366,10 @@ _ = plt.setp([ax.get_xticklabels() + ax.get_yticklabels()
 _ = plt.setp([ax.xaxis.label, ax.yaxis.label], fontsize=10)
 ```
 
+</div>
 
-![png](/home/choldgraf/github/publicRepos/choldgraf.github.io/../images/2015/ntbk/2015-10-29-nih_grant_analysis_20_0.png)
+
+![png](images/2015/ntbk/2015-10-29-nih_grant_analysis_20_0.png)
 
 
 So what did we learn from any of this? Well, it seems like the funding landscape at the NIH is changing, and some groups are making out better than others.
@@ -337,6 +381,8 @@ There's a lot more to be read into this data, so I encourage people to check it 
 # Appendix
 ## NIH acronym lookup
 
+
+<div class="input_area" markdown="1">
 
 ```python
 data['nih_institute_center'].unique()
@@ -365,3 +411,5 @@ nih_centers = {u'NCCAM': 'National Center for Complementary and Alternative Medi
 for ac, cent in nih_centers.iteritems():
     print('{0}:\t{1}'.format(ac, cent))
 ```
+
+</div>

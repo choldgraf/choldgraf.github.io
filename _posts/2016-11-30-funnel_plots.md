@@ -17,6 +17,8 @@ I'm not really dredging up anything new here. People have spoken at length about
 Read on below to learn about why funnel plots are a great way to visualize the problems our publishing system faces...
 
 
+<div class="input_area" markdown="1">
+
 ```python
 # Some quick imports we'll use later
 import numpy as np
@@ -26,6 +28,8 @@ from IPython.html.widgets import interact
 from IPython.display import Image
 %matplotlib inline
 ```
+
+</div>
 
 # On to Funnel Plots
 > (note, all of the plots are taken from the excellent paper *[The Rules of the Game of Psychological Science](http://pps.sagepub.com/content/7/6/543.full)*, though funnel plots date back at least to the book *[Summing Up](http://www.hup.harvard.edu/catalog.php?isbn=9780674854314)* by Light and Lillemer)
@@ -82,6 +86,8 @@ We'll simulate 10,000 studies, each with an N ranging from 2 to 50. We'll ignore
 
 **Note: you can skip reading the code below if you like, as it just defines some functions that will be useful, but feel free to dig into the code if you like**
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Helper functions to simulate experiments.
@@ -192,9 +198,13 @@ def plot_funnel_plot(effects, sample_sizes,
     return fig
 ```
 
+</div>
+
 # Simulating the population
 Here we'll create a population of datapoints corresponding to the effect of each person. Experiments are performed by taking a random sample from that population, and calculating the average effect of the sample. For each experiment we'll choose a random number for the sample size as well. That means that we'll get a collection of sample sizes, effect sizes, and p-values. One set for each simulated experiment.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # This is the true value and variance of our variable of interest.
@@ -227,14 +237,20 @@ effects, n, p = simulate_experiments(data, n_min=n_min, n_max=n_max,
                                      n_simulations=n_simulations)
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 # In this case, the reported and actual effects are the same
 _ = plot_funnel_plot(effects, n, effects, n, p)
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-11-30-funnel_plots_7_0.png)
+
+![png](images/2016/ntbk/2016-11-30-funnel_plots_7_0.png)
 
 
 In the funnel plot above, each datapoint corresponds to the effect size found in a single study (x-axis), along with its sample size (y-axis).
@@ -246,6 +262,8 @@ The distributions at the top show us the effect size distribution for *all* expe
 # Simulate the scientific publishing world
 Now, let's simulate the scientific publishing process and see what happens. We'll take a relatively generous take on things, and say that studies with a p-value > .05 still have a small chance of being accepted.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # This simulates which datapoints we keep and which we throw out
@@ -277,6 +295,10 @@ def plot_simulation_results(p_values, mask_reported):
     return ax
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 mask_reported = simulate_publishing(p, null_perc=.1, pos_p_perc=.5,
@@ -287,28 +309,36 @@ p_reported = p[mask_reported]
 _ = plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-11-30-funnel_plots_10_0.png)
+
+![png](images/2016/ntbk/2016-11-30-funnel_plots_10_0.png)
 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 plot_simulation_results(p, mask_reported)
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2016/ntbk/2016-11-30-funnel_plots_11_1.png)
+
+![png](images/2016/ntbk/2016-11-30-funnel_plots_11_1.png)
 
 
 We can already see that we've skewed the distribution of *reported* findings (in red) further to the right. This is because it is less likely for experiments inside the contour lines to be reported in the literature, making us think that the effect size is larger than it really is.
 
 Now, let's take a more cynical look at scientific publishing by reducing the likelihood that studies are published w/o a "significant" result:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 mask_reported = simulate_publishing(p, null_perc=0, pos_p_perc=.3,
@@ -319,8 +349,10 @@ p_reported = p[mask_reported]
 _ = plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-11-30-funnel_plots_13_0.png)
+
+![png](images/2016/ntbk/2016-11-30-funnel_plots_13_0.png)
 
 
 It's skewed even further to the right. As you can see, the harder it is to publish null results, the more overconfident we will be in the significance of what's in the literature. As you can probably tell, this is especially problematic for effect sizes lie near the boundary between publishable / non-publishable.
@@ -328,6 +360,8 @@ It's skewed even further to the right. As you can see, the harder it is to publi
 # Adding a low-N bias
 As we mentioned above, there's one more factor at play that makes things even worse. Smaller studies take less time and less resources to conduct, and in practice there are *far* more tiny studies than large, highly-powered ones. Let's incorporate that into our data simulation and see how that affects things.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # This simulates data where there is about a 10 times higher chance for a low-n study
@@ -343,8 +377,10 @@ p_reported = p[mask_reported]
 _ = plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
 ```
 
+</div>
 
-![png](../images/2016/ntbk/2016-11-30-funnel_plots_15_0.png)
+
+![png](images/2016/ntbk/2016-11-30-funnel_plots_15_0.png)
 
 
 It's even worse. As you can see, both of these factors (studies with a low N, not being able to publish null results) give the scientific community an unrealistic idea of the true effect size. Moreover, we haven't even incorporated any experimenter-specific biases, such as defining datapoints that nullify an effect as "outliers", not reporting studies that are significant but in the *opposite* direction of what we'd expect, and collecting more data until they achieve a significant p-value. All of these practices would serve to enhance the positive bias seen above.
@@ -356,6 +392,8 @@ All of this is not to say that science "doesn't work", but it's important to rem
 # Try it yourself!
 If you're curious about how all of these factors (effect size, effect variability, sample size, and publishing practices) interact, here's a quick function to let you play around with each one and determine what the effect would look like in the literature. There are particular circumstances in which these issues are most apparent, and most problematic. See if you can figure out what those circumstances are.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Create datasets with new effects / variances here
@@ -377,6 +415,10 @@ effects, n, p = simulate_experiments(data, n_min=sample_min, n_max=sample_max,
                      prefer_low_n=prefer_low_n, n_simulations=n_simulations)
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 def plot_simulated_data(null_perc=.05, pos_perc=.5, super_p_perc=1.):
@@ -398,11 +440,13 @@ interact(plot_simulated_data,
          super_p_perc=[0., 1., .01])
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2016/ntbk/2016-11-30-funnel_plots_19_1.png)
+
+![png](images/2016/ntbk/2016-11-30-funnel_plots_19_1.png)
 

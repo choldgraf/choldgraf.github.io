@@ -23,6 +23,8 @@ Here I am recreating this result in the hopes of giving people a set of scripts 
 First things first, we'll import some tools to use
 
 
+<div class="input_area" markdown="1">
+
 ```python
 import pandas as pd
 import mne
@@ -34,6 +36,8 @@ sns.set_style('white')
 %matplotlib inline
 ```
 
+</div>
+
 ## Creating our sine waves
 Recall that the equation for a sinusoidal wave is:
 
@@ -41,6 +45,8 @@ $$ Asin(2{\pi}ft + 2\pi\phi)$$
 
 Where $f$ is the frequency of the wave, $$t$$ indexes time, and $$2\pi\phi$$ defines a phase offset of the wave. Then, $$A$$ scales the wave's amplitude.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # We can generate these sine wave parameters, then stitch them together
@@ -74,9 +80,13 @@ signals = pd.concat(signals, 0)
 signals.columns.name = 'time'
 ```
 
+</div>
+
 ## Computing connectivity 
 Now we've got a bunch of sinewaves with the parameters chosen above. Next, we will calculate the coherence and the correlation between all pairs of signals. This way we can see how these values change for different kinds of input signals.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 con_all = []
@@ -106,11 +116,15 @@ for ix_noise, sig in signals.groupby(level='noise_level'):
 con_all = pd.concat(con_all, axis=0).squeeze().unstack('noise_level')
 ```
 
+</div>
+
 ## Visualizing results
 First off, we'll look at what happens to sine waves of varying parameters, for different levels of noise.
 
 Remember, each tuple is (amplitude, phase_lag). The first number controls how large the signal is, and the second controls the difference in phase between two sine waves. 
 
+
+<div class="input_area" markdown="1">
 
 ```python
 f, axs = plt.subplots(2, 2, figsize=(15, 10))
@@ -120,8 +134,10 @@ for ax, (noise, vals) in zip(axs.ravel(), con_all.iteritems()):
     ax.set_ylim([-1.1, 1.1])
 ```
 
+</div>
 
-![png](../images/2015/ntbk/2015-05-27-coherence_correlation_10_0.png)
+
+![png](images/2015/ntbk/2015-05-27-coherence_correlation_10_0.png)
 
 
 That's already an interesting picture - as you can see, coherence is far more robust to differences between the two signals. Here are a few thoughts:
@@ -133,6 +149,8 @@ That's already an interesting picture - as you can see, coherence is far more ro
 To illustrate number 1, let's plot correlation and coherence against each other:
 
 
+<div class="input_area" markdown="1">
+
 ```python
 plt_df = con_all.stack('noise_level').unstack('con').reset_index('noise_level')
 ax = plt_df.plot('cc', 'coh', c='noise_level', kind='scatter',
@@ -140,19 +158,23 @@ ax = plt_df.plot('cc', 'coh', c='noise_level', kind='scatter',
 ax.set_title('CC vs Coherence')
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2015/ntbk/2015-05-27-coherence_correlation_12_1.png)
+
+![png](images/2015/ntbk/2015-05-27-coherence_correlation_12_1.png)
 
 
 As you can see here, coherence remains the same (except for when it occasionally increases to 1) while correlation is much more dependent on the phase relationship between the signals. Moreover, as the signal SNR degrades, the correlation shrinks to 0, while the coherence remains the same.
 
 Let's take a look at how the correlation and coherence relate to the actual shape of the signals:
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Set up a dataframe for plotting
@@ -171,12 +193,16 @@ for (comp_a, comp_b), ax in zip(sig_combinations, axs.ravel()):
     ax.set_title('CC: {0}\nCoh: {1}'.format(*plt_df.iloc[comp_b, :].values))
 ```
 
+</div>
 
-![png](../images/2015/ntbk/2015-05-27-coherence_correlation_14_0.png)
+
+![png](images/2015/ntbk/2015-05-27-coherence_correlation_14_0.png)
 
 
 Another way of looking at it with scatterplots...
 
+
+<div class="input_area" markdown="1">
 
 ```python
 # Set up a dataframe for plotting
@@ -196,12 +222,16 @@ for (comp_a, comp_b), ax in zip(sig_combinations, axs.ravel()):
     ax.set_title('CC: {0}\nCoh: {1}'.format(*plt_df.iloc[comp_b, :].values))
 ```
 
+</div>
 
-![png](../images/2015/ntbk/2015-05-27-coherence_correlation_16_0.png)
+
+![png](images/2015/ntbk/2015-05-27-coherence_correlation_16_0.png)
 
 
 Finally, for a more direct comparison, we can look directly at the difference between the two as a function of both noise level and the sine wave parameters.
 
+
+<div class="input_area" markdown="1">
 
 ```python
 diff_con = con_all.stack('noise_level').unstack('con')
@@ -209,18 +239,24 @@ diff = diff_con['cc'] - diff_con['coh']
 diff = diff.unstack('noise_level')
 ```
 
+</div>
+
+
+<div class="input_area" markdown="1">
 
 ```python
 diff.plot(figsize=(15, 5))
 ```
 
+</div>
 
 
 
 
 
 
-![png](../images/2015/ntbk/2015-05-27-coherence_correlation_19_1.png)
+
+![png](images/2015/ntbk/2015-05-27-coherence_correlation_19_1.png)
 
 
 So what does this mean? Well, the relationship between coherence and correlation is too complicated to sum it up in a single line or two. However, it is clear that correlation is more sensitive to differences between signals in time. Coherence, on the other hand, is more reliable for these differences. Moreover, correlation degrades quickly with an increase in noise, while coherence remains the same.
