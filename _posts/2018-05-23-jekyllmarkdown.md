@@ -1,6 +1,6 @@
 ---
 tags: python blogging jekyll
-title: Using nbconvert templates to blog in Jekyll
+title: Blogging with Jupyter Notebooks and Jekyll using nbconvert templates
 permalink: jekyll-markdown-nbconvert
 category: blogging
 date: 2018-05-23
