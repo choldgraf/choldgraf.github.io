@@ -17,7 +17,7 @@ nbconvert --to markdown myfile.ipynb
 
 However, an annoying part of this is that Markdown doesn't include classes
 for input and outputs, which means they each get treated the same in the
-output. Not idea.
+output. Not ideal.
 
 Fortunately, you can relatively easily modify the `markdown` conversion process
 using Liquid Templates. `nbconvert` already uses liquid under-the-hood to
