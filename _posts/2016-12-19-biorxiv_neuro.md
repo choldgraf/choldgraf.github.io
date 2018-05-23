@@ -154,6 +154,7 @@ pd.merge(articles, authors, on=['id', 'title']).head()
 
 
 
+<div markdown="0">
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -209,6 +210,7 @@ pd.merge(articles, authors, on=['id', 'title']).head()
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 
 

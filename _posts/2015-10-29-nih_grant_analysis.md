@@ -50,6 +50,7 @@ data.head()
 
 
 
+<div markdown="0">
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -117,6 +118,7 @@ data.head()
     </tr>
   </tbody>
 </table>
+</div>
 </div>
 
 

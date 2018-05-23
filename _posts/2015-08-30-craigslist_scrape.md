@@ -523,6 +523,7 @@ results.head()
 
 
 
+<div markdown="0">
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -601,6 +602,7 @@ results.head()
   </tbody>
 </table>
 </div>
+</div>
 
 
 
@@ -652,6 +654,7 @@ graph.mark_circle(size=200).encode(x='size', y='price',
 </div>
 
 
+<div markdown="0">
 <div class="vega-embed" id="b5c5d25b-82b9-48b4-b4c5-5596b3e90154"></div>
 
 <style>
@@ -664,6 +667,7 @@ graph.mark_circle(size=200).encode(x='size', y='price',
 }
 </style>
 
+</div>
 
 
 

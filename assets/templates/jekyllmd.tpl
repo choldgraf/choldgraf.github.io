@@ -30,3 +30,9 @@
 {{ line | strip_ansi }}
 ```
 {% endblock traceback_line  %}
+
+{% block data_html %}
+<div markdown="0">
+{{ output.data['text/html'] }}
+</div>
+{% endblock data_html %}

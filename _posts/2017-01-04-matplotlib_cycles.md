@@ -86,7 +86,9 @@ cyc
 
 
 
+<div markdown="0">
 <table><th>'alpha'</th><th>'cmap'</th><th>'lw'</th><th>'s'</th><tr><td>0.25</td><td>'viridis'</td><td>0</td><td>200.0</td></tr><tr><td>0.5</td><td>'magma'</td><td>0.1</td><td>125.0</td></tr><tr><td>0.75</td><td>'coolwarm'</td><td>0.5</td><td>50.0</td></tr></table>
+</div>
 
 
 
