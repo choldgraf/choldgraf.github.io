@@ -19,14 +19,21 @@ However, an annoying part of this is that Markdown doesn't include classes
 for input and outputs, which means they each get treated the same in the
 output. Not ideal.
 
-Fortunately, you can relatively easily modify the `markdown` conversion process
-using Liquid Templates. `nbconvert` already uses liquid under-the-hood to
-define how each conversion should occur. For example,
-[here is `nbconvert`'s markdown template](https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/markdown.tpl).
-You can see how it extends another template, then adds some modifications of
-its own.
+Fortunately, [you can customize nbconvert extensively](https://nbconvert.readthedocs.io/en/latest/external_exporters.html).
+First, it's possible to [create your *own* exporter class](https://nbconvert.readthedocs.io/en/latest/external_exporters.html#writing-a-custom-exporter), but this is a bit heavy for what we want to do. In our case, we'd
+simply like to _extend_ the markdown exporter so that it outputs Jekyll-friendly
+markdown.
 
 ## Extending `nbconvert's` markdown template
+
+Because `nbconvert` uses Liquid Templates for its exporters, this is
+relatively easy! For example,
+[here is `nbconvert`'s markdown template](https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/markdown.tpl).
+You can see how it extends another template, then adds some modifications of
+its own. What we need to do is create a new template that slightly modifies
+the functionality of `nbconvert`'s markdown template. Then we can use the same
+markdown exporter, but with our custom template defining how the markdown is
+created.
 
 To treat input and output text differently, we'll extend `nbconvert`'s base
 markdown template by creating a template file of our own. Simply write the
