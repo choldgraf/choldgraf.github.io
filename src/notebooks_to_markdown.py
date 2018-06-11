@@ -22,6 +22,7 @@ if REPLACE is False:
 
 for ifile in ipynb_files:
     filename = op.basename(ifile).replace('.ipynb', '')
+    ifile_tmp = ifile+'_TMP'
     year = int(os.path.basename(ifile).split('-')[0])
 
     # Clean up the file before converting
@@ -29,15 +30,16 @@ for ifile in ipynb_files:
     cleaner.remove_cells(empty=True)
     cleaner.remove_cells(tag='hidden')
     cleaner.clear('stderr')
-    cleaner.save(ifile)
+    cleaner.save(ifile_tmp)
 
     # Run nbconvert moving it to the output folder
     build_call = '--FilesWriter.build_directory={}'.format(POSTS_FOLDER)
     images_call = '--NbConvertApp.output_files_dir={}'.format(os.path.join('..', IMAGES_FOLDER, str(year), 'ntbk'))
     check_call(['jupyter', 'nbconvert',
                 '--to', 'markdown', '--template', TEMPLATE_PATH,
-                images_call, build_call, ifile])
-
+                images_call, build_call, ifile_tmp])
+    os.remove(ifile_tmp)
+    
     # Read in the markdown and replace each image file with the site URL
     IMG_STRINGS = ['../../../images', '../../images']
     path_md = os.path.join(POSTS_FOLDER, os.path.basename(ifile).replace('.ipynb', '.md'))
