@@ -1,0 +1,12 @@
+name: choldgraf
+
+packages:
+  - scipy
+  - numpy
+  - matplotlib
+  - seaborn
+  - pandas
+  - nilearn
+  - colorspacious
+  - pip:
+    - makeitpop

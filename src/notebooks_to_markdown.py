@@ -8,7 +8,7 @@ from nbclean import NotebookCleaner
 SITE_ROOT = os.path.expanduser('~/github/publicRepos/choldgraf.github.io')
 TEMPLATE_PATH = os.path.expanduser('~/github/publicRepos/choldgraf.github.io/assets/templates/jekyllmd.tpl')
 POSTS_FOLDER = os.path.join(SITE_ROOT, '_posts')
-IMAGES_FOLDER ='images/'
+IMAGES_FOLDER ='images'
 REPLACE = False
 ipynb_files = glob(os.path.join(SITE_ROOT, 'notebooks/**/*.ipynb'), recursive=True)
 markdown_files = glob(os.path.join(SITE_ROOT, 'notebooks/**/*.md'), recursive=True)
@@ -24,12 +24,13 @@ for ifile in ipynb_files:
     # Clean up the file before converting
     cleaner = NotebookCleaner(ifile)
     cleaner.remove_cells(empty=True)
+    cleaner.remove_cells(tag='hidden')
     cleaner.clear('stderr')
     cleaner.save(ifile)
 
     # Run nbconvert moving it to the output folder
     build_call = '--FilesWriter.build_directory={}'.format(POSTS_FOLDER)
-    images_call = '--NbConvertApp.output_files_dir={}'.format(os.path.join(IMAGES_FOLDER, str(year), 'ntbk'))
+    images_call = '--NbConvertApp.output_files_dir={}'.format(os.path.join('..', IMAGES_FOLDER, str(year), 'ntbk'))
     check_call(['jupyter', 'nbconvert',
                 '--to', 'markdown', '--template', TEMPLATE_PATH,
                 images_call, build_call, ifile])

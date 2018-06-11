@@ -53,6 +53,7 @@ layout: default
       {% endunless %}
 
       <section class="page__content" itemprop="text">
+        {% if page.binder_path %}<a href="https://mybinder.org/v2/gh/choldgraf/choldgraf.github.io/master?urlpath=lab/tree/{{ page.binder_path }}"><img src="https://mybinder.org/badge.svg" /></a>{% endif %}
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
