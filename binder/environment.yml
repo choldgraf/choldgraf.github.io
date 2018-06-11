@@ -8,6 +8,6 @@ dependencies:
   - pandas
   - nilearn
   - pip:
-    - jupyterlab
+    - jupyterlab >= 0.16
     - colorspacious
     - makeitpop
