@@ -7,7 +7,8 @@ dependencies:
   - seaborn
   - pandas
   - nilearn
+  - jupyterlab=0.32.1
+  - ipywidgets=7.2
   - pip:
-    - jupyterlab >= 0.16
     - colorspacious
     - makeitpop
