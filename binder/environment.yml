@@ -7,6 +7,6 @@ dependencies:
   - seaborn
   - pandas
   - nilearn
-  - colorspacious
   - pip:
+    - colorspacious
     - makeitpop
