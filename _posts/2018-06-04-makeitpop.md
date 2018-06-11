@@ -1,12 +1,11 @@
 ---
+binder_path: /notebooks/2018/2018-06-04-makeitpop.ipynb
 image: "/images/2018/ntbk/2018-06-04-makeitpop_8_0.png"
-tags: python colormaps
-title: Introducing _makeitpop_, a tool to perceptually warp your data!
-permalink: makeitpop-intro
-category: colormaps
 date: 2018-06-04
-binder_path: notebooks/2018/2018-06-04-makeitpop.ipynb
-featured_image: 3
+category: colormaps
+permalink: makeitpop-intro
+title: Introducing _makeitpop_, a tool to perceptually warp your data!
+tags: python colormaps
 ---
 > *Note: It should go without saying, but **you should never do the stuff that you're about to read about here**. Data is meant to speak for itself, and our visualizations should accurately reflect the data above all else.*
 

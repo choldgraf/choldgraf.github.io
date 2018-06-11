@@ -5,6 +5,7 @@ import os.path as op
 import shutil as sh
 from glob import glob
 import nbformat as nbf
+import yaml
 from nbclean import NotebookCleaner
 
 SITE_ROOT = os.path.expanduser('~/github/publicRepos/choldgraf.github.io')
@@ -22,7 +23,6 @@ if REPLACE is False:
 
 for ifile in ipynb_files:
     filename = op.basename(ifile).replace('.ipynb', '')
-    ifile_tmp = ifile+'_TMP'
     year = int(os.path.basename(ifile).split('-')[0])
 
     # Clean up the file before converting
@@ -30,16 +30,15 @@ for ifile in ipynb_files:
     cleaner.remove_cells(empty=True)
     cleaner.remove_cells(tag='hidden')
     cleaner.clear('stderr')
-    cleaner.save(ifile_tmp)
+    cleaner.save(ifile)
 
     # Run nbconvert moving it to the output folder
     build_call = '--FilesWriter.build_directory={}'.format(POSTS_FOLDER)
     images_call = '--NbConvertApp.output_files_dir={}'.format(os.path.join('..', IMAGES_FOLDER, str(year), 'ntbk'))
     check_call(['jupyter', 'nbconvert',
                 '--to', 'markdown', '--template', TEMPLATE_PATH,
-                images_call, build_call, ifile_tmp])
-    os.remove(ifile_tmp)
-    
+                images_call, build_call, ifile])
+
     # Read in the markdown and replace each image file with the site URL
     IMG_STRINGS = ['../../../images', '../../images']
     path_md = os.path.join(POSTS_FOLDER, os.path.basename(ifile).replace('.ipynb', '.md'))
@@ -50,20 +49,31 @@ for ifile in ipynb_files:
             line = line.replace(IMG_STRING, '{{ base.url }}/images')
         lines[ii] = line
 
+    # Read in the YAML of the generated markdown file
+    ixs_yaml = [ii for ii, line in enumerate(lines) if '---' in line]
+    range_yaml = range(ixs_yaml[0]+1, ixs_yaml[1])
+    data_yaml = []
+    for ii in range_yaml:
+        data_yaml.append(lines.pop(ixs_yaml[0] + 1))
+    data_yaml = yaml.load(''.join(data_yaml))
+
     # Define a featured image if images exist
     images_files = glob(op.join(IMAGES_FOLDER, str(year), 'ntbk', '{}*.png'.format(filename)))
     if len(images_files) > 0:
-        featured_line = [ii for ii in lines if 'featured_image' in ii]
-        if len(featured_line) > 0:
-            featured_ix = int(featured_line[0].split(':')[-1].strip())
-        else:
-            featured_ix = 0
+        featured_ix = data_yaml.pop('featured_image', 0)
         image_nums = [float('{}.{}'.format(ii.split('_')[-2], ii.split('_')[-1].replace('.png', '')))
                       for ii in images_files]
         ixs_sorted = np.argsort(image_nums)
         featured_image = images_files[ixs_sorted[featured_ix]]
-        ix_yaml_start = lines.index('---\n', 0)
-        lines.insert(ix_yaml_start +1, 'image: "/{}"\n'.format(featured_image))
+        data_yaml['image'] = '"/{}"'.format(featured_image)
+
+    # Add a binder link if specified
+    if data_yaml.pop('binder', False) is True:
+        data_yaml['binder_path'] = ifile.split('choldgraf.github.io')[-1]
+
+    # Write back in the yaml frontmatter
+    for key, val in data_yaml.items():
+        lines.insert(ixs_yaml[0]+1, '{}: {}\n'.format(key, val))
 
     # Write back to disk
     with open(path_md, 'w') as ff:
