@@ -1,6 +1,6 @@
 name: choldgraf
 
-packages:
+dependencies:
   - scipy
   - numpy
   - matplotlib

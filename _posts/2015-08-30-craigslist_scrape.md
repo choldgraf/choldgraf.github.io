@@ -1,4 +1,5 @@
 ---
+image: "/images/2015/ntbk/2015-08-30-craigslist_scrape_30_1.png"
 tags: python, programming
 category: computation, munging, scraping
 date: 2015-08-30
@@ -624,7 +625,7 @@ ax.set_ylabel('Count', fontsize=18)
 
 
 
-![png](images/2015/ntbk/2015-08-30-craigslist_scrape_30_1.png)
+![png](../images/2015/ntbk/2015-08-30-craigslist_scrape_30_1.png)
 
 
 
@@ -673,7 +674,7 @@ graph.mark_circle(size=200).encode(x='size', y='price',
 
 
 
-![png](images/2015/ntbk/2015-08-30-craigslist_scrape_32_2.png)
+![png](../images/2015/ntbk/2015-08-30-craigslist_scrape_32_2.png)
 
 
 
@@ -697,7 +698,7 @@ ax.axvline(target_price, c='r', ls='--')
 
 
 
-![png](images/2015/ntbk/2015-08-30-craigslist_scrape_33_1.png)
+![png](../images/2015/ntbk/2015-08-30-craigslist_scrape_33_1.png)
 
 
 

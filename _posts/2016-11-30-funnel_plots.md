@@ -1,4 +1,5 @@
 ---
+image: "/images/2016/ntbk/2016-11-30-funnel_plots_7_0.png"
 tags: python, funnel plots, open science, visualizations, simulations
 interactive: True
 title: Visualizing publication bias
@@ -250,7 +251,7 @@ _ = plot_funnel_plot(effects, n, effects, n, p)
 </div>
 
 
-![png](images/2016/ntbk/2016-11-30-funnel_plots_7_0.png)
+![png](../images/2016/ntbk/2016-11-30-funnel_plots_7_0.png)
 
 
 In the funnel plot above, each datapoint corresponds to the effect size found in a single study (x-axis), along with its sample size (y-axis).
@@ -312,7 +313,7 @@ _ = plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
 </div>
 
 
-![png](images/2016/ntbk/2016-11-30-funnel_plots_10_0.png)
+![png](../images/2016/ntbk/2016-11-30-funnel_plots_10_0.png)
 
 
 
@@ -330,7 +331,7 @@ plot_simulation_results(p, mask_reported)
 
 
 
-![png](images/2016/ntbk/2016-11-30-funnel_plots_11_1.png)
+![png](../images/2016/ntbk/2016-11-30-funnel_plots_11_1.png)
 
 
 We can already see that we've skewed the distribution of *reported* findings (in red) further to the right. This is because it is less likely for experiments inside the contour lines to be reported in the literature, making us think that the effect size is larger than it really is.
@@ -352,7 +353,7 @@ _ = plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
 </div>
 
 
-![png](images/2016/ntbk/2016-11-30-funnel_plots_13_0.png)
+![png](../images/2016/ntbk/2016-11-30-funnel_plots_13_0.png)
 
 
 It's skewed even further to the right. As you can see, the harder it is to publish null results, the more overconfident we will be in the significance of what's in the literature. As you can probably tell, this is especially problematic for effect sizes lie near the boundary between publishable / non-publishable.
@@ -380,7 +381,7 @@ _ = plot_funnel_plot(effects, n, effects_reported, n_reported, p_reported)
 </div>
 
 
-![png](images/2016/ntbk/2016-11-30-funnel_plots_15_0.png)
+![png](../images/2016/ntbk/2016-11-30-funnel_plots_15_0.png)
 
 
 It's even worse. As you can see, both of these factors (studies with a low N, not being able to publish null results) give the scientific community an unrealistic idea of the true effect size. Moreover, we haven't even incorporated any experimenter-specific biases, such as defining datapoints that nullify an effect as "outliers", not reporting studies that are significant but in the *opposite* direction of what we'd expect, and collecting more data until they achieve a significant p-value. All of these practices would serve to enhance the positive bias seen above.
@@ -448,5 +449,5 @@ interact(plot_simulated_data,
 
 
 
-![png](images/2016/ntbk/2016-11-30-funnel_plots_19_1.png)
+![png](../images/2016/ntbk/2016-11-30-funnel_plots_19_1.png)
 

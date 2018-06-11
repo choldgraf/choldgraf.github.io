@@ -1,4 +1,5 @@
 ---
+image: "/images/2017/ntbk/2017-01-04-matplotlib_cycles_2_0.png"
 tags: python, open science, visualizations
 interactive: False
 title: Matplotlib Cyclers are Great
@@ -38,7 +39,7 @@ for i_data, color, lw, alpha in zip([data1, data2], colors, linewidths, alphas):
 </div>
 
 
-![png](images/2017/ntbk/2017-01-04-matplotlib_cycles_2_0.png)
+![png](../images/2017/ntbk/2017-01-04-matplotlib_cycles_2_0.png)
 
 
 There's really a lot of unnecessary code going on above. We're defining objects that share the same name as the kwarg that they represent. We can't store them as dictionaries, because then we'd have to do some python-fu in order to get them to iterate properly. This is where `cycler` is handy:
@@ -57,7 +58,7 @@ for i_data, kwargs in zip([data1, data2], cycler):
 </div>
 
 
-![png](images/2017/ntbk/2017-01-04-matplotlib_cycles_4_0.png)
+![png](../images/2017/ntbk/2017-01-04-matplotlib_cycles_4_0.png)
 
 
 You can even cycle through more complex properties like colormaps. Let's create one that cycles through several colormaps for a plot:
@@ -105,7 +106,7 @@ for args in cyc:
 </div>
 
 
-![png](images/2017/ntbk/2017-01-04-matplotlib_cycles_7_0.png)
+![png](../images/2017/ntbk/2017-01-04-matplotlib_cycles_7_0.png)
 
 
 So there you have it - cyclers are pretty neat. Give them a shot, and buy a `matplotlib` dev a beer next time you see them for making such an awesome and often under-appreciated package!

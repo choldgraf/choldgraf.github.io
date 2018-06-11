@@ -47,7 +47,7 @@
         {% endif %}
 
     {% if post.image %}
-      <img class="image" src={{ post.image }} alt="Feature Image" style="height: 75px"/>
+      <img class="image" src="{{ post.image }}" alt="Feature Image" style="height: 250px"/>
     {% endif %}
 
     {% if post.excerpt and site.read_more != 'enabled' %}

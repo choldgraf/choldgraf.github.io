@@ -1,4 +1,5 @@
 ---
+image: "/images/2016/ntbk/2016-07-08-voting_randomness_9_0.png"
 tags: python, voting, statistics, computation, fft
 category: computation
 date: 2016-07-08
@@ -109,7 +110,7 @@ _ = plt.setp(ax, xlim=[-15, 15])
 </div>
 
 
-![png](images/2016/ntbk/2016-07-08-voting_randomness_9_0.png)
+![png](../images/2016/ntbk/2016-07-08-voting_randomness_9_0.png)
 
 
 For a vote to be "different" than 50%, it'd need to be outside our margin of error described by the grey rectangle. In this case, it seems that a totally random vote yields about 2% points of spread around 0, and that the recorded vote difference (~4%) is outside of the margin of error for 50%. So maybe we can conclude that the Brexit vote was significantly different from a random 50/50 vote.
@@ -154,7 +155,7 @@ plt.ylabel('Population percentage')
 
 
 
-![png](images/2016/ntbk/2016-07-08-voting_randomness_11_1.png)
+![png](../images/2016/ntbk/2016-07-08-voting_randomness_11_1.png)
 
 
 Now, we'll run the simulation. On each iteration, all the districts vote totally randomly. Then, the difference between "yes" and "no" is calculated for each. Finally, these differences are combined in a weighted average, where the weights are proportional to the district sizes. This means that bigger districts have a larger influence on the outcome, mimicking the way that the UK tallies votes.
@@ -206,7 +207,7 @@ _ = plt.setp(ax, xlim=[-15, 15])
 </div>
 
 
-![png](images/2016/ntbk/2016-07-08-voting_randomness_15_0.png)
+![png](../images/2016/ntbk/2016-07-08-voting_randomness_15_0.png)
 
 
 Now we see a different sort of picture. Randomizing votes by district instead of by individual greatly increased the variability in the outcome. So much so that the "true" results from the Brexit now fall well within our confidence interval.
@@ -291,7 +292,7 @@ _ = plt.setp(ax, xlim=[-15, 15])
 </div>
 
 
-![png](images/2016/ntbk/2016-07-08-voting_randomness_21_0.png)
+![png](../images/2016/ntbk/2016-07-08-voting_randomness_21_0.png)
 
 
 It looks like now our confidence intervals are even wider than before. This is becase basically any change to our voting system that deviates away from a completely random 50/50 split will increase the variability in the outcome.

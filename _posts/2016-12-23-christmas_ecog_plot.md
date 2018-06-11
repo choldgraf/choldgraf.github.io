@@ -1,4 +1,5 @@
 ---
+image: "/images/2016/ntbk/2016-12-23-christmas_ecog_plot_7_1.png"
 tags: python, open science, visualizations, brains, holidays
 interactive: False
 title: Brainy Jingle Bells
@@ -109,7 +110,7 @@ ax.set(ylim=[None, 8000])
 
 
 
-![png](images/2016/ntbk/2016-12-23-christmas_ecog_plot_7_1.png)
+![png](../images/2016/ntbk/2016-12-23-christmas_ecog_plot_7_1.png)
 
 
 We'll extract this information again below so we can make the viz...
@@ -206,7 +207,7 @@ cb.ColorTranslator(cmap).show_colors()
 </div>
 
 
-![png](images/2016/ntbk/2016-12-23-christmas_ecog_plot_16_0.png)
+![png](../images/2016/ntbk/2016-12-23-christmas_ecog_plot_16_0.png)
 
 
 
@@ -223,7 +224,7 @@ scat = ax.scatter(*melec[['x_2d', 'y_2d']].values.T, s=100)
 </div>
 
 
-![png](images/2016/ntbk/2016-12-23-christmas_ecog_plot_17_0.png)
+![png](../images/2016/ntbk/2016-12-23-christmas_ecog_plot_17_0.png)
 
 
 

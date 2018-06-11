@@ -1,5 +1,7 @@
 from subprocess import check_call
+import numpy as np
 import os
+import os.path as op
 import shutil as sh
 from glob import glob
 import nbformat as nbf
@@ -19,6 +21,7 @@ if REPLACE is False:
     ipynb_files = new_ipynb_files
 
 for ifile in ipynb_files:
+    filename = op.basename(ifile).replace('.ipynb', '')
     year = int(os.path.basename(ifile).split('-')[0])
 
     # Clean up the file before converting
@@ -44,6 +47,23 @@ for ifile in ipynb_files:
         for IMG_STRING in IMG_STRINGS:
             line = line.replace(IMG_STRING, '{{ base.url }}/images')
         lines[ii] = line
+
+    # Define a featured image if images exist
+    images_files = glob(op.join(IMAGES_FOLDER, str(year), 'ntbk', '{}*.png'.format(filename)))
+    if len(images_files) > 0:
+        featured_line = [ii for ii in lines if 'featured_image' in ii]
+        if len(featured_line) > 0:
+            featured_ix = int(featured_line[0].split(':')[-1].strip())
+        else:
+            featured_ix = 0
+        image_nums = [float('{}.{}'.format(ii.split('_')[-2], ii.split('_')[-1].replace('.png', '')))
+                      for ii in images_files]
+        ixs_sorted = np.argsort(image_nums)
+        featured_image = images_files[ixs_sorted[featured_ix]]
+        ix_yaml_start = lines.index('---\n', 0)
+        lines.insert(ix_yaml_start +1, 'image: "/{}"\n'.format(featured_image))
+
+    # Write back to disk
     with open(path_md, 'w') as ff:
         ff.writelines(lines)
 

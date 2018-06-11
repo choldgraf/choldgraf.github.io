@@ -1,4 +1,5 @@
 ---
+image: "/images/2015/ntbk/2015-09-27-craigslist_data_analysis_5_1.png"
 tags: python, scraping, data analysis, visualization
 category: computation
 date: 2015-09-27
@@ -58,7 +59,7 @@ sns.distplot(results['price'].dropna())
 
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_5_1.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_5_1.png)
 
 
 That's not super useful - it looks like we have a highly skewed distribution with a few instances way out to the right. We'll convert to a log scale from here on to make it easier to comprehend:
@@ -86,7 +87,7 @@ ax.set(title="Log plots are nicer for skewed data")
 
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_7_1.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_7_1.png)
 
 
 
@@ -115,7 +116,7 @@ for loc, vals in results.groupby('loc'):
 </div>
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_10_0.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_10_0.png)
 
 
 
@@ -177,7 +178,7 @@ ax_sze.set(title='Size')
 
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_14_1.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_14_1.png)
 
 
 So it looks like size-wise, there aren't many differences here. However, with price per square foot, you'll be paying a lot more for the same space in SF.
@@ -207,7 +208,7 @@ _ = plt.setp(axs[:, 2], xlim=[0, 4000], ylim=[0, .002])
 </div>
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_16_0.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_16_0.png)
 
 
 And now on top of one another
@@ -245,7 +246,7 @@ ax.set_ylim([0, 10])
 
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_18_1.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_18_1.png)
 
 
 Basically, lines that go down more steeply mean you get a better deal the bigger the place is.
@@ -337,7 +338,7 @@ plt.title('Each row is a post, with 1s representing presence of a word in that p
 
 
 
-![png](images/2015/ntbk/2015-09-27-craigslist_data_analysis_27_1.png)
+![png](../images/2015/ntbk/2015-09-27-craigslist_data_analysis_27_1.png)
 
 
 Let's do a quick description of the most common words in each region. We can use our vectorized vocabulary and see which words were most common.

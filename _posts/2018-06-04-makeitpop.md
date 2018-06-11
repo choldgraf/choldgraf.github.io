@@ -1,10 +1,12 @@
 ---
+image: "/images/2018/ntbk/2018-06-04-makeitpop_8_0.png"
 tags: python colormaps
 title: Introducing _makeitpop_, a tool to perceptually warp your data!
 permalink: makeitpop-intro
 category: colormaps
 date: 2018-06-04
 binder_path: notebooks/2018/2018-06-04-makeitpop.ipynb
+featured_image: 3
 ---
 > *Note: It should go without saying, but **you should never do the stuff that you're about to read about here**. Data is meant to speak for itself, and our visualizations should accurately reflect the data above all else.*
 
@@ -14,12 +16,13 @@ and adopt a "perceptually-flat" colormap like [viridis, magma, or inferno](https
 
 Surprisingly (ok, maybe not so surprisingly) I got a lot of pushback from people. Folks would say _"But I like **jet**, it really highlights my data, it makes the images 'pop' more effectively than viridis!"_.
 
-Unfortuantely it turns out that when a colormap "makes your data pop", it really just means "[warps your perception of the visualized data so that you see non-linearities when there are none](https://bids.github.io/colormap/)". AKA, a colormap like Jet actually _mis-represents_ the data.
+Unfortunately it turns out that when a colormap "makes your data pop", it really just means "[warps your perception of the visualized data so that you see non-linearities when there are none](https://bids.github.io/colormap/)". AKA, a colormap like Jet actually _mis-represents_ the data.
 
 But what does this really mean? It's difficult to talk and think about coor - especially when it comes to relating color with objective relationships
 between data. Rather than talking about colormaps in the abstract, what if we could *visualize* the warping that is performed by colormaps like Jet?
 
 In this post I'll show that this is possible! Introducing **`makeitpop`**.
+
 
 ## What does _makeitpop_ do?
 
@@ -529,10 +532,11 @@ def viz(scaling_factor, cmap):
     axs[0].imshow(Z, cmap=plt.get_cmap(cmap),
           origin='lower', extent=[-3, 3, -3, 3],
           vmax=abs(Z).max(), vmin=-abs(Z).max())
+    axs[0].set(title="Original data\ncolormap: {}".format(cmap))
     axs[1].imshow(Z_popped, cmap=plt.cm.viridis,
               origin='lower', extent=[-3, 3, -3, 3],
               vmax=abs(Z).max(), vmin=-abs(Z).max())
-    ax.set(title="Warped data\nlinear colormap")
+    axs[1].set(title="Warped like: {}\ncolormap: viridis".format(cmap))
     plt.show()
 interact(viz, scaling_factor=IntSlider(1, 1, 80),
          cmap=Dropdown(options=derivatives_scaled.columns.values, value='jet'))

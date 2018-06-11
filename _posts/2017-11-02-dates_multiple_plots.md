@@ -1,4 +1,5 @@
 ---
+image: "/images/2017/ntbk/2017-11-02-dates_multiple_plots_5_0.png"
 tags: python, open science
 interactive: True
 title: Combining dates with analysis visualization in python
@@ -72,7 +73,7 @@ for company in companies:
 </div>
 
 
-![png](images/2017/ntbk/2017-11-02-dates_multiple_plots_5_0.png)
+![png](../images/2017/ntbk/2017-11-02-dates_multiple_plots_5_0.png)
 
 
 Let's say we want to fit a regression line to each stock, should be simple, right?
@@ -101,7 +102,7 @@ for company in companies:
 ```
 
 
-![png](images/2017/ntbk/2017-11-02-dates_multiple_plots_7_1.png)
+![png](../images/2017/ntbk/2017-11-02-dates_multiple_plots_7_1.png)
 
 
 We got an error! That's because seaborn was treating the `Date` column as a number, when in fact it was a datetime object.
@@ -174,7 +175,7 @@ for ii, company in enumerate(companies):
 </div>
 
 
-![png](images/2017/ntbk/2017-11-02-dates_multiple_plots_12_0.png)
+![png](../images/2017/ntbk/2017-11-02-dates_multiple_plots_12_0.png)
 
 
 And there you have it - mixed datetime visualization across multiple libraries.

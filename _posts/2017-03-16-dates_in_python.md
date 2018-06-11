@@ -1,4 +1,5 @@
 ---
+image: "/images/2017/ntbk/2017-03-16-dates_in_python_26_1.png"
 tags: python, open science
 interactive: True
 title: Dates in python
@@ -335,7 +336,7 @@ sr.rolling(30).mean().plot()  # Give us a 30 hour rolling mean
 
 
 
-![png](images/2017/ntbk/2017-03-16-dates_in_python_26_1.png)
+![png](../images/2017/ntbk/2017-03-16-dates_in_python_26_1.png)
 
 
 Note that if we now change the timezone, some of the days have changed because of the time shift:

@@ -1,4 +1,5 @@
 ---
+image: "/images/2015/ntbk/2015-05-27-coherence_correlation_10_0.png"
 tags: python, programming, timeseries, correlation
 category: neuroscience
 date: 2015-05-27
@@ -137,7 +138,7 @@ for ax, (noise, vals) in zip(axs.ravel(), con_all.iteritems()):
 </div>
 
 
-![png](images/2015/ntbk/2015-05-27-coherence_correlation_10_0.png)
+![png](../images/2015/ntbk/2015-05-27-coherence_correlation_10_0.png)
 
 
 That's already an interesting picture - as you can see, coherence is far more robust to differences between the two signals. Here are a few thoughts:
@@ -166,7 +167,7 @@ ax.set_title('CC vs Coherence')
 
 
 
-![png](images/2015/ntbk/2015-05-27-coherence_correlation_12_1.png)
+![png](../images/2015/ntbk/2015-05-27-coherence_correlation_12_1.png)
 
 
 As you can see here, coherence remains the same (except for when it occasionally increases to 1) while correlation is much more dependent on the phase relationship between the signals. Moreover, as the signal SNR degrades, the correlation shrinks to 0, while the coherence remains the same.
@@ -196,7 +197,7 @@ for (comp_a, comp_b), ax in zip(sig_combinations, axs.ravel()):
 </div>
 
 
-![png](images/2015/ntbk/2015-05-27-coherence_correlation_14_0.png)
+![png](../images/2015/ntbk/2015-05-27-coherence_correlation_14_0.png)
 
 
 Another way of looking at it with scatterplots...
@@ -225,7 +226,7 @@ for (comp_a, comp_b), ax in zip(sig_combinations, axs.ravel()):
 </div>
 
 
-![png](images/2015/ntbk/2015-05-27-coherence_correlation_16_0.png)
+![png](../images/2015/ntbk/2015-05-27-coherence_correlation_16_0.png)
 
 
 Finally, for a more direct comparison, we can look directly at the difference between the two as a function of both noise level and the sine wave parameters.
@@ -256,7 +257,7 @@ diff.plot(figsize=(15, 5))
 
 
 
-![png](images/2015/ntbk/2015-05-27-coherence_correlation_19_1.png)
+![png](../images/2015/ntbk/2015-05-27-coherence_correlation_19_1.png)
 
 
 So what does this mean? Well, the relationship between coherence and correlation is too complicated to sum it up in a single line or two. However, it is clear that correlation is more sensitive to differences between signals in time. Coherence, on the other hand, is more reliable for these differences. Moreover, correlation degrades quickly with an increase in noise, while coherence remains the same.

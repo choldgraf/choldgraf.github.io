@@ -1,4 +1,5 @@
 ---
+image: "/images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png"
 tags: python, open science, visualizations, web scraping, preprints
 interactive: False
 title: The bleeding edge of publishing, Scraping publication amounts at biorxiv
@@ -252,7 +253,7 @@ ax.set_title('Articles published per month for term\n{}'.format(search_term))
 
 
 
-![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png)
+![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png)
 
 
 We can also plot the cumulative number of papers published:
@@ -278,7 +279,7 @@ ax.set_ylabel('Number of Papers')
 
 
 
-![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_18_1.png)
+![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_18_1.png)
 
 
 # Question 2: Which author uses pre-prints the most?
@@ -317,7 +318,7 @@ _ = plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
 </div>
 
 
-![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_22_0.png)
+![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_22_0.png)
 
 
 Rather than saying congratulations to #1 etc here, I'll just take this space to say that all of these researchers are awesome for helping push scientific publishing technologies into the 21st century ;)
@@ -387,7 +388,7 @@ ax.set_axis_off()
 </div>
 
 
-![png](images/2016/ntbk/2016-12-19-biorxiv_neuro_28_0.png)
+![png](../images/2016/ntbk/2016-12-19-biorxiv_neuro_28_0.png)
 
 
 Looks like those cognitive neuroscience folks are leading the charge towards pre-print servers. Hopefully in the coming years we'll see increased adoption from the systems and cellular fields as well.
