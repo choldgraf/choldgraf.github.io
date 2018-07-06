@@ -14,10 +14,18 @@ A common use for Sphinx is to step people through a chunk of code. For example,
 in the [Zero to JupyterHub for Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/)
 guide we step users through a number of installation and configuration steps.
 
-A common annoyance here is that there is lots of copy/pasting involved. Sometimes
+A common annoyance is that there is a lot of copy/pasting involved. Sometimes
 you accidentally miss a character or some whitespace. So, I spent a bit of time
 figuring out how to **automatically embed a copy button into code blocks**. It
 turns out this is pretty easy!
+
+Here's what the final result will look like (just hover the code block below)
+
+```python
+wow = this_text
+is_so = much*more*copyable
+```
+
 
 
 ## Adding a copy button to your Sphinx code blocks
@@ -27,12 +35,13 @@ which provides the machinery for copying the contents of an HTML element as well
 as [jquery](https://jquery.com/) for modifying our built documentation on-demand.
 
 The result will be a Sphinx site with code blocks that display a copy button
-when you hover over them. You can demo this on this very page, which uses a
+when you hover over them. You can see how it looks on this very page, which uses a
 similar method (but is built with Jekyll).
 
 Here's what you should do:
 
-1. Create a javascript script called `doc/_static/custom.js`. In the file, put the following
+1. **Add the clipboard.js javascript**. Create a javascript
+   script called `doc/_static/custom.js`. In the file, put the following
    code (see comments for explanation):
 
     ```javascript
@@ -40,28 +49,31 @@ Here's what you should do:
     // get all code elements
     var allCodeBlocksElements = $( "div.highlight pre" );
 
+    // For each element, do the following steps
     allCodeBlocksElements.each(function(ii) {
-    // add different id for each code block
-    // target
+    // define a unique id for this element and add it
     var currentId = "codeblock" + (ii + 1);
     $(this).attr('id', currentId);
 
-    //trigger
+    // create a button that's configured for clipboard.js
+    // point it to the text that's in this code block
+    // add the button just after the text in the code block w/ jquery
     var clipButton = '<button class="btn copybtn" data-clipboard-target="#' + currentId + '"><img src="https://clipboardjs.com/assets/images/clippy.svg" width="13" alt="Copy to clipboard"></button>';
        $(this).after(clipButton);
     });
 
+    // tell clipboard.js to look for clicks that match this query
     new Clipboard('.btn');
     }
 
     $(document).ready(function () {
-    // Highlight current page in sidebar
-    console.log('hi');
+    // Once the DOM is loaded for the page, attach clipboard buttons
     addCopyButtonToCode();
     });
     ```
 
-2. Create a custom CSS file called `doc/_static/custom.css` (or add to one you've
+2. **Add some CSS to make it pretty**. Create a custom CSS file
+   called `doc/_static/custom.css` (or add to one you've
    already got). In the file, put these lines:
 
    ```css
@@ -87,13 +99,13 @@ Here's what you should do:
    }
   ```
 
-3. Link your custom JS and CSS scripts, as well as the clipboard.js script. In
-   your `conf.py` file, add the following function/lines (or add to one you've already
+3. **Link these scripts in your configuration.** You need to link your
+   custom JS and CSS scripts, as well as the clipboard.js script so it ships with
+   your site. In your `conf.py` file, add the following function/lines (or add to one you've already
    got defined).
 
    ```python
    def setup(app):
-       # For copy buttons
        app.add_stylesheet('custom.css')
        app.add_javascript("custom.js")
        app.add_javascript("https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js")
