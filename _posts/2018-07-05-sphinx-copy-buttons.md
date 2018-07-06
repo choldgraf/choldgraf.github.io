@@ -6,6 +6,9 @@ category: documentation
 date: 2018-07-05
 ---
 
+> **NOTE: This is now a sphinx extension!** Thanks to some friendly suggestions, I've written
+> this up as a super tiny sphinx extension. Check it out here: https://github.com/choldgraf/sphinx-copybutton
+
 [Sphinx](http://www.sphinx-doc.org/en/master/) is a fantastic way to build
 documentation for your Python package. On the Jupyter project, we use it
 for almost all of our repositories.
