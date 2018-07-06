@@ -23,3 +23,32 @@ a.paper_link {
 body {
   margin-left: 5%;
 }
+
+
+ /* Copy buttons */
+button.copybtn {
+  webkit-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  padding: 2px 6px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
+button.copybtn, .btn:hover {
+  background-color: rgba(255,255,255,.4);
+}
+div.input_area:hover .copybtn, div.highlighter-rouge:hover .copybtn {
+    opacity: .3;
+}
+
+div.input_area .copybtn:hover, div.highlighter-rouge .copybtn:hover {
+    opacity: 1;
+}
+
+/* Remove the code block icon to the top right */
+div.highlighter-rouge:before, figure.highlight:before {
+  content: none;
+}
