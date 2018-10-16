@@ -10,8 +10,8 @@ posts:
 	python ./src/notebooks_to_markdown.py
 	# python $(INTERACTCOPY) $(ARTICLESDIR)/*/*/*.ipynb $(INPUTDIR)/notebooks --update-path $(INPUTDIR)
 
-serve: posts
-	bundle exec jekyll serve
+serve:
+	bundle exec guard
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)

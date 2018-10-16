@@ -10,7 +10,7 @@ source "https://rubygems.org"
 # Happy Jekylling!
 
 gem "github-pages", group: :jekyll_plugins
-
+gem "jekyll-auto-image"
 # If you want to use Jekyll native, uncomment the line below.
 # To upgrade, run `bundle update`.
 
@@ -25,3 +25,9 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'hawkins'
 end
+
+
+# Development tools
+gem 'guard', '~> 2.14.2'
+gem 'guard-jekyll-plus', '~> 2.0.2'
+gem 'guard-livereload', '~> 2.5.2'
