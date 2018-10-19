@@ -66,7 +66,9 @@ pre .nn
 
 .output_png img,p img
 {
-  max-width:100%;
+  max-height: 300px;
+  margin: 0px auto;
+  display: block;
 }
 
 pre .o,pre .k
