@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -200,75 +212,6 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="https://predictablynoisy.com/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Chris Holdgraf</h3>
-    <p class="author__bio">Data Science | Open Science | Brains</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
-      
-      
-      
-      
-        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
-      
-      
-      
-        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
-      
-      
-        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
-      
-      
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="The bleeding edge of publishing, Scraping publication amounts at biorxiv">
@@ -303,13 +246,16 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p>Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the <a href="http://biorxiv.org/">biorxiv</a>, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.</p>
 
 <p>A big benefit of open science is the ability to use modern technologies (like web scraping) to make new use of data that would originally be unavailable to the public. One simple example of this is information and metadata about published articles. While we’re not going to dive too deeply here, maybe this will serve as inspiration for somebody else interested in scraping the web.</p>
 
 <p>First we’ll do a few imports. We’ll rely heavily on the <code class="highlighter-rouge">requests</code> and <code class="highlighter-rouge">BeautifulSoup</code> packages, which together make an excellent one-two punch for doing web scraping. We coud use something like <code class="highlighter-rouge">scrapy</code>, but that seems a little overkill for this small project.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -317,7 +263,9 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>From a quick look at the biorxiv we can see that its search API works in a pretty simple manner. I tried typing in a simple search query and got something like this:</p>
 
@@ -327,7 +275,9 @@
 
 <p>So, let’s do a simple scrape and see what the results look like. We’ll query the biorxiv API to see what kind of structure the result will have.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_results</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n_results</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s">"http://biorxiv.org/search/neuroscience</span><span class="si">%20</span><span class="s">numresults</span><span class="si">%3</span><span class="s">A{}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">n_results</span><span class="p">)</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -335,7 +285,9 @@
 <span class="c"># I'm not going to print this because it messes up the HTML rendering</span>
 <span class="c"># But you get the idea...probably better to look in Chrome anyway ;)</span>
 <span class="c"># text = bs(resp.text)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>If we search through the result, you may notice that search results are organized into a list (denoted by <code class="highlighter-rouge">li</code> for each item). Inside each item is information about the article’s title (in a <code class="highlighter-rouge">div</code> of class <code class="highlighter-rouge">highwire-cite-title</code>) and author information (in a <code class="highlighter-rouge">div</code> of calss <code class="highlighter-rouge">highwire-cite-authors</code>).</p>
 
@@ -353,16 +305,22 @@
 
 <p>We’ll loop through years / months, and pull out the author and title information. We’ll do this with two dataframes, one for authors, one for articles.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define the URL and start/stop years</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define the URL and start/stop years</span>
 <span class="n">stt_year</span> <span class="o">=</span> <span class="mi">2012</span>
 <span class="n">stp_year</span> <span class="o">=</span> <span class="mi">2016</span>
 <span class="n">search_term</span> <span class="o">=</span> <span class="s">"neuroscience"</span>
 <span class="n">url_base</span> <span class="o">=</span> <span class="s">"http://biorxiv.org/search/{}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
 <span class="n">url_params</span> <span class="o">=</span> <span class="s">"</span><span class="si">%20</span><span class="s">limit_from</span><span class="si">%3</span><span class="s">A{0}-{1}-01</span><span class="si">%20</span><span class="s">limit_to</span><span class="si">%3</span><span class="s">A{0}-{2}-01</span><span class="si">%20</span><span class="s">numresults</span><span class="si">%3</span><span class="s">A100</span><span class="si">%20</span><span class="s">format_result</span><span class="si">%3</span><span class="s">Astandard"</span>
 <span class="n">url</span> <span class="o">=</span> <span class="n">url_base</span> <span class="o">+</span> <span class="n">url_params</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Now we'll do the scraping...</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Now we'll do the scraping...</span>
 <span class="n">all_articles</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">all_authors</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">yr</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stt_year</span><span class="p">,</span> <span class="n">stp_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)):</span>
@@ -388,26 +346,41 @@
             <span class="n">authors</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s">'span'</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s">'class'</span><span class="p">:</span> <span class="s">'highwire-citation-author'</span><span class="p">})</span>
             <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">authors</span><span class="p">:</span>
                 <span class="n">all_authors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">author</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">title</span><span class="p">))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll collect these into DataFrames for subsequent use</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll collect these into DataFrames for subsequent use</span>
 <span class="n">authors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_authors</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span>
 <span class="n">articles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_articles</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>To make things easier to cross-reference, we’ll add an <code class="highlighter-rouge">id</code> column that’s unique for each title. This way we can more simply join the dataframes to do cool things:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define a dictionary of title: ID mappings</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Define a dictionary of title: ID mappings</span>
 <span class="n">unique_ids</span> <span class="o">=</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">articles</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())}</span>
 <span class="n">articles</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">unique_ids</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">[</span><span class="s">'title'</span><span class="p">]]</span>
 <span class="n">authors</span><span class="p">[</span><span class="s">'id'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">unique_ids</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">authors</span><span class="p">[</span><span class="s">'title'</span><span class="p">]]</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Now, we can easily join these two dataframes together if we so wish:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">articles</span><span class="p">,</span> <span class="n">authors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
+<div class="input_area">
 
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">articles</span><span class="p">,</span> <span class="n">authors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s">'id'</span><span class="p">,</span> <span class="s">'title'</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div>
 <div>
 <table border="1" class="dataframe">
   <thead>
@@ -464,55 +437,74 @@
   </tbody>
 </table>
 </div>
+</div>
 
 <h1 id="question-1-how-has-the-published-articles-rate-changed">Question 1: How has the published articles rate changed?</h1>
 <p>This one is pretty easy to ask. Since we have both year / month data about each article, we can plot the number or articles for each group of time. To do this, let’s first turn these numbers into an actual “datetime” object. This let’s us do some clever plotting magic with pandas</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add a "date" column</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Add a "date" column</span>
 <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
          <span class="k">for</span> <span class="n">yr</span><span class="p">,</span> <span class="n">mn</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">[[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
 <span class="n">articles</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span>
 
 <span class="c"># Now drop the year / month columns because they're redundant</span>
 <span class="n">articles</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Now, we can simply group by month, sum the number of results, and plot this over time:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">monthly</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'date'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">monthly</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'date'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Articles published per month for term</span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_16_1.png" alt="png" /></p>
 
 <p>We can also plot the cumulative number of papers published:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cumulative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthly</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cumulative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthly</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">monthly</span><span class="p">[</span><span class="s">'cumulative'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative</span>
 
 <span class="c"># Now plot cumulative totals</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="s">'cumulative'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Cumulative number of papers matching term </span><span class="se">\n</span><span class="s">{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Number of Papers'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_18_1.png" alt="png" /></p>
 
 <h1 id="question-2-which-author-uses-pre-prints-the-most">Question 2: Which author uses pre-prints the most?</h1>
 <p>For this one, we can use the “authors” dataframe. We’ll group by author name, and count the number of publications per author:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Group by author and count the number of items</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Group by author and count the number of items</span>
 <span class="n">author_counts</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'name'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s">'count'</span><span class="p">)</span>
 
 <span class="c"># We'll take the top 30 authors</span>
 <span class="n">author_counts</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'count'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">author_counts</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>We’ll use some <code class="highlighter-rouge">pandas</code> magical gugu to get this one done. Who is the greatest pre-print neuroscientist of them all?</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># So we can plot w/ pretty colors</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># So we can plot w/ pretty colors</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">author_counts</span><span class="p">[</span><span class="s">'count'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">author_counts</span><span class="p">[</span><span class="s">'count'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">()))</span>
 
@@ -520,7 +512,9 @@
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s">'name'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">'right'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_22_0.png" alt="png" /></p>
 
@@ -531,30 +525,44 @@
 
 <p>To do this, we’ll use the <code class="highlighter-rouge">wordcloud</code> module along with <code class="highlighter-rouge">sklearn</code>’s stop words (which are also useful for text analysis, incidentally)</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">wordcloud</span> <span class="k">as</span> <span class="n">wc</span> 
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">ENGLISH_STOP_WORDS</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll collect the titles and turn them into one giant string</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">wordcloud</span> <span class="k">as</span> <span class="n">wc</span> 
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">ENGLISH_STOP_WORDS</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll collect the titles and turn them into one giant string</span>
 <span class="n">titles</span> <span class="o">=</span> <span class="n">articles</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">titles</span> <span class="o">=</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
 
 <span class="c"># Then define stop words to use...we'll include some "typical" brain words</span>
 <span class="n">our_stop_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ENGLISH_STOP_WORDS</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s">'brain'</span><span class="p">,</span> <span class="s">'neural'</span><span class="p">]</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Now, generating a word cloud is as easy as a call to <code class="highlighter-rouge">generate_from_text</code>. Then we can output in whatever format we like</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This function takes a buch of dummy arguments and returns random colors</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This function takes a buch of dummy arguments and returns random colors</span>
 <span class="k">def</span> <span class="nf">color_func</span><span class="p">(</span><span class="n">word</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
                <span class="n">orientation</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">font_path</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">rand</span><span class="p">)[:</span><span class="mi">3</span><span class="p">])</span>
     <span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span> <span class="o">*</span> <span class="mi">255</span>
     <span class="k">return</span> <span class="s">'rgb({:.0f}, {:.0f}, {:.0f})'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">cols</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fit the cloud</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Fit the cloud</span>
 <span class="n">cloud</span> <span class="o">=</span> <span class="n">wc</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">stopwords</span><span class="o">=</span><span class="n">our_stop_words</span><span class="p">,</span>
                      <span class="n">color_func</span><span class="o">=</span><span class="n">color_func</span><span class="p">)</span>
 <span class="n">cloud</span><span class="o">.</span><span class="n">generate_from_text</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
@@ -564,7 +572,9 @@
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-12-19-biorxiv_neuro_28_0.png" alt="png" /></p>
 
@@ -718,6 +728,16 @@
     </div>
 
     
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
   </article>
 
   
@@ -771,6 +791,33 @@
   ga('create', '', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'chrisholdgraf';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

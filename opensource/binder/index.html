@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -236,6 +248,8 @@
       
       
       
+        <li><a href="https://www.linkedin.com/in/chrisholdgraf"><i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>
+      
       
       
       
@@ -295,6 +309,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p><img src="https://mybinder.org/static/logo.svg?v=f9f0d927b67cc9dc99d788c822ca21c0" alt="" />
 Binder allows you to create custom computing environments that can be
 shared and used by many remote users. It is powered by BinderHub, which

@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -200,75 +212,6 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="https://predictablynoisy.com/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Chris Holdgraf</h3>
-    <p class="author__bio">Data Science | Open Science | Brains</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
-      
-      
-      
-      
-        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
-      
-      
-      
-        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
-      
-      
-        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
-      
-      
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Combining dates with analysis visualization in python">
@@ -303,6 +246,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p>Sometimes you want to do two things:</p>
 
 <ol>
@@ -317,40 +261,58 @@
 <p>To demonstrate this, let’s grab the latest stock market prices for a couple companies and
 fit regression lines to them…</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">pandas_datareader.data</span> <span class="k">as</span> <span class="n">web</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span>
 <span class="n">companies</span> <span class="o">=</span> <span class="p">[</span><span class="s">'AAPL'</span><span class="p">,</span> <span class="s">'IBM'</span><span class="p">]</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">web</span><span class="o">.</span><span class="n">DataReader</span><span class="p">(</span><span class="n">companies</span><span class="p">,</span> <span class="s">'google'</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">prep_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">prep_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s">'D'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="n">data</span><span class="p">[</span><span class="s">'High'</span><span class="p">]</span> <span class="o">-=</span> <span class="n">data</span><span class="p">[</span><span class="s">'High'</span><span class="p">]</span><span class="o">.</span><span class="nb">min</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">data</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">companies</span><span class="p">:</span>
     <span class="n">this_data</span> <span class="o">=</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">company</span><span class="p">])</span>
     <span class="n">this_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span> <span class="s">'High'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">company</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2017/ntbk/2017-11-02-dates_multiple_plots_5_0.png" alt="png" /></p>
 
 <p>Let’s say we want to fit a regression line to each stock, should be simple, right?</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">companies</span><span class="p">:</span>
     <span class="n">this_data</span> <span class="o">=</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">company</span><span class="p">])</span>
     <span class="n">this_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span> <span class="s">'High'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">company</span><span class="p">)</span>
@@ -358,10 +320,13 @@ fit regression lines to them…</p>
         <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span> <span class="s">'High'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">this_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Date &gt; "2017-04-01" and Date &lt; "2017-09-01"'</span><span class="p">))</span>
     <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">ee</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s">'***ERROR: '</span><span class="p">,</span>  <span class="n">ee</span><span class="p">,</span> <span class="s">'***'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>***ERROR:  reduction operation 'mean' not allowed for this dtype ***
+</div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>***ERROR:  reduction operation 'mean' not allowed for this dtype ***
 ***ERROR:  reduction operation 'mean' not allowed for this dtype ***
+
 </code></pre></div></div>
 
 <p><img src="../images/2017/ntbk/2017-11-02-dates_multiple_plots_7_1.png" alt="png" /></p>
@@ -372,19 +337,27 @@ fit regression lines to them…</p>
 
 <p>To fix this, we need to convert the datetime labels to their ordinal (numeric) representation. There are a number of ways to convert dates to numbers. Fortunately, Matplotlib has a convenience function to convert datetime objects to their numeric representation.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">matplotlib.dates</span> <span class="kn">import</span> <span class="n">date2num</span>
 <span class="n">date2num</span><span class="p">(</span><span class="n">this_data</span><span class="p">[</span><span class="s">'Date'</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>736270.0
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>736270.0
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here's how we convert the Period object to a date:</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here's how we convert the Period object to a date:</span>
 <span class="n">sample_ordinal</span> <span class="o">=</span> <span class="n">this_data</span><span class="p">[</span><span class="s">'Date'</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">date2num</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 <span class="n">sample_ordinal</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    736270.0
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0    736270.0
 1    736271.0
 2    736272.0
 5    736275.0
@@ -394,14 +367,18 @@ Name: Date, dtype: float64
 
 <p>Below we’ll insert this into our plotting code to see what happens.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">company</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">companies</span><span class="p">):</span>
     <span class="n">this_data</span> <span class="o">=</span> <span class="n">prep_data</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">company</span><span class="p">])</span>
     <span class="n">this_data</span><span class="p">[</span><span class="s">'Date_Ord'</span><span class="p">]</span> <span class="o">=</span> <span class="n">this_data</span><span class="p">[</span><span class="s">'Date'</span><span class="p">]</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">date2num</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
     <span class="n">this_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span> <span class="s">'High'</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">company</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'C{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ii</span><span class="p">))</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="s">'Date_Ord'</span><span class="p">,</span> <span class="s">'High'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">this_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s">'Date &gt; "2017-04-01" and Date &lt; "2017-09-01"'</span><span class="p">),</span>
                 <span class="n">truncate</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'C{}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ii</span><span class="p">))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2017/ntbk/2017-11-02-dates_multiple_plots_12_0.png" alt="png" /></p>
 
@@ -536,12 +513,23 @@ for your datetime viz needs.</p>
 ">Previous</a>
     
     
-      <a href="#" class="pagination--pager disabled">Next</a>
+      <a href="https://predictablynoisy.com/dev-ops-days-sv-2018" class="pagination--pager" title="An academic scientist goes to DevOps Days
+">Next</a>
     
   </nav>
 
     </div>
 
+    
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
     
   </article>
 
@@ -596,6 +584,33 @@ for your datetime viz needs.</p>
   ga('create', '', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'chrisholdgraf';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

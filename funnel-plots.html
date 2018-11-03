@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -200,75 +212,6 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="https://predictablynoisy.com/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Chris Holdgraf</h3>
-    <p class="author__bio">Data Science | Open Science | Brains</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
-      
-      
-      
-      
-        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
-      
-      
-      
-        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
-      
-      
-        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
-      
-      
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Visualizing publication bias">
@@ -303,6 +246,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p><strong>This article is now interactive! Check out a live Binder instance <a href="http://mybinder.org/repo/choldgraf/choldgraf.github.io/notebooks/notebooks/2016_11_30-funnel_plots.ipynb">here</a></strong></p>
 
 <p>In the next few months, I’ll try to take some time to talk about the things I learn as I make my way through this literature. While it’s easy to make one-off complaints to one another about how “science is broken” without really diving into the details, it’s important learn about <em>how</em> it’s broken, or at least how we could assess something like this.</p>
@@ -313,14 +257,18 @@
 
 <p>Read on below to learn about why funnel plots are a great way to visualize the problems our publishing system faces…</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some quick imports we'll use later</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Some quick imports we'll use later</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">distributions</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">IPython.html.widgets</span> <span class="kn">import</span> <span class="n">interact</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <h1 id="on-to-funnel-plots">On to Funnel Plots</h1>
 <blockquote>
@@ -381,7 +329,9 @@
 
 <p><strong>Note: you can skip reading the code below if you like, as it just defines some functions that will be useful, but feel free to dig into the code if you like</strong></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Helper functions to simulate experiments.</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Helper functions to simulate experiments.</span>
 <span class="k">def</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">variance</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="s">"""Simulate a population of data. We'll sample from this in each study.
     Note that we're drawing from a normal distribution."""</span>
@@ -392,11 +342,11 @@
 <span class="k">def</span> <span class="nf">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">prefer_low_n</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                          <span class="n">n_simulations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="s">"""Randomly simulates data collection and analyses of many experiments.
-
+    
     On each iteration, it chooses a random sample from data, calculates the
     mean of that sample, as well as a p-value associated with that mean's
     difference from 0.
-
+    
     data : the full population dataset
     n_min : the minimum sample size for each study.
     n_max : the maximum sample size for each study.
@@ -423,7 +373,7 @@
 
 <span class="k">def</span> <span class="nf">calculate_stat</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">h0</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="s">"""Calculate a p-value using a t-test.
-
+    
     Note that this probably *isn't* the right test to run with data that
     is bounded on either side (in this case, -1 and 1). However, luckily
     this is not a statistics tutorial so I'm just going to be blissfully
@@ -451,10 +401,10 @@
     <span class="n">std_full</span> <span class="o">=</span> <span class="n">effects</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
     <span class="n">mn_pub</span> <span class="o">=</span> <span class="n">effects_reported</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
     <span class="n">std_pub</span> <span class="o">=</span> <span class="n">effects_reported</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
+    
     <span class="n">mn_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">mn_full</span> <span class="o">-</span> <span class="n">mn_pub</span><span class="p">)</span>
     <span class="n">std_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="nb">abs</span><span class="p">(</span><span class="n">std_full</span> <span class="o">-</span> <span class="n">std_pub</span><span class="p">)</span>
-
+    
     <span class="c"># First axis is a histogram of the distribution for true/experimental effects</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">axdist</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s">'stepfilled'</span><span class="p">,</span>
@@ -474,7 +424,7 @@
     <span class="n">sig</span> <span class="o">=</span> <span class="n">pvals</span> <span class="o">&lt;</span> <span class="o">.</span><span class="mo">05</span>
     <span class="n">mesh</span> <span class="o">=</span> <span class="n">axmesh</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">combinations</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">combinations</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sig</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">,</span>
                           <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
+    
     <span class="n">inv_p_effects</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_effects_reported</span>
     <span class="n">axmesh</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">sample_sizes</span><span class="p">,</span>
                    <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
@@ -487,12 +437,16 @@
 
     <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axdist</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="n">axmesh</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
     <span class="k">return</span> <span class="n">fig</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <h1 id="simulating-the-population">Simulating the population</h1>
 <p>Here we’ll create a population of datapoints corresponding to the effect of each person. Experiments are performed by taking a random sample from that population, and calculating the average effect of the sample. For each experiment we’ll choose a random number for the sample size as well. That means that we’ll get a collection of sample sizes, effect sizes, and p-values. One set for each simulated experiment.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is the true value and variance of our variable of interest.</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is the true value and variance of our variable of interest.</span>
 <span class="c"># Remember, it's bounded between -2 and 2</span>
 <span class="n">true_value</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
 <span class="n">true_variance</span> <span class="o">=</span> <span class="mi">2</span>
@@ -520,11 +474,17 @@
 <span class="c"># Simulate a bunch of random effects, along w/ sample size and p-value for each</span>
 <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">n_max</span><span class="p">,</span>
                                      <span class="n">n_simulations</span><span class="o">=</span><span class="n">n_simulations</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In this case, the reported and actual effects are the same</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># In this case, the reported and actual effects are the same</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-11-30-funnel_plots_7_0.png" alt="png" /></p>
 
@@ -537,7 +497,9 @@
 <h1 id="simulate-the-scientific-publishing-world">Simulate the scientific publishing world</h1>
 <p>Now, let’s simulate the scientific publishing process and see what happens. We’ll take a relatively generous take on things, and say that studies with a p-value &gt; .05 still have a small chance of being accepted.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This simulates which datapoints we keep and which we throw out</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This simulates which datapoints we keep and which we throw out</span>
 <span class="k">def</span> <span class="nf">simulate_publishing</span><span class="p">(</span><span class="n">pvals</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=.</span><span class="mo">01</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=.</span><span class="mi">9</span><span class="p">):</span>
     <span class="s">"""Given a collection of p-vals, randomly choose ones to accept for
     publication, with the likelihood of acceptance varying with the size
@@ -564,20 +526,30 @@
     <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s">"p-value"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">"study number"</span><span class="p">,</span>
                  <span class="n">title</span><span class="o">=</span><span class="s">'Accepted and rejected studies'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">ax</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=.</span><span class="mi">1</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span>
                                     <span class="n">super_p_perc</span><span class="o">=.</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">effects_reported</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 <span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 <span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-11-30-funnel_plots_10_0.png" alt="png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_simulation_results</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">mask_reported</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_simulation_results</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">mask_reported</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-11-30-funnel_plots_11_1.png" alt="png" /></p>
 
@@ -585,13 +557,17 @@
 
 <p>Now, let’s take a more cynical look at scientific publishing by reducing the likelihood that studies are published w/o a “significant” result:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span>
                                     <span class="n">super_p_perc</span><span class="o">=.</span><span class="mi">99</span><span class="p">)</span>
 <span class="n">effects_reported</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 <span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 <span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-11-30-funnel_plots_13_0.png" alt="png" /></p>
 
@@ -600,7 +576,9 @@
 <h1 id="adding-a-low-n-bias">Adding a low-N bias</h1>
 <p>As we mentioned above, there’s one more factor at play that makes things even worse. Smaller studies take less time and less resources to conduct, and in practice there are <em>far</em> more tiny studies than large, highly-powered ones. Let’s incorporate that into our data simulation and see how that affects things.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This simulates data where there is about a 10 times higher chance for a low-n study</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This simulates data where there is about a 10 times higher chance for a low-n study</span>
 <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">n_max</span><span class="p">,</span>
                               <span class="n">prefer_low_n</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>  
 
@@ -611,7 +589,9 @@
 <span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
 
 <span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-11-30-funnel_plots_15_0.png" alt="png" /></p>
 
@@ -624,7 +604,9 @@
 <h1 id="try-it-yourself">Try it yourself!</h1>
 <p>If you’re curious about how all of these factors (effect size, effect variability, sample size, and publishing practices) interact, here’s a quick function to let you play around with each one and determine what the effect would look like in the literature. There are particular circumstances in which these issues are most apparent, and most problematic. See if you can figure out what those circumstances are.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create datasets with new effects / variances here</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create datasets with new effects / variances here</span>
 <span class="n">effect</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span>
 <span class="n">variance</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">n_population</span> <span class="o">=</span> <span class="mf">1e6</span>
@@ -641,9 +623,13 @@
 <span class="n">prefer_low_n</span> <span class="o">=</span> <span class="bp">True</span>
 <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">sample_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">sample_max</span><span class="p">,</span>
                      <span class="n">prefer_low_n</span><span class="o">=</span><span class="n">prefer_low_n</span><span class="p">,</span> <span class="n">n_simulations</span><span class="o">=</span><span class="n">n_simulations</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_simulated_data</span><span class="p">(</span><span class="n">null_perc</span><span class="o">=.</span><span class="mo">05</span><span class="p">,</span> <span class="n">pos_perc</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">plot_simulated_data</span><span class="p">(</span><span class="n">null_perc</span><span class="o">=.</span><span class="mo">05</span><span class="p">,</span> <span class="n">pos_perc</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
     <span class="s">"""
     null_perc = Chance of accepting paper w/ a null result (p&lt;.05)
     pos_perc = Chance of accepting a paper w/ a moderate effect size
@@ -655,14 +641,17 @@
     <span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
     <span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
     <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
-
+    
 <span class="n">interact</span><span class="p">(</span><span class="n">plot_simulated_data</span><span class="p">,</span>
          <span class="n">null_perc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">],</span>
          <span class="n">pos_perc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">],</span>
          <span class="n">super_p_perc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">.</span><span class="mo">01</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-11-30-funnel_plots_19_1.png" alt="png" /></p>
+
 
         
       </section>
@@ -809,6 +798,16 @@
     </div>
 
     
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
   </article>
 
   
@@ -862,6 +861,33 @@
   ga('create', '', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'chrisholdgraf';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

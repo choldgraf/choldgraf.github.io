@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -200,75 +212,6 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="https://predictablynoisy.com/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Chris Holdgraf</h3>
-    <p class="author__bio">Data Science | Open Science | Brains</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
-      
-      
-      
-      
-        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
-      
-      
-      
-        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
-      
-      
-        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
-      
-      
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Could Brexit have happened by chance?">
@@ -303,6 +246,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p>As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bothered me, but the method for making such an incredibly important decision. Let me explain…</p>
 
 <p>Scientists are a bit obsessed with the concept of error. In the context of collecting data and anaylzing it, this takes the form of our “confidence” in the results. If all the data say the same thing, then we are usually pretty confident in the overall message. If the data is more complicated than this (and it always is), then we need to define <em>how confident</em> we are in our conclusions.</p>
@@ -318,7 +262,9 @@
 
 <p>We’ll take on the task of assessing what national votes might look like if they happened completely randomly. Then, we can compare the actual results to our simulation in order to decide if we’ve got a “real” result or not.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First, import a bunch of stuff that we'll use later</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First, import a bunch of stuff that we'll use later</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -327,20 +273,28 @@
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">'white'</span><span class="p">)</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initializing the simulation</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Initializing the simulation</span>
 <span class="c"># We'll simulate ten thousand votes.</span>
 <span class="c"># On each iteration, generate random votes and calculate the results </span>
 <span class="n">n_votes</span> <span class="o">=</span> <span class="mi">10000</span>
 
 <span class="c"># This is the actual difference in percentage points that we had between the sides</span>
 <span class="n">actual_diff</span> <span class="o">=</span> <span class="mf">51.9</span> <span class="o">-</span> <span class="mf">48.1</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>First, we’ll create a completely random vote. Each person randomly chooses between the two options: <em>yes</em> and <em>no</em>. Then, we compare the difference in percentage points between the two.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create 10,000 citizens and assign each a random vote</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create 10,000 citizens and assign each a random vote</span>
 <span class="n">total_population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e4</span><span class="p">)</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
@@ -350,15 +304,21 @@
     
     <span class="c"># This is the difference in percentage points</span>
     <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">yes</span> <span class="o">-</span> <span class="n">no</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><code class="highlighter-rouge">diff</code> is a list of numbers representing the lead that “yes” has over “no”.  Remember, we’ve randomly chosen these values, so they are the results you’d get if every single person in the country voted completely randomly.</p>
 
 <p>How can we summarize the “limits of uncertainty” that <code class="highlighter-rouge">diff</code> defines? We can use percentiles to get an idea for the variability of this number. We’ll take the 1st and the 99th percentile of our simulated differences as a proxy for the limits of what we’d expect if there were <em>no</em> true opinion in the population</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we calculate 98% confidence interval on the difference</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we calculate 98% confidence interval on the difference</span>
 <span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Now, we’ll make a plot with 3 things:</p>
 
@@ -368,7 +328,9 @@
   <li>A vertical red line representing the actual difference between yes/no that was reported</li>
 </ol>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's look at the distribution of differences when voting is *totally* random</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's look at the distribution of differences when voting is *totally* random</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">'--'</span><span class="p">)</span>
@@ -376,7 +338,9 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Distribution of totally random splits'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s">'Actual Difference'</span><span class="p">,</span> <span class="s">'Confidence Interval'</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-07-08-voting_randomness_9_0.png" alt="png" /></p>
 
@@ -391,7 +355,9 @@
 
 <p>First, I grabbed a list of each UK voting district, along with its size…</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UK Population data pulled from</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># UK Population data pulled from</span>
 <span class="c"># https://en.wikipedia.org/wiki/List_of_English_districts_by_population</span>
 <span class="n">populations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/uk_population.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s">'District'</span><span class="p">,</span> <span class="s">'Population'</span><span class="p">,</span> <span class="s">'Type'</span><span class="p">,</span> <span class="s">'Ceremonial_County'</span><span class="p">,</span> <span class="s">'Historic_County'</span><span class="p">,</span> <span class="s">'English_Region'</span><span class="p">]</span>
@@ -408,13 +374,17 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Distribution of (sorted) region sizes within the UK'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'District number'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Population percentage'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-07-08-voting_randomness_11_1.png" alt="png" /></p>
 
 <p>Now, we’ll run the simulation. On each iteration, all the districts vote totally randomly. Then, the difference between “yes” and “no” is calculated for each. Finally, these differences are combined in a weighted average, where the weights are proportional to the district sizes. This means that bigger districts have a larger influence on the outcome, mimicking the way that the UK tallies votes.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
     <span class="c"># Define a random split yes vs. no for each area</span>
     <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_areas</span><span class="p">)</span>
@@ -425,13 +395,21 @@
     <span class="n">diffs</span> <span class="o">=</span> <span class="n">yes</span> <span class="o">-</span> <span class="n">no</span>
     <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">populations</span><span class="p">[</span><span class="s">'percent'</span><span class="p">])</span>
     <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">diffs</span> <span class="o">*</span> <span class="mi">100</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we calculate 99% confidence interval on the difference</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we calculate 99% confidence interval on the difference</span>
 <span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's look at the distribution of differences</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's look at the distribution of differences</span>
 <span class="c"># This time, voting is randomized for each region</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
@@ -440,7 +418,9 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Distribution of votes randomized by region'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s">'Actual Difference'</span><span class="p">,</span> <span class="s">'Confidence Interval'</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-07-08-voting_randomness_15_0.png" alt="png" /></p>
 
@@ -460,13 +440,19 @@
 
 <p>We can build this into our simulation…</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we define a percentage of districts that undergo a sudden swing in voter opinion</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we define a percentage of districts that undergo a sudden swing in voter opinion</span>
 <span class="n">perc_swing_amt</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span>
 <span class="n">perc_swing_districts</span> <span class="o">=</span> <span class="o">.</span><span class="mi">2</span>
 <span class="n">n_perc_swing_districts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_areas</span> <span class="o">*</span> <span class="n">perc_swing_districts</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Now, re-run the simulation including the random swing.</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Now, re-run the simulation including the random swing.</span>
 <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
     <span class="c"># Define a random split yes vs. no for each area</span>
@@ -485,13 +471,21 @@
     <span class="n">diffs</span> <span class="o">=</span> <span class="n">yes</span> <span class="o">-</span> <span class="n">no</span>
     <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">populations</span><span class="p">[</span><span class="s">'percent'</span><span class="p">])</span>
     <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">diffs</span> <span class="o">*</span> <span class="mi">100</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we calculate 99% confidence interval on the difference</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Here we calculate 99% confidence interval on the difference</span>
 <span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="o">.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's look at the distribution of differences</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Let's look at the distribution of differences</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s">'--'</span><span class="p">)</span>
@@ -499,7 +493,9 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Distribution of votes randomized by region'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s">'Actual Difference'</span><span class="p">,</span> <span class="s">'Confidence Interval'</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2016/ntbk/2016-07-08-voting_randomness_21_0.png" alt="png" /></p>
 
@@ -642,6 +638,16 @@
     </div>
 
     
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
   </article>
 
   
@@ -695,6 +701,33 @@
   ga('create', '', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'chrisholdgraf';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

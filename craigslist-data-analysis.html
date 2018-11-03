@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -200,75 +212,6 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="https://predictablynoisy.com/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Chris Holdgraf</h3>
-    <p class="author__bio">Data Science | Open Science | Brains</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
-      
-      
-      
-      
-        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
-      
-      
-      
-        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
-      
-      
-        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
-      
-      
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Craigslist data analysis">
@@ -303,6 +246,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <h2 id="using-craigslist-to-compare-prices-in-the-bay-area">Using Craigslist to compare prices in the Bay Area</h2>
 <p>In the <a href="http://chrisholdgraf.com/querying-craigslist-with-python/">last post</a> I showed how to use a simple python bot to scrape data from Criagslist. This is a quick follow-up to take a peek at the data.</p>
 
@@ -312,7 +256,9 @@
 
 <p>Now that we’ve got some craigslist data, what questions can we ask? Well, a good start would be to see where we want (or don’t want) to rent our house. Let’s compare the housing market in a few different regions of the Bay Area.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Seaborn can help create some pretty plots</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Seaborn can help create some pretty plots</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -321,55 +267,81 @@
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s">'colorblind'</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">'white'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First we'll load the data we pulled from before</span>
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># First we'll load the data we pulled from before</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'../data/craigslist_results.csv'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <h1 id="price-distributions">Price distributions</h1>
 <p>As a start, let’s take a look at the distribution of home prices to get an idea for what we’re dealing with:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s">'price'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_5_1.png" alt="png" /></p>
 
 <p>That’s not super useful - it looks like we have a highly skewed distribution with a few instances way out to the right. We’ll convert to a log scale from here on to make it easier to comprehend:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">results</span><span class="p">[</span><span class="s">'logprice'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s">'price'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s">'logprice'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">"Log plots are nicer for skewed data"</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.text.Text at 0x1141cb690&gt;]
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.text.Text at 0x1141cb690&gt;]
 </code></pre></div></div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_7_1.png" alt="png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Don't forget the log mappings:</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Don't forget the log mappings:</span>
 <span class="k">print</span><span class="p">([</span><span class="s">'10**{0} = {1}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>However, what we really want is to look at the breakdown of prices for a few locations in the bay area. Luckily Craigslist stores this in the URL of our search, so we can easily split this up with a pandas <code class="highlighter-rouge">groupby</code>:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax_hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax_hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'loc'</span><span class="p">):</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="s">'logprice'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax_hist</span><span class="p">)</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'San Francisco is too damn expensive'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_10_0.png" alt="png" /></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summary</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'loc'</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s">'logprice'</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'loc'</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summary</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'loc'</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="s">'logprice'</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s">'loc'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">summary</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'{0}: {1}+/-{2}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">vals</span><span class="p">[</span><span class="s">'mean'</span><span class="p">],</span> <span class="n">vals</span><span class="p">[</span><span class="s">'std'</span><span class="p">]</span><span class="o">/</span><span class="n">vals</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
     
 <span class="k">print</span><span class="p">(</span><span class="s">'Differences on the order of: $'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mf">3.65</span> <span class="o">-</span> <span class="mi">10</span><span class="o">**</span><span class="mf">3.4</span><span class="p">))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>That’s a bit unsurprising - San Francisco is significantly more expensive than any other region in the area. Note that this is a log scale, so small differences at this scale == large differences in the raw values.</p>
 
@@ -377,11 +349,17 @@
 
 <p>Perhaps a better way to get an idea for what kind of deal we’re getting is to directly calculate price per square foot. Let’s see how this scales as the houses go up.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll quickly create a new variable to use here</span>
-<span class="n">results</span><span class="p">[</span><span class="s">'ppsf'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s">'price'</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s">'size'</span><span class="p">]</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># These switches will turn on/off the KDE vs. histogram</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># We'll quickly create a new variable to use here</span>
+<span class="n">results</span><span class="p">[</span><span class="s">'ppsf'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s">'price'</span><span class="p">]</span> <span class="o">/</span> <span class="n">results</span><span class="p">[</span><span class="s">'size'</span><span class="p">]</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># These switches will turn on/off the KDE vs. histogram</span>
 <span class="n">kws_dist</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kde</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">hist</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 <span class="n">n_loc</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s">'loc'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_ppsf</span><span class="p">,</span> <span class="n">ax_sze</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -392,9 +370,11 @@
                  <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="o">**</span><span class="n">kws_dist</span><span class="p">)</span>
 <span class="n">ax_ppsf</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s">'Price per square foot'</span><span class="p">)</span>
 <span class="n">ax_sze</span><span class="o">.</span><span class="nb">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">'Size'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.text.Text at 0x114f59090&gt;]
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[&lt;matplotlib.text.Text at 0x114f59090&gt;]
 </code></pre></div></div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_14_1.png" alt="png" /></p>
@@ -403,7 +383,9 @@
 
 <p>Finally, let’s take a look at how the price scales with the size. For this, we’ll use a <code class="highlighter-rouge">regplot</code> to fit a line to each distribution.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Split up by location, then plot summaries of the data for each</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Split up by location, then plot summaries of the data for each</span>
 <span class="n">n_loc</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s">'loc'</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_loc</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="o">*</span><span class="n">n_loc</span><span class="p">))</span>
 <span class="k">for</span> <span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">vals</span><span class="p">),</span> <span class="p">(</span><span class="n">axr</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'loc'</span><span class="p">),</span> <span class="n">axs</span><span class="p">):</span>
@@ -417,13 +399,17 @@
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mo">002</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_16_0.png" alt="png" /></p>
 
 <p>And now on top of one another</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">locs</span> <span class="o">=</span> <span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'loc'</span><span class="p">)]</span>
 <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'loc'</span><span class="p">):</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="s">'size'</span><span class="p">,</span> <span class="s">'ppsf'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">vals</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
@@ -437,9 +423,11 @@
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">locs</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4000</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(0, 10)
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(0, 10)
 </code></pre></div></div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_18_1.png" alt="png" /></p>
@@ -455,27 +443,37 @@
 
 <p>To do this, we’ll use some text analysis tools in <code class="highlighter-rouge">scikit-learn</code>. This is good enough for our purposes, though if we wanted to do something fancier we could use something like <code class="highlighter-rouge">gensim</code>, <code class="highlighter-rouge">word2vec</code>, or <code class="highlighter-rouge">nltk</code>. (we’d also probably need a lot more data).</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">LinearSVC</span>
 <span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.stop_words</span> <span class="kn">import</span> <span class="n">ENGLISH_STOP_WORDS</span>
 <span class="kn">import</span> <span class="nn">string</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>First we’ll do some quick data cleaning - we’ll only keep datapoints with a title, and then define some characters to remove so that the definition of “a word” makes more sense.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word_data</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s">'title'</span><span class="p">])</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word_data</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s">'title'</span><span class="p">])</span>
 
 <span class="c"># Remove special characters</span>
 <span class="n">rem</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="o">+</span> <span class="s">'/</span><span class="err">\</span><span class="s">-+.'</span>
 <span class="n">rem_chars</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="s">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">a</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rem</span><span class="p">])</span>
 <span class="n">word_data</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">word_data</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">rem_chars</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Next, we’ll remove words that are too specific (from a geographical standpoint) to the regions we’re using. Otherwise you’ll just get a bunch of clusters with streetnames etc. predicting the Bay Area region.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loc_words</span> <span class="o">=</span> <span class="p">{</span><span class="s">'eby'</span><span class="p">:</span> <span class="p">[</span><span class="s">'antioch'</span><span class="p">,</span> <span class="s">'berkeley'</span><span class="p">,</span> <span class="s">'dublin'</span><span class="p">,</span> <span class="s">'fremont'</span><span class="p">,</span> <span class="s">'rockridge'</span><span class="p">,</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">loc_words</span> <span class="o">=</span> <span class="p">{</span><span class="s">'eby'</span><span class="p">:</span> <span class="p">[</span><span class="s">'antioch'</span><span class="p">,</span> <span class="s">'berkeley'</span><span class="p">,</span> <span class="s">'dublin'</span><span class="p">,</span> <span class="s">'fremont'</span><span class="p">,</span> <span class="s">'rockridge'</span><span class="p">,</span>
                      <span class="s">'livermore'</span><span class="p">,</span> <span class="s">'mercer'</span><span class="p">,</span> <span class="s">'ramon'</span><span class="p">],</span>
              <span class="s">'nby'</span><span class="p">:</span> <span class="p">[</span><span class="s">'sausalito'</span><span class="p">,</span> <span class="s">'marin'</span><span class="p">,</span> <span class="s">'larkspur'</span><span class="p">,</span> <span class="s">'novato'</span><span class="p">,</span> <span class="s">'petaluma'</span><span class="p">,</span> <span class="s">'bennett'</span><span class="p">,</span> 
                      <span class="s">'tiburon'</span><span class="p">,</span> <span class="s">'sonoma'</span><span class="p">,</span> <span class="s">'anselmo'</span><span class="p">,</span> <span class="s">'healdsburg'</span><span class="p">,</span> <span class="s">'rafael'</span><span class="p">],</span>
@@ -489,11 +487,15 @@
 <span class="n">rand_words</span> <span class="o">=</span> <span class="p">[</span><span class="s">'th'</span><span class="p">,</span> <span class="s">'xs'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'bd'</span><span class="p">,</span> <span class="s">'ok'</span><span class="p">,</span> <span class="s">'bdr'</span><span class="p">]</span>
 <span class="n">stop_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">loc_words</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">rand_words</span>
 <span class="n">stop_words</span> <span class="o">=</span> <span class="n">ENGLISH_STOP_WORDS</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">stop_words</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Finally, we will vectorize this data so that it can be used with sklearn algorithms. This takes a list of “bags” of words, and turns it into a list of vectors, where the length of each vector is the total number of words we’ve got. Each position of the vector corresponds to 1 word. It will be “1” if that word is present in the current item, and 0 otherwise:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vec</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vec</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">stop_words</span><span class="o">=</span><span class="n">stop_words</span><span class="p">)</span>
 <span class="n">vec_tar</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 
 <span class="n">counts</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">word_data</span><span class="p">[</span><span class="s">'title'</span><span class="p">])</span>
@@ -501,13 +503,17 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">counts</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Each row is a post, with 1s representing presence of a word in that post'</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2015/ntbk/2015-09-27-craigslist_data_analysis_27_1.png" alt="png" /></p>
 
 <p>Let’s do a quick description of the most common words in each region. We can use our vectorized vocabulary and see which words were most common.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_words</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">top_words</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">itrg</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">targets</span><span class="p">):</span>
     <span class="n">loc</span> <span class="o">=</span> <span class="n">vec_tar</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">itrg</span><span class="p">]</span>
     <span class="c"># Pull only the data points assigned to the current loction</span>
@@ -518,11 +524,15 @@
     
     <span class="c"># The inverse transform turns the vectors back into actual words</span>
     <span class="n">top_words</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">vec</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">msk_top_words</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Then, we’ll print the words that are unique to each area by filtering out ones that are common across locations:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unique_words</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">unique_words</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">top_words</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
     <span class="n">others</span> <span class="o">=</span> <span class="n">top_words</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">others</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
@@ -530,13 +540,17 @@
                          <span class="k">if</span> <span class="n">wrd</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">others</span><span class="o">.</span><span class="n">values</span><span class="p">())]</span>
 <span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">words</span> <span class="ow">in</span> <span class="n">unique_words</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'{0}: {1}</span><span class="se">\n\n</span><span class="s">---</span><span class="se">\n</span><span class="s">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">words</span><span class="p">))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Apparently people in the North Bay like appliances, people in Santa Cruz like the beach, people in the East Bay need the Bart, and people in San Francisco have victorians…who knew.</p>
 
 <p>Just for fun we’ll also do a quick classification algorithm to see if some machine learning can find structure in these words that separates one location from another:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mod</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mod</span> <span class="o">=</span> <span class="n">LinearSVC</span><span class="p">(</span><span class="n">C</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">targets</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">coefs</span> <span class="o">=</span> <span class="p">[]</span>
@@ -545,15 +559,21 @@
     <span class="n">coefs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">mod</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">counts</span><span class="p">[</span><span class="n">tt</span><span class="p">],</span> <span class="n">targets</span><span class="p">[</span><span class="n">tt</span><span class="p">]))</span>
 <span class="n">coefs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">coefs</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>Doesn’t look like it (those are horrible generalization scores), but we’ll look at what coefficients it considered important anyway:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">icoef</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vec_tar</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">coefs</span><span class="p">):</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">loc</span><span class="p">,</span> <span class="n">icoef</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">vec_tar</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">coefs</span><span class="p">):</span>
     <span class="n">cut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">icoef</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
     <span class="n">important</span> <span class="o">=</span> <span class="n">icoef</span> <span class="o">&gt;</span> <span class="n">cut</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'{0}: {1}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span> <span class="n">vec</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">important</span><span class="p">)))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>You may note that these are quite similar to the words that were unique to each location as noted above - such is the power of machine learning :)</p>
 
@@ -693,6 +713,16 @@
     </div>
 
     
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
   </article>
 
   
@@ -746,6 +776,33 @@
   ga('create', '', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'chrisholdgraf';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

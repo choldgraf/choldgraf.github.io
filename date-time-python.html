@@ -90,7 +90,6 @@
 
 <!-- end SEO -->
 
-
 <link href="https://predictablynoisy.com/feed.xml" type="application/atom+xml" rel="alternate" title="Predictably Noisy Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -149,7 +148,20 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
+<!-- Load JQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load clipboard.js -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js"></script>
+
+<!-- Custom scripts to load after site JS is loaded -->
+<script src="https://predictablynoisy.com/assets/js/copypaste.js" type="text/javascript"></script>
+
+
 <!-- end custom head snippets -->
+
+    <link rel="stylesheet" href="/assets/css/data8.css">
+    <link rel="stylesheet" href="/assets/css/holdgraf.css">
 
   </head>
 
@@ -200,75 +212,6 @@
   
 
 
-  <div class="sidebar sticky">
-  
-
-
-
-<div itemscope itemtype="http://schema.org/Person">
-
-  <div class="author__avatar">
-    
-    	<img src="https://predictablynoisy.com/images/profile.png" class="author__avatar" alt="Chris Holdgraf">
-    
-  </div>
-
-  <div class="author__content">
-    <h3 class="author__name">Chris Holdgraf</h3>
-    <p class="author__bio">Data Science | Open Science | Brains</p>
-  </div>
-
-  <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
-    <ul class="author__urls social-icons">
-      
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Berkeley, CA</li>
-      
-      
-      
-      
-        <li><a href="mailto:hldgrf@gmail.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
-      
-      
-      
-        <li><a href="https://twitter.com/choldgraf"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://github.com/choldgraf"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-        <li><a href="https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en"><i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar</a></li>
-      
-      
-        <li><a href="https://orcid.org/0000-0002-2391-0678"><i class="ai ai-orcid-square ai-fw"></i> ORCID</a></li>
-      
-      
-    </ul>
-  </div>
-</div>
-
-  
-  </div>
-
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Dates in python">
@@ -303,6 +246,7 @@
       
 
       <section class="page__content" itemprop="text">
+        
         <p>As a part of setting up the website for the <a href="http://docathon.org">Docathon</a> I’ve had to re-learn all of my date string formatting rules. It’s one of those little problems you don’t really think about - turning an arbitrary string into something structured like a date - until you’ve actually got to do it.</p>
 
 <p>There are a bunch of tools in python for using date-like objects, but it’s not always easy to figure out how these work. This post is just a couple of pieces of information I’ve picked up along the process.</p>
@@ -322,36 +266,53 @@
 
 <h2 id="datetime">Datetime</h2>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p>The datetime module is our core definition of how to represent dates in python. We can call datetime directly with a bunch of integers as input, representing years, months, days, etc:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">date</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>datetime.datetime(2016, 3, 3, 12, 12, 12)
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">date</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>datetime.datetime(2016, 3, 3, 12, 12, 12)
 </code></pre></div></div>
 
 <p>We can access components of this date object as attributes:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">day</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">day</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attrs</span> <span class="o">=</span> <span class="p">[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">,</span> <span class="s">'day'</span><span class="p">]</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">attrs</span> <span class="o">=</span> <span class="p">[</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'month'</span><span class="p">,</span> <span class="s">'day'</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">---</span><span class="se">\n</span><span class="s">'</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">ii</span><span class="p">))</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+</div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+---
 
 year 2016
 
@@ -362,27 +323,40 @@ month 2
 ---
 
 day 12
+
 </code></pre></div></div>
 
 <h3 id="extra-components-of-datetime-objects">Extra components of datetime objects</h3>
 <p>We can also access specific sub-components of the datetime (that is, either the <strong>date</strong> or the <strong>time</strong>)</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>datetime.date(2016, 3, 3)
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>datetime.date(2016, 3, 3)
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-</code></pre></div></div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>datetime.time(12, 12, 12)
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>datetime.time(12, 12, 12)
 </code></pre></div></div>
 
 <p>Datetime objects also have <strong>timezones</strong>. You can check whether our object already has a timezone with the <code class="highlighter-rouge">tzinfo</code> attribute:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span>
-</code></pre></div></div>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span>
+</code></pre></div>  </div>
+
+</div>
 
 <p>As we can see, there’s nothing in there because we didn’t specify a timezone when we created this object. We need to add a timezone first.</p>
 
@@ -391,54 +365,81 @@ day 12
 <h2 id="datetimes-in-pandas">Datetimes in pandas</h2>
 <p>Pandas (among many, many other things) adds some extra functionality on top of datetime. The most useful function for this is probably <code class="highlighter-rouge">to_datetime</code>. This will try to be clever about whatever the input is, which lets us do things like give it strings:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s">'2017-03-01'</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Class: '</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">date</span><span class="p">),</span> <span class="s">'|'</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Class:  &amp;ltclass 'pandas.tslib.Timestamp'&amp;gt | 2017-03-01 00:00:00
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s">'2017-03-01'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Class: '</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">date</span><span class="p">),</span> <span class="s">'|'</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Class:  &amp;ltclass 'pandas.tslib.Timestamp'&amp;gt | 2017-03-01 00:00:00
+
 </code></pre></div></div>
 
 <p>Note that this isn’t the same object as the datetime object, but we can usually treat them similarly. It also exposes several new methods that can do useful things, like changing the timezone of our datetime object:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s">'UTC'</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s">'UTC'</span><span class="p">)</span>
 <span class="n">date</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2017-03-01 00:00:00+0000', tz='UTC')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2017-03-01 00:00:00+0000', tz='UTC')
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'timezone: '</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
-</code></pre></div></div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'timezone: '</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>timezone:  UTC
+</div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>timezone:  UTC
+
 </code></pre></div></div>
 
 <p>We used a time zone called “UTC”. That stands for “Coordinated Universal Time”, which is basically the global standard for the “base” time. All other timezones are expressed in reference to this base time. For example, let’s now convert our time to PST:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s">'US/Pacific'</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s">'US/Pacific'</span><span class="p">)</span>
 <span class="n">date</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2017-02-28 16:00:00-0800', tz='US/Pacific')
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2017-02-28 16:00:00-0800', tz='US/Pacific')
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'timezone: '</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
-</code></pre></div></div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="s">'timezone: '</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>timezone:  US/Pacific
+</div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>timezone:  US/Pacific
+
 </code></pre></div></div>
 
 <p>Notice how we now see the <code class="highlighter-rouge">-0800</code> at the end. This tells us what kind of offset the ‘US/Pacific’ timezone is from ‘UTC’. It’s expressed as <code class="highlighter-rouge">-mmss</code>, where <code class="highlighter-rouge">m = minute</code> and <code class="highlighter-rouge">s = second</code></p>
 
 <p>One of the really nice things about pandas is that we can represent <strong>ranges</strong> in python. Let’s generate a range of dates below:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The `freq` parameter tells us the size of the jump between items</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The `freq` parameter tells us the size of the jump between items</span>
 <span class="n">freq</span> <span class="o">=</span> <span class="s">'H'</span>  <span class="c"># H == hours, D == days</span>
 <span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">'2017-03-01'</span><span class="p">,</span> <span class="s">'2017-03-05'</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s">'UTC'</span><span class="p">)</span>
 <span class="n">dates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DatetimeIndex(['2017-03-01 00:00:00+00:00', '2017-03-01 01:00:00+00:00',
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DatetimeIndex(['2017-03-01 00:00:00+00:00', '2017-03-01 01:00:00+00:00',
                '2017-03-01 02:00:00+00:00', '2017-03-01 03:00:00+00:00',
                '2017-03-01 04:00:00+00:00'],
               dtype='datetime64[ns, UTC]', freq='H')
@@ -446,10 +447,14 @@ day 12
 
 <p>This lets us do several things, such as create masks for any data we have:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dates</span> <span class="o">&lt;</span> <span class="s">"2017-03-02"</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dates</span> <span class="o">&lt;</span> <span class="s">"2017-03-02"</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array([ True,  True,  True,  True,  True,  True,  True,  True,  True,
         True,  True,  True,  True,  True,  True,  True,  True,  True,
         True,  True,  True,  True,  True,  True, False, False, False,
        False, False, False, False, False, False, False, False, False,
@@ -464,30 +469,42 @@ day 12
 
 <p>It also lets us plot things across dates:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">'2017-01-01'</span><span class="p">,</span> <span class="s">'2017-03-06'</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s">'H'</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s">'UTC'</span><span class="p">)</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s">'2017-01-01'</span><span class="p">,</span> <span class="s">'2017-03-06'</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s">'H'</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s">'UTC'</span><span class="p">)</span>
 <span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
 <span class="n">sr</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="c"># Give us a 30 hour rolling mean</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
+
+</div>
 
 <p><img src="../images/2017/ntbk/2017-03-16-dates_in_python_26_1.png" alt="png" /></p>
 
 <p>Note that if we now change the timezone, some of the days have changed because of the time shift:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Original times</span>
-<span class="n">dates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DatetimeIndex(['2017-01-01 00:00:00+00:00', '2017-01-01 01:00:00+00:00',
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Original times</span>
+<span class="n">dates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DatetimeIndex(['2017-01-01 00:00:00+00:00', '2017-01-01 01:00:00+00:00',
                '2017-01-01 02:00:00+00:00', '2017-01-01 03:00:00+00:00',
                '2017-01-01 04:00:00+00:00'],
               dtype='datetime64[ns, UTC]', freq='H')
 </code></pre></div></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># New times</span>
-<span class="n">dates</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s">'US/Pacific'</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DatetimeIndex(['2016-12-31 16:00:00-08:00', '2016-12-31 17:00:00-08:00',
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># New times</span>
+<span class="n">dates</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s">'US/Pacific'</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DatetimeIndex(['2016-12-31 16:00:00-08:00', '2016-12-31 17:00:00-08:00',
                '2016-12-31 18:00:00-08:00', '2016-12-31 19:00:00-08:00',
                '2016-12-31 20:00:00-08:00'],
               dtype='datetime64[ns, US/Pacific]', freq='H')
@@ -515,18 +532,26 @@ day 12
 
 <p>Most of these are pretty self-explanatory, but of note is the <code class="highlighter-rouge">Z</code> at the end. This simply says that there is zero offset for this datetime, AKA it is “UTC” time.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s">'2017-03-01T12:34:02Z'</span><span class="p">)</span>
-<span class="n">date</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2017-03-01 12:34:02')
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s">'2017-03-01T12:34:02Z'</span><span class="p">)</span>
+<span class="n">date</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2017-03-01 12:34:02')
 </code></pre></div></div>
 
 <h3 id="arbitrary-strings">Arbitrary strings</h3>
 <p>We can also tell pandas how to parse an arbitrary date string. For this, we use placeholders representing different components of the date, and then construct a “parsing string” that we give to the function. This tells the function how to turn input strings into datetime objects. For example, let’s say we have this string:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date_string</span> <span class="o">=</span> <span class="s">'02/2016/12'</span>
-</code></pre></div></div>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date_string</span> <span class="o">=</span> <span class="s">'02/2016/12'</span>
+</code></pre></div>  </div>
+
+</div>
 
 <p>This is a little tricky, because it’s unclear which is the month and which is the day. By specifying a date parsing string, we can easily parse this. The placeholders that we use are in the <a href="http://strftime.org/">strftime</a> website linked above. Here are some useful ones:</p>
 
@@ -536,51 +561,72 @@ day 12
   <li><code class="highlighter-rouge">%d</code> = day</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">'</span><span class="si">%</span><span class="s">m/</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">d'</span><span class="p">)</span>
-<span class="n">date</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2016-02-12 00:00:00')
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="n">format</span><span class="o">=</span><span class="s">'</span><span class="si">%</span><span class="s">m/</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">d'</span><span class="p">)</span>
+<span class="n">date</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2016-02-12 00:00:00')
 </code></pre></div></div>
 
 <p>Above we told pandas to parse the date string as <code class="highlighter-rouge">{month}/{year}/{day}</code>. We can do this with any string structure we like:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a complicated date string</span>
+<div class="input_area">
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Create a complicated date string</span>
 <span class="n">date_string</span> <span class="o">=</span> <span class="s">'02/2016/12 and the time is 11 hr 04 min and 02 sec'</span>
 
 <span class="c"># And tell `to_datetime` how to parse it</span>
 <span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span>
                       <span class="n">format</span><span class="o">=</span><span class="s">'</span><span class="si">%</span><span class="s">m/</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">d and the time is </span><span class="si">%</span><span class="s">H hr </span><span class="si">%</span><span class="s">M min and </span><span class="si">%</span><span class="s">S sec'</span><span class="p">)</span>
 <span class="n">date</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2016-02-12 11:04:02')
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Timestamp('2016-02-12 11:04:02')
 </code></pre></div></div>
 
 <h3 id="printing-strings">Printing strings</h3>
 <p>The same principle can be applied to printing strings. Any datetime object has a method called <code class="highlighter-rouge">strftime</code>. This lets you create a <strong>string</strong> from <strong>time</strong>. You can pass a similar date parsing string to what we used above, and it will tell the object what kind of string to create:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">m and </span><span class="si">%</span><span class="s">d days'</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'2016/02 and 12 days'
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">Y/</span><span class="si">%</span><span class="s">m and </span><span class="si">%</span><span class="s">d days'</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'2016/02 and 12 days'
 </code></pre></div></div>
 
 <p>You can also use this to do some nice formatting, e.g.:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">A, </span><span class="si">%</span><span class="s">B </span><span class="si">%</span><span class="s">d, </span><span class="si">%</span><span class="s">Y'</span><span class="p">)</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Friday, February 12, 2016'
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">A, </span><span class="si">%</span><span class="s">B </span><span class="si">%</span><span class="s">d, </span><span class="si">%</span><span class="s">Y'</span><span class="p">)</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_data_text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'Friday, February 12, 2016'
 </code></pre></div></div>
 
 <p>You can also pass these parsing strings to the <code class="highlighter-rouge">format</code> method of python strings. For example:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mystring</span> <span class="o">=</span> <span class="s">"Today's date is...{:</span><span class="si">%</span><span class="s">A, </span><span class="si">%</span><span class="s">B </span><span class="si">%</span><span class="s">d, </span><span class="si">%</span><span class="s">Y}"</span>
-<span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
-</code></pre></div></div>
+<div class="input_area">
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Today's date is...Friday, February 12, 2016
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">mystring</span> <span class="o">=</span> <span class="s">"Today's date is...{:</span><span class="si">%</span><span class="s">A, </span><span class="si">%</span><span class="s">B </span><span class="si">%</span><span class="s">d, </span><span class="si">%</span><span class="s">Y}"</span>
+<span class="k">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+</code></pre></div>  </div>
+
+</div>
+
+<div class="output_stream highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Today's date is...Friday, February 12, 2016
+
 </code></pre></div></div>
 
 <h2 id="and-thats-itsort-of">And that’s it…sort of</h2>
@@ -701,6 +747,16 @@ day 12
     </div>
 
     
+      
+
+<div class="page__comments">
+  
+  
+    <h4 class="page__comments-title">Leave a Comment</h4>
+    <section id="disqus_thread"></section>
+  
+</div>
+    
   </article>
 
   
@@ -754,6 +810,33 @@ day 12
   ga('create', '', 'auto');
   ga('send', 'pageview');
 </script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'chrisholdgraf';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
 
 

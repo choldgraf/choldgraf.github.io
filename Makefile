@@ -6,19 +6,20 @@ INTERACTCOPY=$(HOME)/Dropbox/github/publicRepos/jupyterblog/create_interactive_n
 PATHCV=$(HOME)/Dropbox/docs/cv_and_resume/Chris_Holdgraf_CV_science.pdf
 GITHUB_PAGES_BRANCH=gh-pages
 
-notebooks:
-	python ../src/notebooks_to_markdown.py
-	python $(INTERACTCOPY) $(ARTICLESDIR)/*/*/*.ipynb $(INPUTDIR)/notebooks --update-path $(INPUTDIR)
-	cp $(PATHCV) content/extras/cv.pdf
+posts:
+	python ./src/notebooks_to_markdown.py
+	# python $(INTERACTCOPY) $(ARTICLESDIR)/*/*/*.ipynb $(INPUTDIR)/notebooks --update-path $(INPUTDIR)
 
-blog: notebooks
-	jekyll build
+serve: posts
+	bundle exec guard
+
+publish: posts
+	bundle exec jekyll build
+	ghp-import -n -c predictablynoisy.com -m "jekyll auto update" -p -f -b gh-pages _site
+	git commit notebooks src -m "publishing posts"
+	git push
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
-github: blog
-	ghp-import -m "Generate jekyll site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
-	git push origin $(GITHUB_PAGES_BRANCH)
-
-.PHONY: blog clean github
+.PHONY: posts serve clean

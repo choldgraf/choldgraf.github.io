@@ -1,0 +1,14 @@
+name: choldgraf
+
+dependencies:
+  - scipy
+  - numpy
+  - matplotlib
+  - seaborn
+  - pandas
+  - nilearn
+  - jupyterlab=0.32.1
+  - ipywidgets=7.2
+  - pip:
+    - colorspacious
+    - makeitpop
