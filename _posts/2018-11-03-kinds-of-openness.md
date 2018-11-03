@@ -46,7 +46,7 @@ That leaves open the question: "how do we measure the **practical** openness of 
 rather than just what it **says**?". A few folks mentioned that the CHAOSS project
 does a lot of work in this gneeral space:
 
-https://twitter.com/abbycabs/status/1054492219808403457
+{% twitter https://twitter.com/abbycabs/status/1054492219808403457 %}
 
 CHAOSS defines standards for metrics to collect about communities. They don't necessarily
 say what others should **do** with those metrics, so perhaps that's on the open community
@@ -91,7 +91,7 @@ make these decisions easier.
 One of the most fascinating links I found was Mozilla's "archetypes of open projects"
 document:
 
-https://twitter.com/neuromusic/status/1054517145436975104
+{% twitter https://twitter.com/neuromusic/status/1054517145436975104 %}
 
 Briefly, this is an internal document that Mozilla made public. It attempts to define
 the different kinds of open projects that exist. Importantly, it also explains the
