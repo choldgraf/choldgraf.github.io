@@ -260,6 +260,7 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-auto-image
+  - jekyll-twitter-plugin
 # mimic GitHub Pages with --safe
 whitelist:
   - jekyll-paginate

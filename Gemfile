@@ -24,6 +24,8 @@ group :jekyll_plugins do
   gem "jekyll-feed"
   gem 'jekyll-sitemap'
   gem 'hawkins'
+  # Blogging tools
+  gem 'jekyll-twitter-plugin'
 end
 
 
@@ -31,3 +33,4 @@ end
 gem 'guard', '~> 2.14.2'
 gem 'guard-jekyll-plus', '~> 2.0.2'
 gem 'guard-livereload', '~> 2.5.2'
+

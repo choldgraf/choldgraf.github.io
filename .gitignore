@@ -2,3 +2,7 @@ _site/
 
 .ipynb_checkpoints
 _posts/images
+
+.sass-cache/
+.tweet-cache/
+.vscode/
