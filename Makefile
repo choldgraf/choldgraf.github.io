@@ -15,7 +15,7 @@ serve: posts
 
 publish: posts
 	bundle exec jekyll build
-	ghp-import -n -c predictablynoisy.com -m "jekyll auto update" -p -f -b gh-pages _site
+	ghp-import -n -c predictablynoisy.com -m "jekyll auto update" -p -f -b master _site
 	git add notebooks src _posts
 	git commit -m "publishing posts"
 	git push
