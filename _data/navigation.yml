@@ -1,16 +1,7 @@
-# main links links
+# main links
 main:
-  - title: "About"
+  - title: "About me"
     url: /about/
 
   - title: "Publications"
     url: /publications/
-
-  - title: "Open Source"
-    url: /opensource/
-
-  - title: "Talks"
-    url: /talks/
-
-  - title: "CV"
-    url: /cv/

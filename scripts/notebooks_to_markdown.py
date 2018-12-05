@@ -13,8 +13,9 @@ TEMPLATE_PATH = os.path.expanduser('~/github/publicRepos/choldgraf.github.io/ass
 POSTS_FOLDER = os.path.join(SITE_ROOT, '_posts')
 IMAGES_FOLDER ='images'
 REPLACE = False
-ipynb_files = glob(os.path.join(SITE_ROOT, 'notebooks/**/*.ipynb'), recursive=True)
-markdown_files = glob(os.path.join(SITE_ROOT, 'notebooks/**/*.md'), recursive=True)
+ipynb_files = glob(os.path.join(SITE_ROOT, 'content/**/*.ipynb'), recursive=True)
+markdown_files = glob(os.path.join(SITE_ROOT, 'content/**/*.md'), recursive=True)
+
 if REPLACE is False:
     new_ipynb_files = [ii for ii in ipynb_files
                        if not os.path.exists(os.path.join(POSTS_FOLDER, os.path.basename(ii).replace('.ipynb', '.md')))]

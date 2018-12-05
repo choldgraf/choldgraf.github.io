@@ -6,9 +6,12 @@ INTERACTCOPY=$(HOME)/Dropbox/github/publicRepos/jupyterblog/create_interactive_n
 PATHCV=$(HOME)/Dropbox/docs/cv_and_resume/Chris_Holdgraf_CV_science.pdf
 GITHUB_PAGES_BRANCH=gh-pages
 
+install:
+	gem install bundler
+	bundle install
+
 posts:
-	python ./src/notebooks_to_markdown.py
-	# python $(INTERACTCOPY) $(ARTICLESDIR)/*/*/*.ipynb $(INPUTDIR)/notebooks --update-path $(INPUTDIR)
+	python ./scripts/notebooks_to_markdown.py
 
 serve: posts
 	bundle exec guard
