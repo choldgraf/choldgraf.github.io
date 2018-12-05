@@ -59,7 +59,7 @@ Those are just a few benefits, but I'm sure there are others. Now that we've got
 of the way, let's move on to deciding whether or not your organization is, in fact, being
 a positive actor in the open-source community.
 
-## How can I tell if I'm exploiting the open community?
+## How can I tell if my organization is not being a good citizen in the open community?
 
 I suspect that many organizations simply haven't put a ton of thought into whether they've got a positive-or-negative
 relationship with the open communities that intersect with their work. Here's a quick set of questions
@@ -69,7 +69,7 @@ to ask yourself:
 * Does your organization create a product that depends on open-source software?
 * Does your organization depend on proprietary software that depends on open-source software?
 
-If you answered "yes" to any of those questions, then ask yourself the following question:
+If you answered "yes" to any of those questions, then ask yourself the following questions:
 
 * Do you have explicit policies that encourage employees to contribute back to open projects?
 * Do you have explicit funding mechanisms to give resources to open projects?
@@ -77,7 +77,13 @@ If you answered "yes" to any of those questions, then ask yourself the following
 * Do you have regular, open channels of communication with those open communities?
 * Do these behaviors scale with the amount of value you derive from open communities?
 
-If you answered "no" to these questions, then you're probably exploiting the open community. You should stop that! The rest of this post are a few ideas on how projects, as well as organizations, can improve this relationship.
+If you answered "no" to these questions, then you're probably exploiting the open community.
+You should stop that!
+
+However, avoiding this kind of one-way relationship with the open source community is complex
+and requires some new efforts and thinking from both sides of the equation.
+The rest of this post includes a few ideas on how open projects, as well as organizations,
+can improve this relationship.
 
 ## How can open communities encourage organizations to be good citizens
 
@@ -114,7 +120,7 @@ kind of behavior? I have a few ideas, but we should spend more time thinking abo
    building a product off of open-source software, you should have a plan for how you'll contribute back to those
    communities. Saying that you'll open-source your code and throw it over the wall is *not enough*.
 
-## What could organizations do to support open communities?
+## What could organizations do now to support open communities?
 
 All of the steps above are fairly long-term solutions to a problem that exists right now. What are some things
 that organizations can do now in order to make sure they're perceived as more positive actors in open communities?
