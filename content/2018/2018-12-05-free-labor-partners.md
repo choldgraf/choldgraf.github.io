@@ -55,7 +55,12 @@ I'd argue that interacting with the open community has a number of bottom-line b
   tools. We all benefit from this, and more importantly you don't have a dead project that your
   core product or teams depend on.
 
-Those are just a few benefits, but I'm sure there are others. Now that we've got that out
+Those are just a few benefits, but I'm sure there are others. For more information and ideas about
+how open source communities can be a benefit to your organization, I recommend Mozilla's
+[Open Source Archetypes](https://blog.mozilla.org/wp-content/uploads/2018/05/MZOTS_OS_Archetypes_report_ext_scr.pdf)
+research paper.
+
+Now that we've got that out
 of the way, let's move on to deciding whether or not your organization is, in fact, being
 a positive actor in the open-source community.
 
