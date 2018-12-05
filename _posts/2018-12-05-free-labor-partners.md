@@ -147,3 +147,5 @@ change the license to be less-permissive. I think this is a reasonable step to t
 curb this kind of bad behavior. However, it's also a blunt instrument. I **want** organizations to be
 able to make money using open-source software, and I think copyleft licenses may reduce a lot of
 the fluid, open practices that make open-source such a powerful force in our society.
+
+*Many thanks to [Yuvi Panda](https://twitter.com/yuvipanda), [Tim Head](https://twitter.com/betatim), and [Joe Hamman](https://twitter.com/HammanHydro) for comments on iterations of this post*
