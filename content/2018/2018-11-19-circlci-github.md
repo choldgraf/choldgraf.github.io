@@ -1,4 +1,10 @@
-# Automatically mirroring a github repository with CircleCI
+---
+tags: productivity
+title: Automatically mirror a github repository with CircleCI
+permalink: circleci-mirror
+category: deployments
+date: 2018-12-18
+---
 
 > tl;dr: you can automatically mirror the contents of one repository to another by
   using CI/CD services like CircleCI. This post shows you one way to do it using
