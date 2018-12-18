@@ -65,7 +65,7 @@ This generates two files in your home directory:
 * `key.txt` is your private key. You **should not share this w/ others** unless you know what you're doing.
 * `key.txt.pub` is your public key. You can share this w/ others.
 
-## Step 2: Add this this SSH key as a "deploy key" to your mirror repo
+## Step 2: Add this SSH key as a "deploy key" to your mirror repo
 
 In your github repository, go to `settings -> deploy keys -> add deploy key`. See the diagram below for the steps:
 
@@ -155,6 +155,11 @@ In the `Hostname` box, put `github.com`.
 
 Now that CircleCI has our private key, we need to configure it to
 use this key during builds.
+
+**I'd recommend now deleting the `key.txt` and `key.txt.pub` files from your computer,
+just to make sure they don't accidentally fall in the wrong hands**. You can always generate
+a new public/private pair and follow the steps above if you need to update the CircleCI deploy
+keys.
 
 ## Step 6: Modify your CircleCI configuration to use your private key
 
