@@ -52,3 +52,9 @@ div.input_area .copybtn:hover, div.highlighter-rouge .copybtn:hover {
 div.highlighter-rouge:before, figure.highlight:before {
   content: none;
 }
+
+/* Centered images in about page */
+img.img_center {
+  height: 200px;
+  margin: 0 auto;
+}

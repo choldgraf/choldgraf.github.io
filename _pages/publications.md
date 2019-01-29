@@ -5,14 +5,9 @@ permalink: /publications/
 author_profile: true
 ---
 
-Here's a relatively recent list of my publications.
+For an up-to-date list of my recent publications, check out
+[my ORCID page](https://orcid.org/0000-0002-2391-0678), which
+lists publications, preprints, and other digital artifacts.
 
-{% if author.googlescholar %}
-  You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
-{% endif %}
-
-{% include base_path %}
-
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+You can also check out [my Google Scholar page](https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en&oi=ao),
+although I spend less time making sure this one is correct (boo information silos!)

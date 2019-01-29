@@ -6,31 +6,38 @@ author_profile: true
 ---
 
 I'm a fellow at the [Berkeley Institute for Data Science](https://bids.berkeley.edu/)
-and a member of [Project Jupyter](http://jupyter.org/). I work at the intersection
+and a member of [Project Jupyter](http://jupyter.org/) as well as the
+[Binder Project](https://mybinder.readthedocs.io/en/latest/about.html). I work at the intersection
 of technical development, open communities, scientific research, and education.
 
-I work with teams to create and improve [open-source technology](opensource) for
+I work with teams to create and improve open-source technology for
 scientists, educators, and data analysts. My goal is to help people do their
-work more effectively, openly, and reproducibly.
+work more effectively, openly, inclusively, and reproducibly.
 
-I love coding, communicating, engaging with the community, and building
-technology that helps people who are trying to make the world a better place.
-
-I'm also a cognitive neuroscientist who uses predictive modeling to study
+I used to be a cognitive neuroscientist using predictive modeling to study
 the ways in which the human [auditory system understands speech](https://www.nature.com/articles/ncomms13654).
-I also help to build tools that make it easier to analyze and share data from the
-brain.
 
 Check out the links above for more information on some of the things I've
 been up to, or see [my blog](/) for some of my thoughts.
 
-## Open Source
+## Scientific Research and Open Scholarship
 
-### Binder
+I've been involved with several projects in academic / scientific research. These mostly focus around
+"meta" issues in open source communities, open standards and practices in scientific fields, and
+computational neuroscience.
 
-<img src="https://mybinder.org/static/logo.svg?v=f9f0d927b67cc9dc99d788c822ca21c0" width=300 />
+For a list of publications and scholarly artifacts in which I've been involved,
+check out [my ORCID page](https://orcid.org/0000-0002-2391-0678).
 
-![](https://mybinder.org/static/logo.svg?v=f9f0d927b67cc9dc99d788c822ca21c0)
+## Open Source and Open Community
+
+Much of my work revolves around open communities that create tools and projects for scientific
+research as well as education. Below are a few core projects I've been involved with recently.
+
+### The Binder Project
+
+![binder logo](https://mybinder.org/static/logo.svg?v=f9f0d927b67cc9dc99d788c822ca21c0){:.img_center}
+
 Binder allows you to create custom computing environments that can be
 shared and used by many remote users. It is powered by BinderHub, which
 is an open-source tool that deploys the Binder service in the cloud. One-such
@@ -41,9 +48,9 @@ of their code with others as easily as possible. It is used by people across
 the scientific, education, and analytics communities.
 
 
-### JupyterHub
+### Project Jupyter and JupyterHub
 
-<img src="https://zero-to-jupyterhub.readthedocs.io/en/latest/_static/logo.png" width=300 />
+![JupyterHub logo](https://zero-to-jupyterhub.readthedocs.io/en/latest/_static/logo.png){:.img_center}
 
 JupyterHub is a tool that lets an administrator serve many user sessions
 from a single machine. The [Zero to JupyterHub guide](z2jh.jupyter.org) is an instructional and
@@ -56,7 +63,8 @@ has become the most popular method for running a JupyterHub at scale in the clou
 
 ### Docathon
 
-<img src="https://docathon.github.io/docathon/images/logo.svg" width=300 />
+![Docathon logo](https://docathon.github.io/docathon/images/logo.svg){:.img_center}
+
 
 The Docathon is a week-long global sprint where we focus our efforts on improving
 the state of documentation in the open-source and open-science world.
@@ -77,7 +85,7 @@ reach out!
 
 ### MNE-Python
 
-<img src="https://martinos.org/mne/stable/_static/mne_logo.png" width=300 />
+![MNE logo](https://martinos.org/mne/stable/_static/mne_logo.png){:.img_center}
 
 MNE-Python is open-source software for exploring, visualizing, and analyzing
 human neurophysiological data (MEG, EEG, sEEG, ECoG, etc).
@@ -86,10 +94,6 @@ After my PhD, I spent some time generalizing the code I had written for [recepti
 analysis](https://martinos.org/mne/stable/auto_tutorials/plot_receptive_field.html?highlight=receptive%20field)
 of human ECoG data, which now exists in MNE-Python.
 
-
-## Open communities
-
-## Science
 
 ## CV
 
