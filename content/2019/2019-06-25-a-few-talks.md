@@ -21,14 +21,14 @@ This talk covers some of the technical infrastructure behind the pedagogical
 efforts here at UC Berkeley. It's a brief dive into JupyterHub distributions
 and how they fit into an institution like UC Berkeley.
 
-bit.ly/2019-data8-jupyter
+[https://bit.ly/2019-data8-jupyter]
 
 ## Open infrastructure for open science (5 min)
 
 This one was a quick overview of the Binder ecosystem for a community focused
 mostly around reproducibility and publishing. Lots of action-items in here :-)
 
-bit.ly/2019-elife-cc-holdgraf
+[https://bit.ly/2019-elife-cc-holdgraf]
 
 ## Reproducibility with Binder @ ASM
 
@@ -37,8 +37,7 @@ science. It was geared towards a less-technical audience than many of the
 conferences I normally speak at. It covers more of a users' perspective of mybinder.org,
 and how this might fit into reproducible publishing.
 
-bit.ly/2019-ASM-jupyter
-
+[https://bit.ly/2019-ASM-jupyter]
 ## Reproducibility with Binder @ UW Reproducibility workshop
 
 This talk goes into more depth on the technical side of the reproducibility efforts
@@ -46,8 +45,7 @@ with Jupyter and Binder. It was given in the context of a [two-day workshop on
 reproducible environments and publishing](https://escience.washington.edu/writing-reproducible-executable-scientific-papers-with-r-python-a-hands-on-workshop/).
 
 
-bit.ly/2019-uw-reproducibility-jupyter
-
+[https://bit.ly/2019-uw-reproducibility-jupyter]
 
 ## Binder in the cloud @ csvconf
 
@@ -55,7 +53,7 @@ A broad overview of the Binder ecosystem and the technical stack that lies
 underneath it, as well as a short aside on the composable, modular approach
 that Jupyter takes towards building these tools
 
-http://bit.ly/2019-binder-csvconf
+[https://bit.ly/2019-binder-csvconf]
 
 ## Jupyter Book @ Strada
 
@@ -63,4 +61,4 @@ An overview of the [jupyter book project](https://jupyter.org/jupyter-book). Thi
 covers the technical stack behind the tool that converts collections of
 Jupyter Noteoboks into an HTML website book.
 
-http://bit.ly/2019-strada-jupyter-book
+[https://bit.ly/2019-strada-jupyter-book]
