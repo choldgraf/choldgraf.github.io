@@ -11,7 +11,7 @@ install:
 	bundle install
 
 posts:
-	python ./scripts/notebooks_to_markdown.py
+	python ./scripts/build_html.py
 
 serve: posts
 	bundle exec guard
