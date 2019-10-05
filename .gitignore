@@ -6,3 +6,6 @@ _posts/images
 .sass-cache/
 .tweet-cache/
 .vscode/
+
+# Ignore posts folder because we'll generate this with CI/CD
+_posts/

@@ -16,6 +16,7 @@
   }
 }
 
+
 .page {
   @include breakpoint($large) {
     @include span(10 of 12 last);
@@ -32,6 +33,11 @@
       @include full();
     }
   }
+}
+
+// Over-ride to add extra room for right sidebar
+.page {
+  padding-right: 0px !important;
 }
 
 .page__title {
