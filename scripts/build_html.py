@@ -1,12 +1,7 @@
-from subprocess import check_call
-import numpy as np
 import os
 import os.path as op
 import shutil as sh
 from glob import glob
-import nbformat as nbf
-import yaml
-from textwrap import dedent
 from jupyter_book.build import SUPPORTED_FILE_SUFFIXES
 from jupyter_book.page import page_html, write_page
 from jupyter_book.page.page import page_css, page_js
@@ -65,4 +60,4 @@ for ifile in tqdm(all_files):
     html = f"{yaml}\n\n{html}"
 
     # Write the HTML to disk
-    path_html = write_page(dedent(html), POSTS_FOLDER, resources)
+    path_html = write_page(html, POSTS_FOLDER, resources)
