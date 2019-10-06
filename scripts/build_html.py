@@ -57,5 +57,5 @@ for ifile in tqdm(all_files):
     html = f"{yaml}\n\n{html}"
 
     # Write the HTML to disk
-    out_folder = POSTS_FOLDER if f'posts{os.sep}' in ifile else DRAFTS_FOLDER
+    out_folder = POSTS_FOLDER if f'content{os.sep}' in ifile else DRAFTS_FOLDER
     path_html = write_page(html, out_folder, resources)
