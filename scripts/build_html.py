@@ -5,15 +5,18 @@ from glob import glob
 from jupyter_book.build import SUPPORTED_FILE_SUFFIXES
 from jupyter_book.page import page_html, write_page
 from jupyter_book.page.page import page_css, page_js
+from jupyter_book.utils import load_ntbk
 import jupytext as jpt
 from tqdm import tqdm
 
 
 SITE_ROOT = op.join(op.dirname(op.abspath(__file__)), '..')
 POSTS_FOLDER = os.path.join(SITE_ROOT, '_posts')
+DRAFTS_FOLDER = os.path.join(SITE_ROOT, '_drafts')
 IMAGES_FOLDER ='images'
 REPLACE = False
 all_files = glob(os.path.join(SITE_ROOT, 'content/**/*.*'), recursive=True)
+all_files += glob(os.path.join(SITE_ROOT, 'drafts/**/*.*'), recursive=True)
 skipped_files = []
 
 # Update the CSS and JS with the latest jupyter-book values
@@ -38,14 +41,8 @@ for ifile in tqdm(all_files):
         continue
 
     # Read in file with jupytext
-    ntbk = jpt.read(ifile)
-
-    # Check if we had extra YAML frontmatter in the first cell. If so, grab it.
-    if '---' in ntbk.cells[0].source:
-        yaml_extra = ntbk.cells.pop(0).source.replace('---', '').strip()
-    else:
-        yaml_extra = ''
-
+    ntbk = load_ntbk(ifile)
+    yaml_extra = ntbk['metadata'].get('yaml_header', '')
     markdown = '\n'.join([cell.source for cell in ntbk.cells if cell['cell_type'] == "markdown"])
     teaser = ' '.join(markdown.split(' ')[:100]).replace('\n', ' ')
     teaser = ''.join(char for char in teaser if char.lower() not in "#:/'\"\\")
@@ -60,4 +57,5 @@ for ifile in tqdm(all_files):
     html = f"{yaml}\n\n{html}"
 
     # Write the HTML to disk
-    path_html = write_page(html, POSTS_FOLDER, resources)
+    out_folder = POSTS_FOLDER if f'posts{os.sep}' in ifile else DRAFTS_FOLDER
+    path_html = write_page(html, out_folder, resources)

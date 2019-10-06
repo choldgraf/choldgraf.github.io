@@ -1,7 +1,6 @@
 ---
 tags: python blogging jekyll
 title: Leadership in open science
-permalink: leadership-open-science
 category: leadership
 date: 2018-06-20
 ---
