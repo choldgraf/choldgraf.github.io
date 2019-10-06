@@ -181,6 +181,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  drafts:
+    output: true
+    permalink: /:collection/:path/
 
 
 # Defaults
@@ -238,6 +241,14 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+  # _drafts
+  - scope:
+      path: ""
+      type: drafts
+    values:
+      layout: single
+      author_profile: false
+      share: false
 
 # Sass/SCSS
 sass:
