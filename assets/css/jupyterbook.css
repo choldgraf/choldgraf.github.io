@@ -1312,7 +1312,8 @@ pre.highlight code {
   padding: 1em 1.5em !important; }
 
 .output_png img,
-p img {
+div.text_cell_render > p > img,
+div.text_cell_render > p > a > img {
   max-width: 500px;
   display: block;
   margin-left: auto;
