@@ -1,11 +1,3 @@
-BASEDIR=$(CURDIR)
-INPUTDIR=$(BASEDIR)/content
-ARTICLESDIR=$(INPUTDIR)/articles
-OUTPUTDIR=$(BASEDIR)/output
-INTERACTCOPY=$(HOME)/Dropbox/github/publicRepos/jupyterblog/create_interactive_notebooks.py
-PATHCV=$(HOME)/Dropbox/docs/cv_and_resume/Chris_Holdgraf_CV_science.pdf
-GITHUB_PAGES_BRANCH=gh-pages
-
 install:
 	gem install bundler
 	bundle install
@@ -14,17 +6,6 @@ posts:
 	python ./scripts/build_html.py
 
 serve: posts
-	bundle exec guard
-
-publish: posts
-	bundle exec jekyll build
-	ghp-import -n -m "jekyll auto update" -p -b master _site
-	git add -u
-	git reset -- _drafts/*
-	git commit -m "publishing posts"
-	git push
-
-clean:
-	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
+	bundle exec jekyll serve
 
 .PHONY: posts serve clean
