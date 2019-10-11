@@ -1,13 +1,18 @@
-# Automating Jupyter Book deployments with CI/CD
+---
+tags: [talks]
+title: Automating Jupyter Book deployments with CI/CD
+date: 2019-10-11
+permalink: automating-jb
+---
 
 Lately I've spent a lot of time trying to reduce the friction involved
 in deploying Jupyter Book as well as contributing to the project.
 Features are a great carrot, but ultimately getting engagement is also
-a process of lowering barriers to entry and showing people a path forward.
+about lowering barriers to entry and showing people a path forward.
 Jupyter Book is a relatively straightforward project, but it involves
-a few different technical pieces that can be painful to use (thanks Jekyll).
+a few technical pieces that can be painful to use (thanks Jekyll).
 
-Recently I decided to see whether we can **automate deploying a Jupyter Book online**.
+Recently I experimented with whether we can **automate deploying a Jupyter Book online**.
 Using continuous integration / deployment services seems like a natural place
 to try this out. One can upload a barebones set of code to a GitHub repository,
 then configure a build system to create a book and deploy it online from there.
@@ -17,7 +22,7 @@ This blog post is a place to keep track of the current state of affairs for this
 
 ## The general set of steps involved
 
-I decided to start with the simplest possible Jupyter Book configuration:
+We'll start with the simplest possible Jupyter Book configuration:
 to have a single folder with a collection of content inside. The folder looks
 like this:
 
@@ -34,6 +39,10 @@ like this:
 |
 └── configuration_files_for_cicd/
 ```
+
+There's no table of contents, and no configuration file (though we could add
+these if we wish). If Jupyter Book is used to create a new book with some
+content, but no TOC is given, it'll automatically generate one.
 
 Our goal is to do the following in an automated fashion:
 
@@ -59,8 +68,8 @@ the whole point of the site - to deploy websites from online repositories.
 To do this, I simply had to connect Netlify to my [book content repository](https://github.com/choldgraf/jupyter-book-deploy-demo/)
 and tell it to start building a site from that repository's contents.
 
-The one change I had to made was to generate a custom "build" command.
-This is a command that Netlify runs every time it tries to build your site.
+I modified the build instructions using a custom "build" command.
+Netlify runs this command every time it tries to build your site.
 You can configure this by creating a `netlify.toml` file and putting it
 in the root of your repository. [Here's a link to my configuration file](https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/netlify.toml).
 
@@ -90,8 +99,10 @@ tell Jupyter Book to use some pre-existing content when it generated my book tem
 In addition, note that I could immediately install both Python and Ruby packages - that's
 because Netlify's base build environment has both languages installed already!
 
+<!-- #region {"tags": ["popout"]} -->
 One gotcha on getting Netlify to work was configuring it to use a Python 3.X environment.
 That's accomplished with the `runtime.txt` file [at this location](https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/runtime.txt).
+<!-- #endregion -->
 
 By adding this configuration to my site, Netlify immediately started building
 and hosting the book. You can find [that book deployment here](https://jupyter-book-deploy-demo.netlify.com).

@@ -1,3 +1,3 @@
 # Testing a permalink
 
-Eventually I'll wrote a post about the build system.
+Eventually I'll wrote a post about the build system of this website
