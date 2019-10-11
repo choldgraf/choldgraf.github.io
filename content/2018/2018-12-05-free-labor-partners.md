@@ -1,6 +1,6 @@
 ---
 tags: [open communities, open culture, sustainability]
-title: Open communities need to be partners, not sources of free labor 
+title: Open communities need to be partners, not sources of free labor
 permalink: open-communities-free-labor
 category: open source
 date: 2018-12-05
@@ -15,7 +15,7 @@ at the work that those organizations have done over time, you often see a pretty
 of contributions *back* to those open source projects.
 
 I'd argue that using an open community's software without contributing back is straight-up
-exploitative (legal, sure, but still exploitative), and we should think about ways to 
+exploitative (legal, sure, but still exploitative), and we should think about ways to
 suppress this kind of behavior. This post is a collection of thoughts on that topic.
 
 But first....
@@ -106,7 +106,7 @@ kind of behavior? I have a few ideas, but we should spend more time thinking abo
    that lists contributions broken down by company. It would be great to adapt this kind of visualization
    for the broader OSS community. More generally, "thank-you"s should be for specific behavior, and it should be clear whether that behavior is a one-off or is on-going. Organizations are incentive-driven, so we should create more
    positive incentives for them to interact.
-   
+
 2. **Open communities need a better vocabulary to describe bad behavior when it exists**. I've had
    a number of conversations with folks that are frustrated when an organization uses their tool without
    giving back. These people often feel like there is no medium through which they can "call-out" the

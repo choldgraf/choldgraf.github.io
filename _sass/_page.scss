@@ -405,3 +405,8 @@
   font-size: $type-size-6;
   text-transform: uppercase;
 }
+
+// Blog archive page
+div.archive article.archive__item p {
+  font-size: .9em;
+}
