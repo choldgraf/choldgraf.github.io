@@ -63,7 +63,7 @@ the Jupyter Book documentation).
 By far the easiest way to accomplish the above is with the online
 website provider [Netlify](https://www.netlify.com). This was my
 first experience with the Netlify service, and I must say that I was
-really pleased (thanks to [Emily DuPre](https://github.com/emdupre)
+really pleased (thanks to [Elizabeth DuPre](https://github.com/emdupre)
 for the recommendation and [Netlify tutorial](https://jupyterbook.org/guide/publish/netlify.html)).
 
 Netlify has automatic deployment built into its service, since that's
