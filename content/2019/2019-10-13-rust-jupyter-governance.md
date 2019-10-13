@@ -2,7 +2,7 @@
 tags: [governance]
 title: What would Rust-style governance look like in Jupyter?
 date: 2019-10-13
-permalink: rest-jupyter-governance
+permalink: rust-jupyter-governance
 ---
 
 # What would Rust-style governance look like in Jupyter?
