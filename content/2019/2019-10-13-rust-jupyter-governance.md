@@ -1,3 +1,10 @@
+---
+tags: [governance]
+title: What would Rust-style governance look like in Jupyter?
+date: 2019-10-13
+permalink: rest-jupyter-governance
+---
+
 # What would Rust-style governance look like in Jupyter?
 
 As I've written about before, I [like Rust's governance structure](https://predictablynoisy.com/rust-governance).
@@ -5,7 +12,8 @@ I mean, who can't get behind a community that
 [lists governance as a top-level page on its website](https://www.rust-lang.org/governance)?
 
 Jupyter is currently in the middle of
-[figuring out the next phase of its governance structure](https://discourse.jupyter.org/t/governance-office-hours-meeting-minutes/1480/26), and so I have been thinking about
+[figuring out the next phase of its governance structure](https://discourse.jupyter.org/t/governance-office-hours-meeting-minutes/1480/26),
+and so I have been thinking about
 what this might look like. This post is a quick thought-experiment to explore what it'd mean
 to port over Rust's governance directly into the Jupyter community.
 
@@ -21,7 +29,7 @@ key pieces:
   the [Rust governance page](https://www.rust-lang.org/governance/).
 * There is also a core-team that cuts across topic teams and has representatives
   from each topic team, they discuss project-wide matters (but rarely).
-* A new RFC is assigned a team, as well as a "shephard" from that team. This person's
+* A new RFC is assigned a team, as well as a "shepherd" from that team. This person's
   job is to move the RFC process forward, not to comment on or implement the RFC.
 * After a discussion period, all members of the sub-team must vote to enter
   a Final Comment Period. This should happen when "enough information is presented in
@@ -81,10 +89,10 @@ replace "RFC" with "JEP".
 * If a person wants to make their JEP "official", they fill in the JEP template and
   make a pull-request to the repository.
 * After an initial overview, a Jupyter team is assigned to the JEP.
-* That team then picks a shephard (how the teams do this is up to them).
-* The shephard oversees a process of feedback, asks for input from others in the
+* That team then picks a shepherd (how the teams do this is up to them).
+* The shepherd oversees a process of feedback, asks for input from others in the
   community, and directs attention to the JEP on the listservs, community forum, etc.
-* When the shephard thinks that the JEP is ready for a decision, they ask their
+* When the shepherd thinks that the JEP is ready for a decision, they ask their
   team to vote on whether it should enter a "final review" phase. No more modifications
   should be made to the JEP at this point.
 * This triggers a 7-day window for team members to review the JEP. At the
@@ -100,24 +108,32 @@ are the groups that oversee this mechanism? In the Rust community,
 these teams are broken down by either technical or community topics
 (e.g., "compilers", "community", or "packaging"). The Jupyter community
 similarly has several focus-groups that touch different parts of the
-interactive computing stack. Here are a few ideas:
+interactive computing stack. Here are a few core ones that basically already exist:
+
+* **JupyterLab core**
+* **JupyterHub core**
+* **Infrastructure**
+* **Community**
+* **Events**
+
+One could imagine beginning with this subset of teams, and adding others organically
+over time. Each of the teams listed above would manage JEP processes for their respective
+domain. They would be given a list of repositories (and maybe a GitHub organization)
+to oversee, and when a new JEP came in, one of the the team members would be
+chosen to shepherd the process. The team would be the definitive source of
+decision-making for topics in that domain.
+
+Here are a few others that come to mind - they're a bit less well-defined and might
+be good candidates for team growth in the future.
 
 * **The notebook specification**
 * **Kernels and communication protocols**
-* **Infrastructure and Dev-Ops**
-* **JupyterLab core**
 * **Visualizations and widgets**
 * **Publishing and document formats**
 * **Data specifications**
-* **Community and inclusion**
 * **Finance and accounting**
-* **Events**
-
-Each of the teams listed above would manage JEP processes for their respective
-domain. They would be given a list of repositories (and maybe a GitHub organization)
-to oversee, and when a new JEP came in, one of the the team members would be
-chosen to shephard the process. The team would be the definitive source of
-decision-making for topics in that domain.
+* **Technical accessibility**
+* **Documentation**
 
 There are a few other roles that would need to be created to facilitate this process:
 
@@ -128,6 +144,8 @@ There are a few other roles that would need to be created to facilitate this pro
 * **A core team** - would need to be created that cuts across the topic-specific teams.
   This team would exercise large-scale decisions within the community but generally
   rarely exercise their power. Similar to a BDFL.
+* **A shepherd role** - we'd need to formalize what a "shepherd" is in the Jupyter community.
+  Potentially sub-teams would modify this slightly to fit their own needs.
 
 
 ## What's the difference between current Jupyter and JEP Jupyter?
@@ -148,6 +166,29 @@ What we'd need to do:
   and discoverable)
 * re-work team processes to encourage them to follow the JEP process over time (I suspect this would
   be the hardest thing to do)
+
+
+## What's the difference between Jupyter and Rust?
+
+Finally, while it's interesting to port one community's governance model directly onto another,
+there are difference between the Jupyter and Rust projects, both technical and social ones.
+Here are a few differences I can think of that might have an impact on how this model would work.
+
+* **Jupyter evolves fairly quickly** - Whether it is JupyterLab development, the growth of new
+  protocols or deployments in the JupyterHub stack, or extensions of Jupyter tools for new
+  use-cases, Jupyter seems to move fairly quickly. The RFC (or JEP) model is one that intentionally
+  slows things down, so perhaps we'd need to be more picky about when to follow such a model
+  vs. when to allow codebases to grow more quickly.
+* **Jupyter doesn't have a process like this already** - The recent JEP updates notwithstanding,
+  Jupyter doesn't have a culture of following the JEP process already. This makes me think that
+  adopting this process would need to be rolled out slowly over time, and in smaller increments
+  in order to make sure teams buy-in to the process.
+* **Jupyter doesn't have many official roles/titles** - Adding extra complexity to governance
+  also adds extra responsibility and labor needed to manage that complexity. In order to
+  ensure that the work gets done, and credit is given to those doing the work, we'd need to grow
+  a culture of creating specific roles and responsibility for those roles.
+
+## Wrapping up
 
 I'm probably missing some things, but this seems like a reasonable plan! As I mentioned
 above, this post has mostly been a thought-experiment, but if anybody has thoughts on bringing
