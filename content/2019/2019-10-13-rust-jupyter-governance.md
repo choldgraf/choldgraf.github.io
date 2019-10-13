@@ -17,6 +17,10 @@ and so I have been thinking about
 what this might look like. This post is a quick thought-experiment to explore what it'd mean
 to port over Rust's governance directly into the Jupyter community.
 
+*Note: I'm not an expert in Rust governance, so there are some assumptions made about its model
+based on my outside perspective. Apologies if I miss any important details about the Rust model,
+but this is mostly meant as as inspiration, not a report on Rust's governance :-)*
+
 ## A quick recap of Rust's governance structure
 
 First off, how does Rust govern and organize itself? There are a few few
