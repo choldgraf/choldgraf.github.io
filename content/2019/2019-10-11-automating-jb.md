@@ -1,5 +1,5 @@
 ---
-tags: [talks]
+tags: [infrastructure]
 title: Automating Jupyter Book deployments with CI/CD
 date: 2019-10-11
 permalink: automating-jb
