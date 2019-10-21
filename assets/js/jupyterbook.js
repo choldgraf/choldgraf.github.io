@@ -372,26 +372,35 @@ var initHiddenCells = function () {
 initFunction(initHiddenCells);
 const initAnchors = () => {
 
-    if (window.anchors === undefined) {
+  if (window.anchors === undefined) {
 
-      setTimeout(initAnchors, 250)
+    setTimeout(initAnchors, 250);
 
-      return
-
-    }
-
-    anchors.add("main h1, main h2, main h3, main h4")
+    return;
 
   }
 
+  anchors.add("main h1, main h2, main h3, main h4");
+
+
+
+  // Disable Turbolinks for anchors
+
+  document.querySelectorAll('.anchorjs-link')
+
+    .forEach(it => it.dataset['turbolinks'] = false);
+
+}
+
 initFunction(initAnchors);
+
 const initToc = () => {
 
   if (window.tocbot === undefined) {
 
-    setTimeout(initToc, 250)
+    setTimeout(initToc, 250);
 
-    return
+    return;
 
   }
 
@@ -427,11 +436,19 @@ const initToc = () => {
 
     listClass: 'toc__menu',
 
-    activeListItemClass: "",  // Not using
+    activeListItemClass: " ",  // Not using, can't be empty
 
-    activeLinkClass: "", // Not using
+    activeLinkClass: " ", // Not using, can't be empty
 
   });
+
+
+
+  // Disable Turbolinks for TOC links
+
+  document.querySelectorAll('.toc-list-item a')
+
+    .forEach(it => it.dataset['turbolinks'] = false);
 
 }
 
