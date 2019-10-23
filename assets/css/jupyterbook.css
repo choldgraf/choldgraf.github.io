@@ -1250,6 +1250,8 @@ div.jb_cell.tag_popout .cell {
 
 div.jb_cell.tag_full_width {
   width: 100%; }
+  div.jb_cell.tag_full_width div.input {
+    width: 70%; }
   div.jb_cell.tag_full_width img {
     max-width: 100%; }
 
@@ -1259,9 +1261,8 @@ div.jb_cell.tag_full_width {
 div.highlighter-rouge {
   position: relative; }
 
-div.inner_cell div.highlight > pre,
-div.highlighter-rouge > div.highlight > pre,
-div.output_wrapper pre {
+div.inner_cell > div > div > pre,
+div.inner_cell > div > pre div.output_wrapper pre {
   background-color: #f7f7f7;
   font-size: 0.9em;
   margin-bottom: 12px;
@@ -1286,13 +1287,14 @@ div.output_wrapper pre {
 /* [5] */
 code {
   padding: 4px;
-  overflow-x: auto;
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 1.71429; }
+  background: #F7F7F7;
+  font-size: inherit; }
 
 pre.highlight code {
   display: block; }
+
+h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+  font-size: inherit; }
 
 /* Outputs */
 .output_stream,
@@ -1390,6 +1392,9 @@ div.jb_cell.tag_epigraph blockquote {
   border-left: none; }
   div.jb_cell.tag_epigraph blockquote ul {
     font-style: normal; }
+
+.MathJax_Display {
+  padding: 20px 0px; }
 
 /**
  * Styling for within-page navigation.

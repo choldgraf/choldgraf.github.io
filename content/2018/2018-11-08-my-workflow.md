@@ -133,9 +133,11 @@ two main commands that I use to handle all the card-moving described above.
 The weekly board has a "butler" list where the command is defined in a card (that's how
 you define board-specific BFT commands). Here's the command:
 
+{% raw %}
 ```
 script: for each card in list "Return", remove all labels and move the card to list "Returned | Week {weeknumber}" on board "{{%homeboard}}" and move list "Returned | Week {weeknumber}" on board "{{%homeboard}}" to position 1 and clear custom field "homeboard"
 ```
+{% endraw %}
 
 ### A global command for project boards
 
