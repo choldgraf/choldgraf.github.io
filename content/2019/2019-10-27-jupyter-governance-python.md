@@ -1,11 +1,21 @@
 ---
+tags: [governance, open source]
+title: What would Python-style governance look like in Jupyter?
+date: 2019-10-27
+permalink: python-jupyter-governance
 ---
 
-# Adapting the Python governance model for Jupyter
+# What would Python-style governance look like in Jupyter?
 
 This is the second in a series of blog posts that explores what it'd look like to
 directly port the governance model of other communities into the Jupyter project.
-It's meant as a thought experiment rather than a proposal
+You can find the [first post about Rust here](https://predictablynoisy.com/rust-jupyter-governance).
+
+**Note**: These posts are meant as a thought experiment rather than a proposal. Moreover,
+all the usual caveats come with it, such as the
+fact that I don't know the Python governance
+structure *that* well, and I might totally
+botch my characterization of it.
 
 # Background on Python's Governance
 
@@ -32,7 +42,7 @@ It has two main bodies:
 The steering council has the "final say" in everything within the Python language, though
 they also have a mandate to delegate as much as possible to teams / groups within the
 Python community. As such, most decisions will likely *not* be made by the steering council.
-Membership on the council is done on a rotating basis, and a new council is elected before
+Membership on the council is determined on a rotating basis, and a new council is elected before
 each new major release of Python. This ensures continuity in the council, but also ensures
 that there are opportunities for membership to evolve over time. Discussion and design
 for decisions are made via the Python Enhancement Proposal (PEP) process, though the
@@ -77,20 +87,21 @@ The steering council is a 5-person committee.
 ### Mandate
 The steering council shall work to:
 
-Maintain the quality and stability of the Jupyter core projects,
-Make contributing as accessible, inclusive, and sustainable as possible,
-Formalize and maintain the relationship between the core team and NumFocus,
-Establish appropriate decision-making processes for teams in the Jupyter community,
-Seek consensus among contributors and the core team before acting in a formal capacity,
-Act as a "court of final appeal" for decisions where all other methods have failed.
+* Maintain the quality and stability of the Jupyter core projects,
+* Make contributing as accessible, inclusive, and sustainable as possible,
+* Formalize and maintain the relationship between the core team and NumFocus,
+* Establish appropriate decision-making processes for teams in the Jupyter community,
+* Seek consensus among contributors and the core team before acting in a formal capacity,
+* Act as a "court of final appeal" for decisions where all other methods have failed.
 
 ### Powers
 The council has broad authority to make decisions about the project. For example, they can:
 
-Accept or reject JEPs and PRs
-Enforce or update the project's code of conduct
-Work with NumFocus to manage any project assets
-Delegate parts of their authority to other subcommittees or processes
+* Accept or reject JEPs and PRs
+* Enforce or update the project's code of conduct
+* Work with NumFocus to manage any project assets
+* Delegate parts of their authority to other subcommittees or processes
+
 However, they cannot modify this JEP, or affect the membership of the core team, except via the mechanisms specified in this document.
 
 The council should look for ways to use these powers as little as possible. Instead of voting, it's better to seek consensus. Instead of ruling on individual JEPs, it's better to define a standard process for JEP decision making (for example, by formalizing [the recently-proposed meta-JEP process](https://github.com/jupyter/enhancement-proposals/tree/master/29-jep-process)).
@@ -116,10 +127,13 @@ The council should ideally reflect the diversity of Jupyter contributors and use
 ### Term
 
 Jupyter will define a cycle of operations, roughly mapping onto a "major version release cycle"
-if it were a single technical project. The details of what this means will be decided by the
+(as if it were a single technical project). The details of what this means will be decided by the
 steering council and the JEP process.
 
 A new council is elected after cycle. Each council's term runs from when their election results are finalized until the next council's term starts. There are no term limits.
+
+<details>
+<summary>Some extra details about the steering council. Click to expand if you're interested.</summary>
 
 ### Vacancies
 Council members may resign their position at any time.
@@ -148,8 +162,10 @@ A no-confidence vote is triggered when a core team member calls for one publical
 The vote lasts for two weeks. Core team members vote for or against. If at least two thirds of voters express a lack of confidence, then the vote succeeds.
 
 There are two forms of no-confidence votes: those targeting a single member, and those targeting the council as a whole. The initial call for a no-confidence vote must specify which type is intended. If a single-member vote succeeds, then that member is removed from the council and the resulting vacancy can be handled in the usual way. If a whole-council vote succeeds, the council is dissolved and a new council election is triggered immediately.
+</details>
 
 ## The core team
+
 ### Role
 The core team is the group of trusted volunteers who manage Jupyter. They assume many roles required to achieve the project's goals, especially those that require a high level of trust. They make the decisions that shape the future of the project.
 
@@ -172,17 +188,18 @@ significant contributions to the project's goals, in any form
 willingness to dedicate some time to improving Jupyter
 As the project matures, contributions go beyond code. Here's an incomplete list of areas where contributions may be considered for joining the core team, in no particular order:
 
-Working on community management and outreach
-Providing support on the mailing lists, gitter rooms, and the community forum
-Triaging tickets
-Writing patches (code, docs, or tests)
-Reviewing patches (code, docs, or tests)
-Participating in design decisions
-Providing expertise in a particular domain (security, i18n, etc.)
-Managing the continuous integration infrastructure
-Managing the servers (website, tracker, documentation, etc.)
-Maintaining related projects (alternative interpreters, core infrastructure like packaging, etc.)
-Creating visual designs
+* Working on community management and outreach
+* Providing support on the mailing lists, gitter rooms, and the community forum
+* Triaging tickets
+* Writing patches (code, docs, or tests)
+* Reviewing patches (code, docs, or tests)
+* Participating in design decisions
+* Providing expertise in a particular domain (security, i18n, etc.)
+* Managing the continuous integration infrastructure
+* Managing the servers (website, tracker, documentation, etc.)
+* Maintaining related projects (alternative interpreters, core infrastructure like packaging, etc.)
+* Creating visual designs
+
 Core team membership acknowledges sustained and valuable efforts that align well with the philosophy and the goals of the Jupyter project.
 
 It is granted by receiving at least two-thirds positive votes in a core team vote that is open for one week and with no veto by the steering council.
@@ -198,18 +215,17 @@ Changes to this document require at least a two-thirds majority of votes cast in
 
 # What's different between Python and Jupyter?
 
-In many ways, I was struck by how similar the new Python governance model is to
+I was struck by how similar the new Python governance model is to
 the Jupyter project's current model. They both have a steering council approach,
 and a core team that surrounds it. That means that Jupyter could get pretty close
 by effectively doing these three things:
 
 * Reduce the steering council from 21 to 5 people
-* Formalize the "core team" on current Jupyter committers
+* Formalize the "core team" to be current Jupyter committers
 * Codify and enforce the JEP process for discussion and decision-making
 
 That said, there are a few ways in which I think Python and Jupyter are different.
-Jupyter feels like it has more moving pieces across different parts of the stack
-(to me, anyway). It has "core projects" that span everything from kernel specifications
+Jupyter feels like it has more moving pieces across different parts of the stack. It has "core projects" that span everything from kernel specifications
 to user interfaces to cloud infrastructure. It also feels like Jupyter is more OK with
 "bleeding edge" software and quick release cycles (though this depends on the project,
 the notebook has been pretty stable for a while now).
