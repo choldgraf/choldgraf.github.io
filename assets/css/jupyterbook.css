@@ -1214,7 +1214,7 @@ div.jb_cell {
     pointer-events: none; }
 
 #page-title {
-  font-size: 2.5em;
+  font-size: 2.2em;
   font-weight: lighter;
   line-height: 1em; }
 
@@ -1255,6 +1255,10 @@ div.jb_cell.tag_full_width {
   div.jb_cell.tag_full_width img {
     max-width: 100%; }
 
+div.jb_cell.tag_output_scroll div.output_wrapper {
+  max-height: 24em;
+  overflow-y: auto; }
+
 /**
  * Jupyter notebook styling
  */
@@ -1274,6 +1278,7 @@ pre code.language-no-highlight {
   white-space: pre-wrap; }
 
 div.output_wrapper {
+  position: relative;
   margin-bottom: 12px; }
 
 div.output_wrapper pre {
