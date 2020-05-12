@@ -9,3 +9,5 @@ serve: posts
 	bundle exec jekyll serve
 
 .PHONY: posts serve clean
+
+test
