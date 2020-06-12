@@ -35,4 +35,5 @@ gem 'guard-jekyll-plus', '~> 2.0.2'
 gem 'guard-livereload', '~> 2.5.2'
 
 # To avoid build errors, see https://github.com/jekyll/jekyll/issues/2938
-exclude: [vendor]
+exclude:
+  - vendor
