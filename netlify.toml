@@ -1,0 +1,2 @@
+[build]
+  command = "gem install bundler -v '2.0.2' && pip install jupyter-book==0.6 && make posts && bundle exec jekyll build"
