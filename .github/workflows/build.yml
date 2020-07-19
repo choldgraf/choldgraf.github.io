@@ -19,6 +19,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - name: Make posts
+        run: |
+          pip install jupyter-book==0.6
+          make posts
+
       - uses: helaili/jekyll-action@2.0.3
         env:
           JEKYLL_PAT: ${{ secrets.JEKYLL_PAT }}
