@@ -1,0 +1,5 @@
+_build
+
+.ipynb_checkpoints
+.vscode
+*/.ipynb_checkpoints/*
