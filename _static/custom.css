@@ -1,0 +1,62 @@
+/* Bio area */
+div.profile-pic {
+    margin-top: 1em;
+}
+
+div.profile-pic img {
+    border-radius: 500px;
+    width: 80%;
+    max-width: 190px;
+    margin: 0 auto;
+    display: block;
+}
+
+.bio-info {
+    margin: 1em auto;
+    max-width: 220px;
+}
+
+.name {
+    font-size: 1.5em;
+}
+
+.focusareas {
+    font-size: .9em;
+    font-weight: bold;
+}
+
+.whatido {
+    margin-top: 1em;
+}
+
+
+/* Sidebar for blog archive / each post */
+ul.ablog-archive {
+    padding-left: 0px;
+}
+
+.bd-sidebar h2 {
+    font-size: 1.4em;
+}
+
+.bd-sidebar ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.bd-sidebar li {
+    padding-bottom: .5em;
+}
+
+div.bd-sidebar h3, div.bd-sidebar h2, div.bd-sidebar ul {
+    padding-left: 5%;
+}
+
+/* In-page post lists */
+ul.postlist {
+    padding-left: 0;
+}
+
+ul.postlist > li > p:first-child {
+    font-size: 1.3em;
+}

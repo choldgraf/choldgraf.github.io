@@ -1,0 +1,942 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "# Dates in python\n",
+    "\n",
+    "As a part of setting up the website for the [Docathon](http://docathon.org) I've had to re-learn all of my date string formatting rules. It's one of those little problems you don't really think about - turning an arbitrary string into something structured like a date - until you've actually got to do it.\n",
+    "\n",
+    "There are a bunch of tools in python for using date-like objects, but it's not always easy to figure out how these work. This post is just a couple of pieces of information I've picked up along the process.\n",
+    "\n",
+    "## Useful links\n",
+    "Here's a list of useful links I've picked up, which I'll mention below:\n",
+    "\n",
+    "* [strftime.org](http://strftime.org/) for remembering how date string formatting works.\n",
+    "* [The pandas datetime docs](http://pandas.pydata.org/pandas-docs/stable/timeseries.html)\n",
+    "* [A list of time zone names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)\n",
+    "* [ISO 8601](https://www.w3.org/TR/NOTE-datetime) format explanation\n",
+    "\n",
+    "# A quick tour of our tools\n",
+    "In this post we'll focus on two main tools for date functionality: the datetime module and pandas.\n",
+    "\n",
+    "## Datetime"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": true
+    }
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "from datetime import datetime\n",
+    "import pandas as pd\n",
+    "%matplotlib inline"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "The datetime module is our core definition of how to represent dates in python. We can call datetime directly with a bunch of integers as input, representing years, months, days, etc:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "datetime.datetime(2016, 3, 3, 12, 12, 12)"
+      ],
+      "text_plain": "datetime.datetime(2016, 3, 3, 12, 12, 12)"
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date = datetime(2016, 3, 3, 12, 12, 12)\n",
+    "date"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "We can access components of this date object as attributes:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "3"
+      ],
+      "text_plain": "3"
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date.day"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "---\n",
+      "\n",
+      "year 2016\n",
+      "\n",
+      "---\n",
+      "\n",
+      "month 2\n",
+      "\n",
+      "---\n",
+      "\n",
+      "day 12\n"
+     ]
+    }
+   ],
+   "source": [
+    "attrs = ['year', 'month', 'day']\n",
+    "for ii in attrs:\n",
+    "    print('\\n---\\n')\n",
+    "    print(ii, getattr(date, ii))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "### Extra components of datetime objects\n",
+    "We can also access specific sub-components of the datetime (that is, either the **date** or the **time**)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "datetime.date(2016, 3, 3)"
+      ],
+      "text_plain": "datetime.date(2016, 3, 3)"
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date.date()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "datetime.time(12, 12, 12)"
+      ],
+      "text_plain": "datetime.time(12, 12, 12)"
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date.time()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "Datetime objects also have **timezones**. You can check whether our object already has a timezone with the `tzinfo` attribute:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": true
+    }
+   },
+   "outputs": [],
+   "source": [
+    "date.tzinfo"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "As we can see, there's nothing in there because we didn't specify a timezone when we created this object. We need to add a timezone first.\n",
+    "\n",
+    "However, once you start using timezones it is useful to use a more powerful package like pandas. Let's do a quick intro:\n",
+    "\n",
+    "## Datetimes in pandas\n",
+    "Pandas (among many, many other things) adds some extra functionality on top of datetime. The most useful function for this is probably `to_datetime`. This will try to be clever about whatever the input is, which lets us do things like give it strings:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    },
+    "scrolled": true
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Class:  &ltclass 'pandas.tslib.Timestamp'&gt | 2017-03-01 00:00:00\n"
+     ]
+    }
+   ],
+   "source": [
+    "date = pd.to_datetime('2017-03-01')\n",
+    "print('Class: ', type(date), '|', date)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "Note that this isn't the same object as the datetime object, but we can usually treat them similarly. It also exposes several new methods that can do useful things, like changing the timezone of our datetime object:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2017-03-01 00:00:00+0000', tz='UTC')"
+      ],
+      "text_plain": "Timestamp('2017-03-01 00:00:00+0000', tz='UTC')"
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date = date.tz_localize('UTC')\n",
+    "date"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "timezone:  UTC\n"
+     ]
+    }
+   ],
+   "source": [
+    "print('timezone: ', date.tzinfo)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "We used a time zone called \"UTC\". That stands for \"Coordinated Universal Time\", which is basically the global standard for the \"base\" time. All other timezones are expressed in reference to this base time. For example, let's now convert our time to PST:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2017-02-28 16:00:00-0800', tz='US/Pacific')"
+      ],
+      "text_plain": "Timestamp('2017-02-28 16:00:00-0800', tz='US/Pacific')"
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date = date.tz_convert('US/Pacific')\n",
+    "date"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "timezone:  US/Pacific\n"
+     ]
+    }
+   ],
+   "source": [
+    "print('timezone: ', date.tzinfo)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Notice how we now see the `-0800` at the end. This tells us what kind of offset the 'US/Pacific' timezone is from 'UTC'. It's expressed as `-mmss`, where `m = minute` and `s = second`\n",
+    "\n",
+    "One of the really nice things about pandas is that we can represent **ranges** in python. Let's generate a range of dates below:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "DatetimeIndex(['2017-03-01 00:00:00+00:00', '2017-03-01 01:00:00+00:00',\n",
+       "               '2017-03-01 02:00:00+00:00', '2017-03-01 03:00:00+00:00',\n",
+       "               '2017-03-01 04:00:00+00:00'],\n",
+       "              dtype='datetime64[ns, UTC]', freq='H')"
+      ],
+      "text_plain": "DatetimeIndex(['2017-03-01 00:00:00+00:00', '2017-03-01 01:00:00+00:00',\n               '2017-03-01 02:00:00+00:00', '2017-03-01 03:00:00+00:00',\n               '2017-03-01 04:00:00+00:00'],\n              dtype='datetime64[ns, UTC]', freq='H')"
+     },
+     "execution_count": 15,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# The `freq` parameter tells us the size of the jump between items\n",
+    "freq = 'H'  # H == hours, D == days\n",
+    "dates = pd.date_range('2017-03-01', '2017-03-05', freq=freq, tz='UTC')\n",
+    "dates[:5]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "This lets us do several things, such as create masks for any data we have:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "array([ True,  True,  True,  True,  True,  True,  True,  True,  True,\n",
+       "        True,  True,  True,  True,  True,  True,  True,  True,  True,\n",
+       "        True,  True,  True,  True,  True,  True, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False, False, False,\n",
+       "       False, False, False, False, False, False, False], dtype=bool)"
+      ],
+      "text_plain": "array([ True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True,  True,  True,  True,\n        True,  True,  True,  True,  True,  True, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False, False, False,\n       False, False, False, False, False, False, False], dtype=bool)"
+     },
+     "execution_count": 16,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "dates < \"2017-03-02\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "It also lets us plot things across dates:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text_plain": "&ltmatplotlib.axes._subplots.AxesSubplot at 0x1094c3240&gt"
+     },
+     "execution_count": 17,
+     "metadata": {},
+     "output_type": "execute_result"
+    },
+    {
+     "data": {
+      "image/png": "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\nRU5ErkJggg==\n",
+      "text_plain": "&ltmatplotlib.figure.Figure at 0x1093d6898&gt"
+     },
+     "metadata": {},
+     "output_type": "display_data"
+    }
+   ],
+   "source": [
+    "dates = pd.date_range('2017-01-01', '2017-03-06', freq='H', tz='UTC')\n",
+    "sr = pd.Series(np.random.randn(len(dates)), index=dates)\n",
+    "sr.rolling(30).mean().plot()  # Give us a 30 hour rolling mean"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "Note that if we now change the timezone, some of the days have changed because of the time shift:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "DatetimeIndex(['2017-01-01 00:00:00+00:00', '2017-01-01 01:00:00+00:00',\n",
+       "               '2017-01-01 02:00:00+00:00', '2017-01-01 03:00:00+00:00',\n",
+       "               '2017-01-01 04:00:00+00:00'],\n",
+       "              dtype='datetime64[ns, UTC]', freq='H')"
+      ],
+      "text_plain": "DatetimeIndex(['2017-01-01 00:00:00+00:00', '2017-01-01 01:00:00+00:00',\n               '2017-01-01 02:00:00+00:00', '2017-01-01 03:00:00+00:00',\n               '2017-01-01 04:00:00+00:00'],\n              dtype='datetime64[ns, UTC]', freq='H')"
+     },
+     "execution_count": 18,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Original times\n",
+    "dates[:5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "DatetimeIndex(['2016-12-31 16:00:00-08:00', '2016-12-31 17:00:00-08:00',\n",
+       "               '2016-12-31 18:00:00-08:00', '2016-12-31 19:00:00-08:00',\n",
+       "               '2016-12-31 20:00:00-08:00'],\n",
+       "              dtype='datetime64[ns, US/Pacific]', freq='H')"
+      ],
+      "text_plain": "DatetimeIndex(['2016-12-31 16:00:00-08:00', '2016-12-31 17:00:00-08:00',\n               '2016-12-31 18:00:00-08:00', '2016-12-31 19:00:00-08:00',\n               '2016-12-31 20:00:00-08:00'],\n              dtype='datetime64[ns, US/Pacific]', freq='H')"
+     },
+     "execution_count": 19,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# New times\n",
+    "dates.tz_convert('US/Pacific')[:5]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "For more information about date objects in pandas, check out:\n",
+    "\n",
+    "* [The pandas datetime docs](http://pandas.pydata.org/pandas-docs/stable/timeseries.html)\n",
+    "\n",
+    "And this is useful for figuring out how to convert between timezones:\n",
+    "\n",
+    "* [A list of time zone names](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "# Parsing strings as a date\n",
+    "## ISO 8601\n",
+    "So how is pandas doing all of these string auto-conversions? Well, there are a few string structures that are classically defined as date-like structures. For example, the `yyyy-mm-dd` string I gave above looks fairly straightforward for a date.\n",
+    "\n",
+    "What if we wanted to do something more complex with strings? For this, we use the [ISO 8601](https://www.w3.org/TR/NOTE-datetime). It takes the following form:\n",
+    "\n",
+    "`YYYY-MM-DDThh:mm:ss`.\n",
+    "\n",
+    "Most of these are pretty self-explanatory, but of note is the `Z` at the end. This simply says that there is zero offset for this datetime, AKA it is \"UTC\" time."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2017-03-01 12:34:02')"
+      ],
+      "text_plain": "Timestamp('2017-03-01 12:34:02')"
+     },
+     "execution_count": 20,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date = pd.to_datetime('2017-03-01T12:34:02Z')\n",
+    "date"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "### Arbitrary strings\n",
+    "We can also tell pandas how to parse an arbitrary date string. For this, we use placeholders representing different components of the date, and then construct a \"parsing string\" that we give to the function. This tells the function how to turn input strings into datetime objects. For example, let's say we have this string:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": true,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": true
+    }
+   },
+   "outputs": [],
+   "source": [
+    "date_string = '02/2016/12'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "This is a little tricky, because it's unclear which is the month and which is the day. By specifying a date parsing string, we can easily parse this. The placeholders that we use are in the [strftime](http://strftime.org/) website linked above. Here are some useful ones:\n",
+    "\n",
+    "* `%Y` = year\n",
+    "* `%m` = month\n",
+    "* `%d` = day"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2016-02-12 00:00:00')"
+      ],
+      "text_plain": "Timestamp('2016-02-12 00:00:00')"
+     },
+     "execution_count": 22,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date = pd.to_datetime(date_string, format='%m/%Y/%d')\n",
+    "date"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "Above we told pandas to parse the date string as `{month}/{year}/{day}`. We can do this with any string structure we like:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Timestamp('2016-02-12 11:04:02')"
+      ],
+      "text_plain": "Timestamp('2016-02-12 11:04:02')"
+     },
+     "execution_count": 23,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Create a complicated date string\n",
+    "date_string = '02/2016/12 and the time is 11 hr 04 min and 02 sec'\n",
+    "\n",
+    "# And tell `to_datetime` how to parse it\n",
+    "date = pd.to_datetime(date_string,\n",
+    "                      format='%m/%Y/%d and the time is %H hr %M min and %S sec')\n",
+    "date"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "### Printing strings\n",
+    "The same principle can be applied to printing strings. Any datetime object has a method called `strftime`. This lets you create a **string** from **time**. You can pass a similar date parsing string to what we used above, and it will tell the object what kind of string to create:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'2016/02 and 12 days'"
+      ],
+      "text_plain": "'2016/02 and 12 days'"
+     },
+     "execution_count": 24,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date.strftime('%Y/%m and %d days')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "You can also use this to do some nice formatting, e.g.:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'Friday, February 12, 2016'"
+      ],
+      "text_plain": "'Friday, February 12, 2016'"
+     },
+     "execution_count": 25,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "date.strftime('%A, %B %d, %Y')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "You can also pass these parsing strings to the `format` method of python strings. For example:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "collapsed": false,
+    "deletable": true,
+    "editable": true,
+    "jupyter": {
+     "outputs_hidden": false
+    }
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Today's date is...Friday, February 12, 2016\n"
+     ]
+    }
+   ],
+   "source": [
+    "mystring = \"Today's date is...{:%A, %B %d, %Y}\"\n",
+    "print(mystring.format(date))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "deletable": true,
+    "editable": true
+   },
+   "source": [
+    "## And that's it...sort of\n",
+    "In reality this is the tip of the iceberg when it comes to using datetime objects, but this should be enough to get you started. Make sure that any time you read in new data, you double check whether it is timezone encoded. If it isn't, then figure out what timezone you can assume (often it is UTC), and encoding it yourself to avoid confusion.\n",
+    "\n",
+    "Datetime objects are incredibly useful, but can be a little confusing, so I hope this helps clear some things up!"
+   ]
+  }
+ ],
+ "metadata": {
+  "category": "dates, formatting",
+  "date": "2017-03-16",
+  "interactive": true,
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.0"
+  },
+  "redirect": "date-time-python",
+  "tags": "python, open science"
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

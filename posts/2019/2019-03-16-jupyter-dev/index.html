@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jupyter has a huge and diverse set of users &#8212; blog  documentation</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/spanels-index--0afa1ebdab0bb23b98b56d34c23d9f57.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/spanels-variables--ffc7f74dcb1b9eecba2dbcbc22818714.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" />
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="Predictably Noisy">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    
+    <a class="navbar-brand" href="../../../">
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../about/">About me</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../projects/">Projects</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../publications/">Publications</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../blog/">Blog</a>
+        </li>
+        
+        
+      </ul>
+
+
+      <form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" >
+</form>
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/choldgraf/" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/choldgraf" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+          <div class="col-12 col-md-3 bd-sidebar">
+
+
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+
+  <div class="bd-toc-item active">
+  
+
+  <ul class="nav bd-sidenav">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+</nav>
+          </div>
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#" class="nav-link">Jupyter has a huge and diverse set of users</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#jupyter-needs-to-grow-its-contributor-community" class="nav-link">Jupyter needs to grow its contributor community</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#the-jupyter-ecosystem-needs-better-explaining" class="nav-link">The Jupyter ecosystem needs better explaining</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#governing-open-projects-is-really-hard" class="nav-link">Governing open projects is really hard</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <p>I just got back from a week-long Jupyter team meeting that was somehow both
+very tiring and energizing at the same time. In the spirit of openness, I’d
+like to share some of my experience. While it’s still fresh in my mind,
+here are a few takeaways that occurred to me throughout the week.</p>
+<p><em>Note that these are my personal (rough) impressions, but they shouldn’t be taken as a
+statement from the project/community itself.</em></p>
+<div class="section" id="jupyter-has-a-huge-and-diverse-set-of-users">
+<h1>Jupyter has a huge and diverse set of users<a class="headerlink" href="#jupyter-has-a-huge-and-diverse-set-of-users" title="Permalink to this headline">¶</a></h1>
+<p>The first thing is probably unsurprising to many people, but was really driven
+home at this meeting, is that there are <strong>so many</strong> Jupyter users our there. These
+people come from all different walks of life - some are at huge tech companies,
+some are scientists, some are educators, some are students. Some are from western
+countries but many are not, some have wealth, some do not. Jupyter
+(notebooks, anyway…more on that in a second) has really caught fire across
+a wide slice of society.</p>
+<p>This is both a great thing and a challenge. Appreciating the size of the Jupyter
+user community also made me realize that many of these groups have different
+motives and goals. Jupyter was originally born out of a mission to serve
+scientists and educators, to create public goods,
+and to be a democratizing technology that empowers
+many different kinds of people in the world. I think Jupyter is still serving
+this role, but that as the Jupyter user community has grown, the voices of
+science and education may be getting smaller relative to the gigantic and
+well-resourced community of “enterprise users”. I hope that we can find ways
+to balance these interests in the project in a way that keeps Jupyter a
+project for <em>all</em>.</p>
+</div>
+<div class="section" id="jupyter-needs-to-grow-its-contributor-community">
+<h1>Jupyter needs to grow its contributor community<a class="headerlink" href="#jupyter-needs-to-grow-its-contributor-community" title="Permalink to this headline">¶</a></h1>
+<p>While the <em>user-base</em> of Jupyter is fairly large and complex, the community
+of <em>contributors</em> (people that help in issues, help grow the community, help others
+use Jupyter, or contribute code to Jupyter tools) needs to grow. We have had a
+relatively stable group of contributors in the Jupyter ecosystem, but I think
+we need to foster more “organic” growth with others who jump in and become core parts
+of the team. As an open project, we depend on the good-will and volunteer
+time of others who want to join the community and participate. The fact that we
+haven’t seen a steady growth in contributors (particularly from a pool of people
+more diverse than the current contributors), tells me that we have a lot of work
+to do in creating obvious pathways to connect with, and grow within, the Jupyter
+community.</p>
+<p>We spent a morning session discussing diversity and inclusion, reading
+<a class="reference external" href="https://www.ncwit.org/sites/default/files/resources/10actionablewaysincreasediversitytech_openview.pdf">an excellent slideshow on 10 actionable steps to increase D+I</a>.
+It was a good reminder that recognizing systemic biases against certain groups
+of people does not mean abdicating responsibility as an <em>individual</em> to personally
+create a more inclusive environment. A couple of particular points that I hope
+we can make progress on in the coming months:</p>
+<ul class="simple">
+<li><p><strong>Have a moderator and an agenda for meetings</strong>. Conduct meetings (in-person or remote)
+with a moderator who builds a queue of
+speakers and gives the floor to each of them in turn. While it’s easy to
+treat an unstructured meeting as “informal and fun”, it also makes them significantly
+less-productive and harder to participate for many. I really enjoyed reading
+the article <a class="reference external" href="https://chelseatroy.com/2018/04/05/how-do-we-make-remote-meetings-not-suck/">how to make remote meetings not suck</a>
+(SPOILER: the answer is to make <strong>all</strong> meetings not suck by providing structure
+and moderation). Taking small steps towards team processes that make meetings more
+participatory and predictable would go a long way.</p></li>
+<li><p><strong>Make more active efforts to bring new+diverse members into
+the community</strong>. You can’t expect organic contributor growth from populations that
+have very little representation on the project already. We need to continue
+making <em>active</em> efforts at engaging these communities and bringing in new people.
+For example, we had a new team member join the meeting as part of an
+<a class="reference external" href="https://www.outreachy.org/">Outreachy internship</a>, and I really appreciated their
+perspective on many of the issues we discussed. Had we not taken these active steps
+to bringing a new Jovyan into the community, those perspectives would never have been
+shared at the meeting.</p></li>
+<li><p><strong>Create explicit roles and ways to contribute</strong>. We also spoke at length about
+the <strong>many</strong> different things that must be done to have not only cycles of code
+development, but also a healthy community around that code. Many times this work
+is done in an unstructured and ad-hoc way. This is stressful for the people doing
+the work (I often have no idea how much time I’ve sunk into responding to issues,
+for example), and it also makes the project team more opaque to others who might
+wish to join. If I am vaguely interested in contributing to JupyterHub, where
+do I start? Some people have a clear path for how they could contribute, but I
+suspect that there are many other ways that we can tell people “it would be
+helpful if you do XXX”.</p></li>
+</ul>
+</div>
+<div class="section" id="the-jupyter-ecosystem-needs-better-explaining">
+<h1>The Jupyter ecosystem needs better explaining<a class="headerlink" href="#the-jupyter-ecosystem-needs-better-explaining" title="Permalink to this headline">¶</a></h1>
+<p>Another topic we discussed was the fact that Jupyter hasn’t clearly
+explained its technology stack, how everything fits together, what problems
+it’s meant to solve, and how it interfaces with the outside community. The
+majority of people think of “Jupyter Notebooks” when they think of Jupyter,
+but often don’t recognize that there are a lot of pieces under the hood as
+well (e.g. the Notebook application is both a kernel / server architecture, an
+underlying notebook document specification / format, and a particular notebook UI).</p>
+<p>Jupyter still has challenges in making other major projects more discoverable
+(e.g. JupyterHub for sharing Jupyter environments on shared infrastructure,
+or other user interfaces like Jupyter Lab or Nteract). Moreover, the project is
+also starting to be picked up by companies and projects that
+are fairly liberal with the use of the “Jupyter” name. Is your tool still
+“a Jupyter Notebook interface” if it only has the ability to export to a
+Jupyter Notebook, but uses no other Jupyter tech? I’m not sure - but either way,
+there should be a clear answer to that question otherwise the project will
+start to be defined by other people rather than itself.</p>
+</div>
+<div class="section" id="governing-open-projects-is-really-hard">
+<h1>Governing open projects is really hard<a class="headerlink" href="#governing-open-projects-is-really-hard" title="Permalink to this headline">¶</a></h1>
+<p>Finally, something I’ve grown to appreciate more over the last year
+is how difficult it is to balance decision-making, power, and participatory
+community dynamics in a large, multi-stakeholder, open project like Jupyter.
+There were a lot of conversations around the current governance model of
+the project, and how this wasn’t currently serving the community in a satisfying
+way. As the number of stakeholders in the project grows, their
+needs may start to move in opposing directions. Keeping a project functional
+and productive, while still balancing between these needs, is a massive task.</p>
+<p>This becomes particularly challenging when the stakeholders in the project have
+differing levels of resources. For example, Jupyter has always been dedicated
+to building tools for scientists and educators. However, these individuals are
+often part of organizations with <em>vastly</em> fewer resources than tech companies.
+How can we ensure that the voices of these two groups have a balanced weight?
+If company X decides they want to contribute a new feature the Jupyter
+Notebook interface, and they put a team of 10 people on it, how does this team
+interact with the decision-making processes of the Jupyter project? What if the
+core maintainers are volunteers with limited time to review PRs? What if there are
+disagreements between the company team’s internal mandate, and what is best for the
+Jupyter community? Finally, what if there aren’t good channels of communication
+and processes of decision-making that encourage nuanced, in-depth discussion to
+facilitate the above points?</p>
+<p>From a company’s perspective, there’s always the option of going off and doing your
+own thing. But Jupyter doesn’t have this option. In its current state, Jupyter’s resources
+are contrained to the groups that decide to participate. To that extent, a few
+things that we need to improve:</p>
+<ul class="simple">
+<li><p>Make it easier for others to open new topics of discussion with
+the Jupyter community in a “formal” decision-making process. I think
+<a class="reference external" href="https://github.com/jupyter/enhancement-proposals/issues/27">recent efforts to improve the Jupyter Enhancement Proposal</a>
+process are a great start. This should make it easier for stakeholders to voice
+their concerns and needs in an open way that allows many in the community to
+participate.</p></li>
+<li><p>Find a way to avoid the “governance by resources” trap. Many open projects in the
+tech community adopt a model like “you have decision-making power
+that scales with the resources you devote to the project”. That’s fine if everybody
+has a similar amount of resources, but many of Jupyter’s stakeholders don’t.
+If we want members of the
+educational and scientific/academic community to participate, or people that aren’t
+represented in the current tech and data industry to participate, we need to find a
+way that <strong>encourages the contribution of resources</strong> from organizations that have
+them, but that <strong>normalizes decision-making power</strong> so that resources don’t guarantee
+you a larger voice than others. Ultimately, the goal of the Jupyter project is
+to create public goods that benefit everybody, and I fear we’ll lose sight of this
+goal if you need to be able to fund a team of developers in order to participate
+in the project.</p></li>
+<li><p>Vest power in more systems and processes, rather than in individual people. Part of
+the challenges currently facing Jupyter is that it began as a relatively small project
+with a tight-knit team of developers that all knew each other. In that case, it made
+sense to adopt a traditional BDFL+governing council kind of model. It’s now clear that
+this model is inadequate at balancing the nuanced issues described above. Given the
+complexity of Jupyter’s community, I think that we need to move away from thinking about
+individual people as the sources of power, and instead think about a <em>system</em> that
+divides power in intentional ways, as well as a <em>process</em> for how individuals can
+move through that system in a way that addresses some of the concerns above.</p></li>
+</ul>
+<p>So there are a few thoughts of my own, and I look forward to seeing how others feel
+moving forward. There’s a lot happening in the Jupyter ecosystem,
+and I’m excited to be a part of it.</p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  
+  <a href="../2019-01-29-three-things-circleci/">
+    <i class="fa fa-arrow-circle-left"></i>
+    Three things I love about CircleCI
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+  
+  <a href="../2019-06-25-a-few-talks/">
+    A few recent talks
+    <i class="fa fa-arrow-circle-right"></i>
+  </a>
+  
+  </span>
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'chrisholdgraf';
+        var disqus_identifier = '/posts/2019/2019-03-16-jupyter-dev/';
+        var disqus_title = 'Jupyter has a huge and diverse set of users';
+        var disqus_url = 'https://predictablynoisy.com/posts/2019/2019-03-16-jupyter-dev';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-88310237-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Chris Holdgraf.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
