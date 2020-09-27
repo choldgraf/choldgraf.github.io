@@ -1,4 +1,4 @@
-# Publications
+# Published
 
 ## Online information
 
