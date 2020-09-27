@@ -36,7 +36,8 @@ My blog
 
 about
 projects
-publications
+published
+talks
 blog
 ```
 
