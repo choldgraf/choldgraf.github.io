@@ -30,7 +30,8 @@ author = 'Chris Holdgraf'
 extensions = [
     "myst_nb",
     "ablog",
-    "sphinx_panels"
+    "sphinx_panels",
+    "sphinxcontrib.bibtex"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
