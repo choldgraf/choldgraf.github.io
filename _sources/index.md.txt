@@ -10,13 +10,13 @@ You can learn a bit more about what I do on this website.
 :column: col-4 text-center
 :card:
 
-A bit more about me
+More about me
 +++
 ```{link-button} about
 :classes: btn-outline-primary btn-block stretched-link
 ```
 ---
-Some of my recent projects
+Recent projects
 +++
 ```{link-button} projects
 :classes: btn-outline-primary btn-block stretched-link
@@ -36,7 +36,7 @@ My blog
 
 about
 projects
-published
+publications
 talks
 blog
 ```
