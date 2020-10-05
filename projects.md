@@ -13,7 +13,7 @@ This page describes some of the major projects that I have worked on over the pa
 ---
 :column: col-3
 
-```{image} https://2i2c.org/img/logo.png
+```{image} https://2i2c.org/media/logo.png
 :alt: 2i2c logo
 :target: https://2i2c.org
 :width: 70%
@@ -33,7 +33,7 @@ The International Interactive Computing Collaboration is a non-profit organizati
 
 [Jupyter Book](https://jupyterbook.org) is an open source project for building beautiful, publication-quality books and documents from computational material.
 
-It is stewarded by the [Executable Books Project](https://executablebooks.org) is an international collaboration to build open source tools that facilitate publishing computational narratives using the Jupyter ecosystem.
+It is stewarded by the [Executable Books Project](https://executablebooks.org), an international collaboration to build open-source tools that facilitate publishing computational narratives using the Jupyter ecosystem.
 
 ---
 :column: col-3
@@ -45,11 +45,12 @@ It is stewarded by the [Executable Books Project](https://executablebooks.org) i
 
 
 Binder allows you to create custom computing environments that can be
-shared and used by many remote users. It is powered by BinderHub, which
-is an open-source tool that deploys the Binder service in the cloud. One-such
-deployment lives at [mybinder.org](https://mybinder.org), which we run as a free service.
+shared and used by many remote users. It is powered by BinderHub,
+an open-source tool to deploy the Binder service in the cloud.
+One such deployment lives at [mybinder.org](https://mybinder.org),
+where it is run as a free service.
 
-The goal of Binder is enable people to share reproducible, interactive versions
+The goal of Binder is to enable people to share reproducible, interactive versions
 of their code with others as easily as possible. It is used by people across
 the scientific, education, and analytics communities.
 
@@ -87,14 +88,18 @@ has become the most popular method for running a JupyterHub at scale in the clou
 
 **The Docathon**
 ```{image} https://raw.githubusercontent.com/docathon/docathon/master/blog/content/images/logo.svg
-:width: 50%
 :alt: Docathon logo
+:target: https://github.com/docathon/docathon
+:width: 50%
 ```
 
 ---
 :column: col-9
 
-The Docathon is a week-long global sprint where we focus our efforts on improving the state of documentation in the open-source and open-science world. This means writing better documentation, building tools, and sharing skills
+The Docathon is a week-long global sprint where we focus our efforts on
+improving the state of documentation in the open-source and open-science
+world. This means writing better documentation, building tools,
+and sharing skills.
 
 The first Docathon was held in 2017, and had participants from across the globe.
 
