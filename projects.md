@@ -13,7 +13,7 @@ This page describes some of the major projects that I have worked on over the pa
 ---
 :column: col-3
 
-```{image} https://2i2c.org/img/logo.png
+```{image} https://2i2c.org/media/logo.png
 :alt: 2i2c logo
 :target: https://2i2c.org
 :width: 70%
