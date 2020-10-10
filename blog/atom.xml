@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://lernfunk.de/media/654321</id>
   <title>Predictably Noisy</title>
-  <updated>2020-09-27T17:20:55.369981+00:00</updated>
+  <updated>2020-10-10T15:18:25.364905+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml"/>
-  <generator uri="https://ablog.readthedocs.org" version="0.10.9">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.org" version="0.10.10">ABlog</generator>
   <entry>
     <id>https://predictablynoisy.com/posts/2015/2015-05-27-coherence_correlation/</id>
     <title>Coherence correlation</title>
