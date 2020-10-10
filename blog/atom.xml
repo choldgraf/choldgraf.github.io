@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://lernfunk.de/media/654321</id>
   <title>Predictably Noisy</title>
-  <updated>2020-10-10T19:19:32.144925+00:00</updated>
+  <updated>2020-10-10T19:27:08.687713+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml"/>
   <generator uri="https://ablog.readthedocs.org" version="0.10.10">ABlog</generator>
