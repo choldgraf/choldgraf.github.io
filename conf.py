@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'blog'
+project = 'Predictably Noisy'
 copyright = '2020, Chris Holdgraf'
 author = 'Chris Holdgraf'
 
@@ -49,7 +49,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', "*import_posts*", "**/pa
 # a list of builtin themes.
 #
 html_theme = 'pydata_sphinx_theme'
-html_logo = "_static/logo.png"
 
 html_theme_options = {
   "github_url": "https://github.com/choldgraf/",
@@ -88,6 +87,7 @@ panels_add_boostrap_css = False
 
 # MyST config
 myst_admonition_enable = True
+myst_deflist_enable = True
 
 # Temporarily stored as off until we fix it
 jupyter_execute_notebooks = "off"
