@@ -58,6 +58,15 @@ ul.postlist {
 }
 
 ul.postlist > li > p:first-child {
+    font-size: 1.5em;
+}
+
+ul.postlist li + li {
+    margin-top: 2em;
+}
+
+ul.postlist li > p > a {
+    font-style: normal;
     font-size: 1.3em;
 }
 
