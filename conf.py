@@ -31,7 +31,8 @@ extensions = [
     "myst_nb",
     "ablog",
     "sphinx_panels",
-    "sphinxcontrib.bibtex"
+    "sphinxcontrib.bibtex",
+    "sphinxext.opengraph",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -89,6 +90,10 @@ panels_add_boostrap_css = False
 # MyST config
 myst_admonition_enable = True
 myst_deflist_enable = True
+
+# OpenGraph config
+ogp_site_url = "https://predictablynoisy.com"
+ogp_image = "https://predictablynoisy.com/_static/profile-bw.png"
 
 # Temporarily stored as off until we fix it
 jupyter_execute_notebooks = "off"

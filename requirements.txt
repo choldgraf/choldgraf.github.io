@@ -13,5 +13,6 @@ sphinx
 sphinx-panels
 ablog
 sphinxcontrib-bibtex
+sphinxext-opengraph
 git+https://github.com/pandas-dev/pydata-sphinx-theme
 git+https://github.com/executablebooks/MyST-Parser
