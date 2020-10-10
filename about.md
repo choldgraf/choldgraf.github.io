@@ -5,7 +5,7 @@ I'm a post-doc in the Statistics department at UC Berkeley, and a co-founder of 
 ## What I do
 
 ```{panels}
-:card: border-0 pl-0
+ pl-0
 :body: pl-0
 :column: pl-0
 :container: pl-0
@@ -64,3 +64,74 @@ If you want a hard-copy CV, you can find a {download}`reasonably up-to-date CV h
 
 This is an experiment in hosting my personal website and blog via Sphinx extensions instead of using Jekyll. It uses the [pydata sphinx theme](https://pydata-sphinx-theme.readthedocs.io/) along with [ablog](https://ablog.readthedocs.io/) for blogging, and the [myst-parser](https://myst-parser.readthedocs.io/en/latest/) and [myst-nb](https://myst-nb.readthedocs.io/) packages for writing posts in Markdown and Jupyter Notebooks.
 
+````{panels}
+:container: timeline
+:column: col-6 p-0
+:card:
+
+---
+:column: +entry left
+
+**2020-01-02**
+^^^
+
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+
+---
+:column: +right
+---
+:column: +left
+
+---
+:column: +entry right
+
+**2020-01-03**
+^^^
+
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+
+---
+:column: +entry left
+
+**2020-01-04**
+^^^
+
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+
+---
+:column: +right
+---
+:column: +left
+---
+:column: +entry right
+
+**2020-01-05**
+^^^
+
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+TEST TEST TEST TEST TEST
+
+````

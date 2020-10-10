@@ -60,3 +60,36 @@ ul.postlist {
 ul.postlist > li > p:first-child {
     font-size: 1.3em;
 }
+
+
+/* Timeline CSS */
+div.timeline div.card {
+    border: 0px;
+}
+
+div.timeline div.left {
+    text-align: right;
+    border-right: 1px solid black;
+}
+
+div.timeline div.entry::after {
+    width: 1em;
+    height: 1em;
+    background: white;
+    border-radius: 50%;
+    content: "";
+    top: 1em;
+    display: block;
+    position: absolute;
+    border: 1px black solid;
+    z-index: 999;
+}
+
+div.timeline div.entry.left::after {
+    right: -.5em;
+}
+
+div.timeline div.entry.right::after {
+    left: -.5em;
+}
+
