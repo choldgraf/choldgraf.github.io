@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://lernfunk.de/media/654321</id>
   <title>Predictably Noisy</title>
-  <updated>2020-10-10T15:18:25.364905+00:00</updated>
+  <updated>2020-10-10T16:39:28.988082+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml"/>
   <generator uri="https://ablog.readthedocs.org" version="0.10.10">ABlog</generator>
@@ -296,5 +296,19 @@ of publishing with Jupyter.&lt;/p&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2020/2020-01-22-rst-thoughts/" rel="alternate"/>
     <published>2020-01-22T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://predictablynoisy.com/posts/2020/sphinx-blogging/</id>
+    <title>A new blog with Sphinx</title>
+    <updated>2020-10-10T00:00:00+00:00</updated>
+    <author>
+      <name>Chris Holdgraf</name>
+    </author>
+    <content type="html">&lt;p&gt;I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.&lt;/p&gt;
+&lt;p&gt;This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)&lt;/p&gt;
+&lt;img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" /&gt;
+</content>
+    <link href="https://predictablynoisy.com/posts/2020/sphinx-blogging/" rel="alternate"/>
+    <published>2020-10-10T00:00:00+00:00</published>
   </entry>
 </feed>
