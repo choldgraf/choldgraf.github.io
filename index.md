@@ -6,41 +6,6 @@ I work with teams to create and improve open-source technology for scientists, e
 
 You can learn a bit more about what I do on this website.
 
-````{panels}
-:column: col-4 text-center
-:card:
-
-More about me
-+++
-```{link-button} about
-:classes: btn-outline-primary btn-block stretched-link
-```
----
-Recent projects
-+++
-```{link-button} projects
-:classes: btn-outline-primary btn-block stretched-link
-```
----
-My blog
-+++
-
-```{link-button} blog
-:classes: btn-outline-primary btn-block stretched-link
-```
-````
-
-```{toctree}
-:maxdepth: 2
-:hidden:
-
-about
-projects
-publications
-talks
-blog
-```
-
 ## Recent posts
 
 See the [blog archives](blog) for a more complete list.
