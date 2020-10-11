@@ -15,3 +15,13 @@ See the [blog archives](blog) for a more complete list.
 :format: "{date} - {title}"
 :excerpts:
 ```
+
+```{toctree}
+:maxdepth: 2
+:hidden:
+about
+projects
+publications
+talks
+blog
+```
