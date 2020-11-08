@@ -4,7 +4,7 @@ date: 2020-11-08
 tags: open source, sustainability
 ---
 
-# How organizations can contribute to open source: A short guide
+# Contributing to open source: A short guide for organizations
 
 Over the years I've had a recurring question from people who are in organizations both big and small: _how can we participate in open source communities?_
 
