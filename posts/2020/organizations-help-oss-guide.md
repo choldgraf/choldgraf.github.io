@@ -8,9 +8,13 @@ tags: open source, sustainability
 
 Over the years I've had a recurring question from people who are in organizations both big and small: _how can we participate in open source communities?_
 
-Whether it is because of altruism or strategic importance, many companies _want_ to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you're not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.
+Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc _want_ to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you're not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.
 
 So this post is a short guide to provide some ideas for how others can begin to engage with open source. My hope is that it gives people who are embedded in organizations some ideas about how they could engage with open source, or advocate for engagement internally.
+
+:::{note}
+This is all just personal opinion, and based on my own experiences so far. I'll try to keep it updated over time as my own thoughts evolve. If you've got ideas of your own I'd love to hear them in the comments.
+:::
 
 ## Meet open source communities where they are
 
