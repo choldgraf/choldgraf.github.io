@@ -87,7 +87,7 @@ post_auto_excerpt = 2
 disqus_shortname = "chrisholdgraf"
 
 # Panels config
-panels_add_boostrap_css = False
+panels_add_bootstrap_css = False
 
 # MyST config
 myst_admonition_enable = True
