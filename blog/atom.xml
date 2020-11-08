@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <id>http://lernfunk.de/media/654321</id>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2020-10-11T16:28:30.780845+00:00</updated>
+  <updated>2020-11-08T17:15:24.006643+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml"/>
-  <generator uri="https://ablog.readthedocs.org" version="0.10.11">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.org" version="0.10.12">ABlog</generator>
   <entry>
     <id>https://predictablynoisy.com/posts/2015/2015-05-27-coherence_correlation/</id>
     <title>Coherence correlation</title>
@@ -310,5 +310,18 @@ of publishing with Jupyter.&lt;/p&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2020/sphinx-blogging/" rel="alternate"/>
     <published>2020-10-10T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://predictablynoisy.com/posts/2020/organizations-help-oss-guide/</id>
+    <title>How organizations can contribute to open source: A short guide</title>
+    <updated>2020-11-08T00:00:00+00:00</updated>
+    <author>
+      <name>Chris Holdgraf</name>
+    </author>
+    <content type="html">&lt;p&gt;Over the years I’ve had a recurring question from people who are in organizations both big and small: &lt;em&gt;how can we participate in open source communities?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc &lt;em&gt;want&lt;/em&gt; to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you’re not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.&lt;/p&gt;
+</content>
+    <link href="https://predictablynoisy.com/posts/2020/organizations-help-oss-guide/" rel="alternate"/>
+    <published>2020-11-08T00:00:00+00:00</published>
   </entry>
 </feed>

@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="How organizations can contribute to open source: A short guide" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://predictablynoisy.com/posts/2020/organizations-help-oss-guide.html" />
+  <meta property="og:description" content="Over the years I’ve had a recurring question from people who are in organizations both big and small: how can we participate in open source communities? Whether it is because of altruism or strateg..." />
+  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  <meta property="og:image:alt" content="How organizations can contribute to open source: A short guide" />
+  
+    <title>How organizations can contribute to open source: A short guide &#8212; Predictably Noisy  documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.b3fa5b9aeac04ae33e0073fadc1130d8.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.2e394030c035d5864108.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" /> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Predictably Noisy"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main">
+<div class="container-xl">
+
+    <a class="navbar-brand" href="../../../">
+    
+      <p class="title">Predictably Noisy</p>
+    
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div id="navbar-menu" class="col-lg-9 collapse navbar-collapse">
+      <ul id="navbar-main-elements" class="navbar-nav mr-auto">
+        
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../about/">About me</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../projects/">Projects</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../publications/">Published</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../talks/">Talks</a>
+        </li>
+        
+        <li class="nav-item ">
+            <a class="nav-link" href="../../../blog/">Blog</a>
+        </li>
+        
+        
+      </ul>
+
+
+      <form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" >
+</form>
+      
+
+      <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/choldgraf/" target="_blank" rel="noopener">
+              <span><i class="fab fa-github-square"></i></span>
+            </a>
+          </li>
+        
+        
+          <li class="nav-item">
+            <a class="nav-link" href="https://twitter.com/choldgraf" target="_blank" rel="noopener">
+              <span><i class="fab fa-twitter-square"></i></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  08 November 2020 
+</h2>
+
+<ul>
+   
+<li id="author">
+  <span
+    ><i class="fa-fw fa fa-user"></i></span
+  >
+   
+  <a href="../../../blog/author/chris-holdgraf/">Chris Holdgraf</a>  
+</li>
+    
+<li id="tags">
+  <span
+    ><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../../blog/tag/open-source/">open source</a>   
+  <a href="../../../blog/tag/sustainability/">sustainability</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "chrisholdgraf"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  <i class="fa-fw fa fa-comments"></i>
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/posts/2020/organizations-help-oss-guide/"
+  >
+    </a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+  <li>
+    <a href="../2020-01-22-rst-thoughts/"
+      >22 January - What do people think about rST?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-11-11-ipynb_pandoc/"
+      >11 November - Testing Pandoc and Jupyter Notebooks</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-10-27-jupyter-governance-python/"
+      >27 October - What would Python-style governance look like in Jupyter?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-10-22-xarray-neuro/"
+      >22 October - Analyzing intracranial electrophysiology data with xarray</a
+    >
+  </li>
+  
+</ul>
+
+<h3>
+  <a href="../../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2020/">2020 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2018/">2018 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+              
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#meet-open-source-communities-where-they-are" class="nav-link">Meet open source communities where they are</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#help-with-development-and-repositories" class="nav-link">Help with development and repositories</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#upstream-improvements-when-using-core-technology" class="nav-link">Upstream improvements when using core technology</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#contribute-to-the-documentation" class="nav-link">Contribute to the documentation</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#work-on-major-features-the-community-has-prioritized" class="nav-link">Work on major features the community has prioritized</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#provide-core-maintenance-and-support" class="nav-link">Provide core maintenance and support</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#collaborate-with-open-source-projects" class="nav-link">Collaborate with open source projects</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#collaborate-on-open-standards-and-apis" class="nav-link">Collaborate on open standards and APIs</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#advocate-for-open-tools-from-the-community" class="nav-link">Advocate for open tools from the community</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#financially-support-open-source-projects" class="nav-link">Financially support open source projects</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#bottom-line" class="nav-link">Bottom-line</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+              
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                 <div class="section" id="how-organizations-can-contribute-to-open-source-a-short-guide">
+<h1>How organizations can contribute to open source: A short guide<a class="headerlink" href="#how-organizations-can-contribute-to-open-source-a-short-guide" title="Permalink to this headline">¶</a></h1>
+<p>Over the years I’ve had a recurring question from people who are in organizations both big and small: <em>how can we participate in open source communities?</em></p>
+<p>Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc <em>want</em> to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you’re not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.</p>
+<p>So this post is a short guide to provide some ideas for how others can begin to engage with open source. My hope is that it gives people who are embedded in organizations some ideas about how they could engage with open source, or advocate for engagement internally.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is all just personal opinion, and based on my own experiences so far. I’ll try to keep it updated over time as my own thoughts evolve. If you’ve got ideas of your own I’d love to hear them in the comments.</p>
+</div>
+<div class="section" id="meet-open-source-communities-where-they-are">
+<h2>Meet open source communities where they are<a class="headerlink" href="#meet-open-source-communities-where-they-are" title="Permalink to this headline">¶</a></h2>
+<p>If there is anything I’d emphasize the most, it is that organizations need to meet open communities where they are - that means abiding by community values and social norms, and accepting that community priorities may be different from those of an organization.
+A few quick ideas for doing this:</p>
+<ul class="simple">
+<li><p><strong>At first, treat yourself as a visitor</strong>. It will take time to build understanding, status, and trust within a community. Until that happens, it’s important to meet open source communities as peers and consider yourself a visitor. Listen, learn, engage, and adapt your behavior to that of the community. Don’t assume that you should have any special status because you’re a large or well-known organization.</p></li>
+<li><p><strong>Participate in community spaces</strong>. The easiest way to learn how a community operates is to participate in the online spaces where it operates. If there are community meetings, attend them and introduce yourself. If the community has a forum, show up and say hello. If the community uses GitHub issues, watch for what kinds of things people discuss. Offer help, advise, and guidance wherever you can. This will help you understand the needs and direction of the project.</p></li>
+<li><p><strong>Abide by community culture</strong>. For many communities, a lot of care and thought is put into building community dynamics that are open, inclusive, deliberate, and that balance power across the many stakeholders in the ecosystem. It is crucial that you abide by these cultural dynamics, especially with respect to things like Code of Conduct and interpersonal interactions. Taking this time to understand the culture will make the experience much more pleasant for everybody involved.</p></li>
+<li><p><strong>Respect the community priorities</strong>. Many organizations reach out only at the moment where they <em>need</em> something. This is understandable, but a very inefficient way of getting things done in open source communities. There are a variety of needs, priorities, and interests in the community. You should begin by understanding what these are and finding ways to engage with them before focusing on your own priorities or asking for (or offering) changes to suit your needs. The trust that comes from helping someone <em>else</em> with their problem will make it much easier for you to get your own issues fixed in the future.</p></li>
+<li><p><strong>Accept that things will move more slowly</strong>. I know that you have a product or a feature to ship, and that you want to make rapid progress. But, open source communities generally are (and generally should be) slower and more deliberate in their decision-making than many organizations are used-to. Slowing things down ensures that a diverse collection of voices have an opportunity to weigh in on questions, and keeps the community more inclusive and participatory. It also often leads to better decisions that take into consideration more perspectives.</p></li>
+</ul>
+<p>After you spend some time engaging with open source communities, there are a few concrete steps you can take towards making contributions. Here are a few ideas…</p>
+</div>
+<div class="section" id="help-with-development-and-repositories">
+<h2>Help with development and repositories<a class="headerlink" href="#help-with-development-and-repositories" title="Permalink to this headline">¶</a></h2>
+<p>After you’ve spent some time interacting with others in the community, perhaps you’d like to make contributions of your own to the codebase or tools. How can you do this in a way that benefits the community?</p>
+<div class="note admonition">
+<p class="admonition-title"> A note on non-coding support</p>
+<p>Note that, while code is often the output of an open source community, there are many non-coding ways to contribute to that community. Many of the “code-related” activities are actually “people-related” activities, such as assisting others with their problems, or engaging in discussion in issues.</p>
+</div>
+<div class="section" id="upstream-improvements-when-using-core-technology">
+<h3>Upstream improvements when using core technology<a class="headerlink" href="#upstream-improvements-when-using-core-technology" title="Permalink to this headline">¶</a></h3>
+<p>By far the most-common way that organizations contribute back is by “upstreaming” improvements to the open source project as they notice problems or opportunities to improve the code.</p>
+<p>If you’re using a tool regularly, or building it into another tool like one of your products, look for small ways that it could be better. Rather than fixing these issues in your fork of the project or your internal codebase, open an issue in the core repository and offer to fix it if others agree it’s a problem. If a team member has an idea to improve the tool, don’t just build it in your products, improve it in core.</p>
+<div class="tip admonition">
+<p class="admonition-title"> Example: The Jupyter Server</p>
+<p>The <a class="reference external" href="https://github.com/jupyter/jupyter_server">Jupyter Server</a> project is an attempt at pulling out much of the server architecture from the original Notebook application. It’s a very low-level library that is re-usable across a number of other potential tools. Its presence benefits the whole ecosystem, but because it is so generically useful, it has few dedicated resources to maintian and develop.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title"> Example: Accessibility</p>
+<p>This is one of those things that is <em>super</em> hard to get volunteer support for because it is not sexy and it is hard work. Many organizations care about accessibility for a variety of reasons, and taking the time to give back guidance and development to make core tools more accessible is a huge benefit. On this point in particular, I think it is important that organizations not make accessibility a competetive advantage over open source tools, but instead contribute to the common good so that these tools are more inclusive and available to all.</p>
+</div>
+</div>
+<div class="section" id="contribute-to-the-documentation">
+<h3>Contribute to the documentation<a class="headerlink" href="#contribute-to-the-documentation" title="Permalink to this headline">¶</a></h3>
+<p>Documentation is crucial to the success of open source, as it is the interface between people and the code. Documentation should be clear, searchable and findable, and should cover all of the functionality in a tool. However, it’s very difficult to properly-document open source software!</p>
+<p>New users are in an extremely good position to point out inconsistencies, missing information, and unclear explanations in the documentation. If someone in your organization is trying to use an open-source tool for the first time, ask them to spend a few moments providing feedback about how the documentation could be improved, or even better, making a PR to the docs.</p>
+</div>
+<div class="section" id="work-on-major-features-the-community-has-prioritized">
+<h3>Work on major features the community has prioritized<a class="headerlink" href="#work-on-major-features-the-community-has-prioritized" title="Permalink to this headline">¶</a></h3>
+<p>If you’ve got more substantial development time to devote to a project, see what kinds of features people want, and offer to help tackle something that aligns with your own interests. This is much easier if you do so after interacting with the community for a bit, as you will understand its priorities, as well as the underlying codebase, enough to be more efficient and productive.</p>
+<p>Take a look at the issues or roadmap of a project and find ones that you’d also benefit from, chime in and mention that you’d like to try and make these changes to see if others are excited about it. Then, follow-through and engage with the community as you make changes. Don’t be resistant to feedback - remember that you are a part of a broader community with its own norms and expectations around code style, structure, etc.</p>
+<div class="tip admonition">
+<p class="admonition-title"> Example: Look for 👍 in issues</p>
+<p>The Executable Books Project has <a class="reference external" href="https://executablebooks.org/en/latest/feature-vote.html">a feature voting leaderboard</a> that it uses to let users vote with a 👍. You can even see this list for <em>any</em> GitHub repository by <strong>sorting issues by 👍 reactions</strong>. For example, <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc">here are the issues with the most 👍 in JupyterLab</a>.</p>
+</div>
+</div>
+<div class="section" id="provide-core-maintenance-and-support">
+<h3>Provide core maintenance and support<a class="headerlink" href="#provide-core-maintenance-and-support" title="Permalink to this headline">¶</a></h3>
+<p>If you have spent some time interacting with a community, working through bugs and features, etc, you may consider providing more ongoing core support for a project. This is the holy grail of engagement, as core support and maintenance are one of the scarcest resources. Offer to read through issues and triage on a regular basis, routinely engage in pull requests and provide feedback and advise, spot-check bugs over time that others have brought up, do community work to organize meetings or work plans.</p>
+<p>When I try to figure out who is being helpful in the Jupyter ecosystem, I ask questions like “who is doing the things that nobody else is doing?”. E.g., who is the first person to respond to an issue? who is making documentation improvements, or helping an inexperienced contributor improve their PR? These little “carrying water and chopping wood” tasks are not flashy and exciting, but they are <em>crucial</em> to keeping the community dynamic, welcoming, and productive.</p>
+<div class="tip admonition">
+<p class="admonition-title"> Example: Contributing guidelines</p>
+<p>Take a look at the <a class="reference external" href="https://jupyterhub-team-compass.readthedocs.io/en/latest/team/skills.html#a-few-general-ways-to-help-out">JupyterHub Team contributing guidelines</a> - most of them aren’t strictly technical, they’re about helping others, helping the team in conversations, and generally just being friendly and productive community members.</p>
+</div>
+</div>
+</div>
+<div class="section" id="collaborate-with-open-source-projects">
+<h2>Collaborate with open source projects<a class="headerlink" href="#collaborate-with-open-source-projects" title="Permalink to this headline">¶</a></h2>
+<p>Beyond directly working inside of an open source community, there are also plenty of ways that you engage with them as collaborators and partners. Here are a few concrete ideas.</p>
+<div class="section" id="collaborate-on-open-standards-and-apis">
+<h3>Collaborate on open standards and APIs<a class="headerlink" href="#collaborate-on-open-standards-and-apis" title="Permalink to this headline">¶</a></h3>
+<p>Beyond the open source core, there are often places where you wish to build out your <em>own</em> functionality. In these cases, it’s important that new APIs and patterns of interaction happen in conversation with the open source community, in order to ensure as much standardization as possible across ecosystems.</p>
+<p>Any time that you’d like to extend functionality beyond what’s already there, and have to make a semi-arbitrary decision of what pattern to expose to users, standardize on something the community already uses so that there isn’t unnecessary duplication and fracturing across ecosystems. If no standard exists, don’t just create one - reach out to the open source community and lead a process that gets others to brainstorm and buy-in to a new standard.</p>
+<div class="tip admonition">
+<p class="admonition-title"> Example: The <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format. One of Jupyter’s core goals is to standardize tools and patterns across the data science community. The <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format is probably the most common example. As more tools build their own notebook functionality and wish to <em>extend</em> <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> to do new things, they should follow metadata standards (or lead processes to create new ones). For example, we don’t want <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> files that have platform-specific metadata. Even little stuff like “for cell-level metadata to hide inputs, do we call it <code class="docutils literal notranslate"><span class="pre">hide_input</span></code> or <code class="docutils literal notranslate"><span class="pre">hideInput</span></code>?” This can seem trivial and arbitrary but it is important and in many ways the most important thing that open communities do! When in doubt, ask around and get buy-in from others.</p>
+</div>
+</div>
+<div class="section" id="advocate-for-open-tools-from-the-community">
+<h3>Advocate for open tools from the community<a class="headerlink" href="#advocate-for-open-tools-from-the-community" title="Permalink to this headline">¶</a></h3>
+<p>While developing and improving technology is a core part of open source, there is also a great deal of <em>advocacy</em> needed to expand their use and to get feedback. Organizational partners can be a huge help here by finding ways to support and highlight open source tooling in their stack, and by explicitly highlighting this tooling in tandem with organizational products.</p>
+<p>This can be a bit tricky (competive landscape etc), but the rubric that I shoot for is: use community-led products wherever possible, and if that’s not possible, make sure to highlight and advocate for community-led products in-tandem with your own products.</p>
+<div class="tip admonition">
+<p class="admonition-title"> Example: Workshops and training material</p>
+<p>Many organizations run workshops, demos, and training sessions for their products. They also have sizeable marketing departments for the work they do. In all of these efforts, make it clear when you are relying on an open source tool for support, and highlight the ways in which you are engaging with its community and giving back.</p>
+<p>For example, <a class="reference external" href="https://spacy.io/">spacy.io</a> is an NLP framework built by <a class="reference external" href="https://explosion.ai/">explosion.ai</a>. As part of their online documentation, they include interactive code sessions powered by <a class="reference external" href="https://mybinder.org">Binder kernels</a>. They make sure to include the name “Binder” whenever these kernels are spun-up in order to give credit and thanks to the free mybinder.org service.</p>
+</div>
+</div>
+<div class="section" id="financially-support-open-source-projects">
+<h3>Financially support open source projects<a class="headerlink" href="#financially-support-open-source-projects" title="Permalink to this headline">¶</a></h3>
+<p>Some open source projects have ways to support them directly through funding. For those that do, an easy way to contribute is to provide some of your own financial resources for these things. Check whether the project, or any major contributors in the project, have a <a class="reference external" href="https://github.com/sponsors">GitHub Sponsors</a> or a <a class="reference external" href="https://www.patreon.com/">Patreon</a> page. Investigate whether the <a class="reference external" href="https://numfocus.org/donate">project is fiscally sponsored</a> and can accept donations. Other projects perform focused fundraising, for example the Jupyter Project has a <a class="reference external" href="https://blog.jupyter.org/the-jupyterhub-and-binder-contributor-in-residence-56708d1e3069">Jupyter Contributor in Residence</a> position that it must raise funds for.</p>
+<p>Alternatively, look into whether you can sponsor open-source work via other companies or contractors. Many companies do contract-style work in open source, and welcome funding to “buy out” open source time.  Fundraising can be a time-consuming effort, and offering your resources can help make a quick impact if the project is in a good position to accept them.</p>
+</div>
+</div>
+<div class="section" id="bottom-line">
+<h2>Bottom-line<a class="headerlink" href="#bottom-line" title="Permalink to this headline">¶</a></h2>
+<p>There are many different ways that you can participate in open source communities. Fundamentally, this comes down to being attentive, flexible, and generous. Each community is different, but some combination of the above steps will help you make progress and make an impact in working with many open source communities.</p>
+<p>If I’ve missed something important, please do chime in and suggest other ways that organizations can get involved. I would love to continue updating this list as new ideas come to light.</p>
+</div>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../sphinx-blogging/">
+      <i class="fa fa-arrow-circle-left"></i> A new blog with Sphinx
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "chrisholdgraf";
+      var disqus_identifier = "/posts/2020/organizations-help-oss-guide/";
+      var disqus_title = "How organizations can contribute to open source: A short guide";
+      var disqus_url = "https://predictablynoisy.com/posts/2020/organizations-help-oss-guide";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.2e394030c035d5864108.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-88310237-1', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    <p>
+          &copy; Copyright 2020, Chris Holdgraf.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
