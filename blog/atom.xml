@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2020-11-08T17:15:24.006643+00:00</updated>
+  <updated>2020-11-08T17:18:25.344123+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml"/>
   <generator uri="https://ablog.readthedocs.org" version="0.10.12">ABlog</generator>
@@ -313,7 +313,7 @@ of publishing with Jupyter.&lt;/p&gt;
   </entry>
   <entry>
     <id>https://predictablynoisy.com/posts/2020/organizations-help-oss-guide/</id>
-    <title>How organizations can contribute to open source: A short guide</title>
+    <title>Contributing to open source: A short guide for organizations</title>
     <updated>2020-11-08T00:00:00+00:00</updated>
     <author>
       <name>Chris Holdgraf</name>
