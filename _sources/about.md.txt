@@ -1,6 +1,6 @@
 # About me
 
-I'm a post-doc in the Statistics department at UC Berkeley, and a co-founder of the [non-profit 2i2c](https://2i2c.org).
+I help run [2i2c - the International Interactive Computing Collaboration](https://2i2c.org), a non-profit dedicated to open source infrastructure for interactive computing in research and education.
 
 ## What I do
 
