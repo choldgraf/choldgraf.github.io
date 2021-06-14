@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="General principles" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://predictablynoisy.com/posts/2018/my-workflow.html" />
+  <meta property="og:description" content="I’ve had a bunch of conversations with friends who were interested in how to keep track of the various projects they’re working on, and to prioritize their time over the course of a week. I thought..." />
+  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  <meta property="og:image:alt" content="General principles" />
+  
+    <title>General principles &#8212; Predictably Noisy  documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+     
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Predictably Noisy"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../">
+<p class="title">Predictably Noisy</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../about/">
+  About me
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../projects/">
+  Projects
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../publications/">
+  Published
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../talks/">
+  Talks
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../blog/">
+  Blog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  26 October 2018 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    ><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../../blog/category/productivity/">productivity</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    ><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../../blog/tag/productivity/">productivity</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "chrisholdgraf"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  <i class="fa-fw fa fa-comments"></i>
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/posts/2018/my-workflow/"
+  >
+    </a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2020/organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/2020-01-22-rst-thoughts/"
+      >22 January - What do people think about rST?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/panels-timeline/"
+      >22 January - Building a simple timeline with sphinx-panels</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-11-11-ipynb_pandoc/"
+      >11 November - Testing Pandoc and Jupyter Notebooks</a
+    >
+  </li>
+  
+</ul>
+
+<h3>
+  <a href="../../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   General principles
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-tools-do-i-use">
+   What tools do I use?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-boards">
+   Project boards
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weekly-board">
+   Weekly board
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-does-this-work-in-practice">
+   How does this work in practice?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extras">
+   Extras
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-weekly-board">
+     The weekly board
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-global-command-for-project-boards">
+     A global command for project boards
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                 <p>I’ve had a bunch of conversations with friends who were interested in how to
+keep track of the various projects they’re working on, and to prioritize their
+time over the course of a week. I thought it might be helpful to post my own
+approach to planning time throughout the week in case it’s useful for others to
+riff off of.</p>
+<div class="section" id="general-principles">
+<h1>General principles<a class="headerlink" href="#general-principles" title="Permalink to this headline">¶</a></h1>
+<p>First off, a few general principles that I use to guide my thinking on planning
+out the week.</p>
+<ol class="simple">
+<li><p><strong>Be intentional.</strong> This seems obvious, but I find that if I don’t explicitly define
+what I want to work on, I have more of those “where the heck did the day go” kinds
+of weeks.</p></li>
+<li><p><strong>Be strategic.</strong> There are only so many hours in the day, which means that I need to be
+careful about what I commit to spending time on. I try to figure out what are the most
+important things to do, and ensure I make space for this work before other stuff.</p></li>
+<li><p><strong>Be (conservatively) realistic.</strong> I often get too optimistic with my time and energy levels.
+Sometimes you’re tired, sometimes you get distracted, sometimes new work pops up you didn’t
+account for. For this reason, I only budget about <strong>20 hours of diligent work a week</strong>.</p></li>
+<li><p><strong>Be flexible.</strong> Finally, don’t worry about following the plan obsessively. Use it as a guide,
+not a set of chains. If it’s worth re-prioritizing, that’s fine!</p></li>
+<li><p><strong>Be diligent.</strong> That said, whenever the plans <em>do</em> change, make sure that this is written down
+somewhere so that I know I’m being intentional about it.</p></li>
+</ol>
+</div>
+<div class="section" id="what-tools-do-i-use">
+<h1>What tools do I use?<a class="headerlink" href="#what-tools-do-i-use" title="Permalink to this headline">¶</a></h1>
+<p>OK so what does this process actually look like? Here’s a general approach:</p>
+<p>I use <a class="reference external" href="https://trello.com/"><strong>Trello</strong></a> for managing most of the projects that I work on each week. For those who aren’t familiar,
+Trello is a web app that lets you organize “cards” into vertical lists. It’s useful for Kanban-style
+project management, and is super popular in technical circles.</p>
+<p>I use two kinds of Trello boards, “project” boards, and my “weekly” board.</p>
+</div>
+<div class="section" id="project-boards">
+<h1>Project boards<a class="headerlink" href="#project-boards" title="Permalink to this headline">¶</a></h1>
+<p>Project boards are project-specific. They’re organized in four primary columns.</p>
+<ul class="simple">
+<li><p><strong>Info</strong> has cards with information about that project. For example, links, notes, attachments, etc.</p></li>
+<li><p><strong>ToDo</strong> has cards representing tasks that I’ll do eventually. These tend to be more abstract and
+will evolve over time.</p></li>
+<li><p><strong>Next</strong> has cards representing actionable tasks that I’ll do soon.</p></li>
+<li><p><strong>Doing</strong> is a special list that I’ll explain later. It’s where cards go when I’m working on them currently.</p></li>
+</ul>
+<p>The other major component of the projcet board is a collection of “Done” lists. At the end of each
+week, and cards that are finished get moved into a list named like so: <strong>Done - Week NN</strong> where “NN” is the
+number of the current week.</p>
+<p>I keep a short-list of currently-active projects that I’m working on. These are “starred” and show up at
+the top of the Trello board list to the left.</p>
+<p>Here’s an example of a project board:</p>
+<p><img alt="" src="../../../_images/trello-board-project.png" /></p>
+</div>
+<div class="section" id="weekly-board">
+<h1>Weekly board<a class="headerlink" href="#weekly-board" title="Permalink to this headline">¶</a></h1>
+<p>The other major Trello board that I use is my “weekly” board. This is basically a to-do list for my week.
+It’s got one list per project, and each card represents a to-do item for that project. There is one-to-one
+mapping between lists in this board and project boards that the cards come from.</p>
+<p>As I work on cards throughout the week, I move them into another list called “Done”. Once the card is there,
+it means that I’ve finished that task for the week.</p>
+<p>An additional component is that each card is assigned a number of <strong>hours needed to complete the card</strong>.
+I try to keep the total number of hours on this board to &lt;= 20. I’ve found that this is a realistic
+balance between “enough hours to actually get stuff done” and “not so many hours that I won’t finish them”.</p>
+<p>To assign and keep track of the hours with each card, I use a chrome extension called <a class="reference external" href="https://chrome.google.com/webstore/detail/plus-for-trello-time-trac/gjjpophepkbhejnglcmkdnncmaanojkf?hl=en"><strong>Plus for Trello</strong></a>. This
+adds fields for “estimated” and “spent” hours that I update over the week.</p>
+<p>Here’s an example of a weekly board:</p>
+<p><img alt="" src="../../../_images/trello-board-active.png" /></p>
+</div>
+<div class="section" id="how-does-this-work-in-practice">
+<h1>How does this work in practice?<a class="headerlink" href="#how-does-this-work-in-practice" title="Permalink to this headline">¶</a></h1>
+<p>I use a tool called <a class="reference external" href="https://butlerfortrello.com/"><strong>Butler for Trello</strong></a> (BFT) to manage how cards flow through this system.
+Lets you automate various tasks in Trello by writing messages that it parses as instructions.</p>
+<p>Remember that “Doing” list that I mentioned in each project board? Any time I move a card into
+a “Doing” list on a project board, the following happens:</p>
+<ul class="simple">
+<li><p>BFT adds a custom field to the card that has the Project Board ID that it came from</p></li>
+<li><p>BFT moves the card to the “weekly” board, to a list with the same name as the project board</p></li>
+</ul>
+<p>Moreover, remember that there was a “Done” list in my weekly board? That also does something
+special. I have a BFT link that, whenever clicked, does the following:</p>
+<ul class="simple">
+<li><p>Loop through every card in the “Done” list</p></li>
+<li><p>For each card, find the Board ID that represents the board the card came from</p></li>
+<li><p>Move the card to that board, put it in a “Done” list that is automatically created using the
+number of the current active week.</p></li>
+</ul>
+<p>So, the general flow of cards through this system looks like this:</p>
+<ol class="simple">
+<li><p>Create cards in a project board that represent things to be done.</p></li>
+<li><p>When it’s time to work on a task, move it to the “Doing” list</p></li>
+<li><p>BFT moves that card to my “Weekly” board, to a list w/ the project name</p></li>
+<li><p>This happens at the beginning of the week, along with an estimation of the time needed for
+each card.</p></li>
+<li><p>As the week progresses, I mark off the hours that I’ve spent on each card.</p></li>
+<li><p>When the card’s hours remaining reaches 0, I move it to the “Done” list</p></li>
+<li><p>At the end of the week, I click my “board cleanup” link, and it returns each card to its
+original project board.</p></li>
+<li><p>Next week, I repeat this cycle.</p></li>
+</ol>
+<p>And that’s about it - I’ve found that this process is a nice way to keep both a high-level
+view of what needs to be done for my various projects (on each project board). It also allows
+my to dig into specific to-do items throughout the week (on my weekly board).</p>
+<p>I’d love to hear feedback and thoughts about how other people manage their time throughout
+the week! Hopefully some of you all find this useful.</p>
+</div>
+<div class="section" id="extras">
+<h1>Extras<a class="headerlink" href="#extras" title="Permalink to this headline">¶</a></h1>
+<p>Butler for Trello commands can be a little bit difficult to compose. Below I’ll post the
+two main commands that I use to handle all the card-moving described above.</p>
+<div class="section" id="the-weekly-board">
+<h2>The weekly board<a class="headerlink" href="#the-weekly-board" title="Permalink to this headline">¶</a></h2>
+<p>The weekly board has a “butler” list where the command is defined in a card (that’s how
+you define board-specific BFT commands). Here’s the command:</p>
+<p>{% raw %}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">script</span><span class="p">:</span> <span class="k">for</span> <span class="n">each</span> <span class="n">card</span> <span class="ow">in</span> <span class="nb">list</span> <span class="s2">&quot;Return&quot;</span><span class="p">,</span> <span class="n">remove</span> <span class="nb">all</span> <span class="n">labels</span> <span class="ow">and</span> <span class="n">move</span> <span class="n">the</span> <span class="n">card</span> <span class="n">to</span> <span class="nb">list</span> <span class="s2">&quot;Returned | Week </span><span class="si">{weeknumber}</span><span class="s2">&quot;</span> <span class="n">on</span> <span class="n">board</span> <span class="s2">&quot;{{</span><span class="si">%ho</span><span class="s2">meboard}}&quot;</span> <span class="ow">and</span> <span class="n">move</span> <span class="nb">list</span> <span class="s2">&quot;Returned | Week </span><span class="si">{weeknumber}</span><span class="s2">&quot;</span> <span class="n">on</span> <span class="n">board</span> <span class="s2">&quot;{{</span><span class="si">%ho</span><span class="s2">meboard}}&quot;</span> <span class="n">to</span> <span class="n">position</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">clear</span> <span class="n">custom</span> <span class="n">field</span> <span class="s2">&quot;homeboard&quot;</span>
+</pre></div>
+</div>
+<p>{% endraw %}</p>
+</div>
+<div class="section" id="a-global-command-for-project-boards">
+<h2>A global command for project boards<a class="headerlink" href="#a-global-command-for-project-boards" title="Permalink to this headline">¶</a></h2>
+<p>I also use a global BFT command that moves the cards from each project board to the weekly
+board when the card is moved to the “Doing” category.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">when</span> <span class="n">a</span> <span class="n">card</span> <span class="ow">is</span> <span class="n">added</span> <span class="n">to</span> <span class="nb">list</span> <span class="s2">&quot;Doing&quot;</span> <span class="n">by</span> <span class="n">me</span><span class="p">,</span> <span class="nb">set</span> <span class="n">custom</span> <span class="n">field</span> <span class="s2">&quot;homeboard&quot;</span> <span class="n">to</span> <span class="s2">&quot;</span><span class="si">{boardlink}</span><span class="s2">&quot;</span> <span class="ow">and</span> <span class="n">move</span> <span class="n">the</span> <span class="n">card</span> <span class="n">to</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="nb">list</span> <span class="s2">&quot;</span><span class="si">{boardname}</span><span class="s2">&quot;</span> <span class="n">on</span> <span class="n">board</span> <span class="s2">&quot;Active&quot;</span> <span class="ow">and</span> <span class="n">move</span> <span class="nb">list</span> <span class="s2">&quot;</span><span class="si">{boardname}</span><span class="s2">&quot;</span> <span class="n">on</span> <span class="n">board</span> <span class="s2">&quot;Active&quot;</span> <span class="n">to</span> <span class="n">position</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../rust_governance/">
+      <i class="fa fa-arrow-circle-left"></i> I like Rust's governance structure
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../kinds-of-openness/">
+      Signaling openness <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "chrisholdgraf";
+      var disqus_identifier = "/posts/2018/my-workflow/";
+      var disqus_title = "General principles";
+      var disqus_url = "https://predictablynoisy.com/posts/2018/my-workflow";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020, Chris Holdgraf.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="SciPy" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://predictablynoisy.com/posts/2018/conferences-summer-2018.html" />
+  <meta property="og:description" content="This is a short update on several of the conferences and workshops over the summer of this year. There’s all kinds of exciting things going on in open source and open communities, so this is a quic..." />
+  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  <meta property="og:image:alt" content="SciPy" />
+  
+    <title>SciPy &#8212; Predictably Noisy  documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+     
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Predictably Noisy"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../">
+<p class="title">Predictably Noisy</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../about/">
+  About me
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../projects/">
+  Projects
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../publications/">
+  Published
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../talks/">
+  Talks
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../blog/">
+  Blog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  01 August 2018 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    ><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../../blog/category/conferences/">conferences</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    ><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../../blog/tag/python-conferences-communities-jupyter/">python conferences communities jupyter</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "chrisholdgraf"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  <i class="fa-fw fa fa-comments"></i>
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/posts/2018/conferences-summer-2018/"
+  >
+    </a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2020/organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/2020-01-22-rst-thoughts/"
+      >22 January - What do people think about rST?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/panels-timeline/"
+      >22 January - Building a simple timeline with sphinx-panels</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-11-11-ipynb_pandoc/"
+      >11 November - Testing Pandoc and Jupyter Notebooks</a
+    >
+  </li>
+  
+</ul>
+
+<h3>
+  <a href="../../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   SciPy
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-pangeo-project-demoed-their-jupyterhub-for-big-data-geoscience">
+     The Pangeo project demoed their JupyterHub for big-data geoscience
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wholetale-shared-some-ideas-on-getting-data-to-work-with-reproducible-pipelines">
+     Wholetale shared some ideas on getting data to work with reproducible pipelines
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binder-2-0-was-unveiled">
+     Binder 2.0 was unveiled!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pearc">
+   PEARC
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lots-of-high-performance-computing-centers-use-jupyterhub">
+     Lots of high-performance computing centers use JupyterHub
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hpc-centers-are-curious-about-kubernetes">
+     HPC centers are curious about Kubernetes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#research-computing-has-a-weird-relationship-with-cloud-companies">
+     Research computing has a weird relationship with cloud companies
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#we-gave-a-jupyterhub-and-binderhub-on-kubernetes-tutorial">
+     We gave a JupyterHub and BinderHub on Kubernetes tutorial
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-source-alliance-for-open-scholarship">
+   Open Source Alliance for Open Scholarship
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                 <p>This is a short update on several of the conferences and workshops over the
+summer of this year. There’s all kinds of exciting things going on in open
+source and open communities, so this is a quick way for me to collect my
+thoughts on some things I’ve learned this summer.</p>
+<div class="section" id="scipy">
+<h1>SciPy<a class="headerlink" href="#scipy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-pangeo-project-demoed-their-jupyterhub-for-big-data-geoscience">
+<h2>The Pangeo project demoed their JupyterHub for big-data geoscience<a class="headerlink" href="#the-pangeo-project-demoed-their-jupyterhub-for-big-data-geoscience" title="Permalink to this headline">¶</a></h2>
+<p>Pangeo is a project that provides
+<strong>access to a gigantic geosciences dataset</strong>. They use lots of tools in the
+open-source community, including Dask for efficient numerical computation,
+the SciPy stack for a bunch of data analytics, and JupyterHub on
+Kubernetes for managing user instances and deploying on remote infrastructure.
+Pangeo has a neat demo of their hosted JupyterHub instance that people can use
+to access this otherwise-inaccessible dataset! See their video from SciPy below.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2rgD5AJsAbE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<div class="section" id="wholetale-shared-some-ideas-on-getting-data-to-work-with-reproducible-pipelines">
+<h2>Wholetale shared some ideas on getting data to work with reproducible pipelines<a class="headerlink" href="#wholetale-shared-some-ideas-on-getting-data-to-work-with-reproducible-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>Wholetale is a collection
+of technology that makes it easier to do reproducible work. It is NSF-funded,
+so tries to be fairly open about how it interfaces with the ecosystem around it.
+They Wholetale team gave an interesting talk about how to handle <strong>data in
+reproducible environments</strong>. This is a big unsolved problem in the space, since
+datasets are often difficult to ship around or copy, and it doesn’t usually make
+sense to bake them into things like container images.</p>
+<p>Check out their presentation below</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/X0UX4bW_4w0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+<div class="section" id="binder-2-0-was-unveiled">
+<h2>Binder 2.0 was unveiled!<a class="headerlink" href="#binder-2-0-was-unveiled" title="Permalink to this headline">¶</a></h2>
+<p>Min Ragan-Kelley and I presented Binder 2.0 on
+behalf of the Binder community. We talked a bit about the philosophy behind Binder,
+how we connect with the broader open-source ecosystem (hint: BinderHub is 70% jupyterhub),
+dove into the technical pieces a bit, and laid out some ideas for how Binder can
+grow in the future. We’d love to see a world where there are <strong>BinderHubs all over
+the scientific landscape</strong> (e.g. “binder.berkeley.edu”) that users can select based
+on their institutional affiliation or address.</p>
+<p>In addition, the Binder team collaborated on <a class="reference external" href="https://github.com/scipy-conference/scipy_proceedings/pull/386">a “Binder 2.0”
+paper</a>,
+which will be published in the proceedings from SciPy. Hooray citable
+research artifacts!</p>
+<p>Here’s our Binder talk:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/KcC0W5LP9GM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
+</div>
+<div class="section" id="pearc">
+<h1>PEARC<a class="headerlink" href="#pearc" title="Permalink to this headline">¶</a></h1>
+<p>PEARC is a scientific and research computing conference held each year. It’s
+interesting because it exists at the intersection of a few different communities.
+As the scientific world has become more “data-intensive”, new parts of the academy
+overlap with technical infrastructure that was traditionally just for physics/
+astronomy/simulation kinds of folks. PEARC is (sort of) where a lot of “old school”
+and “new school” parts of research infrastructure intersect.</p>
+<div class="section" id="lots-of-high-performance-computing-centers-use-jupyterhub">
+<h2>Lots of high-performance computing centers use JupyterHub<a class="headerlink" href="#lots-of-high-performance-computing-centers-use-jupyterhub" title="Permalink to this headline">¶</a></h2>
+<p>Perhaps the most exciting thing I noticed was how much chatter is in the HPC
+world around JupyterHub on high-performance compute. I think this makes sense,
+since JupyterHub provides an interface people are familiar with, and obviates
+the need to be a skilled computer scientist just to interact with high-performance
+hardware.  In particular, the <a class="reference external" href="https://www.msi.umn.edu/">Minnesota Supercomputing Institute</a>
+and the <a class="reference external" href="http://www.nersc.gov/">National Energy Research Scientific Computing Center</a>
+showed some promising examples of providing access to large-scale compute via an
+interactive environment that was hosted by JupyterHub.</p>
+</div>
+<div class="section" id="hpc-centers-are-curious-about-kubernetes">
+<h2>HPC centers are curious about Kubernetes<a class="headerlink" href="#hpc-centers-are-curious-about-kubernetes" title="Permalink to this headline">¶</a></h2>
+<p>There was also a lot of talk about Kubernetes at the conference, though it was
+clear that many people simply didn’t have the experience with it to know whether
+it was a “good” option or not. Systems administrators tend to be lower-case “c”
+conservative when it comes to technology, and it seems that this community
+is lagging behind the tech world by many years when it comes to the adoption
+of “cloud” technologies. Hopefully we’ll see more experiments with Kubernetes
+in the HPC world, and that people report back their experiences as this happens.</p>
+</div>
+<div class="section" id="research-computing-has-a-weird-relationship-with-cloud-companies">
+<h2>Research computing has a weird relationship with cloud companies<a class="headerlink" href="#research-computing-has-a-weird-relationship-with-cloud-companies" title="Permalink to this headline">¶</a></h2>
+<p>A lot of research computing folks also expressed some combination of excitement
+and hesitation at outsourcing their computing to large-scale cloud companies
+(such as Google, Amazon, or Microsoft). On the one hand, paying Google to
+run your compute means you can accomplish some things for less money. On the other,
+it’s hard to avoid building an institutional dependency on a single company’s
+technical infrastructure. Once you’ve got that 100 petabyte dataset hosted with
+one company, it’ll probably be staying there for quite a long time. All the cloud
+companies are offering “free” services to cool-sounding research projects right now,
+but never forget that many of these companies have built business models on converting
+“free-tier” customers into locked-in paying customers. A few HPC people shared
+stories along the lines of “well they said it would be free to host our scientific
+data, until they started sending us bills for it several years later.”</p>
+</div>
+<div class="section" id="we-gave-a-jupyterhub-and-binderhub-on-kubernetes-tutorial">
+<h2>We gave a JupyterHub and BinderHub on Kubernetes tutorial<a class="headerlink" href="#we-gave-a-jupyterhub-and-binderhub-on-kubernetes-tutorial" title="Permalink to this headline">¶</a></h2>
+<p>Last week, Aaron Culich, Jessica Forde, Felix-Antoine Fortin, and I presented a
+day-long tutorial on deploying JupyterHub and BinderHub with Kubernetes. You can
+<a class="reference external" href="https://bit.ly/pearc-2018-jhub">find a copy of our slides here</a>. In particular, I’m
+excited to see some improvement in the methods for deploying Kubernetes on
+OpenStack. OpenStack is <em>much</em> more common in scientific research, and exists
+on pre-existing hardware. Deploying <strong>Kubernetes on OpenStack</strong> would open up this
+technology to the academic community in a way that won’t happen with cloud
+companies any time soon. In particular, Felix shared <a class="reference external" href="https://github.com/etiennedub/terraform-binderhub">Etienne’s terraform scripts
+to deploy Kubernetes on OpenStack</a>.
+I’d love to see people try this out and report back their experiences.</p>
+</div>
+</div>
+<div class="section" id="open-source-alliance-for-open-scholarship">
+<h1>Open Source Alliance for Open Scholarship<a class="headerlink" href="#open-source-alliance-for-open-scholarship" title="Permalink to this headline">¶</a></h1>
+<p>Finally, I attended <a class="reference external" href="https://osaos.org/convening-the-community-looking-towards-the-future/">a meeting in New York
+City</a> organized
+by <a class="reference external" href="https://osaos.org/about-us/">OSAOS</a>. What’s OSAOS? My take is that it’s an
+organization dedicated to building connections, best-practices, and leadership
+between organizations in open scholarship (AKA, organizations that operate on
+open principles with a goal of creating and sharing knowledge). More than anything,
+I am thrilled to see more interest in the “soft skills” side of open communities.
+It’s easy to treat all of these things as technical projects, but in my experience
+the biggest challenges are social and systemic, and won’t be solved with code.
+However, leaders of open groups are often isolated, underappreciated, and don’t
+have a lot of training in how to lead communities and projects. It’s great to see
+organizations such as OSAOS trying to improve this!</p>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../sphinx-copy-buttons/">
+      <i class="fa fa-arrow-circle-left"></i> Adding copy buttons to code blocks in Sphinx
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../circle-docs/">
+      Using CircleCI to preview documentation in Pull Requests <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "chrisholdgraf";
+      var disqus_identifier = "/posts/2018/conferences-summer-2018/";
+      var disqus_title = "SciPy";
+      var disqus_url = "https://predictablynoisy.com/posts/2018/conferences-summer-2018";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020, Chris Holdgraf.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

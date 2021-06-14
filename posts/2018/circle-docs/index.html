@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Configure CircleCI" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://predictablynoisy.com/posts/2018/circle-docs.html" />
+  <meta property="og:description" content="Writing documentation is important - it’s the first point of contact between many users and your project, and can be a pivotal moment in whether they decide to adopt your tech or become a contribut..." />
+  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  <meta property="og:image:alt" content="Configure CircleCI" />
+  
+    <title>Configure CircleCI &#8212; Predictably Noisy  documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+     
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Predictably Noisy"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../">
+<p class="title">Predictably Noisy</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../about/">
+  About me
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../projects/">
+  Projects
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../publications/">
+  Published
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../talks/">
+  Talks
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../blog/">
+  Blog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  16 October 2018 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    ><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../../blog/category/documentation/">documentation</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    ><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../../blog/tag/documentation-sphinx/">documentation sphinx</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "chrisholdgraf"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  <i class="fa-fw fa fa-comments"></i>
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/posts/2018/circle-docs/"
+  >
+    </a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2020/organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/2020-01-22-rst-thoughts/"
+      >22 January - What do people think about rST?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/panels-timeline/"
+      >22 January - Building a simple timeline with sphinx-panels</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-11-11-ipynb_pandoc/"
+      >11 November - Testing Pandoc and Jupyter Notebooks</a
+    >
+  </li>
+  
+</ul>
+
+<h3>
+  <a href="../../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Configure CircleCI
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tell-circleci-to-build-pull-requests-for-your-repository">
+   Tell CircleCI to build Pull Requests for your repository
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-a-pull-request">
+   Make a Pull Request
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#view-your-artifacts">
+   View your artifacts
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                 <p>Writing documentation is important - it’s the first point of contact between many users and your
+project, and can be a pivotal moment in whether they decide to adopt your tech or become a contributor.</p>
+<p>However, it can be a pain to iterate on documentation, as it is often involves a lot of rapid iteration
+locally, followed by a push to GitHub where you “just trust” that the author has done a good job of
+writing content, design, etc.</p>
+<p>A really helpful tip here is to use Continuous Integration to build and preview your documentation. This
+allows you to generate a link to the build docs, which is a much better way of reviewing than looking at
+the raw text.</p>
+<p><img alt="" src="../../../_images/sphinx-circle-logos.png" /></p>
+<p>Here’s a simple CircleCI configuration that you can use to build documentation with Sphinx and store it
+as an artifact in the build that you can then preview. To set this up, follow these steps:</p>
+<div class="section" id="configure-circleci">
+<h1>Configure CircleCI<a class="headerlink" href="#configure-circleci" title="Permalink to this headline">¶</a></h1>
+<p>First off, you need to configure CircleCI to build your page. This involves creating a file called <code class="docutils literal notranslate"><span class="pre">.circle/config.yml</span></code>
+that Circle will use to decide what to do each time your page is built. You then need to go to the CircleCI
+website and tell it to build your site.</p>
+<p>Here’s a skeleton configuration that will build the documentation with Sphinx:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">jobs</span><span class="p">:</span>
+  <span class="c1"># Define a &quot;build_docs&quot; job to be run with Circle</span>
+  <span class="nt">build_docs</span><span class="p">:</span>
+    <span class="c1"># This is the base environment that Circle will use</span>
+    <span class="nt">docker</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
+    <span class="nt">steps</span><span class="p">:</span>
+      <span class="c1"># Get our data and merge with upstream</span>
+      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
+      <span class="c1"># Update our path</span>
+      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;export PATH=~/.local/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span>
+      <span class="c1"># Restore cached files to speed things up</span>
+      <span class="p p-Indicator">-</span> <span class="nt">restore_cache</span><span class="p">:</span>
+          <span class="nt">keys</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cache-pip</span>
+      <span class="c1"># Install the packages needed to build our documentation</span>
+      <span class="c1"># This will depend on your particular package!</span>
+      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pip install --user sphinx_rtd_theme sphinx pytest memory_profiler recommonmark sphinx_copybutton jupyterhub</span>
+      <span class="c1"># Cache some files for a speedup in subsequent builds</span>
+      <span class="p p-Indicator">-</span> <span class="nt">save_cache</span><span class="p">:</span>
+          <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cache-pip</span>
+          <span class="nt">paths</span><span class="p">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span>
+      <span class="c1"># Build the docs</span>
+      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
+          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build docs to store</span>
+          <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+            <span class="no">cd doc</span>
+            <span class="no">make html</span>
+      <span class="c1"># Tell Circle to store the documentation output in a folder that we can access later</span>
+      <span class="p p-Indicator">-</span> <span class="nt">store_artifacts</span><span class="p">:</span>
+          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">doc/_build/html/</span>
+          <span class="nt">destination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">html</span>
+
+<span class="c1"># Tell CircleCI to use this workflow when it builds the site</span>
+<span class="nt">workflows</span><span class="p">:</span>
+  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">jobs</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">build_docs</span>
+</pre></div>
+</div>
+<p>See the comments above for what each step does.</p>
+</div>
+<div class="section" id="tell-circleci-to-build-pull-requests-for-your-repository">
+<h1>Tell CircleCI to build Pull Requests for your repository<a class="headerlink" href="#tell-circleci-to-build-pull-requests-for-your-repository" title="Permalink to this headline">¶</a></h1>
+<p>Because we’re doing this in order to preview changes to the documentation in a Pull Request,
+we now need to tell CircleCI to run builds on PRs to your repo. To do so, go to the CircleCI UI, click on “Jobs”, then click
+your project name, then click the settings button here:</p>
+<p><img alt="" src="../../../_images/sphinx-circle-settings.png" /></p>
+<p>In the next page, click on <strong>Advanced Settings</strong>, and finally switch on <strong>Build forked pull requests</strong>.</p>
+<p>Now, Circle will build against the PRs of your repository.</p>
+</div>
+<div class="section" id="make-a-pull-request">
+<h1>Make a Pull Request<a class="headerlink" href="#make-a-pull-request" title="Permalink to this headline">¶</a></h1>
+<p>Now it’s time to test things out. Make a Pull Request for your repository. GitHub should automatically
+detect a CircleCI configuration, and run the job with the configuration you’ve specified.</p>
+<p>Once the documentation is built (or if it fails) you can click on the CircleCI link from the GitHub UI
+in order to see what happened.</p>
+<p><img alt="" src="../../../_images/sphinx-circle-github-pr.png" /></p>
+</div>
+<div class="section" id="view-your-artifacts">
+<h1>View your artifacts<a class="headerlink" href="#view-your-artifacts" title="Permalink to this headline">¶</a></h1>
+<p>You should be taken to a page that shows a summary of the recent CircleCI build for this PR.</p>
+<p>If your documentation successfully built (and if you’ve told Sphinx to put the built site in <code class="docutils literal notranslate"><span class="pre">doc/_build/</span></code>) then
+you can now click on the <strong>Artifacts</strong> tab. You should see a drop-down list of artifacts that CircleCI has
+stored for you. Click on <strong>index.html</strong> and you should see a preview of your built documentation:</p>
+<p><img alt="" src="../../../_images/sphinx-circle-artifacts.png" /></p>
+<p>And that’s it! Obviously you can configure CircleCI in many more ways, but this is just a barebones example
+to get you started. I hope you’ve found it useful!</p>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../conferences-summer-2018/">
+      <i class="fa fa-arrow-circle-left"></i> Summer conference report back
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../rust_governance/">
+      I like Rust's governance structure <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "chrisholdgraf";
+      var disqus_identifier = "/posts/2018/circle-docs/";
+      var disqus_title = "Configure CircleCI";
+      var disqus_url = "https://predictablynoisy.com/posts/2018/circle-docs";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020, Chris Holdgraf.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,543 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Extending nbconvert's markdown template" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://predictablynoisy.com/posts/2018/jekyllmarkdown.html" />
+  <meta property="og:description" content="Here’s a quick (and hopefully helpful) post for those wishing to blog in Jekyll using Jupyter notebooks. As some of you may know, nbconvert can easily convert your.ipynb files to markdown, which Je..." />
+  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  <meta property="og:image:alt" content="Extending nbconvert's markdown template" />
+  
+    <title>Extending nbconvert&#39;s markdown template &#8212; Predictably Noisy  documentation</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+     
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Predictably Noisy"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="../../../">
+<p class="title">Predictably Noisy</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../about/">
+  About me
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../projects/">
+  Projects
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../publications/">
+  Published
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../talks/">
+  Talks
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../../../blog/">
+  Blog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" >
+</form>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  23 May 2018 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span
+    ><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../../blog/category/blogging/">blogging</a>  
+</li>
+ 
+<li id="tags">
+  <span
+    ><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../../blog/tag/python-blogging-jekyll/">python blogging jekyll</a>  
+</li>
+ 
+<li id="comments">
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = "chrisholdgraf"; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+      var s = document.createElement("script");
+      s.async = true;
+      s.type = "text/javascript";
+      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
+      (
+        document.getElementsByTagName("HEAD")[0] ||
+        document.getElementsByTagName("BODY")[0]
+      ).appendChild(s);
+    })();
+  </script>
+  <i class="fa-fw fa fa-comments"></i>
+  <a
+    href="#disqus_thread"
+    data-disqus-identifier="/posts/2018/jekyllmarkdown/"
+  >
+    </a
+  >
+</li>
+
+</ul>
+
+<h3>
+  <a href="../../../blog/">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2020/organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/2020-01-22-rst-thoughts/"
+      >22 January - What do people think about rST?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/panels-timeline/"
+      >22 January - Building a simple timeline with sphinx-panels</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2019/2019-11-11-ipynb_pandoc/"
+      >11 November - Testing Pandoc and Jupyter Notebooks</a
+    >
+  </li>
+  
+</ul>
+
+<h3>
+  <a href="../../../blog/archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../../blog/2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+
+<nav id="bd-toc-nav">
+    
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                 <p>Here’s a quick (and hopefully helpful) post for those wishing to blog in
+Jekyll using Jupyter notebooks. As some of you may know, <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> can
+easily convert your <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files to markdown, which Jekyll can easily
+turn into blog posts for you.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">markdown</span> <span class="n">myfile</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>However, an annoying part of this is that Markdown doesn’t include classes
+for input and outputs, which means they each get treated the same in the
+output. Not ideal.</p>
+<p>Fortunately, <a class="reference external" href="https://nbconvert.readthedocs.io/en/latest/external_exporters.html">you can customize nbconvert extensively</a>.
+First, it’s possible to <a class="reference external" href="https://nbconvert.readthedocs.io/en/latest/external_exporters.html#writing-a-custom-exporter">create your <em>own</em> exporter class</a>, but this is a bit heavy for what we want to do. In our case, we’d
+simply like to <em>extend</em> the markdown exporter so that it outputs Jekyll-friendly
+markdown.</p>
+<div class="section" id="extending-nbconvert-s-markdown-template">
+<h1>Extending <code class="docutils literal notranslate"><span class="pre">nbconvert's</span></code> markdown template<a class="headerlink" href="#extending-nbconvert-s-markdown-template" title="Permalink to this headline">¶</a></h1>
+<p>Because <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> uses Liquid Templates for its exporters, this is
+relatively easy! For example,
+<a class="reference external" href="https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/markdown.tpl">here is <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code>’s markdown template</a>.
+You can see how it extends another template, then adds some modifications of
+its own. What we need to do is create a new template that slightly modifies
+the functionality of <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code>’s markdown template. Then we can use the same
+markdown exporter, but with our custom template defining how the markdown is
+created.</p>
+<p>To treat input and output text differently, we’ll extend <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code>’s base
+markdown template by creating a template file of our own. Simply write the
+following lines into a file called <code class="docutils literal notranslate"><span class="pre">mytemplate.tpl</span></code>.</p>
+<p>{% highlight html %}
+{% raw %}
+{% extends ‘markdown.tpl’ %}</p>
+  <!-- Add Div for input area -->
+<p>{% block input %}</p>
+  <div class="input_area" markdown="1">
+  {{ super() }}
+  </div>
+  {% endblock input %}
+  <!-- Remove indentations for output text and add div classes  -->
+<p>{% block stream %}
+{:.output_stream}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">output</span><span class="o">.</span><span class="n">text</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>{% endblock stream %}</p>
+<p>{% block data_text %}
+{:.output_data_text}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">output</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;text/plain&#39;</span><span class="p">]</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>{% endblock data_text %}</p>
+<p>{% block traceback_line  %}
+{:.output_traceback_line}</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{</span> <span class="n">line</span> <span class="o">|</span> <span class="n">strip_ansi</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>{% endblock traceback_line  %}</p>
+  <!-- Tell Jekyll not to render HTML output blocks as markdown -->
+<p>{% block data_html %}</p>
+  <div markdown="0">
+  {{ output.data['text/html'] }}
+  </div>
+  {% endblock data_html %}
+{% endraw %}
+{% endhighlight %}
+<p>Above, we’re doing two things:</p>
+<ol class="simple">
+<li><p>Overriding the input area block so that it is now wrapped in <code class="docutils literal notranslate"><span class="pre">&lt;div&gt;</span></code> tags.
+Note that we can set a custom class, and set <code class="docutils literal notranslate"><span class="pre">markdown=&quot;1&quot;</span></code> so that the
+markdown conversion occurs within the div.</p></li>
+<li><p>Overriding various output text blocks so that we remove the indentation
+that was used to denote a “code” cell. Instead, we’ll wrap the output text
+in more common <code class="docutils literal notranslate"><span class="pre">```</span></code> characters, and use a trick to add a class to
+code blocks: <code class="docutils literal notranslate"><span class="pre">{:.class_name}</span></code> syntax.</p></li>
+</ol>
+<p>We can then directly reference this template when we call <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">markdown</span> <span class="o">--</span><span class="n">template</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mytemplate</span><span class="o">.</span><span class="n">tpl</span> <span class="n">myfile</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>As a result, we now have classes around each of these divs that we can style
+however we like. For example, here are the CSS rules I added to remove the
+theme’s “code box” around each of the output areas:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">input_area</span> <span class="nt">div</span><span class="p">.</span><span class="nc">highlighter-rouge</span> <span class="p">{</span>
+  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#f7f7f7</span>  <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">output_stream</span><span class="o">,</span> <span class="p">.</span><span class="nc">output_data_text</span><span class="o">,</span> <span class="p">.</span><span class="nc">output_traceback_line</span> <span class="p">{</span>
+  <span class="k">margin-left</span><span class="p">:</span> <span class="mi">2</span><span class="kt">%</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="k">border</span><span class="p">:</span> <span class="kc">none</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="k">border-radius</span><span class="p">:</span> <span class="mi">4</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="k">background-color</span><span class="p">:</span> <span class="mh">#fafafa</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="k">box-shadow</span><span class="p">:</span> <span class="kc">none</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">output_stream</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span> <span class="p">.</span><span class="nc">output_data_text</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span> <span class="p">.</span><span class="nc">output_traceback_line</span><span class="p">:</span><span class="nd">before</span><span class="p">{</span>
+  <span class="k">content</span><span class="p">:</span> <span class="kc">none</span> <span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It took me a while to figure out this pattern, so hopefully other people find
+it useful as well!</p>
+</div>
+
+<div class="section">
+     
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../devopsdays-sv-2018/">
+      <i class="fa fa-arrow-circle-left"></i> An academic scientist goes to DevOps Days
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../2018-06-04-makeitpop/">
+      Introducing _makeitpop_, a tool to perceptually warp your data! <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+  <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_shortname = "chrisholdgraf";
+      var disqus_identifier = "/posts/2018/jekyllmarkdown/";
+      var disqus_title = "Extending &lt;code class=&#34;docutils literal notranslate&#34;&gt;&lt;span class=&#34;pre&#34;&gt;nbconvert&#39;s&lt;/span&gt;&lt;/code&gt; markdown template";
+      var disqus_url = "https://predictablynoisy.com/posts/2018/jekyllmarkdown";
+
+      (function () {
+        var dsq = document.createElement("script");
+        dsq.type = "text/javascript";
+        dsq.async = true;
+        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+        (
+          document.getElementsByTagName("head")[0] ||
+          document.getElementsByTagName("body")[0]
+        ).appendChild(dsq);
+      })();
+    </script>
+    <noscript
+      >Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript"
+        >comments powered by Disqus.</a
+      ></noscript
+    >
+    <a href="https://disqus.com" class="dsq-brlink"
+      >comments powered by <span class="logo-disqus">Disqus</span></a
+    >
+  </div>
+  
+</div>
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2020, Chris Holdgraf.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
