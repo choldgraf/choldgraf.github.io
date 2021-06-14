@@ -33,6 +33,7 @@ extensions = [
     "sphinx_panels",
     "sphinxcontrib.bibtex",
     "sphinxext.opengraph",
+    "sphinxext.rediraffe",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -56,7 +57,7 @@ html_theme_options = {
   "twitter_url": "https://twitter.com/choldgraf",
   "search_bar_text": "Search this site...",
   "google_analytics_id": "UA-88310237-1",
-  "search_bar_position": "navbar",
+  "navbar_end": ["search-field.html", "navbar-icon-links"],
 }
 
 html_favicon = "_static/favicon.ico"
@@ -90,8 +91,13 @@ disqus_shortname = "chrisholdgraf"
 panels_add_bootstrap_css = False
 
 # MyST config
-myst_admonition_enable = True
-myst_deflist_enable = True
+myst_enable_extensions = [
+    "deflist",
+    "colon_fence",
+]
+
+# Bibliography and citations
+bibtex_bibfiles = ["_static/works.bib"]
 
 # OpenGraph config
 ogp_site_url = "https://predictablynoisy.com"
@@ -99,6 +105,10 @@ ogp_image = "https://predictablynoisy.com/_static/profile-bw.png"
 
 # Temporarily stored as off until we fix it
 jupyter_execute_notebooks = "off"
+
+rediraffe_redirects = {
+    "rust-governance.md": "posts/2018/rust_governance.md",
+}
 
 def setup(app):
     app.add_css_file("custom.css")

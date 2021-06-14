@@ -12,7 +12,7 @@ You can learn a bit more about what I do on this website.
 
 ## Recent posts
 
-See the [blog archives](blog) for a more complete list.
+See the [blog archives](blog.md) for a more complete list.
 
 ```{postlist}
 :date: "%Y-%m-%d"
