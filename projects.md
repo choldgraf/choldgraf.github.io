@@ -26,7 +26,7 @@ The International Interactive Computing Collaboration is a non-profit organizati
 ---
 :column: col-3
 
-[![Jupyter Book](https://jupyterbook.org/_static/logo.png)](https://jupyterbook.org)
+[![Jupyter Book](https://jupyterbook.org/_static/logo-wide.svg)](https://jupyterbook.org)
 
 ---
 :column: col-9
