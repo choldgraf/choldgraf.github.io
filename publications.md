@@ -14,32 +14,32 @@ although I spend less time making sure this one is correct (boo information silo
 ### 2019
 
 ```{bibliography} _static/works.bib
-:notcited:
 :style: unsrt
+:labelprefix: 2019
 :filter: year % "2019"
 ```
 
 ### 2018
 
 ```{bibliography} _static/works.bib
-:notcited:
 :style: unsrt
+:labelprefix: 2018
 :filter: year % "2018"
 ```
 
 ### 2017
 
 ```{bibliography} _static/works.bib
-:notcited:
 :style: unsrt
+:labelprefix: 2017
 :filter: year % "2017"
 ```
 
 ### 2016
 
 ```{bibliography} _static/works.bib
-:notcited:
 :style: unsrt
+:labelprefix: 2016
 :filter: year % "2016"
 ```
 
@@ -48,8 +48,8 @@ although I spend less time making sure this one is correct (boo information silo
 ### 2014
 
 ```{bibliography} _static/works.bib
-:notcited:
 :style: unsrt
+:labelprefix: 2014
 :filter: year % "2014"
 ```
 
@@ -58,7 +58,7 @@ although I spend less time making sure this one is correct (boo information silo
 ### 2012
 
 ```{bibliography} _static/works.bib
-:notcited:
 :style: unsrt
+:labelprefix: 2012
 :filter: year % "2012"
 ```

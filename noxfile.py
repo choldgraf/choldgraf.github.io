@@ -1,5 +1,7 @@
 import nox
 
+nox.options.reuse_existing_virtualenvs = True
+
 @nox.session
 def docs(session):
     session.install('-r', 'requirements.txt')

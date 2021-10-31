@@ -16,7 +16,8 @@ which aim to improve the writing and publishing process with the Jupyter ecosyst
 This is hopefully the first post of a few that ask how we can best-improve the state
 of publishing with Jupyter.
 
-:::{admonition,tip} Update!
+:::{admonition} Update!
+:class: tip
 Many of the ideas in this post have now made their way into a new flavor of markdown called [Markedly Structured Text](https://myst-parser.readthedocs.io), or MyST. It brings all of the features of rST into Markdown. Check it out!
 :::
 

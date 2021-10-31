@@ -1,10 +1,11 @@
 ---
 tags: python conferences communities jupyter
-title: Summer conference report back
 permalink: summer-conferences-2018
 category: conferences
 date: 2018-08-01
 ---
+
+# Summer conference report back
 
 This is a short update on several of the conferences and workshops over the
 summer of this year. There's all kinds of exciting things going on in open
