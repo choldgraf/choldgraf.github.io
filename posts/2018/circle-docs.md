@@ -1,10 +1,11 @@
 ---
 tags: documentation sphinx
-title: Using CircleCI to preview documentation in Pull Requests
 permalink: circle-documentation-build
 category: documentation
 date: 2018-10-16
 ---
+
+# Using CircleCI to preview documentation in Pull Requests
 
 Writing documentation is important - it's the first point of contact between many users and your
 project, and can be a pivotal moment in whether they decide to adopt your tech or become a contributor.
