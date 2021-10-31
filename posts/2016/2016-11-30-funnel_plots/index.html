@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="On to Funnel Plots" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2016/2016-11-30-funnel_plots.html" />
@@ -14,8 +15,8 @@
   
     <title>On to Funnel Plots &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -395,7 +409,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="on-to-funnel-plots">
+<section class="tex2jax_ignore mathjax_ignore" id="on-to-funnel-plots">
 <h1>On to Funnel Plots<a class="headerlink" href="#on-to-funnel-plots" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>(note, all of the plots are taken from the excellent paper <em><a class="reference external" href="http://pps.sagepub.com/content/7/6/543.full">The Rules of the Game of Psychological Science</a></em>, though funnel plots date back at least to the book <em><a class="reference external" href="http://www.hup.harvard.edu/catalog.php?isbn=9780674854314">Summing Up</a></em> by Light and Lillemer)</p>
@@ -426,7 +440,7 @@
 <p>But wait a second, there’s something funny about these results. Notice how the datapoints (the effect sizes in reported studies) seem to follow the boundary between the white and the grey regions? Also note that they don’t look symmetric around the mean of the “experimental” distribution. That’s positive publication bias in action.</p>
 <p>The reason that data points follow the boundary between white / grey isn’t because that’s the “truth”, but because our publishing system and scientific incentives suppress findings that lie in the white region. It doesn’t mean these data points don’t exist, they just lie in the filing cabinets of labs all of the world who aren’t able to publish results that aren’t significant. As a result, we get a skewed idea of what the true effect size is.</p>
 <p>There’s another problem with this plot. As we’ve noted, small sample sizes means that you can only write papers with really large effect sizes. Seems reasonable, but if you can’t report non-significant results, it means that studies with a smaller N are the most likely to throw off our belief about the true effect size.</p>
-<div class="section" id="getting-our-hands-dirty-with-some-code">
+<section id="getting-our-hands-dirty-with-some-code">
 <h2>Getting our hands dirty with some code<a class="headerlink" href="#getting-our-hands-dirty-with-some-code" title="Permalink to this headline">¶</a></h2>
 <p>But this is all very theoretical…to show how this works, we’ll investigate funnel plots with a quick simulation to drive the point home.</p>
 <p>We’ll simulate 10,000 studies, each with an N ranging from 2 to 50. We’ll ignore all of the “questionable scientific practices” that the article mentions, and only focus on the problem of not reporting scientific results. Let’s see what happens:</p>
@@ -543,9 +557,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="simulating-the-population">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="simulating-the-population">
 <h1>Simulating the population<a class="headerlink" href="#simulating-the-population" title="Permalink to this headline">¶</a></h1>
 <p>Here we’ll create a population of datapoints corresponding to the effect of each person. Experiments are performed by taking a random sample from that population, and calculating the average effect of the sample. For each experiment we’ll choose a random number for the sample size as well. That means that we’ll get a collection of sample sizes, effect sizes, and p-values. One set for each simulated experiment.</p>
 <div class="cell docutils container">
@@ -596,8 +610,8 @@
 <p>In the funnel plot above, each datapoint corresponds to the effect size found in a single study (x-axis), along with its sample size (y-axis).</p>
 <p>The contour lines show us the “significance cutoffs”.</p>
 <p>The distributions at the top show us the effect size distribution for <em>all</em> experiments, as well as the distribution for only the <em>reported</em> experiments. In this case, those distributions are the same because all of our scientific experiments reported their results. We have an accurate idea of the effect size.</p>
-</div>
-<div class="section" id="simulate-the-scientific-publishing-world">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="simulate-the-scientific-publishing-world">
 <h1>Simulate the scientific publishing world<a class="headerlink" href="#simulate-the-scientific-publishing-world" title="Permalink to this headline">¶</a></h1>
 <p>Now, let’s simulate the scientific publishing process and see what happens. We’ll take a relatively generous take on things, and say that studies with a p-value &gt; .05 still have a small chance of being accepted.</p>
 <div class="cell docutils container">
@@ -676,8 +690,8 @@
 </div>
 </div>
 <p>It’s skewed even further to the right. As you can see, the harder it is to publish null results, the more overconfident we will be in the significance of what’s in the literature. As you can probably tell, this is especially problematic for effect sizes lie near the boundary between publishable / non-publishable.</p>
-</div>
-<div class="section" id="adding-a-low-n-bias">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="adding-a-low-n-bias">
 <h1>Adding a low-N bias<a class="headerlink" href="#adding-a-low-n-bias" title="Permalink to this headline">¶</a></h1>
 <p>As we mentioned above, there’s one more factor at play that makes things even worse. Smaller studies take less time and less resources to conduct, and in practice there are <em>far</em> more tiny studies than large, highly-powered ones. Let’s incorporate that into our data simulation and see how that affects things.</p>
 <div class="cell docutils container">
@@ -703,8 +717,8 @@
 <p>It’s even worse. As you can see, both of these factors (studies with a low N, not being able to publish null results) give the scientific community an unrealistic idea of the true effect size. Moreover, we haven’t even incorporated any experimenter-specific biases, such as defining datapoints that nullify an effect as “outliers”, not reporting studies that are significant but in the <em>opposite</em> direction of what we’d expect, and collecting more data until they achieve a significant p-value. All of these practices would serve to enhance the positive bias seen above.</p>
 <p>In many cases, this might cause us to conclude that there <em>is</em> an effect, when in reality there is not. Unfortunately, this often has wide-ranging implications for things like policy decisions, and at the least causes scientists to be ineffective and inefficient at asking questions about the world.</p>
 <p>All of this is not to say that science “doesn’t work”, but it’s important to remember that science is about methodology before anything else, and the tools of empiricism and peer review are in constant evolution as we learn more about the pitfalls of our current approach. This is one way to identify these pitfalls, and hopefully in future years the community will adapt in order to avoid them.</p>
-</div>
-<div class="section" id="try-it-yourself">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="try-it-yourself">
 <h1>Try it yourself!<a class="headerlink" href="#try-it-yourself" title="Permalink to this headline">¶</a></h1>
 <p>If you’re curious about how all of these factors (effect size, effect variability, sample size, and publishing practices) interact, here’s a quick function to let you play around with each one and determine what the effect would look like in the literature. There are particular circumstances in which these issues are most apparent, and most problematic. See if you can figure out what those circumstances are.</p>
 <div class="cell docutils container">
@@ -756,7 +770,7 @@
 <img alt="../../../_images/2016-11-30-funnel_plots_18_1.png" src="../../../_images/2016-11-30-funnel_plots_18_1.png" />
 </div>
 </div>
-</div>
+</section>
 
 <div class="section">
      
@@ -817,10 +831,9 @@
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -828,30 +841,19 @@
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

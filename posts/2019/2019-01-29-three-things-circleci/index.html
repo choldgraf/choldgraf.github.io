@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="Three things I love about CircleCI" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-01-29-three-things-circleci.html" />
@@ -14,8 +15,8 @@
   
     <title>Three things I love about CircleCI &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -360,7 +374,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <div class="section" id="three-things-i-love-about-circleci">
+                 <section class="tex2jax_ignore mathjax_ignore" id="three-things-i-love-about-circleci">
 <h1>Three things I love about CircleCI<a class="headerlink" href="#three-things-i-love-about-circleci" title="Permalink to this headline">¶</a></h1>
 <p>I recently had to beef up the continuous deployment of Jupyter Book, and used
 it as an opportunity to learn a bit more about CircleCI’s features. It turns out,
@@ -370,7 +384,7 @@ Integration and Continuous Deployment (CI/CD) workflows for projects. This basic
 means that they manage many kinds of infrastructure that can launch jobs that run
 test suites, deploy applications, and test on many different environments.</p>
 <p>Here are some cool things that I now have a much better appreciation for:</p>
-<div class="section" id="re-run-a-job-with-ssh-access">
+<section id="re-run-a-job-with-ssh-access">
 <h2>Re-run a job with SSH access<a class="headerlink" href="#re-run-a-job-with-ssh-access" title="Permalink to this headline">¶</a></h2>
 <p>Often when tests don’t pass or a build otherwise fails, it’s really helpful to be
 able to get into the machine itself and just start poking around. It turns out that
@@ -379,8 +393,8 @@ menu next to the “Restart Job” button to select “Restart Job with SSH”. 
 the job fails (which it probably will, since you’ve just restarted a job that already
 failed once), CircleCI will print the IP address and SSH command to connect to that
 machine remotely.</p>
-</div>
-<div class="section" id="persisting-files-between-jobs-with-workspaces">
+</section>
+<section id="persisting-files-between-jobs-with-workspaces">
 <h2>Persisting files between jobs with Workspaces<a class="headerlink" href="#persisting-files-between-jobs-with-workspaces" title="Permalink to this headline">¶</a></h2>
 <p>Everything CircleCI does is based around containers - each job has a Docker image
 environment specified (and CircleCI curates a large list of containers for testing).
@@ -438,8 +452,8 @@ build job.</p>
 <p>In this way, we’ve split our task (build a bunch of files, then deploy them online)
 into two different jobs. One that builds files with a Python container, and another that
 deploys them with a Ruby container.</p>
-</div>
-<div class="section" id="re-use-code-snippets-with-commands">
+</section>
+<section id="re-use-code-snippets-with-commands">
 <h2>Re-use code snippets with Commands<a class="headerlink" href="#re-use-code-snippets-with-commands" title="Permalink to this headline">¶</a></h2>
 <p>Finally, many times you’d like to re-use the same set of snippets across multiple
 points of your CircleCI jobs. In 2.1, CircleCI added a new feature called Commands
@@ -482,8 +496,8 @@ this command in different ways:</p>
 </div>
 <p>Each of these jobs uses the command specified above in <code class="docutils literal notranslate"><span class="pre">build_site</span></code>, but
 they use the <code class="docutils literal notranslate"><span class="pre">build_args</span></code> parameter to modify its behavior each time.</p>
-</div>
-</div>
+</section>
+</section>
 
 <div class="section">
      
@@ -544,10 +558,9 @@ they use the <code class="docutils literal notranslate"><span class="pre">build_
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -555,30 +568,19 @@ they use the <code class="docutils literal notranslate"><span class="pre">build_
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

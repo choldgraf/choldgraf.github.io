@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="Automating Jupyter Book deployments with CI/CD" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-10-11-automating-jb.html" />
@@ -14,8 +15,8 @@
   
     <title>Automating Jupyter Book deployments with CI/CD &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -356,7 +370,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <div class="section" id="automating-jupyter-book-deployments-with-ci-cd">
+                 <section class="tex2jax_ignore mathjax_ignore" id="automating-jupyter-book-deployments-with-ci-cd">
 <h1>Automating Jupyter Book deployments with CI/CD<a class="headerlink" href="#automating-jupyter-book-deployments-with-ci-cd" title="Permalink to this headline">¶</a></h1>
 <p>Lately I’ve spent a lot of time trying to reduce the friction involved
 in deploying Jupyter Book as well as contributing to the project.
@@ -371,7 +385,7 @@ then configure a build system to create a book and deploy it online from there.
 This blog post is a place to keep track of the current state of affairs for this workflow.</p>
 <p><img alt="auto build logos" src="../../../_images/jb-auto-build.png" /></p>
 <p><strong>I’ll publish the latest configuration files for this at <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/">this repository</a></strong>.</p>
-<div class="section" id="the-general-set-of-steps-involved">
+<section id="the-general-set-of-steps-involved">
 <h2>The general set of steps involved<a class="headerlink" href="#the-general-set-of-steps-involved" title="Permalink to this headline">¶</a></h2>
 <p>We’ll start with the simplest possible Jupyter Book configuration:
 to have a single folder with a collection of content inside. The folder looks
@@ -402,8 +416,8 @@ content, but no TOC is given, it’ll automatically generate one.</p>
 <p>Below are attempts to do this with CI/CD. I’ll update this post
 as new options become available (and hopefully push some stuff to
 the Jupyter Book documentation).</p>
-</div>
-<div class="section" id="netlify">
+</section>
+<section id="netlify">
 <h2>Netlify<a class="headerlink" href="#netlify" title="Permalink to this headline">¶</a></h2>
 <p>By far the easiest way to accomplish the above is with the online
 website provider <a class="reference external" href="https://www.netlify.com">Netlify</a>. This was my
@@ -446,8 +460,8 @@ That’s accomplished with the <code class="docutils literal notranslate"><span 
 <!-- #endregion -->
 <p>By adding this configuration to my site, Netlify immediately started building
 and hosting the book. You can find <a class="reference external" href="https://jupyter-book-deploy-demo.netlify.com">that book deployment here</a>.</p>
-</div>
-<div class="section" id="circleci">
+</section>
+<section id="circleci">
 <h2>CircleCI<a class="headerlink" href="#circleci" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://circleci.com">CircleCI</a> is a website most-commonly used for running
 test suites and deploying things into production once those tests pass.
@@ -522,8 +536,8 @@ pages. You can find <a class="reference external" href="https://predictablynoisy
 </pre></div>
 </div>
 <p>You can find the deployed site <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo">at this location</a>.</p>
-</div>
-<div class="section" id="wrapping-up">
+</section>
+<section id="wrapping-up">
 <h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
 <p>Ultimately, it was simpler than I expected to deploy a Jupyter Book with CI/CD.
 There are lots of other services to explore (in particular, TravisCI and GitHub actions),
@@ -532,8 +546,8 @@ but I find it hard to believe anything would be more straightforward than Netlif
 are a bit confusing. It felt natural to have my content in a single folder, and to
 build a book from that content, but this isn’t the “default” way that the documentation
 recommends. I’ll let these ideas simmer a little bit and we’ll see what comes out of it.</p>
-</div>
-</div>
+</section>
+</section>
 
 <div class="section">
      
@@ -594,10 +608,9 @@ recommends. I’ll let these ideas simmer a little bit and we’ll see what come
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -605,30 +618,19 @@ recommends. I’ll let these ideas simmer a little bit and we’ll see what come
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

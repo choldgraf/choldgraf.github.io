@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="Introducing makeitpop, a tool to perceptually warp your data!”" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/2018-06-04-makeitpop.html" />
@@ -14,8 +15,8 @@
   
     <title>Introducing makeitpop, a tool to perceptually warp your data!” &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -428,7 +442,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="introducing-makeitpop-a-tool-to-perceptually-warp-your-data">
+<section class="tex2jax_ignore mathjax_ignore" id="introducing-makeitpop-a-tool-to-perceptually-warp-your-data">
 <h1>Introducing <em>makeitpop</em>, a tool to perceptually warp your data!”<a class="headerlink" href="#introducing-makeitpop-a-tool-to-perceptually-warp-your-data" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -442,7 +456,7 @@ and adopt a “perceptually-flat” colormap like <a class="reference external" 
 <p>But what does this really mean? It’s difficult to talk and think about coor - especially when it comes to relating color with objective relationships
 between data. Rather than talking about colormaps in the abstract, what if we could <em>visualize</em> the warping that is performed by colormaps like Jet?</p>
 <p>In this post I’ll show that this is possible! Introducing <strong><code class="docutils literal notranslate"><span class="pre">makeitpop</span></code></strong>.</p>
-<div class="section" id="what-does-makeitpop-do">
+<section id="what-does-makeitpop-do">
 <h2>What does <em>makeitpop</em> do?<a class="headerlink" href="#what-does-makeitpop-do" title="Permalink to this headline">¶</a></h2>
 <p>Makeitpop lets you apply the same perceptual warping that would <em>normally</em> be accomplished
 with a colormap like Jet, but applies this warping to <em>the data itself</em>! This lets us
@@ -543,8 +557,8 @@ an effect similar to the one that <em>Jet</em> would have created!</p>
 <img alt="../../../_images/2018-06-04-makeitpop_8_0.png" src="../../../_images/2018-06-04-makeitpop_8_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="let-s-see-it-in-the-real-world">
+</section>
+<section id="let-s-see-it-in-the-real-world">
 <h2>Let’s see it in the real world<a class="headerlink" href="#let-s-see-it-in-the-real-world" title="Permalink to this headline">¶</a></h2>
 <p>Thus far I’ve been using toy examples to illustrate how makeitpop works. Let’s see how
 things look on an actual dataset collected in the wild.</p>
@@ -611,8 +625,8 @@ properties of <em>Jet</em> to our data, so that we can visualize the same effect
 </div>
 </div>
 <p>As you can see, different kinds of results show up when your perception of the data is affected by the colormap.</p>
-</div>
-<div class="section" id="how-does-this-work">
+</section>
+<section id="how-does-this-work">
 <h2>How does this work?<a class="headerlink" href="#how-does-this-work" title="Permalink to this headline">¶</a></h2>
 <p>OK, so what is the black voodoo magic that makes it possible to “make your data pop”?</p>
 <p>It all comes down to your visual system. I won’t go into a ton of detail
@@ -625,8 +639,8 @@ an equal step in our <em>perception</em> of the color that is then chosen. We wa
 <p>Unfortunately, this isn’t how our visual system works.</p>
 <p>In reality, our brains do all kinds of strange things when interpreting color. They are biased to detect changes between particular kinds of colors, and biased to miss the transition between others.</p>
 <p><em>Jet</em> uses a range of colors that highlight this fact. It transitions through colors such that <em>linear</em> changes in our data are perceived as <em>nonlinear</em> changes when we look at the visualization. That’s what makes the data “pop”.</p>
-</div>
-<div class="section" id="perceptual-delta-curves">
+</section>
+<section id="perceptual-delta-curves">
 <h2>Perceptual “delta” curves<a class="headerlink" href="#perceptual-delta-curves" title="Permalink to this headline">¶</a></h2>
 <p>You can determine the extent to which a colormap “warps” your perception of the data by calculating the “perceptual deltas” as you move across the values of a colormap (e.g. as you move from 0 to 1, and their corresponding colors).</p>
 <p>These deltas essentially mean “how much is the <em>next</em> color in the colormap perceived as different from the <em>current</em> color?” If your colormap is perceptually flat, the delta will be the <em>same</em> no matter where you are on the range from 0 to 1.</p>
@@ -688,8 +702,8 @@ so that they are easier to compare.</p>
 <img alt="../../../_images/2018-06-04-makeitpop_21_0.png" src="../../../_images/2018-06-04-makeitpop_21_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="we-can-even-warp-1-dimensional-data">
+</section>
+<section id="we-can-even-warp-1-dimensional-data">
 <h2>We can even warp 1-dimensional data!<a class="headerlink" href="#we-can-even-warp-1-dimensional-data" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see how this principle affects our perception with a different kind of visual
 encoding. Now that we know these perceptual warping functions, we can get all the
@@ -756,8 +770,8 @@ than others.</p>
 <img alt="../../../_images/2018-06-04-makeitpop_27_0.png" src="../../../_images/2018-06-04-makeitpop_27_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="so-what-should-we-do">
+</section>
+<section id="so-what-should-we-do">
 <h2>So what should we do?<a class="headerlink" href="#so-what-should-we-do" title="Permalink to this headline">¶</a></h2>
 <p>The reason that I wrote this blog post (and made this silly package) is to illustrate what we’re really
 doing when we use a colormap like <em>Jet</em>, and to highlight the importance of using a perceptually-flat colormap.  Sure, we want to choose the visualization that best-makes our point,
@@ -770,8 +784,8 @@ data values so that an effect popped out, and you’d <em>never</em> alter the y
 <li><p>Be aware of the effects that color has on the point you’re trying to make. Perceptual warping is
 just one of many potential issues with choosing the right color.</p></li>
 </ul>
-</div>
-<div class="section" id="wrapping-up">
+</section>
+<section id="wrapping-up">
 <h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
 <p>I hope that this post has been a fun and slightly informative take on the nuances of colormaps, and the unintended effects that they might have.</p>
 <p>So, <code class="docutils literal notranslate"><span class="pre">tl;dr</span></code>:</p>
@@ -785,8 +799,8 @@ just one of many potential issues with choosing the right color.</p></li>
 <p>If you’d like to check out the <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> package, see the <a class="reference external" href="https://github.com/choldgraf/makeitpop">GitHub repo here</a>. In addition, all of the examples in this post are runnable
 on Binder! You can launch an interactive session with this code by clicking on the Binder button
 at the top of this page!</p>
-</div>
-<div class="section" id="addendum-ok-but-how-does-makeitpop-actually-work">
+</section>
+<section id="addendum-ok-but-how-does-makeitpop-actually-work">
 <h2>Addendum: Ok but how does <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> <em>actually</em> work?<a class="headerlink" href="#addendum-ok-but-how-does-makeitpop-actually-work" title="Permalink to this headline">¶</a></h2>
 <p>In this section I’ll describe the (admittedly hacky) way that I’ve written <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code>.
 As I mentioned before, <a class="reference external" href="https://github.com/choldgraf/makeitpop">all the <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> code is on GitHub</a> and
@@ -810,9 +824,9 @@ Pull Requests are more than welcome to improve the process (I’m looking at you
 using linear interpolation to map the delta function of one colormap onto the delta function for another
 colormap). If you’d like to contribute or suggest something, feel free to do so! However, I’m just creating
 this package to highlight an idea, and think this approach gets close enough with relatively little complexity.</p>
-</div>
-</div>
-<div class="section" id="some-extras">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="some-extras">
 <h1>Some extras<a class="headerlink" href="#some-extras" title="Permalink to this headline">¶</a></h1>
 <p>Here’s a viz that will let you visualize how different colormaps distort data. We’ll show a
 gradient of linearly-spaced values, both using a warping colormap such as “jet” and a linear
@@ -852,7 +866,7 @@ colormap like “vidiris”. Then, we’ll “pop” the data and re-visualize w
 <img alt="../../../_images/2018-06-04-makeitpop_32_0.png" src="../../../_images/2018-06-04-makeitpop_32_0.png" />
 </div>
 </div>
-</div>
+</section>
 
 <div class="section">
      
@@ -913,10 +927,9 @@ colormap like “vidiris”. Then, we’ll “pop” the data and re-visualize w
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -924,30 +937,19 @@ colormap like “vidiris”. Then, we’ll “pop” the data and re-visualize w
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

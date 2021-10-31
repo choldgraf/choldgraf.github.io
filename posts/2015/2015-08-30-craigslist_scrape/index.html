@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="Scraping craigslist" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2015/2015-08-30-craigslist_scrape.html" />
@@ -14,8 +15,8 @@
   
     <title>Scraping craigslist &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -369,9 +383,9 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <div class="section" id="scraping-craigslist">
+                 <section class="tex2jax_ignore mathjax_ignore" id="scraping-craigslist">
 <h1>Scraping craigslist<a class="headerlink" href="#scraping-craigslist" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
+<section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook, I’ll show you how to make a simple query on Craigslist using some nifty python modules. You can take advantage of all the structure data that exists on webpages to collect interesting datasets.</p>
 <div class="cell docutils container">
@@ -395,8 +409,8 @@
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">?bedrooms=1&amp;pets_cat=1&amp;pets_dog=1&amp;is_furnished=1</span></code> says we want 1+ bedrooms, cats allowed, dogs allowed, and furnished apartments. You can manually change these fields in order to create new queries.</p>
 </div></blockquote>
-</div>
-<div class="section" id="getting-a-single-posting">
+</section>
+<section id="getting-a-single-posting">
 <h2>Getting a single posting<a class="headerlink" href="#getting-a-single-posting" title="Permalink to this headline">¶</a></h2>
 <p>So, we’ll use this knowledge to send some custom URLs to Craigslist. We’ll do this using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> python module, which is really useful for querying websites.</p>
 <div class="cell docutils container">
@@ -593,8 +607,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="querying-lots-of-postings">
+</section>
+<section id="querying-lots-of-postings">
 <h2>Querying lots of postings<a class="headerlink" href="#querying-lots-of-postings" title="Permalink to this headline">¶</a></h2>
 <p>Cool - so now we’ve got some useful information about one listing. Now let’s loop through many listings across several locations.</p>
 <p>It looks like there is a “city code” that distinguishes where you’re searching. Here is a <strong>not</strong> up to date list: <a class="reference external" href="https://sites.google.com/site/clsiteinfo/city-site-code-sort">link</a></p>
@@ -918,8 +932,8 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="recap">
+</section>
+<section id="recap">
 <h2>RECAP<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
 <p>To sum up what we just did:</p>
 <ul class="simple">
@@ -929,8 +943,8 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 <li><p>We then looped through a bunch of apartment listings, pulled some relevant data, and combined it all into a cleaned and usable dataframe with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
 </ul>
 <p>Next up I’ll take a look at the data, and see if there’s anything interesting to make of it.</p>
-</div>
-<div class="section" id="bonus-auto-emailing-yourself-w-notifications">
+</section>
+<section id="bonus-auto-emailing-yourself-w-notifications">
 <h2>Bonus - auto-emailing yourself w/ notifications<a class="headerlink" href="#bonus-auto-emailing-yourself-w-notifications" title="Permalink to this headline">¶</a></h2>
 <p>A few people have asked me about using this kind of process to make a bot that scrapes craigslist periodically. This is actually quite simple, as it basically involves pulling the top listings from craigslist, checking this against an “old” list, and detecting if there’s anything new that has popped up since the last time you checked.</p>
 <p>Here’s a simple script that will get the job done. Once again, don’t pull too much data at once, and don’t query Craigslist too frequently, or you’re gonna get banned.</p>
@@ -1027,8 +1041,8 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 </div>
 </div>
 <p>And there you have it - your own little bot to keep you on the top of the rental market.</p>
-</div>
-</div>
+</section>
+</section>
 
 <div class="section">
      
@@ -1089,10 +1103,9 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -1100,30 +1113,19 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

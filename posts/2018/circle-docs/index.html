@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="Configure CircleCI" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/circle-docs.html" />
@@ -14,8 +15,8 @@
   
     <title>Configure CircleCI &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -375,7 +389,7 @@ the raw text.</p>
 <p><img alt="" src="../../../_images/sphinx-circle-logos.png" /></p>
 <p>Here’s a simple CircleCI configuration that you can use to build documentation with Sphinx and store it
 as an artifact in the build that you can then preview. To set this up, follow these steps:</p>
-<div class="section" id="configure-circleci">
+<section id="configure-circleci">
 <h1>Configure CircleCI<a class="headerlink" href="#configure-circleci" title="Permalink to this headline">¶</a></h1>
 <p>First off, you need to configure CircleCI to build your page. This involves creating a file called <code class="docutils literal notranslate"><span class="pre">.circle/config.yml</span></code>
 that Circle will use to decide what to do each time your page is built. You then need to go to the CircleCI
@@ -426,8 +440,8 @@ website and tell it to build your site.</p>
 </pre></div>
 </div>
 <p>See the comments above for what each step does.</p>
-</div>
-<div class="section" id="tell-circleci-to-build-pull-requests-for-your-repository">
+</section>
+<section id="tell-circleci-to-build-pull-requests-for-your-repository">
 <h1>Tell CircleCI to build Pull Requests for your repository<a class="headerlink" href="#tell-circleci-to-build-pull-requests-for-your-repository" title="Permalink to this headline">¶</a></h1>
 <p>Because we’re doing this in order to preview changes to the documentation in a Pull Request,
 we now need to tell CircleCI to run builds on PRs to your repo. To do so, go to the CircleCI UI, click on “Jobs”, then click
@@ -435,16 +449,16 @@ your project name, then click the settings button here:</p>
 <p><img alt="" src="../../../_images/sphinx-circle-settings.png" /></p>
 <p>In the next page, click on <strong>Advanced Settings</strong>, and finally switch on <strong>Build forked pull requests</strong>.</p>
 <p>Now, Circle will build against the PRs of your repository.</p>
-</div>
-<div class="section" id="make-a-pull-request">
+</section>
+<section id="make-a-pull-request">
 <h1>Make a Pull Request<a class="headerlink" href="#make-a-pull-request" title="Permalink to this headline">¶</a></h1>
 <p>Now it’s time to test things out. Make a Pull Request for your repository. GitHub should automatically
 detect a CircleCI configuration, and run the job with the configuration you’ve specified.</p>
 <p>Once the documentation is built (or if it fails) you can click on the CircleCI link from the GitHub UI
 in order to see what happened.</p>
 <p><img alt="" src="../../../_images/sphinx-circle-github-pr.png" /></p>
-</div>
-<div class="section" id="view-your-artifacts">
+</section>
+<section id="view-your-artifacts">
 <h1>View your artifacts<a class="headerlink" href="#view-your-artifacts" title="Permalink to this headline">¶</a></h1>
 <p>You should be taken to a page that shows a summary of the recent CircleCI build for this PR.</p>
 <p>If your documentation successfully built (and if you’ve told Sphinx to put the built site in <code class="docutils literal notranslate"><span class="pre">doc/_build/</span></code>) then
@@ -453,7 +467,7 @@ stored for you. Click on <strong>index.html</strong> and you should see a previe
 <p><img alt="" src="../../../_images/sphinx-circle-artifacts.png" /></p>
 <p>And that’s it! Obviously you can configure CircleCI in many more ways, but this is just a barebones example
 to get you started. I hope you’ve found it useful!</p>
-</div>
+</section>
 
 <div class="section">
      
@@ -514,10 +528,9 @@ to get you started. I hope you’ve found it useful!</p>
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -525,30 +538,19 @@ to get you started. I hope you’ve found it useful!</p>
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta property="og:title" content="What we want to do" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/circlci-github.html" />
@@ -14,8 +15,8 @@
   
     <title>What we want to do &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -29,29 +30,42 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-     
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-88310237-1', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
+ 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -408,7 +422,7 @@ we want to keep, and one with the “mirror” repository that should always con
 exactly the content of the “primary” repo. I’ll call these “primary” and “mirror”
 repos from here on out (no, I won’t call them master and slave but that’s a whole
 other conversation).</p>
-<div class="section" id="what-we-want-to-do">
+<section id="what-we-want-to-do">
 <h1>What we want to do<a class="headerlink" href="#what-we-want-to-do" title="Permalink to this headline">¶</a></h1>
 <p>Ultimately, we’d like the following thing to happen:</p>
 <blockquote>
@@ -419,8 +433,8 @@ those changes to the “mirror” repository.</strong></p>
 straightforward, with one big caveat: permissions. GitHub doesn’t let <em>anybody</em>
 push to <em>any</em> repository, so we need some way to allow CircleCI to push to
 our mirror repository. That’s what these steps are all about.</p>
-</div>
-<div class="section" id="step-1-create-an-ssh-key-for-your-mirror-github-repository">
+</section>
+<section id="step-1-create-an-ssh-key-for-your-mirror-github-repository">
 <h1>Step 1: Create an SSH key for your mirror github repository<a class="headerlink" href="#step-1-create-an-ssh-key-for-your-mirror-github-repository" title="Permalink to this headline">¶</a></h1>
 <p>First off, we need to tell the mirror repository “you should let anyone with
 these credentials push to the repo”. We’ll do this by creating a “deploy key”.
@@ -437,8 +451,8 @@ to your repo</strong>, so keep the private key safe!</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">key.txt</span></code> is your private key. You <strong>should not share this w/ others</strong> unless you know what you’re doing.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">key.txt.pub</span></code> is your public key. You can share this w/ others.</p></li>
 </ul>
-</div>
-<div class="section" id="step-2-add-this-ssh-key-as-a-deploy-key-to-your-mirror-repo">
+</section>
+<section id="step-2-add-this-ssh-key-as-a-deploy-key-to-your-mirror-repo">
 <h1>Step 2: Add this SSH key as a “deploy key” to your mirror repo<a class="headerlink" href="#step-2-add-this-ssh-key-as-a-deploy-key-to-your-mirror-repo" title="Permalink to this headline">¶</a></h1>
 <p>In your github repository, go to <code class="docutils literal notranslate"><span class="pre">settings</span> <span class="pre">-&gt;</span> <span class="pre">deploy</span> <span class="pre">keys</span> <span class="pre">-&gt;</span> <span class="pre">add</span> <span class="pre">deploy</span> <span class="pre">key</span></code>. See the diagram below for the steps:</p>
 <p><img alt="" src="../../../_images/circleci-mirror-deploy-key-ui.png" /></p>
@@ -447,8 +461,8 @@ deployment permissions. Copy the text of your <strong>public key</strong> (at <c
 <p><img alt="" src="../../../_images/circleci-deploy-key-ssh.png" /></p>
 <p>Remember, this is the <strong>public</strong> key for your repository. This means that anyone
 with the <strong>private</strong> key will now be able to push to the repo.</p>
-</div>
-<div class="section" id="step-3-set-up-circleci-for-your-primary-repository">
+</section>
+<section id="step-3-set-up-circleci-for-your-primary-repository">
 <h1>Step 3: Set up CircleCI for your “primary” repository<a class="headerlink" href="#step-3-set-up-circleci-for-your-primary-repository" title="Permalink to this headline">¶</a></h1>
 <p>Next, we need to set up CircleCI to build our primary repository with continuous integration.
 I recommend following the <a class="reference external" href="https://circleci.com/docs/2.0/getting-started/">CircleCI getting started guide</a>.
@@ -472,8 +486,8 @@ you specify in <code class="docutils literal notranslate"><span class="pre">.cir
 </pre></div>
 </div>
 <p>Next, we’ll configure that yaml file to do what we want.</p>
-</div>
-<div class="section" id="step-4-configure-circleci-to-push-the-primary-repository-to-the-mirror-repository">
+</section>
+<section id="step-4-configure-circleci-to-push-the-primary-repository-to-the-mirror-repository">
 <h1>Step 4: Configure CircleCI to push the primary repository to the mirror repository<a class="headerlink" href="#step-4-configure-circleci-to-push-the-primary-repository-to-the-mirror-repository" title="Permalink to this headline">¶</a></h1>
 <p>Now that CircleCI is building the primary repo, it’s time to tell it to do what we want.
 We’ll modify the workflow in the <code class="docutils literal notranslate"><span class="pre">.circleci/config.yml</span></code> file to do the following:</p>
@@ -498,8 +512,8 @@ We’ll modify the workflow in the <code class="docutils literal notranslate"><s
 you’ll notice that it won’t be able to complete this action. This is because CircleCI doesn’t
 currently have the <strong>permissions</strong> needed to push to the mirror repository.
 Time to use that public/private key from before!</p>
-</div>
-<div class="section" id="step-5-add-your-private-key-to-the-primary-repository-circle-ci-settings">
+</section>
+<section id="step-5-add-your-private-key-to-the-primary-repository-circle-ci-settings">
 <h1>Step 5: Add your private key to the primary repository Circle CI settings<a class="headerlink" href="#step-5-add-your-private-key-to-the-primary-repository-circle-ci-settings" title="Permalink to this headline">¶</a></h1>
 <p>Next, we need to give CircleCI the ability to push to our mirror
 repository by using the public/private key that we generated earlier. Remember
@@ -518,8 +532,8 @@ use this key during builds.</p>
 just to make sure they don’t accidentally fall in the wrong hands</strong>. You can always generate
 a new public/private pair and follow the steps above if you need to update the CircleCI deploy
 keys.</p>
-</div>
-<div class="section" id="step-6-modify-your-circleci-configuration-to-use-your-private-key">
+</section>
+<section id="step-6-modify-your-circleci-configuration-to-use-your-private-key">
 <h1>Step 6: Modify your CircleCI configuration to use your private key<a class="headerlink" href="#step-6-modify-your-circleci-configuration-to-use-your-private-key" title="Permalink to this headline">¶</a></h1>
 <p>Finally, we need to modify the yaml configuration so that it knows to use this
 public/private key combination when it does SSH stuff in the build. That’s accomplished
@@ -538,8 +552,8 @@ with the following configuration:</p>
 page. It’ll contain a SHA that is unique and refers to the key you want. Copy and paste
 it using the configuration structure above. Here’s what one key looks like:</p>
 <p><img alt="" src="../../../_images/circleci-fingerprint.png" /></p>
-</div>
-<div class="section" id="our-final-configuration">
+</section>
+<section id="our-final-configuration">
 <h1>Our final configuration<a class="headerlink" href="#our-final-configuration" title="Permalink to this headline">¶</a></h1>
 <p>That should be all we need to allow CircleCI to push the contents from the primary repository
 to the mirror repository. Every time a change is made to the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of the primary
@@ -571,7 +585,7 @@ repository, this process will be triggered.</p>
           <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span>
 </pre></div>
 </div>
-</div>
+</section>
 
 <div class="section">
      
@@ -632,10 +646,9 @@ repository, this process will be triggered.</p>
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
               
           </main>
           
@@ -643,30 +656,19 @@ repository, this process will be triggered.</p>
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Chris Holdgraf.<br/>
+    &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.5.4.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
 </p>
     </div>
     

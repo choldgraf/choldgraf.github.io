@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2021-06-14T17:16:01.175527+00:00</updated>
+  <updated>2021-10-31T17:45:45.371405+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml" rel="self"/>
-  <generator uri="https://ablog.readthedocs.org/" version="0.10.19">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.20">ABlog</generator>
   <entry>
     <id>https://predictablynoisy.com/posts/2015/2015-05-27-coherence_correlation/</id>
     <title>Coherence correlation</title>
@@ -673,7 +673,8 @@ We’ve recently been working on tools like &lt;a class="reference external" hre
 which aim to improve the writing and publishing process with the Jupyter ecosystem.
 This is hopefully the first post of a few that ask how we can best-improve the state
 of publishing with Jupyter.&lt;/p&gt;
-&lt;p&gt;comma-separated classes are deprecated, use `:class:` option instead [myst.deprecation]&lt;/p&gt;
+&lt;p&gt;Unknown directive type “admonition,tip”.
+&lt;/p&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2020/2020-01-22-rst-thoughts/" rel="alternate"/>
     <summary>Publishing computational narratives has always been a dream of the Jupyter Project,
@@ -684,7 +685,8 @@ the Binder Project, but what about the documents themselves?
 We’ve recently been working on tools like Jupyter Book,
 which aim to improve the writing and publishing process with the Jupyter ecosystem.
 This is hopefully the first post of a few that ask how we can best-improve the state
-of publishing with Jupyter.comma-separated classes are deprecated, use `:class:` option instead [myst.deprecation]</summary>
+of publishing with Jupyter.Unknown directive type “admonition,tip”.
+</summary>
     <category term="markup" label="markup"/>
     <category term="documentation" label="documentation"/>
     <published>2020-01-22T00:00:00+00:00</published>
