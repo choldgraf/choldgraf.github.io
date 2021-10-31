@@ -1,10 +1,11 @@
 ---
 tags: python, governance, community
-title: I like Rust's governance structure
 permalink: rust-governance
 category: open source
 date: 2018-10-18
 ---
+
+# I like Rust's governance structure
 
 Recently I've been reading up on governance models for several large-ish open
 source projects. This is partially because I'm involved in a bunch of

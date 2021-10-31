@@ -1,10 +1,11 @@
 ---
 tags: [open communities, open culture, sustainability]
-title: Open communities need to be partners, not sources of free labor
 permalink: open-communities-free-labor
 category: open source
 date: 2018-12-05
 ---
+
+# Open communities need to be partners, not sources of free labor
 
 In the last couple of years, we've seen an increasing number of organizations start to
 spawn products that take a largely open stack (e.g., the SciPy ecosystem) and wrap

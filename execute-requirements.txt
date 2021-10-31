@@ -1,0 +1,11 @@
+# Dependencies for *executing* the content in this blog.
+colorspacious
+ipywidgets
+makeitpop
+matplotlib
+nilearn
+numpy
+pandas
+scipy
+seaborn
+xarray

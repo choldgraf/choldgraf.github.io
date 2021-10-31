@@ -33,7 +33,8 @@ After you spend some time engaging with open source communities, there are a few
 
 After you've spent some time interacting with others in the community, perhaps you'd like to make contributions of your own to the codebase or tools. How can you do this in a way that benefits the community?
 
-:::{admonition,note} A note on non-coding support
+:::{admonition} A note on non-coding support
+:class: note
 Note that, while code is often the output of an open source community, there are many non-coding ways to contribute to that community. Many of the "code-related" activities are actually "people-related" activities, such as assisting others with their problems, or engaging in discussion in issues.
 :::
 
@@ -43,11 +44,13 @@ By far the most-common way that organizations contribute back is by "upstreaming
 
 If you're using a tool regularly, or building it into another tool like one of your products, look for small ways that it could be better. Rather than fixing these issues in your fork of the project or your internal codebase, open an issue in the core repository and offer to fix it if others agree it's a problem. If a team member has an idea to improve the tool, don't just build it in your products, improve it in core.
 
-:::{admonition,tip} Example: The Jupyter Server
+:::{admonition} Example: The Jupyter Server
+:class: tip
 The [Jupyter Server](https://github.com/jupyter/jupyter_server) project is an attempt at pulling out much of the server architecture from the original Notebook application. It's a very low-level library that is re-usable across a number of other potential tools. Its presence benefits the whole ecosystem, but because it is so generically useful, it has few dedicated resources to maintian and develop.
 :::
 
-:::{admonition,tip} Example: Accessibility
+:::{admonition} Example: Accessibility
+:class: tip
 This is one of those things that is *super* hard to get volunteer support for because it is not sexy and it is hard work. Many organizations care about accessibility for a variety of reasons, and taking the time to give back guidance and development to make core tools more accessible is a huge benefit. On this point in particular, I think it is important that organizations not make accessibility a competetive advantage over open source tools, but instead contribute to the common good so that these tools are more inclusive and available to all.
 :::
 
@@ -63,7 +66,8 @@ If you've got more substantial development time to devote to a project, see what
 
 Take a look at the issues or roadmap of a project and find ones that you'd also benefit from, chime in and mention that you'd like to try and make these changes to see if others are excited about it. Then, follow-through and engage with the community as you make changes. Don't be resistant to feedback - remember that you are a part of a broader community with its own norms and expectations around code style, structure, etc.
 
-:::{admonition,tip} Example: Look for 👍 in issues
+:::{admonition} Example: Look for 👍 in issues
+:class: tip
 The Executable Books Project has [a feature voting leaderboard](https://executablebooks.org/en/latest/feature-vote.html) that it uses to let users vote with a 👍. You can even see this list for *any* GitHub repository by **sorting issues by 👍 reactions**. For example, [here are the issues with the most 👍 in JupyterLab](https://github.com/jupyterlab/jupyterlab/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc).
 :::
 
@@ -73,7 +77,8 @@ If you have spent some time interacting with a community, working through bugs a
 
 When I try to figure out who is being helpful in the Jupyter ecosystem, I ask questions like "who is doing the things that nobody else is doing?". E.g., who is the first person to respond to an issue? who is making documentation improvements, or helping an inexperienced contributor improve their PR? These little "carrying water and chopping wood" tasks are not flashy and exciting, but they are *crucial* to keeping the community dynamic, welcoming, and productive.
 
-:::{admonition,tip} Example: Contributing guidelines
+:::{admonition} Example: Contributing guidelines
+:class: tip
 Take a look at the [JupyterHub Team contributing guidelines](https://jupyterhub-team-compass.readthedocs.io/en/latest/team/skills.html#a-few-general-ways-to-help-out) - most of them aren't strictly technical, they're about helping others, helping the team in conversations, and generally just being friendly and productive community members.
 :::
 
@@ -87,7 +92,8 @@ Beyond the open source core, there are often places where you wish to build out 
 
 Any time that you'd like to extend functionality beyond what's already there, and have to make a semi-arbitrary decision of what pattern to expose to users, standardize on something the community already uses so that there isn't unnecessary duplication and fracturing across ecosystems. If no standard exists, don't just create one - reach out to the open source community and lead a process that gets others to brainstorm and buy-in to a new standard.
 
-:::{admonition,tip} Example: The `ipynb` format
+:::{admonition} Example: The `ipynb` format
+:class: tip
 The `ipynb` format. One of Jupyter's core goals is to standardize tools and patterns across the data science community. The `ipynb` format is probably the most common example. As more tools build their own notebook functionality and wish to *extend* `ipynb` to do new things, they should follow metadata standards (or lead processes to create new ones). For example, we don't want `ipynb` files that have platform-specific metadata. Even little stuff like "for cell-level metadata to hide inputs, do we call it `hide_input` or `hideInput`?" This can seem trivial and arbitrary but it is important and in many ways the most important thing that open communities do! When in doubt, ask around and get buy-in from others. 
 :::
 
@@ -97,7 +103,8 @@ While developing and improving technology is a core part of open source, there i
 
 This can be a bit tricky (competive landscape etc), but the rubric that I shoot for is: use community-led products wherever possible, and if that's not possible, make sure to highlight and advocate for community-led products in-tandem with your own products.
 
-:::{admonition,tip} Example: Workshops and training material
+:::{admonition} Example: Workshops and training material
+:class: tip
 Many organizations run workshops, demos, and training sessions for their products. They also have sizeable marketing departments for the work they do. In all of these efforts, make it clear when you are relying on an open source tool for support, and highlight the ways in which you are engaging with its community and giving back.
 
 For example, [spacy.io](https://spacy.io/) is an NLP framework built by [explosion.ai](https://explosion.ai/). As part of their online documentation, they include interactive code sessions powered by [Binder kernels](https://mybinder.org). They make sure to include the name "Binder" whenever these kernels are spun-up in order to give credit and thanks to the free mybinder.org service.

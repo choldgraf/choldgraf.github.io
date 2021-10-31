@@ -1,10 +1,11 @@
 ---
 tags: productivity
-title: My weekly workflow
 permalink: weekly-workflow
 category: productivity
 date: 2018-10-26
 ---
+
+# My weekly workflow
 
 I've had a bunch of conversations with friends who were interested in how to
 keep track of the various projects they're working on, and to prioritize their

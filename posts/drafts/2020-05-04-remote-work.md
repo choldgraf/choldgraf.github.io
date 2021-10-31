@@ -10,7 +10,8 @@ conversations where others were asking for best-practices or tips in working in
 distributed and remote teams/communities. Most of my work over the past few years has been
 remote in some form or another, so here are a few things I've learned in the process.
 
-:::{admonition,tip} `tl;dr`
+:::{admonition} `tl;dr`
+:class: tip
 There are a million things to consider in organizing remote teams and communities, but here are three that I've found important: be *explicit*, *discoverable*, and *consistent*.
 :::
 
