@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Simulating a national referendum vote" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2016/2016-07-08-voting_randomness.html" />
@@ -384,7 +383,7 @@
 <p>Which brings me to this gigantic nation-wide referendum vote. I couldn’t help but notice that the cutoff for winning / losing the vote was set at 50%. To me, this sounds crazy. If I simply flipped a coin at 50% and tallied the results each time, I’d get some difference between # heads and # tails that would vary around 50%. In the context of voting, it means that a yes/no split that’s really close to 50% might actually be too close to call.</p>
 <p>In science, saying that a number is <em>different</em> from some other number requires that the difference falls outside of a certain region of uncertainty. It’s a way of saying “yeah, I know that random fluctuations cause strange looking data sometimes, but my difference is <em>so far</em> from those fluctuations that I think there’s something real going on.”</p>
 <p>But this is all a little abstract, so let’s try it out on some voting data…</p>
-<section class="tex2jax_ignore mathjax_ignore" id="simulating-a-national-referendum-vote">
+<div class="tex2jax_ignore mathjax_ignore section" id="simulating-a-national-referendum-vote">
 <h1>Simulating a national referendum vote<a class="headerlink" href="#simulating-a-national-referendum-vote" title="Permalink to this headline">¶</a></h1>
 <p>For a referendum vote to go through, it seems reasonable to say “the people need to vote in numbers that are significantly different from random chance. To ask what “random chance” looks like, we can use computer simulations.</p>
 <p>We’ll take on the task of assessing what national votes might look like if they happened completely randomly. Then, we can compare the actual results to our simulation in order to decide if we’ve got a “real” result or not.</p>
@@ -469,8 +468,8 @@
 <p>For a vote to be “different” than 50%, it’d need to be outside our margin of error described by the grey rectangle. In this case, it seems that a totally random vote yields about 2% points of spread around 0, and that the recorded vote difference (~4%) is outside of the margin of error for 50%. So maybe we can conclude that the Brexit vote was significantly different from a random 50/50 vote.</p>
 <p>BUT - we also know that people don’t vote completely randomly. They are influenced by external factors, they talk to one another, they tend to vote similarly to those around them. This is why everybody could predict which districts would vote “yes” and which would vote “no” well before the election.</p>
 <p>So, let’s build that in to our simulation…</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="simulating-a-not-completely-random-population">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="simulating-a-not-completely-random-population">
 <h1>Simulating a not-completely-random population<a class="headerlink" href="#simulating-a-not-completely-random-population" title="Permalink to this headline">¶</a></h1>
 <p>So how exactly do we simulate the fact that people don’t vote <em>totally</em> randomly? There are a lot of ways to do this, but I’ll take the semi-arbitrary decision to say that we could expect the same pattern of voting to occur <em>within a district</em>. That is - we can simulate random <em>district</em> votes instead of random <em>individual</em> votes. Moreover, we’ll then weight that district’s percentage split by an amount proportional to that district’s size. Intuitively it doesn’t seem like this should make much difference in our simulation (we’re still totally randomly choosing the yes/no split), but let’s see what happens…</p>
 <p>First, I grabbed a list of each UK voting district, along with its size…</p>
@@ -545,14 +544,14 @@
 </div>
 </div>
 <p>Now we see a different sort of picture. Randomizing votes by district instead of by individual greatly increased the variability in the outcome. So much so that the “true” results from the Brexit now fall well within our confidence interval.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="concluding-thoughts">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="concluding-thoughts">
 <h1>Concluding thoughts?<a class="headerlink" href="#concluding-thoughts" title="Permalink to this headline">¶</a></h1>
 <p>So what can we conclude from something like this? The point of this article isn’t to say that this particular simulation proves anything about the Brexit vote, but it does bring up an important point: we need to account for randomness whenever we aggregate data that we’ve collected.</p>
 <p>When deciding whether to make a gigantic decision that will affect millions of people, we should be reasonably certain that the people’s opinion is clear. Choosing a 50/50 split as a cutoff means that we could potentially make such a decision because of random chance. Doesn’t sound like a great way to conduct national policy to me.</p>
 <p>What could we do instead? There’s the hard part. But the short answer is that we could include some idea of random variability in our voting rules. For example, we could require that this kind of “should we deviate from the norm” decision exceeds the results expected from a totally random vote. Settling on this uncertainty limit is not a simple task, but then again I wouldn’t want to bet 2 trillion dollars worth of global economy on a coin flip.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="extra-adding-a-short-term-swing">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="extra-adding-a-short-term-swing">
 <h1>Extra: Adding a short term swing<a class="headerlink" href="#extra-adding-a-short-term-swing" title="Permalink to this headline">¶</a></h1>
 <p>As I mentioned above, deciding how to simulate the votes involves making assumptions about how things will go. I tried to keep the simulation as simple as possible in order to make a point, but you could include extra components as well.</p>
 <p>For example, what if we chose a random subset of districts in the UK and swung their vote several percentage points in one random direction? This might happen if an eye-catching event caused sentiment to momentarily swing in one direction or another. In the long run each district’s sentiment would probably ease back into it’s “natural” split, but since votes happen on one day, these short-term factors can play an important role.</p>
@@ -618,7 +617,7 @@
 </div>
 </div>
 <p>It looks like now our confidence intervals are even wider than before. This is becase basically any change to our voting system that deviates away from a completely random 50/50 split will increase the variability in the outcome.</p>
-</section>
+</div>
 
 <div class="section">
      

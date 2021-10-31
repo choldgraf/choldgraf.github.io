@@ -1,10 +1,11 @@
 ---
 tags: open source, governance, community
-title: Signaling openness
 permalink: signaling-openness
 category: open source
 date: 2018-10-26
 ---
+
+# How do projects signal how "open" they are?
 
 How do open projects signal their "openness" to the outside community? This is
 a really hard question, particularly because nowadays "open" has become a buzzword

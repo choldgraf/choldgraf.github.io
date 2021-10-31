@@ -34,7 +34,8 @@ This is a great question. The answer to "should you re-work your blog to use a n
     And here's some stuff inside!
     ```
   ---
-  :::{admonition,tip} Wow, a tip!
+  :::{admonition} Wow, a tip!
+  :class: tip
   What a great tip!
   :::
   ````

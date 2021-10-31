@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Chris Holdgraf - about me" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/index.html" />
@@ -258,14 +257,14 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="chris-holdgraf-about-me">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="chris-holdgraf-about-me">
 <h1>Chris Holdgraf - about me<a class="headerlink" href="#chris-holdgraf-about-me" title="Permalink to this headline">¶</a></h1>
 <p>Hey there 👋</p>
 <p>I work at the intersection of technical development, open communities, scientific research, and education.</p>
 <p>I also help run <a class="reference external" href="https://2i2c.org">2i2c - the International Interactive Computing Collaboration</a>, a non-profit dedicated to open source infrastructure for interactive computing in research and education.</p>
 <p>I work with teams to create and improve open-source technology for scientists, educators, and data analysts. My goal is to help people do their work more effectively, openly, inclusively, and reproducibly.</p>
 <p>You can learn a bit more about what I do on this website.</p>
-<section id="recent-posts">
+<div class="section" id="recent-posts">
 <h2>Recent posts<a class="headerlink" href="#recent-posts" title="Permalink to this headline">¶</a></h2>
 <p>See the <a class="reference internal" href="blog/"><span class="doc std std-doc">blog archives</span></a> for a more complete list.</p>
 <ul class="postlist-style-none postlist">
@@ -288,8 +287,7 @@ We’ve recently been working on tools like <a class="reference external" href="
 which aim to improve the writing and publishing process with the Jupyter ecosystem.
 This is hopefully the first post of a few that ask how we can best-improve the state
 of publishing with Jupyter.</p>
-<p>Unknown directive type “admonition,tip”.
-</p>
+<p>Many of the ideas in this post have now made their way into a new flavor of markdown called <a class="reference external" href="https://myst-parser.readthedocs.io">Markedly Structured Text</a>, or MyST. It brings all of the features of rST into Markdown. Check it out!</p>
 </li>
 <li><p>2020-01-22 - <a class="reference internal" href="posts/2020/panels-timeline/">Building a simple timeline with sphinx-panels</a></p>
 <p>One of the nice things about <a class="reference external" href="https://myst-parser.readthedocs.io">MyST Markdown</a> is that it is <strong>extensible</strong>. Any Sphinx extension will work with MyST Markdown (in the context of Jupyter Book, anyway).</p>
@@ -406,28 +404,29 @@ of contributions <em>back</em> to those open source projects.</p>
 exploitative (legal, sure, but still exploitative), and we should think about ways to
 suppress this kind of behavior. This post is a collection of thoughts on that topic.</p>
 </li>
-<li><p>2018-10-26 - <a class="reference internal" href="posts/2018/kinds-of-openness/">Signaling openness</a></p>
-<p>How do open projects signal their “openness” to the outside community? This is
-a really hard question, particularly because nowadays “open” has become a buzzword
-that doesn’t just signal a project’s position to the community, but is also used
-as a marketing term to increase support, users, or resources.</p>
-<p>I was thinking about this the other day, so decided to take to twitter:</p>
-</li>
 <li><p>2018-10-26 - <a class="reference internal" href="posts/2018/my-workflow/">My weekly workflow</a></p>
 <p>I’ve had a bunch of conversations with friends who were interested in how to
 keep track of the various projects they’re working on, and to prioritize their
 time over the course of a week. I thought it might be helpful to post my own
 approach to planning time throughout the week in case it’s useful for others to
 riff off of.</p>
-<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
+<p>First off, a few general principles that I use to guide my thinking on planning
+out the week.</p>
 <img alt="" src="_images/trello-board-project.png" />
 </li>
-<li><p>2018-10-18 - <a class="reference internal" href="posts/2018/rust_governance/">I like Rust's governance structure</a></p>
+<li><p>2018-10-26 - <a class="reference internal" href="posts/2018/kinds-of-openness/">How do projects signal how “open” they are?</a></p>
+<p>How do open projects signal their “openness” to the outside community? This is
+a really hard question, particularly because nowadays “open” has become a buzzword
+that doesn’t just signal a project’s position to the community, but is also used
+as a marketing term to increase support, users, or resources.</p>
+<p>I was thinking about this the other day, so decided to take to twitter:</p>
+</li>
+<li><p>2018-10-18 - <a class="reference internal" href="posts/2018/rust_governance/">I like Rust’s governance structure</a></p>
 <p>Recently I’ve been reading up on governance models for several large-ish open
 source projects. This is partially because I’m involved in a bunch of
 these projects myself, and partially because it’s fascinating to see distributed groups
 of people organizing themselves in effective (or not) ways on the internet.</p>
-<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
+<p>Governance is tricky, because there is an inherent tension between:</p>
 <img alt="Rust teams" src="_images/2018-10-19-rust_logo.png" />
 </li>
 <li><p>2018-10-16 - <a class="reference internal" href="posts/2018/circle-docs/">Using CircleCI to preview documentation in Pull Requests</a></p>
@@ -443,7 +442,13 @@ writing content, design, etc.</p>
 summer of this year. There’s all kinds of exciting things going on in open
 source and open communities, so this is a quick way for me to collect my
 thoughts on some things I’ve learned this summer.</p>
-<p>Non-consecutive header level increase; 0 to 2 [myst.header]</p>
+<p>Pangeo is a project that provides
+<strong>access to a gigantic geosciences dataset</strong>. They use lots of tools in the
+open-source community, including Dask for efficient numerical computation,
+the SciPy stack for a bunch of data analytics, and JupyterHub on
+Kubernetes for managing user instances and deploying on remote infrastructure.
+Pangeo has a neat demo of their hosted JupyterHub instance that people can use
+to access this otherwise-inaccessible dataset! See their video from SciPy below.</p>
 </li>
 <li><p>2018-07-05 - <a class="reference internal" href="posts/2018/sphinx-copy-buttons/">Adding copy buttons to code blocks in Sphinx</a></p>
 <p><strong>NOTE: This is now a sphinx extension!</strong> Thanks to some friendly suggestions, I’ve written
@@ -530,8 +535,8 @@ Here are a couple of thoughts from the experience.</p>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
    

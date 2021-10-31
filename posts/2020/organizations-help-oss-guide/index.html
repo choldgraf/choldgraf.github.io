@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Contributing to open source: A short guide for organizations" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2020/organizations-help-oss-guide.html" />
@@ -415,7 +414,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="contributing-to-open-source-a-short-guide-for-organizations">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="contributing-to-open-source-a-short-guide-for-organizations">
 <h1>Contributing to open source: A short guide for organizations<a class="headerlink" href="#contributing-to-open-source-a-short-guide-for-organizations" title="Permalink to this headline">¶</a></h1>
 <p>Over the years I’ve had a recurring question from people who are in organizations both big and small: <em>how can we participate in open source communities?</em></p>
 <p>Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc <em>want</em> to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you’re not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.</p>
@@ -424,7 +423,7 @@
 <p class="admonition-title">Note</p>
 <p>This is all just personal opinion, and based on my own experiences so far. I’ll try to keep it updated over time as my own thoughts evolve. If you’ve got ideas of your own I’d love to hear them in the comments.</p>
 </div>
-<section id="meet-open-source-communities-where-they-are">
+<div class="section" id="meet-open-source-communities-where-they-are">
 <h2>Meet open source communities where they are<a class="headerlink" href="#meet-open-source-communities-where-they-are" title="Permalink to this headline">¶</a></h2>
 <p>If there is anything I’d emphasize the most, it is that organizations need to meet open communities where they are - that means abiding by community values and social norms, and accepting that community priorities may be different from those of an organization.
 A few quick ideas for doing this:</p>
@@ -436,56 +435,85 @@ A few quick ideas for doing this:</p>
 <li><p><strong>Accept that things will move more slowly</strong>. I know that you have a product or a feature to ship, and that you want to make rapid progress. But, open source communities generally are (and generally should be) slower and more deliberate in their decision-making than many organizations are used-to. Slowing things down ensures that a diverse collection of voices have an opportunity to weigh in on questions, and keeps the community more inclusive and participatory. It also often leads to better decisions that take into consideration more perspectives.</p></li>
 </ul>
 <p>After you spend some time engaging with open source communities, there are a few concrete steps you can take towards making contributions. Here are a few ideas…</p>
-</section>
-<section id="help-with-development-and-repositories">
+</div>
+<div class="section" id="help-with-development-and-repositories">
 <h2>Help with development and repositories<a class="headerlink" href="#help-with-development-and-repositories" title="Permalink to this headline">¶</a></h2>
 <p>After you’ve spent some time interacting with others in the community, perhaps you’d like to make contributions of your own to the codebase or tools. How can you do this in a way that benefits the community?</p>
-<section id="upstream-improvements-when-using-core-technology">
+<div class="note admonition">
+<p class="admonition-title">A note on non-coding support</p>
+<p>Note that, while code is often the output of an open source community, there are many non-coding ways to contribute to that community. Many of the “code-related” activities are actually “people-related” activities, such as assisting others with their problems, or engaging in discussion in issues.</p>
+</div>
+<div class="section" id="upstream-improvements-when-using-core-technology">
 <h3>Upstream improvements when using core technology<a class="headerlink" href="#upstream-improvements-when-using-core-technology" title="Permalink to this headline">¶</a></h3>
 <p>By far the most-common way that organizations contribute back is by “upstreaming” improvements to the open source project as they notice problems or opportunities to improve the code.</p>
 <p>If you’re using a tool regularly, or building it into another tool like one of your products, look for small ways that it could be better. Rather than fixing these issues in your fork of the project or your internal codebase, open an issue in the core repository and offer to fix it if others agree it’s a problem. If a team member has an idea to improve the tool, don’t just build it in your products, improve it in core.</p>
-</section>
-<section id="contribute-to-the-documentation">
+<div class="tip admonition">
+<p class="admonition-title">Example: The Jupyter Server</p>
+<p>The <a class="reference external" href="https://github.com/jupyter/jupyter_server">Jupyter Server</a> project is an attempt at pulling out much of the server architecture from the original Notebook application. It’s a very low-level library that is re-usable across a number of other potential tools. Its presence benefits the whole ecosystem, but because it is so generically useful, it has few dedicated resources to maintian and develop.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Example: Accessibility</p>
+<p>This is one of those things that is <em>super</em> hard to get volunteer support for because it is not sexy and it is hard work. Many organizations care about accessibility for a variety of reasons, and taking the time to give back guidance and development to make core tools more accessible is a huge benefit. On this point in particular, I think it is important that organizations not make accessibility a competetive advantage over open source tools, but instead contribute to the common good so that these tools are more inclusive and available to all.</p>
+</div>
+</div>
+<div class="section" id="contribute-to-the-documentation">
 <h3>Contribute to the documentation<a class="headerlink" href="#contribute-to-the-documentation" title="Permalink to this headline">¶</a></h3>
 <p>Documentation is crucial to the success of open source, as it is the interface between people and the code. Documentation should be clear, searchable and findable, and should cover all of the functionality in a tool. However, it’s very difficult to properly-document open source software!</p>
 <p>New users are in an extremely good position to point out inconsistencies, missing information, and unclear explanations in the documentation. If someone in your organization is trying to use an open-source tool for the first time, ask them to spend a few moments providing feedback about how the documentation could be improved, or even better, making a PR to the docs.</p>
-</section>
-<section id="work-on-major-features-the-community-has-prioritized">
+</div>
+<div class="section" id="work-on-major-features-the-community-has-prioritized">
 <h3>Work on major features the community has prioritized<a class="headerlink" href="#work-on-major-features-the-community-has-prioritized" title="Permalink to this headline">¶</a></h3>
 <p>If you’ve got more substantial development time to devote to a project, see what kinds of features people want, and offer to help tackle something that aligns with your own interests. This is much easier if you do so after interacting with the community for a bit, as you will understand its priorities, as well as the underlying codebase, enough to be more efficient and productive.</p>
 <p>Take a look at the issues or roadmap of a project and find ones that you’d also benefit from, chime in and mention that you’d like to try and make these changes to see if others are excited about it. Then, follow-through and engage with the community as you make changes. Don’t be resistant to feedback - remember that you are a part of a broader community with its own norms and expectations around code style, structure, etc.</p>
-</section>
-<section id="provide-core-maintenance-and-support">
+<div class="tip admonition">
+<p class="admonition-title">Example: Look for 👍 in issues</p>
+<p>The Executable Books Project has <a class="reference external" href="https://executablebooks.org/en/latest/feature-vote.html">a feature voting leaderboard</a> that it uses to let users vote with a 👍. You can even see this list for <em>any</em> GitHub repository by <strong>sorting issues by 👍 reactions</strong>. For example, <a class="reference external" href="https://github.com/jupyterlab/jupyterlab/issues?q=is%3Aissue+is%3Aopen+sort%3Areactions-%2B1-desc">here are the issues with the most 👍 in JupyterLab</a>.</p>
+</div>
+</div>
+<div class="section" id="provide-core-maintenance-and-support">
 <h3>Provide core maintenance and support<a class="headerlink" href="#provide-core-maintenance-and-support" title="Permalink to this headline">¶</a></h3>
 <p>If you have spent some time interacting with a community, working through bugs and features, etc, you may consider providing more ongoing core support for a project. This is the holy grail of engagement, as core support and maintenance are one of the scarcest resources. Offer to read through issues and triage on a regular basis, routinely engage in pull requests and provide feedback and advise, spot-check bugs over time that others have brought up, do community work to organize meetings or work plans.</p>
 <p>When I try to figure out who is being helpful in the Jupyter ecosystem, I ask questions like “who is doing the things that nobody else is doing?”. E.g., who is the first person to respond to an issue? who is making documentation improvements, or helping an inexperienced contributor improve their PR? These little “carrying water and chopping wood” tasks are not flashy and exciting, but they are <em>crucial</em> to keeping the community dynamic, welcoming, and productive.</p>
-</section>
-</section>
-<section id="collaborate-with-open-source-projects">
+<div class="tip admonition">
+<p class="admonition-title">Example: Contributing guidelines</p>
+<p>Take a look at the <a class="reference external" href="https://jupyterhub-team-compass.readthedocs.io/en/latest/team/skills.html#a-few-general-ways-to-help-out">JupyterHub Team contributing guidelines</a> - most of them aren’t strictly technical, they’re about helping others, helping the team in conversations, and generally just being friendly and productive community members.</p>
+</div>
+</div>
+</div>
+<div class="section" id="collaborate-with-open-source-projects">
 <h2>Collaborate with open source projects<a class="headerlink" href="#collaborate-with-open-source-projects" title="Permalink to this headline">¶</a></h2>
 <p>Beyond directly working inside of an open source community, there are also plenty of ways that you engage with them as collaborators and partners. Here are a few concrete ideas.</p>
-<section id="collaborate-on-open-standards-and-apis">
+<div class="section" id="collaborate-on-open-standards-and-apis">
 <h3>Collaborate on open standards and APIs<a class="headerlink" href="#collaborate-on-open-standards-and-apis" title="Permalink to this headline">¶</a></h3>
 <p>Beyond the open source core, there are often places where you wish to build out your <em>own</em> functionality. In these cases, it’s important that new APIs and patterns of interaction happen in conversation with the open source community, in order to ensure as much standardization as possible across ecosystems.</p>
 <p>Any time that you’d like to extend functionality beyond what’s already there, and have to make a semi-arbitrary decision of what pattern to expose to users, standardize on something the community already uses so that there isn’t unnecessary duplication and fracturing across ecosystems. If no standard exists, don’t just create one - reach out to the open source community and lead a process that gets others to brainstorm and buy-in to a new standard.</p>
-</section>
-<section id="advocate-for-open-tools-from-the-community">
+<div class="tip admonition">
+<p class="admonition-title">Example: The <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format. One of Jupyter’s core goals is to standardize tools and patterns across the data science community. The <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format is probably the most common example. As more tools build their own notebook functionality and wish to <em>extend</em> <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> to do new things, they should follow metadata standards (or lead processes to create new ones). For example, we don’t want <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> files that have platform-specific metadata. Even little stuff like “for cell-level metadata to hide inputs, do we call it <code class="docutils literal notranslate"><span class="pre">hide_input</span></code> or <code class="docutils literal notranslate"><span class="pre">hideInput</span></code>?” This can seem trivial and arbitrary but it is important and in many ways the most important thing that open communities do! When in doubt, ask around and get buy-in from others.</p>
+</div>
+</div>
+<div class="section" id="advocate-for-open-tools-from-the-community">
 <h3>Advocate for open tools from the community<a class="headerlink" href="#advocate-for-open-tools-from-the-community" title="Permalink to this headline">¶</a></h3>
 <p>While developing and improving technology is a core part of open source, there is also a great deal of <em>advocacy</em> needed to expand their use and to get feedback. Organizational partners can be a huge help here by finding ways to support and highlight open source tooling in their stack, and by explicitly highlighting this tooling in tandem with organizational products.</p>
 <p>This can be a bit tricky (competive landscape etc), but the rubric that I shoot for is: use community-led products wherever possible, and if that’s not possible, make sure to highlight and advocate for community-led products in-tandem with your own products.</p>
-</section>
-<section id="financially-support-open-source-projects">
+<div class="tip admonition">
+<p class="admonition-title">Example: Workshops and training material</p>
+<p>Many organizations run workshops, demos, and training sessions for their products. They also have sizeable marketing departments for the work they do. In all of these efforts, make it clear when you are relying on an open source tool for support, and highlight the ways in which you are engaging with its community and giving back.</p>
+<p>For example, <a class="reference external" href="https://spacy.io/">spacy.io</a> is an NLP framework built by <a class="reference external" href="https://explosion.ai/">explosion.ai</a>. As part of their online documentation, they include interactive code sessions powered by <a class="reference external" href="https://mybinder.org">Binder kernels</a>. They make sure to include the name “Binder” whenever these kernels are spun-up in order to give credit and thanks to the free mybinder.org service.</p>
+</div>
+</div>
+<div class="section" id="financially-support-open-source-projects">
 <h3>Financially support open source projects<a class="headerlink" href="#financially-support-open-source-projects" title="Permalink to this headline">¶</a></h3>
 <p>Some open source projects have ways to support them directly through funding. For those that do, an easy way to contribute is to provide some of your own financial resources for these things. Check whether the project, or any major contributors in the project, have a <a class="reference external" href="https://github.com/sponsors">GitHub Sponsors</a> or a <a class="reference external" href="https://www.patreon.com/">Patreon</a> page. Investigate whether the <a class="reference external" href="https://numfocus.org/donate">project is fiscally sponsored</a> and can accept donations. Other projects perform focused fundraising, for example the Jupyter Project has a <a class="reference external" href="https://blog.jupyter.org/the-jupyterhub-and-binder-contributor-in-residence-56708d1e3069">Jupyter Contributor in Residence</a> position that it must raise funds for.</p>
 <p>Alternatively, look into whether you can sponsor open-source work via other companies or contractors. Many companies do contract-style work in open source, and welcome funding to “buy out” open source time.  Fundraising can be a time-consuming effort, and offering your resources can help make a quick impact if the project is in a good position to accept them.</p>
-</section>
-</section>
-<section id="bottom-line">
+</div>
+</div>
+<div class="section" id="bottom-line">
 <h2>Bottom-line<a class="headerlink" href="#bottom-line" title="Permalink to this headline">¶</a></h2>
 <p>There are many different ways that you can participate in open source communities. Fundamentally, this comes down to being attentive, flexible, and generous. Each community is different, but some combination of the above steps will help you make progress and make an impact in working with many open source communities.</p>
 <p>If I’ve missed something important, please do chime in and suggest other ways that organizations can get involved. I would love to continue updating this list as new ideas come to light.</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

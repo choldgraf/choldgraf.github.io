@@ -1,9 +1,10 @@
 ---
 tags: python open-science dev-ops
-title: An academic scientist goes to DevOps Days
 category: dev-ops jupyterhub teams
 date: 2018-05-18
 ---
+
+# An academic scientist goes to DevOps Days
 
 Last week I took a few days to attend [DevOpsDays Silicon Valley](https://www.devopsdays.org/events/2018-silicon-valley/program/). My goal
 was to learn a bit about how the DevOps culture works, what are the things

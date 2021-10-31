@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="A new blog with Sphinx" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2020/sphinx-blogging.html" />
@@ -372,11 +371,11 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="a-new-blog-with-sphinx">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="a-new-blog-with-sphinx">
 <h1>A new blog with Sphinx<a class="headerlink" href="#a-new-blog-with-sphinx" title="Permalink to this headline">¶</a></h1>
 <p>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.</p>
 <a class="reference external image-reference" href="https://www.sphinx-doc.org/en/master/"><img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" /></a>
-<section id="why-did-you-re-write-your-blog">
+<div class="section" id="why-did-you-re-write-your-blog">
 <h2>Why did you re-write your blog?<a class="headerlink" href="#why-did-you-re-write-your-blog" title="Permalink to this headline">¶</a></h2>
 <p>This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)</p>
 <dl class="simple myst">
@@ -407,6 +406,10 @@ Here’s a dropdown!<div class="summary-down docutils">
 <div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-body docutils">
+<div class="tip admonition">
+<p class="card-title admonition-title">Wow, a tip!</p>
+<p class="card-text">What a great tip!</p>
+</div>
 </div>
 </div>
 </div>
@@ -416,8 +419,8 @@ Here’s a dropdown!<div class="summary-down docutils">
 <dt>🪐 Executable content and notebooks</dt><dd><p>On top of the base Sphinx features, <a class="reference external" href="https://myst-nb.readthedocs.io">MyST-NB</a> now lets me write my entire post in notebooks, and will execute and cache the content for me if I wish. I can also <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/use/markdown.html">write the whole notebook as markdown</a> which keeps my posts easily diff-able.</p>
 </dd>
 </dl>
-</section>
-<section id="the-components-that-make-up-this-blog">
+</div>
+<div class="section" id="the-components-that-make-up-this-blog">
 <h2>The components that make up this blog<a class="headerlink" href="#the-components-that-make-up-this-blog" title="Permalink to this headline">¶</a></h2>
 <p>OK so how is this blog actually built now? Here is a quick rundown.</p>
 <ul class="simple">
@@ -431,12 +434,12 @@ Here’s a dropdown!<div class="summary-down docutils">
 </ul>
 <p>Specifically, <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io">my website is hosted here</a> and all of the blog posts are <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io/tree/main/posts">in this folder</a>.
 I’m configuring ABlog to <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io/blob/main/conf.py#L80">find any markdown files in this folder and treat them as blog posts</a>.</p>
-</section>
-<section id="in-conclusion">
+</div>
+<div class="section" id="in-conclusion">
 <h2>In conclusion<a class="headerlink" href="#in-conclusion" title="Permalink to this headline">¶</a></h2>
 <p>So far, I quite like this new blog setup. Sphinx is familiar to me, and I think that using this for my own blog will help me understand how the ecosystem could be further-improved to support blogs in other contexts. If you want to check out this blog’s setup, see <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io">this blog’s repository</a> to get started! Next up, I’m going to see how easy it is to do this in Jupyter Book!</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

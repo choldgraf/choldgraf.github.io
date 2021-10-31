@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Dates in python" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2017/2017-03-16-dates_in_python.html" />
@@ -422,11 +421,11 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="dates-in-python">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="dates-in-python">
 <h1>Dates in python<a class="headerlink" href="#dates-in-python" title="Permalink to this headline">¶</a></h1>
 <p>As a part of setting up the website for the <a class="reference external" href="http://docathon.org">Docathon</a> I’ve had to re-learn all of my date string formatting rules. It’s one of those little problems you don’t really think about - turning an arbitrary string into something structured like a date - until you’ve actually got to do it.</p>
 <p>There are a bunch of tools in python for using date-like objects, but it’s not always easy to figure out how these work. This post is just a couple of pieces of information I’ve picked up along the process.</p>
-<section id="useful-links">
+<div class="section" id="useful-links">
 <h2>Useful links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
 <p>Here’s a list of useful links I’ve picked up, which I’ll mention below:</p>
 <ul class="simple">
@@ -435,12 +434,12 @@
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">A list of time zone names</a></p></li>
 <li><p><a class="reference external" href="https://www.w3.org/TR/NOTE-datetime">ISO 8601</a> format explanation</p></li>
 </ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-quick-tour-of-our-tools">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="a-quick-tour-of-our-tools">
 <h1>A quick tour of our tools<a class="headerlink" href="#a-quick-tour-of-our-tools" title="Permalink to this headline">¶</a></h1>
 <p>In this post we’ll focus on two main tools for date functionality: the datetime module and pandas.</p>
-<section id="datetime">
+<div class="section" id="datetime">
 <h2>Datetime<a class="headerlink" href="#datetime" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -504,7 +503,7 @@ day 12
 </div>
 </div>
 </div>
-<section id="extra-components-of-datetime-objects">
+<div class="section" id="extra-components-of-datetime-objects">
 <h3>Extra components of datetime objects<a class="headerlink" href="#extra-components-of-datetime-objects" title="Permalink to this headline">¶</a></h3>
 <p>We can also access specific sub-components of the datetime (that is, either the <strong>date</strong> or the <strong>time</strong>)</p>
 <div class="cell docutils container">
@@ -541,9 +540,9 @@ day 12
 </div>
 <p>As we can see, there’s nothing in there because we didn’t specify a timezone when we created this object. We need to add a timezone first.</p>
 <p>However, once you start using timezones it is useful to use a more powerful package like pandas. Let’s do a quick intro:</p>
-</section>
-</section>
-<section id="datetimes-in-pandas">
+</div>
+</div>
+<div class="section" id="datetimes-in-pandas">
 <h2>Datetimes in pandas<a class="headerlink" href="#datetimes-in-pandas" title="Permalink to this headline">¶</a></h2>
 <p>Pandas (among many, many other things) adds some extra functionality on top of datetime. The most useful function for this is probably <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code>. This will try to be clever about whatever the input is, which lets us do things like give it strings:</p>
 <div class="cell docutils container">
@@ -708,11 +707,11 @@ day 12
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_tz_database_time_zones">A list of time zone names</a></p></li>
 </ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="parsing-strings-as-a-date">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="parsing-strings-as-a-date">
 <h1>Parsing strings as a date<a class="headerlink" href="#parsing-strings-as-a-date" title="Permalink to this headline">¶</a></h1>
-<section id="iso-8601">
+<div class="section" id="iso-8601">
 <h2>ISO 8601<a class="headerlink" href="#iso-8601" title="Permalink to this headline">¶</a></h2>
 <p>So how is pandas doing all of these string auto-conversions? Well, there are a few string structures that are classically defined as date-like structures. For example, the <code class="docutils literal notranslate"><span class="pre">yyyy-mm-dd</span></code> string I gave above looks fairly straightforward for a date.</p>
 <p>What if we wanted to do something more complex with strings? For this, we use the <a class="reference external" href="https://www.w3.org/TR/NOTE-datetime">ISO 8601</a>. It takes the following form:</p>
@@ -731,7 +730,7 @@ day 12
 </div>
 </div>
 </div>
-<section id="arbitrary-strings">
+<div class="section" id="arbitrary-strings">
 <h3>Arbitrary strings<a class="headerlink" href="#arbitrary-strings" title="Permalink to this headline">¶</a></h3>
 <p>We can also tell pandas how to parse an arbitrary date string. For this, we use placeholders representing different components of the date, and then construct a “parsing string” that we give to the function. This tells the function how to turn input strings into datetime objects. For example, let’s say we have this string:</p>
 <div class="cell docutils container">
@@ -779,8 +778,8 @@ day 12
 </div>
 </div>
 </div>
-</section>
-<section id="printing-strings">
+</div>
+<div class="section" id="printing-strings">
 <h3>Printing strings<a class="headerlink" href="#printing-strings" title="Permalink to this headline">¶</a></h3>
 <p>The same principle can be applied to printing strings. Any datetime object has a method called <code class="docutils literal notranslate"><span class="pre">strftime</span></code>. This lets you create a <strong>string</strong> from <strong>time</strong>. You can pass a similar date parsing string to what we used above, and it will tell the object what kind of string to create:</p>
 <div class="cell docutils container">
@@ -822,14 +821,14 @@ day 12
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="and-that-s-it-sort-of">
+</div>
+</div>
+<div class="section" id="and-that-s-it-sort-of">
 <h2>And that’s it…sort of<a class="headerlink" href="#and-that-s-it-sort-of" title="Permalink to this headline">¶</a></h2>
 <p>In reality this is the tip of the iceberg when it comes to using datetime objects, but this should be enough to get you started. Make sure that any time you read in new data, you double check whether it is timezone encoded. If it isn’t, then figure out what timezone you can assume (often it is UTC), and encoding it yourself to avoid confusion.</p>
 <p>Datetime objects are incredibly useful, but can be a little confusing, so I hope this helps clear some things up!</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

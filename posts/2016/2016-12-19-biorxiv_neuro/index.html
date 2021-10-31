@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Question 1: How has the published articles rate changed?" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2016/2016-12-19-biorxiv_neuro.html" />
@@ -554,7 +553,7 @@
 </table>
 </div></div></div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="question-1-how-has-the-published-articles-rate-changed">
+<div class="tex2jax_ignore mathjax_ignore section" id="question-1-how-has-the-published-articles-rate-changed">
 <h1>Question 1: How has the published articles rate changed?<a class="headerlink" href="#question-1-how-has-the-published-articles-rate-changed" title="Permalink to this headline">¶</a></h1>
 <p>This one is pretty easy to ask. Since we have both year / month data about each article, we can plot the number or articles for each group of time. To do this, let’s first turn these numbers into an actual “datetime” object. This let’s us do some clever plotting magic with pandas</p>
 <div class="cell docutils container">
@@ -600,8 +599,8 @@
 <img alt="../../../_images/2016-12-19-biorxiv_neuro_17_1.png" src="../../../_images/2016-12-19-biorxiv_neuro_17_1.png" />
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="question-2-which-author-uses-pre-prints-the-most">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="question-2-which-author-uses-pre-prints-the-most">
 <h1>Question 2: Which author uses pre-prints the most?<a class="headerlink" href="#question-2-which-author-uses-pre-prints-the-most" title="Permalink to this headline">¶</a></h1>
 <p>For this one, we can use the “authors” dataframe. We’ll group by author name, and count the number of publications per author:</p>
 <div class="cell docutils container">
@@ -635,8 +634,8 @@
 </div>
 </div>
 <p>Rather than saying congratulations to #1 etc here, I’ll just take this space to say that all of these researchers are awesome for helping push scientific publishing technologies into the 21st century ;)</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="question-3-what-topics-are-covered-in-the-titles">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="question-3-what-topics-are-covered-in-the-titles">
 <h1>Question 3: What topics are covered in the titles?<a class="headerlink" href="#question-3-what-topics-are-covered-in-the-titles" title="Permalink to this headline">¶</a></h1>
 <p>For this one we’ll use a super floofy answer, but maybe it’ll give us something pretty. We’ll use the wordcloud module, which implements <code class="docutils literal notranslate"><span class="pre">fit</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> methods similar to scikit-learn. We can train it on the words in the titles, and then create a pretty word cloud using these words.</p>
 <p>To do this, we’ll use the <code class="docutils literal notranslate"><span class="pre">wordcloud</span></code> module along with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s stop words (which are also useful for text analysis, incidentally)</p>
@@ -694,11 +693,11 @@
 </div>
 </div>
 <p>Looks like those cognitive neuroscience folks are leading the charge towards pre-print servers. Hopefully in the coming years we’ll see increased adoption from the systems and cellular fields as well.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="wrapup">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="wrapup">
 <h1>Wrapup<a class="headerlink" href="#wrapup" title="Permalink to this headline">¶</a></h1>
 <p>Here we played with just a few questions that you can ask with some simple web scraping and the useful tools in python. There’s a lot more that you could do with it, but I’ll leave that up to readers to figure out for themselves :)</p>
-</section>
+</div>
 
 <div class="section">
      

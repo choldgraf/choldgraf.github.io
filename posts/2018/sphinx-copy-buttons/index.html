@@ -4,16 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-  <meta property="og:title" content="Adding a copy button to your Sphinx code blocks" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Adding copy buttons to code blocks in Sphinx" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/sphinx-copy-buttons.html" />
   <meta property="og:description" content="NOTE: This is now a sphinx extension! Thanks to some friendly suggestions, I’ve written this up as a super tiny sphinx extension. Check it out here: https://github.com/choldgraf/sphinx-copybutton S..." />
   <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Adding a copy button to your Sphinx code blocks" />
+  <meta property="og:image:alt" content="Adding copy buttons to code blocks in Sphinx" />
   
-    <title>Adding a copy button to your Sphinx code blocks &#8212; Predictably Noisy  documentation</title>
+    <title>Adding copy buttons to code blocks in Sphinx &#8212; Predictably Noisy  documentation</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -338,12 +337,12 @@
 
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-a-copy-button-to-your-sphinx-code-blocks">
    Adding a copy button to your Sphinx code blocks
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#thanks">
    Thanks
   </a>
@@ -368,7 +367,9 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <blockquote>
+                 <div class="tex2jax_ignore mathjax_ignore section" id="adding-copy-buttons-to-code-blocks-in-sphinx">
+<h1>Adding copy buttons to code blocks in Sphinx<a class="headerlink" href="#adding-copy-buttons-to-code-blocks-in-sphinx" title="Permalink to this headline">¶</a></h1>
+<blockquote>
 <div><p><strong>NOTE: This is now a sphinx extension!</strong> Thanks to some friendly suggestions, I’ve written
 this up as a super tiny sphinx extension. Check it out here: https://github.com/choldgraf/sphinx-copybutton</p>
 </div></blockquote>
@@ -387,8 +388,8 @@ turns out this is pretty easy!</p>
 <span class="n">is_so</span> <span class="o">=</span> <span class="n">much</span><span class="o">*</span><span class="n">more</span><span class="o">*</span><span class="n">copyable</span>
 </pre></div>
 </div>
-<section id="adding-a-copy-button-to-your-sphinx-code-blocks">
-<h1>Adding a copy button to your Sphinx code blocks<a class="headerlink" href="#adding-a-copy-button-to-your-sphinx-code-blocks" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="adding-a-copy-button-to-your-sphinx-code-blocks">
+<h2>Adding a copy button to your Sphinx code blocks<a class="headerlink" href="#adding-a-copy-button-to-your-sphinx-code-blocks" title="Permalink to this headline">¶</a></h2>
 <p>To accomplish this we’ll use the excellent <a class="reference external" href="https://clipboardjs.com/">clipboard.js</a>
 which provides the machinery for copying the contents of an HTML element as well
 as <a class="reference external" href="https://jquery.com/">jquery</a> for modifying our built documentation on-demand.</p>
@@ -471,12 +472,13 @@ already got). In the file, put these lines:</p>
 <p>And that’s it! Once you clear your Sphinx cache and re-build your site, you should
 now have buttons that appear when you hover over them, and that copy
 the text inside when you click them.</p>
-</section>
-<section id="thanks">
-<h1>Thanks<a class="headerlink" href="#thanks" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="thanks">
+<h2>Thanks<a class="headerlink" href="#thanks" title="Permalink to this headline">¶</a></h2>
 <p>Many thanks to <a class="reference external" href="https://stackoverflow.com/a/48078807/1927102">this StackOverflow post</a>
 for the majority of the code that led to this hack!</p>
-</section>
+</div>
+</div>
 
 <div class="section">
      
@@ -507,7 +509,7 @@ for the majority of the code that led to this hack!</p>
     <script type="text/javascript">
       var disqus_shortname = "chrisholdgraf";
       var disqus_identifier = "/posts/2018/sphinx-copy-buttons/";
-      var disqus_title = "Adding a copy button to your Sphinx code blocks";
+      var disqus_title = "Adding copy buttons to code blocks in Sphinx";
       var disqus_url = "https://predictablynoisy.com/posts/2018/sphinx-copy-buttons";
 
       (function () {

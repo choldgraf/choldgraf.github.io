@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Introducing makeitpop, a tool to perceptually warp your data!”" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/2018-06-04-makeitpop.html" />
@@ -442,7 +441,7 @@
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="introducing-makeitpop-a-tool-to-perceptually-warp-your-data">
+<div class="tex2jax_ignore mathjax_ignore section" id="introducing-makeitpop-a-tool-to-perceptually-warp-your-data">
 <h1>Introducing <em>makeitpop</em>, a tool to perceptually warp your data!”<a class="headerlink" href="#introducing-makeitpop-a-tool-to-perceptually-warp-your-data" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -456,7 +455,7 @@ and adopt a “perceptually-flat” colormap like <a class="reference external" 
 <p>But what does this really mean? It’s difficult to talk and think about coor - especially when it comes to relating color with objective relationships
 between data. Rather than talking about colormaps in the abstract, what if we could <em>visualize</em> the warping that is performed by colormaps like Jet?</p>
 <p>In this post I’ll show that this is possible! Introducing <strong><code class="docutils literal notranslate"><span class="pre">makeitpop</span></code></strong>.</p>
-<section id="what-does-makeitpop-do">
+<div class="section" id="what-does-makeitpop-do">
 <h2>What does <em>makeitpop</em> do?<a class="headerlink" href="#what-does-makeitpop-do" title="Permalink to this headline">¶</a></h2>
 <p>Makeitpop lets you apply the same perceptual warping that would <em>normally</em> be accomplished
 with a colormap like Jet, but applies this warping to <em>the data itself</em>! This lets us
@@ -557,8 +556,8 @@ an effect similar to the one that <em>Jet</em> would have created!</p>
 <img alt="../../../_images/2018-06-04-makeitpop_8_0.png" src="../../../_images/2018-06-04-makeitpop_8_0.png" />
 </div>
 </div>
-</section>
-<section id="let-s-see-it-in-the-real-world">
+</div>
+<div class="section" id="let-s-see-it-in-the-real-world">
 <h2>Let’s see it in the real world<a class="headerlink" href="#let-s-see-it-in-the-real-world" title="Permalink to this headline">¶</a></h2>
 <p>Thus far I’ve been using toy examples to illustrate how makeitpop works. Let’s see how
 things look on an actual dataset collected in the wild.</p>
@@ -625,8 +624,8 @@ properties of <em>Jet</em> to our data, so that we can visualize the same effect
 </div>
 </div>
 <p>As you can see, different kinds of results show up when your perception of the data is affected by the colormap.</p>
-</section>
-<section id="how-does-this-work">
+</div>
+<div class="section" id="how-does-this-work">
 <h2>How does this work?<a class="headerlink" href="#how-does-this-work" title="Permalink to this headline">¶</a></h2>
 <p>OK, so what is the black voodoo magic that makes it possible to “make your data pop”?</p>
 <p>It all comes down to your visual system. I won’t go into a ton of detail
@@ -639,8 +638,8 @@ an equal step in our <em>perception</em> of the color that is then chosen. We wa
 <p>Unfortunately, this isn’t how our visual system works.</p>
 <p>In reality, our brains do all kinds of strange things when interpreting color. They are biased to detect changes between particular kinds of colors, and biased to miss the transition between others.</p>
 <p><em>Jet</em> uses a range of colors that highlight this fact. It transitions through colors such that <em>linear</em> changes in our data are perceived as <em>nonlinear</em> changes when we look at the visualization. That’s what makes the data “pop”.</p>
-</section>
-<section id="perceptual-delta-curves">
+</div>
+<div class="section" id="perceptual-delta-curves">
 <h2>Perceptual “delta” curves<a class="headerlink" href="#perceptual-delta-curves" title="Permalink to this headline">¶</a></h2>
 <p>You can determine the extent to which a colormap “warps” your perception of the data by calculating the “perceptual deltas” as you move across the values of a colormap (e.g. as you move from 0 to 1, and their corresponding colors).</p>
 <p>These deltas essentially mean “how much is the <em>next</em> color in the colormap perceived as different from the <em>current</em> color?” If your colormap is perceptually flat, the delta will be the <em>same</em> no matter where you are on the range from 0 to 1.</p>
@@ -702,8 +701,8 @@ so that they are easier to compare.</p>
 <img alt="../../../_images/2018-06-04-makeitpop_21_0.png" src="../../../_images/2018-06-04-makeitpop_21_0.png" />
 </div>
 </div>
-</section>
-<section id="we-can-even-warp-1-dimensional-data">
+</div>
+<div class="section" id="we-can-even-warp-1-dimensional-data">
 <h2>We can even warp 1-dimensional data!<a class="headerlink" href="#we-can-even-warp-1-dimensional-data" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see how this principle affects our perception with a different kind of visual
 encoding. Now that we know these perceptual warping functions, we can get all the
@@ -770,8 +769,8 @@ than others.</p>
 <img alt="../../../_images/2018-06-04-makeitpop_27_0.png" src="../../../_images/2018-06-04-makeitpop_27_0.png" />
 </div>
 </div>
-</section>
-<section id="so-what-should-we-do">
+</div>
+<div class="section" id="so-what-should-we-do">
 <h2>So what should we do?<a class="headerlink" href="#so-what-should-we-do" title="Permalink to this headline">¶</a></h2>
 <p>The reason that I wrote this blog post (and made this silly package) is to illustrate what we’re really
 doing when we use a colormap like <em>Jet</em>, and to highlight the importance of using a perceptually-flat colormap.  Sure, we want to choose the visualization that best-makes our point,
@@ -784,8 +783,8 @@ data values so that an effect popped out, and you’d <em>never</em> alter the y
 <li><p>Be aware of the effects that color has on the point you’re trying to make. Perceptual warping is
 just one of many potential issues with choosing the right color.</p></li>
 </ul>
-</section>
-<section id="wrapping-up">
+</div>
+<div class="section" id="wrapping-up">
 <h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
 <p>I hope that this post has been a fun and slightly informative take on the nuances of colormaps, and the unintended effects that they might have.</p>
 <p>So, <code class="docutils literal notranslate"><span class="pre">tl;dr</span></code>:</p>
@@ -799,8 +798,8 @@ just one of many potential issues with choosing the right color.</p></li>
 <p>If you’d like to check out the <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> package, see the <a class="reference external" href="https://github.com/choldgraf/makeitpop">GitHub repo here</a>. In addition, all of the examples in this post are runnable
 on Binder! You can launch an interactive session with this code by clicking on the Binder button
 at the top of this page!</p>
-</section>
-<section id="addendum-ok-but-how-does-makeitpop-actually-work">
+</div>
+<div class="section" id="addendum-ok-but-how-does-makeitpop-actually-work">
 <h2>Addendum: Ok but how does <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> <em>actually</em> work?<a class="headerlink" href="#addendum-ok-but-how-does-makeitpop-actually-work" title="Permalink to this headline">¶</a></h2>
 <p>In this section I’ll describe the (admittedly hacky) way that I’ve written <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code>.
 As I mentioned before, <a class="reference external" href="https://github.com/choldgraf/makeitpop">all the <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> code is on GitHub</a> and
@@ -824,9 +823,9 @@ Pull Requests are more than welcome to improve the process (I’m looking at you
 using linear interpolation to map the delta function of one colormap onto the delta function for another
 colormap). If you’d like to contribute or suggest something, feel free to do so! However, I’m just creating
 this package to highlight an idea, and think this approach gets close enough with relatively little complexity.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="some-extras">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="some-extras">
 <h1>Some extras<a class="headerlink" href="#some-extras" title="Permalink to this headline">¶</a></h1>
 <p>Here’s a viz that will let you visualize how different colormaps distort data. We’ll show a
 gradient of linearly-spaced values, both using a warping colormap such as “jet” and a linear
@@ -866,7 +865,7 @@ colormap like “vidiris”. Then, we’ll “pop” the data and re-visualize w
 <img alt="../../../_images/2018-06-04-makeitpop_32_0.png" src="../../../_images/2018-06-04-makeitpop_32_0.png" />
 </div>
 </div>
-</section>
+</div>
 
 <div class="section">
      

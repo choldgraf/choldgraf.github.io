@@ -4,16 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-  <meta property="og:title" content="Extending nbconvert's markdown template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Blogging with Jupyter Notebooks and Jekyll using nbconvert templates" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/jekyllmarkdown.html" />
   <meta property="og:description" content="Here’s a quick (and hopefully helpful) post for those wishing to blog in Jekyll using Jupyter notebooks. As some of you may know, nbconvert can easily convert your.ipynb files to markdown, which Je..." />
   <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Extending nbconvert's markdown template" />
+  <meta property="og:image:alt" content="Blogging with Jupyter Notebooks and Jekyll using nbconvert templates" />
   
-    <title>Extending nbconvert&#39;s markdown template &#8212; Predictably Noisy  documentation</title>
+    <title>Blogging with Jupyter Notebooks and Jekyll using nbconvert templates &#8212; Predictably Noisy  documentation</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -332,9 +331,25 @@
               
               <div class="toc-item">
                 
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
 
 <nav id="bd-toc-nav">
-    
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-nbconvert-s-markdown-template">
+   Extending
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     nbconvert's
+    </span>
+   </code>
+   markdown template
+  </a>
+ </li>
+</ul>
+
 </nav>
               </div>
               
@@ -353,7 +368,9 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <p>Here’s a quick (and hopefully helpful) post for those wishing to blog in
+                 <div class="tex2jax_ignore mathjax_ignore section" id="blogging-with-jupyter-notebooks-and-jekyll-using-nbconvert-templates">
+<h1>Blogging with Jupyter Notebooks and Jekyll using nbconvert templates<a class="headerlink" href="#blogging-with-jupyter-notebooks-and-jekyll-using-nbconvert-templates" title="Permalink to this headline">¶</a></h1>
+<p>Here’s a quick (and hopefully helpful) post for those wishing to blog in
 Jekyll using Jupyter notebooks. As some of you may know, <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> can
 easily convert your <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files to markdown, which Jekyll can easily
 turn into blog posts for you.</p>
@@ -367,8 +384,8 @@ output. Not ideal.</p>
 First, it’s possible to <a class="reference external" href="https://nbconvert.readthedocs.io/en/latest/external_exporters.html#writing-a-custom-exporter">create your <em>own</em> exporter class</a>, but this is a bit heavy for what we want to do. In our case, we’d
 simply like to <em>extend</em> the markdown exporter so that it outputs Jekyll-friendly
 markdown.</p>
-<section id="extending-nbconvert-s-markdown-template">
-<h1>Extending <code class="docutils literal notranslate"><span class="pre">nbconvert's</span></code> markdown template<a class="headerlink" href="#extending-nbconvert-s-markdown-template" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="extending-nbconvert-s-markdown-template">
+<h2>Extending <code class="docutils literal notranslate"><span class="pre">nbconvert's</span></code> markdown template<a class="headerlink" href="#extending-nbconvert-s-markdown-template" title="Permalink to this headline">¶</a></h2>
 <p>Because <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> uses Liquid Templates for its exporters, this is
 relatively easy! For example,
 <a class="reference external" href="https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/markdown.tpl">here is <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code>’s markdown template</a>.
@@ -452,7 +469,8 @@ theme’s “code box” around each of the output areas:</p>
 </div>
 <p>It took me a while to figure out this pattern, so hopefully other people find
 it useful as well!</p>
-</section>
+</div>
+</div>
 
 <div class="section">
      
@@ -483,7 +501,7 @@ it useful as well!</p>
     <script type="text/javascript">
       var disqus_shortname = "chrisholdgraf";
       var disqus_identifier = "/posts/2018/jekyllmarkdown/";
-      var disqus_title = "Extending &lt;code class=&#34;docutils literal notranslate&#34;&gt;&lt;span class=&#34;pre&#34;&gt;nbconvert&#39;s&lt;/span&gt;&lt;/code&gt; markdown template";
+      var disqus_title = "Blogging with Jupyter Notebooks and Jekyll using nbconvert templates";
       var disqus_url = "https://predictablynoisy.com/posts/2018/jekyllmarkdown";
 
       (function () {

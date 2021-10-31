@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="The beauty of computational efficiency and the FFT" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2016/2016-07-02-fft_time.html" />
@@ -374,10 +373,10 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="the-beauty-of-computational-efficiency-and-the-fft">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="the-beauty-of-computational-efficiency-and-the-fft">
 <h1>The beauty of computational efficiency and the FFT<a class="headerlink" href="#the-beauty-of-computational-efficiency-and-the-fft" title="Permalink to this headline">¶</a></h1>
 <p>When we discuss “computational efficiency”, you often hear people throw around phrases like $O(n^2)$ or $O(nlogn)$. We talk about them in the abstract, and it can be hard to appreciate what these distinctions mean and how important they are. So let’s take a quick look at what computational efficiency looks like in the context of a very famous algorithm: The Fourier Transform.</p>
-<section id="a-short-primer-on-the-fourier-transform">
+<div class="section" id="a-short-primer-on-the-fourier-transform">
 <h2>A short primer on the Fourier Transform<a class="headerlink" href="#a-short-primer-on-the-fourier-transform" title="Permalink to this headline">¶</a></h2>
 <p>Briefly, A Fourier Transform is used for uncovering the spectral information that is present in a signal. AKA, it tells us about oscillatory components in the signal, and has <a class="reference external" href="http://dsp.stackexchange.com/questions/69/why-is-the-fourier-transform-so-important">a wide range</a> of uses in communications, signal processing, and even neuroscience analysis.</p>
 <p>Here’s a <a class="reference external" href="https://www.quora.com/What-is-an-intuitive-way-of-explaining-how-the-Fourier-transform-works">Quora post</a> that discusses Fourier Transforms more generally. The first explanation is fantastic and full of history and detail.</p>
@@ -434,8 +433,8 @@
 <blockquote>
 <div><p><em>You’ll notice that I chose a very particular set of numbers above. Specifically, I chose numbers that were primes (or nearly primes) meaning that they couldn’t be broken down into products of smaller numbers. That turns out to be really important in allowing the FFT to do its magic. When your signal length is a prime number, then you don’t gain any speedup from the FFT, as I’ll show below.</em></p>
 </div></blockquote>
-</section>
-<section id="enter-the-fast-fourier-transform">
+</div>
+<div class="section" id="enter-the-fast-fourier-transform">
 <h2>Enter the Fast Fourier Transform<a class="headerlink" href="#enter-the-fast-fourier-transform" title="Permalink to this headline">¶</a></h2>
 <p>The Fast Fourier Transform (FFT) is one of the most important algorithms to come out of the last century because it drastically speeds up the performance of the Fourier Transform. It accomplishes this by breaking down all those $n^2$ computations into a smaller number of computations, and then putting them together at the end to get the same result. This is called <strong>factorizing</strong>.</p>
 <p>You can think of factorizing like trying to move a bunch of groceries from your car to your fridge. Say you have 20 items in your car. One way to do this is to individually take each item, pull it from the car, walk to the house, place it in the fridge. It’d take you 20 trips to do this. Factorizing is like putting your 20 items into 2 grocery bags. Now you only need to make 2 trips to the house - one for each grocery bag. The first approach requires 20 trips to the house, and the second requires 2 trips. You’ve just reduced the number of trips by an order of magnitude!</p>
@@ -459,8 +458,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="the-beautiful-efficiency-of-the-fft">
+</div>
+<div class="section" id="the-beautiful-efficiency-of-the-fft">
 <h2>The beautiful efficiency of the FFT<a class="headerlink" href="#the-beautiful-efficiency-of-the-fft" title="Permalink to this headline">¶</a></h2>
 <p>To see what the FFT’s efficiency looks like, we’ll simulate data of different lengths and see how long it takes to compute the FFT at each length. We’ll create a random vector of gaussian noise ranging from length 1 to 10,000. For each vector, we’ll compute the FFT, and time how long it took to compute. I’ve already taken the liberty of doing this (repeated 3 times, and then averaged together). Those times are stored in fft_times.csv.</p>
 <div class="cell docutils container">
@@ -651,8 +650,8 @@
 </div>
 <p>Each of those colored traces spreading upwards represents a particular strategy that the FFT uses for that number of factors. As you can see, the FFT will take a lot longer (and scales exponentially) with fewer factors (see the red lines). It takes much less time (and scales more linearly) with more factors (see the blue lines).</p>
 <p>And that right there is the beauty of methods like the FFT. They leverage the structure of mathematics to take a computation that goes on for days, and figure out how to do it in seconds.</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="What would Python-style governance look like in Jupyter?" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-10-27-jupyter-governance-python.html" />
@@ -459,7 +458,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="what-would-python-style-governance-look-like-in-jupyter">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="what-would-python-style-governance-look-like-in-jupyter">
 <h1>What would Python-style governance look like in Jupyter?<a class="headerlink" href="#what-would-python-style-governance-look-like-in-jupyter" title="Permalink to this headline">¶</a></h1>
 <p>This is the second in a series of blog posts that explores what it’d look like to
 directly port the governance model of other communities into the Jupyter project.
@@ -469,8 +468,8 @@ all the usual caveats come with it, such as the
 fact that I don’t know the Python governance
 structure <em>that</em> well, and I might totally
 botch my characterization of it.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="background-on-python-s-governance">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="background-on-python-s-governance">
 <h1>Background on Python’s Governance<a class="headerlink" href="#background-on-python-s-governance" title="Permalink to this headline">¶</a></h1>
 <p>Recently, the Python community underwent a refactoring of their governance
 model. This was in large part due to <a class="reference external" href="https://mail.python.org/pipermail/python-committers/2018-July/005664.html">Guido’s decision to step down as BDFL</a>.</p>
@@ -480,8 +479,8 @@ of enhancement proposals.</p>
 <p>There were a lot of interesting ideas in the proposals that came forward, but this
 post is going to focus on the one that ended up being chosen, <a class="reference external" href="https://www.python.org/dev/peps/pep-8016/">PEP 8016</a>. You can find the final language of Python’s governance model <a class="reference external" href="https://www.python.org/dev/peps/pep-0013/">in this PEP</a>.</p>
 <p>So, what would Python’s governance model look like in Jupyter?</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-quick-overview">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="a-quick-overview">
 <h1>A quick overview<a class="headerlink" href="#a-quick-overview" title="Permalink to this headline">¶</a></h1>
 <p>At a high level, Python’s governance model is quite similar to that of Project Jupyter.
 It has two main bodies:</p>
@@ -504,12 +503,12 @@ Jupyter uses a steering council to make decisions, though the council is much la
 which maps cleanly onto the Python “core team” model. Python already has a
 well-established collective decision-making process (PEPs), while Jupyter
 has a defined-but-not-established process (JEPs).</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-jupyter-pep-013">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="a-jupyter-pep-013">
 <h1>A Jupyter PEP 013<a class="headerlink" href="#a-jupyter-pep-013" title="Permalink to this headline">¶</a></h1>
 <p>The rest of this post is going to be a close mirror to the accepted <a class="reference external" href="https://www.python.org/dev/peps/pep-0013/">PEP 013 proposal</a>. I’ll change the language where it makes sense, or in order to
 map onto whatever structures currently exist in the Jupyter world.</p>
-<section id="the-current-jupyter-steering-council">
+<div class="section" id="the-current-jupyter-steering-council">
 <h2>The current Jupyter steering council<a class="headerlink" href="#the-current-jupyter-steering-council" title="Permalink to this headline">¶</a></h2>
 <p>The current steering council is the only official group of people attached to
 the Jupyter Project. It consists of 21 members listed here:</p>
@@ -522,14 +521,14 @@ for proposing and making decisions. This post will not detail the JEP process,
 because <a class="reference external" href="https://github.com/jupyter/enhancement-proposals/issues/27">Safia already did a great job of this here</a>.
 It also assumes that <em>this</em> document is written in the form of a JEP, similar to
 what the Python community used.</p>
-</section>
-<section id="the-new-jupyter-steering-council">
+</div>
+<div class="section" id="the-new-jupyter-steering-council">
 <h2>The new Jupyter steering council<a class="headerlink" href="#the-new-jupyter-steering-council" title="Permalink to this headline">¶</a></h2>
-<section id="composition">
+<div class="section" id="composition">
 <h3>Composition<a class="headerlink" href="#composition" title="Permalink to this headline">¶</a></h3>
 <p>The steering council is a 5-person committee.</p>
-</section>
-<section id="mandate">
+</div>
+<div class="section" id="mandate">
 <h3>Mandate<a class="headerlink" href="#mandate" title="Permalink to this headline">¶</a></h3>
 <p>The steering council shall work to:</p>
 <ul class="simple">
@@ -540,8 +539,8 @@ what the Python community used.</p>
 <li><p>Seek consensus among contributors and the core team before acting in a formal capacity,</p></li>
 <li><p>Act as a “court of final appeal” for decisions where all other methods have failed.</p></li>
 </ul>
-</section>
-<section id="powers">
+</div>
+<div class="section" id="powers">
 <h3>Powers<a class="headerlink" href="#powers" title="Permalink to this headline">¶</a></h3>
 <p>The council has broad authority to make decisions about the project. For example, they can:</p>
 <ul class="simple">
@@ -555,8 +554,8 @@ what the Python community used.</p>
 It’s better to establish a Code of Conduct committee than to rule on individual cases. And so on.</p>
 <p>To use its powers, the council votes. Every council member must either vote or explicitly abstain. Members with conflicts of interest on a particular vote must abstain. Passing requires a strict majority of non-abstaining council members.</p>
 <p>Whenever possible, the council’s deliberations and votes shall be held in public.</p>
-</section>
-<section id="electing-the-council">
+</div>
+<div class="section" id="electing-the-council">
 <h3>Electing the council<a class="headerlink" href="#electing-the-council" title="Permalink to this headline">¶</a></h3>
 <p>A council election consists of two phases:</p>
 <ul class="simple">
@@ -566,8 +565,8 @@ It’s better to establish a Code of Conduct committee than to rule on individua
 <p>Each phase lasts one to two weeks, at the outgoing council’s discretion. For the initial election, both phases will last two weeks.</p>
 <p>The election process is managed by <a class="reference external" href="https://en.wikipedia.org/wiki/Returning_officer">a returns officer</a> nominated by the outgoing steering council. For the initial election, the returns officer will be nominated by Brian Granger and Fernando Perez.</p>
 <p>The council should ideally reflect the diversity of Jupyter contributors and users, and core team members are encouraged to vote accordingly.</p>
-</section>
-<section id="term">
+</div>
+<div class="section" id="term">
 <h3>Term<a class="headerlink" href="#term" title="Permalink to this headline">¶</a></h3>
 <p>Jupyter will define a cycle of operations, roughly mapping onto a “major version release cycle”
 (as if it were a single technical project). The details of what this means will be decided by the
@@ -575,48 +574,48 @@ steering council and the JEP process.</p>
 <p>A new council is elected after cycle. Each council’s term runs from when their election results are finalized until the next council’s term starts. There are no term limits.</p>
 <details>
 <summary>Some extra details about the steering council. Click to expand if you're interested.</summary>
-</section>
-<section id="vacancies">
+</div>
+<div class="section" id="vacancies">
 <h3>Vacancies<a class="headerlink" href="#vacancies" title="Permalink to this headline">¶</a></h3>
 <p>Council members may resign their position at any time.</p>
 <p>Whenever there is a vacancy during the regular council term, the council may vote to appoint a replacement to serve out the rest of the term.</p>
 <p>If a council member drops out of touch and cannot be contacted for a month or longer, then the rest of the council may vote to replace them.</p>
-</section>
-<section id="conflicts-of-interest">
+</div>
+<div class="section" id="conflicts-of-interest">
 <h3>Conflicts of interest<a class="headerlink" href="#conflicts-of-interest" title="Permalink to this headline">¶</a></h3>
 <p>While we trust council members to act in the best interests of Jupyter rather than themselves or their employers, the mere appearance of any one company dominating Jupyter development could itself be harmful and erode trust. In order to avoid any appearance of conflict of interest, at most 2 members of the council can work for any single employer.</p>
 <p>In a council election, if 3 of the top 5 vote-getters work for the same employer, then whichever of them ranked lowest is disqualified and the 6th-ranking candidate moves up into 5th place; this is repeated until a valid council is formed.</p>
 <p>During a council term, if changing circumstances cause this rule to be broken (for instance, due to a council member changing employment), then one or more council members must resign to remedy the issue, and the resulting vacancies can then be filled as normal.</p>
-</section>
-<section id="ejecting-core-team-members">
+</div>
+<div class="section" id="ejecting-core-team-members">
 <h3>Ejecting core team members<a class="headerlink" href="#ejecting-core-team-members" title="Permalink to this headline">¶</a></h3>
 <p>In exceptional circumstances, it may be necessary to remove someone from the core team against their will. (For example: egregious and ongoing code of conduct violations.) This can be accomplished by a steering council vote, but unlike other steering council votes, this requires at least a two-thirds majority. With 5 members voting, this means that a 3:2 vote is insufficient; 4:1 in favor is the minimum required for such a vote to succeed. In addition, this is the one power of the steering council which cannot be delegated, and this power cannot be used while a vote of no confidence is in process.</p>
 <p>If the ejected core team member is also on the steering council, then they are removed from the steering council as well.</p>
-</section>
-<section id="vote-of-no-confidence">
+</div>
+<div class="section" id="vote-of-no-confidence">
 <h3>Vote of no confidence<a class="headerlink" href="#vote-of-no-confidence" title="Permalink to this headline">¶</a></h3>
 <p>In exceptional circumstances, the core team may remove a sitting council member, or the entire council, via a vote of no confidence.</p>
 <p>A no-confidence vote is triggered when a core team member calls for one publically on an appropriate project communication channel, and another core team member seconds the proposal.</p>
 <p>The vote lasts for two weeks. Core team members vote for or against. If at least two thirds of voters express a lack of confidence, then the vote succeeds.</p>
 <p>There are two forms of no-confidence votes: those targeting a single member, and those targeting the council as a whole. The initial call for a no-confidence vote must specify which type is intended. If a single-member vote succeeds, then that member is removed from the council and the resulting vacancy can be handled in the usual way. If a whole-council vote succeeds, the council is dissolved and a new council election is triggered immediately.</p>
 </details>
-</section>
-</section>
-<section id="the-core-team">
+</div>
+</div>
+<div class="section" id="the-core-team">
 <h2>The core team<a class="headerlink" href="#the-core-team" title="Permalink to this headline">¶</a></h2>
-<section id="role">
+<div class="section" id="role">
 <h3>Role<a class="headerlink" href="#role" title="Permalink to this headline">¶</a></h3>
 <p>The core team is the group of trusted volunteers who manage Jupyter. They assume many roles required to achieve the project’s goals, especially those that require a high level of trust. They make the decisions that shape the future of the project.</p>
 <p>Core team members are expected to act as role models for the community and custodians of the project, on behalf of the community and all those who rely on Jupyter.</p>
 <p>They will intervene, where necessary, in online discussions or at official Jupyter events on the rare occasions that a situation arises that requires intervention.</p>
 <p>They have authority over the Jupyter Project infrastructure, including the jupyter.org website itself, the “core Jupyter GitHub organizations and repositories”, the community forum, the mailing lists, Gitter channels,
 and any cloud infrastructure such as nbconvert, mybinder.org, etc.</p>
-</section>
-<section id="prerogatives">
+</div>
+<div class="section" id="prerogatives">
 <h3>Prerogatives<a class="headerlink" href="#prerogatives" title="Permalink to this headline">¶</a></h3>
 <p>Core team members may participate in formal votes, typically to nominate new team members and to elect the steering council.</p>
-</section>
-<section id="membership">
+</div>
+<div class="section" id="membership">
 <h3>Membership<a class="headerlink" href="#membership" title="Permalink to this headline">¶</a></h3>
 <p>Jupyter core team members demonstrate:</p>
 <p>a good grasp of the philosophy of the Jupyter Project
@@ -642,14 +641,14 @@ As the project matures, contributions go beyond code. Here’s an incomplete lis
 <p>Core team members are always looking for promising contributors, teaching them how the project is managed, and submitting their names to the core team’s vote when they’re ready.</p>
 <p>There’s no time limit on core team membership. However, in order to provide the general public with a reasonable idea of how many people maintain Jupyter, core team members who have stopped contributing are encouraged to declare themselves as “inactive”. Those who haven’t made any non-trivial contribution in two years may be asked to move themselves to this category, and moved there if they don’t respond. To record and honor their contributions, inactive team members will continue to be listed alongside active core team members; and, if they later resume contributing, they can switch back to active status at will. While someone is in inactive status, though, they lose their active privileges like voting or nominating for the steering council, and commit access.</p>
 <p>The initial active core team members will consist of everyone with commit access to one of the Jupyter core repositories on Github.</p>
-</section>
-</section>
-<section id="changing-this-document">
+</div>
+</div>
+<div class="section" id="changing-this-document">
 <h2>Changing this document<a class="headerlink" href="#changing-this-document" title="Permalink to this headline">¶</a></h2>
 <p>Changes to this document require at least a two-thirds majority of votes cast in a core team vote which should be open for two weeks.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="what-s-different-between-python-and-jupyter">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="what-s-different-between-python-and-jupyter">
 <h1>What’s different between Python and Jupyter?<a class="headerlink" href="#what-s-different-between-python-and-jupyter" title="Permalink to this headline">¶</a></h1>
 <p>I was struck by how similar the new Python governance model is to
 the Jupyter project’s current model. They both have a steering council approach,
@@ -675,7 +674,7 @@ already know about but rarely follow strictly.</p>
 <p>In all, the Python model seems like a nice balance between the organized chaos of
 a totally collective decision-making process, and the high-stress-and-bottlenecking
 approach of a BDFL-style model.</p>
-</section>
+</div>
 
 <div class="section">
      

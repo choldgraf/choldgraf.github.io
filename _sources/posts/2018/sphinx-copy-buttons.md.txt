@@ -1,10 +1,11 @@
 ---
 tags: python blogging sphinx documentation
-title: Adding copy buttons to code blocks in Sphinx
 permalink: sphinx-copy-buttons
 category: documentation
 date: 2018-07-05
 ---
+
+# Adding copy buttons to code blocks in Sphinx
 
 > **NOTE: This is now a sphinx extension!** Thanks to some friendly suggestions, I've written
 > this up as a super tiny sphinx extension. Check it out here: https://github.com/choldgraf/sphinx-copybutton

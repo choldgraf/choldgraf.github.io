@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Using Craigslist to compare prices in the Bay Area" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2015/2015-09-27-craigslist_data_analysis.html" />
@@ -380,7 +379,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="using-craigslist-to-compare-prices-in-the-bay-area">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="using-craigslist-to-compare-prices-in-the-bay-area">
 <h1>Using Craigslist to compare prices in the Bay Area<a class="headerlink" href="#using-craigslist-to-compare-prices-in-the-bay-area" title="Permalink to this headline">¶</a></h1>
 <p>In the <a class="reference external" href="http://chrisholdgraf.com/querying-craigslist-with-python/">last post</a> I showed how to use a simple python bot to scrape data from Criagslist. This is a quick follow-up to take a peek at the data.</p>
 <blockquote>
@@ -410,8 +409,8 @@
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="price-distributions">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="price-distributions">
 <h1>Price distributions<a class="headerlink" href="#price-distributions" title="Permalink to this headline">¶</a></h1>
 <p>As a start, let’s take a look at the distribution of home prices to get an idea for what we’re dealing with:</p>
 <div class="cell docutils container">
@@ -565,8 +564,8 @@
 <p>Basically, lines that go down more steeply mean you get a better deal the bigger the place is.</p>
 <p>For instance, if you’re in the southbay you might be paying $6/sqf for a 600 sq. ft. place, but $1/sqf for a 2000 sq. ft. place. On the other hand, San Francisco is pretty consistent, with a relatively flat line. This means that you’ll be paying pretty much the same per square foot regardless of how big your place is. In fact, all of the other regions seem to follow the same trend - so if you’re looking for more efficient big-place finds, go with the South Bay.</p>
 <p>Also note that this gives us information about the uncertainty in these estimates. The error bars are so wide for San Francisco because we don’t have many data points at high values (because there aren’t that many places &gt;2000 square feet in SF). It’s anyone’s guess as to what this would cost.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="text-analysis">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="text-analysis">
 <h1>Text analysis<a class="headerlink" href="#text-analysis" title="Permalink to this headline">¶</a></h1>
 <p>Finally, we can also learn a bit from the text in the post titles. We could probably get better information by using the post text itself, but this would require some extra legwork looking up the URL of each entry and pulling the body of text from this. We’ll stick with titles for now.</p>
 <p>To do this, we’ll use some text analysis tools in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>. This is good enough for our purposes, though if we wanted to do something fancier we could use something like <code class="docutils literal notranslate"><span class="pre">gensim</span></code>, <code class="docutils literal notranslate"><span class="pre">word2vec</span></code>, or <code class="docutils literal notranslate"><span class="pre">nltk</span></code>. (we’d also probably need a lot more data).</p>
@@ -696,13 +695,13 @@
 </div>
 </div>
 <p>You may note that these are quite similar to the words that were unique to each location as noted above - such is the power of machine learning :)</p>
-<section id="so-what-have-we-learned">
+<div class="section" id="so-what-have-we-learned">
 <h2>So what have we learned?<a class="headerlink" href="#so-what-have-we-learned" title="Permalink to this headline">¶</a></h2>
 <p>Well, you might say that we’ve merely quantified what everybody already knows: San Francisco is expensive, really expensive. If you’re looking for a place in the Bay Area, you can expect to shell out a lot more for the same square footage.</p>
 <p>However, what’s also interesting is that apartments in the Bay Area don’t seem to obey the same rules that other regions do - they don’t necessarily become more economically efficient as the place gets bigger. This is in stark contrast to the south bay, where places are pretty expensive in general, but in ways that you’d expect for an apartment.</p>
 <p>Finally, there are probably lots of other cool things that you could do with these datasets, especially if you wanted to break things down by neighborhood and collect more data.</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

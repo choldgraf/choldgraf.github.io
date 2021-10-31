@@ -4,16 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-  <meta property="og:title" content="Why is governance in open projects important?" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="I like Rust’s governance structure" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/rust_governance.html" />
   <meta property="og:description" content="Recently I’ve been reading up on governance models for several large-ish open source projects. This is partially because I’m involved in a bunch of these projects myself, and partially because it’s..." />
   <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Why is governance in open projects important?" />
+  <meta property="og:image:alt" content="I like Rust’s governance structure" />
   
-    <title>Why is governance in open projects important? &#8212; Predictably Noisy  documentation</title>
+    <title>I like Rust’s governance structure &#8212; Predictably Noisy  documentation</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -337,27 +336,27 @@
 
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-is-governance-in-open-projects-important">
    Why is governance in open projects important?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-rust-governance-structure-sub-teams-and-communities">
    The Rust Governance structure - sub-teams and communities
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-rust-request-for-comments-process">
    The Rust “Request for Comments” process
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#how-do-these-teams-stay-on-the-same-page">
    How do these teams stay on the same page?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#wrapping-up">
    Wrapping up
   </a>
@@ -382,12 +381,14 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <p>Recently I’ve been reading up on governance models for several large-ish open
+                 <div class="tex2jax_ignore mathjax_ignore section" id="i-like-rust-s-governance-structure">
+<h1>I like Rust’s governance structure<a class="headerlink" href="#i-like-rust-s-governance-structure" title="Permalink to this headline">¶</a></h1>
+<p>Recently I’ve been reading up on governance models for several large-ish open
 source projects. This is partially because I’m involved in a bunch of
 these projects myself, and partially because it’s fascinating to see distributed groups
 of people organizing themselves in effective (or not) ways on the internet.</p>
-<section id="why-is-governance-in-open-projects-important">
-<h1>Why is governance in open projects important?<a class="headerlink" href="#why-is-governance-in-open-projects-important" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="why-is-governance-in-open-projects-important">
+<h2>Why is governance in open projects important?<a class="headerlink" href="#why-is-governance-in-open-projects-important" title="Permalink to this headline">¶</a></h2>
 <p>Governance is tricky, because there is an inherent tension between:</p>
 <ul class="simple">
 <li><p>Being able to make important, complex, or sensitive decisions quickly</p></li>
@@ -433,9 +434,9 @@ most powerful within this group would set the “agenda” for the whole project
 <li><p>Use an explicit “Request for Comments” process to handle all non-trivial decisions.</p></li>
 </ol>
 <p>I’ll describe each of these as I understand them so far:</p>
-</section>
-<section id="the-rust-governance-structure-sub-teams-and-communities">
-<h1>The Rust Governance structure - sub-teams and communities<a class="headerlink" href="#the-rust-governance-structure-sub-teams-and-communities" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="the-rust-governance-structure-sub-teams-and-communities">
+<h2>The Rust Governance structure - sub-teams and communities<a class="headerlink" href="#the-rust-governance-structure-sub-teams-and-communities" title="Permalink to this headline">¶</a></h2>
 <p>The Rust governance structure is based on the idea that most decisions should
 not need to be escalated to the highest decision-making authority in the community.
 Moreover, these decisions need to be made by people with a keen understanding of the
@@ -457,9 +458,9 @@ that work. You may notice that a lot of the teams that are listed involve work t
 community to grow, but is often unrecognized or underappreciated (which has all kinds of
 implications for diversity and inclusion, but that’s another conversation).</p>
 <p>OK, so these teams exist, but do they actually do? That takes us to the second part:</p>
-</section>
-<section id="the-rust-request-for-comments-process">
-<h1>The Rust “Request for Comments” process<a class="headerlink" href="#the-rust-request-for-comments-process" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="the-rust-request-for-comments-process">
+<h2>The Rust “Request for Comments” process<a class="headerlink" href="#the-rust-request-for-comments-process" title="Permalink to this headline">¶</a></h2>
 <p>All significant design changes in the Rust community are <strong>not</strong> be submitted directly
 as a PR to the codebase. Instead, Rust has <a class="reference external" href="https://github.com/rust-lang/rfcs">a separate repository</a> called <code class="docutils literal notranslate"><span class="pre">rfcs</span></code>. This
 repository manages the process by which Rust sub-teams decide whether to support the high-level
@@ -488,18 +489,18 @@ this is just the beginning of the hard work, and specific implementations get ha
 PR to the codebase.</p>
 <p>This process is about giving <em>more power to the Rust sub-teams</em>. In fact,
 <a class="reference external" href="https://github.com/rust-lang/rfcs#sub-team-specific-guidelines">sub-teams can also modify this RFC process for their own purposes</a>.</p>
-</section>
-<section id="how-do-these-teams-stay-on-the-same-page">
-<h1>How do these teams stay on the same page?<a class="headerlink" href="#how-do-these-teams-stay-on-the-same-page" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="how-do-these-teams-stay-on-the-same-page">
+<h2>How do these teams stay on the same page?<a class="headerlink" href="#how-do-these-teams-stay-on-the-same-page" title="Permalink to this headline">¶</a></h2>
 <p>One question you may have from all of this is “how does the Rust community stay cohesive
 when all the teams are making decisions on their own?”. That’s what the <strong>core team</strong> is
 for. In short, the core team is <em>at least</em> made up of leaders from each of the sub-teams
 within Rust. The job of the core team is to have a <em>global</em> perspective on the Rust
 community. They make decisions about <em>values</em> that Rust uses in making decisions, and high-level goals that the community should pursue. They also perform project-wide decision making such
 as creating (or shutting down) specific sub-teams.</p>
-</section>
-<section id="wrapping-up">
-<h1>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
 <p>I like the Rust community governance structure because it is flexible, transparent, and explicit.</p>
 <p>It’s flexible because this structure treats the complexity of Rust as a feature, not a bug.
 By giving decision-making power to the sub-teams within the community, they’re recognizing
@@ -524,7 +525,8 @@ an extra layer of bureaucracy in the sub-teams)</p></li>
 <li><p>Who decides the membership of the teams? How do the grow / shrink / disappear?</p></li>
 </ul>
 <p>If anybody has thoughts or comments on the above, I’d love to hear them!</p>
-</section>
+</div>
+</div>
 
 <div class="section">
      
@@ -539,8 +541,8 @@ an extra layer of bureaucracy in the sub-teams)</p></li>
   <span>&nbsp;</span>
   <span style="float: right">
      
-    <a href="../my-workflow/">
-      My weekly workflow <i
+    <a href="../kinds-of-openness/">
+      How do projects signal how “open” they are? <i
         class="fa fa-arrow-circle-right"
       ></i
       >
@@ -555,7 +557,7 @@ an extra layer of bureaucracy in the sub-teams)</p></li>
     <script type="text/javascript">
       var disqus_shortname = "chrisholdgraf";
       var disqus_identifier = "/posts/2018/rust_governance/";
-      var disqus_title = "Why is governance in open projects important?";
+      var disqus_title = "I like Rust’s governance structure";
       var disqus_url = "https://predictablynoisy.com/posts/2018/rust_governance";
 
       (function () {

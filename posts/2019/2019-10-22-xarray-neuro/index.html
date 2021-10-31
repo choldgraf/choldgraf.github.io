@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Analyzing intracranial electrophysiology data with xarray" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-10-22-xarray-neuro.html" />
@@ -463,13 +462,13 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="analyzing-intracranial-electrophysiology-data-with-xarray">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="analyzing-intracranial-electrophysiology-data-with-xarray">
 <h1>Analyzing intracranial electrophysiology data with xarray<a class="headerlink" href="#analyzing-intracranial-electrophysiology-data-with-xarray" title="Permalink to this headline">¶</a></h1>
 <p>Over the last few years, it has been exciting to see the xarray project evolve,
 add new functionality, and mature. This post is an attempt at
 giving xarray another visit to see how it could integrate into electrophysiology
 workflows.</p>
-<section id="a-quick-background-on-our-data">
+<div class="section" id="a-quick-background-on-our-data">
 <h2>A quick background on our data<a class="headerlink" href="#a-quick-background-on-our-data" title="Permalink to this headline">¶</a></h2>
 <p>It is common in neuroscience to ask individuals to perform a task over and over again. You record
 the activity in the brain each time they perform the task (called an “epoch” or a “trial”).
@@ -539,9 +538,9 @@ between trials). This will be one of the last times we use MNE hopefully.</p>
 <img alt="../../../_images/2019-10-22-xarray-neuro_7_0.png" src="../../../_images/2019-10-22-xarray-neuro_7_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="converting-to-xarray">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="converting-to-xarray">
 <h1>Converting to xarray<a class="headerlink" href="#converting-to-xarray" title="Permalink to this headline">¶</a></h1>
 <p>First off, we’ll define a helper function that
 converts the MNE Epochs object into an xarray DataArray object.
@@ -1007,8 +1006,8 @@ dl.xr-attrs {
 <p>The data consists of many trials, channels, and timepoints.
 Let’s start by selecting a time region within each trial that
 we can visualize more cleanly.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="subsetting-out-data-with-da-sel">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="subsetting-out-data-with-da-sel">
 <h1>Subsetting out data with <code class="docutils literal notranslate"><span class="pre">da.sel</span></code><a class="headerlink" href="#subsetting-out-data-with-da-sel" title="Permalink to this headline">¶</a></h1>
 <p>In xarray, we select items with the <code class="docutils literal notranslate"><span class="pre">sel</span></code> and <code class="docutils literal notranslate"><span class="pre">isel</span></code> method. This
 behaves kind of like the pandas <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> methods, however
@@ -1044,8 +1043,8 @@ need to remember which axis corresponds to channels.</p>
 </div>
 </div>
 <p>It doesn’t look like much is going on…let’s see if we can clean it up a bit.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="de-meaning-the-data-with-da-where">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="de-meaning-the-data-with-da-where">
 <h1>De-meaning the data with <code class="docutils literal notranslate"><span class="pre">da.where</span></code><a class="headerlink" href="#de-meaning-the-data-with-da-where" title="Permalink to this headline">¶</a></h1>
 <p>First off - we’ll subtract the “pre-baseline mean” from each trial.
 This makes it easier to visualize how each channel’s activity <em>changed</em>
@@ -1082,8 +1081,8 @@ mean of each channel / epoch <em>only for the pre-baseline timepoints</em>.</p>
 <p>Hmmm, there still doesn’t seem to be much going on (that channel down
 at the bottom looks noisy to me, rather than having a meaningful signal)
 so let’s transform this signal into something with a bit more SNR to it.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="extracting-a-more-useful-feature-with-xr-apply-ufunc">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="extracting-a-more-useful-feature-with-xr-apply-ufunc">
 <h1>Extracting a more useful feature with <code class="docutils literal notranslate"><span class="pre">xr.apply_ufunc</span></code><a class="headerlink" href="#extracting-a-more-useful-feature-with-xr-apply-ufunc" title="Permalink to this headline">¶</a></h1>
 <p>Without going into too much details on the neuroscience, iEEG data is
 particularly useful because there is information about neuronal activity in
@@ -1094,7 +1093,7 @@ change very quickly, but have very low amplitude). To pull that out, we’ll do 
 <li><p>Calculate the <em>envelope</em> of the signal, which will tell us the power of
 high-frequency activity over time.</p></li>
 </ul>
-<section id="high-pass-filtering-the-signal">
+<div class="section" id="high-pass-filtering-the-signal">
 <h2>High-pass filtering the signal<a class="headerlink" href="#high-pass-filtering-the-signal" title="Permalink to this headline">¶</a></h2>
 <p>MNE has a lot of nice functions for filtering a timeseries. Most of these
 operate on numpy arrays instead of MNE objects. We’ll use
@@ -1147,8 +1146,8 @@ are gone.</p>
 <img alt="../../../_images/2019-10-22-xarray-neuro_25_0.png" src="../../../_images/2019-10-22-xarray-neuro_25_0.png" />
 </div>
 </div>
-</section>
-<section id="calculate-the-envelope-of-this-signal-with-da-groupby">
+</div>
+<div class="section" id="calculate-the-envelope-of-this-signal-with-da-groupby">
 <h2>Calculate the envelope of this signal with <code class="docutils literal notranslate"><span class="pre">da.groupby</span></code><a class="headerlink" href="#calculate-the-envelope-of-this-signal-with-da-groupby" title="Permalink to this headline">¶</a></h2>
 <p>Next, we’ll calculate the <strong>envelope</strong> of the high-pass-filtered data. This is roughly
 the <strong>power</strong> that is present in these high frequencies over time. We do so by using
@@ -1187,12 +1186,12 @@ If we take a look at the resulting data, we can see what seems to be more struct
 <img alt="../../../_images/2019-10-22-xarray-neuro_30_0.png" src="../../../_images/2019-10-22-xarray-neuro_30_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="cleaning-up-our-hfa-data">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="cleaning-up-our-hfa-data">
 <h1>Cleaning up our HFA data<a class="headerlink" href="#cleaning-up-our-hfa-data" title="Permalink to this headline">¶</a></h1>
 <p>Next let’s clean up this high-frequency activity (HFA) data.</p>
-<section id="z-scoring-our-array">
+<div class="section" id="z-scoring-our-array">
 <h2>Z-scoring our array<a class="headerlink" href="#z-scoring-our-array" title="Permalink to this headline">¶</a></h2>
 <p>Instead of simple de-meaning
 the data like before, we’ll <strong>re-scale</strong> our data using the same baseline timepoints.
@@ -1230,8 +1229,8 @@ some of the channels after <code class="docutils literal notranslate"><span clas
 <img alt="../../../_images/2019-10-22-xarray-neuro_35_0.png" src="../../../_images/2019-10-22-xarray-neuro_35_0.png" />
 </div>
 </div>
-</section>
-<section id="smoothing-our-hfa-data">
+</div>
+<div class="section" id="smoothing-our-hfa-data">
 <h2>Smoothing our HFA data<a class="headerlink" href="#smoothing-our-hfa-data" title="Permalink to this headline">¶</a></h2>
 <p>Finally, let’s smooth this HFA so it has less jitter to it, and pick a smaller window that
 removes some of the filtering artifacts at the edges.</p>
@@ -1346,9 +1345,9 @@ and convert it to a DataFrame for further processing:</p>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="time-frequency-analysis">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="time-frequency-analysis">
 <h1>Time frequency analysis<a class="headerlink" href="#time-frequency-analysis" title="Permalink to this headline">¶</a></h1>
 <p>As a final step, let’s <strong>expand</strong> our DataArray and add another dimension.
 In the above steps we specifically focused on high-frequency activity. A more
@@ -1390,7 +1389,7 @@ This will return a NumPy array with the filtered values.</p>
 </div>
 </div>
 </div>
-<section id="convert-this-data-into-a-dataarray-with-expand-dims">
+<div class="section" id="convert-this-data-into-a-dataarray-with-expand-dims">
 <h2>Convert this data into a DataArray with <code class="docutils literal notranslate"><span class="pre">.expand_dims</span></code><a class="headerlink" href="#convert-this-data-into-a-dataarray-with-expand-dims" title="Permalink to this headline">¶</a></h2>
 <p>Next, we’ll convert this into a DataArray by using the metadata from our original
 DataArray. We can use the <code class="docutils literal notranslate"><span class="pre">expand_dims</span></code> method to create a new dimension for our DataArray.
@@ -1469,9 +1468,9 @@ acts similarly to our <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 <p>Now we can see a clear increase in activity in the higher frequencies at <code class="docutils literal notranslate"><span class="pre">t==0</span></code>.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="combining-the-two-with-xr-merge">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="combining-the-two-with-xr-merge">
 <h1>Combining the two with <code class="docutils literal notranslate"><span class="pre">xr.merge</span></code><a class="headerlink" href="#combining-the-two-with-xr-merge" title="Permalink to this headline">¶</a></h1>
 <p>Finally, let’s combine these two DataArrays into one. We know that they
 share much of the same metadata - the first is “Amplitude of High-Frequency Activity”
@@ -2465,8 +2464,8 @@ power across the higher frequencies.</p>
 <img alt="../../../_images/2019-10-22-xarray-neuro_61_1.png" src="../../../_images/2019-10-22-xarray-neuro_61_1.png" />
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="wrapping-up">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="wrapping-up">
 <h1>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h1>
 <p>In all, I was pretty happy with what you can do using xarray’s <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> structure.
 It’s pretty nice to be able to refer to axes by their names, and to make more intelligent
@@ -2480,7 +2479,7 @@ I’ll explore that in another blog post.</p>
 <p>Finally - the goal of this post has largely been to learn a bit more about xarray. This means I might
 be totally mis-using functionality, or missing something that would have made the above process much
 easier. If anybody has tips or thoughts on the code above, please do reach out!</p>
-</section>
+</div>
 
 <div class="section">
      

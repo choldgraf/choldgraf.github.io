@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Scraping craigslist" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2015/2015-08-30-craigslist_scrape.html" />
@@ -383,9 +382,9 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="scraping-craigslist">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="scraping-craigslist">
 <h1>Scraping craigslist<a class="headerlink" href="#scraping-craigslist" title="Permalink to this headline">¶</a></h1>
-<section id="overview">
+<div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>In this notebook, I’ll show you how to make a simple query on Craigslist using some nifty python modules. You can take advantage of all the structure data that exists on webpages to collect interesting datasets.</p>
 <div class="cell docutils container">
@@ -409,8 +408,8 @@
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">?bedrooms=1&amp;pets_cat=1&amp;pets_dog=1&amp;is_furnished=1</span></code> says we want 1+ bedrooms, cats allowed, dogs allowed, and furnished apartments. You can manually change these fields in order to create new queries.</p>
 </div></blockquote>
-</section>
-<section id="getting-a-single-posting">
+</div>
+<div class="section" id="getting-a-single-posting">
 <h2>Getting a single posting<a class="headerlink" href="#getting-a-single-posting" title="Permalink to this headline">¶</a></h2>
 <p>So, we’ll use this knowledge to send some custom URLs to Craigslist. We’ll do this using the <code class="docutils literal notranslate"><span class="pre">requests</span></code> python module, which is really useful for querying websites.</p>
 <div class="cell docutils container">
@@ -607,8 +606,8 @@
 </div>
 </div>
 </div>
-</section>
-<section id="querying-lots-of-postings">
+</div>
+<div class="section" id="querying-lots-of-postings">
 <h2>Querying lots of postings<a class="headerlink" href="#querying-lots-of-postings" title="Permalink to this headline">¶</a></h2>
 <p>Cool - so now we’ve got some useful information about one listing. Now let’s loop through many listings across several locations.</p>
 <p>It looks like there is a “city code” that distinguishes where you’re searching. Here is a <strong>not</strong> up to date list: <a class="reference external" href="https://sites.google.com/site/clsiteinfo/city-site-code-sort">link</a></p>
@@ -932,8 +931,8 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 </div>
 </div>
 </div>
-</section>
-<section id="recap">
+</div>
+<div class="section" id="recap">
 <h2>RECAP<a class="headerlink" href="#recap" title="Permalink to this headline">¶</a></h2>
 <p>To sum up what we just did:</p>
 <ul class="simple">
@@ -943,8 +942,8 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 <li><p>We then looped through a bunch of apartment listings, pulled some relevant data, and combined it all into a cleaned and usable dataframe with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>.</p></li>
 </ul>
 <p>Next up I’ll take a look at the data, and see if there’s anything interesting to make of it.</p>
-</section>
-<section id="bonus-auto-emailing-yourself-w-notifications">
+</div>
+<div class="section" id="bonus-auto-emailing-yourself-w-notifications">
 <h2>Bonus - auto-emailing yourself w/ notifications<a class="headerlink" href="#bonus-auto-emailing-yourself-w-notifications" title="Permalink to this headline">¶</a></h2>
 <p>A few people have asked me about using this kind of process to make a bot that scrapes craigslist periodically. This is actually quite simple, as it basically involves pulling the top listings from craigslist, checking this against an “old” list, and detecting if there’s anything new that has popped up since the last time you checked.</p>
 <p>Here’s a simple script that will get the job done. Once again, don’t pull too much data at once, and don’t query Craigslist too frequently, or you’re gonna get banned.</p>
@@ -1041,8 +1040,8 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 </div>
 </div>
 <p>And there you have it - your own little bot to keep you on the top of the rental market.</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

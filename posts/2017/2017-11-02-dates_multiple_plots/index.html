@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Combining dates with analysis visualization in python" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2017/2017-11-02-dates_multiple_plots.html" />
@@ -364,7 +363,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="combining-dates-with-analysis-visualization-in-python">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="combining-dates-with-analysis-visualization-in-python">
 <h1>Combining dates with analysis visualization in python<a class="headerlink" href="#combining-dates-with-analysis-visualization-in-python" title="Permalink to this headline">¶</a></h1>
 <p>Sometimes you want to do two things:</p>
 <ol class="simple">
@@ -446,7 +445,7 @@ fit regression lines to them…</p>
 </div>
 </div>
 <p>We got an error! That’s because seaborn was treating the <code class="docutils literal notranslate"><span class="pre">Date</span></code> column as a number, when in fact it was a datetime object.</p>
-<section id="how-do-we-fix-this">
+<div class="section" id="how-do-we-fix-this">
 <h2>How do we fix this?<a class="headerlink" href="#how-do-we-fix-this" title="Permalink to this headline">¶</a></h2>
 <p>To fix this, we need to convert the datetime labels to their ordinal (numeric) representation. There are a number of ways to convert dates to numbers. Fortunately, Matplotlib has a convenience function to convert datetime objects to their numeric representation.</p>
 <div class="cell docutils container">
@@ -505,8 +504,8 @@ out how to make this work.</p>
 <p>Of course, this is all unnecessarily complicated, and hopefully we’ll see some patches
 that ease this in the future. But in the meantime you can refer to the above method
 for your datetime viz needs.</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

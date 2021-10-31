@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="What would Rust-style governance look like in Jupyter?" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-10-13-rust-jupyter-governance.html" />
@@ -392,7 +391,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="what-would-rust-style-governance-look-like-in-jupyter">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="what-would-rust-style-governance-look-like-in-jupyter">
 <h1>What would Rust-style governance look like in Jupyter?<a class="headerlink" href="#what-would-rust-style-governance-look-like-in-jupyter" title="Permalink to this headline">¶</a></h1>
 <p>As I’ve written about before, I <a class="reference external" href="https://predictablynoisy.com/rust-governance">like Rust’s governance structure</a>.
 I mean, who can’t get behind a community that
@@ -405,7 +404,7 @@ to port over Rust’s governance directly into the Jupyter community.</p>
 <p><em>Note: I’m not an expert in Rust governance, so there are some assumptions made about its model
 based on my outside perspective. Apologies if I miss any important details about the Rust model,
 but this is mostly meant as as inspiration, not a report on Rust’s governance :-)</em></p>
-<section id="a-quick-recap-of-rust-s-governance-structure">
+<div class="section" id="a-quick-recap-of-rust-s-governance-structure">
 <h2>A quick recap of Rust’s governance structure<a class="headerlink" href="#a-quick-recap-of-rust-s-governance-structure" title="Permalink to this headline">¶</a></h2>
 <p>First off, how does Rust govern and organize itself? There are a few few
 key pieces:</p>
@@ -428,12 +427,12 @@ rules, they can organize themselves in terms of decision-making.</p></li>
 <li><p>If it is accepted, the RFC becomes “active” which is an invitation for people
 to work on implementing it.</p></li>
 </ul>
-</section>
-<section id="what-would-this-look-like-in-jupyter">
+</div>
+<div class="section" id="what-would-this-look-like-in-jupyter">
 <h2>What would this look like in Jupyter?<a class="headerlink" href="#what-would-this-look-like-in-jupyter" title="Permalink to this headline">¶</a></h2>
 <p>Jupyter is a complex and multi-faceted community, but so is Rust, so let’s see
 what this decision-making structure would look like in the Jupyter community.</p>
-<section id="general-decision-making-principles-and-goals">
+<div class="section" id="general-decision-making-principles-and-goals">
 <h3>General decision-making principles and goals<a class="headerlink" href="#general-decision-making-principles-and-goals" title="Permalink to this headline">¶</a></h3>
 <p>First off, we would adopt many of the same decision-making goals of the RFC
 process. Here are a few key ones as I understand it:</p>
@@ -449,8 +448,8 @@ It should achieve a net-positive in “energy spent” vs. “generated value to
 <li><p>Be impactful - don’t use RFCs to bike-shed minor details, or implementation details for a PR.
 They should be used for significant changes in a repository that require discussion at a high level.</p></li>
 </ul>
-</section>
-<section id="an-rfc-in-the-jupyter-community">
+</div>
+<div class="section" id="an-rfc-in-the-jupyter-community">
 <h3>An RFC in the Jupyter Community<a class="headerlink" href="#an-rfc-in-the-jupyter-community" title="Permalink to this headline">¶</a></h3>
 <p>First off, the mechanism for proposing, iterating on, and making decisions. In
 Rust this is an RFC. in Jupyter, such a mechanism has already been proposed!</p>
@@ -486,8 +485,8 @@ on whether to accept the JEP.</p></li>
 <li><p>If accepted, the JEP enters an “active” state and pull-requests are welcome to
 implement it.</p></li>
 </ul>
-</section>
-<section id="the-teams-and-peronnel-needed-to-manage-this-process">
+</div>
+<div class="section" id="the-teams-and-peronnel-needed-to-manage-this-process">
 <h3>The teams and peronnel needed to manage this process<a class="headerlink" href="#the-teams-and-peronnel-needed-to-manage-this-process" title="Permalink to this headline">¶</a></h3>
 <p>The JEP process is the <em>mechanism</em> by which decisions get made, but what
 are the groups that oversee this mechanism? In the Rust community,
@@ -532,9 +531,9 @@ rarely exercise their power. Similar to a BDFL.</p></li>
 <li><p><strong>A shepherd role</strong> - we’d need to formalize what a “shepherd” is in the Jupyter community.
 Potentially sub-teams would modify this slightly to fit their own needs.</p></li>
 </ul>
-</section>
-</section>
-<section id="what-s-the-difference-between-current-jupyter-and-jep-jupyter">
+</div>
+</div>
+<div class="section" id="what-s-the-difference-between-current-jupyter-and-jep-jupyter">
 <h2>What’s the difference between current Jupyter and JEP Jupyter?<a class="headerlink" href="#what-s-the-difference-between-current-jupyter-and-jep-jupyter" title="Permalink to this headline">¶</a></h2>
 <p>Thinking through the above scenario, I don’t see too much distance between
 our current situation and a JEP-like process. We:</p>
@@ -553,8 +552,8 @@ and discoverable)</p></li>
 <li><p>re-work team processes to encourage them to follow the JEP process over time (I suspect this would
 be the hardest thing to do)</p></li>
 </ul>
-</section>
-<section id="what-s-the-difference-between-jupyter-and-rust">
+</div>
+<div class="section" id="what-s-the-difference-between-jupyter-and-rust">
 <h2>What’s the difference between Jupyter and Rust?<a class="headerlink" href="#what-s-the-difference-between-jupyter-and-rust" title="Permalink to this headline">¶</a></h2>
 <p>Finally, while it’s interesting to port one community’s governance model directly onto another,
 there are difference between the Jupyter and Rust projects, both technical and social ones.
@@ -574,14 +573,14 @@ also adds extra responsibility and labor needed to manage that complexity. In or
 ensure that the work gets done, and credit is given to those doing the work, we’d need to grow
 a culture of creating specific roles and responsibility for those roles.</p></li>
 </ul>
-</section>
-<section id="wrapping-up">
+</div>
+<div class="section" id="wrapping-up">
 <h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
 <p>I’m probably missing some things, but this seems like a reasonable plan! As I mentioned
 above, this post has mostly been a thought-experiment, but if anybody has thoughts on bringing
 this into the governance refactoring process, I’d be happy to talk more.</p>
-</section>
-</section>
+</div>
+</div>
 
 <div class="section">
      

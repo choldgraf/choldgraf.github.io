@@ -4,16 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-  <meta property="og:title" content="Configure CircleCI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Using CircleCI to preview documentation in Pull Requests" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2018/circle-docs.html" />
   <meta property="og:description" content="Writing documentation is important - it’s the first point of contact between many users and your project, and can be a pivotal moment in whether they decide to adopt your tech or become a contribut..." />
   <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Configure CircleCI" />
+  <meta property="og:image:alt" content="Using CircleCI to preview documentation in Pull Requests" />
   
-    <title>Configure CircleCI &#8212; Predictably Noisy  documentation</title>
+    <title>Using CircleCI to preview documentation in Pull Requests &#8212; Predictably Noisy  documentation</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -338,22 +337,22 @@
 
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#configure-circleci">
    Configure CircleCI
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tell-circleci-to-build-pull-requests-for-your-repository">
    Tell CircleCI to build Pull Requests for your repository
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#make-a-pull-request">
    Make a Pull Request
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#view-your-artifacts">
    View your artifacts
   </a>
@@ -378,7 +377,9 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <p>Writing documentation is important - it’s the first point of contact between many users and your
+                 <div class="tex2jax_ignore mathjax_ignore section" id="using-circleci-to-preview-documentation-in-pull-requests">
+<h1>Using CircleCI to preview documentation in Pull Requests<a class="headerlink" href="#using-circleci-to-preview-documentation-in-pull-requests" title="Permalink to this headline">¶</a></h1>
+<p>Writing documentation is important - it’s the first point of contact between many users and your
 project, and can be a pivotal moment in whether they decide to adopt your tech or become a contributor.</p>
 <p>However, it can be a pain to iterate on documentation, as it is often involves a lot of rapid iteration
 locally, followed by a push to GitHub where you “just trust” that the author has done a good job of
@@ -389,8 +390,8 @@ the raw text.</p>
 <p><img alt="" src="../../../_images/sphinx-circle-logos.png" /></p>
 <p>Here’s a simple CircleCI configuration that you can use to build documentation with Sphinx and store it
 as an artifact in the build that you can then preview. To set this up, follow these steps:</p>
-<section id="configure-circleci">
-<h1>Configure CircleCI<a class="headerlink" href="#configure-circleci" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configure-circleci">
+<h2>Configure CircleCI<a class="headerlink" href="#configure-circleci" title="Permalink to this headline">¶</a></h2>
 <p>First off, you need to configure CircleCI to build your page. This involves creating a file called <code class="docutils literal notranslate"><span class="pre">.circle/config.yml</span></code>
 that Circle will use to decide what to do each time your page is built. You then need to go to the CircleCI
 website and tell it to build your site.</p>
@@ -440,26 +441,26 @@ website and tell it to build your site.</p>
 </pre></div>
 </div>
 <p>See the comments above for what each step does.</p>
-</section>
-<section id="tell-circleci-to-build-pull-requests-for-your-repository">
-<h1>Tell CircleCI to build Pull Requests for your repository<a class="headerlink" href="#tell-circleci-to-build-pull-requests-for-your-repository" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="tell-circleci-to-build-pull-requests-for-your-repository">
+<h2>Tell CircleCI to build Pull Requests for your repository<a class="headerlink" href="#tell-circleci-to-build-pull-requests-for-your-repository" title="Permalink to this headline">¶</a></h2>
 <p>Because we’re doing this in order to preview changes to the documentation in a Pull Request,
 we now need to tell CircleCI to run builds on PRs to your repo. To do so, go to the CircleCI UI, click on “Jobs”, then click
 your project name, then click the settings button here:</p>
 <p><img alt="" src="../../../_images/sphinx-circle-settings.png" /></p>
 <p>In the next page, click on <strong>Advanced Settings</strong>, and finally switch on <strong>Build forked pull requests</strong>.</p>
 <p>Now, Circle will build against the PRs of your repository.</p>
-</section>
-<section id="make-a-pull-request">
-<h1>Make a Pull Request<a class="headerlink" href="#make-a-pull-request" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="make-a-pull-request">
+<h2>Make a Pull Request<a class="headerlink" href="#make-a-pull-request" title="Permalink to this headline">¶</a></h2>
 <p>Now it’s time to test things out. Make a Pull Request for your repository. GitHub should automatically
 detect a CircleCI configuration, and run the job with the configuration you’ve specified.</p>
 <p>Once the documentation is built (or if it fails) you can click on the CircleCI link from the GitHub UI
 in order to see what happened.</p>
 <p><img alt="" src="../../../_images/sphinx-circle-github-pr.png" /></p>
-</section>
-<section id="view-your-artifacts">
-<h1>View your artifacts<a class="headerlink" href="#view-your-artifacts" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="view-your-artifacts">
+<h2>View your artifacts<a class="headerlink" href="#view-your-artifacts" title="Permalink to this headline">¶</a></h2>
 <p>You should be taken to a page that shows a summary of the recent CircleCI build for this PR.</p>
 <p>If your documentation successfully built (and if you’ve told Sphinx to put the built site in <code class="docutils literal notranslate"><span class="pre">doc/_build/</span></code>) then
 you can now click on the <strong>Artifacts</strong> tab. You should see a drop-down list of artifacts that CircleCI has
@@ -467,7 +468,8 @@ stored for you. Click on <strong>index.html</strong> and you should see a previe
 <p><img alt="" src="../../../_images/sphinx-circle-artifacts.png" /></p>
 <p>And that’s it! Obviously you can configure CircleCI in many more ways, but this is just a barebones example
 to get you started. I hope you’ve found it useful!</p>
-</section>
+</div>
+</div>
 
 <div class="section">
      
@@ -483,7 +485,7 @@ to get you started. I hope you’ve found it useful!</p>
   <span style="float: right">
      
     <a href="../rust_governance/">
-      I like Rust's governance structure <i
+      I like Rust’s governance structure <i
         class="fa fa-arrow-circle-right"
       ></i
       >
@@ -498,7 +500,7 @@ to get you started. I hope you’ve found it useful!</p>
     <script type="text/javascript">
       var disqus_shortname = "chrisholdgraf";
       var disqus_identifier = "/posts/2018/circle-docs/";
-      var disqus_title = "Configure CircleCI";
+      var disqus_title = "Using CircleCI to preview documentation in Pull Requests";
       var disqus_url = "https://predictablynoisy.com/posts/2018/circle-docs";
 
       (function () {

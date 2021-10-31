@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2021-10-31T17:46:14.464874+00:00</updated>
+  <updated>2021-10-31T18:29:15.732508+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.20">ABlog</generator>
@@ -283,13 +283,25 @@ for almost all of our repositories.</summary>
 summer of this year. There’s all kinds of exciting things going on in open
 source and open communities, so this is a quick way for me to collect my
 thoughts on some things I’ve learned this summer.&lt;/p&gt;
-&lt;p&gt;Non-consecutive header level increase; 0 to 2 [myst.header]&lt;/p&gt;
+&lt;p&gt;Pangeo is a project that provides
+&lt;strong&gt;access to a gigantic geosciences dataset&lt;/strong&gt;. They use lots of tools in the
+open-source community, including Dask for efficient numerical computation,
+the SciPy stack for a bunch of data analytics, and JupyterHub on
+Kubernetes for managing user instances and deploying on remote infrastructure.
+Pangeo has a neat demo of their hosted JupyterHub instance that people can use
+to access this otherwise-inaccessible dataset! See their video from SciPy below.&lt;/p&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2018/conferences-summer-2018/" rel="alternate"/>
     <summary>This is a short update on several of the conferences and workshops over the
 summer of this year. There’s all kinds of exciting things going on in open
 source and open communities, so this is a quick way for me to collect my
-thoughts on some things I’ve learned this summer.Non-consecutive header level increase; 0 to 2 [myst.header]</summary>
+thoughts on some things I’ve learned this summer.Pangeo is a project that provides
+access to a gigantic geosciences dataset. They use lots of tools in the
+open-source community, including Dask for efficient numerical computation,
+the SciPy stack for a bunch of data analytics, and JupyterHub on
+Kubernetes for managing user instances and deploying on remote infrastructure.
+Pangeo has a neat demo of their hosted JupyterHub instance that people can use
+to access this otherwise-inaccessible dataset! See their video from SciPy below.</summary>
     <category term="pythonconferencescommunitiesjupyter" label="python conferences communities jupyter"/>
     <published>2018-08-01T00:00:00+00:00</published>
   </entry>
@@ -314,49 +326,28 @@ writing content, design, etc.</summary>
   </entry>
   <entry>
     <id>https://predictablynoisy.com/posts/2018/rust_governance/</id>
-    <title>I like Rust's governance structure</title>
+    <title>I like Rust’s governance structure</title>
     <updated>2018-10-18T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;Recently I’ve been reading up on governance models for several large-ish open
 source projects. This is partially because I’m involved in a bunch of
 these projects myself, and partially because it’s fascinating to see distributed groups
 of people organizing themselves in effective (or not) ways on the internet.&lt;/p&gt;
-&lt;p&gt;Non-consecutive header level increase; 0 to 2 [myst.header]&lt;/p&gt;
+&lt;p&gt;Governance is tricky, because there is an inherent tension between:&lt;/p&gt;
 &lt;img alt="Rust teams" src="../_images/2018-10-19-rust_logo.png" /&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2018/rust_governance/" rel="alternate"/>
     <summary>Recently I’ve been reading up on governance models for several large-ish open
 source projects. This is partially because I’m involved in a bunch of
 these projects myself, and partially because it’s fascinating to see distributed groups
-of people organizing themselves in effective (or not) ways on the internet.Non-consecutive header level increase; 0 to 2 [myst.header]Rust teams</summary>
+of people organizing themselves in effective (or not) ways on the internet.Governance is tricky, because there is an inherent tension between:Rust teams</summary>
     <category term="python" label="python"/>
     <category term="governance" label="governance"/>
     <category term="community" label="community"/>
     <published>2018-10-18T00:00:00+00:00</published>
   </entry>
   <entry>
-    <id>https://predictablynoisy.com/posts/2018/my-workflow/</id>
-    <title>My weekly workflow</title>
-    <updated>2018-10-26T00:00:00+00:00</updated>
-    <content type="html">&lt;p&gt;I’ve had a bunch of conversations with friends who were interested in how to
-keep track of the various projects they’re working on, and to prioritize their
-time over the course of a week. I thought it might be helpful to post my own
-approach to planning time throughout the week in case it’s useful for others to
-riff off of.&lt;/p&gt;
-&lt;p&gt;Non-consecutive header level increase; 0 to 2 [myst.header]&lt;/p&gt;
-&lt;img alt="" src="../_images/trello-board-project.png" /&gt;
-</content>
-    <link href="https://predictablynoisy.com/posts/2018/my-workflow/" rel="alternate"/>
-    <summary>I’ve had a bunch of conversations with friends who were interested in how to
-keep track of the various projects they’re working on, and to prioritize their
-time over the course of a week. I thought it might be helpful to post my own
-approach to planning time throughout the week in case it’s useful for others to
-riff off of.Non-consecutive header level increase; 0 to 2 [myst.header]</summary>
-    <category term="productivity" label="productivity"/>
-    <published>2018-10-26T00:00:00+00:00</published>
-  </entry>
-  <entry>
     <id>https://predictablynoisy.com/posts/2018/kinds-of-openness/</id>
-    <title>Signaling openness</title>
+    <title>How do projects signal how “open” they are?</title>
     <updated>2018-10-26T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;How do open projects signal their “openness” to the outside community? This is
 a really hard question, particularly because nowadays “open” has become a buzzword
@@ -372,6 +363,29 @@ as a marketing term to increase support, users, or resources.I was thinking abou
     <category term="opensource" label="open source"/>
     <category term="governance" label="governance"/>
     <category term="community" label="community"/>
+    <published>2018-10-26T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://predictablynoisy.com/posts/2018/my-workflow/</id>
+    <title>My weekly workflow</title>
+    <updated>2018-10-26T00:00:00+00:00</updated>
+    <content type="html">&lt;p&gt;I’ve had a bunch of conversations with friends who were interested in how to
+keep track of the various projects they’re working on, and to prioritize their
+time over the course of a week. I thought it might be helpful to post my own
+approach to planning time throughout the week in case it’s useful for others to
+riff off of.&lt;/p&gt;
+&lt;p&gt;First off, a few general principles that I use to guide my thinking on planning
+out the week.&lt;/p&gt;
+&lt;img alt="" src="../_images/trello-board-project.png" /&gt;
+</content>
+    <link href="https://predictablynoisy.com/posts/2018/my-workflow/" rel="alternate"/>
+    <summary>I’ve had a bunch of conversations with friends who were interested in how to
+keep track of the various projects they’re working on, and to prioritize their
+time over the course of a week. I thought it might be helpful to post my own
+approach to planning time throughout the week in case it’s useful for others to
+riff off of.First off, a few general principles that I use to guide my thinking on planning
+out the week.</summary>
+    <category term="productivity" label="productivity"/>
     <published>2018-10-26T00:00:00+00:00</published>
   </entry>
   <entry>
@@ -673,8 +687,7 @@ We’ve recently been working on tools like &lt;a class="reference external" hre
 which aim to improve the writing and publishing process with the Jupyter ecosystem.
 This is hopefully the first post of a few that ask how we can best-improve the state
 of publishing with Jupyter.&lt;/p&gt;
-&lt;p&gt;Unknown directive type “admonition,tip”.
-&lt;/p&gt;
+&lt;p&gt;Many of the ideas in this post have now made their way into a new flavor of markdown called &lt;a class="reference external" href="https://myst-parser.readthedocs.io"&gt;Markedly Structured Text&lt;/a&gt;, or MyST. It brings all of the features of rST into Markdown. Check it out!&lt;/p&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2020/2020-01-22-rst-thoughts/" rel="alternate"/>
     <summary>Publishing computational narratives has always been a dream of the Jupyter Project,
@@ -685,8 +698,7 @@ the Binder Project, but what about the documents themselves?
 We’ve recently been working on tools like Jupyter Book,
 which aim to improve the writing and publishing process with the Jupyter ecosystem.
 This is hopefully the first post of a few that ask how we can best-improve the state
-of publishing with Jupyter.Unknown directive type “admonition,tip”.
-</summary>
+of publishing with Jupyter.Many of the ideas in this post have now made their way into a new flavor of markdown called Markedly Structured Text, or MyST. It brings all of the features of rST into Markdown. Check it out!</summary>
     <category term="markup" label="markup"/>
     <category term="documentation" label="documentation"/>
     <published>2020-01-22T00:00:00+00:00</published>

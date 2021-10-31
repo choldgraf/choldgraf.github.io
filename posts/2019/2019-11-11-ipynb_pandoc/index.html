@@ -4,8 +4,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta property="og:title" content="Jupyter Notebooks to markdown and html with Pandoc" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-11-11-ipynb_pandoc.html" />
@@ -409,7 +408,7 @@
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
               <div>
-                 <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebooks-to-markdown-and-html-with-pandoc">
+                 <div class="tex2jax_ignore mathjax_ignore section" id="jupyter-notebooks-to-markdown-and-html-with-pandoc">
 <h1>Jupyter Notebooks to markdown and html with Pandoc<a class="headerlink" href="#jupyter-notebooks-to-markdown-and-html-with-pandoc" title="Permalink to this headline">¶</a></h1>
 <p>For several months now, the universal <a class="reference external" href="https://pandoc.org/">document converter pandoc</a> has
 had <a class="reference external" href="https://pandoc.org/MANUAL.html#creating-jupyter-notebooks-with-pandoc">support for Jupyter Notebooks</a>. This means that with a single call,
@@ -440,8 +439,8 @@ outputs if you wish, I recommend copy/pasting some of these commands on your own
 </div>
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="our-base-notebook">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="our-base-notebook">
 <h1>Our base notebook<a class="headerlink" href="#our-base-notebook" title="Permalink to this headline">¶</a></h1>
 <p>First off, let’s take a look at our base notebook. We’ll convert this document
 to both Markdown and HTML using Pandoc.</p>
@@ -449,13 +448,13 @@ to both Markdown and HTML using Pandoc.</p>
 in order to make it easier to inspect its contents. It has a collection
 of markdown with mixed content, as well as code cells with various outputs.</p>
 <p><span class="xref myst">See this link</span> for the notebook we’ll use.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ipynb-to-markdown">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ipynb-to-markdown">
 <h1><code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> to markdown<a class="headerlink" href="#ipynb-to-markdown" title="Permalink to this headline">¶</a></h1>
 <p>Let’s try converting this notebook to markdown. This should preserve as much
 information as possible about the input Jupyter notebook. This should include
 all markdown cells, cell metadata, and outputs with code cells.</p>
-<section id="a-few-pandoc-options">
+<div class="section" id="a-few-pandoc-options">
 <h2>A few pandoc options<a class="headerlink" href="#a-few-pandoc-options" title="Permalink to this headline">¶</a></h2>
 <p>Here are a few pandoc options that are relevant to our use-case:</p>
 <ul class="simple">
@@ -468,8 +467,8 @@ things depending on the output, such as adding a header if converting to HTML.</
 <li><p><code class="docutils literal notranslate"><span class="pre">-o</span></code> the output file, and implicitly the output file type (e.g., markdown)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">-t</span></code> the <em>type</em> of output file if we want to override the default (e.g., GitHub-flavored markdown vs. Pandoc markdown).</p></li>
 </ul>
-</section>
-<section id="converting-to-github-flavored-markdown">
+</div>
+<div class="section" id="converting-to-github-flavored-markdown">
 <h2>Converting to GitHub-flavored markdown<a class="headerlink" href="#converting-to-github-flavored-markdown" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start by converting to GitHub-flavored markdown. By not specifying an output file
 with <code class="docutils literal notranslate"><span class="pre">-o</span></code>, we’ll cause Pandoc to print the result to the screen, which we’ll display here.</p>
@@ -599,8 +598,8 @@ are encoded within the HTML (e.g. <code class="docutils literal notranslate"><sp
 to render, probably because we didn’t enable the <code class="docutils literal notranslate"><span class="pre">citeproc</span></code> processor on pandoc (we’ll try that later).
 Finally, note that there’s no notebook-level metadata in this output because GFM doesn’t support
 a YAML header.</p>
-</section>
-<section id="to-pandoc-flavored-markdown">
+</div>
+<div class="section" id="to-pandoc-flavored-markdown">
 <h2>To pandoc-flavored markdown<a class="headerlink" href="#to-pandoc-flavored-markdown" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_hide_output docutils container">
 <div class="cell_input docutils container">
@@ -795,9 +794,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now we’ve got something a little bit cleaner without all the hard-coded HTML. The <code class="docutils literal notranslate"><span class="pre">:::</span></code> fences
 are how Pandoc-flavored markdown denote different divs, and cell-level metadata is encoded
 similar to how GFM worked.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="ipynb-to-html">
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="ipynb-to-html">
 <h1><code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> to HTML<a class="headerlink" href="#ipynb-to-html" title="Permalink to this headline">¶</a></h1>
 <p>Next let’s try converting <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> to HTML. This should let us view the notebook as a web-page
 as well as include all of the extra metadata inside the HTML elements. We’ll start with
@@ -1203,8 +1202,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Now we’ve got citations at the bottom of the page, and in-line references interspersed
 in the text. Pretty cool!</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="wrapping-up">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="wrapping-up">
 <h1>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h1>
 <p>It seems like we can get pretty far with converting <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files into
 various flavors of markdown or HTML. My guess is that things will get a bit
@@ -1212,7 +1211,7 @@ trickier if we tried to do this with more complex cell outputs or metdata,
 but it’s a good start. Using Pandoc also means that it would be relatively
 straightforward to convert notebooks into <strong>latex</strong>, <strong>pdf</strong>, or even <strong>Microsoft Word</strong>
 format. I’ll try to dig into this more in the future.</p>
-</section>
+</div>
 
 <div class="section">
      
