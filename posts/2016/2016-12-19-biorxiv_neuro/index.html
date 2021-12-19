@@ -226,32 +226,6 @@
   <a href="../../../blog/tag/preprints/">preprints</a>  
 </li>
  
-<li id="comments">
-  <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = "chrisholdgraf"; // required: replace example with your forum shortname
-
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-      var s = document.createElement("script");
-      s.async = true;
-      s.type = "text/javascript";
-      s.src = "//" + disqus_shortname + ".disqus.com/count.js";
-      (
-        document.getElementsByTagName("HEAD")[0] ||
-        document.getElementsByTagName("BODY")[0]
-      ).appendChild(s);
-    })();
-  </script>
-  <i class="fa-fw fa fa-comments"></i>
-  <a
-    href="#disqus_thread"
-    data-disqus-identifier="/posts/2016/2016-12-19-biorxiv_neuro/"
-  >
-    </a
-  >
-</li>
-
 </ul>
 
 <h3>
@@ -259,6 +233,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2021/2021-12-18-hybrid-tutorial-prerecord.mdghts/"
+      >17 December - Serving in two roles at once via pre-recorded tutorials</a
+    >
+  </li>
+  
   <li>
     <a href="../../2020/organizations-help-oss-guide/"
       >08 November - Contributing to open source: A short guide for organizations</a
@@ -283,12 +263,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2019/2019-11-11-ipynb_pandoc/"
-      >11 November - Testing Pandoc and Jupyter Notebooks</a
-    >
-  </li>
-  
 </ul>
 
 <h3>
@@ -296,6 +270,10 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../../blog/2021/">2021 (1)</a>
+  </li>
+    
   <li>
     <a href="../../../blog/2020/">2020 (4)</a>
   </li>
@@ -377,6 +355,7 @@
           
           <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
               
+
               <div>
                  <p>Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the <a class="reference external" href="http://biorxiv.org/">biorxiv</a>, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.</p>
 <p>A big benefit of open science is the ability to use modern technologies (like web scraping) to make new use of data that would originally be unavailable to the public. One simple example of this is information and metadata about published articles. While we’re not going to dive too deeply here, maybe this will serve as inspiration for somebody else interested in scraping the web.</p>
@@ -722,41 +701,25 @@
   </span>
 </div>
   
-  <div class="section">
-    <h2>Comments</h2>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      var disqus_shortname = "chrisholdgraf";
-      var disqus_identifier = "/posts/2016/2016-12-19-biorxiv_neuro/";
-      var disqus_title = "Question 1: How has the published articles rate changed?";
-      var disqus_url = "https://predictablynoisy.com/posts/2016/2016-12-19-biorxiv_neuro";
-
-      (function () {
-        var dsq = document.createElement("script");
-        dsq.type = "text/javascript";
-        dsq.async = true;
-        dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
-        (
-          document.getElementsByTagName("head")[0] ||
-          document.getElementsByTagName("body")[0]
-        ).appendChild(dsq);
-      })();
-    </script>
-    <noscript
-      >Please enable JavaScript to view the
-      <a href="https://disqus.com/?ref_noscript"
-        >comments powered by Disqus.</a
-      ></noscript
-    >
-    <a href="https://disqus.com" class="dsq-brlink"
-      >comments powered by <span class="logo-disqus">Disqus</span></a
-    >
-  </div>
-  
 </div>
 
               </div>
               
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
               
               <!-- Previous / next buttons -->
 <div class='prev-next-area'>
@@ -780,7 +743,7 @@
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.2.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br>
 </p>
     </div>
     

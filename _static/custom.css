@@ -102,3 +102,8 @@ div.timeline div.entry.right::after {
     left: -.5em;
 }
 
+
+/* Blog post comments */
+.gsc-reactions {
+    margin-top: 1em;
+}
