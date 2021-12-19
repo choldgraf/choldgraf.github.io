@@ -39,14 +39,14 @@ Here's what I did:
 
    My two-window setup in recording the tutorial.
 
-2. In my slides, I included several prompts with explicit text for people to type into their own terminals and text files. I would follow the instructions in these slides from the JupyterLab window. This ensured that I was on-pace with a person that was actively following along.
+2. In my slides, I included several prompts with explicit text for people to type into their own terminals and text files. I followed the instructions in these slides and typed them into the JupyterLab window myself.
 
    ```{figure} https://user-images.githubusercontent.com/1839645/146656866-0236e791-9a16-4c60-aa0b-e1ea99e46dd5.png
    Instructions on the top, real-time results on the bottom.
    ```
 
 3. I used Zoom to record myself as I clicked through the slides on the top, and followed along on the bottom as if I were a participant myself.
-4. I split up the recording into roughly **5 minute sections**.
+4. I split the recording into roughly **5 minute sections**.
    I'd stop the recording briefly for each section, take a quick breather, and then move on to recording the next. This ensured that I had a moment to collect myself and if I messed up a section, I'd only have to re-record 5 minutes instead of 30.
 5. After the recording, I stitched together each of the sections and did a simple fade-out / fade-in using the built-in [Windows Video Editor](https://support.microsoft.com/en-us/windows/create-films-with-video-editor-94e651f8-a5be-ae03-3c50-e49f013d47f6).
 
@@ -65,9 +65,9 @@ However, I believe I might have actually *saved* time, because pre-recording the
 
 Here are some of the benefits that I noticed:
 
-- It meant I could serve as presenter and assistant in one talk - two roles with one person!
+- I could serve as presenter and assistant in one talk - two roles with one person!
 - It gave me more control over the talk length and pacing, because I *knew* how much total time was there.
-- By recording it ahead of time, it meant that I was "done" with the talk much earlier than I normally am (usually I'm stressing about slides until a few moments before the talk)
+- By recording it ahead of time, I was "done" with the talk much earlier than I normally am (usually I'm stressing about slides until a few moments before the talk)
 - It also meant I had less anxiety before the event itself.
 
 I'll give this another shot the next time I'm giving a remote tutorial (or maybe an in-person tutorial by myself).

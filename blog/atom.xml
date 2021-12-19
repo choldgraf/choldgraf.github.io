@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2021-12-19T16:38:16.077135+00:00</updated>
+  <updated>2021-12-19T17:08:02.184361+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.21">ABlog</generator>
@@ -738,7 +738,7 @@ of publishing with Jupyter.Many of the ideas in this post have now made their wa
     <published>2020-11-08T00:00:00+00:00</published>
   </entry>
   <entry>
-    <id>https://predictablynoisy.com/posts/2021/2021-12-18-hybrid-tutorial-prerecord.mdghts/</id>
+    <id>https://predictablynoisy.com/posts/2021/2021-12-18-hybrid-tutorial-prerecord/</id>
     <title>Serving in two roles at once via pre-recorded tutorials</title>
     <updated>2021-12-17T00:00:00+00:00</updated>
     <content type="html">&lt;p&gt;At AGU 2021 this year I was asked to give &lt;a class="reference external" href="https://www.youtube.com/watch?v=lZ2FHTkyaMU"&gt;a short tutorial introduction to Jupyter Book&lt;/a&gt;.
@@ -746,7 +746,7 @@ The tutorial was 30 minutes long, and the session was fully remote.&lt;/p&gt;
 &lt;p&gt;This posed a few challenges:&lt;/p&gt;
 &lt;img alt="https://user-images.githubusercontent.com/1839645/146656769-95e0e430-15ac-4b5e-a0ee-7e77e8f7b9ed.png" src="https://user-images.githubusercontent.com/1839645/146656769-95e0e430-15ac-4b5e-a0ee-7e77e8f7b9ed.png" /&gt;
 </content>
-    <link href="https://predictablynoisy.com/posts/2021/2021-12-18-hybrid-tutorial-prerecord.mdghts/" rel="alternate"/>
+    <link href="https://predictablynoisy.com/posts/2021/2021-12-18-hybrid-tutorial-prerecord/" rel="alternate"/>
     <summary>At AGU 2021 this year I was asked to give a short tutorial introduction to Jupyter Book.
 The tutorial was 30 minutes long, and the session was fully remote.This posed a few challenges:</summary>
     <category term="teaching" label="teaching"/>
