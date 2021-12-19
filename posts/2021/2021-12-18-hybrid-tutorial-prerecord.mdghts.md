@@ -11,11 +11,11 @@ The tutorial was 30 minutes long, and the session was fully remote.
 
 This posed a few challenges:
 
-- tutorials almost **always** go over time - particularly if you're taking questions from attendees.
+- Tutorials almost **always** go over time - particularly if you're taking questions from attendees.
 - It is tricky to go back and forth between lecture-style talking and going through steps yourself to make sure that you're not out-pacing the attendees.
-- My time working with the Carpentries taught me that having helpers in a tutorial is extremely useful to keep things on track.
+- My time working with [the Carpentries](https://carpentries.org/) taught me that having helpers in a tutorial is extremely useful to keep things on track.
 
-The rest of this post is about my experience pre-recording the talk!
+So, I decided to try an expriment this time: I'd pre-record my tutorial via Zoom, and then attend the session as a helper. The rest of this post is about my experience!
 
 ```{admonition} If you'd like to check out the tutorial
 
@@ -26,8 +26,6 @@ Here's a video of the tutorial in case you're interested!
 ```
 
 ## An experiment: record myself ahead of time
-
-So, I decided to try an experiment. I'd pre-record myself giving the tutorial from start to finish, and then attend my own tutorial session as a "helper" to answer questions as-needed.
 
 Here's what I did:
 
