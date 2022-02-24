@@ -7,35 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Posted in 2019 &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
-
+    <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
     
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link rel="stylesheet"
+      href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
+    <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
@@ -166,16 +169,12 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
         </li>
       </ul>
       </div>
@@ -192,6 +191,7 @@
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
             <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items">
 <h3>
   <a href="../">Recent Posts</a>
 </h3>
@@ -264,6 +264,9 @@
    
 </ul>
 
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -289,8 +292,8 @@
   </h1>
    
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-11-11-ipynb_pandoc/"
         >Testing Pandoc and Jupyter Notebooks</a
       >
@@ -320,7 +323,8 @@
 </li>
  
     </ul>
-    <p>For several months now, the universal <a class="reference external" href="https://pandoc.org/">document converter pandoc</a> has
+    <div class="ablog-post-excerpt docutils container">
+<p>For several months now, the universal <a class="reference external" href="https://pandoc.org/">document converter pandoc</a> has
 had <a class="reference external" href="https://pandoc.org/MANUAL.html#creating-jupyter-notebooks-with-pandoc">support for Jupyter Notebooks</a>. This means that with a single call,
 you can convert <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files to any of the output formats that Pandoc
 supports (and vice-versa!). This post is a quick exploration of what this
@@ -329,14 +333,15 @@ looks like.</p>
 to interpret without actually opening the files that are created by Pandoc. For the sake
 of this blog post, I’m going to stick with the raw text output here, though you can expand the
 outputs if you wish, I recommend copy/pasting some of these commands on your own if you’d like to try.</p>
+</div>
 
-    <p><a href="../../posts/2019/2019-11-11-ipynb_pandoc/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-11-11-ipynb_pandoc/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-10-27-jupyter-governance-python/"
         >What would Python-style governance look like in Jupyter?</a
       >
@@ -357,7 +362,8 @@ outputs if you wish, I recommend copy/pasting some of these commands on your own
 </li>
  
     </ul>
-    <p>This is the second in a series of blog posts that explores what it’d look like to
+    <div class="ablog-post-excerpt docutils container">
+<p>This is the second in a series of blog posts that explores what it’d look like to
 directly port the governance model of other communities into the Jupyter project.
 You can find the <a class="reference external" href="https://predictablynoisy.com/rust-jupyter-governance">first post about Rust here</a>.</p>
 <p><strong>Note</strong>: These posts are meant as a thought experiment rather than a proposal. Moreover,
@@ -365,14 +371,15 @@ all the usual caveats come with it, such as the
 fact that I don’t know the Python governance
 structure <em>that</em> well, and I might totally
 botch my characterization of it.</p>
+</div>
 
-    <p><a href="../../posts/2019/2019-10-27-jupyter-governance-python/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-10-27-jupyter-governance-python/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-10-22-xarray-neuro/"
         >Analyzing intracranial electrophysiology data with xarray</a
       >
@@ -395,7 +402,8 @@ botch my characterization of it.</p>
 </li>
  
     </ul>
-    <p>Over the last few years, it has been exciting to see the xarray project evolve,
+    <div class="ablog-post-excerpt docutils container">
+<p>Over the last few years, it has been exciting to see the xarray project evolve,
 add new functionality, and mature. This post is an attempt at
 giving xarray another visit to see how it could integrate into electrophysiology
 workflows.</p>
@@ -404,14 +412,15 @@ the activity in the brain each time they perform the task (called an “epoch”
 Time is recorded relative to some <em>onset</em> when the task begins. That is <code class="docutils literal notranslate"><span class="pre">t==0</span></code>. The result
 is usually a matrix of <code class="docutils literal notranslate"><span class="pre">epochs</span> <span class="pre">x</span> <span class="pre">channejupyls</span> <span class="pre">x</span> <span class="pre">time</span></code>. You can do a lot of stuff with this
 data, but our task in this paper is to detect changes in neural activity at trial onset (<code class="docutils literal notranslate"><span class="pre">t==0</span></code>).</p>
+</div>
 
-    <p><a href="../../posts/2019/2019-10-22-xarray-neuro/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-10-22-xarray-neuro/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-10-13-rust-jupyter-governance/"
         >What would Rust-style governance look like in Jupyter?</a
       >
@@ -434,7 +443,8 @@ data, but our task in this paper is to detect changes in neural activity at tria
 </li>
  
     </ul>
-    <p>As I’ve written about before, I <a class="reference external" href="https://predictablynoisy.com/rust-governance">like Rust’s governance structure</a>.
+    <div class="ablog-post-excerpt docutils container">
+<p>As I’ve written about before, I <a class="reference external" href="https://predictablynoisy.com/rust-governance">like Rust’s governance structure</a>.
 I mean, who can’t get behind a community that
 <a class="reference external" href="https://www.rust-lang.org/governance">lists governance as a top-level page on its website</a>?</p>
 <p>Jupyter is currently in the middle of
@@ -442,14 +452,15 @@ I mean, who can’t get behind a community that
 and so I have been thinking about
 what this might look like. This post is a quick thought-experiment to explore what it’d mean
 to port over Rust’s governance directly into the Jupyter community.</p>
+</div>
 
-    <p><a href="../../posts/2019/2019-10-13-rust-jupyter-governance/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-10-13-rust-jupyter-governance/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-10-11-automating-jb/"
         >Automating Jupyter Book deployments with CI/CD</a
       >
@@ -472,7 +483,8 @@ to port over Rust’s governance directly into the Jupyter community.</p>
 </li>
  
     </ul>
-    <p>Lately I’ve spent a lot of time trying to reduce the friction involved
+    <div class="ablog-post-excerpt docutils container">
+<p>Lately I’ve spent a lot of time trying to reduce the friction involved
 in deploying Jupyter Book as well as contributing to the project.
 Features are a great carrot, but ultimately getting engagement is also
 about lowering barriers to entry and showing people a path forward.
@@ -484,14 +496,15 @@ to try this out. One can upload a barebones set of code to a GitHub repository,
 then configure a build system to create a book and deploy it online from there.
 This blog post is a place to keep track of the current state of affairs for this workflow.</p>
 <img alt="auto build logos" src="../../_images/jb-auto-build.png" />
+</div>
 
-    <p><a href="../../posts/2019/2019-10-11-automating-jb/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-10-11-automating-jb/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-06-25-a-few-talks/"
         >A few recent talks</a
       >
@@ -514,7 +527,8 @@ This blog post is a place to keep track of the current state of affairs for this
 </li>
  
     </ul>
-    <p>Lately I’ve given quite a number of talks about the Jupyter and Binder
+    <div class="ablog-post-excerpt docutils container">
+<p>Lately I’ve given quite a number of talks about the Jupyter and Binder
 ecosystems for various purposes. Before each of the talks, I make the
 slides available at a public address in case others are interested in
 following up with the material. For those who missed the talks (or the
@@ -522,14 +536,15 @@ subsequent tweets about them), here are a few of the more recent ones.</p>
 <p>A word of warning: there’s a lot of overlap between these talks - I’m not
 crazy enough to re-invent the wheel each time I have to speak. However, maybe
 folks will find some value in the different angles taken in each case.</p>
+</div>
 
-    <p><a href="../../posts/2019/2019-06-25-a-few-talks/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-06-25-a-few-talks/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-03-16-jupyter-dev/"
         >Thoughts from the Jupyter team meeting 2019</a
       >
@@ -558,20 +573,22 @@ folks will find some value in the different angles taken in each case.</p>
 </li>
  
     </ul>
-    <p>I just got back from a week-long Jupyter team meeting that was somehow both
+    <div class="ablog-post-excerpt docutils container">
+<p>I just got back from a week-long Jupyter team meeting that was somehow both
 very tiring and energizing at the same time. In the spirit of openness, I’d
 like to share some of my experience. While it’s still fresh in my mind,
 here are a few takeaways that occurred to me throughout the week.</p>
 <p><em>Note that these are my personal (rough) impressions, but they shouldn’t be taken as a
 statement from the project/community itself.</em></p>
+</div>
 
-    <p><a href="../../posts/2019/2019-03-16-jupyter-dev/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-03-16-jupyter-dev/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../posts/2019/2019-01-29-three-things-circleci/"
         >Three things I love about CircleCI</a
       >
@@ -603,15 +620,17 @@ statement from the project/community itself.</em></p>
 </li>
  
     </ul>
-    <p>I recently had to beef up the continuous deployment of Jupyter Book, and used
+    <div class="ablog-post-excerpt docutils container">
+<p>I recently had to beef up the continuous deployment of Jupyter Book, and used
 it as an opportunity to learn a bit more about CircleCI’s features. It turns out,
 they’re pretty cool! Here are a few of the things that I learned this time around.</p>
 <p>For those who aren’t familiar with CircleCI, it is a service that runs Continuous
 Integration and Continuous Deployment (CI/CD) workflows for projects. This basically
 means that they manage many kinds of infrastructure that can launch jobs that run
 test suites, deploy applications, and test on many different environments.</p>
+</div>
 
-    <p><a href="../../posts/2019/2019-01-29-three-things-circleci/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../posts/2019/2019-01-29-three-things-circleci/"><em>Read more ...</em></a></p>
     <hr />
   </div>
    
@@ -645,8 +664,8 @@ test suites, deploy applications, and test on many different environments.</p>
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-<footer class="footer mt-5 mt-md-0">
+    <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -657,7 +676,7 @@ test suites, deploy applications, and test on many different environments.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     

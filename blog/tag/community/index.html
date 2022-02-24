@@ -7,35 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Posts tagged community &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
-
+    <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
     
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link rel="stylesheet"
+      href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
+    <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -166,16 +169,12 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
         </li>
       </ul>
       </div>
@@ -192,6 +191,7 @@
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
             <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items">
 <h3>
   <a href="../../">Recent Posts</a>
 </h3>
@@ -264,6 +264,9 @@
    
 </ul>
 
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -289,8 +292,8 @@
   </h1>
    
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../../posts/2019/2019-03-16-jupyter-dev/"
         >Thoughts from the Jupyter team meeting 2019</a
       >
@@ -319,20 +322,22 @@
 </li>
  
     </ul>
-    <p>I just got back from a week-long Jupyter team meeting that was somehow both
+    <div class="ablog-post-excerpt docutils container">
+<p>I just got back from a week-long Jupyter team meeting that was somehow both
 very tiring and energizing at the same time. In the spirit of openness, I’d
 like to share some of my experience. While it’s still fresh in my mind,
 here are a few takeaways that occurred to me throughout the week.</p>
 <p><em>Note that these are my personal (rough) impressions, but they shouldn’t be taken as a
 statement from the project/community itself.</em></p>
+</div>
 
-    <p><a href="../../../posts/2019/2019-03-16-jupyter-dev/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../../posts/2019/2019-03-16-jupyter-dev/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../../posts/2018/kinds-of-openness/"
         >How do projects signal how “open” they are?</a
       >
@@ -362,19 +367,21 @@ statement from the project/community itself.</em></p>
 </li>
  
     </ul>
-    <p>How do open projects signal their “openness” to the outside community? This is
+    <div class="ablog-post-excerpt docutils container">
+<p>How do open projects signal their “openness” to the outside community? This is
 a really hard question, particularly because nowadays “open” has become a buzzword
 that doesn’t just signal a project’s position to the community, but is also used
 as a marketing term to increase support, users, or resources.</p>
 <p>I was thinking about this the other day, so decided to take to twitter:</p>
+</div>
 
-    <p><a href="../../../posts/2018/kinds-of-openness/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../../posts/2018/kinds-of-openness/"><em>Read more ...</em></a></p>
     <hr />
   </div>
   
 
-  <div class="section">
-    <h2>
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../../posts/2018/rust_governance/"
         >I like Rust’s governance structure</a
       >
@@ -404,14 +411,16 @@ as a marketing term to increase support, users, or resources.</p>
 </li>
  
     </ul>
-    <p>Recently I’ve been reading up on governance models for several large-ish open
+    <div class="ablog-post-excerpt docutils container">
+<p>Recently I’ve been reading up on governance models for several large-ish open
 source projects. This is partially because I’m involved in a bunch of
 these projects myself, and partially because it’s fascinating to see distributed groups
 of people organizing themselves in effective (or not) ways on the internet.</p>
 <p>Governance is tricky, because there is an inherent tension between:</p>
 <img alt="Rust teams" src="../../../_images/2018-10-19-rust_logo.png" />
+</div>
 
-    <p><a href="../../../posts/2018/rust_governance/">Read more ...</a></p>
+    <p class="ablog-post-expand"><a href="../../../posts/2018/rust_governance/"><em>Read more ...</em></a></p>
     <hr />
   </div>
    
@@ -445,8 +454,8 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
       </div>
     </div>
   
-  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-<footer class="footer mt-5 mt-md-0">
+    <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -457,7 +466,7 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     

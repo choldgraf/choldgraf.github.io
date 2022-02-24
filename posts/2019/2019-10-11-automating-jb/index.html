@@ -5,44 +5,52 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="Automating Jupyter Book deployments with CI/CD" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-10-11-automating-jb.html" />
-  <meta property="og:description" content="Lately I’ve spent a lot of time trying to reduce the friction involved in deploying Jupyter Book as well as contributing to the project. Features are a great carrot, but ultimately getting engageme..." />
-  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Automating Jupyter Book deployments with CI/CD" />
+<meta property="og:title" content="Automating Jupyter Book deployments with CI/CD" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://predictablynoisy.com/posts/2019/2019-10-11-automating-jb/" />
+  
+<meta property="og:description" content="Lately I’ve spent a lot of time trying to reduce the friction involved in deploying Jupyter Book as well as contributing to the project. Features are a great carrot, but ultimately getting engageme..." />
+  
+<meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  
+<meta property="og:image:alt" content="Automating Jupyter Book deployments with CI/CD" />
   
     <title>Automating Jupyter Book deployments with CI/CD &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
-
+    <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
     
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link rel="stylesheet"
+      href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
+    <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -173,16 +181,12 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
         </li>
       </ul>
       </div>
@@ -198,7 +202,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">  
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items">  
 <h2>
    <i class="fa fa-calendar"></i>
   11 October 2019 
@@ -291,6 +296,9 @@
    
 </ul>
 
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -411,8 +419,8 @@ Netlify runs this command every time it tries to build your site.
 You can configure this by creating a <code class="docutils literal notranslate"><span class="pre">netlify.toml</span></code> file and putting it
 in the root of your repository. <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/netlify.toml">Here’s a link to my configuration file</a>.</p>
 <p>The full text of that TOML file looks like this:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build]</span>
-  <span class="n">command</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;</span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build]</span><span class="w"></span>
+<span class="w">  </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">    gem install bundler -v &#39;2.0.2&#39;</span>
 <span class="s">    pip install -U git+https://github.com/jupyter/jupyter-book</span>
 <span class="s">    jupyter-book create mybook --content-folder content</span>
@@ -420,9 +428,9 @@ in the root of your repository. <a class="reference external" href="https://gith
 <span class="s">    jupyter-book build ./ --overwrite</span>
 <span class="s">    make install</span>
 <span class="s">    bundle exec jekyll build</span>
-<span class="s">    &quot;&quot;&quot;</span>
+<span class="s">    &quot;&quot;&quot;</span><span class="w"></span>
 
-  <span class="n">publish</span> <span class="o">=</span> <span class="s">&quot;mybook/_site&quot;</span>
+<span class="w">  </span><span class="n">publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mybook/_site&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>There are two pieces to this: the <code class="docutils literal notranslate"><span class="pre">command</span></code> section is the command to
@@ -464,53 +472,53 @@ my commands.</p></li>
 pages. You can find <a class="reference external" href="https://predictablynoisy.com/circleci-mirror">instructions for how to do so in this post</a>.</p></li>
 </ol>
 <p>Once that was accomplished, this is the configuration that got the job done:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.1</span>
-<span class="nt">jobs</span><span class="p">:</span>
-  <span class="nt">build_book</span><span class="p">:</span>
-    <span class="nt">docker</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span>
-    <span class="nt">steps</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install Python and dependencies to build page HTML</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-            <span class="no">sudo apt-get install python3-pip</span>
-            <span class="no">pip3 install --user -r requirements.txt</span>
-            <span class="no">pip3 install --user -U git+https://github.com/jupyter/jupyter-book.git</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build_book</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Python and dependencies to build page HTML</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">sudo apt-get install python3-pip</span><span class="w"></span>
+<span class="w">            </span><span class="no">pip3 install --user -r requirements.txt</span><span class="w"></span>
+<span class="w">            </span><span class="no">pip3 install --user -U git+https://github.com/jupyter/jupyter-book.git</span><span class="w"></span>
 
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create book template and build page HTML</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-            <span class="no">jupyter-book create mybook --content-folder content/</span>
-            <span class="no">jupyter-book build ./mybook</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create book template and build page HTML</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">jupyter-book create mybook --content-folder content/</span><span class="w"></span>
+<span class="w">            </span><span class="no">jupyter-book build ./mybook</span><span class="w"></span>
 
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Install ruby dependencies and build the book&#39;s website</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-            <span class="no">cd mybook</span>
-            <span class="no">make install</span>
-            <span class="no">bundle exec jekyll build</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install ruby dependencies and build the book&#39;s website</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">cd mybook</span><span class="w"></span>
+<span class="w">            </span><span class="no">make install</span><span class="w"></span>
+<span class="w">            </span><span class="no">bundle exec jekyll build</span><span class="w"></span>
 
-      <span class="c1"># If we&#39;re on master, push to a gh-pages branch</span>
-      <span class="p p-Indicator">-</span> <span class="nt">add_ssh_keys</span><span class="p">:</span>
-          <span class="nt">fingerprints</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;&lt;my-public-fingerprint&gt;&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Push to gh-pages (if on master)</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-            <span class="no">if [ $CIRCLE_BRANCH	== &quot;master&quot; ]; then</span>
-              <span class="no">pip3 install ghp-import</span>
-              <span class="no">ghp-import -n -f -p mybook/_site;</span>
-            <span class="no">else</span>
-              <span class="no">echo &quot;Skipping deploy because we aren&#39;t on master&quot;</span>
-            <span class="no">fi</span>
+<span class="w">      </span><span class="c1"># If we&#39;re on master, push to a gh-pages branch</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&lt;my-public-fingerprint&gt;&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to gh-pages (if on master)</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">if [ $CIRCLE_BRANCH	== &quot;master&quot; ]; then</span><span class="w"></span>
+<span class="w">              </span><span class="no">pip3 install ghp-import</span><span class="w"></span>
+<span class="w">              </span><span class="no">ghp-import -n -f -p mybook/_site;</span><span class="w"></span>
+<span class="w">            </span><span class="no">else</span><span class="w"></span>
+<span class="w">              </span><span class="no">echo &quot;Skipping deploy because we aren&#39;t on master&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="no">fi</span><span class="w"></span>
 
 
-<span class="nt">workflows</span><span class="p">:</span>
-  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">jobs</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">build_book</span>
+<span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_book</span><span class="w"></span>
 </pre></div>
 </div>
 <p>You can find the deployed site <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo">at this location</a>.</p>
@@ -528,7 +536,8 @@ recommends. I’ll let these ideas simmer a little bit and we’ll see what come
 </div>
 
 <div class="section">
-     
+    
+
 <div class="section">
   <span style="float: left">
      
@@ -580,8 +589,8 @@ recommends. I’ll let these ideas simmer a little bit and we’ll see what come
       </div>
     </div>
   
-  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-<footer class="footer mt-5 mt-md-0">
+    <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -592,7 +601,7 @@ recommends. I’ll let these ideas simmer a little bit and we’ll see what come
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     

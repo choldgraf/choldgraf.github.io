@@ -5,44 +5,52 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="Using CircleCI to preview documentation in Pull Requests" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://predictablynoisy.com/posts/2018/circle-docs.html" />
-  <meta property="og:description" content="Writing documentation is important - it’s the first point of contact between many users and your project, and can be a pivotal moment in whether they decide to adopt your tech or become a contribut..." />
-  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Using CircleCI to preview documentation in Pull Requests" />
+<meta property="og:title" content="Using CircleCI to preview documentation in Pull Requests" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://predictablynoisy.com/posts/2018/circle-docs/" />
+  
+<meta property="og:description" content="Writing documentation is important - it’s the first point of contact between many users and your project, and can be a pivotal moment in whether they decide to adopt your tech or become a contribut..." />
+  
+<meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  
+<meta property="og:image:alt" content="Using CircleCI to preview documentation in Pull Requests" />
   
     <title>Using CircleCI to preview documentation in Pull Requests &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
-
+    <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
     
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link rel="stylesheet"
+      href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
+    <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -173,16 +181,12 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
         </li>
       </ul>
       </div>
@@ -198,7 +202,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">  
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items">  
 <h2>
    <i class="fa fa-calendar"></i>
   16 October 2018 
@@ -299,6 +304,9 @@
    
 </ul>
 
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -375,48 +383,48 @@ as an artifact in the build that you can then preview. To set this up, follow th
 that Circle will use to decide what to do each time your page is built. You then need to go to the CircleCI
 website and tell it to build your site.</p>
 <p>Here’s a skeleton configuration that will build the documentation with Sphinx:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">jobs</span><span class="p">:</span>
-  <span class="c1"># Define a &quot;build_docs&quot; job to be run with Circle</span>
-  <span class="nt">build_docs</span><span class="p">:</span>
-    <span class="c1"># This is the base environment that Circle will use</span>
-    <span class="nt">docker</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
-    <span class="nt">steps</span><span class="p">:</span>
-      <span class="c1"># Get our data and merge with upstream</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
-      <span class="c1"># Update our path</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">echo &quot;export PATH=~/.local/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span>
-      <span class="c1"># Restore cached files to speed things up</span>
-      <span class="p p-Indicator">-</span> <span class="nt">restore_cache</span><span class="p">:</span>
-          <span class="nt">keys</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cache-pip</span>
-      <span class="c1"># Install the packages needed to build our documentation</span>
-      <span class="c1"># This will depend on your particular package!</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pip install --user sphinx_rtd_theme sphinx pytest memory_profiler recommonmark sphinx_copybutton jupyterhub</span>
-      <span class="c1"># Cache some files for a speedup in subsequent builds</span>
-      <span class="p p-Indicator">-</span> <span class="nt">save_cache</span><span class="p">:</span>
-          <span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">cache-pip</span>
-          <span class="nt">paths</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span>
-      <span class="c1"># Build the docs</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Build docs to store</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="p p-Indicator">|</span>
-            <span class="no">cd doc</span>
-            <span class="no">make html</span>
-      <span class="c1"># Tell Circle to store the documentation output in a folder that we can access later</span>
-      <span class="p p-Indicator">-</span> <span class="nt">store_artifacts</span><span class="p">:</span>
-          <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">doc/_build/html/</span>
-          <span class="nt">destination</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">html</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Define a &quot;build_docs&quot; job to be run with Circle</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build_docs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># This is the base environment that Circle will use</span><span class="w"></span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Get our data and merge with upstream</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Update our path</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;export PATH=~/.local/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Restore cached files to speed things up</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">restore_cache</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">keys</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-pip</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Install the packages needed to build our documentation</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># This will depend on your particular package!</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --user sphinx_rtd_theme sphinx pytest memory_profiler recommonmark sphinx_copybutton jupyterhub</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Cache some files for a speedup in subsequent builds</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">save_cache</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-pip</span><span class="w"></span>
+<span class="w">          </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Build the docs</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build docs to store</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">cd doc</span><span class="w"></span>
+<span class="w">            </span><span class="no">make html</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Tell Circle to store the documentation output in a folder that we can access later</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">store_artifacts</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">doc/_build/html/</span><span class="w"></span>
+<span class="w">          </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">html</span><span class="w"></span>
 
-<span class="c1"># Tell CircleCI to use this workflow when it builds the site</span>
-<span class="nt">workflows</span><span class="p">:</span>
-  <span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-  <span class="nt">default</span><span class="p">:</span>
-    <span class="nt">jobs</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">build_docs</span>
+<span class="c1"># Tell CircleCI to use this workflow when it builds the site</span><span class="w"></span>
+<span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_docs</span><span class="w"></span>
 </pre></div>
 </div>
 <p>See the comments above for what each step does.</p>
@@ -451,7 +459,8 @@ to get you started. I hope you’ve found it useful!</p>
 </div>
 
 <div class="section">
-     
+    
+
 <div class="section">
   <span style="float: left">
      
@@ -503,8 +512,8 @@ to get you started. I hope you’ve found it useful!</p>
       </div>
     </div>
   
-  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-<footer class="footer mt-5 mt-md-0">
+    <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -515,7 +524,7 @@ to get you started. I hope you’ve found it useful!</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     

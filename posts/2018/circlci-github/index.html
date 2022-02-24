@@ -5,44 +5,52 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="Automatically mirror a github repository with CircleCI" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://predictablynoisy.com/posts/2018/circlci-github.html" />
-  <meta property="og:description" content="tl;dr: you can automatically mirror the contents of one repository to another by using CI/CD services like CircleCI. This post shows you one way to do it using secrets that let you push to a GitHub..." />
-  <meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
-  <meta property="og:image:alt" content="Automatically mirror a github repository with CircleCI" />
+<meta property="og:title" content="Automatically mirror a github repository with CircleCI" />
+  
+<meta property="og:type" content="website" />
+  
+<meta property="og:url" content="https://predictablynoisy.com/posts/2018/circlci-github/" />
+  
+<meta property="og:description" content="tl;dr: you can automatically mirror the contents of one repository to another by using CI/CD services like CircleCI. This post shows you one way to do it using secrets that let you push to a GitHub..." />
+  
+<meta property="og:image" content="https://predictablynoisy.com/_static/profile-bw.png" />
+  
+<meta property="og:image:alt" content="Automatically mirror a github repository with CircleCI" />
   
     <title>Automatically mirror a github repository with CircleCI &#8212; Predictably Noisy  documentation</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
-
+    <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  
     
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-
+    <link rel="stylesheet"
+      href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
     
       
-
+  
     
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/pydata-sphinx-theme.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
+    <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
@@ -173,16 +181,12 @@
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/choldgraf/" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter">
-            <span><i class="fab fa-twitter-square"></i></span>
-            <label class="sr-only">Twitter</label>
-          </a>
+          <a class="nav-link" href="https://twitter.com/choldgraf" rel="noopener" target="_blank" title="Twitter"><span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label></a>
         </li>
       </ul>
       </div>
@@ -198,7 +202,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">  
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items">  
 <h2>
    <i class="fa fa-calendar"></i>
   18 December 2018 
@@ -299,6 +304,9 @@
    
 </ul>
 
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -449,20 +457,20 @@ I recommend following the <a class="reference external" href="https://circleci.c
 Once you follow this, CircleCI will automatically generate new builds for your repository following the configuration
 you specify in <code class="docutils literal notranslate"><span class="pre">.circleci/config.yml</span></code>.</p>
 <p>Here’s a good start for a config.yml file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">jobs</span><span class="p">:</span>
-  <span class="nt">build</span><span class="p">:</span>
-    <span class="nt">branches</span><span class="p">:</span>
-      <span class="nt">only</span><span class="p">:</span>
-        <span class="c1"># Tell Circle only to build this branch</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
-    <span class="nt">docker</span><span class="p">:</span>
-      <span class="c1"># Any Docker image should do, since we only need git</span>
-      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
-    <span class="nt">steps</span><span class="p">:</span>
-      <span class="c1"># This ensures that the working directory contains the contents of your repo</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
-      <span class="c1"># We&#39;ll add more steps here</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">only</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="c1"># Tell Circle only to build this branch</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Any Docker image should do, since we only need git</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># This ensures that the working directory contains the contents of your repo</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># We&#39;ll add more steps here</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Next, we’ll configure that yaml file to do what we want.</p>
@@ -477,15 +485,15 @@ We’ll modify the workflow in the <code class="docutils literal notranslate"><s
 (the latest version of the primary repository is already in the CircleCI build because of the <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">checkout</span></code> command).</p></li>
 </ol>
 <p>Here’s the piece of configuration to do do this:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">jobs</span><span class="p">:</span>
-  <span class="nt">build</span><span class="p">:</span>
-    <span class="nt">steps</span><span class="p">:</span>
-      <span class="c1"># Push to the inferentialthinking.github.io repository so it goes live</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Push to the inferentialthinking.github.io repository so it goes live</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Now we’re telling CircleCI to push to our mirror repository, but
@@ -518,14 +526,14 @@ keys.</p>
 <p>Finally, we need to modify the yaml configuration so that it knows to use this
 public/private key combination when it does SSH stuff in the build. That’s accomplished
 with the following configuration:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
-  <span class="nt">build</span><span class="p">:</span>
-    <span class="nt">steps</span><span class="p">:</span>
-      <span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span>
-      <span class="p p-Indicator">-</span> <span class="nt">add_ssh_keys</span><span class="p">:</span>
-          <span class="nt">fingerprints</span><span class="p">:</span>
-            <span class="c1"># The SSH key fingerprint</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="c1"># The SSH key fingerprint</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The SSH key fingerprint can be found by looking at your GitHub repository’s “Deploy Keys”
@@ -539,37 +547,38 @@ it using the configuration structure above. Here’s what one key looks like:</p
 to the mirror repository. Every time a change is made to the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of the primary
 repository, this process will be triggered.</p>
 <p>This is what our final yaml configuration looks like:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="nt">jobs</span><span class="p">:</span>
-  <span class="nt">build</span><span class="p">:</span>
-    <span class="c1"># Only build for changes to the gh-pages branch</span>
-    <span class="nt">branches</span><span class="p">:</span>
-      <span class="nt">only</span><span class="p">:</span>
-        <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
-    <span class="c1"># The base environment we&#39;ll use (can be any docker image w/ git)</span>
-    <span class="nt">docker</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
-    <span class="nt">steps</span><span class="p">:</span>
-      <span class="c1"># Move the repository code to our home directory in the CircleCI build</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">checkout</span>
-      <span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span>
-      <span class="p p-Indicator">-</span> <span class="nt">add_ssh_keys</span><span class="p">:</span>
-          <span class="nt">fingerprints</span><span class="p">:</span>
-            <span class="p p-Indicator">-</span> <span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Only build for changes to the gh-pages branch</span><span class="w"></span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="nt">only</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># The base environment we&#39;ll use (can be any docker image w/ git)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Move the repository code to our home directory in the CircleCI build</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span><span class="w"></span>
 
-      <span class="c1"># Add the mirror repository as a git remote</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span>
-      <span class="c1"># Push the repository to the mirror site</span>
-      <span class="p p-Indicator">-</span> <span class="nt">run</span><span class="p">:</span>
-          <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span>
-          <span class="nt">command</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span>
+<span class="w">      </span><span class="c1"># Add the mirror repository as a git remote</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Push the repository to the mirror site</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
 </div>
 
 <div class="section">
-     
+    
+
 <div class="section">
   <span style="float: left">
      
@@ -621,8 +630,8 @@ repository, this process will be triggered.</p>
       </div>
     </div>
   
-  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-<footer class="footer mt-5 mt-md-0">
+    <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
@@ -633,7 +642,7 @@ repository, this process will be triggered.</p>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
 </p>
     </div>
     
