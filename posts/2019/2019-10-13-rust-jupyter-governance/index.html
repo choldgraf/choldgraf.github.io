@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="What would Rust-style governance look like in Jupyter?" />
   
 <meta property="og:type" content="website" />
@@ -18,32 +19,33 @@
 <meta property="og:image:alt" content="What would Rust-style governance look like in Jupyter?" />
   
     <title>What would Rust-style governance look like in Jupyter? &#8212; Predictably Noisy  documentation</title>
-    
-    <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
-    
-    <link rel="stylesheet"
-      href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/pydata-sphinx-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-    <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
@@ -53,26 +55,21 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-88310237-1', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
- 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="None"> 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -106,25 +103,37 @@
 </style>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
-<a class="navbar-brand" href="../../../">
-<p class="title">Predictably Noisy</p>
-</a>
+  
 
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Predictably Noisy  documentation</p>
+  
+</a>
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -197,13 +206,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items">  
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items">  
 <h2>
    <i class="fa fa-calendar"></i>
   13 October 2019 
@@ -296,20 +305,21 @@
    
 </ul>
 
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
-<div class="tocsection onthispage pt-5 pb-3">
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -360,26 +370,24 @@
 </ul>
 
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
 
-              <div>
-                 <div class="tex2jax_ignore mathjax_ignore section" id="what-would-rust-style-governance-look-like-in-jupyter">
-<h1>What would Rust-style governance look like in Jupyter?<a class="headerlink" href="#what-would-rust-style-governance-look-like-in-jupyter" title="Permalink to this headline">¶</a></h1>
+              <article class="bd-article" role="main">
+                 <section id="what-would-rust-style-governance-look-like-in-jupyter">
+<h1>What would Rust-style governance look like in Jupyter?<a class="headerlink" href="#what-would-rust-style-governance-look-like-in-jupyter" title="Permalink to this headline">#</a></h1>
 <p>As I’ve written about before, I <a class="reference external" href="https://predictablynoisy.com/rust-governance">like Rust’s governance structure</a>.
 I mean, who can’t get behind a community that
 <a class="reference external" href="https://www.rust-lang.org/governance">lists governance as a top-level page on its website</a>?</p>
@@ -391,8 +399,8 @@ to port over Rust’s governance directly into the Jupyter community.</p>
 <p><em>Note: I’m not an expert in Rust governance, so there are some assumptions made about its model
 based on my outside perspective. Apologies if I miss any important details about the Rust model,
 but this is mostly meant as as inspiration, not a report on Rust’s governance :-)</em></p>
-<div class="section" id="a-quick-recap-of-rust-s-governance-structure">
-<h2>A quick recap of Rust’s governance structure<a class="headerlink" href="#a-quick-recap-of-rust-s-governance-structure" title="Permalink to this headline">¶</a></h2>
+<section id="a-quick-recap-of-rust-s-governance-structure">
+<h2>A quick recap of Rust’s governance structure<a class="headerlink" href="#a-quick-recap-of-rust-s-governance-structure" title="Permalink to this headline">#</a></h2>
 <p>First off, how does Rust govern and organize itself? There are a few few
 key pieces:</p>
 <ul class="simple">
@@ -414,13 +422,13 @@ rules, they can organize themselves in terms of decision-making.</p></li>
 <li><p>If it is accepted, the RFC becomes “active” which is an invitation for people
 to work on implementing it.</p></li>
 </ul>
-</div>
-<div class="section" id="what-would-this-look-like-in-jupyter">
-<h2>What would this look like in Jupyter?<a class="headerlink" href="#what-would-this-look-like-in-jupyter" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-would-this-look-like-in-jupyter">
+<h2>What would this look like in Jupyter?<a class="headerlink" href="#what-would-this-look-like-in-jupyter" title="Permalink to this headline">#</a></h2>
 <p>Jupyter is a complex and multi-faceted community, but so is Rust, so let’s see
 what this decision-making structure would look like in the Jupyter community.</p>
-<div class="section" id="general-decision-making-principles-and-goals">
-<h3>General decision-making principles and goals<a class="headerlink" href="#general-decision-making-principles-and-goals" title="Permalink to this headline">¶</a></h3>
+<section id="general-decision-making-principles-and-goals">
+<h3>General decision-making principles and goals<a class="headerlink" href="#general-decision-making-principles-and-goals" title="Permalink to this headline">#</a></h3>
 <p>First off, we would adopt many of the same decision-making goals of the RFC
 process. Here are a few key ones as I understand it:</p>
 <ul class="simple">
@@ -435,9 +443,9 @@ It should achieve a net-positive in “energy spent” vs. “generated value to
 <li><p>Be impactful - don’t use RFCs to bike-shed minor details, or implementation details for a PR.
 They should be used for significant changes in a repository that require discussion at a high level.</p></li>
 </ul>
-</div>
-<div class="section" id="an-rfc-in-the-jupyter-community">
-<h3>An RFC in the Jupyter Community<a class="headerlink" href="#an-rfc-in-the-jupyter-community" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="an-rfc-in-the-jupyter-community">
+<h3>An RFC in the Jupyter Community<a class="headerlink" href="#an-rfc-in-the-jupyter-community" title="Permalink to this headline">#</a></h3>
 <p>First off, the mechanism for proposing, iterating on, and making decisions. In
 Rust this is an RFC. in Jupyter, such a mechanism has already been proposed!</p>
 <p>The <a class="reference external" href="https://github.com/jupyter/enhancement-proposals">Jupyter Enhancement Proposals</a>
@@ -472,9 +480,9 @@ on whether to accept the JEP.</p></li>
 <li><p>If accepted, the JEP enters an “active” state and pull-requests are welcome to
 implement it.</p></li>
 </ul>
-</div>
-<div class="section" id="the-teams-and-peronnel-needed-to-manage-this-process">
-<h3>The teams and peronnel needed to manage this process<a class="headerlink" href="#the-teams-and-peronnel-needed-to-manage-this-process" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="the-teams-and-peronnel-needed-to-manage-this-process">
+<h3>The teams and peronnel needed to manage this process<a class="headerlink" href="#the-teams-and-peronnel-needed-to-manage-this-process" title="Permalink to this headline">#</a></h3>
 <p>The JEP process is the <em>mechanism</em> by which decisions get made, but what
 are the groups that oversee this mechanism? In the Rust community,
 these teams are broken down by either technical or community topics
@@ -518,10 +526,10 @@ rarely exercise their power. Similar to a BDFL.</p></li>
 <li><p><strong>A shepherd role</strong> - we’d need to formalize what a “shepherd” is in the Jupyter community.
 Potentially sub-teams would modify this slightly to fit their own needs.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="what-s-the-difference-between-current-jupyter-and-jep-jupyter">
-<h2>What’s the difference between current Jupyter and JEP Jupyter?<a class="headerlink" href="#what-s-the-difference-between-current-jupyter-and-jep-jupyter" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="what-s-the-difference-between-current-jupyter-and-jep-jupyter">
+<h2>What’s the difference between current Jupyter and JEP Jupyter?<a class="headerlink" href="#what-s-the-difference-between-current-jupyter-and-jep-jupyter" title="Permalink to this headline">#</a></h2>
 <p>Thinking through the above scenario, I don’t see too much distance between
 our current situation and a JEP-like process. We:</p>
 <ul class="simple">
@@ -539,9 +547,9 @@ and discoverable)</p></li>
 <li><p>re-work team processes to encourage them to follow the JEP process over time (I suspect this would
 be the hardest thing to do)</p></li>
 </ul>
-</div>
-<div class="section" id="what-s-the-difference-between-jupyter-and-rust">
-<h2>What’s the difference between Jupyter and Rust?<a class="headerlink" href="#what-s-the-difference-between-jupyter-and-rust" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="what-s-the-difference-between-jupyter-and-rust">
+<h2>What’s the difference between Jupyter and Rust?<a class="headerlink" href="#what-s-the-difference-between-jupyter-and-rust" title="Permalink to this headline">#</a></h2>
 <p>Finally, while it’s interesting to port one community’s governance model directly onto another,
 there are difference between the Jupyter and Rust projects, both technical and social ones.
 Here are a few differences I can think of that might have an impact on how this model would work.</p>
@@ -560,14 +568,14 @@ also adds extra responsibility and labor needed to manage that complexity. In or
 ensure that the work gets done, and credit is given to those doing the work, we’d need to grow
 a culture of creating specific roles and responsibility for those roles.</p></li>
 </ul>
-</div>
-<div class="section" id="wrapping-up">
-<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">#</a></h2>
 <p>I’m probably missing some things, but this seems like a reasonable plan! As I mentioned
 above, this post has mostly been a thought-experiment, but if anybody has thoughts on bringing
 this into the governance refactoring process, I’d be happy to talk more.</p>
-</div>
-</div>
+</section>
+</section>
 
 <div class="section">
     
@@ -595,7 +603,7 @@ this into the governance refactoring process, I’d be happy to talk more.</p>
   
 </div>
 
-              </div>
+              </article>
               
 <!-- Add a comment box underneath the page's content -->
 <script src="https://giscus.app/client.js"
@@ -612,34 +620,39 @@ this into the governance refactoring process, I’d be happy to talk more.</p>
         async>
 </script>
 
+
               
-              <!-- Previous / next buttons -->
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
+              </footer>
               
-          </main>
+          </div>
           
-
       </div>
     </div>
+
   
-    <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>

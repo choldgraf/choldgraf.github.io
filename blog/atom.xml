@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2022-02-24T17:02:15.156064+00:00</updated>
+  <updated>2022-06-15T15:18:29.043619+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml" rel="self"/>
-  <generator uri="https://ablog.readthedocs.org/" version="0.10.23">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.25">ABlog</generator>
   <entry>
     <id>https://predictablynoisy.com/posts/2015/2015-05-27-coherence_correlation/</id>
     <title>Coherence correlation</title>
@@ -13,6 +13,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;&lt;em&gt;Note - you can find the nbviewer of this post &lt;a class="reference external" href="https://github.com/choldgraf/write-ups/blob/master/neuro/coherence_correlation.ipynb"&gt;here&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;A big question that I’ve always wrestled with is the difference between correlation and coherence. Intuitively, I think of these two things as very similar to one another. Correlation is a way to determine the extent to which two variables covary (normalized to be between -1 and 1). Coherence is similar, but instead assesses “similarity” by looking at the similarity for two variables in frequency space, rather than time space.&lt;/p&gt;
+&lt;img alt="../_images/eeg_coh.png" src="../_images/eeg_coh.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2015/2015-05-27-coherence_correlation/" rel="alternate"/>
@@ -30,6 +31,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;In this notebook, I’ll show you how to make a simple query on Craigslist using some nifty python modules. You can take advantage of all the structure data that exists on webpages to collect interesting datasets.&lt;/p&gt;
 &lt;p&gt;First we need to figure out how to submit a query to Craigslist. As with many websites, one way you can do this is simply by constructing the proper URL and sending it to Craigslist. Here’s a sample URL that is returned after manually typing in a search to Craigslist:&lt;/p&gt;
+&lt;img alt="../_images/2c7f9b06d258220cbe83caa9f29188e2a6da84e3b74ba4e0e1673b0172fbad1b.png" src="../_images/2c7f9b06d258220cbe83caa9f29188e2a6da84e3b74ba4e0e1673b0172fbad1b.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2015/2015-08-30-craigslist_scrape/" rel="alternate"/>
@@ -45,6 +47,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;In the &lt;a class="reference external" href="http://chrisholdgraf.com/querying-craigslist-with-python/"&gt;last post&lt;/a&gt; I showed how to use a simple python bot to scrape data from Criagslist. This is a quick follow-up to take a peek at the data.&lt;/p&gt;
 &lt;p&gt;Note - data that you scrape from Craigslist is pretty limited. They tend to clear out old posts, and you can only scrape from recent posts anyway to avoid them blocking you.&lt;/p&gt;
+&lt;img alt="../_images/5e61fcc310c3b744b46ed6582f714bcd0903deaf021ed2f908639a653e48b043.png" src="../_images/5e61fcc310c3b744b46ed6582f714bcd0903deaf021ed2f908639a653e48b043.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2015/2015-09-27-craigslist_data_analysis/" rel="alternate"/>
@@ -62,6 +65,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;As I’m entering the final years of graduate school, I’ve been applying for a few typical “pre-doc” fellowships. One of these is the NRSA, which is notorious for requiring you to wade through forests of beaurocratic documents (seriously, their “guidelines” for writing an NRSA are over 100 pages!). Doing so ends up taking a LOT of time.&lt;/p&gt;
 &lt;p&gt;This got me wondering what kind of success rates these grants have in the first place. For those who haven’t gone through the process before, it’s a bit opaque:&lt;/p&gt;
+&lt;img alt="../_images/79fa811b8d2df68810245ec8db5e6e39714f6bc2c49d1091ce36afa1dea96e28.png" src="../_images/79fa811b8d2df68810245ec8db5e6e39714f6bc2c49d1091ce36afa1dea96e28.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2015/2015-10-29-nih_grant_analysis/" rel="alternate"/>
@@ -79,6 +83,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;When we discuss “computational efficiency”, you often hear people throw around phrases like $O(n^2)$ or $O(nlogn)$. We talk about them in the abstract, and it can be hard to appreciate what these distinctions mean and how important they are. So let’s take a quick look at what computational efficiency looks like in the context of a very famous algorithm: The Fourier Transform.&lt;/p&gt;
 &lt;p&gt;Briefly, A Fourier Transform is used for uncovering the spectral information that is present in a signal. AKA, it tells us about oscillatory components in the signal, and has &lt;a class="reference external" href="http://dsp.stackexchange.com/questions/69/why-is-the-fourier-transform-so-important"&gt;a wide range&lt;/a&gt; of uses in communications, signal processing, and even neuroscience analysis.&lt;/p&gt;
+&lt;img alt="../_images/ed0a1e43a49f42359fb675ae8d07a7d38ee4f06e23b873fb9b0fb2a2bfdc9d86.png" src="../_images/ed0a1e43a49f42359fb675ae8d07a7d38ee4f06e23b873fb9b0fb2a2bfdc9d86.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2016/2016-07-02-fft_time/" rel="alternate"/>
@@ -97,6 +102,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bothered me, but the method for making such an incredibly important decision. Let me explain…&lt;/p&gt;
 &lt;p&gt;Scientists are a bit obsessed with the concept of error. In the context of collecting data and anaylzing it, this takes the form of our “confidence” in the results. If all the data say the same thing, then we are usually pretty confident in the overall message. If the data is more complicated than this (and it always is), then we need to define &lt;em&gt;how confident&lt;/em&gt; we are in our conclusions.&lt;/p&gt;
+&lt;img alt="../_images/96ad4c6ce6c84e6e538dcda8722efc5916cc48c7b115a2f25ed8fa9271b9d924.png" src="../_images/96ad4c6ce6c84e6e538dcda8722efc5916cc48c7b115a2f25ed8fa9271b9d924.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2016/2016-07-08-voting_randomness/" rel="alternate"/>
@@ -132,6 +138,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;&lt;strong&gt;This article is now interactive! Check out a live Binder instance &lt;a class="reference external" href="http://mybinder.org/repo/choldgraf/choldgraf.github.io/notebooks/notebooks/2016_11_30-funnel_plots.ipynb"&gt;here&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;In the next few months, I’ll try to take some time to talk about the things I learn as I make my way through this literature. While it’s easy to make one-off complaints to one another about how “science is broken” without really diving into the details, it’s important learn about &lt;em&gt;how&lt;/em&gt; it’s broken, or at least how we could assess something like this.&lt;/p&gt;
+&lt;img alt="../_images/funnel_plot_no_dists.png" src="../_images/funnel_plot_no_dists.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2016/2016-11-30-funnel_plots/" rel="alternate"/>
@@ -150,6 +157,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the &lt;a class="reference external" href="http://biorxiv.org/"&gt;biorxiv&lt;/a&gt;, an excellent new tool for posting pre-prints of articles before they’re locked down with a publisher embargo.&lt;/p&gt;
 &lt;p&gt;A big benefit of open science is the ability to use modern technologies (like web scraping) to make new use of data that would originally be unavailable to the public. One simple example of this is information and metadata about published articles. While we’re not going to dive too deeply here, maybe this will serve as inspiration for somebody else interested in scraping the web.&lt;/p&gt;
+&lt;img alt="../_images/c7eb5eb4f433ce9fab991de4b5266f3cc5715e1bb8c81c5726792d23cc2d64a4.png" src="../_images/c7eb5eb4f433ce9fab991de4b5266f3cc5715e1bb8c81c5726792d23cc2d64a4.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2016/2016-12-19-biorxiv_neuro/" rel="alternate"/>
@@ -168,6 +176,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;This is a quick demo of how I created &lt;a class="reference external" href="https://www.youtube.com/watch?v=lZS4uaTBrh8"&gt;this video&lt;/a&gt;. Check it out below, or read on to see the code that made it!&lt;/p&gt;
 &lt;p&gt;Here’s a quick viz to show off some brainy holiday spirit.&lt;/p&gt;
+&lt;img alt="../_images/1cac946ecc78b232fad0a191ce135b7994609040c2f42d0df7e8b8c7f801ac37.jpg" src="../_images/1cac946ecc78b232fad0a191ce135b7994609040c2f42d0df7e8b8c7f801ac37.jpg" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2016/2016-12-23-christmas_ecog_plot/" rel="alternate"/>
@@ -186,6 +195,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;Every now and then I come across a nifty feature in Matplotlib that I wish I’d known about earlier. The MPL documentation can be a beast to get through, and as a result you miss some cool stuff sometimes.&lt;/p&gt;
 &lt;p&gt;This is a quick demo of one such feature: the &lt;strong&gt;cycler&lt;/strong&gt;.&lt;/p&gt;
+&lt;img alt="../_images/1a49d155574ef142621815f0f823c023838373d0fc8e64acf60e29da890dddcb.png" src="../_images/1a49d155574ef142621815f0f823c023838373d0fc8e64acf60e29da890dddcb.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2017/2017-01-04-matplotlib_cycles/" rel="alternate"/>
@@ -202,6 +212,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;As a part of setting up the website for the &lt;a class="reference external" href="http://docathon.org"&gt;Docathon&lt;/a&gt; I’ve had to re-learn all of my date string formatting rules. It’s one of those little problems you don’t really think about - turning an arbitrary string into something structured like a date - until you’ve actually got to do it.&lt;/p&gt;
 &lt;p&gt;There are a bunch of tools in python for using date-like objects, but it’s not always easy to figure out how these work. This post is just a couple of pieces of information I’ve picked up along the process.&lt;/p&gt;
+&lt;img alt="../_images/a289273e2ebdd52dbf8d304957f576e5f6b15464ba4df7b93ad2710fb0cc5013.png" src="../_images/a289273e2ebdd52dbf8d304957f576e5f6b15464ba4df7b93ad2710fb0cc5013.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2017/2017-03-16-dates_in_python/" rel="alternate"/>
@@ -217,6 +228,7 @@
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;Sometimes you want to do two things:&lt;/p&gt;
 &lt;p&gt;Plot a timeseries that handles datetimes in a clever way (e.g., with Pandas or Matplotlib)&lt;/p&gt;
+&lt;img alt="../_images/a5e3e8e77eaaf3179af34196eaac86273f44b3b5e7e58b872fbbb3ea52e3d634.png" src="../_images/a5e3e8e77eaaf3179af34196eaac86273f44b3b5e7e58b872fbbb3ea52e3d634.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2017/2017-11-02-dates_multiple_plots/" rel="alternate"/>
@@ -280,6 +292,7 @@ output. Not ideal.</summary>
 &lt;p&gt;When I was in graduate school, I tended to get on my soapbox and tell everybody
 why they should &lt;a class="reference external" href="http://jakevdp.github.io/blog/2014/10/16/how-bad-is-your-colormap/"&gt;stop using Jet&lt;/a&gt;
 and adopt a “perceptually-flat” colormap like &lt;a class="reference external" href="https://bids.github.io/colormap/"&gt;viridis, magma, or inferno&lt;/a&gt;.&lt;/p&gt;
+&lt;img alt="../_images/740ee63ac731761d28669ee426c17caf515cab36f3fca6e8c675430eef5521f8.png" src="../_images/740ee63ac731761d28669ee426c17caf515cab36f3fca6e8c675430eef5521f8.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2018/2018-06-04-makeitpop/" rel="alternate"/>
@@ -651,6 +664,7 @@ the activity in the brain each time they perform the task (called an “epoch”
 Time is recorded relative to some &lt;em&gt;onset&lt;/em&gt; when the task begins. That is &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;t==0&lt;/span&gt;&lt;/code&gt;. The result
 is usually a matrix of &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;epochs&lt;/span&gt; &lt;span class="pre"&gt;x&lt;/span&gt; &lt;span class="pre"&gt;channejupyls&lt;/span&gt; &lt;span class="pre"&gt;x&lt;/span&gt; &lt;span class="pre"&gt;time&lt;/span&gt;&lt;/code&gt;. You can do a lot of stuff with this
 data, but our task in this paper is to detect changes in neural activity at trial onset (&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;t==0&lt;/span&gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;img alt="../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" src="../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" /&gt;
 &lt;/div&gt;
 </content>
     <link href="https://predictablynoisy.com/posts/2019/2019-10-22-xarray-neuro/" rel="alternate"/>

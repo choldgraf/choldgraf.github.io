@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
 <meta property="og:title" content="Analyzing intracranial electrophysiology data with xarray" />
   
 <meta property="og:type" content="website" />
@@ -18,32 +19,33 @@
 <meta property="og:image:alt" content="Analyzing intracranial electrophysiology data with xarray" />
   
     <title>Analyzing intracranial electrophysiology data with xarray &#8212; Predictably Noisy  documentation</title>
-    
-    <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-  
-    
-    <link rel="stylesheet"
-      href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-    <link rel="preload" as="font" type="font/woff2" crossorigin
-      href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
-  
-    
-      
-  
-    
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/pydata-sphinx-theme.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-    <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
-  
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
@@ -53,26 +55,21 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://www.google-analytics.com/analytics.js"></script>
+    <script>
+                window.ga = window.ga || function () {
+                    (ga.q = ga.q || []).push(arguments) };
+                ga.l = +new Date;
+                ga('create', 'UA-88310237-1', 'auto');
+                ga('set', 'anonymizeIp', true);
+                ga('send', 'pageview');
+            </script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
     <link rel="search" title="Search" href="../../../search/" /> 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.google-analytics.com/analytics.js"></script>
-<script>
-                        window.ga = window.ga || function () {
-                            (ga.q = ga.q || []).push(arguments) };
-                        ga.l = +new Date;
-                        ga('create', 'UA-88310237-1', 'auto');
-                        ga('set', 'anonymizeIp', true);
-                        ga('send', 'pageview');
-                    </script>
- 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="None"> 
 <link
   rel="alternate"
   type="application/atom+xml"
@@ -106,25 +103,37 @@
 </style>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
 
     
-    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
 
   <div id="navbar-start">
     
     
-<a class="navbar-brand" href="../../../">
-<p class="title">Predictably Noisy</p>
-</a>
+  
 
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Predictably Noisy  documentation</p>
+  
+</a>
     
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="fas fa-bars"></span>
   </button>
 
   
@@ -197,13 +206,13 @@
     </nav>
     
 
-    <div class="container-xl">
-      <div class="row">
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
           
-            
-            <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar">
-              <div class="sidebar-start-items">  
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items">  
 <h2>
    <i class="fa fa-calendar"></i>
   22 October 2019 
@@ -296,20 +305,21 @@
    
 </ul>
 
-              </div>
-              <div class="sidebar-end-items">
-              </div>
-            </div>
-            
-          
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
 
           
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
-            
-              
-              <div class="toc-item">
-                
-<div class="tocsection onthispage pt-5 pb-3">
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -431,32 +441,30 @@
 </ul>
 
 </nav>
-              </div>
-              
-              <div class="toc-item">
-                
-              </div>
-              
-            
-          </div>
-          
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
 
           
           
-            
-          
-          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+          <div class="bd-content col-12 col-md-9 col-xl-7">
               
 
-              <div>
-                 <div class="tex2jax_ignore mathjax_ignore section" id="analyzing-intracranial-electrophysiology-data-with-xarray">
-<h1>Analyzing intracranial electrophysiology data with xarray<a class="headerlink" href="#analyzing-intracranial-electrophysiology-data-with-xarray" title="Permalink to this headline">¶</a></h1>
+              <article class="bd-article" role="main">
+                 <section id="analyzing-intracranial-electrophysiology-data-with-xarray">
+<h1>Analyzing intracranial electrophysiology data with xarray<a class="headerlink" href="#analyzing-intracranial-electrophysiology-data-with-xarray" title="Permalink to this headline">#</a></h1>
 <p>Over the last few years, it has been exciting to see the xarray project evolve,
 add new functionality, and mature. This post is an attempt at
 giving xarray another visit to see how it could integrate into electrophysiology
 workflows.</p>
-<div class="section" id="a-quick-background-on-our-data">
-<h2>A quick background on our data<a class="headerlink" href="#a-quick-background-on-our-data" title="Permalink to this headline">¶</a></h2>
+<section id="a-quick-background-on-our-data">
+<h2>A quick background on our data<a class="headerlink" href="#a-quick-background-on-our-data" title="Permalink to this headline">#</a></h2>
 <p>It is common in neuroscience to ask individuals to perform a task over and over again. You record
 the activity in the brain each time they perform the task (called an “epoch” or a “trial”).
 Time is recorded relative to some <em>onset</em> when the task begins. That is <code class="docutils literal notranslate"><span class="pre">t==0</span></code>. The result
@@ -522,13 +530,13 @@ between trials). This will be one of the last times we use MNE hopefully.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_7_0.png" src="../../../_images/2019-10-22-xarray-neuro_7_0.png" />
+<img alt="../../../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" src="../../../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="converting-to-xarray">
-<h1>Converting to xarray<a class="headerlink" href="#converting-to-xarray" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section id="converting-to-xarray">
+<h1>Converting to xarray<a class="headerlink" href="#converting-to-xarray" title="Permalink to this headline">#</a></h1>
 <p>First off, we’ll define a helper function that
 converts the MNE Epochs object into an xarray DataArray object.
 DataArrays provide an N-Dimensional representation of data, but with
@@ -993,9 +1001,9 @@ dl.xr-attrs {
 <p>The data consists of many trials, channels, and timepoints.
 Let’s start by selecting a time region within each trial that
 we can visualize more cleanly.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="subsetting-out-data-with-da-sel">
-<h1>Subsetting out data with <code class="docutils literal notranslate"><span class="pre">da.sel</span></code><a class="headerlink" href="#subsetting-out-data-with-da-sel" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="subsetting-out-data-with-da-sel">
+<h1>Subsetting out data with <code class="docutils literal notranslate"><span class="pre">da.sel</span></code><a class="headerlink" href="#subsetting-out-data-with-da-sel" title="Permalink to this headline">#</a></h1>
 <p>In xarray, we select items with the <code class="docutils literal notranslate"><span class="pre">sel</span></code> and <code class="docutils literal notranslate"><span class="pre">isel</span></code> method. This
 behaves kind of like the pandas <code class="docutils literal notranslate"><span class="pre">loc</span></code> and <code class="docutils literal notranslate"><span class="pre">iloc</span></code> methods, however
 because we have named dimensions, we can directly specify them in
@@ -1026,13 +1034,13 @@ need to remember which axis corresponds to channels.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_15_0.png" src="../../../_images/2019-10-22-xarray-neuro_15_0.png" />
+<img alt="../../../_images/89ea6341d363741a43ff5d5130b80147da7d4212fd0c518a0780f4db141f0279.png" src="../../../_images/89ea6341d363741a43ff5d5130b80147da7d4212fd0c518a0780f4db141f0279.png" />
 </div>
 </div>
 <p>It doesn’t look like much is going on…let’s see if we can clean it up a bit.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="de-meaning-the-data-with-da-where">
-<h1>De-meaning the data with <code class="docutils literal notranslate"><span class="pre">da.where</span></code><a class="headerlink" href="#de-meaning-the-data-with-da-where" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="de-meaning-the-data-with-da-where">
+<h1>De-meaning the data with <code class="docutils literal notranslate"><span class="pre">da.where</span></code><a class="headerlink" href="#de-meaning-the-data-with-da-where" title="Permalink to this headline">#</a></h1>
 <p>First off - we’ll subtract the “pre-baseline mean” from each trial.
 This makes it easier to visualize how each channel’s activity <em>changed</em>
 at time == 0.</p>
@@ -1062,15 +1070,15 @@ mean of each channel / epoch <em>only for the pre-baseline timepoints</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_20_0.png" src="../../../_images/2019-10-22-xarray-neuro_20_0.png" />
+<img alt="../../../_images/c63be37ef82f5b9f4cd2e93d413b230d2bf2c9ec4389afa420748b35e0113054.png" src="../../../_images/c63be37ef82f5b9f4cd2e93d413b230d2bf2c9ec4389afa420748b35e0113054.png" />
 </div>
 </div>
 <p>Hmmm, there still doesn’t seem to be much going on (that channel down
 at the bottom looks noisy to me, rather than having a meaningful signal)
 so let’s transform this signal into something with a bit more SNR to it.</p>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="extracting-a-more-useful-feature-with-xr-apply-ufunc">
-<h1>Extracting a more useful feature with <code class="docutils literal notranslate"><span class="pre">xr.apply_ufunc</span></code><a class="headerlink" href="#extracting-a-more-useful-feature-with-xr-apply-ufunc" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="extracting-a-more-useful-feature-with-xr-apply-ufunc">
+<h1>Extracting a more useful feature with <code class="docutils literal notranslate"><span class="pre">xr.apply_ufunc</span></code><a class="headerlink" href="#extracting-a-more-useful-feature-with-xr-apply-ufunc" title="Permalink to this headline">#</a></h1>
 <p>Without going into too much details on the neuroscience, iEEG data is
 particularly useful because there is information about neuronal activity in
 the higher frequency parts of the signal (AKA, parts of the electrical signal that
@@ -1080,8 +1088,8 @@ change very quickly, but have very low amplitude). To pull that out, we’ll do 
 <li><p>Calculate the <em>envelope</em> of the signal, which will tell us the power of
 high-frequency activity over time.</p></li>
 </ul>
-<div class="section" id="high-pass-filtering-the-signal">
-<h2>High-pass filtering the signal<a class="headerlink" href="#high-pass-filtering-the-signal" title="Permalink to this headline">¶</a></h2>
+<section id="high-pass-filtering-the-signal">
+<h2>High-pass filtering the signal<a class="headerlink" href="#high-pass-filtering-the-signal" title="Permalink to this headline">#</a></h2>
 <p>MNE has a lot of nice functions for filtering a timeseries. Most of these
 operate on numpy arrays instead of MNE objects. We’ll use
 xarray’s <code class="docutils literal notranslate"><span class="pre">apply_ufunc</span></code> function to simply map that function onto our dataarray.
@@ -1130,12 +1138,12 @@ are gone.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_25_0.png" src="../../../_images/2019-10-22-xarray-neuro_25_0.png" />
+<img alt="../../../_images/7dfe4668d2a17721cbe28581541766ea75e71b1d0bb840c1fdb5af174dedd237.png" src="../../../_images/7dfe4668d2a17721cbe28581541766ea75e71b1d0bb840c1fdb5af174dedd237.png" />
 </div>
 </div>
-</div>
-<div class="section" id="calculate-the-envelope-of-this-signal-with-da-groupby">
-<h2>Calculate the envelope of this signal with <code class="docutils literal notranslate"><span class="pre">da.groupby</span></code><a class="headerlink" href="#calculate-the-envelope-of-this-signal-with-da-groupby" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="calculate-the-envelope-of-this-signal-with-da-groupby">
+<h2>Calculate the envelope of this signal with <code class="docutils literal notranslate"><span class="pre">da.groupby</span></code><a class="headerlink" href="#calculate-the-envelope-of-this-signal-with-da-groupby" title="Permalink to this headline">#</a></h2>
 <p>Next, we’ll calculate the <strong>envelope</strong> of the high-pass-filtered data. This is roughly
 the <strong>power</strong> that is present in these high frequencies over time. We do so by using
 something called a <strong>hilbert transform</strong>.</p>
@@ -1170,16 +1178,16 @@ If we take a look at the resulting data, we can see what seems to be more struct
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_30_0.png" src="../../../_images/2019-10-22-xarray-neuro_30_0.png" />
+<img alt="../../../_images/e1446b2497ff3fb1e0183cfa2eb972550f7c9809279dfed6ded7a4c150334caa.png" src="../../../_images/e1446b2497ff3fb1e0183cfa2eb972550f7c9809279dfed6ded7a4c150334caa.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="cleaning-up-our-hfa-data">
-<h1>Cleaning up our HFA data<a class="headerlink" href="#cleaning-up-our-hfa-data" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section id="cleaning-up-our-hfa-data">
+<h1>Cleaning up our HFA data<a class="headerlink" href="#cleaning-up-our-hfa-data" title="Permalink to this headline">#</a></h1>
 <p>Next let’s clean up this high-frequency activity (HFA) data.</p>
-<div class="section" id="z-scoring-our-array">
-<h2>Z-scoring our array<a class="headerlink" href="#z-scoring-our-array" title="Permalink to this headline">¶</a></h2>
+<section id="z-scoring-our-array">
+<h2>Z-scoring our array<a class="headerlink" href="#z-scoring-our-array" title="Permalink to this headline">#</a></h2>
 <p>Instead of simple de-meaning
 the data like before, we’ll <strong>re-scale</strong> our data using the same baseline timepoints.
 What we’d like to do is the following:</p>
@@ -1213,12 +1221,12 @@ some of the channels after <code class="docutils literal notranslate"><span clas
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_35_0.png" src="../../../_images/2019-10-22-xarray-neuro_35_0.png" />
+<img alt="../../../_images/2482864996fbf2da7b325ee48bbabf7880924fa1e2ca95fd9f5f268a9a8e80c2.png" src="../../../_images/2482864996fbf2da7b325ee48bbabf7880924fa1e2ca95fd9f5f268a9a8e80c2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="smoothing-our-hfa-data">
-<h2>Smoothing our HFA data<a class="headerlink" href="#smoothing-our-hfa-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="smoothing-our-hfa-data">
+<h2>Smoothing our HFA data<a class="headerlink" href="#smoothing-our-hfa-data" title="Permalink to this headline">#</a></h2>
 <p>Finally, let’s smooth this HFA so it has less jitter to it, and pick a smaller window that
 removes some of the filtering artifacts at the edges.</p>
 <p>We’ll use the same <code class="docutils literal notranslate"><span class="pre">filter_data</span></code> function as before, but this time
@@ -1258,7 +1266,7 @@ a quick comparison:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/2019-10-22-xarray-neuro_39_0.png" src="../../../_images/2019-10-22-xarray-neuro_39_0.png" />
+<img alt="../../../_images/0b44d99cd8f37bb91c76781c339d9db6a0f706f9eb0ed61b70b6351322a5bfed.png" src="../../../_images/0b44d99cd8f37bb91c76781c339d9db6a0f706f9eb0ed61b70b6351322a5bfed.png" />
 </div>
 </div>
 <p>Now we can see there are clearly some channels that become active just after <code class="docutils literal notranslate"><span class="pre">t==0</span></code>.
@@ -1332,10 +1340,10 @@ and convert it to a DataFrame for further processing:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="time-frequency-analysis">
-<h1>Time frequency analysis<a class="headerlink" href="#time-frequency-analysis" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section id="time-frequency-analysis">
+<h1>Time frequency analysis<a class="headerlink" href="#time-frequency-analysis" title="Permalink to this headline">#</a></h1>
 <p>As a final step, let’s <strong>expand</strong> our DataArray and add another dimension.
 In the above steps we specifically focused on high-frequency activity. A more
 common approach is to first create a <strong>spectrogram</strong> of your data to see activity
@@ -1376,8 +1384,8 @@ This will return a NumPy array with the filtered values.</p>
 </div>
 </div>
 </div>
-<div class="section" id="convert-this-data-into-a-dataarray-with-expand-dims">
-<h2>Convert this data into a DataArray with <code class="docutils literal notranslate"><span class="pre">.expand_dims</span></code><a class="headerlink" href="#convert-this-data-into-a-dataarray-with-expand-dims" title="Permalink to this headline">¶</a></h2>
+<section id="convert-this-data-into-a-dataarray-with-expand-dims">
+<h2>Convert this data into a DataArray with <code class="docutils literal notranslate"><span class="pre">.expand_dims</span></code><a class="headerlink" href="#convert-this-data-into-a-dataarray-with-expand-dims" title="Permalink to this headline">#</a></h2>
 <p>Next, we’ll convert this into a DataArray by using the metadata from our original
 DataArray. We can use the <code class="docutils literal notranslate"><span class="pre">expand_dims</span></code> method to create a new dimension for our DataArray.
 We’ll use this to store frequency information.</p>
@@ -1411,7 +1419,7 @@ to copy, we directly insert the new data inside the generated DataArray.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb35626c88&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/2019-10-22-xarray-neuro_50_1.png" src="../../../_images/2019-10-22-xarray-neuro_50_1.png" />
+<img alt="../../../_images/026ae0809f92b4be072bd8ba84caa22e3fa8b40ba05550e201724d674d0cabb4.png" src="../../../_images/026ae0809f92b4be072bd8ba84caa22e3fa8b40ba05550e201724d674d0cabb4.png" />
 </div>
 </div>
 <p>Similar to our one-dimensional visualizations above, it can be hard to visualize
@@ -1451,14 +1459,14 @@ acts similarly to our <code class="docutils literal notranslate"><span class="pr
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7feb06faaa58&gt;
 </pre></div>
 </div>
-<img alt="../../../_images/2019-10-22-xarray-neuro_54_1.png" src="../../../_images/2019-10-22-xarray-neuro_54_1.png" />
+<img alt="../../../_images/c6642bf543d37385bee49d402fd762abe7397f03891588d36c60ef95544dc3a8.png" src="../../../_images/c6642bf543d37385bee49d402fd762abe7397f03891588d36c60ef95544dc3a8.png" />
 </div>
 </div>
 <p>Now we can see a clear increase in activity in the higher frequencies at <code class="docutils literal notranslate"><span class="pre">t==0</span></code>.</p>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="combining-the-two-with-xr-merge">
-<h1>Combining the two with <code class="docutils literal notranslate"><span class="pre">xr.merge</span></code><a class="headerlink" href="#combining-the-two-with-xr-merge" title="Permalink to this headline">¶</a></h1>
+</section>
+</section>
+<section id="combining-the-two-with-xr-merge">
+<h1>Combining the two with <code class="docutils literal notranslate"><span class="pre">xr.merge</span></code><a class="headerlink" href="#combining-the-two-with-xr-merge" title="Permalink to this headline">#</a></h1>
 <p>Finally, let’s combine these two DataArrays into one. We know that they
 share much of the same metadata - the first is “Amplitude of High-Frequency Activity”
 and the second is “Time-frequency power”. We should be able to merge these
@@ -2448,12 +2456,12 @@ power across the higher frequencies.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feb06f5a470&gt;]
 </pre></div>
 </div>
-<img alt="../../../_images/2019-10-22-xarray-neuro_61_1.png" src="../../../_images/2019-10-22-xarray-neuro_61_1.png" />
+<img alt="../../../_images/431be3d05bc931a51a369c1e50b511fbd4ed8e511fa930d748d4902add223a4f.png" src="../../../_images/431be3d05bc931a51a369c1e50b511fbd4ed8e511fa930d748d4902add223a4f.png" />
 </div>
 </div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="wrapping-up">
-<h1>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h1>
+</section>
+<section id="wrapping-up">
+<h1>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">#</a></h1>
 <p>In all, I was pretty happy with what you can do using xarray’s <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> structure.
 It’s pretty nice to be able to refer to axes by their names, and to make more intelligent
 selection / slicing operations using their coordinate values. Moreover, this post is just
@@ -2466,7 +2474,7 @@ I’ll explore that in another blog post.</p>
 <p>Finally - the goal of this post has largely been to learn a bit more about xarray. This means I might
 be totally mis-using functionality, or missing something that would have made the above process much
 easier. If anybody has tips or thoughts on the code above, please do reach out!</p>
-</div>
+</section>
 
 <div class="section">
     
@@ -2494,7 +2502,7 @@ easier. If anybody has tips or thoughts on the code above, please do reach out!<
   
 </div>
 
-              </div>
+              </article>
               
 <!-- Add a comment box underneath the page's content -->
 <script src="https://giscus.app/client.js"
@@ -2511,34 +2519,39 @@ easier. If anybody has tips or thoughts on the code above, please do reach out!<
         async>
 </script>
 
+
               
-              <!-- Previous / next buttons -->
+              <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
+              </footer>
               
-          </main>
+          </div>
           
-
       </div>
     </div>
+
   
-    <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-  <footer class="footer mt-5 mt-md-0">
-  <div class="container">
-    
-    <div class="footer-item">
-      <p class="copyright">
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
     &copy; Copyright 2020, Chris Holdgraf.<br>
 </p>
-    </div>
-    
-    <div class="footer-item">
-      <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
-</p>
-    </div>
-    
   </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
 </footer>
   </body>
 </html>
