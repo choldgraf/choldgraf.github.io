@@ -1,4 +1,5 @@
 import nox
+from shlex import split
 
 nox.options.reuse_existing_virtualenvs = True
 
@@ -11,4 +12,4 @@ def docs(session):
 @nox.session(name="docs-live")
 def docs_live(session):
     session.install('-r', 'requirements.txt')
-    session.run(*'sphinx-build -nW --keep-going -b dirhtml . _build/dirhtml'.split())
+    session.run(*split('sphinx-autobuild -b dirhtml . _build/dirhtml'))

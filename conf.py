@@ -91,8 +91,9 @@ panels_add_bootstrap_css = False
 
 # MyST config
 myst_enable_extensions = [
-    "deflist",
     "colon_fence",
+    "deflist",
+    "html_image",
 ]
 
 # Bibliography and citations
