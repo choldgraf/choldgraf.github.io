@@ -12,4 +12,4 @@ def docs(session):
 @nox.session(name="docs-live")
 def docs_live(session):
     session.install('-r', 'requirements.txt')
-    session.run(*split('sphinx-autobuild -b dirhtml . _build/dirhtml'))
+    session.run(*split('sphinx-autobuild -b dirhtml . _build/dirhtml --ignore _build/**'))
