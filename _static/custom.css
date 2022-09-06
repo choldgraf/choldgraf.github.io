@@ -30,6 +30,10 @@ div.profile-pic img {
 }
 
 
+/**
+ * ABlog styling
+ */
+
 /* Sidebar for blog archive / each post */
 ul.ablog-archive {
     padding-left: 0px;
@@ -37,6 +41,10 @@ ul.ablog-archive {
 
 .bd-sidebar h2 {
     font-size: 1.4em;
+}
+
+.bd-sidebar h1, .bd-sidebar h2, .bd-sidebar h3 {
+    margin-top: .5rem;
 }
 
 .bd-sidebar ul {
@@ -113,3 +121,4 @@ div.twitter-tweet {
     margin-left: auto;
     margin-right: auto;
 }
+
