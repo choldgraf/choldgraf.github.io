@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://predictablynoisy.com</id>
   <title>Predictably Noisy</title>
-  <updated>2022-09-08T11:36:28.783669+00:00</updated>
+  <updated>2022-09-08T11:44:08.335138+00:00</updated>
   <link href="https://predictablynoisy.com"/>
   <link href="https://predictablynoisy.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.29">ABlog</generator>
