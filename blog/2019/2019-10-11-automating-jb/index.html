@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Automating Jupyter Book deployments with CI/CD" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2019/2019-10-11-automating-jb/" />
+<meta property="og:description" content="Lately I’ve spent a lot of time trying to reduce the friction involved in deploying Jupyter Book as well as contributing to the project. Features are a great carrot, but ultimately getting engageme..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
+<meta property="og:image:alt" content="Automating Jupyter Book deployments with CI/CD" />
+<meta name="description" content="Lately I’ve spent a lot of time trying to reduce the friction involved in deploying Jupyter Book as well as contributing to the project. Features are a great carrot, but ultimately getting engageme..." />
+
+    <title>Automating Jupyter Book deployments with CI/CD &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2019/2019-10-11-automating-jb';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en"> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  11 October 2019 
+</h2>
+
+<ul>
+       
+<li id="tags">
+  <span><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../tag/infrastructure/">infrastructure</a>  
+</li>
+ 
+</ul>
+
+    </div>
+    <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2022/sphinx-redirects-folder/"
+      >19 November - Automatically redirect folders in Sphinx websites</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/cloud-services-academia/"
+      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2021/2021-12-18-hybrid-tutorial-prerecord/"
+      >17 December - Serving in two roles at once via pre-recorded tutorials</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+</ul>
+
+    </div>
+    <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2022/">2022 (2)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+
+            <article class="bd-article" role="main">
+               <section id="automating-jupyter-book-deployments-with-ci-cd">
+<h1>Automating Jupyter Book deployments with CI/CD<a class="headerlink" href="#automating-jupyter-book-deployments-with-ci-cd" title="Permalink to this heading">#</a></h1>
+<p>Lately I’ve spent a lot of time trying to reduce the friction involved
+in deploying Jupyter Book as well as contributing to the project.
+Features are a great carrot, but ultimately getting engagement is also
+about lowering barriers to entry and showing people a path forward.
+Jupyter Book is a relatively straightforward project, but it involves
+a few technical pieces that can be painful to use (thanks Jekyll).</p>
+<p>Recently I experimented with whether we can <strong>automate deploying a Jupyter Book online</strong>.
+Using continuous integration / deployment services seems like a natural place
+to try this out. One can upload a barebones set of code to a GitHub repository,
+then configure a build system to create a book and deploy it online from there.
+This blog post is a place to keep track of the current state of affairs for this workflow.</p>
+<p><img alt="auto build logos" src="../../../_images/jb-auto-build.png" /></p>
+<p><strong>I’ll publish the latest configuration files for this at <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/">this repository</a></strong>.</p>
+<section id="the-general-set-of-steps-involved">
+<h2>The general set of steps involved<a class="headerlink" href="#the-general-set-of-steps-involved" title="Permalink to this heading">#</a></h2>
+<p>We’ll start with the simplest possible Jupyter Book configuration:
+to have a single folder with a collection of content inside. The folder looks
+like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
+├── content
+│   ├── <span class="m">01</span>
+<span class="p">|</span>   │   ├──── notebook1.ipynb
+│   │   └──── notebook2.ipynb
+│   ├── <span class="m">02</span>
+<span class="p">|</span>   │   ├──── notebook3.ipynb
+│   │   └──── mdfile4.md
+...
+<span class="p">|</span>
+└── configuration_files_for_cicd/
+</pre></div>
+</div>
+<p>There’s no table of contents, and no configuration file (though we could add
+these if we wish). If Jupyter Book is used to create a new book with some
+content, but no TOC is given, it’ll automatically generate one.</p>
+<p>Our goal is to do the following in an automated fashion:</p>
+<ol class="arabic simple">
+<li><p>Build a new Jupyter Book template from this content folder (with <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">create</span></code>)</p></li>
+<li><p>Build page HTML for the book (with <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span></code>)</p></li>
+<li><p>Generate the book’s site with Jekyll (with <code class="docutils literal notranslate"><span class="pre">bundle</span> <span class="pre">exec</span> <span class="pre">jekyll</span> <span class="pre">build</span></code>)</p></li>
+<li><p>Host the results somewhere online</p></li>
+</ol>
+<p>Below are attempts to do this with CI/CD. I’ll update this post
+as new options become available (and hopefully push some stuff to
+the Jupyter Book documentation).</p>
+</section>
+<section id="netlify">
+<h2>Netlify<a class="headerlink" href="#netlify" title="Permalink to this heading">#</a></h2>
+<p>By far the easiest way to accomplish the above is with the online
+website provider <a class="reference external" href="https://www.netlify.com">Netlify</a>. This was my
+first experience with the Netlify service, and I must say that I was
+really pleased (thanks to <a class="reference external" href="https://github.com/emdupre">Elizabeth DuPre</a>
+for the recommendation and <a class="reference external" href="https://jupyterbook.org/guide/publish/netlify.html">Netlify tutorial</a>).</p>
+<p>Netlify has automatic deployment built into its service, since that’s
+the whole point of the site - to deploy websites from online repositories.
+To do this, I simply had to connect Netlify to my <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/">book content repository</a>
+and tell it to start building a site from that repository’s contents.</p>
+<p>I modified the build instructions using a custom “build” command.
+Netlify runs this command every time it tries to build your site.
+You can configure this by creating a <code class="docutils literal notranslate"><span class="pre">netlify.toml</span></code> file and putting it
+in the root of your repository. <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/netlify.toml">Here’s a link to my configuration file</a>.</p>
+<p>The full text of that TOML file looks like this:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build]</span><span class="w"></span>
+<span class="w">  </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    gem install bundler -v &#39;2.0.2&#39;</span>
+<span class="s">    pip install -U git+https://github.com/jupyter/jupyter-book</span>
+<span class="s">    jupyter-book create mybook --content-folder content</span>
+<span class="s">    cd mybook</span>
+<span class="s">    jupyter-book build ./ --overwrite</span>
+<span class="s">    make install</span>
+<span class="s">    bundle exec jekyll build</span>
+<span class="s">    &quot;&quot;&quot;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mybook/_site&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+<p>There are two pieces to this: the <code class="docutils literal notranslate"><span class="pre">command</span></code> section is the command to
+run first, when a new commit is pushed to a branch. The <code class="docutils literal notranslate"><span class="pre">publish</span></code> section
+defines the location where Netlify will look for the finished HTML (AKA, my book website).</p>
+<p>Note that in the <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">create</span></code> command above, I used <code class="docutils literal notranslate"><span class="pre">--content-folder</span></code> to
+tell Jupyter Book to use some pre-existing content when it generated my book template.
+In addition, note that I could immediately install both Python and Ruby packages - that’s
+because Netlify’s base build environment has both languages installed already!</p>
+<!-- #region {"tags": ["popout"]} -->
+<p>One gotcha on getting Netlify to work was configuring it to use a Python 3.X environment.
+That’s accomplished with the <code class="docutils literal notranslate"><span class="pre">runtime.txt</span></code> file <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/runtime.txt">at this location</a>.</p>
+<!-- #endregion -->
+<p>By adding this configuration to my site, Netlify immediately started building
+and hosting the book. You can find <a class="reference external" href="https://jupyter-book-deploy-demo.netlify.com">that book deployment here</a>.</p>
+</section>
+<section id="circleci">
+<h2>CircleCI<a class="headerlink" href="#circleci" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://circleci.com">CircleCI</a> is a website most-commonly used for running
+test suites and deploying things into production once those tests pass.
+Fortunately, deploying an HTML book is pretty similar!</p>
+<p>Getting Jupyter Book to build on CircleCI was a little bit trickier for two
+reasons:</p>
+<ol class="arabic simple">
+<li><p>CircleCI has more specific environments in its build system. You can have a Python
+environment, or a Ruby environment, but not both.</p></li>
+<li><p>CircleCI has no concept of natively “hosting” HTML content, so we had to piggy-back
+on top of GitHub pages.</p></li>
+</ol>
+<p>Luckily, working around both of these issues was relatively straightforward.
+You can find the CircleCI configuration that ended up working <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/.circleci/config.yml">in the github repository</a>.</p>
+<p>There were two gotchas in there:</p>
+<ol class="arabic simple">
+<li><p>I started off with using a Ruby environment rather than a Python environment.
+That’s becuase I’ve found Python to be much easier to install than Ruby. In fact,
+installing python was as easy as including <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">python3-pip</span></code> in
+my commands.</p></li>
+<li><p>I had to use a GitHub SSH deploy key to be able to deploy my built HTML to GitHub
+pages. You can find <a class="reference external" href="https://predictablynoisy.com/circleci-mirror">instructions for how to do so in this post</a>.</p></li>
+</ol>
+<p>Once that was accomplished, this is the configuration that got the job done:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span><span class="w"></span>
+<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">build_book</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span><span class="w"></span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Python and dependencies to build page HTML</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">sudo apt-get install python3-pip</span><span class="w"></span>
+<span class="w">            </span><span class="no">pip3 install --user -r requirements.txt</span><span class="w"></span>
+<span class="w">            </span><span class="no">pip3 install --user -U git+https://github.com/jupyter/jupyter-book.git</span><span class="w"></span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create book template and build page HTML</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">jupyter-book create mybook --content-folder content/</span><span class="w"></span>
+<span class="w">            </span><span class="no">jupyter-book build ./mybook</span><span class="w"></span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install ruby dependencies and build the book&#39;s website</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">cd mybook</span><span class="w"></span>
+<span class="w">            </span><span class="no">make install</span><span class="w"></span>
+<span class="w">            </span><span class="no">bundle exec jekyll build</span><span class="w"></span>
+
+<span class="w">      </span><span class="c1"># If we&#39;re on master, push to a gh-pages branch</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&lt;my-public-fingerprint&gt;&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to gh-pages (if on master)</span><span class="w"></span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
+<span class="w">            </span><span class="no">if [ $CIRCLE_BRANCH	== &quot;master&quot; ]; then</span><span class="w"></span>
+<span class="w">              </span><span class="no">pip3 install ghp-import</span><span class="w"></span>
+<span class="w">              </span><span class="no">ghp-import -n -f -p mybook/_site;</span><span class="w"></span>
+<span class="w">            </span><span class="no">else</span><span class="w"></span>
+<span class="w">              </span><span class="no">echo &quot;Skipping deploy because we aren&#39;t on master&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="no">fi</span><span class="w"></span>
+
+
+<span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_book</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can find the deployed site <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo">at this location</a>.</p>
+</section>
+<section id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this heading">#</a></h2>
+<p>Ultimately, it was simpler than I expected to deploy a Jupyter Book with CI/CD.
+There are lots of other services to explore (in particular, TravisCI and GitHub actions),
+but I find it hard to believe anything would be more straightforward than Netlify.</p>
+<p>That said, the process also made it clear that some pieces of the Jupyter Book API
+are a bit confusing. It felt natural to have my content in a single folder, and to
+build a book from that content, but this isn’t the “default” way that the documentation
+recommends. I’ll let these ideas simmer a little bit and we’ll see what comes out of it.</p>
+</section>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../2019-06-25-a-few-talks/">
+      <i class="fa fa-arrow-circle-left"></i> A few recent talks
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../2019-10-13-rust-jupyter-governance/">
+      What would Rust-style governance look like in Jupyter? <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+            </article>
+            
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-general-set-of-steps-involved">
+   The general set of steps involved
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#netlify">
+   Netlify
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#circleci">
+   CircleCI
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wrapping-up">
+   Wrapping up
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2019/2019-10-11-automating-jb.md.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Chris Holdgraf.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

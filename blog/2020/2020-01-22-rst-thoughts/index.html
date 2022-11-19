@@ -1,0 +1,931 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="What do people think about rST?" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts/" />
+<meta property="og:description" content="Publishing computational narratives has always been a dream of the Jupyter Project, and there is still a lot of work to be done in improving these use-cases. We’ve made a lot of progress in providi..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
+<meta property="og:image:alt" content="What do people think about rST?" />
+<meta name="description" content="Publishing computational narratives has always been a dream of the Jupyter Project, and there is still a lot of work to be done in improving these use-cases. We’ve made a lot of progress in providi..." />
+
+    <title>What do people think about rST? &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2020/2020-01-22-rst-thoughts';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en"> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  22 January 2020 
+</h2>
+
+<ul>
+       
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/documentation/">documentation</a>   
+  <a href="../../tag/markup/">markup</a>  
+</li>
+ 
+</ul>
+
+    </div>
+    <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2022/sphinx-redirects-folder/"
+      >19 November - Automatically redirect folders in Sphinx websites</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/cloud-services-academia/"
+      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2021/2021-12-18-hybrid-tutorial-prerecord/"
+      >17 December - Serving in two roles at once via pre-recorded tutorials</a
+    >
+  </li>
+  
+  <li>
+    <a href="../organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+</ul>
+
+    </div>
+    <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2022/">2022 (2)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../../2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+
+            <article class="bd-article" role="main">
+               <section id="what-do-people-think-about-rst">
+<h1>What do people think about rST?<a class="headerlink" href="#what-do-people-think-about-rst" title="Permalink to this heading">#</a></h1>
+<p>Publishing computational narratives has always been a dream of the Jupyter Project,
+and there is still a lot of work to be done in improving these use-cases. We’ve made
+a lot of progress in providing open infrastructure for reproducible science with
+<a class="reference external" href="https://jupyterhub.readthedocs.io/en/stable/">JupyterHub</a> and
+<a class="reference external" href="https://mybinder.org/">the Binder Project</a>, but what about the documents themselves?
+We’ve recently been working on tools like <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a>,
+which aim to improve the writing and publishing process with the Jupyter ecosystem.
+This is hopefully the first post of a few that ask how we can best-improve the state
+of publishing with Jupyter.</p>
+<div class="tip admonition">
+<p class="admonition-title">Update!</p>
+<p>Many of the ideas in this post have now made their way into a new flavor of markdown called <a class="reference external" href="https://myst-parser.readthedocs.io">Markedly Structured Text</a>, or MyST. It brings all of the features of rST into Markdown. Check it out!</p>
+</div>
+<p>Python has a fairly sophisticated publishing tool in its stack. <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>
+has been a staple for publishing documentation for packages for several years now.
+Interestingly, publishing a book is more similar to publishing a package’s documentation
+than it is to, say, publishing a blog. Maybe we could use Sphinx more heavily for
+writing computational narratives.</p>
+<p>One of the major challenges with Sphinx is that its default markup language is reStructuredText,
+a fairly old but battle-tested markup language. The benefit of reStructuredText is that it is
+a <em>semantic language</em>, meaning that it has ways to store more information about the nature
+of the text (e.g. something is an “author”, something is a “reference”, etc). It is also a standard
+that has remained very stable over time (whether that’s a good or bad thing I’ll leave to you to decide).</p>
+<p>However, there are a few major problems with reStructuredText that have impeded its adoption by
+communities outside of the Python documentation world. I recently <a class="reference external" href="https://twitter.com/choldgraf/status/1212054861132521472">asked around on Twitter</a>
+what these problems were.
+I got some interesting responses! Here is a quick summary of people’s thoughts.</p>
+</section>
+<section id="the-syntax-of-rst-is-too-confusing">
+<h1>The syntax of rST is too confusing<a class="headerlink" href="#the-syntax-of-rst-is-too-confusing" title="Permalink to this heading">#</a></h1>
+<p>By far the most common response was that rST syntax is simply too confusing. Here were the main
+pain points.</p>
+<section id="link-syntax">
+<h2>Link syntax<a class="headerlink" href="#link-syntax" title="Permalink to this heading">#</a></h2>
+<p>Many folks particularly mentioned that they needed to look up how to construct links every time they wrote rST.</p>
+<p>For reference, a link in rST looks like this:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>This <span class="s">`Is a link to </span><span class="si">&lt;https://google.com&gt;</span><span class="s">`_</span>.
+</pre></div>
+</div>
+<p>Compared with markdown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="p">[</span><span class="ow">is</span> <span class="n">a</span> <span class="n">link</span> <span class="n">to</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="header-complexity">
+<h2>Header complexity<a class="headerlink" href="#header-complexity" title="Permalink to this heading">#</a></h2>
+<p>rST uses “setext” headers, which means that you put a bunch of underline-like
+characters under (or under+over) the header name itself, like so:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">This is my first header</span>
+<span class="gh">=======================</span>
+
+<span class="gh">======================</span>
+<span class="gh">This is another header</span>
+<span class="gh">======================</span>
+</pre></div>
+</div>
+<p>Compare this to “ATX headers”, which markdown uses and look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a header</span>
+</pre></div>
+</div>
+<p>Setting aside the annoyance of having to hold down the “=” a bunch of times,
+the big problem with rST headers is that header <strong>characters in rST have no single
+mapping onto header hierarchy</strong>. For example:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">This is my first header</span>
+<span class="gh">~~~~~~~~~~~~~~~~~~~~~~~</span>
+
+<span class="gh">And this is my second header</span>
+<span class="gh">============================</span>
+</pre></div>
+</div>
+<p>is the same as</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">This is my first header</span>
+<span class="gh">=======================</span>
+<span class="gh">And this is my second header</span>
+<span class="gh">~~~~~~~~~~~~~~~~~~~~~~~~~~~~</span>
+</pre></div>
+</div>
+<p>This is a case where too much flexibility makes life more difficult than it needs to be. Many
+responses wished that rST simply used “ATX” headers (using <code class="docutils literal notranslate"><span class="pre">#</span></code> in front of titles) or chose
+a single hierarchy of header characters.</p>
+</section>
+<section id="in-line-code">
+<h2>In-line code<a class="headerlink" href="#in-line-code" title="Permalink to this heading">#</a></h2>
+<p>Many folks also dislike the fact that in rST, you must denote in-line code blocks with <strong>two</strong>
+backticks instead of one. For example, this is rST:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>Here is some inline code: <span class="s">``a = 2``</span>
+</pre></div>
+</div>
+<p>While here is some markdown</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Here is some inline code: `a = 2`
+</pre></div>
+</div>
+<p>It may seem silly, but markdown’s ubiquity has given most people the assumption that backticks==code.
+The fact that rST deviates from this adds unnecessary cognitive burden to most users.</p>
+</section>
+<section id="nesting-in-line-markup">
+<h2>Nesting in-line markup<a class="headerlink" href="#nesting-in-line-markup" title="Permalink to this heading">#</a></h2>
+<p>Finally, there were several mentions of rST’s strange inability to nest in-line formatting.
+E.g. being able to bold a link by nesting <code class="docutils literal notranslate"><span class="pre">**</span></code> inside of your link syntax.</p>
+</section>
+<section id="a-quick-summary">
+<h2>A quick summary<a class="headerlink" href="#a-quick-summary" title="Permalink to this heading">#</a></h2>
+<p>Here is a quick list of the tweets that touched on the topic of syntax:</p>
+<ul class="simple">
+<li><p>Links syntax is confusing (9 total)</p>
+<ul>
+<li><p>Links are confusing: <a class="reference external" href="https://twitter.com/asmeurer/status/1212468755768336384">https://twitter.com/asmeurer/status/1212468755768336384</a></p></li>
+<li><p>Bad syntax, esp links: <a class="reference external" href="https://twitter.com/njgoldbaum/status/1212059796142055424">https://twitter.com/njgoldbaum/status/1212059796142055424</a></p></li>
+<li><p>Links structure: <a class="reference external" href="https://twitter.com/SylvainCorlay/status/1212061834116816898">https://twitter.com/SylvainCorlay/status/1212061834116816898</a></p></li>
+<li><p>External links: <a class="reference external" href="https://twitter.com/WillingCarol/status/1212152304800894976">https://twitter.com/WillingCarol/status/1212152304800894976</a></p></li>
+<li><p>Syntax / too complex to write: <a class="reference external" href="https://twitter.com/minrk/status/1212119686009233410">https://twitter.com/minrk/status/1212119686009233410</a></p></li>
+<li><p>Syntax, esp links and tables: <a class="reference external" href="https://twitter.com/_JacobTomlinson/status/1212104705809289219">https://twitter.com/_JacobTomlinson/status/1212104705809289219</a></p></li>
+<li><p>Improve links: <a class="reference external" href="https://twitter.com/andreazonca/status/1212166686389858306">https://twitter.com/andreazonca/status/1212166686389858306</a></p></li>
+<li><p>Links and heading permalinks: <a class="reference external" href="https://twitter.com/goerz/status/1212610069252263936">https://twitter.com/goerz/status/1212610069252263936</a></p></li>
+<li><p>Inline hyperlinks: <a class="reference external" href="https://twitter.com/moorepants/status/1212072806994739200">https://twitter.com/moorepants/status/1212072806994739200</a></p></li>
+</ul>
+</li>
+<li><p>Header / title syntax (3 total)</p>
+<ul>
+<li><p>Using underlines for headers: <a class="reference external" href="https://twitter.com/phaustin/status/1212067821976375296">https://twitter.com/phaustin/status/1212067821976375296</a></p></li>
+<li><p>Titles: <a class="reference external" href="https://twitter.com/mfcabrera/status/1212126606170431489">https://twitter.com/mfcabrera/status/1212126606170431489</a></p></li>
+<li><p>Title lines are confusing: <a class="reference external" href="https://twitter.com/alienghic/status/1212119125398437888">https://twitter.com/alienghic/status/1212119125398437888</a></p></li>
+</ul>
+</li>
+<li><p>Two backticks for code</p>
+<ul>
+<li><p>Two Backticks for code literals: <a class="reference external" href="https://twitter.com/brettsky/status/1212422437683351553">https://twitter.com/brettsky/status/1212422437683351553</a></p></li>
+</ul>
+</li>
+<li><p>Nested inline markup (e.g. ‘em’ inside of ‘strong’) (2 total)</p>
+<ul>
+<li><p>Nested inline markup: <a class="reference external" href="https://twitter.com/asmeurer/status/1212468755768336384">https://twitter.com/asmeurer/status/1212468755768336384</a></p></li>
+<li><p>nested “em” in “strong”: <a class="reference external" href="https://twitter.com/uranusjr/status/1212179877341720577">https://twitter.com/uranusjr/status/1212179877341720577</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="error-reporting-and-the-complexity-of-sphinx">
+<h1>Error reporting and the complexity of Sphinx<a class="headerlink" href="#error-reporting-and-the-complexity-of-sphinx" title="Permalink to this heading">#</a></h1>
+<p>The other major complaint people had was in the toolchain itself. Sphinx is an incredibly powerful tool,
+but this comes with a degree of complexity that many find difficult to work through. This isn’t helped
+by the fact that the <a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx documentation</a>
+is itself incomplete in many sections (the irony of this is not lost on me).</p>
+<p>In particular, several people commented about the difficulty in surfacing and debugging errors that happen
+in the Sphinx build chain. They also mentioned that Sphinx can be slow to build sometimes, which
+bogs down the development and writing process.</p>
+<p>Here are the tweets about the Sphinx toolchain itself:</p>
+<ul class="simple">
+<li><p>Error reporting / complexity of Sphinx itself (3 total)</p>
+<ul>
+<li><p>Error reporting: <a class="reference external" href="https://twitter.com/asmeurer/status/1212468909078544384">https://twitter.com/asmeurer/status/1212468909078544384</a></p></li>
+<li><p>Error reporting in Sphinx etc: <a class="reference external" href="https://twitter.com/GaelVaroquaux/status/1212058374981988352">https://twitter.com/GaelVaroquaux/status/1212058374981988352</a></p></li>
+<li><p>Documentation is bad: <a class="reference external" href="https://twitter.com/AkhmerovAnton/status/1212059839033171968">https://twitter.com/AkhmerovAnton/status/1212059839033171968</a></p></li>
+</ul>
+</li>
+</ul>
+<p>There were also a few miscellaneous responses that didn’t quite fit into the above categories:</p>
+<ul class="simple">
+<li><p>Misc (6 total)</p>
+<ul>
+<li><p>Isn’t a standard: <a class="reference external" href="https://twitter.com/aterrel/status/1212132546307350529">https://twitter.com/aterrel/status/1212132546307350529</a></p></li>
+<li><p>Newlines in nested lists, not easy to deploy: <a class="reference external" href="https://twitter.com/westurner/status/1212178375571365891">https://twitter.com/westurner/status/1212178375571365891</a></p></li>
+<li><p>No notebook support: <a class="reference external" href="https://twitter.com/moorepants/status/1212062811599147008">https://twitter.com/moorepants/status/1212062811599147008</a></p></li>
+<li><p>Has state: <a class="reference external" href="https://twitter.com/Mbussonn/status/1212069224245551104">https://twitter.com/Mbussonn/status/1212069224245551104</a></p></li>
+<li><p>General complexity: <a class="reference external" href="https://twitter.com/mrocklin/status/1212123762595811328">https://twitter.com/mrocklin/status/1212123762595811328</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="what-can-be-done">
+<h1>What can be done?<a class="headerlink" href="#what-can-be-done" title="Permalink to this heading">#</a></h1>
+<p>Overall, it seems like <strong>reStructuredText</strong> could be much-improved with a few minor
+modifications to its syntax. These don’t seem like they are structurally
+incompatible with rST, and would alleviate some of the cognitive
+burden that users report when they use it. Here’s a quick list of simple things:</p>
+<ul class="simple">
+<li><p>rST could use markdown syntax for external links.</p></li>
+<li><p>rST could decide on a fixed interpretation of header characters to levels in the header hierarchy</p></li>
+<li><p>rST could default to interpreting single backticks as raw code spans</p></li>
+</ul>
+<p>and a list of slightly more complex things:</p>
+<ul class="simple">
+<li><p>rST could support nested styling inside of links and other elements</p></li>
+<li><p>Sphinx could improve its error reporting and debugging machinery</p></li>
+<li><p>Sphinx could improve its documentation so that it was easier to find an answer to a question</p></li>
+</ul>
+</section>
+<section id="or-could-we-bring-restructuredtext-into-markdown">
+<h1>Or could we bring reStructuredText into Markdown?<a class="headerlink" href="#or-could-we-bring-restructuredtext-into-markdown" title="Permalink to this heading">#</a></h1>
+<p>There is another option, of course, which is to go in the opposite direction. Start with markdown,
+and then ask “how could we build the flexibility of rST into markdown” rather than bringing the
+simplicity of markdown into reStructuredText. I often wonder if the easiest thing to do would be
+to simply decide on a markdown syntax that maps on to “directives” and “roles” (perhaps the Pandoc
+code fence <code class="docutils literal notranslate"><span class="pre">:::</span></code> for directives, and link attributes <code class="docutils literal notranslate"><span class="pre">[]{attribute}</span></code> for roles). I think that both
+are worth exploring.</p>
+<p>In summary, I was surprised at the consistency of people’s complains about the rST language. It
+seems that many people are hung up about the same relatively minor syntax choices, and that making
+modifications to these choices would improve the experience for many. It’s also clear that Sphinx
+could use some developer time to make it more robust, debuggable, and well-documented. I hope that
+we can make some progress on these issues in the coming years.</p>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../sphinx-design-timeline/">
+      <i class="fa fa-arrow-circle-left"></i> Build a simple timeline with sphinx-design
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../sphinx-blogging/">
+      A new blog with Sphinx <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+            </article>
+            
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   What do people think about rST?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-syntax-of-rst-is-too-confusing">
+   The syntax of rST is too confusing
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#link-syntax">
+     Link syntax
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#header-complexity">
+     Header complexity
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-line-code">
+     In-line code
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#nesting-in-line-markup">
+     Nesting in-line markup
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-quick-summary">
+     A quick summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#error-reporting-and-the-complexity-of-sphinx">
+   Error reporting and the complexity of Sphinx
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-can-be-done">
+   What can be done?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#or-could-we-bring-restructuredtext-into-markdown">
+   Or could we bring reStructuredText into Markdown?
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2020/2020-01-22-rst-thoughts.md.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Chris Holdgraf.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>

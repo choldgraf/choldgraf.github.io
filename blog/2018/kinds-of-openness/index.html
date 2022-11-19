@@ -1,0 +1,820 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="How do projects signal how “open” they are?" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2018/kinds-of-openness/" />
+<meta property="og:description" content="How do open projects signal their “openness” to the outside community? This is a really hard question, particularly because nowadays “open” has become a buzzword that doesn’t just signal a project’..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
+<meta property="og:image:alt" content="How do projects signal how “open” they are?" />
+<meta name="description" content="How do open projects signal their “openness” to the outside community? This is a really hard question, particularly because nowadays “open” has become a buzzword that doesn’t just signal a project’..." />
+
+    <title>How do projects signal how “open” they are? &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="https://platform.twitter.com/widgets.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2018/kinds-of-openness';</script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en"> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+      
+<form class="bd-search d-flex align-items-center" action="../../../search/" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this site..." aria-label="Search this site..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../../../">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  26 October 2018 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/open-source/">open source</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/open-source/">open source</a>   
+  <a href="../../tag/governance/">governance</a>   
+  <a href="../../tag/community/">community</a>  
+</li>
+ 
+</ul>
+
+    </div>
+    <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2022/sphinx-redirects-folder/"
+      >19 November - Automatically redirect folders in Sphinx websites</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/cloud-services-academia/"
+      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2021/2021-12-18-hybrid-tutorial-prerecord/"
+      >17 December - Serving in two roles at once via pre-recorded tutorials</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/organizations-help-oss-guide/"
+      >08 November - Contributing to open source: A short guide for organizations</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2020/sphinx-blogging/"
+      >10 October - A new blog with Sphinx</a
+    >
+  </li>
+  
+</ul>
+
+    </div>
+    <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2022/">2022 (2)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../2019/">2019 (8)</a>
+  </li>
+    
+  <li>
+    <a href="../">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+            </div>
+            
+            
+
+            <article class="bd-article" role="main">
+               <section id="how-do-projects-signal-how-open-they-are">
+<h1>How do projects signal how “open” they are?<a class="headerlink" href="#how-do-projects-signal-how-open-they-are" title="Permalink to this heading">#</a></h1>
+<p>How do open projects signal their “openness” to the outside community? This is
+a really hard question, particularly because nowadays “open” has become a buzzword
+that doesn’t just signal a project’s position to the community, but is also used
+as a marketing term to increase support, users, or resources.</p>
+<p>I was thinking about this the other day, so decided to take to twitter:</p>
+<p>{% twitter https://twitter.com/choldgraf/status/1054478362209480704 %}</p>
+<p>I was surprised at how much this question resonated with people. Here are a few
+highlights from the (very interesting) conversation that came out of that question.</p>
+<section id="some-discussion-threads">
+<h2>Some discussion threads<a class="headerlink" href="#some-discussion-threads" title="Permalink to this heading">#</a></h2>
+<section id="wishes-vs-reality">
+<h3>Wishes vs. reality<a class="headerlink" href="#wishes-vs-reality" title="Permalink to this heading">#</a></h3>
+<p>Tal immediately brought up a really important point: many projects <em>want</em> to be
+inclusive and welcoming to others, but they don’t have time to do so.</p>
+<p>{% twitter https://twitter.com/talyarkoni/status/1054484496769314818 %}</p>
+<p>I think this is an important distinction, and something that should be signaled
+clearly. One the one hand, if a person generally wants others to contribute to
+the project, then they’re some degree of openness higher than a project that
+actively discourages this.</p>
+<p>On the other hand, running open projects <em>does take work</em>,
+and a project that says “well I’d like to be open but can’t commit the time to do it”
+also isn’t <em>that</em> open in practice. No hard feelings there, but I think that
+the goal of defining a “degree of openness” isn’t to signal a value judgment on the
+people related to the project, but on the project itself. If you really want to
+grow an open community around a project, you need to dedicate time and resources to
+the community itself, not just the technical pieces of the tool.</p>
+</section>
+</section>
+<section id="metrics-of-openness">
+<h2>Metrics of openness<a class="headerlink" href="#metrics-of-openness" title="Permalink to this heading">#</a></h2>
+<p>That leaves open the question: “how do we measure the <strong>practical</strong> openness of a project,
+rather than just what it <strong>says</strong>?”. A few folks mentioned that the CHAOSS project
+does a lot of work in this gneeral space:</p>
+<p>{% twitter https://twitter.com/abbycabs/status/1054492219808403457 %}</p>
+<p>CHAOSS defines standards for metrics to collect about communities. They don’t necessarily
+say what others should <strong>do</strong> with those metrics, so perhaps that’s on the open community
+to define for themselves.</p>
+<p>Personally, I’d love to see more tooling that makes it possible to scrape activity
+statistics from open repositories. Tal and others suggested a few things:</p>
+<ul class="simple">
+<li><p>time to initial response to new issues (maybe separated by new vs. old contributors)</p></li>
+<li><p>inequality coefficient for contributor commits</p></li>
+<li><p>number of unique organizations/email domains in contrbutors</p></li>
+<li><p>use of positive/welcoming language</p></li>
+<li><p>explicit roles defined, and pathways towards working more with the community</p></li>
+</ul>
+<p>I’d love to see more thoughts along these lines. If we could define a collection of
+metrics around openness, it’d paint a much more rich picture than simply “does this
+project have a permissive license.”</p>
+<p>There was also a specific metric around governance that’s worth highlighting:</p>
+<p>{% twitter https://twitter.com/GeorgLink/status/1054621070945329152 %}</p>
+<p>The paper linked above is a study that investigated “open governance” in a number of
+open-source mobile projects. It’s an interesting exploration of the ways that
+decision-making is made (and signaled) in several projects. Perhaps unsurprisingly, they
+conclude that “more open” projects are most-likely to be successful in the long term
+(with a few exceptions).</p>
+<p>Finally, apparently there’s also a “badge” to signal the status of a repository (is it
+active, vaporware, abandoned, etc):</p>
+<p>{% twitter https://twitter.com/parente/status/1055053470808580098 %}</p>
+<p>I’d love to see more of these semi-automated signals to help guide the open source community
+in deciding what projects to adopt and contribute to. As more and more people do
+their work online and in the open, it also creates a challenge of sifting through the noise
+to make the most of your (limited) time and energy. Having better metrics like these will
+make these decisions easier.</p>
+<section id="mozilla-s-archetypes-of-open-projects">
+<h3>Mozilla’s archetypes of open projects<a class="headerlink" href="#mozilla-s-archetypes-of-open-projects" title="Permalink to this heading">#</a></h3>
+<p>One of the most fascinating links I found was Mozilla’s “archetypes of open projects”
+document:</p>
+<p>{% twitter https://twitter.com/neuromusic/status/1054517145436975104 %}</p>
+<p>Briefly, this is an internal document that Mozilla made public. It attempts to define
+the different kinds of open projects that exist. Importantly, it also explains the
+value propositions of each, how it can be used strategically within an organization, and
+how it supports (or doesn’t) an open community around it.</p>
+<p>I added some thoughts about how Project Jupyter fits into these archetypes on the
+<a class="reference external" href="https://github.com/jupyter/governance/issues/60#issuecomment-432766439">Jupyter governance research issue</a>
+and I’d love to think more about how these archetypes fit into the pre-existing open communities
+that are out there. If anybody wants to brainstorm how these archetypes fit into the scientific
+open community, I’d love to chat :-)</p>
+<p>On that note, I want to give a brief shout-out to Mozilla in general, which has
+either conducted or sponsored a bunch of interesting work in open projects.
+For example, they have a whole wiki dedicated to working openly:</p>
+<p>{% twitter https://twitter.com/alex__morley/status/1054483982040121344 %}</p>
+<p>and they also run lots of training and community programs such as the
+<a class="reference external" href="https://foundation.mozilla.org/opportunity/mozilla-open-leaders/">Mozilla Open Leaders</a> program.
+Project Jupyter is in this year’s cohort and <a class="reference external" href="https://github.com/jupyter/governance/issues/57">keeping track of its progress here</a>.</p>
+</section>
+<section id="importance-of-ethnography">
+<h3>Importance of ethnography:<a class="headerlink" href="#importance-of-ethnography" title="Permalink to this heading">#</a></h3>
+<p>A final note on the importance of ethnography:</p>
+<p>{% twitter https://twitter.com/mmmpork/status/1054745690897711104 %}</p>
+<p>For all of my talk about metrics above, I’ve come to appreciate that numbers
+are <strong>never</strong> sufficient to describe the complexities of a community or group.
+Over the last several years at the <a class="reference external" href="https://bids.berkeley.edu">Berkeley Institute for Data Science</a>,
+I’ve had the pleasure of working with several ethnographers who have shared their
+perspective on how to study communities. Semi-automatically-calculated numbers can
+be a great way to see relatively coarse-level view of a community, but if you really
+wany to understand what’s going on, you need to dig in there, conduct qualitative interviews,
+operate in the community, and create some stories that back up (or not) the quantitative
+data that you collect. We’d all be better off if there were more ethnographers in our
+respective communities &lt;3.</p>
+<p>OK, that’s enough for now - I hope these links are useful and I’ll try to
+update them over time if I hear of some new projects along these lines.
+If you have any suggestions, feel free to leave ‘em in the comments!</p>
+</section>
+</section>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../rust_governance/">
+      <i class="fa fa-arrow-circle-left"></i> I like Rust’s governance structure
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../my-workflow/">
+      My weekly workflow <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+            </article>
+            
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-discussion-threads">
+   Some discussion threads
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wishes-vs-reality">
+     Wishes vs. reality
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics-of-openness">
+   Metrics of openness
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mozilla-s-archetypes-of-open-projects">
+     Mozilla’s archetypes of open projects
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importance-of-ethnography">
+     Importance of ethnography:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
+<div id="searchbox"></div>
+</div>
+
+<div class="toc-item">
+  
+</div>
+
+<div class="toc-item">
+  
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2018/kinds-of-openness.md.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+          </div>
+        </footer>
+        
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022, Chris Holdgraf.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="theme-version">
+    Built with the
+    <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">
+        PyData Sphinx Theme
+    </a>
+    0.12.0.
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
+</p>
+
+  </div>
+  
+</div>
+  </footer>
+  </body>
+</html>
