@@ -2,6 +2,7 @@
 colorspacious
 ipywidgets
 jupyterlab
+jupytext
 makeitpop
 matplotlib
 mne

@@ -8,7 +8,7 @@ tags: sphinx, blogging, jupyter
 
 I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.
 
-```{image} https://www.sphinx-doc.org/en/master/_static/sphinxheader.png
+````{image} https://www.sphinx-doc.org/en/master/_static/sphinxheader.png
 :class: bg-dark
 :target: https://www.sphinx-doc.org/en/master/
 ```
@@ -29,16 +29,19 @@ This is a great question. The answer to "should you re-work your blog to use a n
 🚀 Features
 : It turns out that building your blog (or any content for that matter) on top of a documentation engine gives you a lot of extra things to try that you don't usually get from a SSG. Being able to use [Sphinx roles/directives](https://myst-parser.readthedocs.io/en/latest/using/syntax.html#syntax-directives) from within a page is pretty cool. I can do stuff like this:
 
-  ````{panels}
-    ```{dropdown} Here's a dropdown!
+  `````{grid}
+  ````{grid-item-card}
+    ````{dropdown} Here's a dropdown!
     And here's some stuff inside!
     ```
-  ---
+  ````
+  ````{grid-item-card}
   :::{admonition} Wow, a tip!
   :class: tip
   What a great tip!
   :::
   ````
+  `````
 
 🪐 Executable content and notebooks
 : On top of the base Sphinx features, [MyST-NB](https://myst-nb.readthedocs.io) now lets me write my entire post in notebooks, and will execute and cache the content for me if I wish. I can also [write the whole notebook as markdown](https://myst-nb.readthedocs.io/en/latest/use/markdown.html) which keeps my posts easily diff-able.
