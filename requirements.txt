@@ -5,7 +5,8 @@ MyST-Parser
 pydata-sphinx-theme
 sphinx
 sphinx-autobuild
-sphinx-panels
+sphinx-design
+sphinx-examples
 sphinxcontrib-bibtex
 sphinxext-opengraph
 sphinxext-rediraffe

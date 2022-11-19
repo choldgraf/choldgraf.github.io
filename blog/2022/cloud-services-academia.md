@@ -7,7 +7,7 @@ date: "2022-09-05"
 
 _this is an experiment at making my [Twitter conversations](https://twitter.com/choldgraf) a bit more useful and archivable over time. It's going to be a bit messy and unpolished, but hopefully that makes it more likely I'll actually do it :-)_
 
-Over the past decade, cloud infrastructure has become increasingly popular in industry. 
+Over the past decade, cloud infrastructure has become increasingly popular in industry.
 An ecosystem of modular tools and cloud services (often called [the Modern Data Stack](https://future.com/emerging-architectures-modern-data-infrastructure/)) has filled many data needs for companies.
 
 However, academic research and education still largely does not utilize this stack.

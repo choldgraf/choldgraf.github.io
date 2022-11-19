@@ -91,7 +91,7 @@ In the next page, click on **Advanced Settings**, and finally switch on **Build 
 
 Now, Circle will build against the PRs of your repository.
 
-## Make a Pull Request 
+## Make a Pull Request
 
 Now it's time to test things out. Make a Pull Request for your repository. GitHub should automatically
 detect a CircleCI configuration, and run the job with the configuration you've specified.

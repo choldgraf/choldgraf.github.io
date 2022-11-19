@@ -29,56 +29,6 @@ div.profile-pic img {
     margin-top: 1em;
 }
 
-
-/**
- * ABlog styling
- */
-
-/* Sidebar for blog archive / each post */
-ul.ablog-archive {
-    padding-left: 0px;
-}
-
-.bd-sidebar h2 {
-    font-size: 1.4em;
-}
-
-.bd-sidebar h1, .bd-sidebar h2, .bd-sidebar h3 {
-    margin-top: .5rem;
-}
-
-.bd-sidebar ul {
-    padding-left: 0;
-    list-style-type: none;
-}
-
-.bd-sidebar li {
-    padding-bottom: .5em;
-}
-
-div.bd-sidebar h3, div.bd-sidebar h2, div.bd-sidebar ul {
-    padding-left: 5%;
-}
-
-/* In-page post lists */
-ul.postlist {
-    padding-left: 0;
-}
-
-ul.postlist > li > p:first-child {
-    font-size: 1.5em;
-}
-
-ul.postlist li + li {
-    margin-top: 2em;
-}
-
-ul.postlist li > p > a {
-    font-style: normal;
-    font-size: 1.3em;
-}
-
-
 /* Timeline CSS */
 div.timeline div.card {
     border: 0px;
@@ -86,28 +36,28 @@ div.timeline div.card {
 
 div.timeline div.left {
     text-align: right;
-    border-right: 1px solid black;
+    border-right: 1px solid var(--pst-color-border);
 }
 
 div.timeline div.entry::after {
     width: 1em;
     height: 1em;
-    background: white;
+    background: var(--pst-color-background);
     border-radius: 50%;
     content: "";
-    top: 1em;
+    top: 0.8rem;
     display: block;
-    position: absolute;
-    border: 1px black solid;
+    position: relative;
+    border: 1px var(--pst-color-text-base) solid;
     z-index: 999;
 }
 
 div.timeline div.entry.left::after {
-    right: -.5em;
+    right: -1.3em;
 }
 
 div.timeline div.entry.right::after {
-    left: -.5em;
+    left: -1.3em;
 }
 
 
@@ -121,4 +71,3 @@ div.twitter-tweet {
     margin-left: auto;
     margin-right: auto;
 }
-

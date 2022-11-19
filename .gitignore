@@ -5,3 +5,5 @@ _build
 */.ipynb_checkpoints/*
 .tox
 .nox
+.vscode
+__pycache__

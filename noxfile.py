@@ -3,13 +3,24 @@ from shlex import split
 
 nox.options.reuse_existing_virtualenvs = True
 
+
 @nox.session
 def docs(session):
-    session.install('-r', 'requirements.txt')
-    session.run(*'sphinx-build -nW --keep-going -b dirhtml . _build/dirhtml'.split())
-    session.log("open ./_build/dirhtml}/index.html")
+    session.install("-r", "requirements.txt")
+    session.install("-r", "execute-requirements.txt")
+    if "live" in session.posargs:
+        session.run(
+            *split("sphinx-autobuild -b dirhtml . _build/dirhtml --ignore _build")
+        )
+    else:
+        session.run(
+            *"sphinx-build -nW --keep-going -b dirhtml . _build/dirhtml".split()
+        )
+        session.log("open ./_build/dirhtml}/index.html")
 
-@nox.session(name="docs-live")
-def docs_live(session):
-    session.install('-r', 'requirements.txt')
-    session.run(*split('sphinx-autobuild -b dirhtml . _build/dirhtml --ignore _build/**'))
+
+@nox.session
+def lab(session):
+    session.install("-r", "requirements.txt")
+    session.install("-r", "execute-requirements.txt")
+    session.run(*split("jupyter lab ."))
