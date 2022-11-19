@@ -1,8 +1,10 @@
 # Dependencies for *executing* the content in this blog.
 colorspacious
 ipywidgets
+jupyterlab
 makeitpop
 matplotlib
+mne
 nilearn
 numpy
 pandas

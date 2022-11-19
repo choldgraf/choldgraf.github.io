@@ -208,8 +208,3 @@ seems that many people are hung up about the same relatively minor syntax choice
 modifications to these choices would improve the experience for many. It's also clear that Sphinx
 could use some developer time to make it more robust, debuggable, and well-documented. I hope that
 we can make some progress on these issues in the coming years.
-
-
-
-
-

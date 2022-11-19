@@ -94,7 +94,7 @@ Any time that you'd like to extend functionality beyond what's already there, an
 
 :::{admonition} Example: The `ipynb` format
 :class: tip
-The `ipynb` format. One of Jupyter's core goals is to standardize tools and patterns across the data science community. The `ipynb` format is probably the most common example. As more tools build their own notebook functionality and wish to *extend* `ipynb` to do new things, they should follow metadata standards (or lead processes to create new ones). For example, we don't want `ipynb` files that have platform-specific metadata. Even little stuff like "for cell-level metadata to hide inputs, do we call it `hide_input` or `hideInput`?" This can seem trivial and arbitrary but it is important and in many ways the most important thing that open communities do! When in doubt, ask around and get buy-in from others. 
+The `ipynb` format. One of Jupyter's core goals is to standardize tools and patterns across the data science community. The `ipynb` format is probably the most common example. As more tools build their own notebook functionality and wish to *extend* `ipynb` to do new things, they should follow metadata standards (or lead processes to create new ones). For example, we don't want `ipynb` files that have platform-specific metadata. Even little stuff like "for cell-level metadata to hide inputs, do we call it `hide_input` or `hideInput`?" This can seem trivial and arbitrary but it is important and in many ways the most important thing that open communities do! When in doubt, ask around and get buy-in from others.
 :::
 
 ### Advocate for open tools from the community
