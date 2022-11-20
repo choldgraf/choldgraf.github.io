@@ -1,0 +1,45 @@
+## 2022
+**Beyond advertising: New infrastructures for publishing integrated research objects**. _PLOS Computational Biology_. [10.1371/journal.pcbi.1009651](https://doi.org/10.1371/journal.pcbi.1009651)
+
+
+## 2021
+**Pan-neuro: interactive computing at scale with BRAIN datasets**. _preprint_. [10.31219/osf.io/mwh2b](https://doi.org/10.31219/osf.io/mwh2b)
+
+**Science Storms the Cloud**. _AGU Advances_. [10.1029/2020av000354](https://doi.org/10.1029/2020av000354)
+
+
+## 2019
+**MNE-BIDS: Organizing electrophysiological data into the BIDS format and facilitating their analysis**. _Journal of Open Source Software_. [10.21105/joss.01896](https://doi.org/10.21105/joss.01896)
+
+**iEEG-BIDS, extending the Brain Imaging Data Structure specification to human intracranial electrophysiology**. _Scientific Data_. [10.31234/osf.io/r7vc2](https://doi.org/10.31234/osf.io/r7vc2)
+
+**EarthPy: A Python package that makes it easier to explore and plot raster and vector data using open source Python tools.**. _Journal of Open Source Software_. [10.21105/joss.01886](https://doi.org/10.21105/joss.01886)
+
+**PyBIDS: Python tools for BIDS datasets.**. _Journal of open source software_. [32775955](https://doi.org/32775955)
+
+
+## 2018
+**The Types, Roles, and Practices of Documentation in Data Analytics Open Source Software Libraries**. _Computer Supported Cooperative Work (CSCW)_. [10.1007/s10606-018-9333-1](https://doi.org/10.1007/s10606-018-9333-1)
+
+**The Types, Roles, and Practices of Documentation in Data Analytics Open Source Software Libraries: A Collaborative Ethnography of Documentation Work**. _preprint_. [10.31235/osf.io/2fdhr](https://doi.org/10.31235/osf.io/2fdhr)
+
+**Binder 2.0 - Reproducible, interactive, sharable environments for science at scale**. _Proceedings of the 17th Python in Science Conference_. [10.25080/majora-4af1f417-011](https://doi.org/10.25080/majora-4af1f417-011)
+
+
+## 2017
+**Encoding and Decoding Models in Cognitive Electrophysiology**. _Frontiers in Systems Neuroscience_. [10.3389/fnsys.2017.00061](https://doi.org/10.3389/fnsys.2017.00061)
+
+**Portable Learning Environments for Hands-On Computational Instruction**. _Proceedings of the Practice and Experience in Advanced Research Computing 2017 on Sustainability, Success and Impact  - PEARC17_. [10.1145/3093338.3093370](https://doi.org/10.1145/3093338.3093370)
+
+
+## 2016
+**Rapid tuning shifts in human auditory cortex enhance speech intelligibility**. _Nature Communications_. [10.1038/ncomms13654](https://doi.org/10.1038/ncomms13654)
+
+
+## 2014
+**Decoding spectrotemporal features of overt and covert speech from the human cortex**. _Frontiers in Neuroengineering_. [10.3389/fneng.2014.00014](https://doi.org/10.3389/fneng.2014.00014)
+
+
+## 2012
+**Combined process automation for large-scale EEG analysis**. _Computers in Biology and Medicine_. [10.1016/j.compbiomed.2011.10.017](https://doi.org/10.1016/j.compbiomed.2011.10.017)
+

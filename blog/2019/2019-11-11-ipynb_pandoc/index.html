@@ -424,8 +424,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/pandoc/">pandoc</a>   
   <a href="../../tag/nbconvert/">nbconvert</a>   
+  <a href="../../tag/pandoc/">pandoc</a>   
   <a href="../../tag/documentation/">documentation</a>  
 </li>
  
@@ -438,6 +438,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/orcid-auto-update/"
+      >19 November - Automatically updating my publications page with ORCID</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/sphinx-redirects-folder/"
       >19 November - Automatically redirect folders in Sphinx websites</a
@@ -462,12 +468,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2020/sphinx-blogging/"
-      >10 October - A new blog with Sphinx</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -478,7 +478,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (2)</a>
+    <a href="../../2022/">2022 (3)</a>
   </li>
     
   <li>
@@ -612,11 +612,11 @@ with <code class="docutils literal notranslate"><span class="pre">-o</span></cod
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2188</span><span class="o">/</span><span class="mf">3478721934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2083</span><span class="o">/</span><span class="mf">3478721934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ipynb -&gt; gfmd</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images -t gfm&#39;</span><span class="p">)</span>
 
-<span class="nn">/tmp/ipykernel_2188/3843585233.py</span> in <span class="ni">run</span><span class="nt">(cmd, *args, **kwargs)</span>
+<span class="nn">/tmp/ipykernel_2083/3843585233.py</span> in <span class="ni">run</span><span class="nt">(cmd, *args, **kwargs)</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">try</span><span class="p">:</span>
 <span class="ne">----&gt; </span><span class="mi">9</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">sbrun</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>

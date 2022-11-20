@@ -424,9 +424,9 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/blogging/">blogging</a>   
+  <a href="../../tag/sphinx/">sphinx</a>   
   <a href="../../tag/jupyter/">jupyter</a>   
-  <a href="../../tag/sphinx/">sphinx</a>  
+  <a href="../../tag/blogging/">blogging</a>  
 </li>
  
 </ul>
@@ -438,6 +438,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/orcid-auto-update/"
+      >19 November - Automatically updating my publications page with ORCID</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/sphinx-redirects-folder/"
       >19 November - Automatically redirect folders in Sphinx websites</a
@@ -462,12 +468,6 @@
     >
   </li>
   
-  <li>
-    <a href="../2020-01-22-rst-thoughts/"
-      >22 January - What do people think about rST?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -478,7 +478,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (2)</a>
+    <a href="../../2022/">2022 (3)</a>
   </li>
     
   <li>
@@ -541,42 +541,31 @@
                <section id="a-new-blog-with-sphinx">
 <h1>A new blog with Sphinx<a class="headerlink" href="#a-new-blog-with-sphinx" title="Permalink to this heading">#</a></h1>
 <p>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.</p>
-<a class="reference external image-reference" href="https://www.sphinx-doc.org/en/master/"><img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" /></a>
-<section id="why-did-you-re-write-your-blog">
-<h2>Why did you re-write your blog?<a class="headerlink" href="#why-did-you-re-write-your-blog" title="Permalink to this heading">#</a></h2>
-<p>This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)</p>
-<dl class="simple myst">
-<dt>🐶 Dog Fooding</dt><dd><p>First, I’ve been doing a lot of work with the <a class="reference external" href="https://executablebooks.org">Executable Books Project</a> lately. As a result, <a class="reference external" href="https://executablebooks.org/en/latest/updates/2020-08-07-announce-book.html">Jupyter Book now depends on Sphinx</a>. The more I use Sphinx in my own workflows, the more I’ll be equipped to improve the Sphinx ecosystem and Jupyter Book in ways that will benefit its users.</p>
-</dd>
-<dt>🎁 Upstreaming</dt><dd><p>A big reason for moving Jupyter Book to Sphinx was to give ourselves more excuse to upstream improvements to the broader community. Switching over my own blog is for the same reason.</p>
-</dd>
-<dt>🌷 Simplicity</dt><dd><p>I understand the Sphinx ecosystem relatively well, and use it across many of my projects. It’s got a number of great themes and a ton of extensions to do more things with my content. Moreover, it’s 💯 Python and I don’t have to worry about installing extra languages etc to build my pages.</p>
-</dd>
-<dt>🚀 Features</dt><dd><p>It turns out that building your blog (or any content for that matter) on top of a documentation engine gives you a lot of extra things to try that you don’t usually get from a SSG. Being able to use <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/using/syntax.html#syntax-directives">Sphinx roles/directives</a> from within a page is pretty cool. I can do stuff like this:</p>
-</dd>
-<dt>🪐 Executable content and notebooks</dt><dd><p>On top of the base Sphinx features, <a class="reference external" href="https://myst-nb.readthedocs.io">MyST-NB</a> now lets me write my entire post in notebooks, and will execute and cache the content for me if I wish. I can also <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/use/markdown.html">write the whole notebook as markdown</a> which keeps my posts easily diff-able.</p>
-</dd>
-</dl>
-</section>
-<section id="the-components-that-make-up-this-blog">
-<h2>The components that make up this blog<a class="headerlink" href="#the-components-that-make-up-this-blog" title="Permalink to this heading">#</a></h2>
-<p>OK so how is this blog actually built now? Here is a quick rundown.</p>
-<ul class="simple">
-<li><p><strong>Where is the blog source code?</strong> At <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io">this github repository</a></p></li>
-<li><p><strong>What engine builds the website?</strong> The <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx documentation engine</a> is the core documentation engine.</p></li>
-<li><p><strong>What engine builds the blog?</strong> I use the <a class="reference external" href="https://ablog.readthedocs.io/">ablog Sphinx blog extension</a> to host the actual blog.</p></li>
-<li><p><strong>What theme do you use for the blog?</strong> I use the <a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/">PyData Sphinx Theme</a></p></li>
-<li><p><strong>How do you write Sphinx docs in markdown?</strong> I use the <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">myst-parser package</a></p></li>
-<li><p><strong>How do you write content in notebooks?</strong> I use the <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/">MyST-NB package</a>.</p></li>
-<li><p><strong>How did you make those fancy buttons and dropdowns?</strong> That was the <a class="reference external" href="https://sphinx-panels.readthedocs.io/en/latest/">sphinx-panels Sphinx extension</a>.</p></li>
-</ul>
-<p>Specifically, <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io">my website is hosted here</a> and all of the blog posts are <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io/tree/main/posts">in this folder</a>.
-I’m configuring ABlog to <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io/blob/main/conf.py#L80">find any markdown files in this folder and treat them as blog posts</a>.</p>
-</section>
-<section id="in-conclusion">
-<h2>In conclusion<a class="headerlink" href="#in-conclusion" title="Permalink to this heading">#</a></h2>
-<p>So far, I quite like this new blog setup. Sphinx is familiar to me, and I think that using this for my own blog will help me understand how the ecosystem could be further-improved to support blogs in other contexts. If you want to check out this blog’s setup, see <a class="reference external" href="https://github.com/choldgraf/choldgraf.github.io">this blog’s repository</a> to get started! Next up, I’m going to see how easy it is to do this in Jupyter Book!</p>
-</section>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+🪐 Executable content and notebooks
+: On top of the base Sphinx features, [MyST-NB](https://myst-nb.readthedocs.io) now lets me write my entire post in notebooks, and will execute and cache the content for me if I wish. I can also [write the whole notebook as markdown](https://myst-nb.readthedocs.io/en/latest/use/markdown.html) which keeps my posts easily diff-able.
+
+
+## The components that make up this blog
+
+OK so how is this blog actually built now? Here is a quick rundown.
+
+- **Where is the blog source code?** At [this github repository](https://github.com/choldgraf/choldgraf.github.io)
+- **What engine builds the website?** The [Sphinx documentation engine](https://www.sphinx-doc.org/en/master/) is the core documentation engine.
+- **What engine builds the blog?** I use the [ablog Sphinx blog extension](https://ablog.readthedocs.io/) to host the actual blog.
+- **What theme do you use for the blog?** I use the [PyData Sphinx Theme](https://pydata-sphinx-theme.readthedocs.io/)
+- **How do you write Sphinx docs in markdown?** I use the [myst-parser package](https://myst-parser.readthedocs.io/en/latest/)
+- **How do you write content in notebooks?** I use the [MyST-NB package](https://myst-nb.readthedocs.io/en/latest/).
+- **How did you make those fancy buttons and dropdowns?** That was the [sphinx-panels Sphinx extension](https://sphinx-panels.readthedocs.io/en/latest/).
+
+Specifically, [my website is hosted here](https://github.com/choldgraf/choldgraf.github.io) and all of the blog posts are [in this folder](https://github.com/choldgraf/choldgraf.github.io/tree/main/posts).
+I&#39;m configuring ABlog to [find any markdown files in this folder and treat them as blog posts](https://github.com/choldgraf/choldgraf.github.io/blob/main/conf.py#L80).
+
+## In conclusion
+
+So far, I quite like this new blog setup. Sphinx is familiar to me, and I think that using this for my own blog will help me understand how the ecosystem could be further-improved to support blogs in other contexts. If you want to check out this blog&#39;s setup, see [this blog&#39;s repository](https://github.com/choldgraf/choldgraf.github.io) to get started! Next up, I&#39;m going to see how easy it is to do this in Jupyter Book!
+</pre></div>
+</div>
 </section>
 
 <div class="section">
@@ -636,33 +625,6 @@ I’m configuring ABlog to <a class="reference external" href="https://github.co
           
             <div class="bd-sidebar-secondary bd-toc">
               
-<div class="toc-item">
-  
-<div class="tocsection onthispage">
-    <i class="fa-solid fa-list"></i> On this page
-</div>
-<nav id="bd-toc-nav" class="page-toc">
-    <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-did-you-re-write-your-blog">
-   Why did you re-write your blog?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-components-that-make-up-this-blog">
-   The components that make up this blog
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-conclusion">
-   In conclusion
-  </a>
- </li>
-</ul>
-
-</nav>
-</div>
-
 <div class="toc-item">
   
 <div id="searchbox"></div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-11-19T15:39:12.429185+00:00</updated>
+  <updated>2022-11-20T14:39:12.016030+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -794,12 +794,11 @@ of publishing with Jupyter.Many of the ideas in this post have now made their wa
     </author>
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.&lt;/p&gt;
-&lt;p&gt;This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)&lt;/p&gt;
-&lt;img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" /&gt;
+&lt;p&gt;Directive ‘image’: No content permitted&lt;/p&gt;
 &lt;/div&gt;
 </content>
     <link href="https://chrisholdgraf.com/blog/2020/sphinx-blogging/" rel="alternate"/>
-    <summary>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)</summary>
+    <summary>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.Directive ‘image’: No content permitted</summary>
     <category term="blogging" label="blogging"/>
     <category term="jupyter" label="jupyter"/>
     <category term="sphinx" label="sphinx"/>
@@ -871,6 +870,24 @@ AKA, you cannot do:&lt;/p&gt;
     <summary>I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
 Along the way, I decided to redirect /posts/ to /blog/, since it seems /blog/ is a much more common folder to use for blog posts.This posed a problem, because the sphinx-rediraffe extension does not allow you to redirect folders with wildcards.
 AKA, you cannot do:</summary>
+    <published>2022-11-19T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2022/orcid-auto-update/</id>
+    <title>Automatically updating my publications page with ORCID</title>
+    <updated>2022-11-19T00:00:00+00:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;For a while I’ve had a hand-crafted &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.bibtex&lt;/span&gt;&lt;/code&gt; file stored locally for &lt;a class="reference internal" href="../publications/"&gt;&lt;span class="doc std std-doc"&gt;my &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;publications/&lt;/span&gt;&lt;/code&gt; page&lt;/span&gt;&lt;/a&gt;.
+However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.&lt;/p&gt;
+&lt;p&gt;Here’s the workflow I’d prefer:&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2022/orcid-auto-update/" rel="alternate"/>
+    <summary>For a while I’ve had a hand-crafted .bibtex file stored locally for my publications/ page.
+However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.Here’s the workflow I’d prefer:</summary>
+    <category term="doi" label="doi"/>
+    <category term="orcid" label="orcid"/>
+    <category term="scholarship" label="scholarship"/>
     <published>2022-11-19T00:00:00+00:00</published>
   </entry>
 </feed>
