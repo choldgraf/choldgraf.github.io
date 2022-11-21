@@ -3,8 +3,10 @@ docutils
 myst_nb
 MyST-Parser
 pydata-sphinx-theme
+rich
 sphinx
 sphinx-autobuild
+sphinx-copybutton
 sphinx-design
 sphinx-examples
 sphinxcontrib-bibtex
