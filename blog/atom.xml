@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-11-20T14:39:12.016030+00:00</updated>
+  <updated>2022-11-21T13:12:17.809080+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -889,5 +889,21 @@ However, manually updating local text file is a pain to remember, especially sin
     <category term="orcid" label="orcid"/>
     <category term="scholarship" label="scholarship"/>
     <published>2022-11-19T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2022/sphinx-custom-crossrefs/</id>
+    <title>Custom roles and domains in Sphinx with one line</title>
+    <updated>2022-11-21T00:00:00+00:00</updated>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;I was working on &lt;a class="reference external" href="https://compass.2i2c.org"&gt;the roles and structure section of the 2i2c Team Compass&lt;/a&gt; and found a nifty feature in Sphinx that I hadn’t known before.&lt;/p&gt;
+&lt;p&gt;You can currently add labels to any section with the following MyST Markdown structure:&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2022/sphinx-custom-crossrefs/" rel="alternate"/>
+    <summary>I was working on the roles and structure section of the 2i2c Team Compass and found a nifty feature in Sphinx that I hadn’t known before.You can currently add labels to any section with the following MyST Markdown structure:</summary>
+    <category term="myst" label="myst"/>
+    <category term="scholarship" label="scholarship"/>
+    <category term="sphinx" label="sphinx"/>
+    <published>2022-11-21T00:00:00+00:00</published>
   </entry>
 </feed>
