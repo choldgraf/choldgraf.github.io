@@ -1,6 +1,6 @@
 ---
 tags: markup, documentation
-categories: til
+category: til
 date: 2020-01-22
 ---
 

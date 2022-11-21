@@ -1,7 +1,7 @@
 ---
-tags: productivity
+tags: productivity, CICD
 permalink: circleci-mirror
-category: deployments
+category: show-and-tell
 date: 2018-12-18
 ---
 
@@ -13,7 +13,7 @@ date: 2018-12-18
 
 We recently ran into an issue with the Data 8 course where we needed to mirror
 one GitHub site to another. In short, the textbook is built with a tool called
-[jupyter-book](https://predictablynoisy.com/jupyter-book/intro.html), and we use [github-pages](https://pages.github.com/)
+[jupyter-book](https://chrisholdgraf.com/jupyter-book/intro.html), and we use [github-pages](https://pages.github.com/)
 to host the content at [inferentialthinking.com](https://inferentialthinking.com).
 For [weird URL-naming reasons](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/),
 we had to create [a second organization](https://github.com/inferentialthinking/inferentialthinking.github.io)

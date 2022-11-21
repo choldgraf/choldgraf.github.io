@@ -1,7 +1,7 @@
 ---
-tags: CI, CD, continuous integration, dev ops, software development
+tags: CICD, dev ops, software development
 redirect: three-things-circleci
-category: coding
+category: thoughts
 date: 2019-01-29
 ---
 
