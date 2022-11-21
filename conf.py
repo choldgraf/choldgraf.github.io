@@ -100,8 +100,10 @@ for old, new in redirect_folders.items():
 blog_baseurl = "https://chrisholdgraf.com"
 blog_title = "Chris Holdgraf"
 blog_path = "blog"
-fontawesome_included = True
 blog_post_pattern = "blog/*/*"
+blog_feed_fulltext = True
+blog_feed_subtitle = "Open communities, open science, communication, and data."
+fontawesome_included = True
 post_redirect_refresh = 1
 post_auto_image = 1
 post_auto_excerpt = 2
