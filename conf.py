@@ -8,8 +8,8 @@ extensions = [
     "myst_nb",
     "ablog",
     "sphinx_design",
+    "sphinx_copybutton",
     "sphinx_examples",
-    "sphinxcontrib.bibtex",
     "sphinxcontrib.twitter",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
@@ -110,11 +110,7 @@ myst_enable_extensions = [
 ]
 
 # MyST-NB
-nb_execution_mode = "cache"
-
-# Bibliography and citations
-bibtex_bibfiles = ["_static/works.bib"]
-
+nb_execution_mode = "auto"
 
 def setup(app):
     app.add_css_file("custom.css")
