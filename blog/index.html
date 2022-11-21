@@ -27,6 +27,7 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-examples.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
@@ -41,6 +42,8 @@
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
@@ -845,8 +848,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/myst/">myst</a>   
   <a href="tag/sphinx/">sphinx</a>   
+  <a href="tag/myst/">myst</a>   
   <a href="tag/scholarship/">scholarship</a>  
 </li>
  
@@ -891,7 +894,7 @@
     <div class="ablog-post-excerpt docutils container">
 <p>For a while I’ve had a hand-crafted <code class="docutils literal notranslate"><span class="pre">.bibtex</span></code> file stored locally for <a class="reference internal" href="../publications/"><span class="doc std std-doc">my <code class="docutils literal notranslate"><span class="pre">publications/</span></code> page</span></a>.
 However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.</p>
-<p>Here’s the workflow I’d prefer:</p>
+<p>A <a class="reference external" href="https://twitter.com/temorrell/status/1594749942316208128">helpful suggestion on Twitter</a> allowed me to include the full citation information, including lists of authors, using the doi.org API!</p>
 </div>
 
     <p class="ablog-post-expand"><a href="2022/orcid-auto-update/"><em>Read more ...</em></a></p>
@@ -1044,15 +1047,16 @@ The tutorial was 30 minutes long, and the session was fully remote.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/blogging/">blogging</a>   
+  <a href="tag/sphinx/">sphinx</a>   
   <a href="tag/jupyter/">jupyter</a>   
-  <a href="tag/sphinx/">sphinx</a>  
+  <a href="tag/blogging/">blogging</a>  
 </li>
  
     </ul>
     <div class="ablog-post-excerpt docutils container">
 <p>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.</p>
-<p>Directive ‘image’: No content permitted</p>
+<p>This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)</p>
+<img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" />
 </div>
 
     <p class="ablog-post-expand"><a href="2020/sphinx-blogging/"><em>Read more ...</em></a></p>
@@ -1074,8 +1078,8 @@ The tutorial was 30 minutes long, and the session was fully remote.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/markup/">markup</a>   
-  <a href="tag/documentation/">documentation</a>  
+  <a href="tag/documentation/">documentation</a>   
+  <a href="tag/markup/">markup</a>  
 </li>
  
     </ul>
@@ -1111,8 +1115,8 @@ of publishing with Jupyter.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/markup/">markup</a>   
-  <a href="tag/documentation/">documentation</a>  
+  <a href="tag/documentation/">documentation</a>   
+  <a href="tag/markup/">markup</a>  
 </li>
  
     </ul>
@@ -1147,8 +1151,8 @@ of publishing with Jupyter.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/pandoc/">pandoc</a>   
   <a href="tag/documentation/">documentation</a>   
+  <a href="tag/pandoc/">pandoc</a>   
   <a href="tag/nbconvert/">nbconvert</a>  
 </li>
  
@@ -1184,8 +1188,8 @@ outputs if you wish, I recommend copy/pasting some of these commands on your own
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/open-source/">open source</a>   
-  <a href="tag/governance/">governance</a>  
+  <a href="tag/governance/">governance</a>   
+  <a href="tag/open-source/">open source</a>  
 </li>
  
     </ul>
@@ -1219,10 +1223,10 @@ botch my characterization of it.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="tag/open-source/">open source</a>   
   <a href="tag/xarray/">xarray</a>   
-  <a href="tag/analysis/">analysis</a>   
   <a href="tag/neuroscience/">neuroscience</a>   
-  <a href="tag/open-source/">open source</a>  
+  <a href="tag/analysis/">analysis</a>  
 </li>
  
     </ul>
@@ -1380,8 +1384,8 @@ folks will find some value in the different angles taken in each case.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/community/">community</a>   
-  <a href="tag/jupyter/">jupyter</a>  
+  <a href="tag/jupyter/">jupyter</a>   
+  <a href="tag/community/">community</a>  
 </li>
  
     </ul>
@@ -1420,11 +1424,11 @@ statement from the project/community itself.</em></p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/continuous-integration/">continuous integration</a>   
-  <a href="tag/dev-ops/">dev ops</a>   
+  <a href="tag/software-development/">software development</a>   
   <a href="tag/ci/">CI</a>   
   <a href="tag/cd/">CD</a>   
-  <a href="tag/software-development/">software development</a>  
+  <a href="tag/continuous-integration/">continuous integration</a>   
+  <a href="tag/dev-ops/">dev ops</a>  
 </li>
  
     </ul>
@@ -1514,9 +1518,9 @@ at https://github.com/inferentialthinking/inferentialthinking.github.io.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="tag/sustainability/">sustainability</a>   
   <a href="tag/open-communities/">open communities</a>   
-  <a href="tag/open-culture/">open culture</a>   
-  <a href="tag/sustainability/">sustainability</a>  
+  <a href="tag/open-culture/">open culture</a>  
 </li>
  
     </ul>
@@ -1603,9 +1607,9 @@ out the week.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/community/">community</a>   
   <a href="tag/open-source/">open source</a>   
-  <a href="tag/governance/">governance</a>  
+  <a href="tag/governance/">governance</a>   
+  <a href="tag/community/">community</a>  
 </li>
  
     </ul>
@@ -1643,9 +1647,9 @@ as a marketing term to increase support, users, or resources.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="tag/governance/">governance</a>   
   <a href="tag/python/">python</a>   
-  <a href="tag/community/">community</a>   
-  <a href="tag/governance/">governance</a>  
+  <a href="tag/community/">community</a>  
 </li>
  
     </ul>
@@ -1933,8 +1937,8 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-folder-open"></i></span
   >
    
-  <a href="category/regression/">regression</a>,   
   <a href="category/formatting/">formatting</a>,   
+  <a href="category/regression/">regression</a>,   
   <a href="category/visualization/">visualization</a>,   
   <a href="category/dates/">dates</a>  
 </li>
@@ -2019,8 +2023,8 @@ Here are a couple of thoughts from the experience.</p>
   >
    
   <a href="tag/python/">python</a>   
-  <a href="tag/open-science/">open science</a>   
-  <a href="tag/visualizations/">visualizations</a>  
+  <a href="tag/visualizations/">visualizations</a>   
+  <a href="tag/open-science/">open science</a>  
 </li>
  
     </ul>
@@ -2056,10 +2060,10 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/python/">python</a>   
+  <a href="tag/visualizations/">visualizations</a>   
   <a href="tag/brains/">brains</a>   
   <a href="tag/open-science/">open science</a>   
-  <a href="tag/visualizations/">visualizations</a>   
+  <a href="tag/python/">python</a>   
   <a href="tag/holidays/">holidays</a>  
 </li>
  
@@ -2096,11 +2100,11 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="tag/visualizations/">visualizations</a>   
+  <a href="tag/open-science/">open science</a>   
   <a href="tag/python/">python</a>   
   <a href="tag/web-scraping/">web scraping</a>   
-  <a href="tag/preprints/">preprints</a>   
-  <a href="tag/open-science/">open science</a>   
-  <a href="tag/visualizations/">visualizations</a>  
+  <a href="tag/preprints/">preprints</a>  
 </li>
  
     </ul>
@@ -2136,11 +2140,11 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/python/">python</a>   
+  <a href="tag/visualizations/">visualizations</a>   
+  <a href="tag/simulations/">simulations</a>   
   <a href="tag/funnel-plots/">funnel plots</a>   
   <a href="tag/open-science/">open science</a>   
-  <a href="tag/simulations/">simulations</a>   
-  <a href="tag/visualizations/">visualizations</a>  
+  <a href="tag/python/">python</a>  
 </li>
  
     </ul>
@@ -2176,10 +2180,10 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/programming/">programming</a>   
   <a href="tag/python/">python</a>   
-  <a href="tag/open-science/">open science</a>   
-  <a href="tag/conferences/">conferences</a>  
+  <a href="tag/programming/">programming</a>   
+  <a href="tag/conferences/">conferences</a>   
+  <a href="tag/open-science/">open science</a>  
 </li>
  
     </ul>
@@ -2214,11 +2218,11 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/python/">python</a>   
-  <a href="tag/computation/">computation</a>   
   <a href="tag/voting/">voting</a>   
-  <a href="tag/fft/">fft</a>   
-  <a href="tag/statistics/">statistics</a>  
+  <a href="tag/statistics/">statistics</a>   
+  <a href="tag/computation/">computation</a>   
+  <a href="tag/python/">python</a>   
+  <a href="tag/fft/">fft</a>  
 </li>
  
     </ul>
@@ -2254,11 +2258,11 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/programming/">programming</a>   
-  <a href="tag/python/">python</a>   
-  <a href="tag/computation/">computation</a>   
   <a href="tag/efficiency/">efficiency</a>   
-  <a href="tag/fft/">fft</a>  
+  <a href="tag/fft/">fft</a>   
+  <a href="tag/computation/">computation</a>   
+  <a href="tag/python/">python</a>   
+  <a href="tag/programming/">programming</a>  
 </li>
  
     </ul>
@@ -2296,8 +2300,8 @@ Here are a couple of thoughts from the experience.</p>
    
   <a href="tag/python/">python</a>   
   <a href="tag/visualization/">visualization</a>   
-  <a href="tag/statistics/">statistics</a>   
-  <a href="tag/grants/">grants</a>  
+  <a href="tag/grants/">grants</a>   
+  <a href="tag/statistics/">statistics</a>  
 </li>
  
     </ul>
@@ -2333,9 +2337,9 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/scraping/">scraping</a>   
   <a href="tag/python/">python</a>   
   <a href="tag/visualization/">visualization</a>   
+  <a href="tag/scraping/">scraping</a>   
   <a href="tag/data-analysis/">data analysis</a>  
 </li>
  
@@ -2374,8 +2378,8 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/programming/">programming</a>   
-  <a href="tag/python/">python</a>  
+  <a href="tag/python/">python</a>   
+  <a href="tag/programming/">programming</a>  
 </li>
  
     </ul>
@@ -2411,10 +2415,10 @@ Here are a couple of thoughts from the experience.</p>
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="tag/programming/">programming</a>   
+  <a href="tag/timeseries/">timeseries</a>   
   <a href="tag/python/">python</a>   
-  <a href="tag/correlation/">correlation</a>   
-  <a href="tag/timeseries/">timeseries</a>  
+  <a href="tag/programming/">programming</a>   
+  <a href="tag/correlation/">correlation</a>  
 </li>
  
     </ul>

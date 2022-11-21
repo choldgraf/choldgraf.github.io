@@ -11,7 +11,7 @@ I recently re-wrote all of the infrastructure for my blog so that it now builds 
 ````{image} https://www.sphinx-doc.org/en/master/_static/sphinxheader.png
 :class: bg-dark
 :target: https://www.sphinx-doc.org/en/master/
-```
+````
 
 ## Why did you re-write your blog?
 
@@ -36,10 +36,11 @@ This is a great question. The answer to "should you re-work your blog to use a n
     ```
   ````
   ````{grid-item-card}
-  :::{admonition} Wow, a tip!
+  ```{admonition} Wow, a tip!
   :class: tip
+  
   What a great tip!
-  :::
+  ```
   ````
   `````
 
