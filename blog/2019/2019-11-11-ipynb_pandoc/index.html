@@ -52,7 +52,6 @@
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="../../../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
     <script>
@@ -595,7 +594,7 @@ to both Markdown and HTML using Pandoc.</p>
 <p>The notebook will be fairly minimal
 in order to make it easier to inspect its contents. It has a collection
 of markdown with mixed content, as well as code cells with various outputs.</p>
-<p><span class="xref myst">See this link</span> for the notebook we’ll use.</p>
+<p><a class="reference download internal" download="" href="../../../_downloads/0acc01bb2f4453e39005c75e2495b107/notebooks.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">See</span> <span class="pre">this</span> <span class="pre">link</span></code></a> for the notebook we’ll use.</p>
 </section>
 <section id="ipynb-to-markdown">
 <h1><code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> to markdown<a class="headerlink" href="#ipynb-to-markdown" title="Permalink to this heading">#</a></h1>
@@ -628,41 +627,115 @@ with <code class="docutils literal notranslate"><span class="pre">-o</span></cod
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2140</span><span class="o">/</span><span class="mf">3478721934.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># ipynb -&gt; gfmd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images -t gfm&#39;</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;cell markdown&quot;&gt;
 
-<span class="nn">/tmp/ipykernel_2140/3843585233.py</span> in <span class="ni">run</span><span class="nt">(cmd, *args, **kwargs)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">9</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">sbrun</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+# Here&#39;s a demo notebook
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.15/x64/lib/python3.7/subprocess.py</span> in <span class="ni">run</span><span class="nt">(input, capture_output, timeout, check, *popenargs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span>         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;stderr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">PIPE</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span> 
-<span class="ne">--&gt; </span><span class="mi">488</span>     <span class="k">with</span> <span class="n">Popen</span><span class="p">(</span><span class="o">*</span><span class="n">popenargs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="k">as</span> <span class="n">process</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>             <span class="n">stdout</span><span class="p">,</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">communicate</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">)</span>
+This is a demo notebook to play around with the pandoc ipynb support
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.15/x64/lib/python3.7/subprocess.py</span> in <span class="ni">__init__</span><span class="nt">(self, args, bufsize, executable, stdin, stdout, stderr, preexec_fn, close_fds, shell, cwd, env, universal_newlines, startupinfo, creationflags, restore_signals, start_new_session, pass_fds, encoding, errors, text)</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>                                 <span class="n">c2pread</span><span class="p">,</span> <span class="n">c2pwrite</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>                                 <span class="n">errread</span><span class="p">,</span> <span class="n">errwrite</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">800</span>                                 <span class="n">restore_signals</span><span class="p">,</span> <span class="n">start_new_session</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span>         <span class="k">except</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span>             <span class="c1"># Cleanup if the child failed starting.</span>
+## Markdown
 
-<span class="nn">/opt/hostedtoolcache/Python/3.7.15/x64/lib/python3.7/subprocess.py</span> in <span class="ni">_execute_child</span><span class="nt">(self, args, executable, preexec_fn, close_fds, pass_fds, cwd, env, startupinfo, creationflags, shell, p2cread, p2cwrite, c2pread, c2pwrite, errread, errwrite, restore_signals, start_new_session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1549</span>                         <span class="k">if</span> <span class="n">errno_num</span> <span class="o">==</span> <span class="n">errno</span><span class="o">.</span><span class="n">ENOENT</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1550</span>                             <span class="n">err_msg</span> <span class="o">+=</span> <span class="s1">&#39;: &#39;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">err_filename</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1551</span>                     <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">errno_num</span><span class="p">,</span> <span class="n">err_msg</span><span class="p">,</span> <span class="n">err_filename</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1552</span>                 <span class="k">raise</span> <span class="n">child_exception_type</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1553</span> 
+As it is markdown, you can embed images, HTML, etc into your posts\!
 
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;pandoc&#39;: &#39;pandoc&#39;
+![](outputs/images/ca17e56d65946db885db7f8f50a9605a6a94e6a7.jpg)
+
+Here&#39;s one \(inline_{math}\) and
+
+\[
+math^{blocks}
+\]
+
+``` python
+def my_functino():
+    mystring = &quot;you can also include python cells&quot;
+    return mystring
+```
+
+&lt;/div&gt;
+
+&lt;div class=&quot;cell markdown&quot; data-tags=&quot;[&amp;quot;heresatag&amp;quot;]&quot;&gt;
+
+# Code cells
+
+## Matplotlib output with metadata
+
+The below code cell has some metadata attached to it. It also outputs a
+figure. Both should be included in the output format.
+
+&lt;/div&gt;
+
+&lt;div class=&quot;cell code&quot; data-execution_count=&quot;7&quot; data-slideshow=&quot;{&amp;quot;slide_type&amp;quot;:&amp;quot;subslide&amp;quot;}&quot; data-tags=&quot;[&amp;quot;mytag&amp;quot;,&amp;quot;parameters&amp;quot;]&quot;&gt;
+
+``` python
+from matplotlib import rcParams, cycler
+import matplotlib.pyplot as plt
+import numpy as np
+plt.ion()
+
+data = np.random.rand(2, 1000) * 100
+fig, ax = plt.subplots()
+ax.scatter(*data, s=data[1], c=data[0])
+```
+
+&lt;div class=&quot;output execute_result&quot; data-execution_count=&quot;7&quot;&gt;
+
+    &lt;matplotlib.collections.PathCollection at 0x7f6e8d6269e8&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;output display_data&quot;&gt;
+
+![](outputs/images/e843a737607d119ec5b2750a2bb737c915f1b6e8.png)
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;cell markdown&quot;&gt;
+
+## DataFrames
+
+&lt;/div&gt;
+
+&lt;div class=&quot;cell code&quot; data-execution_count=&quot;8&quot;&gt;
+
+``` python
+import pandas as pd
+pd.DataFrame([[&#39;hi&#39;, &#39;there&#39;], [&#39;this&#39;, &#39;is&#39;], [&#39;a&#39;, &#39;DataFrame&#39;]], columns=[&#39;Word A&#39;, &#39;Word B&#39;])
+```
+
+&lt;div class=&quot;output execute_result&quot; data-execution_count=&quot;8&quot;&gt;
+
+``` 
+  Word A     Word B
+0     hi      there
+1   this         is
+2      a  DataFrame
+```
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;cell markdown&quot;&gt;
+
+# Bibliography
+
+Let&#39;s test the bibliography here
+
+Testing this \[bibliography @holdgraf\_rapid\_2016\]
+
+@holdgraf\_evidence\_2014
+
+&lt;/div&gt;
+
+&lt;div class=&quot;cell markdown&quot;&gt;
+
+### The actual bibliography
+
+The bibliography will be placed at the end of the file
+
+&lt;/div&gt;
 </pre></div>
 </div>
 </div>

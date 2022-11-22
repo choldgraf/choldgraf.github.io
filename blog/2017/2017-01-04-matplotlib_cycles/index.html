@@ -52,7 +52,6 @@
     <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="../../../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
     <script>
@@ -443,8 +442,8 @@
   >
    
   <a href="../../tag/python/">python</a>   
-  <a href="../../tag/open-science/">open science</a>   
-  <a href="../../tag/visualizations/">visualizations</a>  
+  <a href="../../tag/visualizations/">visualizations</a>   
+  <a href="../../tag/open-science/">open science</a>  
 </li>
  
 </ul>
@@ -584,19 +583,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Setting up low-pass filter at 3 Hz
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">mne</span>
 
-FIR filter parameters
----------------------
-Designing a one-pass, zero-phase, non-causal lowpass filter:
-- Windowed time-domain design (firwin) method
-- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
-- Upper passband edge: 3.00 Hz
-- Upper transition bandwidth: 2.00 Hz (-6 dB cutoff frequency: 4.00 Hz)
-- Filter length: 165 samples (1.650 sec)
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
 </pre></div>
 </div>
-<img alt="../../../_images/1a49d155574ef142621815f0f823c023838373d0fc8e64acf60e29da890dddcb.png" src="../../../_images/1a49d155574ef142621815f0f823c023838373d0fc8e64acf60e29da890dddcb.png" />
 </div>
 </div>
 <p>There’s really a lot of unnecessary code going on above. We’re defining objects that share the same name as the kwarg that they represent. We can’t store them as dictionaries, because then we’d have to do some python-fu in order to get them to iterate properly. This is where <code class="docutils literal notranslate"><span class="pre">cycler</span></code> is handy:</p>

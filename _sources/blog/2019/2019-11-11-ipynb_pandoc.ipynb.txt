@@ -62,7 +62,7 @@
     "in order to make it easier to inspect its contents. It has a collection\n",
     "of markdown with mixed content, as well as code cells with various outputs.\n",
     "\n",
-    "[See this link](pandoc_ipynb/inputs/notebooks.ipynb) for the notebook we'll use."
+    "{download}`See this link <pandoc_ipynb/inputs/notebooks.ipynb>` for the notebook we'll use."
    ]
   },
   {
@@ -949,7 +949,7 @@
    "version": "3.9.7"
   },
   "mystnb": {
-   "nb_execution_mode": "off"
+   "execution_mode": "off"
   },
   "redirect": "pandoc-jupyter-notebooks",
   "tags": "documentation, pandoc, nbconvert",
