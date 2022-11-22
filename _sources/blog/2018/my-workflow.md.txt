@@ -1,7 +1,7 @@
 ---
 tags: productivity
 permalink: weekly-workflow
-category: productivity
+category: show-and-tell
 date: 2018-10-26
 ---
 

@@ -257,6 +257,17 @@
           <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
             <label class="sr-only">Mastodon</label></a>
         </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
       </ul>
       </div>
       
@@ -391,6 +402,17 @@
           <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-mastodon"></i></span>
             <label class="sr-only">Mastodon</label></a>
         </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
       </ul>
       </div>
       
@@ -518,6 +540,43 @@
 
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
+      <a href="../../2022/sphinx-custom-crossrefs/">Custom roles and domains in Sphinx with one line</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+         <i class="fa fa-calendar"></i> 21 November 2022 
+      </li>
+          
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="#">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/sphinx/">sphinx</a>   
+  <a href="../../tag/scholarship/">scholarship</a>   
+  <a href="../../tag/myst/">myst</a>  
+</li>
+ 
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I was working on <a class="reference external" href="https://compass.2i2c.org">the roles and structure section of the 2i2c Team Compass</a> and found a nifty feature in Sphinx that I hadn’t known before.</p>
+<p>You can currently add labels to any section with the following MyST Markdown structure:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../../2022/sphinx-custom-crossrefs/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="../../2022/orcid-auto-update/">Automatically updating my publications page with ORCID</a>
     </h2>
 
@@ -537,9 +596,9 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/doi/">doi</a>   
   <a href="../../tag/orcid/">orcid</a>   
-  <a href="../../tag/scholarship/">scholarship</a>  
+  <a href="../../tag/scholarship/">scholarship</a>   
+  <a href="../../tag/doi/">doi</a>  
 </li>
  
     </ul>
@@ -550,6 +609,72 @@ However, manually updating local text file is a pain to remember, especially sin
 </div>
 
     <p class="ablog-post-expand"><a href="../../2022/orcid-auto-update/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../2022/sphinx-redirects-folder/">Automatically redirect folders in Sphinx websites</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+         <i class="fa fa-calendar"></i> 19 November 2022 
+      </li>
+          
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="#">til</a>  
+</li>
+  
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
+Along the way, I decided to redirect <code class="docutils literal notranslate"><span class="pre">/posts/</span></code> to <code class="docutils literal notranslate"><span class="pre">/blog/</span></code>, since it seems <code class="docutils literal notranslate"><span class="pre">/blog/</span></code> is a much more common folder to use for blog posts.</p>
+<p>This posed a problem, because <a class="reference external" href="https://github.com/wpilibsuite/sphinxext-rediraffe">the <code class="docutils literal notranslate"><span class="pre">sphinx-rediraffe</span></code> extension</a> does not allow you to redirect folders with wildcards.
+AKA, you cannot do:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../../2022/sphinx-redirects-folder/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
+      <a href="../../2020/sphinx-design-timeline/">Build a simple timeline with sphinx-design</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+         <i class="fa fa-calendar"></i> 22 January 2020 
+      </li>
+          
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="#">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/markup/">markup</a>   
+  <a href="../../tag/documentation/">documentation</a>  
+</li>
+ 
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>One of the nice things about <a class="reference external" href="https://myst-parser.readthedocs.io">MyST Markdown</a> is that it is <strong>extensible</strong>. Any Sphinx extension will work with MyST Markdown (in the context of Jupyter Book, anyway).</p>
+<p>One of my favorite Sphinx extensions is <a class="reference external" href="https://sphinx-design.readthedocs.io/">Sphinx Design</a>, this brings you flexible UI components that use Bootstrap CSS under the hood (though without heavy javascript). They let you do things like this:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="../../2020/sphinx-design-timeline/"><em>Read more ...</em></a></p>
     <hr/>
   </div>
    

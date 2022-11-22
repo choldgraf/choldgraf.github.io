@@ -355,7 +355,7 @@
   }
  ],
  "metadata": {
-  "category": "neuroscience",
+  "categoriy": "show-and-tell",
   "date": "2015-05-27",
   "kernelspec": {
    "display_name": "Python 3",

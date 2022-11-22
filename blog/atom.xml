@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-11-21T20:44:38.703253+00:00</updated>
+  <updated>2022-11-22T10:40:13.129721+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -256,7 +256,11 @@ was to learn a bit about how the DevOps culture works, what are the things
 people are excited about and discuss in this community. I’m also interested in
 learning a thing or two that could be brought back into the scientific / academic world.
 Here are a couple of thoughts from the experience.tl;dr: DevOps is more about culture and team process than it is about technology, maybe science should be too…</summary>
-    <category term="pythonopen-sciencedev-ops" label="python open-science dev-ops"/>
+    <category term="devops" label="devops"/>
+    <category term="jupyterhub" label="jupyterhub"/>
+    <category term="openscience" label="open science"/>
+    <category term="python" label="python"/>
+    <category term="teams" label="teams"/>
     <published>2018-05-18T00:00:00+00:00</published>
   </entry>
   <entry>
@@ -280,7 +284,9 @@ easily convert your .ipynb files to markdown, which Jekyll can easily
 turn into blog posts for you.However, an annoying part of this is that Markdown doesn’t include classes
 for input and outputs, which means they each get treated the same in the
 output. Not ideal.</summary>
-    <category term="pythonbloggingjekyll" label="python blogging jekyll"/>
+    <category term="blogging" label="blogging"/>
+    <category term="jekyll" label="jekyll"/>
+    <category term="python" label="python"/>
     <published>2018-05-23T00:00:00+00:00</published>
   </entry>
   <entry>
@@ -319,7 +325,10 @@ for almost all of our repositories.&lt;/p&gt;
 this up as a super tiny sphinx extension. Check it out here: https://github.com/choldgraf/sphinx-copybuttonSphinx is a fantastic way to build
 documentation for your Python package. On the Jupyter project, we use it
 for almost all of our repositories.</summary>
-    <category term="pythonbloggingsphinxdocumentation" label="python blogging sphinx documentation"/>
+    <category term="blogging" label="blogging"/>
+    <category term="documentation" label="documentation"/>
+    <category term="python" label="python"/>
+    <category term="sphinx" label="sphinx"/>
     <published>2018-07-05T00:00:00+00:00</published>
   </entry>
   <entry>
@@ -351,7 +360,10 @@ the SciPy stack for a bunch of data analytics, and JupyterHub on
 Kubernetes for managing user instances and deploying on remote infrastructure.
 Pangeo has a neat demo of their hosted JupyterHub instance that people can use
 to access this otherwise-inaccessible dataset! See their video from SciPy below.</summary>
-    <category term="pythonconferencescommunitiesjupyter" label="python conferences communities jupyter"/>
+    <category term="communities" label="communities"/>
+    <category term="conferences" label="conferences"/>
+    <category term="jupyter" label="jupyter"/>
+    <category term="python" label="python"/>
     <published>2018-08-01T00:00:00+00:00</published>
   </entry>
   <entry>
@@ -372,7 +384,8 @@ writing content, design, etc.&lt;/p&gt;
 project, and can be a pivotal moment in whether they decide to adopt your tech or become a contributor.However, it can be a pain to iterate on documentation, as it is often involves a lot of rapid iteration
 locally, followed by a push to GitHub where you “just trust” that the author has done a good job of
 writing content, design, etc.</summary>
-    <category term="documentationsphinx" label="documentation sphinx"/>
+    <category term="documentation" label="documentation"/>
+    <category term="sphinx" label="sphinx"/>
     <published>2018-10-16T00:00:00+00:00</published>
   </entry>
   <entry>
@@ -487,7 +500,7 @@ using CI/CD services like CircleCI. This post shows you one way to do it using
 secrets that let you push to a GitHub repository from a CircleCI process.&lt;/p&gt;
 &lt;p&gt;We recently ran into an issue with the Data 8 course where we needed to mirror
 one GitHub site to another. In short, the textbook is built with a tool called
-&lt;a class="reference external" href="https://predictablynoisy.com/jupyter-book/intro.html"&gt;jupyter-book&lt;/a&gt;, and we use &lt;a class="reference external" href="https://pages.github.com/"&gt;github-pages&lt;/a&gt;
+&lt;a class="reference external" href="https://chrisholdgraf.com/jupyter-book/intro.html"&gt;jupyter-book&lt;/a&gt;, and we use &lt;a class="reference external" href="https://pages.github.com/"&gt;github-pages&lt;/a&gt;
 to host the content at &lt;a class="reference external" href="https://inferentialthinking.com"&gt;inferentialthinking.com&lt;/a&gt;.
 For &lt;a class="reference external" href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/"&gt;weird URL-naming reasons&lt;/a&gt;,
 we had to create &lt;a class="reference external" href="https://github.com/inferentialthinking/inferentialthinking.github.io"&gt;a second organization&lt;/a&gt;
@@ -511,6 +524,7 @@ to host the actual site. This introduced the complexity that any time the textbo
 had to be updated, we did so in two different places. The raw textbook content
 is hosted at https://github.com/data-8/textbook, and the version hosted online is
 at https://github.com/inferentialthinking/inferentialthinking.github.io.</summary>
+    <category term="CICD" label="CICD"/>
     <category term="productivity" label="productivity"/>
     <published>2018-12-18T00:00:00+00:00</published>
   </entry>
@@ -535,9 +549,7 @@ they’re pretty cool! Here are a few of the things that I learned this time aro
 Integration and Continuous Deployment (CI/CD) workflows for projects. This basically
 means that they manage many kinds of infrastructure that can launch jobs that run
 test suites, deploy applications, and test on many different environments.</summary>
-    <category term="CD" label="CD"/>
-    <category term="CI" label="CI"/>
-    <category term="continuousintegration" label="continuous integration"/>
+    <category term="CICD" label="CICD"/>
     <category term="devops" label="dev ops"/>
     <category term="softwaredevelopment" label="software development"/>
     <published>2019-01-29T00:00:00+00:00</published>
@@ -629,7 +641,7 @@ This blog post is a place to keep track of the current state of affairs for this
     <title>What would Rust-style governance look like in Jupyter?</title>
     <updated>2019-10-13T00:00:00+00:00</updated>
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
-&lt;p&gt;As I’ve written about before, I &lt;a class="reference external" href="https://predictablynoisy.com/rust-governance"&gt;like Rust’s governance structure&lt;/a&gt;.
+&lt;p&gt;As I’ve written about before, I &lt;a class="reference external" href="https://chrisholdgraf.com/rust-governance"&gt;like Rust’s governance structure&lt;/a&gt;.
 I mean, who can’t get behind a community that
 &lt;a class="reference external" href="https://www.rust-lang.org/governance"&gt;lists governance as a top-level page on its website&lt;/a&gt;?&lt;/p&gt;
 &lt;p&gt;Jupyter is currently in the middle of
@@ -689,7 +701,7 @@ data, but our task in this paper is to detect changes in neural activity at tria
     <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
 &lt;p&gt;This is the second in a series of blog posts that explores what it’d look like to
 directly port the governance model of other communities into the Jupyter project.
-You can find the &lt;a class="reference external" href="https://predictablynoisy.com/rust-jupyter-governance"&gt;first post about Rust here&lt;/a&gt;.&lt;/p&gt;
+You can find the &lt;a class="reference external" href="https://chrisholdgraf.com/rust-jupyter-governance"&gt;first post about Rust here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: These posts are meant as a thought experiment rather than a proposal. Moreover,
 all the usual caveats come with it, such as the
 fact that I don’t know the Python governance

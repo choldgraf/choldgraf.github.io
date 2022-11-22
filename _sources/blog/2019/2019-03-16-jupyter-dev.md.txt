@@ -2,7 +2,7 @@
 tags: jupyter, community
 title: Thoughts from the Jupyter team meeting 2019
 redirect: jupyter-team-meeting-2019
-category: community
+category: report
 date: 2019-03-30
 ---
 

@@ -385,7 +385,7 @@
   }
  ],
  "metadata": {
-  "category": "computation",
+  "categoriy": "show-and-tell",
   "date": "2016-07-08",
   "kernelspec": {
    "display_name": "Python 2",

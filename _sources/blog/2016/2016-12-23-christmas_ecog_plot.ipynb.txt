@@ -336,7 +336,7 @@
   }
  ],
  "metadata": {
-  "category": "neuroscience",
+  "categoriy": "show-and-tell",
   "date": "2016-12-23",
   "interactive": false,
   "kernelspec": {

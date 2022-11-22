@@ -524,7 +524,7 @@
   }
  ],
  "metadata": {
-  "category": "open science",
+  "categoriy": "show-and-tell",
   "date": "2016-12-19",
   "interactive": false,
   "kernelspec": {

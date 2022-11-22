@@ -9,7 +9,7 @@ redirect: python-jupyter-governance
 
 This is the second in a series of blog posts that explores what it'd look like to
 directly port the governance model of other communities into the Jupyter project.
-You can find the [first post about Rust here](https://predictablynoisy.com/rust-jupyter-governance).
+You can find the [first post about Rust here](https://chrisholdgraf.com/rust-jupyter-governance).
 
 **Note**: These posts are meant as a thought experiment rather than a proposal. Moreover,
 all the usual caveats come with it, such as the

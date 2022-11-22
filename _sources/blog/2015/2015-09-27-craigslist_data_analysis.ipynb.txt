@@ -639,7 +639,7 @@
   }
  ],
  "metadata": {
-  "category": "computation",
+  "categoriy": "show-and-tell",
   "date": "2015-09-27",
   "kernelspec": {
    "display_name": "Python 3",

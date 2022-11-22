@@ -496,7 +496,7 @@
   }
  ],
  "metadata": {
-  "category": "computation",
+  "categoriy": "show-and-tell",
   "date": "2016-07-02",
   "hide_input": false,
   "kernelspec": {

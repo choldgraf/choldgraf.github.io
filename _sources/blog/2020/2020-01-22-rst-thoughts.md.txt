@@ -1,5 +1,6 @@
 ---
 tags: markup, documentation
+category: report
 redirect: 2020-01-22-rst-thoughts
 date: 2020-01-22
 ---
