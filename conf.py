@@ -117,7 +117,7 @@ myst_enable_extensions = [
 ]
 
 # MyST-NB
-nb_execution_mode = "off"
+nb_execution_mode = "cache"
 
 def setup(app):
     app.add_css_file("custom.css")
