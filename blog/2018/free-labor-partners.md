@@ -1,7 +1,7 @@
 ---
 tags: [open communities, open culture, sustainability]
 permalink: open-communities-free-labor
-category: open source
+category: thoughts
 date: 2018-12-05
 ---
 

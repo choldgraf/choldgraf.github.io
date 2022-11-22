@@ -1,5 +1,6 @@
 ---
 tags: governance
+category: thoughts
 title: What would Rust-style governance look like in Jupyter?
 date: 2019-10-13
 redirect: rust-jupyter-governance
@@ -7,7 +8,7 @@ redirect: rust-jupyter-governance
 
 # What would Rust-style governance look like in Jupyter?
 
-As I've written about before, I [like Rust's governance structure](https://predictablynoisy.com/rust-governance).
+As I've written about before, I [like Rust's governance structure](https://chrisholdgraf.com/rust-governance).
 I mean, who can't get behind a community that
 [lists governance as a top-level page on its website](https://www.rust-lang.org/governance)?
 

@@ -1,7 +1,7 @@
 ---
-tags: python blogging sphinx documentation
+tags: python, blogging, sphinx, documentation
 permalink: sphinx-copy-buttons
-category: documentation
+category: show-and-tell
 date: 2018-07-05
 ---
 

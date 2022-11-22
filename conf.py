@@ -24,6 +24,7 @@ exclude_patterns = [
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
     "README.md",
+    "**/.ipynb_checkpoints/*"
 ]
 
 
@@ -50,6 +51,11 @@ html_theme_options = {
             "url": "https://hachyderm.io/@choldgraf",
             "icon": "fa-brands fa-mastodon",
             "attributes": {"rel": "me"},
+        },
+        {
+            "name": "Blog RSS feed",
+            "url": "https://chrisholdgraf.com/blog/atom.xml",
+            "icon": "fa-solid fa-rss",
         },
     ],
 }
@@ -83,7 +89,7 @@ from pathlib import Path
 
 for old, new in redirect_folders.items():
     for newpath in Path(new).rglob("**/*"):
-        if newpath.suffix in [".ipynb", ".md"]:
+        if newpath.suffix in [".ipynb", ".md"] and "ipynb_checkpoints" not in str(newpath):
             oldpath = str(newpath).replace("blog/", "posts/", 1)
             # Skip pandoc because for some reason it's broken
             if "pandoc" not in str(newpath):

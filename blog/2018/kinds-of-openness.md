@@ -1,7 +1,7 @@
 ---
 tags: open source, governance, community
 permalink: signaling-openness
-category: open source
+category: thoughts
 date: 2018-10-26
 ---
 

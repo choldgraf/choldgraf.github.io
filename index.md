@@ -10,13 +10,14 @@ I work with teams to create and improve open-source technology for scientists, e
 
 You can learn a bit more about what I do on this website.
 
-## Recent posts
+## My blog
 
-See the [blog archives](blog.md) for a more complete list.
+I share my thoughts and what I'm up to from time to time.
+Here's a list of recent posts, or [check out my blog archive](blog.md).
 
 ```{postlist}
 :date: "%Y-%m-%d"
-:format: "{date} - {title}"
+:format: "{title} - {date}"
 :excerpts:
 ```
 

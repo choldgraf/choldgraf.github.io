@@ -134,7 +134,7 @@ There were two gotchas in there:
    installing python was as easy as including `sudo apt-get install python3-pip` in
    my commands.
 2. I had to use a GitHub SSH deploy key to be able to deploy my built HTML to GitHub
-   pages. You can find [instructions for how to do so in this post](https://predictablynoisy.com/circleci-mirror).
+   pages. You can find [instructions for how to do so in this post](https://chrisholdgraf.com/circleci-mirror).
 
 Once that was accomplished, this is the configuration that got the job done:
 

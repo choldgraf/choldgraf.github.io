@@ -1,6 +1,7 @@
 ---
 tags: cloud
 date: "2022-09-05"
+category: "report"
 ---
 
 # Ask Twitter: Why don't academic researchers use cloud services?
@@ -51,7 +52,7 @@ As a result, many cloud services that _might_ be useful are effectively not used
 In short, **researchers need support in navigating this space**.
 They need organizations to understand their workflows and recommend a few specific things to use instead of exposing them to the hundreds of options out there.
 
-## High start-up costs and no dev-ops experience
+## High start-up costs and no DevOps experience
 
 Even if you _do_ find the set of services that you want, you need some way to expose these services to your collaborators or research group.
 You also need to manage this integration over time as things change, break, etc.
@@ -61,7 +62,7 @@ University groups often do not have dedicated cloud expertise, and so this lands
 ```
 
 However, asking a student to learn and run your cloud infrastructure is also a risky move.
-Students move on, and dev-ops skills are in high demand.
+Students move on, and DevOps skills are in high demand.
 What happens if you lose that person, or if your grant runs out?
 
 **Researchers need others to manage cloud infrastructure for them**.
@@ -91,7 +92,7 @@ This might happen for a number of reasons:
 - An **internal service** discontinues because the organization no-longer has capacity to manage it themselves. This is particularly challenging in the context of research funding, which tends to be "boom or bust".
 You get a grant and are well-funded for 3 years.
 After it runs out, maybe you've got a few months of a gap without dedicated resources for infrastructure.
-What happens if your dev-ops person's salary depends on that grant?
+What happens if your DevOps person's salary depends on that grant?
 - An **external service** discontinues because the organization running it pivoted to a new model or cost structure. This is challenging because many cloud services are designed for enterprise, the research community. They are also not accountible to the research community, and do not give it direct representation or governing power over the direction of the services.
 
 Moreover, when our workflows are not easily portable, it creates extra switching cost and strain on a researcher's workflow.

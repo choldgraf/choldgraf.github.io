@@ -2,6 +2,7 @@
 author: Chris Holdgraf
 date: 2020-11-08
 tags: open source, sustainability
+category: thoughts
 ---
 
 # Contributing to open source: A short guide for organizations
