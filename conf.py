@@ -10,7 +10,6 @@ extensions = [
     "sphinx_design",
     "sphinx_copybutton",
     "sphinx_examples",
-    "sphinxcontrib.twitter",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
 ]
@@ -118,7 +117,7 @@ myst_enable_extensions = [
 ]
 
 # MyST-NB
-nb_execution_mode = "auto"
+nb_execution_mode = "off"
 
 def setup(app):
     app.add_css_file("custom.css")

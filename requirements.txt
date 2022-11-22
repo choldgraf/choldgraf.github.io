@@ -12,4 +12,3 @@ sphinx-examples
 sphinxcontrib-bibtex
 sphinxext-opengraph
 sphinxext-rediraffe
-git+https://github.com/choldgraf/sphinx-tweet-embed@sphinx-api-update

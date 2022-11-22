@@ -17,8 +17,14 @@ If you believe (as I do) that cloud infrastructure has the potential to help peo
 
 So, I decided to ask Twitter why academics tend to not utilize cloud infrastructure:
 
-```{tweet} https://twitter.com/choldgraf/status/1564614538309390345
-```
+% This script is what renders the tweets
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+% This is the structure used for tweets 
+% example: https://publish.twitter.com/?query=https%3A%2F%2Ftwitter.com%2Fcholdgraf%2Fstatus%2F1564614538309390345&widget=Tweet
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/choldgraf/status/1564614538309390345">tweet</a>
+</blockquote>
 
 Below is a brief summary of the major points that several people made.
 
@@ -28,8 +34,9 @@ The most common challenge is the fear of over-running cloud costs.
 With on-prem infrastructure, you pay for allotments of time up-front (or don't pay at all).
 Cloud infrastructure allows you to "pay as you go", but this sometimes means _over-paying_ if you used resources you didn't expect:
 
-```{tweet} https://twitter.com/anshulkundaje/status/1551585264262295552
-```
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/anshulkundaje/status/1551585264262295552">tweet</a>
+</blockquote>
 
 **Cost monitoring needs to be a more obvious part of cloud services**.
 Fortunately, most cloud providers have their own budgeting and cost monitoring services to prevent this from happening.
@@ -44,8 +51,10 @@ All of them make one thing a little bit easier, but you still need knowledge to:
 - Choose the right cloud services
 - Integrate them together
 
-```{tweet} https://twitter.com/cboettig/status/1564671199547838464
-```
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/cboettig/status/1564671199547838464">tweet</a>
+</blockquote>
+
 
 As a result, many cloud services that _might_ be useful are effectively not used because they get lost in all the noise out there.
 
@@ -58,8 +67,10 @@ Even if you _do_ find the set of services that you want, you need some way to ex
 You also need to manage this integration over time as things change, break, etc.
 University groups often do not have dedicated cloud expertise, and so this lands at the feet of post-docs and graduate students with energy and interest to try things out.
 
-```{tweet} https://twitter.com/ixek/status/1565645082275057664
-```
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/ixek/status/1565645082275057664">tweet</a>
+</blockquote>
+
 
 However, asking a student to learn and run your cloud infrastructure is also a risky move.
 Students move on, and DevOps skills are in high demand.
@@ -74,8 +85,10 @@ We need more services that manage this complexity for them.
 Universities recognize that managed services are useful to research - they just prioritize on-premises infrastructure over everything else.
 For example, many people noted that HPC is more heavily used simply because the university puts most of their resources into easing the use of this infrastructure.
 
-```{tweet} https://twitter.com/SpectralFilter/status/1564697622660763648
-```
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/SpectralFilter/status/1564697622660763648">tweet</a>
+</blockquote>
+
 
 **Universities need to invest in lowering the energy barrier to cloud services as well as on-prem infrastructure**. We don't want universities to divest from all of their on-prem hardware and services, but we should make at least marginal investments in similarly reducing the barriers to using cloud infrastructure. What would it look like if universities made it as easy to set up and pay for cloud infrastructure as they do for HPC? I bet a lot more people would experiment and learn with the cloud.
 
@@ -83,9 +96,6 @@ For example, many people noted that HPC is more heavily used simply because the 
 
 When you're relying on a service exposed by some other organization, you must hope that the service continues to be useful.
 Many academics have been burned when services discontinue.
-
-```{tweet} https://twitter.com/muellerwHH/status/1564630833620729858
-```
 
 This might happen for a number of reasons:
 
