@@ -4,7 +4,7 @@ category: til
 date: "2022-11-19"
 ---
 
-# Automatically updating my publications page with ORCID
+# Automatically updating my publications page with ORCID and doi.org
 
 For a while I've had a hand-crafted `.bibtex` file stored locally for [my `publications/` page](../../publications.md).
 However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.
@@ -40,7 +40,7 @@ Fortunately, I learned [from a suggestion on Twitter](https://twitter.com/temorr
 You can ask `doi.org` for the reference, bibtex file, or a JSON structure of reference data by adding a header to a doi.org URL, like so:
 
 ```
-curl -LH "Accept:text/x-bibliography; syle=apa" https://dx.doi.org/10.1371/journal.pcbi.1009651
+curl -L -H "Accept:text/x-bibliography; style=apa" -H "User-Agent: mailto:youremail@email.com" https://dx.doi.org/10.1371/journal.pcbi.1009651
 ```
 
 This returns a fully-resolved reference like so:
@@ -49,13 +49,17 @@ This returns a fully-resolved reference like so:
 DuPre, E., Holdgraf, C., Karakuzu, A., Tetrel, L., Bellec, P., Stikov, N., & Poline, J.-B. (2022). Beyond advertising: New infrastructures for publishing integrated research objects. PLOS Computational Biology, 18(1), e1009651. https://doi.org/10.1371/journal.pcbi.1009651
 ```
 
+:::{note}
+The `-H "User-Agent: mailto:youremail@email.com"` is a way to identify yourself to the `doi.org` API, which reduces the likelihood that you will have your access revoked.
+:::
+
 In Python, the same call looks like this:
 
 ```python
 from requests import get
 doi = "10.1371/journal.pcbi.1009651"
 url = f"https://dx.doi.org/{doi}"
-header = {'accept': "text/x-bibliography; style=apa"}
+header = {"accept": "text/x-bibliography; style=apa", "User-Agent": "mailto:youremail@email.com"}
 r = requests.get(url, headers=header)
 print(r.content)
 ```

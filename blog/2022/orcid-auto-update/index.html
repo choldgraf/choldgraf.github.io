@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta property="og:title" content="Automatically updating my publications page with ORCID" />
+<meta property="og:title" content="Automatically updating my publications page with ORCID and doi.org" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrisholdgraf.com/blog/2022/orcid-auto-update/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
 <meta property="og:description" content="For a while I’ve had a hand-crafted.bibtex file stored locally for my publications/ page. However, manually updating local text file is a pain to remember, especially since there are many services ..." />
 <meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
-<meta property="og:image:alt" content="Automatically updating my publications page with ORCID" />
+<meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="For a while I’ve had a hand-crafted.bibtex file stored locally for my publications/ page. However, manually updating local text file is a pain to remember, especially since there are many services ..." />
 
-    <title>Automatically updating my publications page with ORCID &#8212; Chris Holdgraf</title>
+    <title>Automatically updating my publications page with ORCID and doi.org &#8212; Chris Holdgraf</title>
   
   
   
@@ -448,9 +449,9 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="../../tag/orcid/">orcid</a>   
   <a href="../../tag/doi/">doi</a>   
-  <a href="../../tag/scholarship/">scholarship</a>   
-  <a href="../../tag/orcid/">orcid</a>  
+  <a href="../../tag/scholarship/">scholarship</a>  
 </li>
  
 </ul>
@@ -562,8 +563,8 @@
             
 
             <article class="bd-article" role="main">
-               <section id="automatically-updating-my-publications-page-with-orcid">
-<h1>Automatically updating my publications page with ORCID<a class="headerlink" href="#automatically-updating-my-publications-page-with-orcid" title="Permalink to this heading">#</a></h1>
+               <section id="automatically-updating-my-publications-page-with-orcid-and-doi-org">
+<h1>Automatically updating my publications page with ORCID and doi.org<a class="headerlink" href="#automatically-updating-my-publications-page-with-orcid-and-doi-org" title="Permalink to this heading">#</a></h1>
 <p>For a while I’ve had a hand-crafted <code class="docutils literal notranslate"><span class="pre">.bibtex</span></code> file stored locally for <a class="reference internal" href="../../../publications/"><span class="doc std std-doc">my <code class="docutils literal notranslate"><span class="pre">publications/</span></code> page</span></a>.
 However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.</p>
 <div class="admonition-update admonition">
@@ -591,18 +592,22 @@ Following <a class="reference external" href="https://github.com/Project-TAPIR/p
 <p>While the ORCID API has a lot of useful information in it, there were some important pieces missing, like <strong>co-author information</strong>.
 Fortunately, I learned <a class="reference external" href="https://twitter.com/temorrell/status/1594749942316208128">from a suggestion on Twitter</a> that <a class="reference external" href="https://doi.org">doi.org</a> is accessible via an API call!</p>
 <p>You can ask <code class="docutils literal notranslate"><span class="pre">doi.org</span></code> for the reference, bibtex file, or a JSON structure of reference data by adding a header to a doi.org URL, like so:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">LH</span> <span class="s2">&quot;Accept:text/x-bibliography; syle=apa&quot;</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dx</span><span class="o">.</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.1371</span><span class="o">/</span><span class="n">journal</span><span class="o">.</span><span class="n">pcbi</span><span class="mf">.1009651</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">L</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Accept:text/x-bibliography; style=apa&quot;</span> <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;User-Agent: mailto:youremail@email.com&quot;</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dx</span><span class="o">.</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.1371</span><span class="o">/</span><span class="n">journal</span><span class="o">.</span><span class="n">pcbi</span><span class="mf">.1009651</span>
 </pre></div>
 </div>
 <p>This returns a fully-resolved reference like so:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DuPre</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="p">,</span> <span class="n">Holdgraf</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="p">,</span> <span class="n">Karakuzu</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="p">,</span> <span class="n">Tetrel</span><span class="p">,</span> <span class="n">L</span><span class="o">.</span><span class="p">,</span> <span class="n">Bellec</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span><span class="p">,</span> <span class="n">Stikov</span><span class="p">,</span> <span class="n">N</span><span class="o">.</span><span class="p">,</span> <span class="o">&amp;</span> <span class="n">Poline</span><span class="p">,</span> <span class="n">J</span><span class="o">.-</span><span class="n">B</span><span class="o">.</span> <span class="p">(</span><span class="mi">2022</span><span class="p">)</span><span class="o">.</span> <span class="n">Beyond</span> <span class="n">advertising</span><span class="p">:</span> <span class="n">New</span> <span class="n">infrastructures</span> <span class="k">for</span> <span class="n">publishing</span> <span class="n">integrated</span> <span class="n">research</span> <span class="n">objects</span><span class="o">.</span> <span class="n">PLOS</span> <span class="n">Computational</span> <span class="n">Biology</span><span class="p">,</span> <span class="mi">18</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">e1009651</span><span class="o">.</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">doi</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="mf">10.1371</span><span class="o">/</span><span class="n">journal</span><span class="o">.</span><span class="n">pcbi</span><span class="mf">.1009651</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-H</span> <span class="pre">&quot;User-Agent:</span> <span class="pre">mailto:youremail&#64;email.com&quot;</span></code> is a way to identify yourself to the <code class="docutils literal notranslate"><span class="pre">doi.org</span></code> API, which reduces the likelihood that you will have your access revoked.</p>
+</div>
 <p>In Python, the same call looks like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">requests</span> <span class="kn">import</span> <span class="n">get</span>
 <span class="n">doi</span> <span class="o">=</span> <span class="s2">&quot;10.1371/journal.pcbi.1009651&quot;</span>
 <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://dx.doi.org/</span><span class="si">{</span><span class="n">doi</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="n">header</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;accept&#39;</span><span class="p">:</span> <span class="s2">&quot;text/x-bibliography; style=apa&quot;</span><span class="p">}</span>
+<span class="n">header</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;accept&quot;</span><span class="p">:</span> <span class="s2">&quot;text/x-bibliography; style=apa&quot;</span><span class="p">,</span> <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;mailto:youremail@email.com&quot;</span><span class="p">}</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
