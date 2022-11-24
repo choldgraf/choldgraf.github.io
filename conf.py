@@ -117,7 +117,10 @@ myst_enable_extensions = [
 ]
 
 # MyST-NB
-nb_execution_mode = "cache"
+# Don't execute anything by default because many old posts don't execute anymore
+# and this slows down build times.
+# Instead if I want something to execute, manually set it in the post's metadata.
+nb_execution_mode = "off"
 
 def setup(app):
     app.add_css_file("custom.css")

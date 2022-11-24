@@ -1,7 +1,7 @@
 ---
 tags: productivity, CICD
 permalink: circleci-mirror
-category: show-and-tell
+category: til
 date: 2018-12-18
 ---
 

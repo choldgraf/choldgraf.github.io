@@ -1,7 +1,7 @@
 ---
 tags: teaching
 redirect: 2021-12-18-tutorials-pre-record
-category: show-and-tell
+category: til
 date: 2021-12-17
 ---
 
