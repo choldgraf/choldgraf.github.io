@@ -94,6 +94,15 @@ for old, new in redirect_folders.items():
             if "pandoc" not in str(newpath):
                 rediraffe_redirects[oldpath] = str(newpath)
 
+
+# -- Social Previews -----------------------------------------
+
+social_preview = {
+    "image": 
+    "tagline":
+    "color_bar":
+}
+
 # -- ABlog ---------------------------------------------------
 
 blog_baseurl = "https://chrisholdgraf.com"
