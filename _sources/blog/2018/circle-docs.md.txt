@@ -1,7 +1,7 @@
 ---
 tags: documentation, sphinx
 permalink: circle-documentation-build
-category: show-and-tell
+category: til
 date: 2018-10-16
 ---
 

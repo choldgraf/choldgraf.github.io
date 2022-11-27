@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts tagged CICD &#8212; Chris Holdgraf</title>
+    <title>Posts tagged cicd &#8212; Chris Holdgraf</title>
   
   
   
@@ -63,7 +63,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts tagged CICD"
+  title="Posts tagged cicd"
 />
  
 <style type="text/css">
@@ -430,6 +430,12 @@
 <ul>
    
   <li>
+    <a href="../../2022/phantom-workflows-pull-requests/"
+      >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
+    >
+  </li>
+  
+  <li>
     <a href="../../2022/sphinx-custom-crossrefs/"
       >21 November - Custom roles and domains in Sphinx with one line</a
     >
@@ -453,12 +459,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2021/2021-12-18-hybrid-tutorial-prerecord/"
-      >17 December - Serving in two roles at once via pre-recorded tutorials</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -469,7 +469,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (4)</a>
+    <a href="../../2022/">2022 (5)</a>
   </li>
     
   <li>
@@ -533,96 +533,44 @@
 
 <div class="section">
   <h1>
-     Posts tagged  CICD 
+     Posts tagged  cicd 
   </h1>
    
 
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
-      <a href="../../2019/2019-01-29-three-things-circleci/">Three things I love about CircleCI</a>
+      <a href="../../2022/phantom-workflows-pull-requests/">Fix phantom GitHub workflows in your ci-cd with protected branch rules</a>
     </h2>
 
     <ul class="ablog-archive">
       <li>
-         <i class="fa fa-calendar"></i> 29 January 2019 
+         <i class="fa fa-calendar"></i> 27 November 2022 
       </li>
           
 <li id="category">
   <span><i class="fa-fw fa fa-folder-open"></i></span
   >
    
-  <a href="../../category/thoughts/">thoughts</a>  
+  <a href="../../category/til/">til</a>  
 </li>
  
 <li id="tags">
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../dev-ops/">dev ops</a>   
-  <a href="../software-development/">software development</a>   
-  <a href="#">CICD</a>  
+  <a href="#">cicd</a>   
+  <a href="../github-actions/">github actions</a>  
 </li>
  
     </ul>
     <div class="ablog-post-excerpt docutils container">
-<p>I recently had to beef up the continuous deployment of Jupyter Book, and used
-it as an opportunity to learn a bit more about CircleCI’s features. It turns out,
-they’re pretty cool! Here are a few of the things that I learned this time around.</p>
-<p>For those who aren’t familiar with CircleCI, it is a service that runs Continuous
-Integration and Continuous Deployment (CI/CD) workflows for projects. This basically
-means that they manage many kinds of infrastructure that can launch jobs that run
-test suites, deploy applications, and test on many different environments.</p>
+<p>Have you ever had a GitHub pull request show “phantom” workflows that never pass?
+This looks like one or more workflows that are in a constant <strong>waiting state</strong>, with a yellow status indicator, and that never complete.</p>
+<p>It looks something like this:</p>
+<img alt="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" src="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" />
 </div>
 
-    <p class="ablog-post-expand"><a href="../../2019/2019-01-29-three-things-circleci/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/circlci-github/">Automatically mirror a github repository with CircleCI</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 18 December 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="../../category/show-and-tell/">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../productivity/">productivity</a>   
-  <a href="#">CICD</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>tl;dr: you can automatically mirror the contents of one repository to another by
-using CI/CD services like CircleCI. This post shows you one way to do it using
-secrets that let you push to a GitHub repository from a CircleCI process.</p>
-<p>We recently ran into an issue with the Data 8 course where we needed to mirror
-one GitHub site to another. In short, the textbook is built with a tool called
-<a class="reference external" href="https://chrisholdgraf.com/jupyter-book/intro.html">jupyter-book</a>, and we use <a class="reference external" href="https://pages.github.com/">github-pages</a>
-to host the content at <a class="reference external" href="https://inferentialthinking.com">inferentialthinking.com</a>.
-For <a class="reference external" href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/">weird URL-naming reasons</a>,
-we had to create <a class="reference external" href="https://github.com/inferentialthinking/inferentialthinking.github.io">a second organization</a>
-to host the actual site. This introduced the complexity that any time the textbook
-had to be updated, we did so in <em>two</em> different places. The raw textbook content
-is hosted at https://github.com/data-8/textbook, and the version hosted online is
-at https://github.com/inferentialthinking/inferentialthinking.github.io.</p>
-<img alt="" src="../../../_images/circleci-mirror-deploy-key-ui.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2018/circlci-github/"><em>Read more ...</em></a></p>
+    <p class="ablog-post-expand"><a href="../../2022/phantom-workflows-pull-requests/"><em>Read more ...</em></a></p>
     <hr/>
   </div>
    

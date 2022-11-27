@@ -524,7 +524,7 @@
   }
  ],
  "metadata": {
-  "categoriy": "show-and-tell",
+  "category": "til",
   "date": "2016-12-19",
   "interactive": false,
   "kernelspec": {

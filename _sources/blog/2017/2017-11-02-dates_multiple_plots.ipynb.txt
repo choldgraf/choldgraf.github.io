@@ -230,7 +230,7 @@
   }
  ],
  "metadata": {
-  "category": "show-and-tell",
+  "category": "til",
   "date": "2017-11-02",
   "interactive": true,
   "kernelspec": {

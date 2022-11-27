@@ -17,7 +17,7 @@
     "## Some data!\n",
     "I did a bit of digging and found a dataset for NRSA success rates over the last few years. It's broken down by grant type, as well as by NIH branch. The results are interesting so I thought I'd put them out there.\n",
     "\n",
-    "**Note** - this dataset and a few others can be found on the NIH website [here]('http://report.nih.gov/success_rates/index.aspx'). I encourage you to check it out! Thank god for open data (even if it's really hard to find)."
+    "**Note** - this dataset and a few others can be found on the NIH website [here]('https://report.nih.gov/funding/nih-budget-and-spending-data-past-fiscal-years/success-rates'). I encourage you to check it out! Thank god for open data (even if it's really hard to find)."
    ]
   },
   {
@@ -559,7 +559,7 @@
   }
  ],
  "metadata": {
-  "categoriy": "show-and-tell",
+  "category": "til",
   "date": "2015-10-29",
   "kernelspec": {
    "display_name": "Python 2",

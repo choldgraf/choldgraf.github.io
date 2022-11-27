@@ -4,8 +4,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts in show-and-tell &#8212; Chris Holdgraf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Fix phantom GitHub workflows in your ci-cd with protected branch rules" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2022/phantom-workflows-pull-requests/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="Have you ever had a GitHub pull request show “phantom” workflows that never pass? This looks like one or more workflows that are in a constant waiting state, with a yellow status indicator, and tha..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
+<meta property="og:image:alt" content="Chris Holdgraf" />
+<meta name="description" content="Have you ever had a GitHub pull request show “phantom” workflows that never pass? This looks like one or more workflows that are in a constant waiting state, with a yellow status indicator, and tha..." />
+
+    <title>Fix phantom GitHub workflows in your ci-cd with protected branch rules &#8212; Chris Holdgraf</title>
   
   
   
@@ -52,7 +61,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/category/show-and-tell';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2022/phantom-workflows-pull-requests';</script>
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
@@ -63,7 +72,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts in show-and-tell"
+  title="Chris Holdgraf"
 />
  
 <style type="text/css">
@@ -421,7 +430,31 @@
 
   
   <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
+    <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  27 November 2022 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/cicd/">cicd</a>   
+  <a href="../../tag/github-actions/">github actions</a>  
+</li>
+ 
+</ul>
+
     </div>
     <div class="sidebar-start-items__item">
 <h3>
@@ -430,25 +463,25 @@
 <ul>
    
   <li>
-    <a href="../../2022/sphinx-custom-crossrefs/"
+    <a href="../sphinx-custom-crossrefs/"
       >21 November - Custom roles and domains in Sphinx with one line</a
     >
   </li>
   
   <li>
-    <a href="../../2022/orcid-auto-update/"
+    <a href="../orcid-auto-update/"
       >19 November - Automatically updating my publications page with ORCID and doi.org</a
     >
   </li>
   
   <li>
-    <a href="../../2022/sphinx-redirects-folder/"
+    <a href="../sphinx-redirects-folder/"
       >19 November - Automatically redirect folders in Sphinx websites</a
     >
   </li>
   
   <li>
-    <a href="../../2022/cloud-services-academia/"
+    <a href="../cloud-services-academia/"
       >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
     >
   </li>
@@ -469,7 +502,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (4)</a>
+    <a href="../">2022 (5)</a>
   </li>
     
   <li>
@@ -529,379 +562,43 @@
             
 
             <article class="bd-article" role="main">
-              
+               <section id="fix-phantom-github-workflows-in-your-ci-cd-with-protected-branch-rules">
+<h1>Fix phantom GitHub workflows in your ci-cd with protected branch rules<a class="headerlink" href="#fix-phantom-github-workflows-in-your-ci-cd-with-protected-branch-rules" title="Permalink to this heading">#</a></h1>
+<p>Have you ever had a GitHub pull request show “phantom” workflows that never pass?
+This looks like one or more workflows that are in a constant <strong>waiting state</strong>, with a yellow status indicator, and that never complete.</p>
+<p>It looks something like this:</p>
+<img alt="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" src="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" />
+<p>If you run into this, it may be because of <a class="reference external" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches">branch protection rules</a> in their repository.
+These allow you to ensure that certain conditions are met before a pull request can be merged.</p>
+<p>In particular, a common step is to <strong>ensure that a certain GitHub Workflow passes before you can merge</strong>.
+This is often the source of the phantom workflows that never complete.
+This is configured via <code class="docutils literal notranslate"><span class="pre">settings</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">branches</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">protection</span> <span class="pre">rules</span></code>, like so:</p>
+<img alt="https://user-images.githubusercontent.com/1839645/204134952-fb5b8aa5-f8bb-4bd9-92ec-c66bf653387a.png" src="https://user-images.githubusercontent.com/1839645/204134952-fb5b8aa5-f8bb-4bd9-92ec-c66bf653387a.png" />
+<p>If you <strong>specify a test here, and then delete it in your <code class="docutils literal notranslate"><span class="pre">YAML</span></code> configuration file, this will cause phantom workflows in your Pull Requests</strong>.
+GitHub will wait for the test to finish, because it is specified in your repository settings, but it will never finish because the test isn’t configured in your workflow configuration.</p>
+<p>So, to fix it, you simply <strong>delete the entry in your protected branch rules associated with that test</strong>.
+As a result, GitHub will no longer wait for that test to complete, and you can merge away.</p>
+<p>This one has bitten me several times, and so I decided to just document it here for future reference.
+<a class="reference external" href="https://jacobtomlinson.dev/">Jacob Tomlinson</a> was the one that first told me about this fix!</p>
+</section>
 
 <div class="section">
-  <h1>
-     Posts in  show-and-tell 
-  </h1>
-   
+    
 
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2021/2021-12-18-hybrid-tutorial-prerecord/">Serving in two roles at once via pre-recorded tutorials</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 17 December 2021 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i
-      class="fa-fw fa fa-tag"
-    ></i
-    ></span
-  >
-   
-  <a href="../../tag/teaching/">teaching</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>At AGU 2021 this year I was asked to give <a class="reference external" href="https://www.youtube.com/watch?v=lZ2FHTkyaMU">a short tutorial introduction to Jupyter Book</a>.
-The tutorial was 30 minutes long, and the session was fully remote.</p>
-<p>This posed a few challenges:</p>
-<img alt="https://user-images.githubusercontent.com/1839645/146656769-95e0e430-15ac-4b5e-a0ee-7e77e8f7b9ed.png" src="https://user-images.githubusercontent.com/1839645/146656769-95e0e430-15ac-4b5e-a0ee-7e77e8f7b9ed.png" />
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../sphinx-custom-crossrefs/">
+      <i class="fa fa-arrow-circle-left"></i> Custom roles and domains in Sphinx with one line
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
 </div>
-
-    <p class="ablog-post-expand"><a href="../../2021/2021-12-18-hybrid-tutorial-prerecord/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
   
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/circlci-github/">Automatically mirror a github repository with CircleCI</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 18 December 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/productivity/">productivity</a>   
-  <a href="../../tag/cicd/">CICD</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>tl;dr: you can automatically mirror the contents of one repository to another by
-using CI/CD services like CircleCI. This post shows you one way to do it using
-secrets that let you push to a GitHub repository from a CircleCI process.</p>
-<p>We recently ran into an issue with the Data 8 course where we needed to mirror
-one GitHub site to another. In short, the textbook is built with a tool called
-<a class="reference external" href="https://chrisholdgraf.com/jupyter-book/intro.html">jupyter-book</a>, and we use <a class="reference external" href="https://pages.github.com/">github-pages</a>
-to host the content at <a class="reference external" href="https://inferentialthinking.com">inferentialthinking.com</a>.
-For <a class="reference external" href="https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/">weird URL-naming reasons</a>,
-we had to create <a class="reference external" href="https://github.com/inferentialthinking/inferentialthinking.github.io">a second organization</a>
-to host the actual site. This introduced the complexity that any time the textbook
-had to be updated, we did so in <em>two</em> different places. The raw textbook content
-is hosted at https://github.com/data-8/textbook, and the version hosted online is
-at https://github.com/inferentialthinking/inferentialthinking.github.io.</p>
-<img alt="" src="../../../_images/circleci-mirror-deploy-key-ui.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2018/circlci-github/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/my-workflow/">My weekly workflow</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 26 October 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i
-      class="fa-fw fa fa-tag"
-    ></i
-    ></span
-  >
-   
-  <a href="../../tag/productivity/">productivity</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I’ve had a bunch of conversations with friends who were interested in how to
-keep track of the various projects they’re working on, and to prioritize their
-time over the course of a week. I thought it might be helpful to post my own
-approach to planning time throughout the week in case it’s useful for others to
-riff off of.</p>
-<p>First off, a few general principles that I use to guide my thinking on planning
-out the week.</p>
-<img alt="" src="../../../_images/trello-board-project.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2018/my-workflow/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/circle-docs/">Using CircleCI to preview documentation in Pull Requests</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 16 October 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/sphinx/">sphinx</a>   
-  <a href="../../tag/documentation/">documentation</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Writing documentation is important - it’s the first point of contact between many users and your
-project, and can be a pivotal moment in whether they decide to adopt your tech or become a contributor.</p>
-<p>However, it can be a pain to iterate on documentation, as it is often involves a lot of rapid iteration
-locally, followed by a push to GitHub where you “just trust” that the author has done a good job of
-writing content, design, etc.</p>
-<img alt="" src="../../../_images/sphinx-circle-logos.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2018/circle-docs/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/sphinx-copy-buttons/">Adding copy buttons to code blocks in Sphinx</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 05 July 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/blogging/">blogging</a>   
-  <a href="../../tag/python/">python</a>   
-  <a href="../../tag/sphinx/">sphinx</a>   
-  <a href="../../tag/documentation/">documentation</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p><strong>NOTE: This is now a sphinx extension!</strong> Thanks to some friendly suggestions, I’ve written
-this up as a super tiny sphinx extension. Check it out here: https://github.com/choldgraf/sphinx-copybutton</p>
-<p><a class="reference external" href="http://www.sphinx-doc.org/en/master/">Sphinx</a> is a fantastic way to build
-documentation for your Python package. On the Jupyter project, we use it
-for almost all of our repositories.</p>
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2018/sphinx-copy-buttons/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/jekyllmarkdown/">Blogging with Jupyter Notebooks and Jekyll using nbconvert templates</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 23 May 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/blogging/">blogging</a>   
-  <a href="../../tag/python/">python</a>   
-  <a href="../../tag/jekyll/">jekyll</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Here’s a quick (and hopefully helpful) post for those wishing to blog in
-Jekyll using Jupyter notebooks. As some of you may know, <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> can
-easily convert your <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files to markdown, which Jekyll can easily
-turn into blog posts for you.</p>
-<p>However, an annoying part of this is that Markdown doesn’t include classes
-for input and outputs, which means they each get treated the same in the
-output. Not ideal.</p>
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2018/jekyllmarkdown/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2017/2017-11-02-dates_multiple_plots/">Combining dates with analysis visualization in python</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 02 November 2017 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/python/">python</a>   
-  <a href="../../tag/open-science/">open science</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Sometimes you want to do two things:</p>
-<p>Plot a timeseries that handles datetimes in a clever way (e.g., with Pandas or Matplotlib)</p>
-<img alt="../../../_images/a5e3e8e77eaaf3179af34196eaac86273f44b3b5e7e58b872fbbb3ea52e3d634.png" src="../../../_images/a5e3e8e77eaaf3179af34196eaac86273f44b3b5e7e58b872fbbb3ea52e3d634.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2017/2017-11-02-dates_multiple_plots/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2017/2017-03-16-dates_in_python/">Dates in python</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 16 March 2017 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/python/">python</a>   
-  <a href="../../tag/open-science/">open science</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>As a part of setting up the website for the <a class="reference external" href="http://docathon.org">Docathon</a> I’ve had to re-learn all of my date string formatting rules. It’s one of those little problems you don’t really think about - turning an arbitrary string into something structured like a date - until you’ve actually got to do it.</p>
-<p>There are a bunch of tools in python for using date-like objects, but it’s not always easy to figure out how these work. This post is just a couple of pieces of information I’ve picked up along the process.</p>
-<img alt="../../../_images/a289273e2ebdd52dbf8d304957f576e5f6b15464ba4df7b93ad2710fb0cc5013.png" src="../../../_images/a289273e2ebdd52dbf8d304957f576e5f6b15464ba4df7b93ad2710fb0cc5013.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2017/2017-03-16-dates_in_python/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-  
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2015/2015-08-30-craigslist_scrape/">Scraping craigslist</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 30 August 2015 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="#">show-and-tell</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../../tag/python/">python</a>   
-  <a href="../../tag/programming/">programming</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>In this notebook, I’ll show you how to make a simple query on Craigslist using some nifty python modules. You can take advantage of all the structure data that exists on webpages to collect interesting datasets.</p>
-<p>First we need to figure out how to submit a query to Craigslist. As with many websites, one way you can do this is simply by constructing the proper URL and sending it to Craigslist. Here’s a sample URL that is returned after manually typing in a search to Craigslist:</p>
-<img alt="../../../_images/2c7f9b06d258220cbe83caa9f29188e2a6da84e3b74ba4e0e1673b0172fbad1b.png" src="../../../_images/2c7f9b06d258220cbe83caa9f29188e2a6da84e3b74ba4e0e1673b0172fbad1b.png" />
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2015/2015-08-30-craigslist_scrape/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-   
 </div>
 
             </article>
@@ -946,6 +643,12 @@ output. Not ideal.</p>
 
 <div class="toc-item">
   
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2022/phantom-workflows-pull-requests.md.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
 </div>
 
             </div>

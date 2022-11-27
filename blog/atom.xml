@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-11-24T13:22:50.494553+00:00</updated>
+  <updated>2022-11-27T20:33:37.126851+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -31,18 +31,6 @@
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
 &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_style&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;white&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mne&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;itertools&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;product&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;pandas&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -258,18 +246,6 @@
 &lt;div class="highlight-ipython3 notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bs4&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;pylab&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bs4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BeautifulSoup&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bs4&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="n"&gt;get_ipython&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run_line_magic&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pylab&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;inline&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;pandas&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -952,19 +928,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# Seaborn can help create some pretty plots&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;seaborn&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell docutils container"&gt;
 &lt;div class="cell_input docutils container"&gt;
@@ -1302,19 +1265,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# First we&amp;#39;ll import a few helpful tools for cleaning and plotting&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;pandas&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1671,20 +1621,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# We can use the `time` and the `numpy` module to time how long it takes to do an FFT&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;time&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;time&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt; &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_style&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;white&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;numpy&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;That’s not too bad - ~.003 seconds is pretty fast. But here’s where the $O(n^2)$ thing really gets us…&lt;/p&gt;
 &lt;div class="cell docutils container"&gt;
@@ -1971,19 +1907,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
 &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_style&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;white&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# First, import a bunch of stuff that we&amp;#39;ll use later&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;numpy&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2276,19 +2199,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.html.widgets&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;interact&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;IPython.display&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="c1"&gt;# Some quick imports we&amp;#39;ll use later&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;scipy.stats&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;distributions&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;numpy&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2685,19 +2595,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;pandas&amp;#39;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;From a quick look at the biorxiv we can see that its search API works in a pretty simple manner. I tried typing in a simple search query and got something like this:&lt;/p&gt;
 &lt;p&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;http://biorxiv.org/search/neuroscience%20numresults%3A100%20sort%3Arelevance-rank&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
@@ -3032,7 +2929,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
             src="https://www.youtube.com/embed/lZS4uaTBrh8"
             frameborder="0"
             allowfullscreen
-            
         &gt;&lt;/iframe&gt;
         &lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
@@ -3048,18 +2944,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.preprocessing&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MinMaxScaler&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;colorbabel&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;cb&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mne&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;pandas&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3278,16 +3162,19 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mne&lt;/span&gt;
+&lt;div class="output stream highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Setting up low-pass filter at 3 Hz
 
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;matplotlib&amp;#39;
+FIR filter parameters
+---------------------
+Designing a one-pass, zero-phase, non-causal lowpass filter:
+- Windowed time-domain design (firwin) method
+- Hamming window with 0.0194 passband ripple and 53 dB stopband attenuation
+- Upper passband edge: 3.00 Hz
+- Upper transition bandwidth: 2.00 Hz (-6 dB cutoff frequency: 4.00 Hz)
+- Filter length: 165 samples (1.650 sec)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;img alt="../_images/1a49d155574ef142621815f0f823c023838373d0fc8e64acf60e29da890dddcb.png" src="../_images/1a49d155574ef142621815f0f823c023838373d0fc8e64acf60e29da890dddcb.png" /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;There’s really a lot of unnecessary code going on above. We’re defining objects that share the same name as the kwarg that they represent. We can’t store them as dictionaries, because then we’d have to do some python-fu in order to get them to iterate properly. This is where &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;cycler&lt;/span&gt;&lt;/code&gt; is handy:&lt;/p&gt;
@@ -3382,18 +3269,6 @@ require(['nbextensions/jupyter-vega/index'], function(vega) {
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;numpy&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3807,18 +3682,6 @@ fit regression lines to them…&lt;/p&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas_datareader.data&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;web&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ion&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell_output docutils container"&gt;
-&lt;div class="output traceback highlight-ipythontb notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gt"&gt;---------------------------------------------------------------------------&lt;/span&gt;
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;&lt;span class="g g-Whitespace"&gt;                       &lt;/span&gt;Traceback (most recent call last)
-&lt;span class="n"&gt;Cell&lt;/span&gt; &lt;span class="n"&gt;In&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;span class="ne"&gt;----&amp;gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-&lt;span class="g g-Whitespace"&gt;      &lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-
-&lt;span class="ne"&gt;ModuleNotFoundError&lt;/span&gt;: No module named &amp;#39;pandas&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8899,5 +8762,36 @@ Just not well-documented.&lt;/p&gt;
     <category term="scholarship" label="scholarship"/>
     <category term="sphinx" label="sphinx"/>
     <published>2022-11-21T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2022/phantom-workflows-pull-requests/</id>
+    <title>Fix phantom GitHub workflows in your ci-cd with protected branch rules</title>
+    <updated>2022-11-27T00:00:00+00:00</updated>
+    <content type="html">&lt;section id="fix-phantom-github-workflows-in-your-ci-cd-with-protected-branch-rules"&gt;
+
+&lt;p&gt;Have you ever had a GitHub pull request show “phantom” workflows that never pass?
+This looks like one or more workflows that are in a constant &lt;strong&gt;waiting state&lt;/strong&gt;, with a yellow status indicator, and that never complete.&lt;/p&gt;
+&lt;p&gt;It looks something like this:&lt;/p&gt;
+&lt;img alt="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" src="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" /&gt;
+&lt;p&gt;If you run into this, it may be because of &lt;a class="reference external" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches"&gt;branch protection rules&lt;/a&gt; in their repository.
+These allow you to ensure that certain conditions are met before a pull request can be merged.&lt;/p&gt;
+&lt;p&gt;In particular, a common step is to &lt;strong&gt;ensure that a certain GitHub Workflow passes before you can merge&lt;/strong&gt;.
+This is often the source of the phantom workflows that never complete.
+This is configured via &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;settings&lt;/span&gt;&lt;/code&gt; -&amp;gt; &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;branches&lt;/span&gt;&lt;/code&gt; -&amp;gt; &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;branch&lt;/span&gt; &lt;span class="pre"&gt;protection&lt;/span&gt; &lt;span class="pre"&gt;rules&lt;/span&gt;&lt;/code&gt;, like so:&lt;/p&gt;
+&lt;img alt="https://user-images.githubusercontent.com/1839645/204134952-fb5b8aa5-f8bb-4bd9-92ec-c66bf653387a.png" src="https://user-images.githubusercontent.com/1839645/204134952-fb5b8aa5-f8bb-4bd9-92ec-c66bf653387a.png" /&gt;
+&lt;p&gt;If you &lt;strong&gt;specify a test here, and then delete it in your &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;YAML&lt;/span&gt;&lt;/code&gt; configuration file, this will cause phantom workflows in your Pull Requests&lt;/strong&gt;.
+GitHub will wait for the test to finish, because it is specified in your repository settings, but it will never finish because the test isn’t configured in your workflow configuration.&lt;/p&gt;
+&lt;p&gt;So, to fix it, you simply &lt;strong&gt;delete the entry in your protected branch rules associated with that test&lt;/strong&gt;.
+As a result, GitHub will no longer wait for that test to complete, and you can merge away.&lt;/p&gt;
+&lt;p&gt;This one has bitten me several times, and so I decided to just document it here for future reference.
+&lt;a class="reference external" href="https://jacobtomlinson.dev/"&gt;Jacob Tomlinson&lt;/a&gt; was the one that first told me about this fix!&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2022/phantom-workflows-pull-requests/" rel="alternate"/>
+    <summary>Have you ever had a GitHub pull request show “phantom” workflows that never pass?
+This looks like one or more workflows that are in a constant waiting state, with a yellow status indicator, and that never complete.It looks something like this:</summary>
+    <category term="cicd" label="cicd"/>
+    <category term="githubactions" label="github actions"/>
+    <published>2022-11-27T00:00:00+00:00</published>
   </entry>
 </feed>
