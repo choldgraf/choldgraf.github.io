@@ -1,14 +1,17 @@
 # Dependencies for *executing* the content in this blog.
 colorspacious
+download
 ipywidgets
 jupyterlab
 jupytext
 makeitpop
 matplotlib
 mne
+moviepy
 nilearn
 numpy
 pandas
+pandas_datareader
 scipy
 seaborn
 xarray
