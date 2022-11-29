@@ -94,6 +94,15 @@ for old, new in redirect_folders.items():
             if "pandoc" not in str(newpath):
                 rediraffe_redirects[oldpath] = str(newpath)
 
+
+# -- Social Previews -----------------------------------------
+
+# social_preview = {
+#     "image": 
+#     "tagline":
+#     "color_bar":
+# }
+
 # -- ABlog ---------------------------------------------------
 
 blog_baseurl = "https://chrisholdgraf.com"
@@ -122,5 +131,13 @@ myst_enable_extensions = [
 # Instead if I want something to execute, manually set it in the post's metadata.
 nb_execution_mode = "off"
 
+from social_previews import render_page_card
+
 def setup(app):
     app.add_css_file("custom.css")
+    app.connect("html-page-context", render_page_card)
+    app.add_config_value("social_preview_config", None, True)
+
+social_preview_config = {
+    "image": "_static/profile-bw.png",
+}
