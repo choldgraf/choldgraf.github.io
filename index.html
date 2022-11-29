@@ -9,11 +9,14 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrisholdgraf.com" />
 <meta property="og:site_name" content="Chris Holdgraf" />
-<meta property="og:description" content="Hey there 👋 I work at the intersection of technical development, open communities, scientific research, and education. I also help run 2i2c - the International Interactive Computing Collaboration, ..." />
+<meta property="og:description" content="I work at the intersection of technical development, open communities, scientific research, and education. I’m the Executive Director of 2i2c - the International Interactive Computing Collaboration..." />
 <meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
 <meta property="og:image:alt" content="Chris Holdgraf" />
-<meta name="description" content="Hey there 👋 I work at the intersection of technical development, open communities, scientific research, and education. I also help run 2i2c - the International Interactive Computing Collaboration, ..." />
+<meta name="description" content="I work at the intersection of technical development, open communities, scientific research, and education. I’m the Executive Director of 2i2c - the International Interactive Computing Collaboration..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_index.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Chris Holdgraf - about me &#8212; Chris Holdgraf</title>
   
   
@@ -477,16 +480,20 @@
             <article class="bd-article" role="main">
                <section id="chris-holdgraf-about-me">
 <h1>Chris Holdgraf - about me<a class="headerlink" href="#chris-holdgraf-about-me" title="Permalink to this heading">#</a></h1>
-<p>Hey there 👋</p>
 <p>I work at the intersection of technical development, open communities, scientific research, and education.</p>
-<p>I also help run <a class="reference external" href="https://2i2c.org">2i2c - the International Interactive Computing Collaboration</a>, a non-profit dedicated to open source infrastructure for interactive computing in research and education.</p>
-<p>I work with teams to create and improve open-source technology for scientists, educators, and data analysts. My goal is to help people do their work more effectively, openly, inclusively, and reproducibly.</p>
+<p>I’m the Executive Director of <a class="reference external" href="https://2i2c.org">2i2c - the International Interactive Computing Collaboration</a>, a non-profit dedicated to open source infrastructure for interactive computing in research and education.</p>
 <p>You can learn a bit more about what I do on this website.</p>
 <section id="my-blog">
 <h2>My blog<a class="headerlink" href="#my-blog" title="Permalink to this heading">#</a></h2>
-<p>I share my thoughts and what I’m up to from time to time.
-Here’s a list of recent posts, or <a class="reference internal" href="blog/"><span class="doc std std-doc">check out my blog archive</span></a>.</p>
+<p>Here’s a list of recent posts, or <a class="reference internal" href="blog/"><span class="doc std std-doc">check out my blog archive</span></a>.</p>
 <ul class="postlist-style-none postlist">
+<li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/shell-split/">subprocess.run can execute shell commands directly</a> - 2022-11-29</p>
+<p class="ablog-post-excerpt">I often run shell commands in Python via the <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run"><code class="docutils literal notranslate"><span class="pre">subprocess.run</span></code> command</a>.
+One thing that has always bugged me is that this required you to split commands into a list before it’d work properly.
+For example, you’d have to do:</p>
+<p class="ablog-post-excerpt">Today I discovered that you don’t have to do this!
+There’s a <code class="docutils literal notranslate"><span class="pre">shell=</span></code> keyword that can be used to tell subprocess to simply run the command directly in the shell.</p>
+</li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/phantom-workflows-pull-requests/">Fix phantom GitHub workflows in your ci-cd with protected branch rules</a> - 2022-11-27</p>
 <p class="ablog-post-excerpt">Have you ever had a GitHub pull request show “phantom” workflows that never pass?
 This looks like one or more workflows that are in a constant <strong>waiting state</strong>, with a yellow status indicator, and that never complete.</p>

@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bothered me, but the method for making such an..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2016_2016-07-08-voting_randomness.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Simulating a national referendum vote &#8212; Chris Holdgraf</title>
   
   
@@ -449,11 +452,11 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="../../tag/statistics/">statistics</a>   
   <a href="../../tag/computation/">computation</a>   
-  <a href="../../tag/fft/">fft</a>   
-  <a href="../../tag/python/">python</a>   
   <a href="../../tag/voting/">voting</a>   
-  <a href="../../tag/statistics/">statistics</a>  
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/fft/">fft</a>  
 </li>
  
 </ul>
@@ -465,6 +468,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
@@ -489,12 +498,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -505,7 +508,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -576,28 +579,28 @@
 <p>We’ll take on the task of assessing what national votes might look like if they happened completely randomly. Then, we can compare the actual results to our simulation in order to decide if we’ve got a “real” result or not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, import a bunch of stuff that we&#39;ll use later</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># First, import a bunch of stuff that we&#39;ll use later
+import numpy as np
+from scipy import stats
+import matplotlib.pyplot as plt
+import pandas as pd
+from tqdm import tqdm
+import seaborn as sns
+sns.set_style(&#39;white&#39;)
+%matplotlib inline
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initializing the simulation</span>
-<span class="c1"># We&#39;ll simulate ten thousand votes.</span>
-<span class="c1"># On each iteration, generate random votes and calculate the results </span>
-<span class="n">n_votes</span> <span class="o">=</span> <span class="mi">10000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Initializing the simulation
+# We&#39;ll simulate ten thousand votes.
+# On each iteration, generate random votes and calculate the results 
+n_votes = 10000
 
-<span class="c1"># This is the actual difference in percentage points that we had between the sides</span>
-<span class="n">actual_diff</span> <span class="o">=</span> <span class="mf">51.9</span> <span class="o">-</span> <span class="mf">48.1</span>
+# This is the actual difference in percentage points that we had between the sides
+actual_diff = 51.9 - 48.1
 </pre></div>
 </div>
 </div>
@@ -605,16 +608,16 @@
 <p>First, we’ll create a completely random vote. Each person randomly chooses between the two options: <em>yes</em> and <em>no</em>. Then, we compare the difference in percentage points between the two.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 10,000 citizens and assign each a random vote</span>
-<span class="n">total_population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e4</span><span class="p">)</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
-    <span class="n">votes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span>
-    <span class="n">yes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">votes</span> <span class="o">&lt;</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span>
-    <span class="n">no</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">votes</span> <span class="o">&gt;</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create 10,000 citizens and assign each a random vote
+total_population = int(1e4)
+diff = np.zeros(n_votes)
+for ii in tqdm(range(n_votes)):
+    votes = np.random.rand(total_population)
+    yes = np.sum(votes &lt; .5) / float(total_population)
+    no = np.sum(votes &gt; .5) / float(total_population)
     
-    <span class="c1"># This is the difference in percentage points</span>
-    <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">yes</span> <span class="o">-</span> <span class="n">no</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+    # This is the difference in percentage points
+    diff[ii] = (yes - no) * 100
 </pre></div>
 </div>
 </div>
@@ -623,8 +626,8 @@
 <p>How can we summarize the “limits of uncertainty” that <code class="docutils literal notranslate"><span class="pre">diff</span></code> defines? We can use percentiles to get an idea for the variability of this number. We’ll take the 1st and the 99th percentile of our simulated differences as a proxy for the limits of what we’d expect if there were <em>no</em> true opinion in the population</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we calculate 98% confidence interval on the difference</span>
-<span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Here we calculate 98% confidence interval on the difference
+clo, chi = np.percentile(diff, [1, 99])
 </pre></div>
 </div>
 </div>
@@ -637,14 +640,14 @@
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the distribution of differences when voting is *totally* random</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">axfill</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">clo</span><span class="p">,</span> <span class="n">chi</span><span class="p">],</span> <span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of totally random splits&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Actual Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence Interval&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Let&#39;s look at the distribution of differences when voting is *totally* random
+f, ax = plt.subplots(figsize=(10, 5))
+_ = ax.hist(diff, bins=30)
+_ = ax.axvline(actual_diff, color=&#39;r&#39;, ls=&#39;--&#39;)
+axfill = ax.fill_between([clo, chi], *ax.get_ylim(), alpha=.1, color=&#39;k&#39;)
+ax.set_title(&#39;Distribution of totally random splits&#39;, fontsize=20)
+ax.legend([ax.lines[0], axfill], [&#39;Actual Difference&#39;, &#39;Confidence Interval&#39;], fontsize=12)
+_ = plt.setp(ax, xlim=[-15, 15])
 </pre></div>
 </div>
 </div>
@@ -662,23 +665,23 @@
 <p>First, I grabbed a list of each UK voting district, along with its size…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># UK Population data pulled from</span>
-<span class="c1"># https://en.wikipedia.org/wiki/List_of_English_districts_by_population</span>
-<span class="n">populations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/uk_population.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;District&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Ceremonial_County&#39;</span><span class="p">,</span> <span class="s1">&#39;Historic_County&#39;</span><span class="p">,</span> <span class="s1">&#39;English_Region&#39;</span><span class="p">]</span>
-<span class="n">populations</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">header</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># UK Population data pulled from
+# https://en.wikipedia.org/wiki/List_of_English_districts_by_population
+populations = pd.read_csv(&#39;../data/uk_population.csv&#39;, header=None, index_col=0)
+header = [&#39;District&#39;, &#39;Population&#39;, &#39;Type&#39;, &#39;Ceremonial_County&#39;, &#39;Historic_County&#39;, &#39;English_Region&#39;]
+populations.columns = header
 
-<span class="c1"># Convert population to numbers</span>
-<span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+# Convert population to numbers
+populations[&#39;Population&#39;] = pd.to_numeric(populations[&#39;Population&#39;].str.replace(&#39;,&#39;, &#39;&#39;))
 
-<span class="c1"># Now, turn these populations into percentages</span>
-<span class="n">n_areas</span> <span class="o">=</span> <span class="n">populations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">total_population</span> <span class="o">=</span> <span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_population</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of (sorted) region sizes within the UK&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;District number&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population percentage&#39;</span><span class="p">)</span>
+# Now, turn these populations into percentages
+n_areas = populations.shape[0]
+total_population = populations[&#39;Population&#39;].sum()
+populations[&#39;percent&#39;] = populations[&#39;Population&#39;].astype(float) / total_population
+plt.plot(populations[&#39;percent&#39;])
+plt.title(&#39;Distribution of (sorted) region sizes within the UK&#39;, fontsize=15)
+plt.xlabel(&#39;District number&#39;)
+plt.ylabel(&#39;Population percentage&#39;)
 </pre></div>
 </div>
 </div>
@@ -689,40 +692,40 @@
 <p>Now, we’ll run the simulation. On each iteration, all the districts vote totally randomly. Then, the difference between “yes” and “no” is calculated for each. Finally, these differences are combined in a weighted average, where the weights are proportional to the district sizes. This means that bigger districts have a larger influence on the outcome, mimicking the way that the UK tallies votes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
-    <span class="c1"># Define a random split yes vs. no for each area</span>
-    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_areas</span><span class="p">)</span>
-    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">area_splits</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">area_splits</span><span class="p">])</span>
-    <span class="n">yes</span><span class="p">,</span> <span class="n">no</span> <span class="o">=</span> <span class="n">area_splits</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>diff = np.zeros(n_votes)
+for ii in tqdm(range(n_votes)):
+    # Define a random split yes vs. no for each area
+    area_splits = np.random.rand(n_areas)
+    area_splits = np.vstack([area_splits, 1 - area_splits])
+    yes, no = area_splits
     
-    <span class="c1"># Now, calculate the difference and average these together, weighted by the area size</span>
-    <span class="n">diffs</span> <span class="o">=</span> <span class="n">yes</span> <span class="o">-</span> <span class="n">no</span>
-    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">])</span>
-    <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">diffs</span> <span class="o">*</span> <span class="mi">100</span>
+    # Now, calculate the difference and average these together, weighted by the area size
+    diffs = yes - no
+    diffs = np.average(diffs, weights=populations[&#39;percent&#39;])
+    diff[ii] = diffs * 100
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we calculate 99% confidence interval on the difference</span>
-<span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Here we calculate 99% confidence interval on the difference
+clo, chi = np.percentile(diff, [.5, 99.5])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the distribution of differences</span>
-<span class="c1"># This time, voting is randomized for each region</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">axfill</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">clo</span><span class="p">,</span> <span class="n">chi</span><span class="p">],</span> <span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of votes randomized by region&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Actual Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence Interval&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Let&#39;s look at the distribution of differences
+# This time, voting is randomized for each region
+f, ax = plt.subplots(figsize=(10, 5))
+_ = ax.hist(diff, bins=30)
+_ = ax.axvline(actual_diff, color=&#39;r&#39;, ls=&#39;--&#39;)
+axfill = ax.fill_between([clo, chi], *ax.get_ylim(), alpha=.1, color=&#39;k&#39;)
+ax.set_title(&#39;Distribution of votes randomized by region&#39;, fontsize=20)
+ax.legend([ax.lines[0], axfill], [&#39;Actual Difference&#39;, &#39;Confidence Interval&#39;], fontsize=12)
+_ = plt.setp(ax, xlim=[-15, 15])
 </pre></div>
 </div>
 </div>
@@ -745,57 +748,57 @@
 <p>We can build this into our simulation…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we define a percentage of districts that undergo a sudden swing in voter opinion</span>
-<span class="n">perc_swing_amt</span> <span class="o">=</span> <span class="mf">.1</span>
-<span class="n">perc_swing_districts</span> <span class="o">=</span> <span class="mf">.2</span>
-<span class="n">n_perc_swing_districts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_areas</span> <span class="o">*</span> <span class="n">perc_swing_districts</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Here we define a percentage of districts that undergo a sudden swing in voter opinion
+perc_swing_amt = .1
+perc_swing_districts = .2
+n_perc_swing_districts = int(n_areas * perc_swing_districts)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now, re-run the simulation including the random swing.</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
-    <span class="c1"># Define a random split yes vs. no for each area</span>
-    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_areas</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Now, re-run the simulation including the random swing.
+diff = np.zeros(n_votes)
+for ii in tqdm(range(n_votes)):
+    # Define a random split yes vs. no for each area
+    area_splits = np.random.rand(n_areas)
     
-    <span class="c1"># Define a random swing across a subset of random districts</span>
-    <span class="n">swing</span> <span class="o">=</span> <span class="n">perc_swing_amt</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">ixs_swing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_areas</span><span class="p">),</span> <span class="n">n_perc_swing_districts</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">area_splits</span><span class="p">[</span><span class="n">ixs_swing</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">swing</span> <span class="o">+</span> <span class="n">area_splits</span><span class="p">[</span><span class="n">ixs_swing</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    # Define a random swing across a subset of random districts
+    swing = perc_swing_amt * np.random.choice([-1, 1])
+    ixs_swing = np.random.choice(range(n_areas), n_perc_swing_districts, replace=False)
+    area_splits[ixs_swing] = np.clip(swing + area_splits[ixs_swing], 0, 100)
     
-    <span class="c1"># Now calculate the opposing side amount and average</span>
-    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">area_splits</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">area_splits</span><span class="p">])</span>
-    <span class="n">yes</span><span class="p">,</span> <span class="n">no</span> <span class="o">=</span> <span class="n">area_splits</span>
+    # Now calculate the opposing side amount and average
+    area_splits = np.vstack([area_splits, 1 - area_splits])
+    yes, no = area_splits
     
-    <span class="c1"># Now, calculate the difference and average these together, weighted by the area size</span>
-    <span class="n">diffs</span> <span class="o">=</span> <span class="n">yes</span> <span class="o">-</span> <span class="n">no</span>
-    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">])</span>
-    <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">diffs</span> <span class="o">*</span> <span class="mi">100</span>
+    # Now, calculate the difference and average these together, weighted by the area size
+    diffs = yes - no
+    diffs = np.average(diffs, weights=populations[&#39;percent&#39;])
+    diff[ii] = diffs * 100
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we calculate 99% confidence interval on the difference</span>
-<span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Here we calculate 99% confidence interval on the difference
+clo, chi = np.percentile(diff, [.5, 99.5])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the distribution of differences</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">axfill</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">clo</span><span class="p">,</span> <span class="n">chi</span><span class="p">],</span> <span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of votes randomized by region&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Actual Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence Interval&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Let&#39;s look at the distribution of differences
+f, ax = plt.subplots(figsize=(10, 5))
+_ = ax.hist(diff, bins=30)
+_ = ax.axvline(actual_diff, color=&#39;r&#39;, ls=&#39;--&#39;)
+axfill = ax.fill_between([clo, chi], *ax.get_ylim(), alpha=.1, color=&#39;k&#39;)
+ax.set_title(&#39;Distribution of votes randomized by region&#39;, fontsize=20)
+ax.legend([ax.lines[0], axfill], [&#39;Actual Difference&#39;, &#39;Confidence Interval&#39;], fontsize=12)
+_ = plt.setp(ax, xlim=[-15, 15])
 </pre></div>
 </div>
 </div>

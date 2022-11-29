@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="Every now and then I come across a nifty feature in Matplotlib that I wish I’d known about earlier. The MPL documentation can be a beast to get through, and as a result you miss some cool stuff som..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2017_2017-01-04-matplotlib_cycles.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Matplotlib Cyclers are Great &#8212; Chris Holdgraf</title>
   
   
@@ -449,9 +452,9 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/visualizations/">visualizations</a>   
   <a href="../../tag/open-science/">open science</a>   
-  <a href="../../tag/python/">python</a>  
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/visualizations/">visualizations</a>  
 </li>
  
 </ul>
@@ -463,6 +466,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
@@ -487,12 +496,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -503,7 +506,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -570,23 +573,23 @@
 <p>Have you ever had to loop through a number of plotting parameters in matplotlib? Say you have two datasets and you’d like to compare them to one another. Maybe something like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">mne</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
+import mne
+%matplotlib inline
 
-<span class="c1"># Create fake data</span>
-<span class="n">data1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
-<span class="n">data1</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">filter_data</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">data2</span> <span class="o">=</span> <span class="n">data1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.1</span>
+# Create fake data
+data1 = np.random.randn(500)
+data1 = mne.filter.filter_data(data1, 100, None, 3)
+data2 = data1 + np.random.randn(500) * .1
 
-<span class="c1"># Plot</span>
-<span class="n">linewidths</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">]</span>
-<span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="mf">.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i_data</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="p">,</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">],</span> <span class="n">colors</span><span class="p">,</span> <span class="n">linewidths</span><span class="p">,</span> <span class="n">alphas</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i_data</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">450</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+# Plot
+linewidths = [6, 1]
+colors = [&#39;k&#39;, &#39;r&#39;]
+alphas = [.3, 1]
+fig, ax = plt.subplots()
+for i_data, color, lw, alpha in zip([data1, data2], colors, linewidths, alphas):
+    ax.plot(i_data[50:450], c=color, lw=lw, alpha=alpha)
 </pre></div>
 </div>
 </div>
@@ -609,11 +612,11 @@ Designing a one-pass, zero-phase, non-causal lowpass filter:
 <p>There’s really a lot of unnecessary code going on above. We’re defining objects that share the same name as the kwarg that they represent. We can’t store them as dictionaries, because then we’d have to do some python-fu in order to get them to iterate properly. This is where <code class="docutils literal notranslate"><span class="pre">cycler</span></code> is handy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the same thing, but now it&#39;s more readable and compact</span>
-<span class="n">cycler</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">lw</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i_data</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">],</span> <span class="n">cycler</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">i_data</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">450</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plot the same thing, but now it&#39;s more readable and compact
+cycler = plt.cycler(lw=[6, 1], c=[&#39;k&#39;, &#39;r&#39;], alpha=[.3, 1])
+fig, ax = plt.subplots()
+for i_data, kwargs in zip([data1, data2], cycler):
+    ax.plot(i_data[50:450], **kwargs)
 </pre></div>
 </div>
 </div>
@@ -624,14 +627,14 @@ Designing a one-pass, zero-phase, non-causal lowpass filter:
 <p>You can even cycle through more complex properties like colormaps. Let’s create one that cycles through several colormaps for a plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cyc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
-                 <span class="n">cmap</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="s1">&#39;magma&#39;</span><span class="p">,</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">],</span>
-                 <span class="n">alpha</span><span class="o">=</span><span class="p">[</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">],</span>
-                 <span class="n">lw</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cyc = plt.cycler(s=np.linspace(200, 50, 3),
+                 cmap=[&#39;viridis&#39;, &#39;magma&#39;, &#39;coolwarm&#39;],
+                 alpha=[.25, .5, .75],
+                 lw=[0, .1, .5])
 
-<span class="c1"># You can print the cycler, or use nice jupyter notebook support</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cyc</span><span class="p">)</span>
-<span class="n">cyc</span>
+# You can print the cycler, or use nice jupyter notebook support
+print(cyc)
+cyc
 </pre></div>
 </div>
 </div>
@@ -643,10 +646,10 @@ Designing a one-pass, zero-phase, non-causal lowpass filter:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">cyc</span><span class="p">:</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots()
+for args in cyc:
+    x, y = np.random.randn(2, 100)
+    ax.scatter(x, y, c=x, **args)
 </pre></div>
 </div>
 </div>

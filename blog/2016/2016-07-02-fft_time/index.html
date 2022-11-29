@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="When we discuss “computational efficiency”, you often hear people throw around phrases like $O(n^2)$ or $O(nlogn)$. We talk about them in the abstract, and it can be hard to appreciate what these d..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2016_2016-07-02-fft_time.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>The beauty of computational efficiency and the FFT &#8212; Chris Holdgraf</title>
   
   
@@ -449,11 +452,11 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/programming/">programming</a>   
-  <a href="../../tag/efficiency/">efficiency</a>   
   <a href="../../tag/computation/">computation</a>   
-  <a href="../../tag/fft/">fft</a>   
-  <a href="../../tag/python/">python</a>  
+  <a href="../../tag/efficiency/">efficiency</a>   
+  <a href="../../tag/programming/">programming</a>   
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/fft/">fft</a>  
 </li>
  
 </ul>
@@ -465,6 +468,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
@@ -489,12 +498,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -505,7 +508,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -577,18 +580,18 @@
 <p>Think this isn’t a big deal? Let’s see what happens when the signal gets longer. First off, a very short signal:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can use the `time` and the `numpy` module to time how long it takes to do an FFT</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We can use the `time` and the `numpy` module to time how long it takes to do an FFT
+from time import time
+import numpy as np
+import seaborn as sns
+sns.set_style(&#39;white&#39;)
 
-<span class="c1"># For a signal of length ~1000. Say, 100ms of a 10KHz audio sample.</span>
-<span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1009</span><span class="p">)</span>
-<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;It takes </span><span class="si">{}</span><span class="s1"> seconds to do the FFT&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">stop</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
+# For a signal of length ~1000. Say, 100ms of a 10KHz audio sample.
+signal = np.random.randn(1009)
+start = time()
+_ = np.fft.fft(signal)
+stop = time()
+print(&#39;It takes {} seconds to do the FFT&#39;.format(stop-start))
 </pre></div>
 </div>
 </div>
@@ -596,26 +599,26 @@
 <p>That’s not too bad - ~.003 seconds is pretty fast. But here’s where the $O(n^2)$ thing really gets us…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll test out how long the FFT takes for a few lengths</span>
-<span class="n">test_primes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">1009</span><span class="p">,</span> <span class="mi">10009</span><span class="p">,</span> <span class="mi">100019</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We&#39;ll test out how long the FFT takes for a few lengths
+test_primes = [11, 101, 1009, 10009, 100019]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s try a few slightly longer signals</span>
-<span class="k">for</span> <span class="n">i_length</span> <span class="ow">in</span> <span class="n">test_primes</span><span class="p">:</span>
-    <span class="c1"># Calculate the number of factors for this length (we&#39;ll see why later)</span>
-    <span class="n">factors</span> <span class="o">=</span> <span class="p">[</span><span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">if</span> <span class="n">i_length</span> <span class="o">%</span> <span class="n">ii</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># Generate a random signal w/ this length</span>
-    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">i_length</span><span class="p">)</span>
-    <span class="c1"># Now time the FFT</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-    <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
-    <span class="n">stop</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;With data of length </span><span class="si">{}</span><span class="s1"> (</span><span class="si">{}</span><span class="s1"> factors), it takes </span><span class="si">{}</span><span class="s1"> seconds to do the FFT&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-            <span class="n">i_length</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">factors</span><span class="p">),</span> <span class="n">stop</span><span class="o">-</span><span class="n">start</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Let&#39;s try a few slightly longer signals
+for i_length in test_primes:
+    # Calculate the number of factors for this length (we&#39;ll see why later)
+    factors = [ii for ii in range(1, 1000) if i_length % ii == 0]
+    # Generate a random signal w/ this length
+    signal = np.random.randn(i_length)
+    # Now time the FFT
+    start = time()
+    _ = np.fft.fft(signal)
+    stop = time()
+    print(&#39;With data of length {} ({} factors), it takes {} seconds to do the FFT&#39;.format(
+            i_length, len(factors), stop-start))
 </pre></div>
 </div>
 </div>
@@ -642,10 +645,10 @@
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from sklearn import linear_model
+from matplotlib import pyplot as plt
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -656,20 +659,20 @@
 <p>To see what the FFT’s efficiency looks like, we’ll simulate data of different lengths and see how long it takes to compute the FFT at each length. We’ll create a random vector of gaussian noise ranging from length 1 to 10,000. For each vector, we’ll compute the FFT, and time how long it took to compute. I’ve already taken the liberty of doing this (repeated 3 times, and then averaged together). Those times are stored in fft_times.csv.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s read in the data and see how it looks</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/fft_times.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Let&#39;s read in the data and see how it looks
+df = pd.read_csv(&#39;../data/fft_times.csv&#39;, index_col=0)
+df = df.apply(pd.to_numeric)
+df = df.mean(0).to_frame(&#39;time&#39;)
+df.index = df.index.astype(int)
+df[&#39;length&#39;] = df.index.values
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First off, it&#39;s clear that computation time grows nonlinearly with signal length</span>
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># First off, it&#39;s clear that computation time grows nonlinearly with signal length
+df.plot(&#39;length&#39;, &#39;time&#39;, figsize=(10, 5))
 </pre></div>
 </div>
 </div>
@@ -679,11 +682,11 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># However, upon closer inspection, it&#39;s clear that there&#39;s much variability</span>
-<span class="n">winsize</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">winsize</span>
-<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># However, upon closer inspection, it&#39;s clear that there&#39;s much variability
+winsize = 500
+i = 0
+j = i + winsize
+df.iloc[i:j][&#39;time&#39;].plot(figsize=(10, 5))
 </pre></div>
 </div>
 </div>
@@ -695,32 +698,32 @@
 <p>We can use regression to find the “linear” relationship between length of signal and time of FFT. However, if there are any trends in the data that are <strong>nonlinear</strong>, then they should show up as errors in the regression model. Let’s see if that happens…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll use a regression model to try and fit how length predicts time</span>
-<span class="n">mod</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">xfit</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span>
-<span class="n">xfit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">xfit</span><span class="p">,</span> <span class="n">xfit</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">xfit</span><span class="o">**</span><span class="mi">3</span><span class="p">,</span> <span class="n">xfit</span><span class="o">**</span><span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">yfit</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We&#39;ll use a regression model to try and fit how length predicts time
+mod = linear_model.LinearRegression()
+xfit = df[&#39;length&#39;]
+xfit = np.vstack([xfit, xfit**2, xfit**3, xfit**4]).T
+yfit = df[&#39;time&#39;].reshape([-1, 1])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now fit to our data, and calculate the error for each datapoint</span>
-<span class="n">mod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xfit</span><span class="p">,</span> <span class="n">yfit</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ypred&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mod</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xfit</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">ypred</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Now fit to our data, and calculate the error for each datapoint
+mod.fit(xfit, yfit)
+df[&#39;ypred&#39;] = mod.predict(xfit)
+df[&#39;diff&#39;] = df[&#39;time&#39;] - df.ypred
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># As the length grows, the trends in the data begin to diverge more and more</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;diff&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span>
-             <span class="n">style</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.05</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Error of linear fit for varying signal lengths&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># As the length grows, the trends in the data begin to diverge more and more
+ax = df.plot(&#39;length&#39;, &#39;diff&#39;, kind=&#39;scatter&#39;,
+             style=&#39;.&#39;, alpha=.5, figsize=(10, 5))
+ax.set_ylim([0, .05])
+ax.set_title(&#39;Error of linear fit for varying signal lengths&#39;)
 </pre></div>
 </div>
 </div>
@@ -732,14 +735,14 @@
 <p>But we already know that the FFT efficiency will differ depending on the number of factors of the signal’s length. Let’s see if that’s related to the plot above…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll write a helper function that shows how many (&lt;100) factors each length has</span>
-<span class="n">find_n_factors</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We&#39;ll write a helper function that shows how many (&lt;100) factors each length has
+find_n_factors = lambda n: len([i for i in range(1, min(100, n-1)) if n % i == 0])
 
-<span class="c1"># This tells us the number of factors for all lengths we tried</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;n_factors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">find_n_factors</span><span class="p">)</span>
+# This tells us the number of factors for all lengths we tried
+df[&#39;n_factors&#39;] = df[&#39;length&#39;].map(find_n_factors)
 
-<span class="c1"># We now have a column that tells us how many factors each iteration had</span>
-<span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+# We now have a column that tells us how many factors each iteration had
+df.tail()
 </pre></div>
 </div>
 </div>
@@ -804,11 +807,11 @@
 <p>Finally, we can plot time to compue the FFT as a function of the number of factors for that signal length.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># As we can see, the FFT time drops quickly as a function of the number of factors</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;n_factors&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time for FFT (s)&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time of FFT for varying numbers of factors&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># As we can see, the FFT time drops quickly as a function of the number of factors
+ax = df.plot(&#39;n_factors&#39;, &#39;time&#39;, style=[&#39;.&#39;], figsize=(10, 5), alpha=.1)
+ax.set_xlim([0, 15])
+ax.set_ylabel(&#39;Time for FFT (s)&#39;)
+ax.set_title(&#39;Time of FFT for varying numbers of factors&#39;)
 </pre></div>
 </div>
 </div>
@@ -820,19 +823,19 @@
 <p>Finally, we can show how the length of computation time changes for each group of factors. We’ll plot the signal length along with the time to compute the FFT, this time colored by the number of factors for each point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll plot two zoom levels to see the detail</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span>
-<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;n_factors&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;RdYlBu&#39;</span><span class="p">,</span> <span class="n">vmax</span><span class="p">),</span>
-                                           <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Length of signal (samples)&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Time to complete FFT (s)&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Time to compute the FFT, colored by n_factors&#39;</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;length&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.2</span><span class="p">])</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.005</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We&#39;ll plot two zoom levels to see the detail
+f, axs = plt.subplots(2, 1, figsize=(10, 5))
+vmin, vmax = 1, 18
+for ax in axs:
+    ax = df.plot.scatter(&#39;length&#39;, &#39;time&#39;, c=&#39;n_factors&#39;, lw=0, cmap=plt.cm.get_cmap(&#39;RdYlBu&#39;, vmax),
+                                           figsize=(10, 10), vmin=vmin, vmax=vmax, ax=ax, alpha=.5)
+    ax.set_xlabel(&#39;Length of signal (samples)&#39;)
+    ax.set_ylabel(&#39;Time to complete FFT (s)&#39;)
+    ax.set_title(&#39;Time to compute the FFT, colored by n_factors&#39;)
+_ = plt.setp(axs, xlim=[0, df[&#39;length&#39;].max()])
+_ = plt.setp(axs[0], ylim=[0, .2])
+_ = plt.setp(axs[1], ylim=[0, .005])
+plt.tight_layout()
 </pre></div>
 </div>
 </div>

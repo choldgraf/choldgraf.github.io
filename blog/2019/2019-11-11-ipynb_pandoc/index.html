@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="For several months now, the universal document converter pandoc has had support for Jupyter Notebooks. This means that with a single call, you can convert.ipynb files to any of the output formats t..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2019_2019-11-11-ipynb_pandoc.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Jupyter Notebooks to markdown and html with Pandoc &#8212; Chris Holdgraf</title>
   
   
@@ -449,9 +452,9 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/documentation/">documentation</a>   
   <a href="../../tag/nbconvert/">nbconvert</a>   
-  <a href="../../tag/pandoc/">pandoc</a>  
+  <a href="../../tag/pandoc/">pandoc</a>   
+  <a href="../../tag/documentation/">documentation</a>  
 </li>
  
 </ul>
@@ -463,6 +466,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
@@ -487,12 +496,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -503,7 +506,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -576,20 +579,20 @@ of this blog post, I’m going to stick with the raw text output here, though yo
 outputs if you wish, I recommend copy/pasting some of these commands on your own if you’d like to try.</p>
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">run</span> <span class="k">as</span> <span class="n">sbrun</span>
-<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">CalledProcessError</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">Markdown</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from subprocess import run as sbrun
+from subprocess import PIPE, CalledProcessError
+from pathlib import Path
+from IPython.display import HTML, Markdown
 
-<span class="c1"># A helper function to capture errors and outputs</span>
-<span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">sbrun</span><span class="p">(</span><span class="n">cmd</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="n">stderr</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+# A helper function to capture errors and outputs
+def run(cmd, *args, **kwargs):
+    try:
+        out = sbrun(cmd.split(), stderr=PIPE, stdout=PIPE, check=True, *args, **kwargs)
+        out = out.stdout.decode()
+        if len(out) &gt; 1:
+            print(out)
+    except CalledProcessError as e:
+        print(e.stderr.decode())
 </pre></div>
 </div>
 </div>
@@ -629,8 +632,8 @@ things depending on the output, such as adding a header if converting to HTML.</
 with <code class="docutils literal notranslate"><span class="pre">-o</span></code>, we’ll cause Pandoc to print the result to the screen, which we’ll display here.</p>
 <div class="cell tag_hide_output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipynb -&gt; gfmd</span>
-<span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images -t gfm&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ipynb -&gt; gfmd
+run(f&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images -t gfm&#39;)
 </pre></div>
 </div>
 </div>
@@ -758,8 +761,8 @@ a YAML header.</p>
 <h2>To pandoc-flavored markdown<a class="headerlink" href="#to-pandoc-flavored-markdown" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide_output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipynb -&gt; pandoc md</span>
-<span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ipynb -&gt; pandoc md
+run(f&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images&#39;)
 </pre></div>
 </div>
 </div>
@@ -959,8 +962,8 @@ a vanilla HTML conversion. Note that the only thing we had to do was change the 
 file extension to <code class="docutils literal notranslate"><span class="pre">.html</span></code> and Pandoc inferred the output type for us:</p>
 <div class="cell tag_hide_output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipynb -&gt; HTML</span>
-<span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ipynb -&gt; HTML
+run(f&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb --resource-path=inputs -s --extract-media=outputs/images&#39;)
 </pre></div>
 </div>
 </div>
@@ -1159,8 +1162,8 @@ inferred from the input extension. Now we’ve made it explicit as well.</p></li
 </ul>
 <div class="cell tag_hide_output docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ipynb -&gt; HTML with citations</span>
-<span class="n">run</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb -f ipynb+citations --bibliography pandoc_ipynb/inputsreferences.bib --resource-path=inputs -s --extract-media=outputs/images&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># ipynb -&gt; HTML with citations
+run(f&#39;pandoc pandoc_ipynb/inputs/notebooks.ipynb -f ipynb+citations --bibliography pandoc_ipynb/inputsreferences.bib --resource-path=inputs -s --extract-media=outputs/images&#39;)
 </pre></div>
 </div>
 </div>

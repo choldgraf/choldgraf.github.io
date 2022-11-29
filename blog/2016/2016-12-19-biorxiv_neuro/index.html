@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="Per a recent request somebody posted on Twitter, I thought it’d be fun to write a quick scraper for the biorxiv, an excellent new tool for posting pre-prints of articles before they’re locked down ..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2016_2016-12-19-biorxiv_neuro.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Question 1: How has the published articles rate changed? &#8212; Chris Holdgraf</title>
   
   
@@ -450,10 +453,10 @@
   >
    
   <a href="../../tag/visualizations/">visualizations</a>   
-  <a href="../../tag/preprints/">preprints</a>   
+  <a href="../../tag/python/">python</a>   
   <a href="../../tag/open-science/">open science</a>   
   <a href="../../tag/web-scraping/">web scraping</a>   
-  <a href="../../tag/python/">python</a>  
+  <a href="../../tag/preprints/">preprints</a>  
 </li>
  
 </ul>
@@ -465,6 +468,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
@@ -489,12 +498,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -505,7 +508,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -570,14 +573,14 @@
 <p>First we’ll do a few imports. We’ll rely heavily on the <code class="docutils literal notranslate"><span class="pre">requests</span></code> and <code class="docutils literal notranslate"><span class="pre">BeautifulSoup</span></code> packages, which together make an excellent one-two punch for doing web scraping. We coud use something like <code class="docutils literal notranslate"><span class="pre">scrapy</span></code>, but that seems a little overkill for this small project.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="k">as</span> <span class="n">bs</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import requests
+import pandas as pd
+import seaborn as sns
+import numpy as np
+from bs4 import BeautifulSoup as bs
+import matplotlib.pyplot as plt
+from tqdm import tqdm
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -588,14 +591,14 @@
 <p>So, let’s do a simple scrape and see what the results look like. We’ll query the biorxiv API to see what kind of structure the result will have.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_results</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://biorxiv.org/search/neuroscience%20numresults%3A</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-    <span class="n">n_results</span><span class="p">)</span>
-<span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_results = 20
+url = &quot;http://biorxiv.org/search/neuroscience%20numresults%3A{}&quot;.format(
+    n_results)
+resp = requests.post(url)
 
-<span class="c1"># I&#39;m not going to print this because it messes up the HTML rendering</span>
-<span class="c1"># But you get the idea...probably better to look in Chrome anyway ;)</span>
-<span class="c1"># text = bs(resp.text)</span>
+# I&#39;m not going to print this because it messes up the HTML rendering
+# But you get the idea...probably better to look in Chrome anyway ;)
+# text = bs(resp.text)
 </pre></div>
 </div>
 </div>
@@ -612,54 +615,54 @@
 <p>We’ll loop through years / months, and pull out the author and title information. We’ll do this with two dataframes, one for authors, one for articles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the URL and start/stop years</span>
-<span class="n">stt_year</span> <span class="o">=</span> <span class="mi">2012</span>
-<span class="n">stp_year</span> <span class="o">=</span> <span class="mi">2016</span>
-<span class="n">search_term</span> <span class="o">=</span> <span class="s2">&quot;neuroscience&quot;</span>
-<span class="n">url_base</span> <span class="o">=</span> <span class="s2">&quot;http://biorxiv.org/search/</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">)</span>
-<span class="n">url_params</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%20li</span><span class="s2">mit_from%3A</span><span class="si">{0}</span><span class="s2">-</span><span class="si">{1}</span><span class="s2">-01</span><span class="si">%20li</span><span class="s2">mit_to%3A</span><span class="si">{0}</span><span class="s2">-</span><span class="si">{2}</span><span class="s2">-01%20numresults%3A100</span><span class="si">%20f</span><span class="s2">ormat_result%3Astandard&quot;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">url_base</span> <span class="o">+</span> <span class="n">url_params</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Define the URL and start/stop years
+stt_year = 2012
+stp_year = 2016
+search_term = &quot;neuroscience&quot;
+url_base = &quot;http://biorxiv.org/search/{}&quot;.format(search_term)
+url_params = &quot;%20limit_from%3A{0}-{1}-01%20limit_to%3A{0}-{2}-01%20numresults%3A100%20format_result%3Astandard&quot;
+url = url_base + url_params
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now we&#39;ll do the scraping...</span>
-<span class="n">all_articles</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">all_authors</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">yr</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">stt_year</span><span class="p">,</span> <span class="n">stp_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">mn</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">):</span>
-        <span class="c1"># Populate the fields with our current query and post it</span>
-        <span class="n">this_url</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">mn</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> 
-        <span class="n">resp</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">this_url</span><span class="p">)</span>
-        <span class="n">html</span> <span class="o">=</span> <span class="n">bs</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Now we&#39;ll do the scraping...
+all_articles = []
+all_authors = []
+for yr in tqdm(range(stt_year, stp_year + 1)):
+    for mn in range(1, 12):
+        # Populate the fields with our current query and post it
+        this_url = url.format(yr, mn, mn + 1) 
+        resp = requests.post(this_url)
+        html = bs(resp.text)
         
-        <span class="c1"># Collect the articles in the result in a list</span>
-        <span class="n">articles</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;search-result&#39;</span><span class="p">})</span>
-        <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
-            <span class="c1"># Pull the title, if it&#39;s empty then skip it</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;highwire-cite-title&#39;</span><span class="p">})</span>
-            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">continue</span>
-            <span class="n">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        # Collect the articles in the result in a list
+        articles = html.find_all(&#39;li&#39;, attrs={&#39;class&#39;: &#39;search-result&#39;})
+        for article in articles:
+            # Pull the title, if it&#39;s empty then skip it
+            title = article.find(&#39;span&#39;, attrs={&#39;class&#39;: &#39;highwire-cite-title&#39;})
+            if title is None:
+                continue
+            title = title.text.strip()
             
-            <span class="c1"># Collect year / month / title information</span>
-            <span class="n">all_articles</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">title</span><span class="p">])</span>
+            # Collect year / month / title information
+            all_articles.append([yr, mn, title])
             
-            <span class="c1"># Now collect author information</span>
-            <span class="n">authors</span> <span class="o">=</span> <span class="n">article</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;span&#39;</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;class&#39;</span><span class="p">:</span> <span class="s1">&#39;highwire-citation-author&#39;</span><span class="p">})</span>
-            <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">authors</span><span class="p">:</span>
-                <span class="n">all_authors</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">author</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="n">title</span><span class="p">))</span>
+            # Now collect author information
+            authors = article.find_all(&#39;span&#39;, attrs={&#39;class&#39;: &#39;highwire-citation-author&#39;})
+            for author in authors:
+                all_authors.append((author.text, title))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll collect these into DataFrames for subsequent use</span>
-<span class="n">authors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_authors</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">])</span>
-<span class="n">articles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_articles</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We&#39;ll collect these into DataFrames for subsequent use
+authors = pd.DataFrame(all_authors, columns=[&#39;name&#39;, &#39;title&#39;])
+articles = pd.DataFrame(all_articles, columns=[&#39;year&#39;, &#39;month&#39;, &#39;title&#39;])
 </pre></div>
 </div>
 </div>
@@ -667,10 +670,10 @@
 <p>To make things easier to cross-reference, we’ll add an <code class="docutils literal notranslate"><span class="pre">id</span></code> column that’s unique for each title. This way we can more simply join the dataframes to do cool things:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a dictionary of title: ID mappings</span>
-<span class="n">unique_ids</span> <span class="o">=</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">articles</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())}</span>
-<span class="n">articles</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">unique_ids</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]]</span>
-<span class="n">authors</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">unique_ids</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">authors</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Define a dictionary of title: ID mappings
+unique_ids = {title: ii for ii, title in enumerate(articles[&#39;title&#39;].unique())}
+articles[&#39;id&#39;] = [unique_ids[title] for title in articles[&#39;title&#39;]]
+authors[&#39;id&#39;] = [unique_ids[title] for title in authors[&#39;title&#39;]]
 </pre></div>
 </div>
 </div>
@@ -678,7 +681,7 @@
 <p>Now, we can easily join these two dataframes together if we so wish:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">articles</span><span class="p">,</span> <span class="n">authors</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(articles, authors, on=[&#39;id&#39;, &#39;title&#39;]).head()
 </pre></div>
 </div>
 </div>
@@ -745,13 +748,13 @@
 <p>This one is pretty easy to ask. Since we have both year / month data about each article, we can plot the number or articles for each group of time. To do this, let’s first turn these numbers into an actual “datetime” object. This let’s us do some clever plotting magic with pandas</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a &quot;date&quot; column</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">yr</span><span class="p">,</span> <span class="n">mn</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-         <span class="k">for</span> <span class="n">yr</span><span class="p">,</span> <span class="n">mn</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="p">]</span>
-<span class="n">articles</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dates</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Add a &quot;date&quot; column
+dates = [pd.datetime(yr, mn, day=1)
+         for yr, mn in articles[[&#39;year&#39;, &#39;month&#39;]].values]
+articles[&#39;date&#39;] = dates
 
-<span class="c1"># Now drop the year / month columns because they&#39;re redundant</span>
-<span class="n">articles</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+# Now drop the year / month columns because they&#39;re redundant
+articles = articles.drop([&#39;year&#39;, &#39;month&#39;], axis=1)
 </pre></div>
 </div>
 </div>
@@ -759,9 +762,9 @@
 <p>Now, we can simply group by month, sum the number of results, and plot this over time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly</span> <span class="o">=</span> <span class="n">articles</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Articles published per month for term</span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>monthly = articles.groupby(&#39;date&#39;).count()[&#39;title&#39;].to_frame()
+ax = monthly[&#39;title&#39;].plot()
+ax.set_title(&#39;Articles published per month for term\n{}&#39;.format(search_term))
 </pre></div>
 </div>
 </div>
@@ -772,13 +775,13 @@
 <p>We can also plot the cumulative number of papers published:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cumulative</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">monthly</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">monthly</span><span class="p">[</span><span class="s1">&#39;cumulative&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cumulative = np.cumsum(monthly.values)
+monthly[&#39;cumulative&#39;] = cumulative
 
-<span class="c1"># Now plot cumulative totals</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">monthly</span><span class="p">[</span><span class="s1">&#39;cumulative&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Cumulative number of papers matching term </span><span class="se">\n</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">search_term</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Papers&#39;</span><span class="p">)</span>
+# Now plot cumulative totals
+ax = monthly[&#39;cumulative&#39;].plot()
+ax.set_title(&#39;Cumulative number of papers matching term \n{}&#39;.format(search_term))
+ax.set_ylabel(&#39;Number of Papers&#39;)
 </pre></div>
 </div>
 </div>
@@ -792,12 +795,12 @@
 <p>For this one, we can use the “authors” dataframe. We’ll group by author name, and count the number of publications per author:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group by author and count the number of items</span>
-<span class="n">author_counts</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Group by author and count the number of items
+author_counts = authors.groupby(&#39;name&#39;).count()[&#39;title&#39;].to_frame(&#39;count&#39;)
 
-<span class="c1"># We&#39;ll take the top 30 authors</span>
-<span class="n">author_counts</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">author_counts</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+# We&#39;ll take the top 30 authors
+author_counts = author_counts.sort_values(&#39;count&#39;, ascending=False)
+author_counts = author_counts.iloc[:30].reset_index()
 </pre></div>
 </div>
 </div>
@@ -805,14 +808,14 @@
 <p>We’ll use some <code class="docutils literal notranslate"><span class="pre">pandas</span></code> magical gugu to get this one done. Who is the greatest pre-print neuroscientist of them all?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># So we can plot w/ pretty colors</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">author_counts</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">author_counts</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># So we can plot w/ pretty colors
+cmap = plt.cm.viridis
+colors = cmap(author_counts[&#39;count&#39;].values / float(author_counts[&#39;count&#39;].max()))
 
-<span class="c1"># Make the plot</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">author_counts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+# Make the plot
+fig, ax = plt.subplots(figsize=(10, 5))
+ax = author_counts.plot.bar(&#39;name&#39;, &#39;count&#39;, color=colors, ax=ax)
+_ = plt.setp(ax.get_xticklabels(), rotation=45, ha=&#39;right&#39;)
 </pre></div>
 </div>
 </div>
@@ -828,20 +831,20 @@
 <p>To do this, we’ll use the <code class="docutils literal notranslate"><span class="pre">wordcloud</span></code> module along with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>’s stop words (which are also useful for text analysis, incidentally)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wordcloud</span> <span class="k">as</span> <span class="nn">wc</span> 
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">ENGLISH_STOP_WORDS</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import wordcloud as wc 
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll collect the titles and turn them into one giant string</span>
-<span class="n">titles</span> <span class="o">=</span> <span class="n">articles</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">titles</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We&#39;ll collect the titles and turn them into one giant string
+titles = articles[&#39;title&#39;].values
+titles = &#39; &#39;.join(titles)
 
-<span class="c1"># Then define stop words to use...we&#39;ll include some &quot;typical&quot; brain words</span>
-<span class="n">our_stop_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ENGLISH_STOP_WORDS</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;brain&#39;</span><span class="p">,</span> <span class="s1">&#39;neural&#39;</span><span class="p">]</span>
+# Then define stop words to use...we&#39;ll include some &quot;typical&quot; brain words
+our_stop_words = list(ENGLISH_STOP_WORDS) + [&#39;brain&#39;, &#39;neural&#39;]
 </pre></div>
 </div>
 </div>
@@ -849,29 +852,29 @@
 <p>Now, generating a word cloud is as easy as a call to <code class="docutils literal notranslate"><span class="pre">generate_from_text</span></code>. Then we can output in whatever format we like</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function takes a buch of dummy arguments and returns random colors</span>
-<span class="k">def</span> <span class="nf">color_func</span><span class="p">(</span><span class="n">word</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-               <span class="n">orientation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">font_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="n">rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(),</span> <span class="mf">.2</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">rand</span><span class="p">)[:</span><span class="mi">3</span><span class="p">])</span>
-    <span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span> <span class="o">*</span> <span class="mi">255</span>
-    <span class="k">return</span> <span class="s1">&#39;rgb(</span><span class="si">{:.0f}</span><span class="s1">, </span><span class="si">{:.0f}</span><span class="s1">, </span><span class="si">{:.0f}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">cols</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># This function takes a buch of dummy arguments and returns random colors
+def color_func(word=None, font_size=None, position=None,
+               orientation=None, font_path=None, random_state=None):
+    rand = np.clip(np.random.rand(), .2, None)
+    cols = np.array(plt.cm.rainbow(rand)[:3])
+    cols = cols * 255
+    return &#39;rgb({:.0f}, {:.0f}, {:.0f})&#39;.format(*cols)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fit the cloud</span>
-<span class="n">cloud</span> <span class="o">=</span> <span class="n">wc</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">stopwords</span><span class="o">=</span><span class="n">our_stop_words</span><span class="p">,</span>
-                     <span class="n">color_func</span><span class="o">=</span><span class="n">color_func</span><span class="p">)</span>
-<span class="n">cloud</span><span class="o">.</span><span class="n">generate_from_text</span><span class="p">(</span><span class="n">titles</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Fit the cloud
+cloud = wc.WordCloud(stopwords=our_stop_words,
+                     color_func=color_func)
+cloud.generate_from_text(titles)
 
-<span class="c1"># Now make a pretty picture</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">cloud</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+# Now make a pretty picture
+im = cloud.to_array()
+fig, ax = plt.subplots()
+ax.imshow(im, cmap=plt.cm.viridis)
+ax.set_axis_off()
 </pre></div>
 </div>
 </div>

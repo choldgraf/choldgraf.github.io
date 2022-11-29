@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="As a part of setting up the website for the Docathon I’ve had to re-learn all of my date string formatting rules. It’s one of those little problems you don’t really think about - turning an arbitra..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2017_2017-03-16-dates_in_python.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Dates in python &#8212; Chris Holdgraf</title>
   
   
@@ -463,6 +466,12 @@
 <ul>
    
   <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
+  <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
     >
@@ -486,12 +495,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -502,7 +505,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -584,10 +587,10 @@
 <h2>Datetime<a class="headerlink" href="#datetime" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+from datetime import datetime
+import pandas as pd
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -595,8 +598,8 @@
 <p>The datetime module is our core definition of how to represent dates in python. We can call datetime directly with a bunch of integers as input, representing years, months, days, etc:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-<span class="n">date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date = datetime(2016, 3, 3, 12, 12, 12)
+date
 </pre></div>
 </div>
 </div>
@@ -609,7 +612,7 @@
 <p>We can access components of this date object as attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="o">.</span><span class="n">day</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date.day
 </pre></div>
 </div>
 </div>
@@ -621,10 +624,10 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attrs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">attrs</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">---</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">ii</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>attrs = [&#39;year&#39;, &#39;month&#39;, &#39;day&#39;]
+for ii in attrs:
+    print(&#39;\n---\n&#39;)
+    print(ii, getattr(date, ii))
 </pre></div>
 </div>
 </div>
@@ -649,7 +652,7 @@ day 12
 <p>We can also access specific sub-components of the datetime (that is, either the <strong>date</strong> or the <strong>time</strong>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date.date()
 </pre></div>
 </div>
 </div>
@@ -661,7 +664,7 @@ day 12
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date.time()
 </pre></div>
 </div>
 </div>
@@ -674,7 +677,7 @@ day 12
 <p>Datetime objects also have <strong>timezones</strong>. You can check whether our object already has a timezone with the <code class="docutils literal notranslate"><span class="pre">tzinfo</span></code> attribute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date.tzinfo
 </pre></div>
 </div>
 </div>
@@ -688,8 +691,8 @@ day 12
 <p>Pandas (among many, many other things) adds some extra functionality on top of datetime. The most useful function for this is probably <code class="docutils literal notranslate"><span class="pre">to_datetime</span></code>. This will try to be clever about whatever the input is, which lets us do things like give it strings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2017-03-01&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Class: &#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">date</span><span class="p">),</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="n">date</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date = pd.to_datetime(&#39;2017-03-01&#39;)
+print(&#39;Class: &#39;, type(date), &#39;|&#39;, date)
 </pre></div>
 </div>
 </div>
@@ -702,8 +705,8 @@ day 12
 <p>Note that this isn’t the same object as the datetime object, but we can usually treat them similarly. It also exposes several new methods that can do useful things, like changing the timezone of our datetime object:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span>
-<span class="n">date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date = date.tz_localize(&#39;UTC&#39;)
+date
 </pre></div>
 </div>
 </div>
@@ -715,7 +718,7 @@ day 12
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;timezone: &#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;timezone: &#39;, date.tzinfo)
 </pre></div>
 </div>
 </div>
@@ -728,8 +731,8 @@ day 12
 <p>We used a time zone called “UTC”. That stands for “Coordinated Universal Time”, which is basically the global standard for the “base” time. All other timezones are expressed in reference to this base time. For example, let’s now convert our time to PST:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;US/Pacific&#39;</span><span class="p">)</span>
-<span class="n">date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date = date.tz_convert(&#39;US/Pacific&#39;)
+date
 </pre></div>
 </div>
 </div>
@@ -741,7 +744,7 @@ day 12
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;timezone: &#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">.</span><span class="n">tzinfo</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&#39;timezone: &#39;, date.tzinfo)
 </pre></div>
 </div>
 </div>
@@ -755,10 +758,10 @@ day 12
 <p>One of the really nice things about pandas is that we can represent <strong>ranges</strong> in python. Let’s generate a range of dates below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The `freq` parameter tells us the size of the jump between items</span>
-<span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;H&#39;</span>  <span class="c1"># H == hours, D == days</span>
-<span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2017-03-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-03-05&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span>
-<span class="n">dates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># The `freq` parameter tells us the size of the jump between items
+freq = &#39;H&#39;  # H == hours, D == days
+dates = pd.date_range(&#39;2017-03-01&#39;, &#39;2017-03-05&#39;, freq=freq, tz=&#39;UTC&#39;)
+dates[:5]
 </pre></div>
 </div>
 </div>
@@ -774,7 +777,7 @@ day 12
 <p>This lets us do several things, such as create masks for any data we have:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">&lt;</span> <span class="s2">&quot;2017-03-02&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dates &lt; &quot;2017-03-02&quot;
 </pre></div>
 </div>
 </div>
@@ -797,9 +800,9 @@ day 12
 <p>It also lets us plot things across dates:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2017-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2017-03-06&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="n">tz</span><span class="o">=</span><span class="s1">&#39;UTC&#39;</span><span class="p">)</span>
-<span class="n">sr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">)</span>
-<span class="n">sr</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="c1"># Give us a 30 hour rolling mean</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dates = pd.date_range(&#39;2017-01-01&#39;, &#39;2017-03-06&#39;, freq=&#39;H&#39;, tz=&#39;UTC&#39;)
+sr = pd.Series(np.random.randn(len(dates)), index=dates)
+sr.rolling(30).mean().plot()  # Give us a 30 hour rolling mean
 </pre></div>
 </div>
 </div>
@@ -810,8 +813,8 @@ day 12
 <p>Note that if we now change the timezone, some of the days have changed because of the time shift:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Original times</span>
-<span class="n">dates</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Original times
+dates[:5]
 </pre></div>
 </div>
 </div>
@@ -826,8 +829,8 @@ day 12
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># New times</span>
-<span class="n">dates</span><span class="o">.</span><span class="n">tz_convert</span><span class="p">(</span><span class="s1">&#39;US/Pacific&#39;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># New times
+dates.tz_convert(&#39;US/Pacific&#39;)[:5]
 </pre></div>
 </div>
 </div>
@@ -860,8 +863,8 @@ day 12
 <p>Most of these are pretty self-explanatory, but of note is the <code class="docutils literal notranslate"><span class="pre">Z</span></code> at the end. This simply says that there is zero offset for this datetime, AKA it is “UTC” time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2017-03-01T12:34:02Z&#39;</span><span class="p">)</span>
-<span class="n">date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date = pd.to_datetime(&#39;2017-03-01T12:34:02Z&#39;)
+date
 </pre></div>
 </div>
 </div>
@@ -876,7 +879,7 @@ day 12
 <p>We can also tell pandas how to parse an arbitrary date string. For this, we use placeholders representing different components of the date, and then construct a “parsing string” that we give to the function. This tells the function how to turn input strings into datetime objects. For example, let’s say we have this string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_string</span> <span class="o">=</span> <span class="s1">&#39;02/2016/12&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date_string = &#39;02/2016/12&#39;
 </pre></div>
 </div>
 </div>
@@ -889,8 +892,8 @@ day 12
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m/%Y/</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">date</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date = pd.to_datetime(date_string, format=&#39;%m/%Y/%d&#39;)
+date
 </pre></div>
 </div>
 </div>
@@ -903,13 +906,13 @@ day 12
 <p>Above we told pandas to parse the date string as <code class="docutils literal notranslate"><span class="pre">{month}/{year}/{day}</span></code>. We can do this with any string structure we like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a complicated date string</span>
-<span class="n">date_string</span> <span class="o">=</span> <span class="s1">&#39;02/2016/12 and the time is 11 hr 04 min and 02 sec&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Create a complicated date string
+date_string = &#39;02/2016/12 and the time is 11 hr 04 min and 02 sec&#39;
 
-<span class="c1"># And tell `to_datetime` how to parse it</span>
-<span class="n">date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span>
-                      <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m/%Y/</span><span class="si">%d</span><span class="s1"> and the time is %H hr %M min and %S sec&#39;</span><span class="p">)</span>
-<span class="n">date</span>
+# And tell `to_datetime` how to parse it
+date = pd.to_datetime(date_string,
+                      format=&#39;%m/%Y/%d and the time is %H hr %M min and %S sec&#39;)
+date
 </pre></div>
 </div>
 </div>
@@ -925,7 +928,7 @@ day 12
 <p>The same principle can be applied to printing strings. Any datetime object has a method called <code class="docutils literal notranslate"><span class="pre">strftime</span></code>. This lets you create a <strong>string</strong> from <strong>time</strong>. You can pass a similar date parsing string to what we used above, and it will tell the object what kind of string to create:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y/%m and </span><span class="si">%d</span><span class="s1"> days&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date.strftime(&#39;%Y/%m and %d days&#39;)
 </pre></div>
 </div>
 </div>
@@ -938,7 +941,7 @@ day 12
 <p>You can also use this to do some nice formatting, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%A, %B </span><span class="si">%d</span><span class="s1">, %Y&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>date.strftime(&#39;%A, %B %d, %Y&#39;)
 </pre></div>
 </div>
 </div>
@@ -951,8 +954,8 @@ day 12
 <p>You can also pass these parsing strings to the <code class="docutils literal notranslate"><span class="pre">format</span></code> method of python strings. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mystring</span> <span class="o">=</span> <span class="s2">&quot;Today&#39;s date is...{:%A, %B </span><span class="si">%d</span><span class="s2">, %Y}&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mystring</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">date</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>mystring = &quot;Today&#39;s date is...{:%A, %B %d, %Y}&quot;
+print(mystring.format(date))
 </pre></div>
 </div>
 </div>

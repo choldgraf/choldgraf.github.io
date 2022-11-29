@@ -14,6 +14,9 @@
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="Note - you can find the nbviewer of this post here A big question that I’ve always wrestled with is the difference between correlation and coherence. Intuitively, I think of these two things as ver..." />
 
+    <meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2015_2015-05-27-coherence_correlation.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
     <title>Coherence vs. Correlation - a simple simulation &#8212; Chris Holdgraf</title>
   
   
@@ -449,10 +452,10 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/programming/">programming</a>   
   <a href="../../tag/correlation/">correlation</a>   
-  <a href="../../tag/timeseries/">timeseries</a>   
-  <a href="../../tag/python/">python</a>  
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/programming/">programming</a>   
+  <a href="../../tag/timeseries/">timeseries</a>  
 </li>
  
 </ul>
@@ -464,6 +467,12 @@
 </h3>
 <ul>
    
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
   <li>
     <a href="../../2022/phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
@@ -488,12 +497,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/cloud-services-academia/"
-      >05 September - Ask Twitter: Why don’t academic researchers use cloud services?</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -504,7 +507,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (5)</a>
+    <a href="../../2022/">2022 (6)</a>
   </li>
     
   <li>
@@ -576,14 +579,14 @@
 <p>First things first, we’ll import some tools to use</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">mne</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import mne
+from itertools import product
+import numpy as np
+import seaborn as sns
+from matplotlib import pyplot as plt
+sns.set_style(&#39;white&#39;)
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -595,35 +598,35 @@
 <p>Where $f$ is the frequency of the wave, $$t$$ indexes time, and $$2\pi\phi$$ defines a phase offset of the wave. Then, $$A$$ scales the wave’s amplitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can generate these sine wave parameters, then stitch them together</span>
-<span class="n">amplitude_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
-<span class="n">phase_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.25</span><span class="p">,</span> <span class="mf">.33</span><span class="p">,</span> <span class="mf">.5</span><span class="p">]</span>
-<span class="n">freq</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">signal_vals</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">amplitude_values</span><span class="p">,</span> <span class="n">phase_values</span><span class="p">))</span>
-<span class="n">amps</span><span class="p">,</span> <span class="n">phases</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">signal_vals</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># We can generate these sine wave parameters, then stitch them together
+amplitude_values = [1, 3, 10, 15]
+phase_values = [0, .25, .33, .5]
+freq = 2
+signal_vals = list(product(amplitude_values, phase_values))
+amps, phases = zip(*signal_vals)
 
-<span class="c1"># We&#39;ll also define some noise levels to see how this affects results</span>
-<span class="n">noise_levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+# We&#39;ll also define some noise levels to see how this affects results
+noise_levels = [0, 2, 4, 8]
 
-<span class="c1"># Now define how long these signals will be</span>
-<span class="n">t_stop</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_stop</span><span class="p">,</span> <span class="mf">.01</span><span class="p">)</span>
+# Now define how long these signals will be
+t_stop = 50
+time = np.arange(0, t_stop, .01)
 
-<span class="c1"># We&#39;re storing everything in dataframes, so create some indices</span>
-<span class="n">ix_amp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">amps</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;amp&#39;</span><span class="p">)</span>
-<span class="n">ix_phase</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="n">phases</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;phase&#39;</span><span class="p">)</span>
+# We&#39;re storing everything in dataframes, so create some indices
+ix_amp = pd.Index(amps, name=&#39;amp&#39;)
+ix_phase = pd.Index(phases, name=&#39;phase&#39;)
 
-<span class="c1"># Create all our signals</span>
-<span class="n">signals</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">noise_level</span> <span class="ow">in</span> <span class="n">noise_levels</span><span class="p">:</span>
-    <span class="n">sig_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">amp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">freq</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">time</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">phase</span><span class="p">)</span> <span class="k">for</span> <span class="n">amp</span><span class="p">,</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">signal_vals</span><span class="p">])</span>
-    <span class="n">noise</span> <span class="o">=</span> <span class="n">noise_level</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">sig_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-    <span class="n">sig_</span> <span class="o">+=</span> <span class="n">noise</span>
-    <span class="n">ix_noise</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="n">noise_level</span><span class="p">]</span><span class="o">*</span><span class="n">sig_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span>
-    <span class="n">ix_multi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([</span><span class="n">ix_amp</span><span class="p">,</span> <span class="n">ix_phase</span><span class="p">,</span> <span class="n">ix_noise</span><span class="p">])</span>
-    <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sig_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">ix_multi</span><span class="p">))</span>
-<span class="n">signals</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">signals</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">signals</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span>
+# Create all our signals
+signals = []
+for noise_level in noise_levels:
+    sig_ = np.array([amp * np.sin(freq*2*np.pi*time + 2*np.pi*phase) for amp, phase in signal_vals])
+    noise = noise_level * np.random.randn(*sig_.shape)
+    sig_ += noise
+    ix_noise = pd.Index([noise_level]*sig_.shape[0], name=&#39;noise_level&#39;)
+    ix_multi = pd.MultiIndex.from_arrays([ix_amp, ix_phase, ix_noise])
+    signals.append(pd.DataFrame(sig_, index=ix_multi))
+signals = pd.concat(signals, 0)
+signals.columns.name = &#39;time&#39;
 </pre></div>
 </div>
 </div>
@@ -634,31 +637,31 @@
 <p>Now we’ve got a bunch of sinewaves with the parameters chosen above. Next, we will calculate the coherence and the correlation between all pairs of signals. This way we can see how these values change for different kinds of input signals.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con_all</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">ix_noise</span><span class="p">,</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">signals</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s1">&#39;noise_level&#39;</span><span class="p">):</span>
-    <span class="c1"># Setting up output indices</span>
-    <span class="n">this_noise_level</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unique</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ix_ref</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s1">&#39;amp==3 and phase==0&#39;</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">ix_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-    <span class="n">ix_cc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;cc&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;con&#39;</span><span class="p">)</span>
-    <span class="n">ix_coh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;coh&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;con&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>con_all = []
+for ix_noise, sig in signals.groupby(level=&#39;noise_level&#39;):
+    # Setting up output indices
+    this_noise_level = sig.index.get_level_values(&#39;noise_level&#39;).unique()[0]
+    ix_ref = np.where(sig.eval(&#39;amp==3 and phase==0&#39;))[0][0]
+    ix_time = pd.Index(range(sig.shape[0]), name=&#39;time&#39;)
+    ix_cc = pd.Index([&#39;cc&#39;]*sig.shape[0], name=&#39;con&#39;)
+    ix_coh = pd.Index([&#39;coh&#39;]*sig.shape[0], name=&#39;con&#39;)
 
-    <span class="c1"># Calculating correlation is easy with pandas</span>
-    <span class="n">cc</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="n">ix_ref</span><span class="p">]</span>
-    <span class="n">cc</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">cc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cc</span><span class="p">)</span>
-    <span class="c1"># We&#39;ll use MNE for coherenece</span>
-    <span class="n">indices</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">ix_ref</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
-    <span class="n">con</span><span class="p">,</span> <span class="n">freqs</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">epochs</span><span class="p">,</span> <span class="n">tapers</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">connectivity</span><span class="o">.</span><span class="n">spectral_connectivity</span><span class="p">(</span>
-        <span class="n">sig</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:],</span> <span class="n">sfreq</span><span class="o">=</span><span class="n">freq</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">indices</span><span class="p">)</span>
-    <span class="n">con_mn</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">con_mn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">con_mn</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cc</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    # Calculating correlation is easy with pandas
+    cc = sig.T.corr().astype(float).iloc[:, ix_ref]
+    cc.name = None
+    cc = pd.DataFrame(cc)
+    # We&#39;ll use MNE for coherenece
+    indices = (np.arange(sig.shape[0]), ix_ref.repeat(sig.shape[0]))
+    con, freqs, times, epochs, tapers = mne.connectivity.spectral_connectivity(
+        sig.values[None, :, :], sfreq=freq, indices=indices)
+    con_mn = con.mean(-1)
+    con_mn = pd.DataFrame(con_mn, index=cc.index)
     
-    <span class="c1"># Final prep</span>
-    <span class="n">con_mn</span> <span class="o">=</span> <span class="n">con_mn</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ix_coh</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">cc</span> <span class="o">=</span> <span class="n">cc</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">ix_cc</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">con_all</span> <span class="o">+=</span> <span class="p">([</span><span class="n">con_mn</span><span class="p">,</span> <span class="n">cc</span><span class="p">])</span>
-<span class="n">con_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">con_all</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span>
+    # Final prep
+    con_mn = con_mn.set_index(ix_coh, append=True)
+    cc = cc.set_index(ix_cc, append=True)
+    con_all += ([con_mn, cc])
+con_all = pd.concat(con_all, axis=0).squeeze().unstack(&#39;noise_level&#39;)
 </pre></div>
 </div>
 </div>
@@ -670,11 +673,11 @@
 <p>Remember, each tuple is (amplitude, phase_lag). The first number controls how large the signal is, and the second controls the difference in phase between two sine waves.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">con_all</span><span class="o">.</span><span class="n">iteritems</span><span class="p">()):</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;con&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Noise level: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">noise</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f, axs = plt.subplots(2, 2, figsize=(15, 10))
+for ax, (noise, vals) in zip(axs.ravel(), con_all.iteritems()):
+    ax = vals.unstack(&#39;con&#39;).plot(ax=ax)
+    ax.set_title(&#39;Noise level: {0}&#39;.format(noise))
+    ax.set_ylim([-1.1, 1.1])
 </pre></div>
 </div>
 </div>
@@ -691,10 +694,10 @@
 <p>To illustrate number 1, let’s plot correlation and coherence against each other:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;con&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">plt_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="s1">&#39;coh&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;noise_level&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span>
-                 <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Reds</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CC vs Coherence&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>plt_df = con_all.stack(&#39;noise_level&#39;).unstack(&#39;con&#39;).reset_index(&#39;noise_level&#39;)
+ax = plt_df.plot(&#39;cc&#39;, &#39;coh&#39;, c=&#39;noise_level&#39;, kind=&#39;scatter&#39;,
+                 cmap=plt.cm.Reds, figsize=(10, 5), alpha=.5, s=50)
+ax.set_title(&#39;CC vs Coherence&#39;)
 </pre></div>
 </div>
 </div>
@@ -706,20 +709,20 @@
 <p>Let’s take a look at how the correlation and coherence relate to the actual shape of the signals:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up a dataframe for plotting</span>
-<span class="n">noise_level</span> <span class="o">=</span> <span class="n">noise_levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="p">[</span><span class="n">noise_level</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;con&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Set up a dataframe for plotting
+noise_level = noise_levels[1]
+plt_df = con_all.copy()
+plt_df = con_all[noise_level].unstack(&#39;con&#39;)
 
-<span class="c1"># Define 16 signals to plot</span>
-<span class="n">sig_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">([</span><span class="n">ix_ref</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)))</span>
+# Define 16 signals to plot
+sig_combinations = list(product([ix_ref], range(16)))
 
-<span class="n">plt_sig</span> <span class="o">=</span> <span class="n">signals</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">noise_level</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span>
-<span class="n">n_combs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">)</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_combs</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_combs</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">),</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">,</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
-    <span class="n">plt_sig</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CC: </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">Coh: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">plt_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">comp_b</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+plt_sig = signals.xs(noise_level, level=&#39;noise_level&#39;)
+n_combs = len(sig_combinations)
+f, axs = plt.subplots(n_combs/4, 4, figsize=(15, n_combs/3*5))
+for (comp_a, comp_b), ax in zip(sig_combinations, axs.ravel()):
+    plt_sig.iloc[[comp_a, comp_b]].T.head(250).plot(ax=ax, legend=None)
+    ax.set_title(&#39;CC: {0}\nCoh: {1}&#39;.format(*plt_df.iloc[comp_b, :].values))
 </pre></div>
 </div>
 </div>
@@ -730,21 +733,21 @@
 <p>Another way of looking at it with scatterplots…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up a dataframe for plotting</span>
-<span class="n">noise_level</span> <span class="o">=</span> <span class="n">noise_levels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">plt_df</span> <span class="o">=</span> <span class="n">con_all</span><span class="p">[</span><span class="n">noise_level</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;con&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Set up a dataframe for plotting
+noise_level = noise_levels[1]
+plt_df = con_all.copy()
+plt_df = con_all[noise_level].unstack(&#39;con&#39;)
 
-<span class="c1"># Define 16 signals to plot</span>
-<span class="n">sig_combinations</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">([</span><span class="n">ix_ref</span><span class="p">],</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)))</span>
+# Define 16 signals to plot
+sig_combinations = list(product([ix_ref], range(16)))
 
-<span class="n">plt_sig</span> <span class="o">=</span> <span class="n">signals</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">noise_level</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span>
-<span class="n">n_combs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">)</span>
-<span class="n">f</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">n_combs</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_combs</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">),</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sig_combinations</span><span class="p">,</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()):</span>
-    <span class="n">iia</span><span class="p">,</span> <span class="n">iib</span> <span class="o">=</span> <span class="n">plt_sig</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="n">comp_a</span><span class="p">,</span> <span class="n">comp_b</span><span class="p">]]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">T</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">iia</span><span class="p">,</span> <span class="n">iib</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CC: </span><span class="si">{0}</span><span class="se">\n</span><span class="s1">Coh: </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">plt_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">comp_b</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+plt_sig = signals.xs(noise_level, level=&#39;noise_level&#39;)
+n_combs = len(sig_combinations)
+f, axs = plt.subplots(n_combs/4, 4, figsize=(15, n_combs/3*5))
+for (comp_a, comp_b), ax in zip(sig_combinations, axs.ravel()):
+    iia, iib = plt_sig.iloc[[comp_a, comp_b]].T.head(250).values.T
+    ax.scatter(iia, iib)
+    ax.set_title(&#39;CC: {0}\nCoh: {1}&#39;.format(*plt_df.iloc[comp_b, :].values))
 </pre></div>
 </div>
 </div>
@@ -755,16 +758,16 @@
 <p>Finally, for a more direct comparison, we can look directly at the difference between the two as a function of both noise level and the sine wave parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_con</span> <span class="o">=</span> <span class="n">con_all</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;con&#39;</span><span class="p">)</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">diff_con</span><span class="p">[</span><span class="s1">&#39;cc&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">diff_con</span><span class="p">[</span><span class="s1">&#39;coh&#39;</span><span class="p">]</span>
-<span class="n">diff</span> <span class="o">=</span> <span class="n">diff</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;noise_level&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>diff_con = con_all.stack(&#39;noise_level&#39;).unstack(&#39;con&#39;)
+diff = diff_con[&#39;cc&#39;] - diff_con[&#39;coh&#39;]
+diff = diff.unstack(&#39;noise_level&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>diff.plot(figsize=(15, 5))
 </pre></div>
 </div>
 </div>
