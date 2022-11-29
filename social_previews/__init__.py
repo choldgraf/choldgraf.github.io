@@ -9,6 +9,7 @@ from pathlib import Path
 import matplotlib
 from matplotlib import pyplot as plt
 import matplotlib.image as mpimg
+from docutils import nodes
 
 matplotlib.use("agg")
 
@@ -25,7 +26,7 @@ def render_page_card(app, pagename, templatename, context, doctree):
     
     # Set up metadata for the card
     sitetitle = context.get("docstitle", "")
-    pagetitle = context.get("title", "")
+    pagetitle = doctree.traverse(nodes.title)[0].astext()
 
     if social_preview_config.get("image"):
         image = Path(app.builder.srcdir) / social_preview_config.get("image")
