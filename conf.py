@@ -136,3 +136,8 @@ from social_previews import render_page_card
 def setup(app):
     app.add_css_file("custom.css")
     app.connect("html-page-context", render_page_card)
+    app.add_config_value("social_preview_config", None, True)
+
+social_preview_config = {
+    "image": "_static/profile-bw.png",
+}
