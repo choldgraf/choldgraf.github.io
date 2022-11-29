@@ -97,11 +97,11 @@ for old, new in redirect_folders.items():
 
 # -- Social Previews -----------------------------------------
 
-social_preview = {
-    "image": 
-    "tagline":
-    "color_bar":
-}
+# social_preview = {
+#     "image": 
+#     "tagline":
+#     "color_bar":
+# }
 
 # -- ABlog ---------------------------------------------------
 
@@ -131,5 +131,8 @@ myst_enable_extensions = [
 # Instead if I want something to execute, manually set it in the post's metadata.
 nb_execution_mode = "off"
 
+from social_previews import render_page_card
+
 def setup(app):
     app.add_css_file("custom.css")
+    app.connect("html-page-context", render_page_card)
