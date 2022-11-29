@@ -61,12 +61,12 @@ def render_page_card(app, pagename, templatename, context, doctree):
     # Link the image in our page metadata
     url = app.config.ogp_site_url.strip("/")
     path_out_image = f"{url}/{path_images}/{path_out}"
-    context[
-        "metatags"
-    ] += f"""
-    <meta property="og:image" content="{path_out_image}" />
-    <meta name="twitter:card" content="summary_large_image" />
-    """
+    metatags = context["metatags"].split("\n")
+    for ii, tag in enumerate(metatags):
+        if "og:image" in tag:
+            metatags[ii] = f'<meta property="og:image" content="{path_out_image}" />'
+    metatags.append('<meta name="twitter:card" content="summary_large_image" />')
+    context["metatags"] = "\n".join(metatags)
 
 
 def create_social_card(
