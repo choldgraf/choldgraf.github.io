@@ -25,7 +25,7 @@ exclude_patterns = [
     "README.md",
     "**/.ipynb_checkpoints/*"
 ]
-import sys.path
+import sys
 sys.path.append(".")
 
 # -- HTML output -------------------------------------------------
