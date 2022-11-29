@@ -65,6 +65,7 @@ def render_page_card(app, pagename, templatename, context, doctree):
     for ii, tag in enumerate(metatags):
         if "og:image" in tag:
             metatags[ii] = f'<meta property="og:image" content="{path_out_image}" />'
+            break
     metatags.append('<meta name="twitter:card" content="summary_large_image" />')
     context["metatags"] = "\n".join(metatags)
 
