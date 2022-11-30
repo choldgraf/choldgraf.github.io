@@ -141,4 +141,5 @@ def setup(app):
 
 social_preview_config = {
     "image": "_static/profile-bw.png",
+    "image_shadow": "_static/logo-shadow.png",
 }
