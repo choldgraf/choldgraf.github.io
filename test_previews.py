@@ -13,6 +13,7 @@ fig = create_social_card(
     "Correlation vs. Coherence a simple simulation that is pretty long.",
     tagline[:180],
     "_static/profile-bw.png",
+    "_static/logo-shadow.png",
 )
 fig.savefig("./tmp.png")
 fig

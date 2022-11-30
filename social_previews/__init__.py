@@ -37,6 +37,11 @@ def render_page_card(app, pagename, templatename, context, doctree):
     else:
         image = None
 
+    if social_preview_config.get("image_shadow"):
+        image_shadow = Path(app.builder.srcdir) / social_preview_config.get("image_shadow")
+    else:
+        image_shadow = None
+
     # Page title formatting
     if len(pagetitle) > MAX_CHAR_PAGETITLE:
         pagetitle = pagetitle[:MAX_CHAR_PAGETITLE] + "..."
@@ -46,7 +51,7 @@ def render_page_card(app, pagename, templatename, context, doctree):
         fig = app.env.figure_social_card
     else:
         fig = None
-    fig = create_social_card(sitetitle, pagetitle, tagline, image, fig=fig)
+    fig = create_social_card(sitetitle, pagetitle, tagline, image, image_shadow, fig=fig)
 
     app.env.figure_social_card = fig
     # Save the image to a static directory
@@ -73,6 +78,7 @@ def create_social_card(
     page_title,
     tagline,
     image=None,
+    image_shadow=None,
     text_color="#4a4a4a",
     background_color="white",
     font="Roboto",
@@ -93,12 +99,16 @@ def create_social_card(
         ax_x, ax_y, ax_w, ax_h = (0.68, 0.64, 0.25, 0.25) 
         axim = fig.add_axes((ax_x, ax_y, ax_w, ax_h), anchor="NE")
 
+        # Image shadow axis
+        ax_x, ax_y, ax_w, ax_h = (0.82, 0.12, 0.1, 0.1) 
+        aximsh = fig.add_axes((ax_x, ax_y, ax_w, ax_h), anchor="NE")
+
         # Line at the bottom axis
         axline = fig.add_axes((-.1, -.03, 1.2, .1))
     else:
         for ax in fig.axes:
             ax.clear()
-        axtext, axim, axline = fig.axes
+        axtext, axim, aximsh, axline = fig.axes
 
     # Axes configuration
     left_margin = 0.05
@@ -155,6 +165,11 @@ def create_social_card(
         img = mpimg.imread(image)
         axim.imshow(img)
         axim.set_axis_off()
+
+    if image_shadow:
+        img = mpimg.imread(image_shadow)
+        aximsh.imshow(img)
+        aximsh.set_axis_off()
 
     # Put a colored line at the bottom of the figure
     axline.set_axis_off()
