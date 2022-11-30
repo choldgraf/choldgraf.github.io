@@ -4,18 +4,17 @@ Design principles:
 
 - Assume a two-line title, don't allow three lines, and one line should look OK.
 """
-from docutils.nodes import paragraph
 from pathlib import Path
 import matplotlib
 from matplotlib import pyplot as plt
 import matplotlib.image as mpimg
-from docutils import nodes
+from sphinxext.opengraph import get_tags
 
 matplotlib.use("agg")
 
 HERE = Path(__file__).parent
-MAX_CHAR_TAGLINE = 200
-MAX_CHAR_PAGETITLE = 53
+MAX_CHAR_TAGLINE = 180
+MAX_CHAR_PAGETITLE = 65
 
 def render_page_card(app, pagename, templatename, context, doctree):
     """Create a social preview card using page metadata."""
@@ -25,20 +24,23 @@ def render_page_card(app, pagename, templatename, context, doctree):
     social_preview_config = app.config.social_preview_config or {}
     
     # Set up metadata for the card
+    tags = get_tags(app, context, doctree, app.config)
+
+    def parse_ogp_tag(tags, entry):
+        return tags.split(entry)[-1].split("content=")[1].split('/>')[0].strip().strip('"')
+    tagline = parse_ogp_tag(tags, "og:description")
+    pagetitle = parse_ogp_tag(tags, "og:title")
     sitetitle = context.get("docstitle", "")
-    pagetitle = doctree.traverse(nodes.title)[0].astext()
 
     if social_preview_config.get("image"):
         image = Path(app.builder.srcdir) / social_preview_config.get("image")
     else:
         image = None
 
-    # Tagline formatting
-    tagline = " ".join([ii.astext() for ii in doctree.traverse(paragraph)])
-    tagline = tagline.replace("\n\n", "\n")
-    tagline = tagline.replace("\n", "")
-    if len(tagline) > MAX_CHAR_TAGLINE:
-        tagline = tagline[:MAX_CHAR_TAGLINE].rsplit(" ", 1)[0] + "..."
+    if social_preview_config.get("image_shadow"):
+        image_shadow = Path(app.builder.srcdir) / social_preview_config.get("image_shadow")
+    else:
+        image_shadow = None
 
     # Page title formatting
     if len(pagetitle) > MAX_CHAR_PAGETITLE:
@@ -49,7 +51,7 @@ def render_page_card(app, pagename, templatename, context, doctree):
         fig = app.env.figure_social_card
     else:
         fig = None
-    fig = create_social_card(sitetitle, pagetitle, tagline, image, fig=fig)
+    fig = create_social_card(sitetitle, pagetitle, tagline, image, image_shadow, fig=fig)
 
     app.env.figure_social_card = fig
     # Save the image to a static directory
@@ -76,6 +78,7 @@ def create_social_card(
     page_title,
     tagline,
     image=None,
+    image_shadow=None,
     text_color="#4a4a4a",
     background_color="white",
     font="Roboto",
@@ -93,28 +96,32 @@ def create_social_card(
         axtext = fig.add_axes((0, 0, 1, 1))
 
         # Image axis
-        ax_x, ax_y, ax_w, ax_h = (0.75, 0.73, 0.2, 0.2) 
+        ax_x, ax_y, ax_w, ax_h = (0.68, 0.64, 0.25, 0.25) 
         axim = fig.add_axes((ax_x, ax_y, ax_w, ax_h), anchor="NE")
+
+        # Image shadow axis
+        ax_x, ax_y, ax_w, ax_h = (0.82, 0.12, 0.1, 0.1) 
+        aximsh = fig.add_axes((ax_x, ax_y, ax_w, ax_h), anchor="NE")
 
         # Line at the bottom axis
         axline = fig.add_axes((-.1, -.03, 1.2, .1))
     else:
         for ax in fig.axes:
             ax.clear()
-        axtext, axim, axline = fig.axes
+        axtext, axim, aximsh, axline = fig.axes
 
     # Axes configuration
-    left_margin = 0.07
+    left_margin = 0.05
     with plt.rc_context({"font.sans-serif": [font], "text.color": text_color}):
         # Site title
         # Smaller font, just above page title
-        site_title_y_offset = 0.82
+        site_title_y_offset = 0.87
         axtext.text(
             left_margin,
             site_title_y_offset,
             site_title,
             {
-                "size": 16,
+                "size": 14,
             },
             ha="left",
             va="top",
@@ -123,7 +130,7 @@ def create_social_card(
 
         # Page title
         # A larger font for more visibility
-        page_title_y_offset = 0.67
+        page_title_y_offset = 0.75
 
         txt_page = axtext.text(
             left_margin,
@@ -134,11 +141,11 @@ def create_social_card(
             va="top",
             wrap=True,
         )
-        txt_page._get_wrap_line_width = lambda: 430
+        txt_page._get_wrap_line_width = lambda: 400
 
         # Tagline
         # Just below site title, smallest font and many lines.
-        tagline_y_axis_ofset = 0.23
+        tagline_y_axis_ofset = 0.15
         txt_tagline = axtext.text(
             left_margin,
             tagline_y_axis_ofset,
@@ -158,6 +165,11 @@ def create_social_card(
         img = mpimg.imread(image)
         axim.imshow(img)
         axim.set_axis_off()
+
+    if image_shadow:
+        img = mpimg.imread(image_shadow)
+        aximsh.imshow(img)
+        aximsh.set_axis_off()
 
     # Put a colored line at the bottom of the figure
     axline.set_axis_off()
