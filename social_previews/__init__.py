@@ -44,13 +44,17 @@ def render_page_card(app, pagename, templatename, context, doctree):
         pagetitle = pagetitle[:MAX_CHAR_PAGETITLE] + "..."
 
     # Generate the card
-    if hasattr(app.env, "figure_social_card"):
-        fig = app.env.figure_social_card
+    if not hasattr(app.env, "figure_social_card"):
+        # First time this is run we need to create a bunch of Matplotlib objects
+        # This is slow so we only do it once
+        fig, txt_sitetitle, txt_pagetitle, txt_tagline = create_social_card(sitetitle, pagetitle, tagline, image)
+        app.env.figure_social_card = [fig, txt_sitetitle, txt_pagetitle, txt_tagline]
     else:
-        fig = None
-    fig = create_social_card(sitetitle, pagetitle, tagline, image, fig=fig)
+        # The social card figure and axes already exist
+        # So we just update them in order to save time
+        fig, txt_sitetitle, txt_pagetitle, txt_tagline = app.env.figure_social_card
+        update_social_card(txt_sitetitle, txt_pagetitle, txt_tagline, sitetitle, pagetitle, tagline)
 
-    app.env.figure_social_card = fig
     # Save the image to a static directory
     path_images = "_images/social_previews"
     static_dir = Path(app.builder.outdir) / path_images
@@ -107,7 +111,7 @@ def create_social_card(
         # Site title
         # Smaller font, just above page title
         site_title_y_offset = 0.82
-        axtext.text(
+        txt_site = axtext.text(
             left_margin,
             site_title_y_offset,
             site_title,
@@ -160,4 +164,17 @@ def create_social_card(
     # Put a colored line at the bottom of the figure
     axline.set_axis_off()
     axline.hlines(0, 0, 1, lw=8, color="#5A626B")
-    return fig
+    return fig, txt_site, txt_page, txt_tagline
+
+
+def update_social_card(
+    ax_sitetitle,
+    ax_pagetitle,
+    ax_tagline,
+    site_title,
+    page_title,
+    tagline,
+):
+    ax_sitetitle.set_text(site_title)
+    ax_pagetitle.set_text(page_title)
+    ax_tagline.set_text(tagline)

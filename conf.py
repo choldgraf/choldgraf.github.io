@@ -25,7 +25,8 @@ exclude_patterns = [
     "README.md",
     "**/.ipynb_checkpoints/*"
 ]
-
+import sys
+sys.path.append(".")
 
 # -- HTML output -------------------------------------------------
 
@@ -140,4 +141,5 @@ def setup(app):
 
 social_preview_config = {
     "image": "_static/profile-bw.png",
+    "image_shadow": "_static/logo-shadow.png",
 }
