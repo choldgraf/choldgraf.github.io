@@ -77,6 +77,7 @@ html_sidebars = {
 # OpenGraph config
 ogp_site_url = "https://chrisholdgraf.com"
 ogp_image = "https://chrisholdgraf.com/_static/profile-bw.png"
+ogp_description_length = 150
 
 rediraffe_redirects = {
     "rust-governance.md": "blog/2018/rust_governance.md",
@@ -142,4 +143,6 @@ def setup(app):
 social_preview_config = {
     "image": "_static/profile-bw.png",
     "image_shadow": "_static/logo-shadow.png",
+    "tagline": "Thoughts and ideas from Chris' blog.",
+    "line_color": "#4078c0",
 }
