@@ -13,6 +13,7 @@ from sphinxext.opengraph import get_tags
 matplotlib.use("agg")
 
 HERE = Path(__file__).parent
+
 MAX_CHAR_PAGETITLE = 65
 MAX_CHAR_DESCRIPTION = 155
 
@@ -196,7 +197,7 @@ def create_social_card_objects(
             "A longer description that we use to show off what the descriptions look like.",
             {"size": 11},
             ha="left",
-            va="bottom",
+            va="top",
             wrap=True,
         )
         txt_description._get_wrap_line_width = _set_description_line_width
