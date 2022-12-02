@@ -13,7 +13,6 @@ from sphinxext.opengraph import get_tags
 matplotlib.use("agg")
 
 HERE = Path(__file__).parent
-
 MAX_CHAR_PAGETITLE = 65
 MAX_CHAR_DESCRIPTION = 155
 
@@ -75,12 +74,13 @@ def render_page_card(app, pagename, templatename, context, doctree):
     # Link the image in our page metadata
     url = app.config.ogp_site_url.strip("/")
     path_out_image = f"{url}/{path_images}/{path_out}"
-    context[
-        "metatags"
-    ] += f"""
-    <meta property="og:image" content="{path_out_image}" />
-    <meta name="twitter:card" content="summary_large_image" />
-    """
+    metatags = context["metatags"].split("\n")
+    for ii, tag in enumerate(metatags):
+        if 'og:image' in tag:
+            metatags[ii] = f'<meta property="og:image" content="{path_out_image}" />'
+            break
+    metatags.append('<meta name="twitter:card" content="summary_large_image" />')
+    context["metatags"] = "\n".join(metatags)
 
 def setup_social_card_images(app):
     """Create matplotlib objects for saving social preview cards.
@@ -197,7 +197,7 @@ def create_social_card_objects(
             "A longer description that we use to show off what the descriptions look like.",
             {"size": 11},
             ha="left",
-            va="top",
+            va="bottom",
             wrap=True,
         )
         txt_description._get_wrap_line_width = _set_description_line_width
