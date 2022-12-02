@@ -60,7 +60,7 @@ html_theme_options = {
     ],
 }
 
-html_favicon = "_static/favicon.ico"
+html_favicon = "_static/profile-color-circle-small.png"
 html_title = "Chris Holdgraf"
 html_static_path = ["_static"]
 html_extra_path = ["feed.xml"]
@@ -77,7 +77,6 @@ html_sidebars = {
 # OpenGraph config
 ogp_site_url = "https://chrisholdgraf.com"
 ogp_image = "https://chrisholdgraf.com/_static/profile-bw.png"
-ogp_description_length = 150
 
 rediraffe_redirects = {
     "rust-governance.md": "blog/2018/rust_governance.md",
@@ -133,16 +132,18 @@ myst_enable_extensions = [
 # Instead if I want something to execute, manually set it in the post's metadata.
 nb_execution_mode = "off"
 
-from social_previews import render_page_card
+from social_previews import render_page_card, setup_social_card_images
 
 def setup(app):
     app.add_css_file("custom.css")
+    app.connect("builder-inited", setup_social_card_images)
     app.connect("html-page-context", render_page_card)
     app.add_config_value("social_preview_config", None, True)
 
 social_preview_config = {
-    "image": "_static/profile-bw.png",
+    "image": "_static/profile-color-circle.png",
     "image_shadow": "_static/logo-shadow.png",
     "tagline": "Thoughts and ideas from Chris' blog.",
     "line_color": "#4078c0",
+    "add_site_url": True,
 }
