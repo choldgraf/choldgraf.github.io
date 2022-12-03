@@ -4,8 +4,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts tagged analysis &#8212; Chris Holdgraf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_precommit-autoupdate.png" />
+<meta name="twitter:card" content="summary_large_image" /><meta property="og:title" content="Automatically update pre-commit hook versions" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2022/precommit-autoupdate/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="I figured out a way to automatically update all of the git pre-commit hook versions at once! pre-commit is a useful command line tool for running simple commands before every git commit. I use it t..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
+<meta property="og:image:alt" content="Chris Holdgraf" />
+<meta name="description" content="I figured out a way to automatically update all of the git pre-commit hook versions at once! pre-commit is a useful command line tool for running simple commands before every git commit. I use it t..." />
+
+    <title>Automatically update pre-commit hook versions &#8212; Chris Holdgraf</title>
   
   
   
@@ -52,7 +63,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/analysis';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2022/precommit-autoupdate';</script>
     <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
@@ -63,7 +74,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts tagged analysis"
+  title="Chris Holdgraf"
 />
  
 <style type="text/css">
@@ -421,7 +432,31 @@
 
   
   <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
+    <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  03 December 2022 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/git/">git</a>  
+</li>
+ 
+</ul>
+
     </div>
     <div class="sidebar-start-items__item">
 <h3>
@@ -430,31 +465,31 @@
 <ul>
    
   <li>
-    <a href="../../2022/shell-split/"
+    <a href="../shell-split/"
       >29 November - subprocess.run can execute shell commands directly</a
     >
   </li>
   
   <li>
-    <a href="../../2022/phantom-workflows-pull-requests/"
+    <a href="../phantom-workflows-pull-requests/"
       >27 November - Fix phantom GitHub workflows in your ci-cd with protected branch rules</a
     >
   </li>
   
   <li>
-    <a href="../../2022/sphinx-custom-crossrefs/"
+    <a href="../sphinx-custom-crossrefs/"
       >21 November - Custom roles and domains in Sphinx with one line</a
     >
   </li>
   
   <li>
-    <a href="../../2022/orcid-auto-update/"
+    <a href="../orcid-auto-update/"
       >19 November - Automatically updating my publications page with ORCID and doi.org</a
     >
   </li>
   
   <li>
-    <a href="../../2022/sphinx-redirects-folder/"
+    <a href="../sphinx-redirects-folder/"
       >19 November - Automatically redirect folders in Sphinx websites</a
     >
   </li>
@@ -469,7 +504,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (6)</a>
+    <a href="../">2022 (7)</a>
   </li>
     
   <li>
@@ -481,7 +516,7 @@
   </li>
     
   <li>
-    <a href="../../2019/">2019 (8)</a>
+    <a href="../../2019/">2019 (7)</a>
   </li>
     
   <li>
@@ -529,52 +564,39 @@
             
 
             <article class="bd-article" role="main">
-              
+               <section id="automatically-update-pre-commit-hook-versions">
+<h1>Automatically update pre-commit hook versions<a class="headerlink" href="#automatically-update-pre-commit-hook-versions" title="Permalink to this heading">#</a></h1>
+<p>I figured out a way to automatically update all of the git <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook versions at once!</p>
+<p><a class="reference external" href="https://pre-commit.com/"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> is a useful command line tool for running simple commands before every <code class="docutils literal notranslate"><span class="pre">git</span></code> commit.
+I use it to enforce things like <a class="reference external" href="https://flake8.pycqa.org/"><code class="docutils literal notranslate"><span class="pre">flake8</span></code></a> and <a class="reference external" href="https://github.com/psf/black"><code class="docutils literal notranslate"><span class="pre">black</span></code></a> in many of my projects.</p>
+<p>However, I find it really annoying to keep manually updating my <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks with new versions, particularly because <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> doesn’t let you specify wild-cards.</p>
+<p>Fortunately, I recently came across <a class="reference external" href="https://pre-commit.com/#updating-hooks-automatically">the <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">autoupdate</span></code> documentation</a>.
+This lets you automatically update to the latest released versions of all-precommit hooks.
+Simply run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit autoupdate
+</pre></div>
+</div>
+<p>And it will update your <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file with the latest versions.
+This feels like the easiest way to keep these configurations updated, at least until <a class="reference external" href="https://github.com/dependabot/dependabot-core/issues/1524">GitHub adds <code class="docutils literal notranslate"><span class="pre">dependabot</span></code> support for <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a>.</p>
+</section>
 
 <div class="section">
-  <h1>
-     Posts tagged  analysis 
-  </h1>
-   
+    
 
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2019/2019-10-22-xarray-neuro/">Analyzing intracranial electrophysiology data with xarray</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 22 October 2019 
-      </li>
-           
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../neuroscience/">neuroscience</a>   
-  <a href="../open-source/">open source</a>   
-  <a href="#">analysis</a>   
-  <a href="../xarray/">xarray</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Over the last few years, it has been exciting to see the xarray project evolve,
-add new functionality, and mature. This post is an attempt at
-giving xarray another visit to see how it could integrate into electrophysiology
-workflows.</p>
-<p>It is common in neuroscience to ask individuals to perform a task over and over again. You record
-the activity in the brain each time they perform the task (called an “epoch” or a “trial”).
-Time is recorded relative to some <em>onset</em> when the task begins. That is <code class="docutils literal notranslate"><span class="pre">t==0</span></code>. The result
-is usually a matrix of <code class="docutils literal notranslate"><span class="pre">epochs</span> <span class="pre">x</span> <span class="pre">channejupyls</span> <span class="pre">x</span> <span class="pre">time</span></code>. You can do a lot of stuff with this
-data, but our task in this paper is to detect changes in neural activity at trial onset (<code class="docutils literal notranslate"><span class="pre">t==0</span></code>).</p>
-<img alt="../../../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" src="../../../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" />
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../shell-split/">
+      <i class="fa fa-arrow-circle-left"></i> subprocess.run can execute shell commands directly
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
 </div>
-
-    <p class="ablog-post-expand"><a href="../../2019/2019-10-22-xarray-neuro/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-   
+  
 </div>
 
             </article>
@@ -619,6 +641,12 @@ data, but our task in this paper is to detect changes in neural activity at tria
 
 <div class="toc-item">
   
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2022/precommit-autoupdate.md.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
 </div>
 
             </div>

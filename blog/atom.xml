@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-02T10:32:36.338065+00:00</updated>
+  <updated>2022-12-03T14:23:10.401189+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -1255,7 +1255,7 @@ coefs = np.array(coefs).mean(0)
 &lt;section id="some-data"&gt;
 &lt;h2&gt;Some data!&lt;/h2&gt;
 &lt;p&gt;I did a bit of digging and found a dataset for NRSA success rates over the last few years. It’s broken down by grant type, as well as by NIH branch. The results are interesting so I thought I’d put them out there.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - this dataset and a few others can be found on the NIH website &lt;span class="xref myst"&gt;here&lt;/span&gt;. I encourage you to check it out! Thank god for open data (even if it’s really hard to find).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; - this dataset and a few others can be found on the NIH website &lt;a class="reference external" href="https://report.nih.gov/funding/nih-budget-and-spending-data-past-fiscal-years/success-rates"&gt;here&lt;/a&gt;. I encourage you to check it out! Thank god for open data (even if it’s really hard to find).&lt;/p&gt;
 &lt;div class="cell docutils container"&gt;
 &lt;div class="cell_input docutils container"&gt;
 &lt;div class="highlight-ipython3 notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;# First we&amp;#39;ll import a few helpful tools for cleaning and plotting
@@ -6565,25 +6565,6 @@ to port over Rust’s governance directly into the Jupyter community.</summary>
     <published>2019-10-13T00:00:00+00:00</published>
   </entry>
   <entry>
-    <id>https://chrisholdgraf.com/blog/2019/2019-10-22-xarray-neuro/</id>
-    <title>Analyzing intracranial electrophysiology data with xarray</title>
-    <updated>2019-10-22T00:00:00+00:00</updated>
-    <link href="https://chrisholdgraf.com/blog/2019/2019-10-22-xarray-neuro/" rel="alternate"/>
-    <summary>Over the last few years, it has been exciting to see the xarray project evolve,
-add new functionality, and mature. This post is an attempt at
-giving xarray another visit to see how it could integrate into electrophysiology
-workflows.It is common in neuroscience to ask individuals to perform a task over and over again. You record
-the activity in the brain each time they perform the task (called an “epoch” or a “trial”).
-Time is recorded relative to some onset when the task begins. That is t==0. The result
-is usually a matrix of epochs x channejupyls x time. You can do a lot of stuff with this
-data, but our task in this paper is to detect changes in neural activity at trial onset (t==0).</summary>
-    <category term="analysis" label="analysis"/>
-    <category term="neuroscience" label="neuroscience"/>
-    <category term="opensource" label="open source"/>
-    <category term="xarray" label="xarray"/>
-    <published>2019-10-22T00:00:00+00:00</published>
-  </entry>
-  <entry>
     <id>https://chrisholdgraf.com/blog/2019/2019-10-27-jupyter-governance-python/</id>
     <title>What would Python-style governance look like in Jupyter?</title>
     <updated>2019-10-27T00:00:00+00:00</updated>
@@ -8827,5 +8808,32 @@ There’s a shell= keyword that can be used to tell subprocess to simply run the
     <category term="python" label="python"/>
     <category term="shell" label="shell"/>
     <published>2022-11-29T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2022/precommit-autoupdate/</id>
+    <title>Automatically update pre-commit hook versions</title>
+    <updated>2022-12-03T00:00:00+00:00</updated>
+    <content type="html">&lt;section id="automatically-update-pre-commit-hook-versions"&gt;
+
+&lt;p&gt;I figured out a way to automatically update all of the git &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt; hook versions at once!&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://pre-commit.com/"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; is a useful command line tool for running simple commands before every &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;git&lt;/span&gt;&lt;/code&gt; commit.
+I use it to enforce things like &lt;a class="reference external" href="https://flake8.pycqa.org/"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;flake8&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; and &lt;a class="reference external" href="https://github.com/psf/black"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;black&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; in many of my projects.&lt;/p&gt;
+&lt;p&gt;However, I find it really annoying to keep manually updating my &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt; hooks with new versions, particularly because &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt; doesn’t let you specify wild-cards.&lt;/p&gt;
+&lt;p&gt;Fortunately, I recently came across &lt;a class="reference external" href="https://pre-commit.com/#updating-hooks-automatically"&gt;the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt; &lt;span class="pre"&gt;autoupdate&lt;/span&gt;&lt;/code&gt; documentation&lt;/a&gt;.
+This lets you automatically update to the latest released versions of all-precommit hooks.
+Simply run:&lt;/p&gt;
+&lt;div class="highlight-bash notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pre-commit autoupdate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;And it will update your &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.pre-commit-config.yaml&lt;/span&gt;&lt;/code&gt; file with the latest versions.
+This feels like the easiest way to keep these configurations updated, at least until &lt;a class="reference external" href="https://github.com/dependabot/dependabot-core/issues/1524"&gt;GitHub adds &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;dependabot&lt;/span&gt;&lt;/code&gt; support for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2022/precommit-autoupdate/" rel="alternate"/>
+    <summary>I figured out a way to automatically update all of the git pre-commit hook versions at once!pre-commit is a useful command line tool for running simple commands before every git commit.
+I use it to enforce things like flake8 and black in many of my projects.</summary>
+    <category term="git" label="git"/>
+    <category term="python" label="python"/>
+    <published>2022-12-03T00:00:00+00:00</published>
   </entry>
 </feed>

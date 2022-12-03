@@ -5,16 +5,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta property="og:title" content="Chris Holdgraf - about me" />
+
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_index.png" />
+<meta name="twitter:card" content="summary_large_image" /><meta property="og:title" content="Chris Holdgraf - about me" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrisholdgraf.com" />
 <meta property="og:site_name" content="Chris Holdgraf" />
 <meta property="og:description" content="I work at the intersection of technical development, open communities, scientific research, and education. I’m the Executive Director of 2i2c - the International Interactive Computing Collaboration..." />
-<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_index.png" />
+<meta property="og:image" content="https://chrisholdgraf.com/_static/profile-bw.png" />
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="I work at the intersection of technical development, open communities, scientific research, and education. I’m the Executive Director of 2i2c - the International Interactive Computing Collaboration..." />
 
-<meta name="twitter:card" content="summary_large_image" />
     <title>Chris Holdgraf - about me &#8212; Chris Holdgraf</title>
   
   
@@ -485,6 +486,11 @@
 <h2>My blog<a class="headerlink" href="#my-blog" title="Permalink to this heading">#</a></h2>
 <p>Here’s a list of recent posts, or <a class="reference internal" href="blog/"><span class="doc std std-doc">check out my blog archive</span></a>.</p>
 <ul class="postlist-style-none postlist">
+<li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/precommit-autoupdate/">Automatically update pre-commit hook versions</a> - 2022-12-03</p>
+<p class="ablog-post-excerpt">I figured out a way to automatically update all of the git <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook versions at once!</p>
+<p class="ablog-post-excerpt"><a class="reference external" href="https://pre-commit.com/"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> is a useful command line tool for running simple commands before every <code class="docutils literal notranslate"><span class="pre">git</span></code> commit.
+I use it to enforce things like <a class="reference external" href="https://flake8.pycqa.org/"><code class="docutils literal notranslate"><span class="pre">flake8</span></code></a> and <a class="reference external" href="https://github.com/psf/black"><code class="docutils literal notranslate"><span class="pre">black</span></code></a> in many of my projects.</p>
+</li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/shell-split/">subprocess.run can execute shell commands directly</a> - 2022-11-29</p>
 <p class="ablog-post-excerpt">I often run shell commands in Python via the <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run"><code class="docutils literal notranslate"><span class="pre">subprocess.run</span></code> command</a>.
 One thing that has always bugged me is that this required you to split commands into a list before it’d work properly.
@@ -569,18 +575,6 @@ all the usual caveats come with it, such as the
 fact that I don’t know the Python governance
 structure <em>that</em> well, and I might totally
 botch my characterization of it.</p>
-</li>
-<li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2019/2019-10-22-xarray-neuro/">Analyzing intracranial electrophysiology data with xarray</a> - 2019-10-22</p>
-<p class="ablog-post-excerpt">Over the last few years, it has been exciting to see the xarray project evolve,
-add new functionality, and mature. This post is an attempt at
-giving xarray another visit to see how it could integrate into electrophysiology
-workflows.</p>
-<p class="ablog-post-excerpt">It is common in neuroscience to ask individuals to perform a task over and over again. You record
-the activity in the brain each time they perform the task (called an “epoch” or a “trial”).
-Time is recorded relative to some <em>onset</em> when the task begins. That is <code class="docutils literal notranslate"><span class="pre">t==0</span></code>. The result
-is usually a matrix of <code class="docutils literal notranslate"><span class="pre">epochs</span> <span class="pre">x</span> <span class="pre">channejupyls</span> <span class="pre">x</span> <span class="pre">time</span></code>. You can do a lot of stuff with this
-data, but our task in this paper is to detect changes in neural activity at trial onset (<code class="docutils literal notranslate"><span class="pre">t==0</span></code>).</p>
-<img alt="_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" class="ablog-post-excerpt" src="_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" />
 </li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2019/2019-10-13-rust-jupyter-governance/">What would Rust-style governance look like in Jupyter?</a> - 2019-10-13</p>
 <p class="ablog-post-excerpt">As I’ve written about before, I <a class="reference external" href="https://chrisholdgraf.com/rust-governance">like Rust’s governance structure</a>.

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts tagged neuroscience &#8212; Chris Holdgraf</title>
+    <title>Posts tagged git &#8212; Chris Holdgraf</title>
   
   
   
@@ -52,7 +52,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/neuroscience';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/git';</script>
     <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
@@ -63,7 +63,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts tagged neuroscience"
+  title="Posts tagged git"
 />
  
 <style type="text/css">
@@ -430,6 +430,12 @@
 <ul>
    
   <li>
+    <a href="../../2022/precommit-autoupdate/"
+      >03 December - Automatically update pre-commit hook versions</a
+    >
+  </li>
+  
+  <li>
     <a href="../../2022/shell-split/"
       >29 November - subprocess.run can execute shell commands directly</a
     >
@@ -453,12 +459,6 @@
     >
   </li>
   
-  <li>
-    <a href="../../2022/sphinx-redirects-folder/"
-      >19 November - Automatically redirect folders in Sphinx websites</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -469,7 +469,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (6)</a>
+    <a href="../../2022/">2022 (7)</a>
   </li>
     
   <li>
@@ -481,7 +481,7 @@
   </li>
     
   <li>
-    <a href="../../2019/">2019 (8)</a>
+    <a href="../../2019/">2019 (7)</a>
   </li>
     
   <li>
@@ -533,45 +533,43 @@
 
 <div class="section">
   <h1>
-     Posts tagged  neuroscience 
+     Posts tagged  git 
   </h1>
    
 
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
-      <a href="../../2019/2019-10-22-xarray-neuro/">Analyzing intracranial electrophysiology data with xarray</a>
+      <a href="../../2022/precommit-autoupdate/">Automatically update pre-commit hook versions</a>
     </h2>
 
     <ul class="ablog-archive">
       <li>
-         <i class="fa fa-calendar"></i> 22 October 2019 
+         <i class="fa fa-calendar"></i> 03 December 2022 
       </li>
-           
+          
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
 <li id="tags">
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="#">neuroscience</a>   
-  <a href="../open-source/">open source</a>   
-  <a href="../analysis/">analysis</a>   
-  <a href="../xarray/">xarray</a>  
+  <a href="../python/">python</a>   
+  <a href="#">git</a>  
 </li>
  
     </ul>
     <div class="ablog-post-excerpt docutils container">
-<p>Over the last few years, it has been exciting to see the xarray project evolve,
-add new functionality, and mature. This post is an attempt at
-giving xarray another visit to see how it could integrate into electrophysiology
-workflows.</p>
-<p>It is common in neuroscience to ask individuals to perform a task over and over again. You record
-the activity in the brain each time they perform the task (called an “epoch” or a “trial”).
-Time is recorded relative to some <em>onset</em> when the task begins. That is <code class="docutils literal notranslate"><span class="pre">t==0</span></code>. The result
-is usually a matrix of <code class="docutils literal notranslate"><span class="pre">epochs</span> <span class="pre">x</span> <span class="pre">channejupyls</span> <span class="pre">x</span> <span class="pre">time</span></code>. You can do a lot of stuff with this
-data, but our task in this paper is to detect changes in neural activity at trial onset (<code class="docutils literal notranslate"><span class="pre">t==0</span></code>).</p>
-<img alt="../../../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" src="../../../_images/1a33359f7e36c6f0e3021b861ab9fb0e1e342ad040500e178b6b3ba20b50b85a.png" />
+<p>I figured out a way to automatically update all of the git <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook versions at once!</p>
+<p><a class="reference external" href="https://pre-commit.com/"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> is a useful command line tool for running simple commands before every <code class="docutils literal notranslate"><span class="pre">git</span></code> commit.
+I use it to enforce things like <a class="reference external" href="https://flake8.pycqa.org/"><code class="docutils literal notranslate"><span class="pre">flake8</span></code></a> and <a class="reference external" href="https://github.com/psf/black"><code class="docutils literal notranslate"><span class="pre">black</span></code></a> in many of my projects.</p>
 </div>
 
-    <p class="ablog-post-expand"><a href="../../2019/2019-10-22-xarray-neuro/"><em>Read more ...</em></a></p>
+    <p class="ablog-post-expand"><a href="../../2022/precommit-autoupdate/"><em>Read more ...</em></a></p>
     <hr/>
   </div>
    
