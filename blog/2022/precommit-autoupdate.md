@@ -23,3 +23,9 @@ pre-commit autoupdate
 
 And it will update your `.pre-commit-config.yaml` file with the latest versions.
 This feels like the easiest way to keep these configurations updated, at least until [GitHub adds `dependabot` support for `pre-commit`](https://github.com/dependabot/dependabot-core/issues/1524).
+
+## Automate the above with `pre-commit.ci`
+
+**Update**: A few folks mentioned that you can actually **automate this whole process** by using [pre-commit.ci](https://pre-commit.ci/), a service for using `pre-commit`'s functionality with automated jobs.
+
+That service will both automatically run `pre-commit` on your Pull Requests, and will also update your `pre-commit` dependencies on the fly.
