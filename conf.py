@@ -10,6 +10,7 @@ extensions = [
     "sphinx_design",
     "sphinx_copybutton",
     "sphinx_examples",
+    "sphinx_social_previews",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
 ]
@@ -98,11 +99,10 @@ for old, new in redirect_folders.items():
 
 # -- Social Previews -----------------------------------------
 
-# social_preview = {
-#     "image": 
-#     "tagline":
-#     "color_bar":
-# }
+ogp_social_previews = {
+    "image": "_static/profile-color-circle.png",
+    "line_color": "#4078c0",
+}
 
 # -- ABlog ---------------------------------------------------
 
@@ -132,18 +132,5 @@ myst_enable_extensions = [
 # Instead if I want something to execute, manually set it in the post's metadata.
 nb_execution_mode = "off"
 
-from social_previews import render_page_card, setup_social_card_images
-
 def setup(app):
     app.add_css_file("custom.css")
-    app.connect("builder-inited", setup_social_card_images)
-    app.connect("html-page-context", render_page_card)
-    app.add_config_value("social_preview_config", None, True)
-
-social_preview_config = {
-    "image": "_static/profile-color-circle.png",
-    "image_shadow": "_static/logo-shadow.png",
-    "tagline": "Thoughts and ideas from Chris' blog.",
-    "line_color": "#4078c0",
-    "add_site_url": True,
-}
