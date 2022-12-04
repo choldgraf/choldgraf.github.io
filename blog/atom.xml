@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-03T15:10:21.756904+00:00</updated>
+  <updated>2022-12-04T10:37:27.943042+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8827,6 +8827,11 @@ Simply run:&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;And it will update your &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;.pre-commit-config.yaml&lt;/span&gt;&lt;/code&gt; file with the latest versions.
 This feels like the easiest way to keep these configurations updated, at least until &lt;a class="reference external" href="https://github.com/dependabot/dependabot-core/issues/1524"&gt;GitHub adds &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;dependabot&lt;/span&gt;&lt;/code&gt; support for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;section id="automate-the-above-with-pre-commit-ci"&gt;
+&lt;h2&gt;Automate the above with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit.ci&lt;/span&gt;&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: A few folks mentioned that you can actually &lt;strong&gt;automate this whole process&lt;/strong&gt; by using &lt;a class="reference external" href="https://pre-commit.ci/"&gt;pre-commit.ci&lt;/a&gt;, a service for using &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt;’s functionality with automated jobs.&lt;/p&gt;
+&lt;p&gt;That service will both automatically run &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt; on your Pull Requests, and will also update your &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pre-commit&lt;/span&gt;&lt;/code&gt; dependencies on the fly.&lt;/p&gt;
+&lt;/section&gt;
 &lt;/section&gt;
 </content>
     <link href="https://chrisholdgraf.com/blog/2022/precommit-autoupdate/" rel="alternate"/>

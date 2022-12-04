@@ -10,10 +10,12 @@
 <meta property="og:url" content="https://chrisholdgraf.com/blog/2022/precommit-autoupdate/" />
 <meta property="og:site_name" content="Chris Holdgraf" />
 <meta property="og:description" content="I figured out a way to automatically update all of the git pre-commit hook versions at once! pre-commit is a useful command line tool for running simple commands before every git commit. I use it t..." />
-<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_precommit-autoupdate.png?4974ddf871fae3e1a57e70ae7bdbe0df0c8ae4bb" />
 <meta property="og:image:alt" content="Chris Holdgraf" />
 <meta name="description" content="I figured out a way to automatically update all of the git pre-commit hook versions at once! pre-commit is a useful command line tool for running simple commands before every git commit. I use it t..." />
 
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_precommit-autoupdate.png?4974ddf871fae3e1a57e70ae7bdbe0df0c8ae4bb" />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
 <meta name="twitter:card" content="summary_large_image" />
     <title>Automatically update pre-commit hook versions &#8212; Chris Holdgraf</title>
   
@@ -450,8 +452,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/python/">python</a>   
-  <a href="../../tag/git/">git</a>  
+  <a href="../../tag/git/">git</a>   
+  <a href="../../tag/python/">python</a>  
 </li>
  
 </ul>
@@ -577,6 +579,11 @@ Simply run:</p>
 </div>
 <p>And it will update your <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file with the latest versions.
 This feels like the easiest way to keep these configurations updated, at least until <a class="reference external" href="https://github.com/dependabot/dependabot-core/issues/1524">GitHub adds <code class="docutils literal notranslate"><span class="pre">dependabot</span></code> support for <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a>.</p>
+<section id="automate-the-above-with-pre-commit-ci">
+<h2>Automate the above with <code class="docutils literal notranslate"><span class="pre">pre-commit.ci</span></code><a class="headerlink" href="#automate-the-above-with-pre-commit-ci" title="Permalink to this heading">#</a></h2>
+<p><strong>Update</strong>: A few folks mentioned that you can actually <strong>automate this whole process</strong> by using <a class="reference external" href="https://pre-commit.ci/">pre-commit.ci</a>, a service for using <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code>’s functionality with automated jobs.</p>
+<p>That service will both automatically run <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> on your Pull Requests, and will also update your <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> dependencies on the fly.</p>
+</section>
 </section>
 
 <div class="section">
@@ -629,6 +636,28 @@ This feels like the easiest way to keep these configurations updated, at least u
           
             <div class="bd-sidebar-secondary bd-toc">
               
+<div class="toc-item">
+  
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#automate-the-above-with-pre-commit-ci">
+   Automate the above with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pre-commit.ci
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
 <div class="toc-item">
   
 <div id="searchbox"></div>
