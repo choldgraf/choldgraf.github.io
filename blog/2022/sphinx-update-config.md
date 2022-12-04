@@ -14,6 +14,8 @@ I finally figured it out, so documenting the process here:
 
 1. **Define a Sphinx event for `builder-inited`**. This will trigger after the builder has been selected, but before the environent is finalized for the build.
    This should be a function that takes a single `(app)` parameter.
+   :::{seealso}
+   See [the Sphinx Core Events documentation](https://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx-core-events) for more information about Sphinx's events system.
 2. **Grab the `app.config` object**. This is the configuration for your build.
    Altering its values will alter Sphinx's behavior.
    However, it has a weird way of being updated...
@@ -27,3 +29,15 @@ I finally figured it out, so documenting the process here:
    ```
 
 This seems to mirror [how Sphinx sets up the config internally](https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L227-L240), and leads to the behavior I want.
+
+Here's an example of the whole process in action:
+
+```python
+# This function will update a single configuration value
+def update_config(app):
+  app.config.__dict__["foo"] = "bar"
+
+# Register the above function to be called during the builder-inited phase
+def setup(app):
+  app.connect("builder-inited", update_config)
+```
