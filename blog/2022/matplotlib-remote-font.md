@@ -1,6 +1,6 @@
 ---
 date: "2022-15-05"
-categories: til
+category: til
 tags: visualization
 ---
 
