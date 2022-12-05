@@ -487,6 +487,12 @@
 <h2>My blog<a class="headerlink" href="#my-blog" title="Permalink to this heading">#</a></h2>
 <p>Here’s a list of recent posts, or <a class="reference internal" href="blog/"><span class="doc std std-doc">check out my blog archive</span></a>.</p>
 <ul class="postlist-style-none postlist">
+<li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/sphinx-update-config/">Update Sphinx configuration during the build by modifying app.config</a> - 2022-12-05</p>
+<p class="ablog-post-excerpt">As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
+It has always been mysterious to me how to do this properly <strong>during the Sphinx build</strong>.
+It’s easy to configure things with <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> ahead of time, but what if you want to manually set a value during the build?</p>
+<p class="ablog-post-excerpt">I finally figured it out, so documenting the process here:</p>
+</li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/precommit-autoupdate/">Automatically update pre-commit hook versions</a> - 2022-12-03</p>
 <p class="ablog-post-excerpt">I figured out a way to automatically update all of the git <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook versions at once!</p>
 <p class="ablog-post-excerpt"><a class="reference external" href="https://pre-commit.com/"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> is a useful command line tool for running simple commands before every <code class="docutils literal notranslate"><span class="pre">git</span></code> commit.

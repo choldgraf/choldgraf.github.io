@@ -430,6 +430,12 @@
 <ul>
    
   <li>
+    <a href="sphinx-update-config/"
+      >05 December - Update Sphinx configuration during the build by modifying app.config</a
+    >
+  </li>
+  
+  <li>
     <a href="precommit-autoupdate/"
       >03 December - Automatically update pre-commit hook versions</a
     >
@@ -453,12 +459,6 @@
     >
   </li>
   
-  <li>
-    <a href="orcid-auto-update/"
-      >19 November - Automatically updating my publications page with ORCID and doi.org</a
-    >
-  </li>
-  
 </ul>
 
     </div>
@@ -469,7 +469,7 @@
 <ul>
    
   <li>
-    <a href="#">2022 (7)</a>
+    <a href="#">2022 (8)</a>
   </li>
     
   <li>
@@ -539,6 +539,46 @@
 
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
+      <a href="sphinx-update-config/">Update Sphinx configuration during the build by modifying app.config</a>
+    </h2>
+
+    <ul class="ablog-archive">
+      <li>
+         <i class="fa fa-calendar"></i> 05 December 2022 
+      </li>
+          
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../tag/sphinx/">sphinx</a>  
+</li>
+ 
+    </ul>
+    <div class="ablog-post-excerpt docutils container">
+<p>As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
+It has always been mysterious to me how to do this properly <strong>during the Sphinx build</strong>.
+It’s easy to configure things with <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> ahead of time, but what if you want to manually set a value during the build?</p>
+<p>I finally figured it out, so documenting the process here:</p>
+</div>
+
+    <p class="ablog-post-expand"><a href="sphinx-update-config/"><em>Read more ...</em></a></p>
+    <hr/>
+  </div>
+  
+
+  <div class="section ablog-post">
+    <h2 class="ablog-post-title">
       <a href="precommit-autoupdate/">Automatically update pre-commit hook versions</a>
     </h2>
 
@@ -558,8 +598,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../tag/python/">python</a>   
-  <a href="../tag/git/">git</a>  
+  <a href="../tag/git/">git</a>   
+  <a href="../tag/python/">python</a>  
 </li>
  
     </ul>
@@ -634,8 +674,8 @@ There’s a <code class="docutils literal notranslate"><span class="pre">shell=<
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../tag/cicd/">cicd</a>   
-  <a href="../tag/github-actions/">github actions</a>  
+  <a href="../tag/github-actions/">github actions</a>   
+  <a href="../tag/cicd/">cicd</a>  
 </li>
  
     </ul>
@@ -672,8 +712,8 @@ This looks like one or more workflows that are in a constant <strong>waiting sta
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../tag/myst/">myst</a>   
   <a href="../tag/sphinx/">sphinx</a>   
+  <a href="../tag/myst/">myst</a>   
   <a href="../tag/scholarship/">scholarship</a>  
 </li>
  
@@ -709,9 +749,9 @@ This looks like one or more workflows that are in a constant <strong>waiting sta
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="../tag/orcid/">orcid</a>   
   <a href="../tag/doi/">doi</a>   
-  <a href="../tag/scholarship/">scholarship</a>   
-  <a href="../tag/orcid/">orcid</a>  
+  <a href="../tag/scholarship/">scholarship</a>  
 </li>
  
     </ul>

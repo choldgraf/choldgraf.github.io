@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-04T11:40:42.963456+00:00</updated>
+  <updated>2022-12-05T09:18:42.549060+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8840,5 +8840,55 @@ I use it to enforce things like flake8 and black in many of my projects.</summar
     <category term="git" label="git"/>
     <category term="python" label="python"/>
     <published>2022-12-03T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2022/sphinx-update-config/</id>
+    <title>Update Sphinx configuration during the build by modifying app.config</title>
+    <updated>2022-12-05T00:00:00+00:00</updated>
+    <content type="html">&lt;section id="update-sphinx-configuration-during-the-build-by-modifying-app-config"&gt;
+
+&lt;p&gt;As part of &lt;a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075"&gt;the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pydata-sphinx-theme&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; we have a few settings that auto-enable extensions and configure them on behalf of the user.
+It has always been mysterious to me how to do this properly &lt;strong&gt;during the Sphinx build&lt;/strong&gt;.
+It’s easy to configure things with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;conf.py&lt;/span&gt;&lt;/code&gt; ahead of time, but what if you want to manually set a value during the build?&lt;/p&gt;
+&lt;p&gt;I finally figured it out, so documenting the process here:&lt;/p&gt;
+&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Define a Sphinx event for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;builder-inited&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;. This will trigger after the builder has been selected, but before the environent is finalized for the build.
+This should be a function that takes a single &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;(app)&lt;/span&gt;&lt;/code&gt; parameter.&lt;/p&gt;
+&lt;div class="admonition seealso"&gt;
+&lt;p class="admonition-title"&gt;See also&lt;/p&gt;
+&lt;p&gt;See &lt;a class="reference external" href="https://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx-core-events"&gt;the Sphinx Core Events documentation&lt;/a&gt; for more information about Sphinx’s events system.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Grab the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object&lt;/strong&gt;. This is the configuration for your build.
+Altering its values will alter Sphinx’s behavior.
+However, it has a weird way of being updated…&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Update the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__dict__&lt;/span&gt;&lt;/code&gt; attribute of the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Config&lt;/span&gt;&lt;/code&gt; object&lt;/strong&gt;.
+For some reason, it seems you need to update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__dict__&lt;/span&gt;&lt;/code&gt; within the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object.
+This will update the configuration as expected.
+For example:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__dict__&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mykey&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;myvalue&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This seems to mirror &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L227-L240"&gt;how Sphinx sets up the config internally&lt;/a&gt;, and leads to the behavior I want.&lt;/p&gt;
+&lt;p&gt;Here’s an example of the whole process in action:&lt;/p&gt;
+&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# This function will update a single configuration value&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;update_config&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__dict__&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Register the above function to be called during the builder-inited phase&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;builder-inited&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;update_config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2022/sphinx-update-config/" rel="alternate"/>
+    <summary>As part of the pydata-sphinx-theme we have a few settings that auto-enable extensions and configure them on behalf of the user.
+It has always been mysterious to me how to do this properly during the Sphinx build.
+It’s easy to configure things with conf.py ahead of time, but what if you want to manually set a value during the build?I finally figured it out, so documenting the process here:</summary>
+    <category term="sphinx" label="sphinx"/>
+    <published>2022-12-05T00:00:00+00:00</published>
   </entry>
 </feed>
