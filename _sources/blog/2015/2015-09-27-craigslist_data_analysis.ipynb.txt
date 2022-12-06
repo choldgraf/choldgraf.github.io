@@ -109,7 +109,7 @@
       "text/plain": [
        "[<matplotlib.text.Text at 0x1141cb690>]"
       ],
-      "text_plain": "[&ltmatplotlib.text.Text at 0x1141cb690&gt]"
+      "text/plain": "[&ltmatplotlib.text.Text at 0x1141cb690&gt]"
      },
      "execution_count": 4,
      "metadata": {},
@@ -237,7 +237,7 @@
       "text/plain": [
        "[<matplotlib.text.Text at 0x114f59090>]"
       ],
-      "text_plain": "[&ltmatplotlib.text.Text at 0x114f59090&gt]"
+      "text/plain": "[&ltmatplotlib.text.Text at 0x114f59090&gt]"
      },
      "execution_count": 9,
      "metadata": {},
@@ -331,7 +331,7 @@
       "text/plain": [
        "(0, 10)"
       ],
-      "text_plain": "(0, 10)"
+      "text/plain": "(0, 10)"
      },
      "execution_count": 11,
      "metadata": {},

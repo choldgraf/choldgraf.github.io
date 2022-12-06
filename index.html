@@ -487,6 +487,11 @@
 <h2>My blog<a class="headerlink" href="#my-blog" title="Permalink to this heading">#</a></h2>
 <p>Here’s a list of recent posts, or <a class="reference internal" href="blog/"><span class="doc std std-doc">check out my blog archive</span></a>.</p>
 <ul class="postlist-style-none postlist">
+<li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/matplotlib-remote-font/">Load and plot a remote font with Matplotlib</a> - 2022-12-06</p>
+<p class="ablog-post-excerpt">As part of <a class="reference external" href="https://github.com/choldgraf/sphinx-social-previews">my <code class="docutils literal notranslate"><span class="pre">sphinx-social-previews</span></code></a> prototype, I wanted to be able to use the <a class="reference external" href="https://fonts.google.com/specimen/Roboto">Roboto Font from Google</a> in image previews.
+However, Roboto is often not loaded on your local filesystem, so it took some digging to figure out how to make it possible to load via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">Matplotlib’s text plotting functionality</a>.</p>
+<p class="ablog-post-excerpt">Here’s the solution that finally worked for me, inspired <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">from this Tweet with a similar implementation</a> from <a class="reference external" href="https://github.com/whitead/dmol-book/blob/master/package/dmol/__init__.py">the <code class="docutils literal notranslate"><span class="pre">dmol</span></code> book</a>.</p>
+</li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/sphinx-update-config/">Update Sphinx configuration during the build by modifying app.config</a> - 2022-12-05</p>
 <p class="ablog-post-excerpt">As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly <strong>during the Sphinx build</strong>.
