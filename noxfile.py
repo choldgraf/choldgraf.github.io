@@ -10,7 +10,7 @@ def docs(session):
     session.install("-r", "execute-requirements.txt")
     if "live" in session.posargs:
         session.run(
-            *split("sphinx-autobuild -b dirhtml . _build/dirhtml --ignore _build/* --ignore **/.ipynb_checkpoints")
+            *split("sphinx-autobuild -b dirhtml . _build/dirhtml --ignore **/_build/jupyter_execute")
         )
     else:
         session.run(

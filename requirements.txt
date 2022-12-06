@@ -1,5 +1,6 @@
 ablog
 docutils
+ipython!=0.7.0
 matplotlib
 myst_nb
 MyST-Parser
