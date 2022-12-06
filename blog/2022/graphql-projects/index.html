@@ -676,8 +676,8 @@ To do so, let’s use Python to parse the data and turn it into a DataFrame.</p>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">rich</span> <span class="kn">import</span> <span class="nb">print</span>
 
-<span class="c1"># An authentication token that I created *just* for READ ONLY operations on Projects.</span>
-<span class="n">auth</span> <span class="o">=</span> <span class="s2">&quot;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&quot;</span>
+<span class="c1"># An authentication token that provides access</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;GITHUB_TOKEN&quot;</span><span class="p">]</span>
 
 <span class="c1"># The GitHub GraphQL API endpoint</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.github.com/graphql&quot;</span>

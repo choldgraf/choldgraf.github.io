@@ -132,8 +132,8 @@ import requests
 import os
 from rich import print
 
-# An authentication token that I created *just* for READ ONLY operations on Projects.
-auth = "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"
+# An authentication token that provides access
+auth = os.environ["GITHUB_TOKEN"]
 
 # The GitHub GraphQL API endpoint
 url = "https://api.github.com/graphql"
