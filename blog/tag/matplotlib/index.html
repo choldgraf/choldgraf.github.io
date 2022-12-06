@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts tagged pandoc &#8212; Chris Holdgraf</title>
+    <title>Posts tagged matplotlib &#8212; Chris Holdgraf</title>
   
   
   
@@ -52,7 +52,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/pandoc';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/matplotlib';</script>
     <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
@@ -63,7 +63,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts tagged pandoc"
+  title="Posts tagged matplotlib"
 />
  
 <style type="text/css">
@@ -533,18 +533,18 @@
 
 <div class="section">
   <h1>
-     Posts tagged  pandoc 
+     Posts tagged  matplotlib 
   </h1>
    
 
   <div class="section ablog-post">
     <h2 class="ablog-post-title">
-      <a href="../../2019/2019-11-11-ipynb_pandoc/">Testing Pandoc and Jupyter Notebooks</a>
+      <a href="../../2022/matplotlib-remote-font/">Load and plot a remote font with Matplotlib</a>
     </h2>
 
     <ul class="ablog-archive">
       <li>
-         <i class="fa fa-calendar"></i> 11 November 2019 
+         <i class="fa fa-calendar"></i> 06 December 2022 
       </li>
           
 <li id="category">
@@ -555,28 +555,24 @@
 </li>
  
 <li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
+  <span><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
   >
    
-  <a href="#">pandoc</a>   
-  <a href="../documentation/">documentation</a>   
-  <a href="../nbconvert/">nbconvert</a>  
+  <a href="#">matplotlib</a>  
 </li>
  
     </ul>
     <div class="ablog-post-excerpt docutils container">
-<p>For several months now, the universal <a class="reference external" href="https://pandoc.org/">document converter pandoc</a> has
-had <a class="reference external" href="https://pandoc.org/MANUAL.html#creating-jupyter-notebooks-with-pandoc">support for Jupyter Notebooks</a>. This means that with a single call,
-you can convert <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> files to any of the output formats that Pandoc
-supports (and vice-versa!). This post is a quick exploration of what this
-looks like.</p>
-<p><strong>Note that for this post, we’re using Pandoc version 2.7.3</strong>. Also, some of what’s below is hard
-to interpret without actually opening the files that are created by Pandoc. For the sake
-of this blog post, I’m going to stick with the raw text output here, though you can expand the
-outputs if you wish, I recommend copy/pasting some of these commands on your own if you’d like to try.</p>
+<p>As part of <a class="reference external" href="https://github.com/choldgraf/sphinx-social-previews">my <code class="docutils literal notranslate"><span class="pre">sphinx-social-previews</span></code></a> prototype, I wanted to be able to use the <a class="reference external" href="https://fonts.google.com/specimen/Roboto">Roboto Font from Google</a> in image previews.
+However, Roboto is often not loaded on your local filesystem, so it took some digging to figure out how to make it possible to load via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">Matplotlib’s text plotting functionality</a>.</p>
+<p>Here’s the solution that finally worked for me, inspired <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">from this Tweet with a similar implementation</a> from <a class="reference external" href="https://github.com/whitead/dmol-book/blob/master/package/dmol/__init__.py">the <code class="docutils literal notranslate"><span class="pre">dmol</span></code> book</a>.</p>
+<img alt="../../../_images/30cb13b66451a255ac673f98ac080f9e8a9fe21dd6e8fbd5103d921011b30811.png" src="../../../_images/30cb13b66451a255ac673f98ac080f9e8a9fe21dd6e8fbd5103d921011b30811.png" />
 </div>
 
-    <p class="ablog-post-expand"><a href="../../2019/2019-11-11-ipynb_pandoc/"><em>Read more ...</em></a></p>
+    <p class="ablog-post-expand"><a href="../../2022/matplotlib-remote-font/"><em>Read more ...</em></a></p>
     <hr/>
   </div>
    
