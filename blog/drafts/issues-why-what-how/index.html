@@ -4,8 +4,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts tagged graphql &#8212; Chris Holdgraf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Issues should answer why what and how to do work" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/drafts/issues-why-what-how/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="Issues are a place to discuss ideas for work before they actually happen. They are a way for team members to align themselves on an action and decide to move forward (or not). But what kind of info..." />
+<meta property="og:image:alt" content="Chris Holdgraf" />
+<meta name="description" content="Issues are a place to discuss ideas for work before they actually happen. They are a way for team members to align themselves on an action and decide to move forward (or not). But what kind of info..." />
+
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_drafts_issues-why-what-how.png?10ec8cab5569b2c00602bfb82effb0a8b71d596b" />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta name="twitter:card" content="summary_large_image" />
+    <title>Issues should answer why what and how to do work &#8212; Chris Holdgraf</title>
   
   
   
@@ -52,7 +64,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/graphql';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/drafts/issues-why-what-how';</script>
     <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
@@ -63,7 +75,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts tagged graphql"
+  title="Chris Holdgraf"
 />
  
 <style type="text/css">
@@ -421,7 +433,25 @@
 
   
   <div class="sidebar-start-items sidebar-primary__section">
-    <div class="sidebar-start-items__item">
+    <div class="sidebar-start-items__item">  
+<h2>
+   <i
+    class="fa fa-pencil"
+  ></i
+  >  Draft  
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/thoughts/">thoughts</a>  
+</li>
+  
+</ul>
+
     </div>
     <div class="sidebar-start-items__item">
 <h3>
@@ -432,12 +462,6 @@
   <li>
     <a href="../../2022/jupyterlite-workshop/"
       >10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool</a
-    >
-  </li>
-  
-  <li>
-    <a href="../../2022/graphql-projects/"
-      >07 December - Convert a GitHub Project into a Pandas DataFrame with GraphQL</a
     >
   </li>
   
@@ -459,6 +483,12 @@
     >
   </li>
   
+  <li>
+    <a href="../../2022/shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
+    >
+  </li>
+  
 </ul>
 
     </div>
@@ -469,7 +499,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (11)</a>
+    <a href="../../2022/">2022 (10)</a>
   </li>
     
   <li>
@@ -529,50 +559,35 @@
             
 
             <article class="bd-article" role="main">
-              
+               <section id="issues-should-answer-why-what-and-how-to-do-work">
+<h1>Issues should answer why what and how to do work<a class="headerlink" href="#issues-should-answer-why-what-and-how-to-do-work" title="Permalink to this heading">#</a></h1>
+<p>Issues are a place to discuss ideas for work before they actually happen. They are a way for team members to align themselves on an action and decide to move forward (or not). But what kind of information is actually useful for issues? What do you put in an issue conversation, vs. leave to a pull request? I think that there are three key things, most important first:</p>
+<ul class="simple">
+<li><p><strong>Why</strong>: Why is this issue worth resolving in the first place? Whose problem is it solving? What key stakeholder would care about it, and why would it make their life better?</p>
+<ul>
+<li><p>To define this, you must also define the key stakeholders that should care about this issue. In an open source project there almost always at least two: users and maintainers. The “Why” may be different for each, and their goals may be conflicting! But it’s important to consider both explicitly.</p></li>
+</ul>
+</li>
+<li><p><strong>What</strong>: What are the actions that would resolve this issue? Is it a new feature, a change in process, a bug to spot-check? This should be relatively high-level like “We should add the ability to customize the icon people see.”</p></li>
+<li><p><strong>How</strong>: Once there’s agreement about <strong>why</strong> this is a problem to solve, and <strong>what</strong> will solve it, you can begin describing <strong>how</strong> it might happen. This could involve design documents, implementation constraints, or pointers to a codebase where things could happen.</p></li>
+</ul>
+<p>When people open Pull Requests, at least “Why” and “What” should have already been defined and agreed upon by key stakeholders in a project. That way the PR can focus on the “how” without getting bogged down in whether it was a problem worth solving in the first place.</p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Inspired by [[Jacob Tomlinson]]’s post here: https://jacobtomlinson.dev/posts/2022/the-secret-to-making-code-contributions-that-stand-the-test-of-time/</p></li>
+<li><p>especially:</p>
+<blockquote>
+<div><p>I also find it helpful to think about the issue as the foundation that will eventually become the documentation and write it in a way that communicates to the community what my intentions are rather than communicating to a developer what my intentions are.</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+</section>
 
 <div class="section">
-  <h1>
-     Posts tagged  graphql 
-  </h1>
-   
-
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2022/graphql-projects/">Convert a GitHub Project into a Pandas DataFrame with GraphQL</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 07 December 2022 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="../../category/til/">til</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../github/">github</a>   
-  <a href="#">graphql</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Had to create a new Personal Access Token and add the <code class="docutils literal notranslate"><span class="pre">projects:read</span></code> scope to it.</p>
-<p><a class="reference external" href="https://github.com/users/choldgraf/projects/3">Here’s the project I used</a>.
-And here’s the query to return its Unique ID:</p>
-</div>
-
-    <p class="ablog-post-expand"><a href="../../2022/graphql-projects/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-   
+    
+  
 </div>
 
             </article>
@@ -608,6 +623,23 @@ And here’s the query to return its Unique ID:</p>
               
 <div class="toc-item">
   
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+<div class="toc-item">
+  
 <div id="searchbox"></div>
 </div>
 
@@ -617,6 +649,12 @@ And here’s the query to return its Unique ID:</p>
 
 <div class="toc-item">
   
+<div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/drafts/issues-why-what-how.md.txt">
+        <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+</div>
+
 </div>
 
             </div>
