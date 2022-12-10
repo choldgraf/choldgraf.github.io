@@ -9,10 +9,9 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
-date: "2022-12-07"
 tags: github, graphql
 category: til
-draft: true
+# date: "2022-12-07"
 ---
 
 # Convert a GitHub Project into a Pandas DataFrame with GraphQL
