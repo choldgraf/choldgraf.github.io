@@ -12,6 +12,7 @@ kernelspec:
 date: "2022-12-07"
 tags: github, graphql
 category: til
+draft: true
 ---
 
 # Convert a GitHub Project into a Pandas DataFrame with GraphQL
