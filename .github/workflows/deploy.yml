@@ -29,6 +29,11 @@ jobs:
       run: |
         make dirhtml
 
+    # Hide pages behind a password
+    - uses: actions/setup-node@v3
+    - run: npm install staticrypt
+    - run: find _build/dirhtml/hidden -type f -name "*.html" -exec staticrypt {} TEST -o {} \;
+
     # If we've pushed to main, push the book's HTML to github-pages
     - if: ${{ github.ref == 'refs/heads/main' }}
       name: GitHub Pages action
