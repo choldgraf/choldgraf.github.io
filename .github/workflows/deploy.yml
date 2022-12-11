@@ -31,7 +31,7 @@ jobs:
 
     # Hide pages behind a password
     - uses: actions/setup-node@v3
-    - run: npm install staticrypt
+    - run: npm install -g staticrypt
     - run: find _build/dirhtml/hidden -type f -name "*.html" -exec staticrypt {} TEST -o {} \;
 
     # If we've pushed to main, push the book's HTML to github-pages
