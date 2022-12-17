@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-15T13:56:43.603861+00:00</updated>
+  <updated>2022-12-17T16:02:28.730409+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8932,8 +8932,8 @@ urllib.request.urlretrieve(url_font, path_font)
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmp2kqfonly/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7fccb5e87430&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpplyzwghw/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f8a455e2e90&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8960,8 +8960,17 @@ print(font_manager.fontManager.ttflist[-3:])
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed-Bold.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-Heavy.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;800&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
+    &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
+    &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSansCondensed-Bold.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Sans'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
@@ -8969,16 +8978,7 @@ print(font_manager.fontManager.ttflist[-3:])
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-BlackItalic.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;900&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
-    &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
-    &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmp2kqfonly/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpplyzwghw/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
