@@ -1,14 +1,27 @@
+---
+html_theme.sidebar_secondary.remove: true
+---
 # Chris Holdgraf - about me
 
-I work at the intersection of technical development, open communities, scientific research, and education.
+I'm the Executive Director of [2i2c - the International Interactive Computing Collaboration](https://2i2c.org), a non-profit dedicated to open source infrastructure for interactive computing in research and education. I also work extensively with [Project Jupyter](https://jupyter.org), particularly [the Binder Project](https://mybinder.org) and [Jupyter Book](https://jupyterbook.org).
 
-I'm the Executive Director of [2i2c - the International Interactive Computing Collaboration](https://2i2c.org), a non-profit dedicated to open source infrastructure for interactive computing in research and education.
 
-You can learn a bit more about what I do on this website.
+::::{grid}
+:::{grid-item-card}
+:link: about
+About me ℹ️
+:::
+:::{grid-item-card}
+:link: projects
+Projects I've worked on 🔧
+:::
+:::{grid-item-card}
+:link: blog
+My blog ✍️
+:::
+::::
 
-## My blog
-
-Here's a list of recent posts, or [check out my blog archive](blog.md).
+Below is a list of recent blog posts.
 
 ```{postlist}
 :date: "%Y-%m-%d"
