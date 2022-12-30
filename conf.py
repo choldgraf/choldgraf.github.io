@@ -75,8 +75,12 @@ html_sidebars = {
 }
 
 # OpenGraph config
-# Commented out because it is auto-set on GitHub Actions now!
-# ogp_site_url = "https://chrisholdgraf.com"
+ogp_site_url = "https://chrisholdgraf.com"
+ogp_social_cards = {
+    "line_color": "#4078c0",
+    "image": "_static/profile-color-circle.png",
+}
+
 
 rediraffe_redirects = {
     "rust-governance.md": "blog/2018/rust_governance.md",
@@ -94,14 +98,6 @@ for old, new in redirect_folders.items():
             # Skip pandoc because for some reason it's broken
             if "pandoc" not in str(newpath):
                 rediraffe_redirects[oldpath] = str(newpath)
-
-
-# -- Social Previews -----------------------------------------
-
-ogp_social_previews = {
-    "image": "_static/profile-color-circle.png",
-    "line_color": "#4078c0",
-}
 
 # -- ABlog ---------------------------------------------------
 
