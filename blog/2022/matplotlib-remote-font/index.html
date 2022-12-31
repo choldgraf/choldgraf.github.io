@@ -7,16 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Load and plot a remote font with Matplotlib" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://chrisholdgraf.com/blog/2022/matplotlib-remote-font/" />
+<meta property="og:url" content="blog/2022/matplotlib-remote-font/" />
 <meta property="og:site_name" content="Chris Holdgraf" />
 <meta property="og:description" content="As part of my sphinx-social-previews prototype, I wanted to be able to use the Roboto Font from Google in image previews. However, Roboto is often not loaded on your local filesystem, so it took so..." />
-<meta property="og:image:alt" content="Chris Holdgraf" />
+<meta property="og:image" content="/_images/social_previews/summary_blog_2022_matplotlib-remote-font_89575fe6.png" />
+<meta property="og:image:alt" content="As part of my sphinx-social-previews prototype, I wanted to be able to use the Roboto Font from Google in image previews. However, Roboto is often not loaded..." />
 <meta name="description" content="As part of my sphinx-social-previews prototype, I wanted to be able to use the Roboto Font from Google in image previews. However, Roboto is often not loaded on your local filesystem, so it took so..." />
 
-<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_matplotlib-remote-font.png?43a4d5e14cc4e6627311768446c982e16392ecc2" />
-<meta property="og:image:width" content="1146" />
-<meta property="og:image:height" content="600" />
-<meta name="twitter:card" content="summary_large_image" />
     <title>Load and plot a remote font with Matplotlib &#8212; Chris Holdgraf</title>
   
   
@@ -599,8 +596,8 @@ To download it locally into a <strong>temporary folder</strong> using <a class="
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;/tmp/tmp39ycpjmf/Fira-Code.ttf&#39;),
- &lt;http.client.HTTPMessage at 0x7f1f6228f070&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;/tmp/tmpbbd0j54y/Fira-Code.ttf&#39;),
+ &lt;http.client.HTTPMessage at 0x7f8cd9d66e60&gt;)
 </pre></div>
 </div>
 </div>
@@ -627,6 +624,15 @@ This allows you to <strong>register fonts that Matplotlib knows how to use</stro
 <div class="cell_output docutils container">
 <div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">[</span>
     <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
+        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'DejaVu Sans'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'oblique'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">variant</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">weight</span>=<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">700</span>,
+        <span style="color: #808000; text-decoration-color: #808000">stretch</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">size</span>=<span style="color: #008000; text-decoration-color: #008000">'scalable'</span>
+    <span style="font-weight: bold">)</span>,
+    <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
         <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed.ttf'</span>,
         <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'DejaVu Serif'</span>,
         <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
@@ -636,16 +642,7 @@ This allows you to <strong>register fonts that Matplotlib knows how to use</stro
         <span style="color: #808000; text-decoration-color: #808000">size</span>=<span style="color: #008000; text-decoration-color: #008000">'scalable'</span>
     <span style="font-weight: bold">)</span>,
     <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
-        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf'</span>,
-        <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'Liberation Serif'</span>,
-        <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'italic'</span>,
-        <span style="color: #808000; text-decoration-color: #808000">variant</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
-        <span style="color: #808000; text-decoration-color: #808000">weight</span>=<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">700</span>,
-        <span style="color: #808000; text-decoration-color: #808000">stretch</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
-        <span style="color: #808000; text-decoration-color: #808000">size</span>=<span style="color: #008000; text-decoration-color: #008000">'scalable'</span>
-    <span style="font-weight: bold">)</span>,
-    <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
-        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/tmp/tmp39ycpjmf/Fira-Code.ttf'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/tmp/tmpbbd0j54y/Fira-Code.ttf'</span>,
         <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'Fira-Downloaded'</span>,
         <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
         <span style="color: #808000; text-decoration-color: #808000">variant</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
