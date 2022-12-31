@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-31T17:03:03.915231+00:00</updated>
+  <updated>2022-12-31T17:03:12.540583+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8932,8 +8932,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpl7kjbiqa/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f698b27ab30&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpm9kxm859/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f1b1037a7d0&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8960,8 +8960,8 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-Bold.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
@@ -8969,16 +8969,16 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerif-BoldItalic.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-Italic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpl7kjbiqa/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpm9kxm859/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
