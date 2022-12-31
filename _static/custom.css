@@ -1,3 +1,12 @@
+/* Theme over-rides */
+h1, h2, h3, h4, h5 {
+  color: var(--pst-color-text-muted);
+}
+h1, h2 {
+  font-weight: bold;
+}
+
+
 /* Bio area */
 div.profile-pic {
     margin-top: 1em;
