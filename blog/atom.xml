@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-25T18:08:32.119091+00:00</updated>
+  <updated>2022-12-31T13:48:06.551238+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8932,8 +8932,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpta9dvkq3/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f97812b31f0&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmp39ycpjmf/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f1f6228f070&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8960,25 +8960,25 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuMathTeXGyre.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Math TeX Gyre'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'condensed'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSansMono-BoldOblique.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Sans Mono'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'oblique'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationSerif-BoldItalic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Serif'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpta9dvkq3/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmp39ycpjmf/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
@@ -9098,5 +9098,47 @@ See the jupyterlite documentation for more information.</summary>
     <category term="jupyter" label="jupyter"/>
     <category term="webassembly" label="webassembly"/>
     <published>2022-12-10T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2022/install-github-from-pyproject/</id>
+    <title>Install dependencies directly from GitHub with pyproject.toml files</title>
+    <updated>2022-12-31T00:00:00+00:00</updated>
+    <content type="html">&lt;section id="install-dependencies-directly-from-github-with-pyproject-toml-files"&gt;
+
+&lt;p&gt;This is a short post to demonstrate how to install packages directly from GitHub with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pyprojects.toml&lt;/span&gt;&lt;/code&gt;, including custom branches and commits.&lt;/p&gt;
+&lt;p&gt;In &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pyproject.toml&lt;/span&gt;&lt;/code&gt;, you can specify dependencies for a project via the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;dependencies&lt;/span&gt;&lt;/code&gt; field.
+For example, to specify &lt;a class="reference external" href="https://sphinx-doc.org"&gt;Sphinx&lt;/a&gt; as a dependency:&lt;/p&gt;
+&lt;div class="highlight-toml notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sphinx&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;However, this will install the version that is published to [&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;PyPI&lt;/span&gt;&lt;/code&gt;](Here’s how to install a specific branch in &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pyproject.toml&lt;/span&gt;&lt;/code&gt;:
+).
+What if you want to install from &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;&amp;#64;main&lt;/span&gt;&lt;/code&gt;, or from a specific commit or branch?&lt;/p&gt;
+&lt;p&gt;Here are a few recipes for doing this:&lt;/p&gt;
+&lt;section id="install-directly-from-github"&gt;
+&lt;h2&gt;Install directly from GitHub&lt;/h2&gt;
+&lt;div class="highlight-toml notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sphinx@git+https://github.com/sphinx-doc/sphinx.git&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;section id="install-from-a-specific-branch"&gt;
+&lt;h2&gt;Install from a specific branch&lt;/h2&gt;
+&lt;div class="highlight-toml notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;dependencies&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sphinx@git+https://github.com/sphinx-doc/sphinx.git#egg=branchname&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2022/install-github-from-pyproject/" rel="alternate"/>
+    <summary>This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml, including custom branches and commits.In pyproject.toml, you can specify dependencies for a project via the dependencies field.
+For example, to specify Sphinx as a dependency:</summary>
+    <category term="softwaredevelopment" label="software development"/>
+    <published>2022-12-31T00:00:00+00:00</published>
   </entry>
 </feed>

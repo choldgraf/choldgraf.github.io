@@ -4,8 +4,20 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Posts tagged open communities &#8212; Chris Holdgraf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Install dependencies directly from GitHub with pyproject.toml files" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2022/install-github-from-pyproject/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml, including custom branches and commits. In pyproject.toml, you can specify dependencies for a p..." />
+<meta property="og:image:alt" content="Chris Holdgraf" />
+<meta name="description" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml, including custom branches and commits. In pyproject.toml, you can specify dependencies for a p..." />
+
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_install-github-from-pyproject.png?d170e07d5641c1f95009003b9e5ffb10ebf0566b" />
+<meta property="og:image:width" content="1146" />
+<meta property="og:image:height" content="600" />
+<meta name="twitter:card" content="summary_large_image" />
+    <title>Install dependencies directly from GitHub with pyproject.toml files &#8212; Chris Holdgraf</title>
   
   
   
@@ -52,7 +64,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/tag/open-communities';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2022/install-github-from-pyproject';</script>
     <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
     <link rel="author" title="About these documents" href="../../../about/" />
     <link rel="index" title="Index" href="../../../genindex/" />
@@ -63,7 +75,7 @@
   rel="alternate"
   type="application/atom+xml"
   href="../../../blog/atom.xml"
-  title="Posts tagged open communities"
+  title="Chris Holdgraf"
 />
  
 <style type="text/css">
@@ -427,7 +439,33 @@
   </div>
   
     <div class="sidebar-start-items sidebar-primary__section">
-        <div class="sidebar-start-items__item"></div>
+        <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  31 December 2022 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../tag/software-development/">software development</a>  
+</li>
+ 
+</ul>
+</div>
         <div class="sidebar-start-items__item">
 <h3>
   <a href="../../">Recent Posts</a>
@@ -435,32 +473,32 @@
 <ul>
    
   <li>
-    <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
-    >
-  </li>
-  
-  <li>
-    <a href="../../2022/jupyterlite-workshop/"
+    <a href="../jupyterlite-workshop/"
       >10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool</a
     >
   </li>
   
   <li>
-    <a href="../../2022/matplotlib-remote-font/"
+    <a href="../matplotlib-remote-font/"
       >06 December - Load and plot a remote font with Matplotlib</a
     >
   </li>
   
   <li>
-    <a href="../../2022/sphinx-update-config/"
+    <a href="../sphinx-update-config/"
       >05 December - Update Sphinx configuration during the build by modifying app.config</a
     >
   </li>
   
   <li>
-    <a href="../../2022/precommit-autoupdate/"
+    <a href="../precommit-autoupdate/"
       >03 December - Automatically update pre-commit hook versions</a
+    >
+  </li>
+  
+  <li>
+    <a href="../shell-split/"
+      >29 November - subprocess.run can execute shell commands directly</a
     >
   </li>
   
@@ -473,7 +511,7 @@
 <ul>
    
   <li>
-    <a href="../../2022/">2022 (11)</a>
+    <a href="../">2022 (11)</a>
   </li>
     
   <li>
@@ -527,58 +565,55 @@
               
 
                 <article class="bd-article" role="main">
-                  
+                   <section id="install-dependencies-directly-from-github-with-pyproject-toml-files">
+<h1>Install dependencies directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files<a class="headerlink" href="#install-dependencies-directly-from-github-with-pyproject-toml-files" title="Permalink to this heading">#</a></h1>
+<p>This is a short post to demonstrate how to install packages directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code>, including custom branches and commits.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, you can specify dependencies for a project via the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> field.
+For example, to specify <a class="reference external" href="https://sphinx-doc.org">Sphinx</a> as a dependency:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;sphinx&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>However, this will install the version that is published to [<code class="docutils literal notranslate"><span class="pre">PyPI</span></code>](Here’s how to install a specific branch in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:
+).
+What if you want to install from <code class="docutils literal notranslate"><span class="pre">&#64;main</span></code>, or from a specific commit or branch?</p>
+<p>Here are a few recipes for doing this:</p>
+<section id="install-directly-from-github">
+<h2>Install directly from GitHub<a class="headerlink" href="#install-directly-from-github" title="Permalink to this heading">#</a></h2>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;sphinx@git+https://github.com/sphinx-doc/sphinx.git&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="install-from-a-specific-branch">
+<h2>Install from a specific branch<a class="headerlink" href="#install-from-a-specific-branch" title="Permalink to this heading">#</a></h2>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;sphinx@git+https://github.com/sphinx-doc/sphinx.git#egg=branchname&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">]</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
 
 <div class="section">
-  <h1>
-     Posts tagged  open communities 
-  </h1>
-   
+    
 
-  <div class="section ablog-post">
-    <h2 class="ablog-post-title">
-      <a href="../../2018/free-labor-partners/">Open communities need to be partners, not sources of free labor</a>
-    </h2>
-
-    <ul class="ablog-archive">
-      <li>
-         <i class="fa fa-calendar"></i> 05 December 2018 
-      </li>
-          
-<li id="category">
-  <span><i class="fa-fw fa fa-folder-open"></i></span
-  >
-   
-  <a href="../../category/thoughts/">thoughts</a>  
-</li>
- 
-<li id="tags">
-  <span><i class="fa-fw fa fa-tags"></i> </span
-  >
-   
-  <a href="../sustainability/">sustainability</a>   
-  <a href="#">open communities</a>   
-  <a href="../open-culture/">open culture</a>  
-</li>
- 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>In the last couple of years, we’ve seen an increasing number of organizations start to
-spawn products that take a largely open stack (e.g., the SciPy ecosystem) and wrap
-it in a thin layer of proprietary/custom interface + infrastructure.
-On the face of it, this isn’t a problem - I really want people to be able to
-make money using the open source stack - however, there is a big caveat. When you look
-at the work that those organizations have done over time, you often see a pretty thin trail
-of contributions <em>back</em> to those open source projects.</p>
-<p>I’d argue that using an open community’s software without contributing back is straight-up
-exploitative (legal, sure, but still exploitative), and we should think about ways to
-suppress this kind of behavior. This post is a collection of thoughts on that topic.</p>
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../jupyterlite-workshop/">
+      <i class="fa fa-arrow-circle-left"></i> Report from the JupyterLite workshop: WebAssembly is pretty cool
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+    
+  </span>
 </div>
-
-    <p class="ablog-post-expand"><a href="../../2018/free-labor-partners/"><em>Read more ...</em></a></p>
-    <hr/>
-  </div>
-   
+  
 </div>
 
                 </article>
@@ -612,11 +647,37 @@ suppress this kind of behavior. This post is a collection of thoughts on that to
               
                 <div class="bd-sidebar-secondary bd-toc">
   <div class="toc-item">
+  <div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-directly-from-github">
+   Install directly from GitHub
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-from-a-specific-branch">
+   Install from a specific branch
+  </a>
+ </li>
+</ul>
+
+  </nav></div>
+
+  <div class="toc-item">
 <div id="searchbox"></div></div>
 
   <div class="toc-item"></div>
 
-  <div class="toc-item"></div>
+  <div class="toc-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2022/install-github-from-pyproject.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
 </div>
               
             
