@@ -14,4 +14,4 @@ sphinxcontrib-bibtex
 sphinxext-opengraph
 sphinxext-rediraffe
 git+https://github.com/pydata/pydata-sphinx-theme
-git+https://github.com/choldgraf/sphinx-social-previews
+git+https://github.com/choldgraf/sphinxext-opengraph@feat-social-card-previews

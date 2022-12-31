@@ -10,7 +10,6 @@ extensions = [
     "sphinx_design",
     "sphinx_copybutton",
     "sphinx_examples",
-    "sphinx_social_previews",
     "sphinxext.opengraph",
     "sphinxext.rediraffe",
 ]
@@ -76,8 +75,8 @@ html_sidebars = {
 }
 
 # OpenGraph config
-ogp_site_url = "https://chrisholdgraf.com"
-ogp_image = "https://chrisholdgraf.com/_static/profile-bw.png"
+# Commented out because it is auto-set on GitHub Actions now!
+# ogp_site_url = "https://chrisholdgraf.com"
 
 rediraffe_redirects = {
     "rust-governance.md": "blog/2018/rust_governance.md",
