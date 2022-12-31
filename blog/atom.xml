@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2022-12-31T16:48:58.338562+00:00</updated>
+  <updated>2022-12-31T16:53:00.923082+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8932,8 +8932,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpbbd0j54y/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f8cd9d66e60&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpoa1dj_b6/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f2ff85430d0&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8960,25 +8960,25 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSans-BoldOblique.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Sans'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'oblique'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Sans'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Bold.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Sans Narrow'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'condensed'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpbbd0j54y/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpoa1dj_b6/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
