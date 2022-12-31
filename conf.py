@@ -75,8 +75,7 @@ html_sidebars = {
 }
 
 # OpenGraph config
-# Commented out because it is auto-set on GitHub Actions now!
-# ogp_site_url = "https://chrisholdgraf.com"
+ogp_site_url = "https://chrisholdgraf.com"
 
 rediraffe_redirects = {
     "rust-governance.md": "blog/2018/rust_governance.md",
