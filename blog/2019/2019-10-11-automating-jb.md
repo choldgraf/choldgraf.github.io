@@ -19,7 +19,7 @@ to try this out. One can upload a barebones set of code to a GitHub repository,
 then configure a build system to create a book and deploy it online from there.
 This blog post is a place to keep track of the current state of affairs for this workflow.
 
-![auto build logos](/images/2019/jb-auto-build.png)
+![auto build logos](../../images/2019/jb-auto-build.png)
 
 **I'll publish the latest configuration files for this at [this repository](https://github.com/choldgraf/jupyter-book-deploy-demo/)**.
 

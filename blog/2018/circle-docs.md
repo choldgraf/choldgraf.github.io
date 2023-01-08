@@ -19,7 +19,7 @@ allows you to generate a link to the build docs, which is a much better way of r
 the raw text.
 
 
-![](/images/2018/sphinx-circle-logos.png)
+![](../../images/2018/sphinx-circle-logos.png)
 
 Here's a simple CircleCI configuration that you can use to build documentation with Sphinx and store it
 as an artifact in the build that you can then preview. To set this up, follow these steps:
@@ -85,7 +85,7 @@ Because we're doing this in order to preview changes to the documentation in a P
 we now need to tell CircleCI to run builds on PRs to your repo. To do so, go to the CircleCI UI, click on "Jobs", then click
 your project name, then click the settings button here:
 
-![](/images/2018/sphinx-circle-settings.png)
+![](../../images/2018/sphinx-circle-settings.png)
 
 In the next page, click on **Advanced Settings**, and finally switch on **Build forked pull requests**.
 
@@ -99,7 +99,7 @@ detect a CircleCI configuration, and run the job with the configuration you've s
 Once the documentation is built (or if it fails) you can click on the CircleCI link from the GitHub UI
 in order to see what happened.
 
-![](/images/2018/sphinx-circle-github-pr.png)
+![](../../images/2018/sphinx-circle-github-pr.png)
 
 ## View your artifacts
 
@@ -109,7 +109,7 @@ If your documentation successfully built (and if you've told Sphinx to put the b
 you can now click on the **Artifacts** tab. You should see a drop-down list of artifacts that CircleCI has
 stored for you. Click on **index.html** and you should see a preview of your built documentation:
 
-![](/images/2018/sphinx-circle-artifacts.png)
+![](../../images/2018/sphinx-circle-artifacts.png)
 
 And that's it! Obviously you can configure CircleCI in many more ways, but this is just a barebones example
 to get you started. I hope you've found it useful!

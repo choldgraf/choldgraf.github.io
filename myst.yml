@@ -1,0 +1,32 @@
+# This is a demo file to play around with building my website in MySTJS.
+# See: https://js.myst.tools
+
+version: 1
+project:
+  title: Chris Holdgraf's website
+  description: My personal website
+  # venue:
+  github: choldgraf/choldgraf.github.io
+  # arxiv:
+  # open_access:
+  # license:
+  # doi:
+  # date:
+  # index:
+  # subject:
+  keywords: []
+  authors: [Chris Holdgraf]
+  # bibliography: []
+  exclude: []
+site:
+  # title:
+  projects:
+    - slug: my-myst-site
+      path: .
+  nav: []
+  actions:
+    - title: Learn More
+      url: https://www.myst.tools/docs/mystjs
+  domains: []
+extensions:
+  colonFences: true

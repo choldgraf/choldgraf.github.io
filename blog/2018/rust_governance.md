@@ -39,7 +39,7 @@ language that has had a lot of support from the Mozilla foundation. In this case
 I'm less interested in the specific technical pieces of that project, and want
 to focus on the people and the organizations in it.
 
-![Rust teams](/images/2018/2018-10-19-rust_logo.png)
+![Rust teams](../../images/2018/2018-10-19-rust_logo.png)
 
 
 Here's the challenge that the Rust community faces:
@@ -86,7 +86,7 @@ is responsible for *coordinating events, outreach, commercial users, teaching ma
 [Here is a page with all the Rust teams](https://www.rust-lang.org/en-US/team.html) (and their
 members).
 
-![Rust teams](/images/2018/2018-10-19-rust_teams.png)
+![Rust teams](../../images/2018/2018-10-19-rust_teams.png)
 
 My favorite thing about this structure is that roles within the Rust community are
 **explicitly stated** and people performing those roles are **explicitly credited** with
