@@ -5,16 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta property="og:title" content="Install dependencies directly from GitHub with pyproject.toml files" />
+<meta property="og:title" content="Install dependencies from GitHub with pyproject.toml or requirements.txt" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrisholdgraf.com/blog/2022/install-github-from-pyproject/" />
 <meta property="og:site_name" content="Chris Holdgraf" />
-<meta property="og:description" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml, including custom branches and commits. In pyproject.toml, you can specify dependencies for a p..." />
-<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_install-github-from-pyproject_d8f38c07.png" />
-<meta property="og:image:alt" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml, including custom branches and commits. In pyproject.to..." />
-<meta name="description" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml, including custom branches and commits. In pyproject.toml, you can specify dependencies for a p..." />
+<meta property="og:description" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml or requirementst.txt, including custom branches and commits. It will focus on pyprojects.toml b..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_install-github-from-pyproject_e209e577.png" />
+<meta property="og:image:alt" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml or requirementst.txt, including custom branches and com..." />
+<meta name="description" content="This is a short post to demonstrate how to install packages directly from GitHub with pyprojects.toml or requirementst.txt, including custom branches and commits. It will focus on pyprojects.toml b..." />
 
-    <title>Install dependencies directly from GitHub with pyproject.toml files &#8212; Chris Holdgraf</title>
+    <title>Install dependencies from GitHub with pyproject.toml or requirements.txt &#8212; Chris Holdgraf</title>
   
   
   
@@ -562,35 +562,77 @@
               
 
                 <article class="bd-article" role="main">
-                   <section id="install-dependencies-directly-from-github-with-pyproject-toml-files">
-<h1>Install dependencies directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> files<a class="headerlink" href="#install-dependencies-directly-from-github-with-pyproject-toml-files" title="Permalink to this heading">#</a></h1>
-<p>This is a short post to demonstrate how to install packages directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code>, including custom branches and commits.</p>
+                   <section id="install-dependencies-from-github-with-pyproject-toml-or-requirements-txt">
+<h1>Install dependencies from GitHub with <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> or <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code><a class="headerlink" href="#install-dependencies-from-github-with-pyproject-toml-or-requirements-txt" title="Permalink to this heading">#</a></h1>
+<p>This is a short post to demonstrate how to install packages directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> or <code class="docutils literal notranslate"><span class="pre">requirementst.txt</span></code>, including custom branches and commits.
+It will focus on <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> because this is newer and there’s less information about it, but the general pattern holds for <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> as well.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, you can specify dependencies for a project via the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> field.
 For example, to specify <a class="reference external" href="https://sphinx-doc.org">Sphinx</a> as a dependency:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="s">&quot;sphinx&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s">&quot;sphinx&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
+</div>
 </div>
 <p>However, this will install the version that is published to [<code class="docutils literal notranslate"><span class="pre">PyPI</span></code>](Here’s how to install a specific branch in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:
 ).
 What if you want to install from <code class="docutils literal notranslate"><span class="pre">&#64;main</span></code>, or from a specific commit or branch?</p>
+<p>To do so, use a pattern like this:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s">&quot;&lt;packagename&gt;@git+&lt;url-to-repo&gt;#egg=&lt;branch or hash&gt;&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
 <p>Here are a few recipes for doing this:</p>
 <section id="install-directly-from-github">
 <h2>Install directly from GitHub<a class="headerlink" href="#install-directly-from-github" title="Permalink to this heading">#</a></h2>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="s">&quot;sphinx@git+https://github.com/sphinx-doc/sphinx.git&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s">&quot;sphinx@git+https://github.com/sphinx-doc/sphinx&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section id="install-from-a-specific-branch">
 <h2>Install from a specific branch<a class="headerlink" href="#install-from-a-specific-branch" title="Permalink to this heading">#</a></h2>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="s">&quot;sphinx@git+https://github.com/sphinx-doc/sphinx.git#egg=branchname&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">pyproject.toml</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s">&quot;sphinx@git+https://github.com/sphinx-doc/sphinx#egg=branchname&quot;</span><span class="p">,</span>
+<span class="p">]</span>
 </pre></div>
 </div>
+</div>
+</section>
+<section id="with-requirements-txt">
+<h2>With <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code><a class="headerlink" href="#with-requirements-txt" title="Permalink to this heading">#</a></h2>
+<p>Using these patterns with <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> is nearly the same, but it’s a bit simpler.<a class="footnote-reference brackets" href="#thanks" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>
+You don’t need to specify the <code class="docutils literal notranslate"><span class="pre">packagename&#64;</span></code> pattern used above.
+You can simply add a line that points to git like this:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">requirements.txt</span><a class="headerlink" href="#id6" title="Permalink to this code">#</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requirement1</span>
+<span class="n">requirement2</span>
+<span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pydata</span><span class="o">/</span><span class="n">pydata</span><span class="o">-</span><span class="n">sphinx</span><span class="o">-</span><span class="n">theme</span>
+</pre></div>
+</div>
+</div>
+<p>This will install from the default branch.
+You can also specify specific branches or eggs in the same way as above.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="thanks" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Thanks to <a class="reference external" href="https://twitter.com/HEPfeickert/status/1609280067225681920">Matthew Feickhart for reminding me of this</a>.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -649,18 +691,10 @@ What if you want to install from <code class="docutils literal notranslate"><spa
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-directly-from-github">
-   Install directly from GitHub
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-from-a-specific-branch">
-   Install from a specific branch
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-directly-from-github">Install directly from GitHub</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-from-a-specific-branch">Install from a specific branch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-requirements-txt">With <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

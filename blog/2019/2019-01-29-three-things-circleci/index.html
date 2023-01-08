@@ -455,9 +455,9 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/software-development/">software development</a>   
+  <a href="../../tag/dev-ops/">dev ops</a>   
   <a href="../../tag/cicd/">CICD</a>   
-  <a href="../../tag/dev-ops/">dev ops</a>  
+  <a href="../../tag/software-development/">software development</a>  
 </li>
  
 </ul>
@@ -470,7 +470,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -590,50 +590,50 @@ One challenge this introduces is that it can be more complex to use jobs that ha
 I’ve found that another easy solution is to split your task across multiple jobs,
 and persist some of the files between them with CircleCI workspaces.</p>
 <p>To set up a CircleCI workspace, you first need two jobs, then</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build_files</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># We use a Python image to test our files and run the test suite</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Some steps to build files we need in another job</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Assume it places the built files into a folder called `_build/`</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_stuff_with_python</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build_files</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># We use a Python image to test our files and run the test suite</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Some steps to build files we need in another job</span>
+<span class="w">      </span><span class="c1"># Assume it places the built files into a folder called `_build/`</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_stuff_with_python</span>
 
-<span class="w">      </span><span class="c1"># Persist the specified paths (see https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs)</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">persist_to_workspace</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="c1"># The root of the workspace, here just the CWD</span><span class="w"></span>
-<span class="w">          </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span><span class="w"></span>
-<span class="w">          </span><span class="c1"># The sub-paths of the workspace to persist</span><span class="w"></span>
-<span class="w">          </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_build/</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Persist the specified paths (see https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">persist_to_workspace</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># The root of the workspace, here just the CWD</span>
+<span class="w">          </span><span class="nt">root</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">          </span><span class="c1"># The sub-paths of the workspace to persist</span>
+<span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">_build/</span>
 
-<span class="w">  </span><span class="nt">deploy_files</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># We&#39;ll use a Ruby image to deploy our files</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Connect the files from the last job to this job</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">attach_workspace</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="c1"># Must be absolute path or relative path from working_directory</span><span class="w"></span>
-<span class="w">          </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/workspace</span><span class="w"></span>
+<span class="w">  </span><span class="nt">deploy_files</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># We&#39;ll use a Ruby image to deploy our files</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Connect the files from the last job to this job</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">attach_workspace</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># Must be absolute path or relative path from working_directory</span>
+<span class="w">          </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/workspace</span>
 
-<span class="w">      </span><span class="c1"># Our final deployment steps</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy_files_with_ruby</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Our final deployment steps</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">deploy_files_with_ruby</span>
 </pre></div>
 </div>
 <p>Finally, we’ll set up a CircleCI workflow that runs the deployment job only after the
 build job as finished, since the deploy job depends on files that are created by the
 build job.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_files</span><span class="w"></span>
-<span class="w">      </span><span class="c1">#</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deploy_files</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">requires</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_files</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">workflows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_files</span>
+<span class="w">      </span><span class="c1">#</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">deploy_files</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">requires</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_files</span>
 </pre></div>
 </div>
 <p>In this way, we’ve split our task (build a bunch of files, then deploy them online)
@@ -649,36 +649,36 @@ wrap up a collection of steps that can be re-used and parameterized. This means 
 can define a “template” of a collection of steps, then fill-in missing fields in that
 template in order to modify its behavior.</p>
 <p>For example, here’s a Command template to build a site with Jekyll:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">commands</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build_site</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Build</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">site</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Jekyll&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># We&#39;ll define one parameter that lets us pass build arguments to Jekyll build</span><span class="w"></span>
-<span class="w">      </span><span class="nt">build_args</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the website</span><span class="w"></span>
-<span class="w">          </span><span class="c1"># Note the &lt;&lt; parameters.param &gt;&gt; syntax that lets you define your own inputs</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bundle exec jekyll build &lt;&lt; parameters.build_args &gt;&gt;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">commands</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build_site</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Build</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">site</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">Jekyll&quot;</span>
+<span class="w">    </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># We&#39;ll define one parameter that lets us pass build arguments to Jekyll build</span>
+<span class="w">      </span><span class="nt">build_args</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build the website</span>
+<span class="w">          </span><span class="c1"># Note the &lt;&lt; parameters.param &gt;&gt; syntax that lets you define your own inputs</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bundle exec jekyll build &lt;&lt; parameters.build_args &gt;&gt;</span>
 </pre></div>
 </div>
 <p>Now, we can re-use this command throughout our build steps. Here are two jobs that use
 this command in different ways:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Build the site to store artifacts</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build_with_params</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Build the site&#39;s HTML w/ the base_url for CircleCI artifacts</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">build_site</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">build_args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--baseurl /0/html/</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Build the site to store artifacts</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build_without_params</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Build the site&#39;s HTML w/ defaults for Jekyll</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">build_site</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">build_args</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Build the site to store artifacts</span>
+<span class="w">  </span><span class="nt">build_with_params</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Build the site&#39;s HTML w/ the base_url for CircleCI artifacts</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">build_site</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">build_args</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--baseurl /0/html/</span>
+<span class="w">  </span><span class="c1"># Build the site to store artifacts</span>
+<span class="w">  </span><span class="nt">build_without_params</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Build the site&#39;s HTML w/ defaults for Jekyll</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">build_site</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">build_args</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&quot;</span>
 </pre></div>
 </div>
 <p>Each of these jobs uses the command specified above in <code class="docutils literal notranslate"><span class="pre">build_site</span></code>, but
@@ -748,23 +748,10 @@ they use the <code class="docutils literal notranslate"><span class="pre">build_
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-run-a-job-with-ssh-access">
-   Re-run a job with SSH access
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#persisting-files-between-jobs-with-workspaces">
-   Persisting files between jobs with Workspaces
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#re-use-code-snippets-with-commands">
-   Re-use code snippets with Commands
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-run-a-job-with-ssh-access">Re-run a job with SSH access</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persisting-files-between-jobs-with-workspaces">Persisting files between jobs with Workspaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-use-code-snippets-with-commands">Re-use code snippets with Commands</a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

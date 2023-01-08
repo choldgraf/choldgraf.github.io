@@ -455,10 +455,10 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/sphinx/">sphinx</a>   
-  <a href="../../tag/documentation/">documentation</a>   
   <a href="../../tag/python/">python</a>   
-  <a href="../../tag/blogging/">blogging</a>  
+  <a href="../../tag/blogging/">blogging</a>   
+  <a href="../../tag/sphinx/">sphinx</a>   
+  <a href="../../tag/documentation/">documentation</a>  
 </li>
  
 </ul>
@@ -471,7 +471,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -596,57 +596,57 @@ similar method (but is built with Jekyll).</p>
 <li><p><strong>Add the clipboard.js javascript</strong>. Create a javascript
 script called <code class="docutils literal notranslate"><span class="pre">doc/_static/custom.js</span></code>. In the file, put the following
 code (see comments for explanation):</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">addCopyButtonToCode</span><span class="p">(){</span><span class="w"></span>
-<span class="c1">// get all code elements</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">allCodeBlocksElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;div.highlight pre&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span><span class="w"> </span><span class="nx">addCopyButtonToCode</span><span class="p">(){</span>
+<span class="c1">// get all code elements</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">allCodeBlocksElements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">$</span><span class="p">(</span><span class="w"> </span><span class="s2">&quot;div.highlight pre&quot;</span><span class="w"> </span><span class="p">);</span>
 
-<span class="c1">// For each element, do the following steps</span><span class="w"></span>
-<span class="nx">allCodeBlocksElements</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ii</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="c1">// define a unique id for this element and add it</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">currentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;codeblock&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">ii</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span><span class="w"></span>
-<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">currentId</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// For each element, do the following steps</span>
+<span class="nx">allCodeBlocksElements</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ii</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// define a unique id for this element and add it</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">currentId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;codeblock&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="nx">ii</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+<span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">currentId</span><span class="p">);</span>
 
-<span class="c1">// create a button that&#39;s configured for clipboard.js</span><span class="w"></span>
-<span class="c1">// point it to the text that&#39;s in this code block</span><span class="w"></span>
-<span class="c1">// add the button just after the text in the code block w/ jquery</span><span class="w"></span>
-<span class="kd">var</span><span class="w"> </span><span class="nx">clipButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;button class=&quot;btn copybtn&quot; data-clipboard-target=&quot;#&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentId</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&quot;&gt;&lt;img src=&quot;https://clipboardjs.com/assets/images/clippy.svg&quot; width=&quot;13&quot; alt=&quot;Copy to clipboard&quot;&gt;&lt;/button&gt;&#39;</span><span class="p">;</span><span class="w"></span>
-<span class="w">   </span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="nx">clipButton</span><span class="p">);</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<span class="c1">// create a button that&#39;s configured for clipboard.js</span>
+<span class="c1">// point it to the text that&#39;s in this code block</span>
+<span class="c1">// add the button just after the text in the code block w/ jquery</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">clipButton</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&lt;button class=&quot;btn copybtn&quot; data-clipboard-target=&quot;#&#39;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">currentId</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;&quot;&gt;&lt;img src=&quot;https://clipboardjs.com/assets/images/clippy.svg&quot; width=&quot;13&quot; alt=&quot;Copy to clipboard&quot;&gt;&lt;/button&gt;&#39;</span><span class="p">;</span>
+<span class="w">   </span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">after</span><span class="p">(</span><span class="nx">clipButton</span><span class="p">);</span>
+<span class="p">});</span>
 
-<span class="c1">// tell clipboard.js to look for clicks that match this query</span><span class="w"></span>
-<span class="ow">new</span><span class="w"> </span><span class="nx">Clipboard</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="c1">// tell clipboard.js to look for clicks that match this query</span>
+<span class="ow">new</span><span class="w"> </span><span class="nx">Clipboard</span><span class="p">(</span><span class="s1">&#39;.btn&#39;</span><span class="p">);</span>
+<span class="p">}</span>
 
-<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="c1">// Once the DOM is loaded for the page, attach clipboard buttons</span><span class="w"></span>
-<span class="nx">addCopyButtonToCode</span><span class="p">();</span><span class="w"></span>
-<span class="p">});</span><span class="w"></span>
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// Once the DOM is loaded for the page, attach clipboard buttons</span>
+<span class="nx">addCopyButtonToCode</span><span class="p">();</span>
+<span class="p">});</span>
 </pre></div>
 </div>
 </li>
 <li><p><strong>Add some CSS to make it pretty</strong>. Create a custom CSS file
 called <code class="docutils literal notranslate"><span class="pre">doc/_static/custom.css</span></code> (or add to one you’ve
 already got). In the file, put these lines:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Copy buttons */</span><span class="w"></span>
-<span class="nt">button</span><span class="p">.</span><span class="nc">copybtn</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">webkit-transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="kp">-o-</span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">.</span><span class="nc">copybtn</span><span class="o">,</span><span class="w"> </span><span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">.</span><span class="nc">copybtn</span><span class="p">:</span><span class="nd">focus</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">.3</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">.</span><span class="nc">copybtn</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="c">/* Copy buttons */</span>
+<span class="nt">button</span><span class="p">.</span><span class="nc">copybtn</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">webkit-transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="p">;</span>
+<span class="w">  </span><span class="kp">-o-</span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="p">;</span>
+<span class="w">  </span><span class="k">transition</span><span class="p">:</span><span class="w"> </span><span class="k">opacity</span><span class="w"> </span><span class="mf">.3</span><span class="kt">s</span><span class="w"> </span><span class="kc">ease-in-out</span><span class="p">;</span>
+<span class="w">  </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="mi">6</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">absolute</span><span class="p">;</span>
+<span class="w">  </span><span class="k">right</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="w">  </span><span class="k">top</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">.</span><span class="nc">copybtn</span><span class="o">,</span><span class="w"> </span><span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">.</span><span class="nc">copybtn</span><span class="p">:</span><span class="nd">focus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mf">.3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">.</span><span class="nc">copybtn</span><span class="p">:</span><span class="nd">hover</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">opacity</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">div</span><span class="p">.</span><span class="nc">highlight</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">position</span><span class="p">:</span><span class="w"> </span><span class="kc">relative</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </li>
@@ -737,18 +737,9 @@ for the majority of the code that led to this hack!</p>
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-a-copy-button-to-your-sphinx-code-blocks">
-   Adding a copy button to your Sphinx code blocks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#thanks">
-   Thanks
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-copy-button-to-your-sphinx-code-blocks">Adding a copy button to your Sphinx code blocks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thanks">Thanks</a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

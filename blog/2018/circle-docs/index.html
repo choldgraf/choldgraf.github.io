@@ -455,8 +455,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/sphinx/">sphinx</a>   
-  <a href="../../tag/documentation/">documentation</a>  
+  <a href="../../tag/documentation/">documentation</a>   
+  <a href="../../tag/sphinx/">sphinx</a>  
 </li>
  
 </ul>
@@ -469,7 +469,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -579,48 +579,48 @@ as an artifact in the build that you can then preview. To set this up, follow th
 that Circle will use to decide what to do each time your page is built. You then need to go to the CircleCI
 website and tell it to build your site.</p>
 <p>Here’s a skeleton configuration that will build the documentation with Sphinx:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Define a &quot;build_docs&quot; job to be run with Circle</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build_docs</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># This is the base environment that Circle will use</span><span class="w"></span>
-<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Get our data and merge with upstream</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Update our path</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;export PATH=~/.local/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Restore cached files to speed things up</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">restore_cache</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">keys</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-pip</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Install the packages needed to build our documentation</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># This will depend on your particular package!</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --user sphinx_rtd_theme sphinx pytest memory_profiler recommonmark sphinx_copybutton jupyterhub</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Cache some files for a speedup in subsequent builds</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">save_cache</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-pip</span><span class="w"></span>
-<span class="w">          </span><span class="nt">paths</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Build the docs</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build docs to store</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">            </span><span class="no">cd doc</span><span class="w"></span>
-<span class="w">            </span><span class="no">make html</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Tell Circle to store the documentation output in a folder that we can access later</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">store_artifacts</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">doc/_build/html/</span><span class="w"></span>
-<span class="w">          </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">html</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Define a &quot;build_docs&quot; job to be run with Circle</span>
+<span class="w">  </span><span class="nt">build_docs</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># This is the base environment that Circle will use</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Get our data and merge with upstream</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sudo apt-get update</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
+<span class="w">      </span><span class="c1"># Update our path</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">echo &quot;export PATH=~/.local/bin:$PATH&quot; &gt;&gt; $BASH_ENV</span>
+<span class="w">      </span><span class="c1"># Restore cached files to speed things up</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">restore_cache</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">keys</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-pip</span>
+<span class="w">      </span><span class="c1"># Install the packages needed to build our documentation</span>
+<span class="w">      </span><span class="c1"># This will depend on your particular package!</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install --user sphinx_rtd_theme sphinx pytest memory_profiler recommonmark sphinx_copybutton jupyterhub</span>
+<span class="w">      </span><span class="c1"># Cache some files for a speedup in subsequent builds</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">save_cache</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cache-pip</span>
+<span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.cache/pip</span>
+<span class="w">      </span><span class="c1"># Build the docs</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build docs to store</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">cd doc</span>
+<span class="w">            </span><span class="no">make html</span>
+<span class="w">      </span><span class="c1"># Tell Circle to store the documentation output in a folder that we can access later</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">store_artifacts</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">doc/_build/html/</span>
+<span class="w">          </span><span class="nt">destination</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">html</span>
 
-<span class="c1"># Tell CircleCI to use this workflow when it builds the site</span><span class="w"></span>
-<span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_docs</span><span class="w"></span>
+<span class="c1"># Tell CircleCI to use this workflow when it builds the site</span>
+<span class="nt">workflows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_docs</span>
 </pre></div>
 </div>
 <p>See the comments above for what each step does.</p>
@@ -716,28 +716,11 @@ to get you started. I hope you’ve found it useful!</p>
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#configure-circleci">
-   Configure CircleCI
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tell-circleci-to-build-pull-requests-for-your-repository">
-   Tell CircleCI to build Pull Requests for your repository
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#make-a-pull-request">
-   Make a Pull Request
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#view-your-artifacts">
-   View your artifacts
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-circleci">Configure CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tell-circleci-to-build-pull-requests-for-your-repository">Tell CircleCI to build Pull Requests for your repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-pull-request">Make a Pull Request</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-your-artifacts">View your artifacts</a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

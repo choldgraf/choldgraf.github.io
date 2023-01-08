@@ -448,8 +448,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/open-source/">open source</a>   
-  <a href="../../tag/governance/">governance</a>  
+  <a href="../../tag/governance/">governance</a>   
+  <a href="../../tag/open-source/">open source</a>  
 </li>
  
 </ul>
@@ -462,7 +462,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -833,117 +833,33 @@ approach of a BDFL-style model.</p>
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   What would Python-style governance look like in Jupyter?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#background-on-python-s-governance">
-   Background on Python’s Governance
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-quick-overview">
-   A quick overview
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#a-jupyter-pep-013">
-   A Jupyter PEP 013
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-current-jupyter-steering-council">
-     The current Jupyter steering council
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-new-jupyter-steering-council">
-     The new Jupyter steering council
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#composition">
-       Composition
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mandate">
-       Mandate
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#powers">
-       Powers
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#electing-the-council">
-       Electing the council
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#term">
-       Term
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#vacancies">
-       Vacancies
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#conflicts-of-interest">
-       Conflicts of interest
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#ejecting-core-team-members">
-       Ejecting core team members
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#vote-of-no-confidence">
-       Vote of no confidence
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-core-team">
-     The core team
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#role">
-       Role
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#prerogatives">
-       Prerogatives
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#membership">
-       Membership
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#changing-this-document">
-     Changing this document
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-s-different-between-python-and-jupyter">
-   What’s different between Python and Jupyter?
-  </a>
- </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">What would Python-style governance look like in Jupyter?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background-on-python-s-governance">Background on Python’s Governance</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-quick-overview">A quick overview</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-jupyter-pep-013">A Jupyter PEP 013</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-current-jupyter-steering-council">The current Jupyter steering council</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-new-jupyter-steering-council">The new Jupyter steering council</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition">Composition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mandate">Mandate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#powers">Powers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electing-the-council">Electing the council</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#term">Term</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vacancies">Vacancies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflicts-of-interest">Conflicts of interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ejecting-core-team-members">Ejecting core team members</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vote-of-no-confidence">Vote of no confidence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-core-team">The core team</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#role">Role</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerogatives">Prerogatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membership">Membership</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-this-document">Changing this document</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-different-between-python-and-jupyter">What’s different between Python and Jupyter?</a></li>
 </ul>
 
   </nav></div>

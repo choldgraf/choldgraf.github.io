@@ -469,7 +469,7 @@
    
   <li>
     <a href="../install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -569,7 +569,7 @@ I use it to enforce things like <a class="reference external" href="https://flak
 <p>Fortunately, I recently came across <a class="reference external" href="https://pre-commit.com/#updating-hooks-automatically">the <code class="docutils literal notranslate"><span class="pre">pre-commit</span> <span class="pre">autoupdate</span></code> documentation</a>.
 This lets you automatically update to the latest released versions of all-precommit hooks.
 Simply run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit autoupdate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>autoupdate
 </pre></div>
 </div>
 <p>And it will update your <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> file with the latest versions.
@@ -643,18 +643,8 @@ This feels like the easiest way to keep these configurations updated, at least u
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#automate-the-above-with-pre-commit-ci">
-   Automate the above with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pre-commit.ci
-    </span>
-   </code>
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automate-the-above-with-pre-commit-ci">Automate the above with <code class="docutils literal notranslate"><span class="pre">pre-commit.ci</span></code></a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

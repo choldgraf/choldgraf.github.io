@@ -456,8 +456,8 @@
   >
    
   <a href="../../tag/python/">python</a>   
-  <a href="../../tag/jekyll/">jekyll</a>   
-  <a href="../../tag/blogging/">blogging</a>  
+  <a href="../../tag/blogging/">blogging</a>   
+  <a href="../../tag/jekyll/">jekyll</a>  
 </li>
  
 </ul>
@@ -470,7 +470,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -643,21 +643,21 @@ code blocks: <code class="docutils literal notranslate"><span class="pre">{:.cla
 <p>As a result, we now have classes around each of these divs that we can style
 however we like. For example, here are the CSS rules I added to remove the
 theme’s “code box” around each of the output areas:</p>
-<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">input_area</span><span class="w"> </span><span class="nt">div</span><span class="p">.</span><span class="nc">highlighter-rouge</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f7f7f7</span><span class="w">  </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">input_area</span><span class="w"> </span><span class="nt">div</span><span class="p">.</span><span class="nc">highlighter-rouge</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#f7f7f7</span><span class="w">  </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">output_stream</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_data_text</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_traceback_line</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">%</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fafafa</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">output_stream</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_data_text</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_traceback_line</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">margin-left</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="kt">%</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="kt">px</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#fafafa</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="w">  </span><span class="k">box-shadow</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="p">.</span><span class="nc">output_stream</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_data_text</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_traceback_line</span><span class="p">:</span><span class="nd">before</span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="p">.</span><span class="nc">output_stream</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_data_text</span><span class="p">:</span><span class="nd">before</span><span class="o">,</span><span class="w"> </span><span class="p">.</span><span class="nc">output_traceback_line</span><span class="p">:</span><span class="nd">before</span><span class="p">{</span>
+<span class="w">  </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="w"> </span><span class="cp">!important</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>It took me a while to figure out this pattern, so hopefully other people find
@@ -727,19 +727,8 @@ it useful as well!</p>
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extending-nbconvert-s-markdown-template">
-   Extending
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     nbconvert's
-    </span>
-   </code>
-   markdown template
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-nbconvert-s-markdown-template">Extending <code class="docutils literal notranslate"><span class="pre">nbconvert's</span></code> markdown template</a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

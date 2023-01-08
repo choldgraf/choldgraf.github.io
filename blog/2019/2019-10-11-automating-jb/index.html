@@ -464,7 +464,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -576,16 +576,16 @@ This blog post is a place to keep track of the current state of affairs for this
 to have a single folder with a collection of content inside. The folder looks
 like this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.
-├── content
-│   ├── <span class="m">01</span>
-<span class="p">|</span>   │   ├──── notebook1.ipynb
-│   │   └──── notebook2.ipynb
-│   ├── <span class="m">02</span>
-<span class="p">|</span>   │   ├──── notebook3.ipynb
-│   │   └──── mdfile4.md
+├──<span class="w"> </span>content
+│<span class="w">   </span>├──<span class="w"> </span><span class="m">01</span>
+<span class="p">|</span><span class="w">   </span>│<span class="w">   </span>├────<span class="w"> </span>notebook1.ipynb
+│<span class="w">   </span>│<span class="w">   </span>└────<span class="w"> </span>notebook2.ipynb
+│<span class="w">   </span>├──<span class="w"> </span><span class="m">02</span>
+<span class="p">|</span><span class="w">   </span>│<span class="w">   </span>├────<span class="w"> </span>notebook3.ipynb
+│<span class="w">   </span>│<span class="w">   </span>└────<span class="w"> </span>mdfile4.md
 ...
 <span class="p">|</span>
-└── configuration_files_for_cicd/
+└──<span class="w"> </span>configuration_files_for_cicd/
 </pre></div>
 </div>
 <p>There’s no table of contents, and no configuration file (though we could add
@@ -618,7 +618,7 @@ Netlify runs this command every time it tries to build your site.
 You can configure this by creating a <code class="docutils literal notranslate"><span class="pre">netlify.toml</span></code> file and putting it
 in the root of your repository. <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo/blob/master/netlify.toml">Here’s a link to my configuration file</a>.</p>
 <p>The full text of that TOML file looks like this:</p>
-<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build]</span><span class="w"></span>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[build]</span>
 <span class="w">  </span><span class="n">command</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">    gem install bundler -v &#39;2.0.2&#39;</span>
 <span class="s">    pip install -U git+https://github.com/jupyter/jupyter-book</span>
@@ -627,9 +627,9 @@ in the root of your repository. <a class="reference external" href="https://gith
 <span class="s">    jupyter-book build ./ --overwrite</span>
 <span class="s">    make install</span>
 <span class="s">    bundle exec jekyll build</span>
-<span class="s">    &quot;&quot;&quot;</span><span class="w"></span>
+<span class="s">    &quot;&quot;&quot;</span>
 
-<span class="w">  </span><span class="n">publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mybook/_site&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="n">publish</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mybook/_site&quot;</span>
 </pre></div>
 </div>
 <p>There are two pieces to this: the <code class="docutils literal notranslate"><span class="pre">command</span></code> section is the command to
@@ -671,53 +671,53 @@ my commands.</p></li>
 pages. You can find <a class="reference external" href="https://chrisholdgraf.com/circleci-mirror">instructions for how to do so in this post</a>.</p></li>
 </ol>
 <p>Once that was accomplished, this is the configuration that got the job done:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build_book</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Python and dependencies to build page HTML</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">            </span><span class="no">sudo apt-get install python3-pip</span><span class="w"></span>
-<span class="w">            </span><span class="no">pip3 install --user -r requirements.txt</span><span class="w"></span>
-<span class="w">            </span><span class="no">pip3 install --user -U git+https://github.com/jupyter/jupyter-book.git</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build_book</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/ruby:2.6</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Python and dependencies to build page HTML</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">sudo apt-get install python3-pip</span>
+<span class="w">            </span><span class="no">pip3 install --user -r requirements.txt</span>
+<span class="w">            </span><span class="no">pip3 install --user -U git+https://github.com/jupyter/jupyter-book.git</span>
 
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create book template and build page HTML</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">            </span><span class="no">jupyter-book create mybook --content-folder content/</span><span class="w"></span>
-<span class="w">            </span><span class="no">jupyter-book build ./mybook</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create book template and build page HTML</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">jupyter-book create mybook --content-folder content/</span>
+<span class="w">            </span><span class="no">jupyter-book build ./mybook</span>
 
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install ruby dependencies and build the book&#39;s website</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">            </span><span class="no">cd mybook</span><span class="w"></span>
-<span class="w">            </span><span class="no">make install</span><span class="w"></span>
-<span class="w">            </span><span class="no">bundle exec jekyll build</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install ruby dependencies and build the book&#39;s website</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">cd mybook</span>
+<span class="w">            </span><span class="no">make install</span>
+<span class="w">            </span><span class="no">bundle exec jekyll build</span>
 
-<span class="w">      </span><span class="c1"># If we&#39;re on master, push to a gh-pages branch</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&lt;my-public-fingerprint&gt;&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to gh-pages (if on master)</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span><span class="w"></span>
-<span class="w">            </span><span class="no">if [ $CIRCLE_BRANCH	== &quot;master&quot; ]; then</span><span class="w"></span>
-<span class="w">              </span><span class="no">pip3 install ghp-import</span><span class="w"></span>
-<span class="w">              </span><span class="no">ghp-import -n -f -p mybook/_site;</span><span class="w"></span>
-<span class="w">            </span><span class="no">else</span><span class="w"></span>
-<span class="w">              </span><span class="no">echo &quot;Skipping deploy because we aren&#39;t on master&quot;</span><span class="w"></span>
-<span class="w">            </span><span class="no">fi</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># If we&#39;re on master, push to a gh-pages branch</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;&lt;my-public-fingerprint&gt;&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Push to gh-pages (if on master)</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">            </span><span class="no">if [ $CIRCLE_BRANCH	== &quot;master&quot; ]; then</span>
+<span class="w">              </span><span class="no">pip3 install ghp-import</span>
+<span class="w">              </span><span class="no">ghp-import -n -f -p mybook/_site;</span>
+<span class="w">            </span><span class="no">else</span>
+<span class="w">              </span><span class="no">echo &quot;Skipping deploy because we aren&#39;t on master&quot;</span>
+<span class="w">            </span><span class="no">fi</span>
 
 
-<span class="nt">workflows</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">default</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_book</span><span class="w"></span>
+<span class="nt">workflows</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">  </span><span class="nt">default</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_book</span>
 </pre></div>
 </div>
 <p>You can find the deployed site <a class="reference external" href="https://github.com/choldgraf/jupyter-book-deploy-demo">at this location</a>.</p>
@@ -796,28 +796,11 @@ recommends. I’ll let these ideas simmer a little bit and we’ll see what come
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-general-set-of-steps-involved">
-   The general set of steps involved
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#netlify">
-   Netlify
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#circleci">
-   CircleCI
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wrapping-up">
-   Wrapping up
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-general-set-of-steps-involved">The general set of steps involved</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netlify">Netlify</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circleci">CircleCI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapping-up">Wrapping up</a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

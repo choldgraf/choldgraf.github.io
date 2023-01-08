@@ -455,8 +455,8 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
-  <a href="../../tag/cicd/">CICD</a>   
-  <a href="../../tag/productivity/">productivity</a>  
+  <a href="../../tag/productivity/">productivity</a>   
+  <a href="../../tag/cicd/">CICD</a>  
 </li>
  
 </ul>
@@ -469,7 +469,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -633,20 +633,20 @@ I recommend following the <a class="reference external" href="https://circleci.c
 Once you follow this, CircleCI will automatically generate new builds for your repository following the configuration
 you specify in <code class="docutils literal notranslate"><span class="pre">.circleci/config.yml</span></code>.</p>
 <p>Here’s a good start for a config.yml file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">only</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="c1"># Tell Circle only to build this branch</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span>
-<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Any Docker image should do, since we only need git</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># This ensures that the working directory contains the contents of your repo</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># We&#39;ll add more steps here</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">only</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Tell Circle only to build this branch</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Any Docker image should do, since we only need git</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># This ensures that the working directory contains the contents of your repo</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
+<span class="w">      </span><span class="c1"># We&#39;ll add more steps here</span>
 </pre></div>
 </div>
 <p>Next, we’ll configure that yaml file to do what we want.</p>
@@ -661,15 +661,15 @@ We’ll modify the workflow in the <code class="docutils literal notranslate"><s
 (the latest version of the primary repository is already in the CircleCI build because of the <code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">checkout</span></code> command).</p></li>
 </ol>
 <p>Here’s the piece of configuration to do do this:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Push to the inferentialthinking.github.io repository so it goes live</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Push to the inferentialthinking.github.io repository so it goes live</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span>
 </pre></div>
 </div>
 <p>Now we’re telling CircleCI to push to our mirror repository, but
@@ -702,14 +702,14 @@ keys.</p>
 <p>Finally, we need to modify the yaml configuration so that it knows to use this
 public/private key combination when it does SSH stuff in the build. That’s accomplished
 with the following configuration:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="c1"># The SSH key fingerprint</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span>
+<span class="w">            </span><span class="c1"># The SSH key fingerprint</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span>
 </pre></div>
 </div>
 <p>The SSH key fingerprint can be found by looking at your GitHub repository’s “Deploy Keys”
@@ -723,30 +723,30 @@ it using the configuration structure above. Here’s what one key looks like:</p
 to the mirror repository. Every time a change is made to the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch of the primary
 repository, this process will be triggered.</p>
 <p>This is what our final yaml configuration looks like:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span><span class="w"></span>
-<span class="nt">jobs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># Only build for changes to the gh-pages branch</span><span class="w"></span>
-<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">only</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span><span class="w"></span>
-<span class="w">    </span><span class="c1"># The base environment we&#39;ll use (can be any docker image w/ git)</span><span class="w"></span>
-<span class="w">    </span><span class="nt">docker</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span><span class="w"></span>
-<span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Move the repository code to our home directory in the CircleCI build</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span><span class="w"></span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">build</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># Only build for changes to the gh-pages branch</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">only</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gh-pages</span>
+<span class="w">    </span><span class="c1"># The base environment we&#39;ll use (can be any docker image w/ git)</span>
+<span class="w">    </span><span class="nt">docker</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">circleci/python:3.6-stretch</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Move the repository code to our home directory in the CircleCI build</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">checkout</span>
+<span class="w">      </span><span class="c1"># Add deployment key fingerprint for CircleCI to use for a push</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">add_ssh_keys</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">fingerprints</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX:XX&quot;</span>
 
-<span class="w">      </span><span class="c1"># Add the mirror repository as a git remote</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span><span class="w"></span>
-<span class="w">      </span><span class="c1"># Push the repository to the mirror site</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"></span>
-<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span><span class="w"></span>
-<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span><span class="w"></span>
+<span class="w">      </span><span class="c1"># Add the mirror repository as a git remote</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git remote add live_textbook git@github.com:inferentialthinking/inferentialthinking.github.io.git</span>
+<span class="w">      </span><span class="c1"># Push the repository to the mirror site</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Updating inferentialthinking website</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">git push live_textbook gh-pages:master</span>
 </pre></div>
 </div>
 </section>
@@ -814,48 +814,15 @@ repository, this process will be triggered.</p>
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-we-want-to-do">
-   What we want to do
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-1-create-an-ssh-key-for-your-mirror-github-repository">
-   Step 1: Create an SSH key for your mirror github repository
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-2-add-this-ssh-key-as-a-deploy-key-to-your-mirror-repo">
-   Step 2: Add this SSH key as a “deploy key” to your mirror repo
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-3-set-up-circleci-for-your-primary-repository">
-   Step 3: Set up CircleCI for your “primary” repository
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-4-configure-circleci-to-push-the-primary-repository-to-the-mirror-repository">
-   Step 4: Configure CircleCI to push the primary repository to the mirror repository
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-5-add-your-private-key-to-the-primary-repository-circle-ci-settings">
-   Step 5: Add your private key to the primary repository Circle CI settings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#step-6-modify-your-circleci-configuration-to-use-your-private-key">
-   Step 6: Modify your CircleCI configuration to use your private key
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#our-final-configuration">
-   Our final configuration
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-want-to-do">What we want to do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-create-an-ssh-key-for-your-mirror-github-repository">Step 1: Create an SSH key for your mirror github repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-add-this-ssh-key-as-a-deploy-key-to-your-mirror-repo">Step 2: Add this SSH key as a “deploy key” to your mirror repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-set-up-circleci-for-your-primary-repository">Step 3: Set up CircleCI for your “primary” repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-configure-circleci-to-push-the-primary-repository-to-the-mirror-repository">Step 4: Configure CircleCI to push the primary repository to the mirror repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-add-your-private-key-to-the-primary-repository-circle-ci-settings">Step 5: Add your private key to the primary repository Circle CI settings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-modify-your-circleci-configuration-to-use-your-private-key">Step 6: Modify your CircleCI configuration to use your private key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-final-configuration">Our final configuration</a></li>
 </ul>
-
   </nav></div>
 
   <div class="toc-item">

@@ -456,7 +456,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -638,7 +638,7 @@ in our case one dimension is “time” so we can label it as such.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">epochs_to_dataarray</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A simple function to convert an Epochs object to DataArray&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A simple function to convert an Epochs object to DataArray&quot;&quot;&quot;</span>
     <span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
     <span class="n">epochs</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span>
     <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;epoch&#39;</span><span class="p">,</span> <span class="s1">&#39;channel&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">],</span>
@@ -1247,7 +1247,7 @@ the length of each trial. This might be a good place to insert paralellization v
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hilbert_2d</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Perform a Hilbert transforms on an (n_channels, n_times) array.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform a Hilbert transforms on an (n_channels, n_times) array.&quot;&quot;&quot;</span>
     <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">channel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
         <span class="n">array</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">mne</span><span class="o">.</span><span class="n">filter</span><span class="o">.</span><span class="n">_my_hilbert</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">envelope</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">array</span>
@@ -1291,7 +1291,7 @@ of the data.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For each channel, apply a z-score that uses the mean/std of pre-baseline activity for all trials</span>
 <span class="k">def</span> <span class="nf">z_score</span><span class="p">(</span><span class="n">activity</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Take a DataArray and apply a z-score using the baseline&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Take a DataArray and apply a z-score using the baseline&quot;&quot;&quot;</span>
     <span class="n">baseline</span> <span class="o">=</span> <span class="n">activity</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">activity</span><span class="o">.</span><span class="n">time</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">.1</span> <span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">activity</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">baseline</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">baseline</span><span class="p">)</span>
 
@@ -2607,119 +2607,29 @@ easier. If anybody has tips or thoughts on the code above, please do reach out!<
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Analyzing intracranial electrophysiology data with xarray
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-quick-background-on-our-data">
-     A quick background on our data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#converting-to-xarray">
-   Converting to xarray
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#subsetting-out-data-with-da-sel">
-   Subsetting out data with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     da.sel
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#de-meaning-the-data-with-da-where">
-   De-meaning the data with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     da.where
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extracting-a-more-useful-feature-with-xr-apply-ufunc">
-   Extracting a more useful feature with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     xr.apply_ufunc
-    </span>
-   </code>
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#high-pass-filtering-the-signal">
-     High-pass filtering the signal
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-the-envelope-of-this-signal-with-da-groupby">
-     Calculate the envelope of this signal with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       da.groupby
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cleaning-up-our-hfa-data">
-   Cleaning up our HFA data
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#z-scoring-our-array">
-     Z-scoring our array
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#smoothing-our-hfa-data">
-     Smoothing our HFA data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-frequency-analysis">
-   Time frequency analysis
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#convert-this-data-into-a-dataarray-with-expand-dims">
-     Convert this data into a DataArray with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       .expand_dims
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combining-the-two-with-xr-merge">
-   Combining the two with
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     xr.merge
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wrapping-up">
-   Wrapping up
-  </a>
- </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analyzing intracranial electrophysiology data with xarray</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-quick-background-on-our-data">A quick background on our data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-to-xarray">Converting to xarray</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#subsetting-out-data-with-da-sel">Subsetting out data with <code class="docutils literal notranslate"><span class="pre">da.sel</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#de-meaning-the-data-with-da-where">De-meaning the data with <code class="docutils literal notranslate"><span class="pre">da.where</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-a-more-useful-feature-with-xr-apply-ufunc">Extracting a more useful feature with <code class="docutils literal notranslate"><span class="pre">xr.apply_ufunc</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-pass-filtering-the-signal">High-pass filtering the signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-envelope-of-this-signal-with-da-groupby">Calculate the envelope of this signal with <code class="docutils literal notranslate"><span class="pre">da.groupby</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-up-our-hfa-data">Cleaning up our HFA data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z-scoring-our-array">Z-scoring our array</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smoothing-our-hfa-data">Smoothing our HFA data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#time-frequency-analysis">Time frequency analysis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-this-data-into-a-dataarray-with-expand-dims">Convert this data into a DataArray with <code class="docutils literal notranslate"><span class="pre">.expand_dims</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-the-two-with-xr-merge">Combining the two with <code class="docutils literal notranslate"><span class="pre">xr.merge</span></code></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapping-up">Wrapping up</a></li>
 </ul>
 
   </nav></div>

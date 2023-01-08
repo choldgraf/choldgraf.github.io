@@ -455,11 +455,11 @@
   <span><i class="fa-fw fa fa-tags"></i> </span
   >
    
+  <a href="../../tag/python/">python</a>   
   <a href="../../tag/visualizations/">visualizations</a>   
   <a href="../../tag/simulations/">simulations</a>   
   <a href="../../tag/funnel-plots/">funnel plots</a>   
-  <a href="../../tag/open-science/">open science</a>   
-  <a href="../../tag/python/">python</a>  
+  <a href="../../tag/open-science/">open science</a>  
 </li>
  
 </ul>
@@ -472,7 +472,7 @@
    
   <li>
     <a href="../../2022/install-github-from-pyproject/"
-      >31 December - Install dependencies directly from GitHub with pyproject.toml files</a
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
     >
   </li>
   
@@ -621,7 +621,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper functions to simulate experiments.</span>
 <span class="k">def</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">variance</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Simulate a population of data. We&#39;ll sample from this in each study.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a population of data. We&#39;ll sample from this in each study.</span>
 <span class="sd">    Note that we&#39;re drawing from a normal distribution.&quot;&quot;&quot;</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">true_variance</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
     <span class="n">data</span> <span class="o">+=</span> <span class="n">effect</span>
@@ -629,7 +629,7 @@
 
 <span class="k">def</span> <span class="nf">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">prefer_low_n</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                          <span class="n">n_simulations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Randomly simulates data collection and analyses of many experiments.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Randomly simulates data collection and analyses of many experiments.</span>
 <span class="sd">    </span>
 <span class="sd">    On each iteration, it chooses a random sample from data, calculates the</span>
 <span class="sd">    mean of that sample, as well as a p-value associated with that mean&#39;s</span>
@@ -660,7 +660,7 @@
     <span class="k">return</span> <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span>
 
 <span class="k">def</span> <span class="nf">calculate_stat</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">h0</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Calculate a p-value using a t-test.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate a p-value using a t-test.</span>
 <span class="sd">    </span>
 <span class="sd">    Note that this probably *isn&#39;t* the right test to run with data that</span>
 <span class="sd">    is bounded on either side (in this case, -1 and 1). However, luckily</span>
@@ -675,7 +675,7 @@
 <span class="k">def</span> <span class="nf">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">sample_sizes</span><span class="p">,</span>
                      <span class="n">effects_reported</span><span class="p">,</span> <span class="n">sample_sizes_reported</span><span class="p">,</span>
                      <span class="n">p_effects_reported</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Creates a funnel plot using a &#39;full&#39; set of effects, corresponding</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a funnel plot using a &#39;full&#39; set of effects, corresponding</span>
 <span class="sd">    to the effects we&#39;d report if all results were published, regardless of</span>
 <span class="sd">    their &#39;significance&#39;, as well as a &#39;reported&#39; set of effects which made</span>
 <span class="sd">    it through peer review&quot;&quot;&quot;</span>
@@ -790,7 +790,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This simulates which datapoints we keep and which we throw out</span>
 <span class="k">def</span> <span class="nf">simulate_publishing</span><span class="p">(</span><span class="n">pvals</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mf">.01</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">.9</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Given a collection of p-vals, randomly choose ones to accept for</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given a collection of p-vals, randomly choose ones to accept for</span>
 <span class="sd">    publication, with the likelihood of acceptance varying with the size</span>
 <span class="sd">    of the p-value.&quot;&quot;&quot;</span>
     <span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">pvals</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
@@ -806,7 +806,7 @@
     <span class="k">return</span> <span class="n">keep</span>
 
 <span class="k">def</span> <span class="nf">plot_simulation_results</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">mask_reported</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;A quick way to viz which papers get accepted and which don&#39;t&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A quick way to viz which papers get accepted and which don&#39;t&quot;&quot;&quot;</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_values</span><span class="p">)),</span> <span class="n">p_values</span><span class="p">,</span>
                       <span class="n">c</span><span class="o">=</span><span class="n">mask_reported</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span>
@@ -919,7 +919,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_simulated_data</span><span class="p">(</span><span class="n">null_perc</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">pos_perc</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    null_perc = Chance of accepting paper w/ a null result (p&lt;.05)</span>
 <span class="sd">    pos_perc = Chance of accepting a paper w/ a moderate effect size</span>
 <span class="sd">    super_p_perc = Chance of accepting a paper w/ a big effect size</span>
@@ -1006,38 +1006,14 @@
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   On to Funnel Plots
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-our-hands-dirty-with-some-code">
-     Getting our hands dirty with some code
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-the-population">
-   Simulating the population
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulate-the-scientific-publishing-world">
-   Simulate the scientific publishing world
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adding-a-low-n-bias">
-   Adding a low-N bias
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#try-it-yourself">
-   Try it yourself!
-  </a>
- </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">On to Funnel Plots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-our-hands-dirty-with-some-code">Getting our hands dirty with some code</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-population">Simulating the population</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-the-scientific-publishing-world">Simulate the scientific publishing world</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-low-n-bias">Adding a low-N bias</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself!</a></li>
 </ul>
 
   </nav></div>
