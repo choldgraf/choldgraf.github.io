@@ -1,7 +1,7 @@
 ---
 tags: cloud
 date: "2022-09-05"
-category: "report"
+category: "reports"
 ---
 
 # Ask Twitter: Why don't academic researchers use cloud services?

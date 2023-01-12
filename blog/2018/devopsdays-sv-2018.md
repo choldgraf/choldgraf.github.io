@@ -1,6 +1,6 @@
 ---
 tags: python, open science, devops, jupyterhub, teams
-category: report
+category: reports
 date: 2018-05-18
 ---
 
