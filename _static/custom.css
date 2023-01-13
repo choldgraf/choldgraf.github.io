@@ -6,6 +6,10 @@ h1, h2 {
   font-weight: bold;
 }
 
+/* So that `contents` directive don't cause headers to be colored */
+h1 a.toc-backref, h2 a.toc-backref, h3 a.toc-backref, h4 a.toc-backref {
+  color: var(--pst-color-text-muted);
+}
 
 /* Bio area */
 div.profile-pic {
