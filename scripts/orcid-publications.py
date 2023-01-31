@@ -156,5 +156,5 @@ mds = "\n".join(md)
 
 # This will only work if this is run as a script
 path_out = Path(__file__).parent.parent / "_static/publications.txt"
-path_out.write_text(mds)
+path_out.write_text(mds, encoding='utf-8')
 print(f"Finished updating ORCID entries at: {path_out}")
