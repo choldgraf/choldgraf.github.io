@@ -1,0 +1,1073 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="On to Funnel Plots" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2016/2016-11-30-funnel_plots/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="This article is now interactive! Check out a live Binder instance here In the next few months, I’ll try to take some time to talk about the things I learn as I make my way through this literature. ..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2016_2016-11-30-funnel_plots_24ffa425.png" />
+<meta property="og:image:alt" content="This article is now interactive! Check out a live Binder instance here In the next few months, I’ll try to take some time to talk about the things I learn as..." />
+<meta name="description" content="This article is now interactive! Check out a live Binder instance here In the next few months, I’ll try to take some time to talk about the things I learn as I make my way through this literature. ..." />
+
+    <title>On to Funnel Plots &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2016/2016-11-30-funnel_plots';</script>
+    <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target="#bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this site..."
+         aria-label="Search this site..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+      
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="me-auto">
+      
+        <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+      
+        <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+        
+          <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-start-items sidebar-primary__section">
+        <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  30 November 2016 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/visualizations/">visualizations</a>   
+  <a href="../../tag/open-science/">open science</a>   
+  <a href="../../tag/simulations/">simulations</a>   
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/funnel-plots/">funnel plots</a>  
+</li>
+ 
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/fosdem/"
+      >06 February - Reflections from FOSDEM23: the beautiful chaos of open source in a conference</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/install-github-from-pyproject/"
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/jupyterlite-workshop/"
+      >10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/matplotlib-remote-font/"
+      >06 December - Load and plot a remote font with Matplotlib</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/sphinx-update-config/"
+      >05 December - Update Sphinx configuration during the build by modifying app.config</a
+    >
+  </li>
+  
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/">2023 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2022/">2022 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../2019/">2019 (7)</a>
+  </li>
+    
+  <li>
+    <a href="../../2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                   <p><strong>This article is now interactive! Check out a live Binder instance <a class="reference external" href="http://mybinder.org/repo/choldgraf/choldgraf.github.io/notebooks/notebooks/2016_11_30-funnel_plots.ipynb">here</a></strong></p>
+<p>In the next few months, I’ll try to take some time to talk about the things I learn as I make my way through this literature. While it’s easy to make one-off complaints to one another about how “science is broken” without really diving into the details, it’s important learn about <em>how</em> it’s broken, or at least how we could assess something like this.</p>
+<p>Fortunately, there are a lot of great researchers out there who are studying these very issues. Whether they dedicate all of their research to these “meta science” topics, or simply treat this as a part of their scientific duty on top of their domain-specific work, their work represents a crucial step in reforming our scientific culture.</p>
+<p>I’m not really dredging up anything new here. People have spoken at length about scientific principles and how to improve them for quite a long time. However, I’ve found that these insights often come buried within relatively dense papers that are themselves hidden behind subscription journal paywalls. This is an attempt to make these thoughts a little more digestible, discoverable, and useful.</p>
+<p>Read on below to learn about why funnel plots are a great way to visualize the problems our publishing system faces…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some quick imports we&#39;ll use later</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">distributions</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.html.widgets</span> <span class="kn">import</span> <span class="n">interact</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="on-to-funnel-plots">
+<h1>On to Funnel Plots<a class="headerlink" href="#on-to-funnel-plots" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>(note, all of the plots are taken from the excellent paper <em><a class="reference external" href="http://pps.sagepub.com/content/7/6/543.full">The Rules of the Game of Psychological Science</a></em>, though funnel plots date back at least to the book <em><a class="reference external" href="http://www.hup.harvard.edu/catalog.php?isbn=9780674854314">Summing Up</a></em> by Light and Lillemer)</p>
+</div></blockquote>
+<p>Before diving into the guts of funnel plots, we first need to talk about experiments and effect sizes.</p>
+<p>The (theoretical) goal of science is to observe and accurately describe various phenomena in nature. One way to do this is to conduct some experimental manipulation (e.g., drinking variable amounts of coffee), and measuring its effect on a dependent variable (e.g., how many minutes I spend cleaning my kitchen). Many scientists conduct similar experiments, and report the effect size they found in their papers (e.g., when Chris drinks 2 cups of coffee, he cleans his kitchen an average of 1 hour longer).</p>
+<p>We can aggregate the reported effect size across many papers in order to determine an even “truer” effect, one that removes experimenter bias and noise. This is similar to how poll aggregators theoretically remove noise by combining the results of many different polls (unless of course <a class="reference external" href="http://fivethirtyeight.com/features/the-polls-missed-trump-we-asked-pollsters-why/">pollsters are systematically biased</a>). The result is a number that is closer to reality.</p>
+<p>Or is it?</p>
+<p>One big problem with this is that scientists don’t report all of their findings. They only report the ones they (or the journal publishers) deem “significant”. In practice, this means that the effect has to be non-zero, because nobody wants to hear about null results (even though, you know, that’s the vast majority of science). As a result, publishing is skewed in the direction of positive findings, and those that argue for more skepticism about whether an effect actually exists are often asked to please go back to the bench until they can come back with some sexier results.</p>
+<p>Now, on to funnel plots.</p>
+<p>The result of this whole situation is that the scientific literature probably overestimates effect sizes and their “significance”. How much so? Well, with the advent of digital technologies it has become much easier to aggregate information across scientific studies. This means that we can look for patterns in the reported effect sizes, and determine whether there’s something fishy going on (spoiler alert: there usually is.)</p>
+<p>The funnel plot is one tool for visualizing and determining whether there is a positive skew in the literature for a given scientific finding (e.g., the relationship between coffee and my cleaning habits). Here’s what it looks like:</p>
+<img alt="../../../_images/funnel_plot_no_dists.png" src="../../../_images/funnel_plot_no_dists.png" />
+<p>It’s a bit busy, but the underlying ideas here are pretty simple.</p>
+<ul class="simple">
+<li><p>The x-axis is the size of an effect (here it’s correlation but it could be any other statistic). 0 in the middle representing “no effect” and the extremes on either end representing the maximum possible effect for correlation values (in this case).</p></li>
+<li><p>The right y-axis is the statistical power of the study. That is, the likelihood of concluding that an effect is “significantly” different from 0. As power increases and for a fixed effect size, it becomes more likely that we conclude significance.</p></li>
+<li><p>This is related to the left y-axis, which is the inverse of the sample size. AKA, smaller samples -&gt; higher standard error -&gt; less power -&gt; smaller y-values. Larger samples -&gt; lower standard error -&gt; more power -&gt; higher y-values.</p></li>
+<li><p>Finally, the shaded region tells us combinations of effect sizes / sample sizes that would be deemed “significant” (and publishable). If we assume a (two-sided) p-value threshold of .05, the area in white wouldn’t make it into literature, while the area in grey would.</p></li>
+</ul>
+<p>A funnel plot visually shows that as our sample size goes down, our statistical power also goes down. This means that with smaller sample sizes, we need a larger effect in order to conclude that our results are significant (and get them into <em>Nature</em>). Seems reasonable, so where’s the problem?</p>
+<p>The issue lies in the aforementioned positive effect bias in scientific publishing. Because null effects won’t ever make it into the literature, the effect size we aggregate across papers will only draw from those that fall outside of the white inner region.</p>
+<img alt="../../../_images/funnel_plot_pub_no_pub.png" src="../../../_images/funnel_plot_pub_no_pub.png" />
+<p>This is a problem because the whole point of science is to estimate the “true” underlying distribution of an effect, as opposed to merely determining whether it is “different from zero”. So, let’s show the “true” and “reported” distributions at the top and see what happens.</p>
+<img alt="../../../_images/funnel_plot.png" src="../../../_images/funnel_plot.png" />
+<p>On the top of the funnel plot we can see the two distributions at play. In green is the “null” distribution, meaning the set of results we’d expect to see if there was really no statistical effect. Now we have more explanation for the white region of non-significance in the middle. As we have smaller sample sizes (lower y-values), the noise increases, and we’d expect more variability under the null distribution. This is why we need a really large effect size to conclude that there’s really something going on.</p>
+<p>Now look at the “alternative” hypothesis in red. This is the “experimental” distribution of this statistic, as determined from the results combined across many studies that estimate this effect. From these results, it looks like it is quite different from the “null” distribution. Hooray, science has found an effect!</p>
+<p>But wait a second, there’s something funny about these results. Notice how the datapoints (the effect sizes in reported studies) seem to follow the boundary between the white and the grey regions? Also note that they don’t look symmetric around the mean of the “experimental” distribution. That’s positive publication bias in action.</p>
+<p>The reason that data points follow the boundary between white / grey isn’t because that’s the “truth”, but because our publishing system and scientific incentives suppress findings that lie in the white region. It doesn’t mean these data points don’t exist, they just lie in the filing cabinets of labs all of the world who aren’t able to publish results that aren’t significant. As a result, we get a skewed idea of what the true effect size is.</p>
+<p>There’s another problem with this plot. As we’ve noted, small sample sizes means that you can only write papers with really large effect sizes. Seems reasonable, but if you can’t report non-significant results, it means that studies with a smaller N are the most likely to throw off our belief about the true effect size.</p>
+<section id="getting-our-hands-dirty-with-some-code">
+<h2>Getting our hands dirty with some code<a class="headerlink" href="#getting-our-hands-dirty-with-some-code" title="Permalink to this heading">#</a></h2>
+<p>But this is all very theoretical…to show how this works, we’ll investigate funnel plots with a quick simulation to drive the point home.</p>
+<p>We’ll simulate 10,000 studies, each with an N ranging from 2 to 50. We’ll ignore all of the “questionable scientific practices” that the article mentions, and only focus on the problem of not reporting scientific results. Let’s see what happens:</p>
+<p><strong>Note: you can skip reading the code below if you like, as it just defines some functions that will be useful, but feel free to dig into the code if you like</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper functions to simulate experiments.</span>
+<span class="k">def</span> <span class="nf">simulate_data</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">variance</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a population of data. We&#39;ll sample from this in each study.</span>
+<span class="sd">    Note that we&#39;re drawing from a normal distribution.&quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">true_variance</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">data</span> <span class="o">+=</span> <span class="n">effect</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">prefer_low_n</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                         <span class="n">n_simulations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Randomly simulates data collection and analyses of many experiments.</span>
+<span class="sd">    </span>
+<span class="sd">    On each iteration, it chooses a random sample from data, calculates the</span>
+<span class="sd">    mean of that sample, as well as a p-value associated with that mean&#39;s</span>
+<span class="sd">    difference from 0.</span>
+<span class="sd">    </span>
+<span class="sd">    data : the full population dataset</span>
+<span class="sd">    n_min : the minimum sample size for each study.</span>
+<span class="sd">    n_max : the maximum sample size for each study.</span>
+<span class="sd">    prefer_low_n : whether lower sample sizes are preferred.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">effects</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">):</span>
+        <span class="c1"># Take a random sample from the population</span>
+        <span class="k">if</span> <span class="n">prefer_low_n</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">n_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">probabilities</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">-</span> <span class="n">n_min</span><span class="p">)</span>
+            <span class="n">probabilities</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">probabilities</span><span class="p">)</span>
+            <span class="n">n_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="p">),</span>
+                                        <span class="n">p</span><span class="o">=</span><span class="n">probabilities</span><span class="p">)</span>
+        <span class="n">ixs_sample</span> <span class="o">=</span> <span class="n">random_indices</span><span class="p">[</span><span class="n">ii</span><span class="p">][:</span><span class="n">n_sample</span><span class="p">]</span>
+        <span class="n">i_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">ixs_sample</span><span class="p">]</span>
+        <span class="n">effects</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">i_data</span><span class="p">)</span>
+        <span class="n">n</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_sample</span>
+        <span class="n">p</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_stat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">i_data</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">i_data</span><span class="p">),</span> <span class="n">n_sample</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span>
+
+<span class="k">def</span> <span class="nf">calculate_stat</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">h0</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate a p-value using a t-test.</span>
+<span class="sd">    </span>
+<span class="sd">    Note that this probably *isn&#39;t* the right test to run with data that</span>
+<span class="sd">    is bounded on either side (in this case, -1 and 1). However, luckily</span>
+<span class="sd">    this is not a statistics tutorial so I&#39;m just going to be blissfully</span>
+<span class="sd">    ignorant of this.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean</span> <span class="o">-</span> <span class="n">h0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">std</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">distributions</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p</span>
+
+
+<span class="k">def</span> <span class="nf">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">sample_sizes</span><span class="p">,</span>
+                     <span class="n">effects_reported</span><span class="p">,</span> <span class="n">sample_sizes_reported</span><span class="p">,</span>
+                     <span class="n">p_effects_reported</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a funnel plot using a &#39;full&#39; set of effects, corresponding</span>
+<span class="sd">    to the effects we&#39;d report if all results were published, regardless of</span>
+<span class="sd">    their &#39;significance&#39;, as well as a &#39;reported&#39; set of effects which made</span>
+<span class="sd">    it through peer review&quot;&quot;&quot;</span>
+    <span class="c1"># Create a figure w/ 2 axes</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">axdist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="n">axmesh</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># Calculate relevant stats</span>
+    <span class="n">mn_full</span> <span class="o">=</span> <span class="n">effects</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">std_full</span> <span class="o">=</span> <span class="n">effects</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">mn_pub</span> <span class="o">=</span> <span class="n">effects_reported</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">std_pub</span> <span class="o">=</span> <span class="n">effects_reported</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    
+    <span class="n">mn_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mn_full</span> <span class="o">-</span> <span class="n">mn_pub</span><span class="p">)</span>
+    <span class="n">std_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">std_full</span> <span class="o">-</span> <span class="n">std_pub</span><span class="p">)</span>
+    
+    <span class="c1"># First axis is a histogram of the distribution for true/experimental effects</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">.1</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axdist</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span>
+                    <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axdist</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">mn_full</span> <span class="o">-</span> <span class="n">std_full</span><span class="p">,</span> <span class="n">mn_full</span> <span class="o">+</span> <span class="n">std_full</span><span class="p">,</span>
+                      <span class="n">color</span><span class="o">=</span><span class="s1">&#39;.3&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axdist</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">effects_reported</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">axdist</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">mn_pub</span> <span class="o">-</span> <span class="n">std_pub</span><span class="p">,</span> <span class="n">mn_pub</span> <span class="o">+</span> <span class="n">std_pub</span><span class="p">,</span>
+                      <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">axdist</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">axdist</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of effects</span><span class="se">\n</span><span class="s1">Error in mean: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span>
+                     <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Error in std: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mn_diff</span><span class="p">,</span> <span class="n">std_diff</span><span class="p">))</span>
+    <span class="n">axdist</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+    <span class="c1"># Now make the funnel plot</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">pvals</span> <span class="o">&lt;</span> <span class="mf">.05</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">axmesh</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">combinations</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">combinations</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sig</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Greys</span><span class="p">,</span>
+                          <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">rasterized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="n">inv_p_effects</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p_effects_reported</span>
+    <span class="n">axmesh</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">sample_sizes</span><span class="p">,</span>
+                   <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
+    <span class="n">axmesh</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">effects_reported</span><span class="p">,</span> <span class="n">sample_sizes_reported</span><span class="p">,</span>
+                   <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">inv_p_effects</span><span class="p">,</span>
+                   <span class="n">vmin</span><span class="o">=</span><span class="mf">.95</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">)</span>
+    <span class="n">axmesh</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+    <span class="n">axmesh</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Effect Size&#39;</span><span class="p">)</span>
+    <span class="n">axmesh</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Sample Size (or statisical power)&#39;</span><span class="p">)</span>
+
+    <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axdist</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="n">axmesh</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="simulating-the-population">
+<h1>Simulating the population<a class="headerlink" href="#simulating-the-population" title="Permalink to this heading">#</a></h1>
+<p>Here we’ll create a population of datapoints corresponding to the effect of each person. Experiments are performed by taking a random sample from that population, and calculating the average effect of the sample. For each experiment we’ll choose a random number for the sample size as well. That means that we’ll get a collection of sample sizes, effect sizes, and p-values. One set for each simulated experiment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the true value and variance of our variable of interest.</span>
+<span class="c1"># Remember, it&#39;s bounded between -2 and 2</span>
+<span class="n">true_value</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">true_variance</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># This creates the contour to show the &quot;significance edge&quot; of the plot</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">effect_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">.1</span><span class="p">)</span>
+<span class="n">combinations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">effect_sizes</span><span class="p">,</span> <span class="n">ns</span><span class="p">)</span>
+<span class="n">pvals</span> <span class="o">=</span> <span class="n">calculate_stat</span><span class="p">(</span><span class="n">combinations</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">true_variance</span><span class="p">),</span>
+                       <span class="n">combinations</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># How many simulations will we run, and how large is the full population</span>
+<span class="n">total_population</span> <span class="o">=</span> <span class="mf">1e5</span>
+<span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span>
+
+<span class="c1"># We&#39;ll pre-define these because they take a while</span>
+<span class="n">population_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">random_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">population_indices</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)]</span>
+
+<span class="c1"># First create our population data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">simulate_data</span><span class="p">(</span><span class="n">true_value</span><span class="p">,</span> <span class="n">true_variance</span><span class="p">,</span> <span class="n">total_population</span><span class="p">)</span>
+
+<span class="c1"># Simulate a bunch of random effects, along w/ sample size and p-value for each</span>
+<span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">n_max</span><span class="p">,</span>
+                                     <span class="n">n_simulations</span><span class="o">=</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this case, the reported and actual effects are the same</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/541481ddc18fd244665a1aa9926c1991fb4f3d75b3ef215b477e7b4864ccfc8a.png" src="../../../_images/541481ddc18fd244665a1aa9926c1991fb4f3d75b3ef215b477e7b4864ccfc8a.png" />
+</div>
+</div>
+<p>In the funnel plot above, each datapoint corresponds to the effect size found in a single study (x-axis), along with its sample size (y-axis).</p>
+<p>The contour lines show us the “significance cutoffs”.</p>
+<p>The distributions at the top show us the effect size distribution for <em>all</em> experiments, as well as the distribution for only the <em>reported</em> experiments. In this case, those distributions are the same because all of our scientific experiments reported their results. We have an accurate idea of the effect size.</p>
+</section>
+<section id="simulate-the-scientific-publishing-world">
+<h1>Simulate the scientific publishing world<a class="headerlink" href="#simulate-the-scientific-publishing-world" title="Permalink to this heading">#</a></h1>
+<p>Now, let’s simulate the scientific publishing process and see what happens. We’ll take a relatively generous take on things, and say that studies with a p-value &gt; .05 still have a small chance of being accepted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This simulates which datapoints we keep and which we throw out</span>
+<span class="k">def</span> <span class="nf">simulate_publishing</span><span class="p">(</span><span class="n">pvals</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mf">.01</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">.9</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Given a collection of p-vals, randomly choose ones to accept for</span>
+<span class="sd">    publication, with the likelihood of acceptance varying with the size</span>
+<span class="sd">    of the p-value.&quot;&quot;&quot;</span>
+    <span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">pvals</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ip</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pvals</span><span class="p">):</span>
+        <span class="n">flip</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">ip</span> <span class="o">&gt;</span> <span class="mf">.05</span><span class="p">:</span>
+            <span class="n">this_perc</span> <span class="o">=</span> <span class="n">null_perc</span>
+        <span class="k">elif</span> <span class="n">ip</span> <span class="o">&gt;</span> <span class="mf">.005</span> <span class="ow">and</span> <span class="n">ip</span> <span class="o">&lt;</span> <span class="mf">.05</span><span class="p">:</span>
+            <span class="n">this_perc</span> <span class="o">=</span> <span class="n">pos_p_perc</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">this_perc</span> <span class="o">=</span> <span class="n">super_p_perc</span>
+        <span class="n">keep</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">flip</span> <span class="o">&lt;</span> <span class="n">this_perc</span> <span class="k">else</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="n">keep</span>
+
+<span class="k">def</span> <span class="nf">plot_simulation_results</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">mask_reported</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A quick way to viz which papers get accepted and which don&#39;t&quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">p_values</span><span class="p">)),</span> <span class="n">p_values</span><span class="p">,</span>
+                      <span class="n">c</span><span class="o">=</span><span class="n">mask_reported</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span>
+                      <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">.05</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;p-value&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;study number&quot;</span><span class="p">,</span>
+                 <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Accepted and rejected studies&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+                                    <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">.9</span><span class="p">)</span>
+<span class="n">effects_reported</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ad3b081dd1cff353f2d61e0d6f8c8c8bd6f3bbd60218f0e649f19ba8a54129a5.png" src="../../../_images/ad3b081dd1cff353f2d61e0d6f8c8c8bd6f3bbd60218f0e649f19ba8a54129a5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_simulation_results</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">mask_reported</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/5c9824cea919181c9f18a89a6dd27ebb002c1a18d3727eb89bb73a9ef4e79e0e.png" src="../../../_images/5c9824cea919181c9f18a89a6dd27ebb002c1a18d3727eb89bb73a9ef4e79e0e.png" />
+</div>
+</div>
+<p>We can already see that we’ve skewed the distribution of <em>reported</em> findings (in red) further to the right. This is because it is less likely for experiments inside the contour lines to be reported in the literature, making us think that the effect size is larger than it really is.</p>
+<p>Now, let’s take a more cynical look at scientific publishing by reducing the likelihood that studies are published w/o a “significant” result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span>
+                                    <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">.99</span><span class="p">)</span>
+<span class="n">effects_reported</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d165e079bf20e7d3b5a9732689569beea4f692d20b0898d01d8b2e30c80a3767.png" src="../../../_images/d165e079bf20e7d3b5a9732689569beea4f692d20b0898d01d8b2e30c80a3767.png" />
+</div>
+</div>
+<p>It’s skewed even further to the right. As you can see, the harder it is to publish null results, the more overconfident we will be in the significance of what’s in the literature. As you can probably tell, this is especially problematic for effect sizes lie near the boundary between publishable / non-publishable.</p>
+</section>
+<section id="adding-a-low-n-bias">
+<h1>Adding a low-N bias<a class="headerlink" href="#adding-a-low-n-bias" title="Permalink to this heading">#</a></h1>
+<p>As we mentioned above, there’s one more factor at play that makes things even worse. Smaller studies take less time and less resources to conduct, and in practice there are <em>far</em> more tiny studies than large, highly-powered ones. Let’s incorporate that into our data simulation and see how that affects things.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This simulates data where there is about a 10 times higher chance for a low-n study</span>
+<span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">n_max</span><span class="p">,</span>
+                              <span class="n">prefer_low_n</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
+
+<span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span>
+                                    <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">.99</span><span class="p">)</span>
+<span class="n">effects_reported</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+<span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+
+<span class="n">_</span> <span class="o">=</span> <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d3d1e46a74e48bc9b777ace057da9f46f302a09047d150f898f350c3b4279d7f.png" src="../../../_images/d3d1e46a74e48bc9b777ace057da9f46f302a09047d150f898f350c3b4279d7f.png" />
+</div>
+</div>
+<p>It’s even worse. As you can see, both of these factors (studies with a low N, not being able to publish null results) give the scientific community an unrealistic idea of the true effect size. Moreover, we haven’t even incorporated any experimenter-specific biases, such as defining datapoints that nullify an effect as “outliers”, not reporting studies that are significant but in the <em>opposite</em> direction of what we’d expect, and collecting more data until they achieve a significant p-value. All of these practices would serve to enhance the positive bias seen above.</p>
+<p>In many cases, this might cause us to conclude that there <em>is</em> an effect, when in reality there is not. Unfortunately, this often has wide-ranging implications for things like policy decisions, and at the least causes scientists to be ineffective and inefficient at asking questions about the world.</p>
+<p>All of this is not to say that science “doesn’t work”, but it’s important to remember that science is about methodology before anything else, and the tools of empiricism and peer review are in constant evolution as we learn more about the pitfalls of our current approach. This is one way to identify these pitfalls, and hopefully in future years the community will adapt in order to avoid them.</p>
+</section>
+<section id="try-it-yourself">
+<h1>Try it yourself!<a class="headerlink" href="#try-it-yourself" title="Permalink to this heading">#</a></h1>
+<p>If you’re curious about how all of these factors (effect size, effect variability, sample size, and publishing practices) interact, here’s a quick function to let you play around with each one and determine what the effect would look like in the literature. There are particular circumstances in which these issues are most apparent, and most problematic. See if you can figure out what those circumstances are.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create datasets with new effects / variances here</span>
+<span class="n">effect</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">variance</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">n_population</span> <span class="o">=</span> <span class="mf">1e6</span>
+<span class="n">n_simulations</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">simulate_data</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">variance</span><span class="p">,</span> <span class="n">n_population</span><span class="p">)</span>
+
+<span class="c1"># We&#39;ll pre-define these because they take a while</span>
+<span class="n">population_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">random_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">population_indices</span><span class="p">)</span>
+                  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_simulations</span><span class="p">)]</span>
+
+<span class="n">sample_min</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">sample_max</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">prefer_low_n</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">simulate_experiments</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">sample_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">sample_max</span><span class="p">,</span>
+                     <span class="n">prefer_low_n</span><span class="o">=</span><span class="n">prefer_low_n</span><span class="p">,</span> <span class="n">n_simulations</span><span class="o">=</span><span class="n">n_simulations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_simulated_data</span><span class="p">(</span><span class="n">null_perc</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">pos_perc</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    null_perc = Chance of accepting paper w/ a null result (p&lt;.05)</span>
+<span class="sd">    pos_perc = Chance of accepting a paper w/ a moderate effect size</span>
+<span class="sd">    super_p_perc = Chance of accepting a paper w/ a big effect size</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mask_reported</span> <span class="o">=</span> <span class="n">simulate_publishing</span><span class="p">(</span>
+        <span class="n">p</span><span class="p">,</span> <span class="n">null_perc</span><span class="o">=</span><span class="n">null_perc</span><span class="p">,</span> <span class="n">pos_p_perc</span><span class="o">=</span><span class="n">pos_perc</span><span class="p">,</span> <span class="n">super_p_perc</span><span class="o">=</span><span class="n">super_p_perc</span><span class="p">)</span>
+    <span class="n">effects_reported</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+    <span class="n">n_reported</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+    <span class="n">p_reported</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">mask_reported</span><span class="p">]</span>
+    <span class="n">plot_funnel_plot</span><span class="p">(</span><span class="n">effects</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">effects_reported</span><span class="p">,</span> <span class="n">n_reported</span><span class="p">,</span> <span class="n">p_reported</span><span class="p">)</span>
+    
+<span class="n">interact</span><span class="p">(</span><span class="n">plot_simulated_data</span><span class="p">,</span>
+         <span class="n">null_perc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">.01</span><span class="p">],</span>
+         <span class="n">pos_perc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">.01</span><span class="p">],</span>
+         <span class="n">super_p_perc</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">.01</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8da922ccfaea3f178314456bdd13f6a69f517c885a348c1b3103e10393810455.png" src="../../../_images/8da922ccfaea3f178314456bdd13f6a69f517c885a348c1b3103e10393810455.png" />
+</div>
+</div>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../2016-11-01-5_things_scipy_2016/">
+      <i class="fa fa-arrow-circle-left"></i> 5 things I learned at SciPy
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../2016-12-19-biorxiv_neuro/">
+      The bleeding edge of publishing, Scraping publication amounts at biorxiv <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc">
+  <div class="toc-item">
+  <div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">On to Funnel Plots</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-our-hands-dirty-with-some-code">Getting our hands dirty with some code</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-the-population">Simulating the population</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulate-the-scientific-publishing-world">Simulate the scientific publishing world</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-low-n-bias">Adding a low-N bias</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself!</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="toc-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2016/2016-11-30-funnel_plots.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+</div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+    <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, Chris Holdgraf.
+      <br/>
+    
+  </p>
+</div>
+  
+    <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
+  0.13.0rc2.dev0.
+</p></div>
+  
+    <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+  
+</div>
+  </footer>
+  </body>
+</html>

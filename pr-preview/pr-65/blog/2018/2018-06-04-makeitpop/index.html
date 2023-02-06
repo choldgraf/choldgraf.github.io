@@ -1,0 +1,1187 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Introducing makeitpop, a tool to perceptually warp your data!”" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2018/2018-06-04-makeitpop/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="When I was in graduate school, I tended to get on my soapbox and tell everybody why they should stop using Jet and adopt a “perceptually-flat” colormap like viridis, magma, or inferno. Surprisingly..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2018_2018-06-04-makeitpop_f890d678.png" />
+<meta property="og:image:alt" content="When I was in graduate school, I tended to get on my soapbox and tell everybody why they should stop using Jet and adopt a “perceptually-flat” colormap like..." />
+<meta name="description" content="When I was in graduate school, I tended to get on my soapbox and tell everybody why they should stop using Jet and adopt a “perceptually-flat” colormap like viridis, magma, or inferno. Surprisingly..." />
+
+    <title>Introducing makeitpop, a tool to perceptually warp your data!” &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2018/2018-06-04-makeitpop';</script>
+    <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target="#bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this site..."
+         aria-label="Search this site..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+      
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="me-auto">
+      
+        <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+      
+        <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+        
+          <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-start-items sidebar-primary__section">
+        <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  04 June 2018 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../tag/python-colormaps/">python colormaps</a>  
+</li>
+ 
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/fosdem/"
+      >06 February - Reflections from FOSDEM23: the beautiful chaos of open source in a conference</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/install-github-from-pyproject/"
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/jupyterlite-workshop/"
+      >10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/matplotlib-remote-font/"
+      >06 December - Load and plot a remote font with Matplotlib</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/sphinx-update-config/"
+      >05 December - Update Sphinx configuration during the build by modifying app.config</a
+    >
+  </li>
+  
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/">2023 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2022/">2022 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../2019/">2019 (7)</a>
+  </li>
+    
+  <li>
+    <a href="../">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                   <section id="introducing-makeitpop-a-tool-to-perceptually-warp-your-data">
+<h1>Introducing <em>makeitpop</em>, a tool to perceptually warp your data!”<a class="headerlink" href="#introducing-makeitpop-a-tool-to-perceptually-warp-your-data" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It should go without saying, but <strong>you should never do the stuff that you’re about to read about here</strong>. Data is meant to speak for itself, and our visualizations should accurately reflect the data above all else.*</p>
+</div>
+<p>When I was in graduate school, I tended to get on my soapbox and tell everybody
+why they should <a class="reference external" href="http://jakevdp.github.io/blog/2014/10/16/how-bad-is-your-colormap/">stop using Jet</a>
+and adopt a “perceptually-flat” colormap like <a class="reference external" href="https://bids.github.io/colormap/">viridis, magma, or inferno</a>.</p>
+<p>Surprisingly (ok, maybe not so surprisingly) I got a lot of pushback from people. Folks would say <em>“But I like <strong>jet</strong>, it really highlights my data, it makes the images ‘pop’ more effectively than viridis!”</em>.</p>
+<p>Unfortunately it turns out that when a colormap “makes your data pop”, it really just means “<a class="reference external" href="https://bids.github.io/colormap/">warps your perception of the visualized data so that you see non-linearities when there are none</a>”. AKA, a colormap like Jet actually <em>mis-represents</em> the data.</p>
+<p>But what does this really mean? It’s difficult to talk and think about coor - especially when it comes to relating color with objective relationships
+between data. Rather than talking about colormaps in the abstract, what if we could <em>visualize</em> the warping that is performed by colormaps like Jet?</p>
+<p>In this post I’ll show that this is possible! Introducing <strong><code class="docutils literal notranslate"><span class="pre">makeitpop</span></code></strong>.</p>
+<section id="what-does-makeitpop-do">
+<h2>What does <em>makeitpop</em> do?<a class="headerlink" href="#what-does-makeitpop-do" title="Permalink to this heading">#</a></h2>
+<p>Makeitpop lets you apply the same perceptual warping that would <em>normally</em> be accomplished
+with a colormap like Jet, but applies this warping to <em>the data itself</em>! This lets us
+get the same effect with a nice linear colormap like <code class="docutils literal notranslate"><span class="pre">viridis</span></code>!</p>
+<p>For example, let’s take a look at the <a class="reference external" href="https://matplotlib.org/gallery/images_contours_and_fields/image_demo.html#sphx-glr-gallery-images-contours-and-fields-image-demo-py">image demo in matplotlib</a>. In it, we create two blobs that are meant to be visualized as an image. We’ll visualize this with our old friend viridis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a mesh grid with two gaussian blobs</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="mf">0.025</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Z1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Z2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="p">(</span><span class="n">Z1</span> <span class="o">-</span> <span class="n">Z2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="c1"># Visualize it</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span>
+          <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+          <span class="n">vmax</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original data</span><span class="se">\n</span><span class="s2">linear colormap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/740ee63ac731761d28669ee426c17caf515cab36f3fca6e8c675430eef5521f8.png" src="../../../_images/740ee63ac731761d28669ee426c17caf515cab36f3fca6e8c675430eef5521f8.png" />
+</div>
+</div>
+<p>Hmmm, not too bad…but it’s a bit <em>boring</em>, no? Why can’t we make it snazzier? I know, let’s use Jet!</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize our data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span>
+          <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+          <span class="n">vmax</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original data</span><span class="se">\n</span><span class="s2">non-linear colormap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/d4804b5e53c6821f455edcedcb7642e4fe4ad7a08fb3cbd431a825a6880395eb.png" src="../../../_images/d4804b5e53c6821f455edcedcb7642e4fe4ad7a08fb3cbd431a825a6880395eb.png" />
+</div>
+</div>
+<p>Oooh now that’s what I’m talking about. You can clearly see two peaks of significant results
+at the center of each circle. Truly this is fit for publishing in <em>Nature</em>.</p>
+<p>But…as you all know, this data only <em>looks</em> better because we’ve used a colormap that distorts
+our perception of the underlying data.</p>
+<p>Let’s illustrate this by <strong>making it pop</strong>!</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pop the data!</span>
+<span class="n">Z_popped</span> <span class="o">=</span> <span class="n">makeitpop</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Visualize the warped data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z_popped</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span>
+          <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+          <span class="n">vmax</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Warped data</span><span class="se">\n</span><span class="s2">linear colormap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/6837576f1a6283c3390257b536a6038fe0bcc7408aa0ffe4593f4a12a5c356db.png" src="../../../_images/6837576f1a6283c3390257b536a6038fe0bcc7408aa0ffe4593f4a12a5c356db.png" />
+</div>
+</div>
+<p>Excellent! We’re using a nice, perceptually-flat colormap like viridis, but we’ve attained
+an effect similar to the one that <em>Jet</em> would have created!</p>
+<p>Now let’s visualize all three next to each other so that we can see the total effect:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">kws_img</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+               <span class="n">vmax</span><span class="o">=</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">vmin</span><span class="o">=-</span><span class="nb">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="c1"># Raw data with a perceptually-flat colormap</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span> <span class="o">**</span><span class="n">kws_img</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original data</span><span class="se">\n</span><span class="s2">linear colormap&quot;</span><span class="p">)</span>
+
+<span class="c1"># Raw data with a perceptually-distorted colormap</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">,</span> <span class="o">**</span><span class="n">kws_img</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Original data</span><span class="se">\n</span><span class="s2">non-linear colormap&quot;</span><span class="p">)</span>
+
+<span class="c1"># Distorted data with a perceptually-flat colormap</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z_popped</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span> <span class="o">**</span><span class="n">kws_img</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Warped data</span><span class="se">\n</span><span class="s2">linear colormap&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/cebd30f79ac58a4ff7f04b3a21f773d135c55307a17685bad3acbed633159825.png" src="../../../_images/cebd30f79ac58a4ff7f04b3a21f773d135c55307a17685bad3acbed633159825.png" />
+</div>
+</div>
+</section>
+<section id="let-s-see-it-in-the-real-world">
+<h2>Let’s see it in the real world<a class="headerlink" href="#let-s-see-it-in-the-real-world" title="Permalink to this heading">#</a></h2>
+<p>Thus far I’ve been using toy examples to illustrate how makeitpop works. Let’s see how
+things look on an actual dataset collected in the wild.</p>
+<p>For this, we’ll use the excellent <a class="reference external" href="https://nilearn.github.io/">nilearn</a> package. This has a
+few datasets we can download to demonstrate our point. First we’ll load the data and prep it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+<span class="kn">import</span> <span class="nn">nibabel</span> <span class="k">as</span> <span class="nn">nb</span>
+
+<span class="c1"># Load a sample dataset</span>
+<span class="n">tmap_filenames</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">fetch_localizer_button_task</span><span class="p">()[</span><span class="s1">&#39;tmaps&#39;</span><span class="p">]</span>
+<span class="n">tmap_filename</span> <span class="o">=</span> <span class="n">tmap_filenames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Threshold our data for viz</span>
+<span class="n">brain</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">tmap_filename</span><span class="p">)</span>
+<span class="n">brain_data</span> <span class="o">=</span> <span class="n">brain</span><span class="o">.</span><span class="n">get_fdata</span><span class="p">()</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">brain_data</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">.01</span><span class="p">,</span> <span class="n">brain_data</span> <span class="o">&gt;</span> <span class="mf">.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/choldgraf/anaconda/envs/dev/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+  from ._conv import register_converters as _register_converters
+/home/choldgraf/anaconda/envs/dev/lib/python3.6/site-packages/numpy/lib/npyio.py:2266: VisibleDeprecationWarning: Reading unicode strings without specifying the encoding argument is deprecated. Set the encoding, use None for the system default.
+  output = genfromtxt(fname, **kwargs)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we’ll create a “popped” version of the data, where we apply the non-linear warping
+properties of <em>Jet</em> to our data, so that we can visualize the same effect in linear space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a copy of the data, then pop it</span>
+<span class="c1"># We&#39;ll use a scaling factor to highlight the effect</span>
+<span class="n">brain_popped</span> <span class="o">=</span> <span class="n">brain_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">brain_popped</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">makeitpop</span><span class="p">(</span><span class="n">brain_popped</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="n">brain_popped</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">Nifti1Image</span><span class="p">(</span><span class="n">brain_popped</span><span class="p">,</span> <span class="n">brain</span><span class="o">.</span><span class="n">affine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, I’ll plot the results for each.</p>
+<ul class="simple">
+<li><p>First, we’ll see the raw data on a linear colormap. This is the way we’d display the data to show the true underlying relationships between datapoints.</p></li>
+<li><p>Next, we’ll show the same data plotted with <em>Jet</em>. See how many more significant voxels there are! (/s)</p></li>
+<li><p>Finally, we’ll plot the “popped” data using a linear colormap (viridis). This accurately represents the underlying data, but the data <em>itself</em> has been distorted!</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i_brain</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">brain</span><span class="p">,</span> <span class="s1">&#39;original&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">brain</span><span class="p">,</span> <span class="s1">&#39;original (jet)&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">brain_popped</span><span class="p">,</span> <span class="s1">&#39;popped brain&#39;</span><span class="p">)]:</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;original (jet)&#39;</span> <span class="k">else</span> <span class="s1">&#39;viridis&#39;</span>
+    <span class="n">plotting</span><span class="o">.</span><span class="n">plot_stat_map</span><span class="p">(</span><span class="n">i_brain</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">display_mode</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span>
+                           <span class="n">title</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">cut_coords</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/14811d2b7a96bc1a5878964b791fae388d72263cf1da2960c9a581cc1f5fd13c.png" src="../../../_images/14811d2b7a96bc1a5878964b791fae388d72263cf1da2960c9a581cc1f5fd13c.png" />
+<img alt="../../../_images/d176c9bc84f687ea2c16df88d4acfb39b73081b784ce392ea99c1fbf46ffc604.png" src="../../../_images/d176c9bc84f687ea2c16df88d4acfb39b73081b784ce392ea99c1fbf46ffc604.png" />
+<img alt="../../../_images/9db4e875cd984d0924e9ee51b1f496e3dcc921dc81f3a902ae08c114775c3a05.png" src="../../../_images/9db4e875cd984d0924e9ee51b1f496e3dcc921dc81f3a902ae08c114775c3a05.png" />
+</div>
+</div>
+<p>As you can see, different kinds of results show up when your perception of the data is affected by the colormap.</p>
+</section>
+<section id="how-does-this-work">
+<h2>How does this work?<a class="headerlink" href="#how-does-this-work" title="Permalink to this heading">#</a></h2>
+<p>OK, so what is the black voodoo magic that makes it possible to “make your data pop”?</p>
+<p>It all comes down to your visual system. I won’t go into a ton of detail
+because Nathaniel Smith and Stefan van der Walt <a class="reference external" href="https://www.youtube.com/watch?v=xAoljeRJ3lU">already gave a great talk about this</a>, however here is a lay-person’s take:</p>
+<p>When we use color to represent data, we are mapping a range of data values onto
+a range of color values. Usually this means defining a min / max for our data, then mapping data
+values linearly from 0 to 1, and finally mapping those values onto RGB values in a colormap.</p>
+<p>Implicit in this process is the idea that stepping across our space in the <em>data</em> equates to
+an equal step in our <em>perception</em> of the color that is then chosen. We want a one-to-one mapping between the two.</p>
+<p>Unfortunately, this isn’t how our visual system works.</p>
+<p>In reality, our brains do all kinds of strange things when interpreting color. They are biased to detect changes between particular kinds of colors, and biased to miss the transition between others.</p>
+<p><em>Jet</em> uses a range of colors that highlight this fact. It transitions through colors such that <em>linear</em> changes in our data are perceived as <em>nonlinear</em> changes when we look at the visualization. That’s what makes the data “pop”.</p>
+</section>
+<section id="perceptual-delta-curves">
+<h2>Perceptual “delta” curves<a class="headerlink" href="#perceptual-delta-curves" title="Permalink to this heading">#</a></h2>
+<p>You can determine the extent to which a colormap “warps” your perception of the data by calculating the “perceptual deltas” as you move across the values of a colormap (e.g. as you move from 0 to 1, and their corresponding colors).</p>
+<p>These deltas essentially mean “how much is the <em>next</em> color in the colormap perceived as different from the <em>current</em> color?” If your colormap is perceptually flat, the delta will be the <em>same</em> no matter where you are on the range from 0 to 1.</p>
+<p>Let’s see what the deltas look like for <em>Jet</em>:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_colormap_deltas</span><span class="p">(</span><span class="n">deltas</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">xrange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">derivatives</span><span class="p">))</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">deltas</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">xrange</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">xrange</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">xrange</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">deltas</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plot_colormap_deltas</span><span class="p">(</span><span class="n">derivatives</span><span class="p">[</span><span class="s1">&#39;jet&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>  <span class="c1"># So we can compare with other colormaps</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Perceptual deltas with Jet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(0.5,1,&#39;Perceptual deltas with Jet&#39;)]
+</pre></div>
+</div>
+<img alt="../../../_images/a4dcbb1814e8d6e94fd6c01116d5ae2aed02711b691f825766b3c10e693a696d.png" src="../../../_images/a4dcbb1814e8d6e94fd6c01116d5ae2aed02711b691f825766b3c10e693a696d.png" />
+</div>
+</div>
+<p>Oops.</p>
+<p>As you can see, Jet does <strong>not</strong> have a flat line for perceptual deltas. Each “jump” you see above is a moment where Jet is actually <em>mis-representing</em> differences in the data. For shame, Jet.</p>
+<p>Now let’s see what this looks like for viridis:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plot_colormap_deltas</span><span class="p">(</span><span class="n">derivatives</span><span class="p">[</span><span class="s1">&#39;viridis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Perceptual deltas with viridis&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/6840ed9526e0166eb7547b5c1f5d6c30dc763d58226a2afafe8828c57814e8b2.png" src="../../../_images/6840ed9526e0166eb7547b5c1f5d6c30dc763d58226a2afafe8828c57814e8b2.png" />
+</div>
+</div>
+<p>Ahhh, sweet, sweet linear representation of data.</p>
+<p>In case you’re curious, here are the “perceptual deltas” for several colormaps.
+In this case, I’ve centered them and scaled each by the variance of the largest colormap,
+so that they are easier to compare.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">deltas</span> <span class="ow">in</span> <span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">cmap</span> <span class="o">==</span> <span class="s1">&#39;linear&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plot_colormap_deltas</span><span class="p">(</span><span class="n">deltas</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cmap</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Scaled perceptual deltas for a bunch of colormaps&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/8a5d08db012083fcd4adf6721b51137dd4b72c532a7d2be57e7c76db9302cba8.png" src="../../../_images/8a5d08db012083fcd4adf6721b51137dd4b72c532a7d2be57e7c76db9302cba8.png" />
+</div>
+</div>
+</section>
+<section id="we-can-even-warp-1-dimensional-data">
+<h2>We can even warp 1-dimensional data!<a class="headerlink" href="#we-can-even-warp-1-dimensional-data" title="Permalink to this heading">#</a></h2>
+<p>Let’s see how this principle affects our perception with a different kind of visual
+encoding. Now that we know these perceptual warping functions, we can get all the
+data-warping properties of jet, but in one dimension!</p>
+<p>Here’s a line.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Totally boring line.</span><span class="se">\n</span><span class="s1">Nothing to see here.&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/769d81fbe761e875d34d6358b36722fe6d3d413cb754e04ba01763d0b48d55c0.png" src="../../../_images/769d81fbe761e875d34d6358b36722fe6d3d413cb754e04ba01763d0b48d55c0.png" />
+</div>
+</div>
+<p>Ew. Boring.</p>
+<p>Now, let’s make it pop! We’ll loop through a few colormaps, applying its color
+warping function to the y-axis of our line as we step through it.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow&#39;</span><span class="p">,</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="s1">&#39;hsv&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Data&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">makeitpop</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="o">=</span><span class="mi">40</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">nm</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">.6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Making data &quot;pop&quot; is fun!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5,1,&#39;Making data &quot;pop&quot; is fun!&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/8db2970eea53db79607379499a6c328c322a488e70fec7dc97893b94421064cc.png" src="../../../_images/8db2970eea53db79607379499a6c328c322a488e70fec7dc97893b94421064cc.png" />
+</div>
+</div>
+<p>As you can see, data looks much more interesting when it’s been non-linearly warped!
+It looks particularly striking when you see it on a 1-D plot. This is effectively
+what colormaps such as Jet are doing in 2 dimensions! We’re simply bringing the fun
+back to 1-D space.</p>
+<p>Let’s see how it looks on some scatterplots. We’ll plot the raw data in the background in grey,
+and the “popped” data in front in color. Notice how some colormaps distort the y-values more
+than others.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="s1">&#39;jet&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow&#39;</span><span class="p">,</span> <span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="s1">&#39;hsv&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="mf">.2</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">axs</span><span class="p">):</span>    
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">makeitpop</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.8</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c4d8738c872eb10855eaaf4419c88a16fe142678c23ed9398597dc0ac92a57dd.png" src="../../../_images/c4d8738c872eb10855eaaf4419c88a16fe142678c23ed9398597dc0ac92a57dd.png" />
+</div>
+</div>
+</section>
+<section id="so-what-should-we-do">
+<h2>So what should we do?<a class="headerlink" href="#so-what-should-we-do" title="Permalink to this heading">#</a></h2>
+<p>The reason that I wrote this blog post (and made this silly package) is to illustrate what we’re really
+doing when we use a colormap like <em>Jet</em>, and to highlight the importance of using a perceptually-flat colormap.  Sure, we want to choose the visualization that best-makes our point,
+but a colormap like Jet is <em>actively mis-representing your data</em>. You’d <em>never</em> consider changing the raw
+data values so that an effect popped out, and you’d <em>never</em> alter the y-values of a scatterplot so that something shows up. Well, this is perceptually what you’re doing when you visualize 2-D data with Jet.</p>
+<p>Here are a few things to keep in mind moving forward:</p>
+<ul class="simple">
+<li><p>Don’t use Jet</p></li>
+<li><p>If you review a paper or are an editor for a journal, consider asking authors to use a perceptually flat colormap (this is usually just a matter of changing <code class="docutils literal notranslate"><span class="pre">cmap='viridis'</span></code>!)</p></li>
+<li><p>Be aware of the effects that color has on the point you’re trying to make. Perceptual warping is
+just one of many potential issues with choosing the right color.</p></li>
+</ul>
+</section>
+<section id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this heading">#</a></h2>
+<p>I hope that this post has been a fun and slightly informative take on the nuances of colormaps, and the unintended effects that they might have.</p>
+<p>So, <code class="docutils literal notranslate"><span class="pre">tl;dr</span></code>:</p>
+<ul class="simple">
+<li><p>Jet (and many other colormaps) mis-represent your perception of the data</p></li>
+<li><p>Perceptually flat colormaps like Viridis, Magma, Inferno, or Parula minimize this effect</p></li>
+<li><p>You can calculate the <em>extent</em> to which this mis-representation happens as you move along the colormap</p></li>
+<li><p>We can then use this function to <em>distort</em> data so that the data itself contains this mis-representation</p></li>
+<li><p>But doing so would be super unethical, so in the end <strong>you should stop using jet and use a perceptually-flat colormap like viridis.</strong></p></li>
+</ul>
+<p>If you’d like to check out the <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> package, see the <a class="reference external" href="https://github.com/choldgraf/makeitpop">GitHub repo here</a>. In addition, all of the examples in this post are runnable
+on Binder! You can launch an interactive session with this code by clicking on the Binder button
+at the top of this page!</p>
+</section>
+<section id="addendum-ok-but-how-does-makeitpop-actually-work">
+<h2>Addendum: Ok but how does <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> <em>actually</em> work?<a class="headerlink" href="#addendum-ok-but-how-does-makeitpop-actually-work" title="Permalink to this heading">#</a></h2>
+<p>In this section I’ll describe the (admittedly hacky) way that I’ve written <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code>.
+As I mentioned before, <a class="reference external" href="https://github.com/choldgraf/makeitpop">all the <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> code is on GitHub</a> and
+Pull Requests are more than welcome to improve the process (I’m looking at you, “histogram matching” people!)</p>
+<p>Here’s what <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> does:</p>
+<ol class="arabic simple">
+<li><p>Collects a list of the “perceptual deltas”. These are calculated from the equations given in <a class="reference external" href="https://github.com/matplotlib/viscm"><code class="docutils literal notranslate"><span class="pre">viscm</span></code></a>, which was released as a part of the original work that created <code class="docutils literal notranslate"><span class="pre">viridis</span></code>.</p></li>
+<li><p>Centers each colormap’s deltas at 0.</p></li>
+<li><p>Scales each colormap’s deltas by the <em>largest variance</em> across all colormaps. This is to make sure that warping the data is done with the relative differences of each colormap in mind.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> is called, the function then:</p>
+<ol class="arabic simple">
+<li><p>Scales the input data linearly between 0 and 1</p></li>
+<li><p>Calculates the point-by-point derivative for linearly spaced points between 0 and 1 (the derivative is the same for all points here).</p></li>
+<li><p>Multiplies each derivative by the scaled perceptual deltas function, plus an extra scaling factor that accentuates the effect.</p></li>
+<li><p>Adds each value to the scaled input data.</p></li>
+<li><p>Un-scales the altered input data so that it has the same min/max as before.</p></li>
+</ol>
+</li>
+</ol>
+<p>There are plenty of ways you could do this more effectively (for example, by matching empirical CDFs and
+using linear interpolation to map the delta function of one colormap onto the delta function for another
+colormap). If you’d like to contribute or suggest something, feel free to do so! However, I’m just creating
+this package to highlight an idea, and think this approach gets close enough with relatively little complexity.</p>
+</section>
+</section>
+<section id="some-extras">
+<h1>Some extras<a class="headerlink" href="#some-extras" title="Permalink to this heading">#</a></h1>
+<p>Here’s a viz that will let you visualize how different colormaps distort data. We’ll show a
+gradient of linearly-spaced values, both using a warping colormap such as “jet” and a linear
+colormap like “vidiris”. Then, we’ll “pop” the data and re-visualize with viridis.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a gradient of datapoints</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Pop the data</span>
+<span class="n">cmap_warping</span> <span class="o">=</span> <span class="s1">&#39;jet&#39;</span>
+<span class="n">scaling_factor</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">data_popped</span> <span class="o">=</span> <span class="n">makeitpop</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap_warping</span><span class="p">,</span> <span class="n">scaling_factor</span><span class="p">)</span>
+
+<span class="c1"># Visualize</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="n">data</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_warping</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw data with colormap </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmap_warping</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">derivatives_scaled</span><span class="p">[</span><span class="n">cmap_warping</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;First row of image&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="n">data</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raw data with colormap </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;viridis&#39;</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)),</span> <span class="n">data_popped</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Data warped with colormap </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cmap_warping</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">derivatives_scaled</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">data_popped</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4a62bb61b3f1fc2ad9b84402a6c6738ec58a998c11b14ef73f37f89699c62f12.png" src="../../../_images/4a62bb61b3f1fc2ad9b84402a6c6738ec58a998c11b14ef73f37f89699c62f12.png" />
+</div>
+</div>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../jekyllmarkdown/">
+      <i class="fa fa-arrow-circle-left"></i> Blogging with Jupyter Notebooks and Jekyll using nbconvert templates
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../sphinx-copy-buttons/">
+      Adding copy buttons to code blocks in Sphinx <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc">
+  <div class="toc-item">
+  <div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introducing <em>makeitpop</em>, a tool to perceptually warp your data!”</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-makeitpop-do">What does <em>makeitpop</em> do?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-see-it-in-the-real-world">Let’s see it in the real world</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-this-work">How does this work?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perceptual-delta-curves">Perceptual “delta” curves</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-even-warp-1-dimensional-data">We can even warp 1-dimensional data!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-should-we-do">So what should we do?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrapping-up">Wrapping up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addendum-ok-but-how-does-makeitpop-actually-work">Addendum: Ok but how does <code class="docutils literal notranslate"><span class="pre">makeitpop</span></code> <em>actually</em> work?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#some-extras">Some extras</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="toc-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2018/2018-06-04-makeitpop.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+</div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+    <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, Chris Holdgraf.
+      <br/>
+    
+  </p>
+</div>
+  
+    <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
+  0.13.0rc2.dev0.
+</p></div>
+  
+    <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+  
+</div>
+  </footer>
+  </body>
+</html>

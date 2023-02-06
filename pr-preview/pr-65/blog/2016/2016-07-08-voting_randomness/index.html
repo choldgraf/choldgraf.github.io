@@ -1,0 +1,929 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Simulating a national referendum vote" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2016/2016-07-08-voting_randomness/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bothered me, but the method for making such an..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2016_2016-07-08-voting_randomness_5ec739d1.png" />
+<meta property="og:image:alt" content="As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bother..." />
+<meta name="description" content="As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bothered me, but the method for making such an..." />
+
+    <title>Simulating a national referendum vote &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2016/2016-07-08-voting_randomness';</script>
+    <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target="#bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this site..."
+         aria-label="Search this site..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+      
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="me-auto">
+      
+        <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+      
+        <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+        
+          <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-start-items sidebar-primary__section">
+        <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  08 July 2016 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i class="fa-fw fa fa-tags"></i> </span
+  >
+   
+  <a href="../../tag/statistics/">statistics</a>   
+  <a href="../../tag/voting/">voting</a>   
+  <a href="../../tag/fft/">fft</a>   
+  <a href="../../tag/python/">python</a>   
+  <a href="../../tag/computation/">computation</a>  
+</li>
+ 
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/fosdem/"
+      >06 February - Reflections from FOSDEM23: the beautiful chaos of open source in a conference</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/install-github-from-pyproject/"
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/jupyterlite-workshop/"
+      >10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/matplotlib-remote-font/"
+      >06 December - Load and plot a remote font with Matplotlib</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../2022/sphinx-update-config/"
+      >05 December - Update Sphinx configuration during the build by modifying app.config</a
+    >
+  </li>
+  
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/">2023 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2022/">2022 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../2019/">2019 (7)</a>
+  </li>
+    
+  <li>
+    <a href="../../2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                   <p>As a scientist, watching the Brexit vote was a little bit painful. Though probably not for the reason you’re thinking. No, it wasn’t the politics that bothered me, but the method for making such an incredibly important decision. Let me explain…</p>
+<p>Scientists are a bit obsessed with the concept of error. In the context of collecting data and anaylzing it, this takes the form of our “confidence” in the results. If all the data say the same thing, then we are usually pretty confident in the overall message. If the data is more complicated than this (and it always is), then we need to define <em>how confident</em> we are in our conclusions.</p>
+<p>Which brings me to this gigantic nation-wide referendum vote. I couldn’t help but notice that the cutoff for winning / losing the vote was set at 50%. To me, this sounds crazy. If I simply flipped a coin at 50% and tallied the results each time, I’d get some difference between # heads and # tails that would vary around 50%. In the context of voting, it means that a yes/no split that’s really close to 50% might actually be too close to call.</p>
+<p>In science, saying that a number is <em>different</em> from some other number requires that the difference falls outside of a certain region of uncertainty. It’s a way of saying “yeah, I know that random fluctuations cause strange looking data sometimes, but my difference is <em>so far</em> from those fluctuations that I think there’s something real going on.”</p>
+<p>But this is all a little abstract, so let’s try it out on some voting data…</p>
+<section id="simulating-a-national-referendum-vote">
+<h1>Simulating a national referendum vote<a class="headerlink" href="#simulating-a-national-referendum-vote" title="Permalink to this heading">#</a></h1>
+<p>For a referendum vote to go through, it seems reasonable to say “the people need to vote in numbers that are significantly different from random chance. To ask what “random chance” looks like, we can use computer simulations.</p>
+<p>We’ll take on the task of assessing what national votes might look like if they happened completely randomly. Then, we can compare the actual results to our simulation in order to decide if we’ve got a “real” result or not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, import a bunch of stuff that we&#39;ll use later</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initializing the simulation</span>
+<span class="c1"># We&#39;ll simulate ten thousand votes.</span>
+<span class="c1"># On each iteration, generate random votes and calculate the results </span>
+<span class="n">n_votes</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c1"># This is the actual difference in percentage points that we had between the sides</span>
+<span class="n">actual_diff</span> <span class="o">=</span> <span class="mf">51.9</span> <span class="o">-</span> <span class="mf">48.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we’ll create a completely random vote. Each person randomly chooses between the two options: <em>yes</em> and <em>no</em>. Then, we compare the difference in percentage points between the two.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create 10,000 citizens and assign each a random vote</span>
+<span class="n">total_population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e4</span><span class="p">)</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
+    <span class="n">votes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span>
+    <span class="n">yes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">votes</span> <span class="o">&lt;</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span>
+    <span class="n">no</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">votes</span> <span class="o">&gt;</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">total_population</span><span class="p">)</span>
+    
+    <span class="c1"># This is the difference in percentage points</span>
+    <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">yes</span> <span class="o">-</span> <span class="n">no</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">diff</span></code> is a list of numbers representing the lead that “yes” has over “no”.  Remember, we’ve randomly chosen these values, so they are the results you’d get if every single person in the country voted completely randomly.</p>
+<p>How can we summarize the “limits of uncertainty” that <code class="docutils literal notranslate"><span class="pre">diff</span></code> defines? We can use percentiles to get an idea for the variability of this number. We’ll take the 1st and the 99th percentile of our simulated differences as a proxy for the limits of what we’d expect if there were <em>no</em> true opinion in the population</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we calculate 98% confidence interval on the difference</span>
+<span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">99</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we’ll make a plot with 3 things:</p>
+<ol class="arabic simple">
+<li><p>The distribution of all our simulated differences</p></li>
+<li><p>A vertical black line for each limit of the confidence interval.</p></li>
+<li><p>A vertical red line representing the actual difference between yes/no that was reported</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the distribution of differences when voting is *totally* random</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axfill</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">clo</span><span class="p">,</span> <span class="n">chi</span><span class="p">],</span> <span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of totally random splits&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Actual Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence Interval&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/96ad4c6ce6c84e6e538dcda8722efc5916cc48c7b115a2f25ed8fa9271b9d924.png" src="../../../_images/96ad4c6ce6c84e6e538dcda8722efc5916cc48c7b115a2f25ed8fa9271b9d924.png" />
+</div>
+</div>
+<p>For a vote to be “different” than 50%, it’d need to be outside our margin of error described by the grey rectangle. In this case, it seems that a totally random vote yields about 2% points of spread around 0, and that the recorded vote difference (~4%) is outside of the margin of error for 50%. So maybe we can conclude that the Brexit vote was significantly different from a random 50/50 vote.</p>
+<p>BUT - we also know that people don’t vote completely randomly. They are influenced by external factors, they talk to one another, they tend to vote similarly to those around them. This is why everybody could predict which districts would vote “yes” and which would vote “no” well before the election.</p>
+<p>So, let’s build that in to our simulation…</p>
+</section>
+<section id="simulating-a-not-completely-random-population">
+<h1>Simulating a not-completely-random population<a class="headerlink" href="#simulating-a-not-completely-random-population" title="Permalink to this heading">#</a></h1>
+<p>So how exactly do we simulate the fact that people don’t vote <em>totally</em> randomly? There are a lot of ways to do this, but I’ll take the semi-arbitrary decision to say that we could expect the same pattern of voting to occur <em>within a district</em>. That is - we can simulate random <em>district</em> votes instead of random <em>individual</em> votes. Moreover, we’ll then weight that district’s percentage split by an amount proportional to that district’s size. Intuitively it doesn’t seem like this should make much difference in our simulation (we’re still totally randomly choosing the yes/no split), but let’s see what happens…</p>
+<p>First, I grabbed a list of each UK voting district, along with its size…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># UK Population data pulled from</span>
+<span class="c1"># https://en.wikipedia.org/wiki/List_of_English_districts_by_population</span>
+<span class="n">populations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/uk_population.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;District&#39;</span><span class="p">,</span> <span class="s1">&#39;Population&#39;</span><span class="p">,</span> <span class="s1">&#39;Type&#39;</span><span class="p">,</span> <span class="s1">&#39;Ceremonial_County&#39;</span><span class="p">,</span> <span class="s1">&#39;Historic_County&#39;</span><span class="p">,</span> <span class="s1">&#39;English_Region&#39;</span><span class="p">]</span>
+<span class="n">populations</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">header</span>
+
+<span class="c1"># Convert population to numbers</span>
+<span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+<span class="c1"># Now, turn these populations into percentages</span>
+<span class="n">n_areas</span> <span class="o">=</span> <span class="n">populations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">total_population</span> <span class="o">=</span> <span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">populations</span><span class="p">[</span><span class="s1">&#39;Population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_population</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribution of (sorted) region sizes within the UK&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;District number&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Population percentage&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/fde831fae21e83ea76bf7bc4326991a67436b3d6e1703cdfe8aec7d4b198f91e.png" src="../../../_images/fde831fae21e83ea76bf7bc4326991a67436b3d6e1703cdfe8aec7d4b198f91e.png" />
+</div>
+</div>
+<p>Now, we’ll run the simulation. On each iteration, all the districts vote totally randomly. Then, the difference between “yes” and “no” is calculated for each. Finally, these differences are combined in a weighted average, where the weights are proportional to the district sizes. This means that bigger districts have a larger influence on the outcome, mimicking the way that the UK tallies votes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
+    <span class="c1"># Define a random split yes vs. no for each area</span>
+    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_areas</span><span class="p">)</span>
+    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">area_splits</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">area_splits</span><span class="p">])</span>
+    <span class="n">yes</span><span class="p">,</span> <span class="n">no</span> <span class="o">=</span> <span class="n">area_splits</span>
+    
+    <span class="c1"># Now, calculate the difference and average these together, weighted by the area size</span>
+    <span class="n">diffs</span> <span class="o">=</span> <span class="n">yes</span> <span class="o">-</span> <span class="n">no</span>
+    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">])</span>
+    <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">diffs</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we calculate 99% confidence interval on the difference</span>
+<span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the distribution of differences</span>
+<span class="c1"># This time, voting is randomized for each region</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axfill</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">clo</span><span class="p">,</span> <span class="n">chi</span><span class="p">],</span> <span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of votes randomized by region&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Actual Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence Interval&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/7fe7d715f6516cbb8d171a3085b4bbbb87c5bf19acff2488503901655d8b904e.png" src="../../../_images/7fe7d715f6516cbb8d171a3085b4bbbb87c5bf19acff2488503901655d8b904e.png" />
+</div>
+</div>
+<p>Now we see a different sort of picture. Randomizing votes by district instead of by individual greatly increased the variability in the outcome. So much so that the “true” results from the Brexit now fall well within our confidence interval.</p>
+</section>
+<section id="concluding-thoughts">
+<h1>Concluding thoughts?<a class="headerlink" href="#concluding-thoughts" title="Permalink to this heading">#</a></h1>
+<p>So what can we conclude from something like this? The point of this article isn’t to say that this particular simulation proves anything about the Brexit vote, but it does bring up an important point: we need to account for randomness whenever we aggregate data that we’ve collected.</p>
+<p>When deciding whether to make a gigantic decision that will affect millions of people, we should be reasonably certain that the people’s opinion is clear. Choosing a 50/50 split as a cutoff means that we could potentially make such a decision because of random chance. Doesn’t sound like a great way to conduct national policy to me.</p>
+<p>What could we do instead? There’s the hard part. But the short answer is that we could include some idea of random variability in our voting rules. For example, we could require that this kind of “should we deviate from the norm” decision exceeds the results expected from a totally random vote. Settling on this uncertainty limit is not a simple task, but then again I wouldn’t want to bet 2 trillion dollars worth of global economy on a coin flip.</p>
+</section>
+<section id="extra-adding-a-short-term-swing">
+<h1>Extra: Adding a short term swing<a class="headerlink" href="#extra-adding-a-short-term-swing" title="Permalink to this heading">#</a></h1>
+<p>As I mentioned above, deciding how to simulate the votes involves making assumptions about how things will go. I tried to keep the simulation as simple as possible in order to make a point, but you could include extra components as well.</p>
+<p>For example, what if we chose a random subset of districts in the UK and swung their vote several percentage points in one random direction? This might happen if an eye-catching event caused sentiment to momentarily swing in one direction or another. In the long run each district’s sentiment would probably ease back into it’s “natural” split, but since votes happen on one day, these short-term factors can play an important role.</p>
+<p>We can build this into our simulation…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we define a percentage of districts that undergo a sudden swing in voter opinion</span>
+<span class="n">perc_swing_amt</span> <span class="o">=</span> <span class="mf">.1</span>
+<span class="n">perc_swing_districts</span> <span class="o">=</span> <span class="mf">.2</span>
+<span class="n">n_perc_swing_districts</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_areas</span> <span class="o">*</span> <span class="n">perc_swing_districts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now, re-run the simulation including the random swing.</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_votes</span><span class="p">)):</span>
+    <span class="c1"># Define a random split yes vs. no for each area</span>
+    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n_areas</span><span class="p">)</span>
+    
+    <span class="c1"># Define a random swing across a subset of random districts</span>
+    <span class="n">swing</span> <span class="o">=</span> <span class="n">perc_swing_amt</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ixs_swing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_areas</span><span class="p">),</span> <span class="n">n_perc_swing_districts</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">area_splits</span><span class="p">[</span><span class="n">ixs_swing</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">swing</span> <span class="o">+</span> <span class="n">area_splits</span><span class="p">[</span><span class="n">ixs_swing</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    
+    <span class="c1"># Now calculate the opposing side amount and average</span>
+    <span class="n">area_splits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">area_splits</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">area_splits</span><span class="p">])</span>
+    <span class="n">yes</span><span class="p">,</span> <span class="n">no</span> <span class="o">=</span> <span class="n">area_splits</span>
+    
+    <span class="c1"># Now, calculate the difference and average these together, weighted by the area size</span>
+    <span class="n">diffs</span> <span class="o">=</span> <span class="n">yes</span> <span class="o">-</span> <span class="n">no</span>
+    <span class="n">diffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">diffs</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">populations</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">])</span>
+    <span class="n">diff</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">diffs</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here we calculate 99% confidence interval on the difference</span>
+<span class="n">clo</span><span class="p">,</span> <span class="n">chi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="p">[</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">99.5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s look at the distribution of differences</span>
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">actual_diff</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">axfill</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="n">clo</span><span class="p">,</span> <span class="n">chi</span><span class="p">],</span> <span class="o">*</span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">(),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of votes randomized by region&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">ax</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axfill</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Actual Difference&#39;</span><span class="p">,</span> <span class="s1">&#39;Confidence Interval&#39;</span><span class="p">],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/51ad4288f43c44d6ecdfe7b351c9b162eff808a1381082b68789cdb845ff0847.png" src="../../../_images/51ad4288f43c44d6ecdfe7b351c9b162eff808a1381082b68789cdb845ff0847.png" />
+</div>
+</div>
+<p>It looks like now our confidence intervals are even wider than before. This is becase basically any change to our voting system that deviates away from a completely random 50/50 split will increase the variability in the outcome.</p>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../2016-07-02-fft_time/">
+      <i class="fa fa-arrow-circle-left"></i> The beauty of computational efficiency
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../2016-11-01-5_things_scipy_2016/">
+      5 things I learned at SciPy <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc">
+  <div class="toc-item">
+  <div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Simulating a national referendum vote</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-a-not-completely-random-population">Simulating a not-completely-random population</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#concluding-thoughts">Concluding thoughts?</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-adding-a-short-term-swing">Extra: Adding a short term swing</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="toc-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2016/2016-07-08-voting_randomness.ipynb.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+</div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+    <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, Chris Holdgraf.
+      <br/>
+    
+  </p>
+</div>
+  
+    <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
+  0.13.0rc2.dev0.
+</p></div>
+  
+    <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+  
+</div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,810 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<meta property="og:title" content="Load and plot a remote font with Matplotlib" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://chrisholdgraf.com/blog/2022/matplotlib-remote-font/" />
+<meta property="og:site_name" content="Chris Holdgraf" />
+<meta property="og:description" content="As part of my sphinx-social-previews prototype, I wanted to be able to use the Roboto Font from Google in image previews. However, Roboto is often not loaded on your local filesystem, so it took so..." />
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_matplotlib-remote-font_09e289b8.png" />
+<meta property="og:image:alt" content="As part of my sphinx-social-previews prototype, I wanted to be able to use the Roboto Font from Google in image previews. However, Roboto is often not loaded..." />
+<meta name="description" content="As part of my sphinx-social-previews prototype, I wanted to be able to use the Roboto Font from Google in image previews. However, Roboto is often not loaded on your local filesystem, so it took so..." />
+
+    <title>Load and plot a remote font with Matplotlib &#8212; Chris Holdgraf</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=961bdc270ee8274e4563" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-88310237-1"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-88310237-1');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2022/matplotlib-remote-font';</script>
+    <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
+    <link rel="author" title="About these documents" href="../../../about/" />
+    <link rel="index" title="Index" href="../../../genindex/" />
+    <link rel="search" title="Search" href="../../../search/" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="Chris Holdgraf"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target="#bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this site..."
+         aria-label="Search this site..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+      
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Chris Holdgraf</p>
+  
+</a>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="me-auto">
+      
+        <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+      
+        <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+      
+    </div>
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-center-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul id="navbar-main-elements" class="navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../about/">
+                        About me
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../projects/">
+                        Projects
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../publications/">
+                        Published
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../../talks/">
+                        Talks
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../../">
+                        Blog
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-end-item"><button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button></div>
+        
+          <div class="navbar-end-item"><ul id="navbar-icon-links"
+    class="navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
+            <label class="sr-only">Twitter</label></a>
+        </li>
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
+            <label class="sr-only">Mastodon</label></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
+            <label class="sr-only">Blog RSS feed</label></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-start-items sidebar-primary__section">
+        <div class="sidebar-start-items__item">  
+<h2>
+   <i class="fa fa-calendar"></i>
+  06 December 2022 
+</h2>
+
+<ul>
+      
+<li id="category">
+  <span><i class="fa-fw fa fa-folder-open"></i></span
+  >
+   
+  <a href="../../category/til/">til</a>  
+</li>
+ 
+<li id="tags">
+  <span><i
+      class="fa-fw fa fa-tag"
+    ></i
+    ></span
+  >
+   
+  <a href="../../tag/matplotlib/">matplotlib</a>  
+</li>
+ 
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/fosdem/"
+      >06 February - Reflections from FOSDEM23: the beautiful chaos of open source in a conference</a
+    >
+  </li>
+  
+  <li>
+    <a href="../install-github-from-pyproject/"
+      >31 December - Install dependencies from GitHub with pyproject.toml or requirements.txt</a
+    >
+  </li>
+  
+  <li>
+    <a href="../jupyterlite-workshop/"
+      >10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool</a
+    >
+  </li>
+  
+  <li>
+    <a href="../sphinx-update-config/"
+      >05 December - Update Sphinx configuration during the build by modifying app.config</a
+    >
+  </li>
+  
+  <li>
+    <a href="../precommit-autoupdate/"
+      >03 December - Automatically update pre-commit hook versions</a
+    >
+  </li>
+  
+</ul>
+</div>
+        <div class="sidebar-start-items__item">
+<h3>
+  <a href="../../archive/">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../2023/">2023 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../">2022 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2021/">2021 (1)</a>
+  </li>
+    
+  <li>
+    <a href="../../2020/">2020 (4)</a>
+  </li>
+    
+  <li>
+    <a href="../../2019/">2019 (7)</a>
+  </li>
+    
+  <li>
+    <a href="../../2018/">2018 (11)</a>
+  </li>
+    
+  <li>
+    <a href="../../2017/">2017 (3)</a>
+  </li>
+    
+  <li>
+    <a href="../../2016/">2016 (6)</a>
+  </li>
+    
+  <li>
+    <a href="../../2015/">2015 (4)</a>
+  </li>
+   
+</ul>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article"></div>
+              
+              
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                   <section id="load-and-plot-a-remote-font-with-matplotlib">
+<h1>Load and plot a remote font with Matplotlib<a class="headerlink" href="#load-and-plot-a-remote-font-with-matplotlib" title="Permalink to this heading">#</a></h1>
+<p>As part of <a class="reference external" href="https://github.com/choldgraf/sphinx-social-previews">my <code class="docutils literal notranslate"><span class="pre">sphinx-social-previews</span></code></a> prototype, I wanted to be able to use the <a class="reference external" href="https://fonts.google.com/specimen/Roboto">Roboto Font from Google</a> in image previews.
+However, Roboto is often not loaded on your local filesystem, so it took some digging to figure out how to make it possible to load via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">Matplotlib’s text plotting functionality</a>.</p>
+<p>Here’s the solution that finally worked for me, inspired <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">from this Tweet with a similar implementation</a> from <a class="reference external" href="https://github.com/whitead/dmol-book/blob/master/package/dmol/__init__.py">the <code class="docutils literal notranslate"><span class="pre">dmol</span></code> book</a>.</p>
+<p>Below I’ll use <a class="reference external" href="http://mozilla.github.io/Fira/">the <code class="docutils literal notranslate"><span class="pre">Fira</span> <span class="pre">Code</span></code> font from Mozilla</a> but you could do this with any open font that you have the <code class="docutils literal notranslate"><span class="pre">.ttf</span></code> file for.</p>
+<section id="create-a-temporary-folder-and-download-the-font-file">
+<h2>Create a temporary folder and download the font file<a class="headerlink" href="#create-a-temporary-folder-and-download-the-font-file" title="Permalink to this heading">#</a></h2>
+<p>I’ll show how to do this with a local folder, so it’ll re-download each time you run the code.
+Alternatively you could download the font locally and just register the path instead of downloading it:</p>
+<p>First, <strong>download the <code class="docutils literal notranslate"><span class="pre">.ttf</span></code> of the font locally</strong> via <code class="docutils literal notranslate"><span class="pre">urlretrieve</span></code>.
+For example, the <code class="docutils literal notranslate"><span class="pre">Fira</span> <span class="pre">Code</span></code> font from Mozilla is located <a class="reference external" href="https://github.com/google/fonts/raw/main/ofl/firacode/FiraCode%5Bwght%5D.ttf">at this URL</a>.
+To download it locally into a <strong>temporary folder</strong> using <a class="reference external" href="https://docs.python.org/3/library/tempfile.html#tempfile.mkdtemp">the <code class="docutils literal notranslate"><span class="pre">tempfile.mkdtemp</span></code> function</a>, run this code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">urllib</span>
+<span class="kn">from</span> <span class="nn">rich</span> <span class="kn">import</span> <span class="nb">print</span>
+
+<span class="c1"># Create a temporary directory for the font file</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
+
+<span class="c1"># URL and downloaded path of the font</span>
+<span class="n">url_font</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/google/fonts/raw/main/ofl/firacode/FiraCode%5Bwght%5D.ttf&quot;</span>
+<span class="n">path_font</span> <span class="o">=</span> <span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;Fira-Code.ttf&quot;</span>
+
+
+<span class="c1"># Download the font to our temporary directory</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url_font</span><span class="p">,</span> <span class="n">path_font</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;/tmp/tmpwt1off96/Fira-Code.ttf&#39;),
+ &lt;http.client.HTTPMessage at 0x7f1f5d37cbe0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="link-the-font-with-the-font-manager-api">
+<h2>Link the font with the <code class="docutils literal notranslate"><span class="pre">font_manager</span></code> API<a class="headerlink" href="#link-the-font-with-the-font-manager-api" title="Permalink to this heading">#</a></h2>
+<p>Now that the file is loaded, we can link it using <a class="reference external" href="https://matplotlib.org/stable/api/font_manager_api.html">Matplotlib’s <code class="docutils literal notranslate"><span class="pre">font_manager</span></code> API</a>.
+This allows you to <strong>register fonts that Matplotlib knows how to use</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">font_manager</span>
+
+<span class="c1"># Create a Matplotlib Font object from our `.ttf` file</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">font_manager</span><span class="o">.</span><span class="n">FontEntry</span><span class="p">(</span><span class="n">fname</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">path_font</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fira-Downloaded&quot;</span><span class="p">)</span>
+
+<span class="c1"># Register this object with Matplotlib&#39;s ttf list</span>
+<span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">ttflist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+<span class="c1"># Print the last few items to see what they look like</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">ttflist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">[</span>
+    <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
+        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/usr/share/fonts/truetype/liberation/LiberationSansNarrow-Regular.ttf'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'Liberation Sans Narrow'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">variant</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">weight</span>=<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>,
+        <span style="color: #808000; text-decoration-color: #808000">stretch</span>=<span style="color: #008000; text-decoration-color: #008000">'condensed'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">size</span>=<span style="color: #008000; text-decoration-color: #008000">'scalable'</span>
+    <span style="font-weight: bold">)</span>,
+    <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
+        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'Liberation Serif'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">variant</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">weight</span>=<span style="color: #008080; text-decoration-color: #008080; font-weight: bold">400</span>,
+        <span style="color: #808000; text-decoration-color: #808000">stretch</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">size</span>=<span style="color: #008000; text-decoration-color: #008000">'scalable'</span>
+    <span style="font-weight: bold">)</span>,
+    <span style="color: #800080; text-decoration-color: #800080; font-weight: bold">FontEntry</span><span style="font-weight: bold">(</span>
+        <span style="color: #808000; text-decoration-color: #808000">fname</span>=<span style="color: #008000; text-decoration-color: #008000">'/tmp/tmpwt1off96/Fira-Code.ttf'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">name</span>=<span style="color: #008000; text-decoration-color: #008000">'Fira-Downloaded'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">style</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">variant</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">weight</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">stretch</span>=<span style="color: #008000; text-decoration-color: #008000">'normal'</span>,
+        <span style="color: #808000; text-decoration-color: #808000">size</span>=<span style="color: #008000; text-decoration-color: #008000">'medium'</span>
+    <span style="font-weight: bold">)</span>
+<span style="font-weight: bold">]</span>
+</pre>
+</div></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To list all of the fonts that Matplotlib knows how to plot, inspect the list <code class="docutils literal notranslate"><span class="pre">matplotlib.font_manager.fontManager.ttflist</span></code>.</p>
+</div>
+</section>
+<section id="make-a-plot-with-this-font">
+<h2>Make a plot with this font<a class="headerlink" href="#make-a-plot-with-this-font" title="Permalink to this heading">#</a></h2>
+<p>Now that we’ve registered the font, we can plot it with <code class="docutils literal notranslate"><span class="pre">ax.text</span></code>.
+To do so, use the <code class="docutils literal notranslate"><span class="pre">plt.rc_context</span></code> context manager to temporarily update our default font:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># This will now render as a `Roboto Flex` font</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="s2">&quot;The default font!&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">})</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="s2">&quot;A Matplotlib font&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">:</span> <span class="s2">&quot;cmmi10&quot;</span><span class="p">})</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="s2">&quot;The Fira Code font!&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fontsize&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s2">&quot;family&quot;</span><span class="p">:</span> <span class="n">font</span><span class="o">.</span><span class="n">name</span><span class="p">})</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/012b3beed77c9e61ddc7d3adbda77bcccf684d9c2c28b6a5a3f220548b99c5d8.png" src="../../../_images/012b3beed77c9e61ddc7d3adbda77bcccf684d9c2c28b6a5a3f220548b99c5d8.png" />
+</div>
+</div>
+<p>And that’s it!</p>
+</section>
+</section>
+
+<div class="section">
+    
+
+<div class="section">
+  <span style="float: left">
+     
+    <a href="../sphinx-update-config/">
+      <i class="fa fa-arrow-circle-left"></i> Update Sphinx configuration during the build by modifying app.config
+    </a>
+    
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right">
+     
+    <a href="../jupyterlite-workshop/">
+      Report from the JupyterLite workshop: WebAssembly is pretty cool <i
+        class="fa fa-arrow-circle-right"
+      ></i
+      >
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+<!-- Add a comment box underneath the page's content -->
+<script src="https://giscus.app/client.js"
+        data-repo="choldgraf/choldgraf.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk1MTIzNzA1NA=="
+        data-category="Blog comments"
+        data-category-id="DIC_kwDOAw3Qvs4CAV4E"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc">
+  <div class="toc-item">
+  <div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-temporary-folder-and-download-the-font-file">Create a temporary folder and download the font file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-the-font-with-the-font-manager-api">Link the font with the <code class="docutils literal notranslate"><span class="pre">font_manager</span></code> API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-plot-with-this-font">Make a plot with this font</a></li>
+</ul>
+  </nav></div>
+
+  <div class="toc-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/blog/2022/matplotlib-remote-font.md.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+</div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner"></div>
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=961bdc270ee8274e4563"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=961bdc270ee8274e4563"></script>
+
+  <footer class="bd-footer"><div class="bd-footer__inner container">
+  
+    <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022, Chris Holdgraf.
+      <br/>
+    
+  </p>
+</div>
+  
+    <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
+  0.13.0rc2.dev0.
+</p></div>
+  
+    <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+  
+</div>
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+/* Theme over-rides */
+h1, h2, h3, h4, h5 {
+  color: var(--pst-color-text-muted);
+}
+h1, h2 {
+  font-weight: bold;
+}
+
+
+/* Bio area */
+div.profile-pic {
+    margin-top: 1em;
+}
+
+div.profile-pic img {
+    border-radius: 500px;
+    width: 80%;
+    max-width: 190px;
+    margin: 0 auto;
+    display: block;
+}
+
+.bio-info {
+    margin: 1em auto;
+    max-width: 220px;
+}
+
+.name {
+    font-size: 1.5em;
+}
+
+.focusareas {
+    font-size: .9em;
+    font-weight: bold;
+}
+
+.whatido {
+    margin-top: 1em;
+}
+
+/* Timeline CSS */
+div.timeline div.card {
+    border: 0px;
+}
+
+div.timeline div.left {
+    text-align: right;
+    border-right: 1px solid var(--pst-color-border);
+}
+
+div.timeline div.entry::after {
+    width: 1em;
+    height: 1em;
+    background: var(--pst-color-background);
+    border-radius: 50%;
+    content: "";
+    top: 0.8rem;
+    display: block;
+    position: relative;
+    border: 1px var(--pst-color-text-base) solid;
+    z-index: 999;
+}
+
+div.timeline div.entry.left::after {
+    right: -1.3em;
+}
+
+div.timeline div.entry.right::after {
+    left: -1.3em;
+}
+
+
+/* Blog post comments */
+.gsc-reactions {
+    margin-top: 1em;
+}
+
+/* Twitter embed CSS */
+div.twitter-tweet {
+    margin-left: auto;
+    margin-right: auto;
+}
