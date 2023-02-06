@@ -1,9 +1,10 @@
-ablog --pre
+ablog>=0.11.0rc2
 docutils
 ipython!=8.7.0
 matplotlib
 myst_nb
 MyST-Parser
+pydata-sphinx-theme>=0.13.0rc1
 rich
 sphinx
 sphinx-autobuild
@@ -13,5 +14,4 @@ sphinx-examples
 sphinxcontrib-bibtex
 sphinxext-opengraph
 sphinxext-rediraffe
-git+https://github.com/pydata/pydata-sphinx-theme
 git+https://github.com/choldgraf/sphinxext-opengraph@feat-social-card-previews

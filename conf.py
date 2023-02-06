@@ -70,8 +70,8 @@ html_sidebars = {
     "publications": ["hello.html"],
     "projects": ["hello.html"],
     "talks": ["hello.html"],
-    "blog": ["categories.html", "tagcloud.html", "archives.html"],
-    "blog/**": ["postcard.html", "recentposts.html", "archives.html"],
+    "blog": ["ablog/categories.html", "ablog/tagcloud.html", "ablog/archives.html"],
+    "blog/**": ["ablog/postcard.html", "ablog/recentposts.html", "ablog/archives.html"],
 }
 
 # OpenGraph config
