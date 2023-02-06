@@ -21,7 +21,7 @@ My blog ✍️
 :::
 ::::
 
-Below is a list of recent blog posts.
+## Recent blog posts
 
 ```{postlist}
 :date: "%Y-%m-%d"
