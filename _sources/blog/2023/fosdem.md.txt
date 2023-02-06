@@ -4,7 +4,7 @@ date: "2023-02-06"
 category: "report"
 ---
 
-# Reflections from FOSDEM23: the beautiful chaos of open source in a conference
+# Report from FOSDEM23: beautiful chaos in a conference
 
 I recently attended [FOSDEM 2023](https://fosdem.org/2023/), my first FOSDEM!
 I had heard of the conference before, but hadn't really looked into it too much.
