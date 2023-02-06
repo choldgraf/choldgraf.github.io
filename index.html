@@ -158,10 +158,6 @@
   
   
   
-  
-  
-  
-  
     <p class="title logo__title">Chris Holdgraf</p>
   
 </a>
@@ -454,7 +450,6 @@
   
   
   <div class="sidebar-end-items sidebar-primary__section">
-      <div class="sidebar-end-items__item"></div>
   </div>
   
   <div id="rtd-footer-container"></div>
@@ -470,6 +465,9 @@
               
               
 
+              
+                
+<div id="searchbox"></div>
                 <article class="bd-article" role="main">
                    <section id="chris-holdgraf-about-me">
 <h1>Chris Holdgraf - about me<a class="headerlink" href="#chris-holdgraf-about-me" title="Permalink to this heading">#</a></h1>
@@ -499,8 +497,15 @@
 </div>
 </div>
 </div>
-<p>Below is a list of recent blog posts.</p>
+<section id="recent-blog-posts">
+<h2>Recent blog posts<a class="headerlink" href="#recent-blog-posts" title="Permalink to this heading">#</a></h2>
 <ul class="postlist-style-none postlist">
+<li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2023/fosdem/">Reflections from FOSDEM23: the beautiful chaos of open source in a conference</a> - 2023-02-06</p>
+<p class="ablog-post-excerpt">I recently attended <a class="reference external" href="https://fosdem.org/2023/">FOSDEM 2023</a>, my first FOSDEM!
+I had heard of the conference before, but hadn’t really looked into it too much.
+Fortunately, after some urging from friends and social media, I took a deeper look and decided I should join to see what all the fuss was about.</p>
+<p class="ablog-post-excerpt">Here are a few things that I noticed while I was there.</p>
+</li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/install-github-from-pyproject/">Install dependencies from GitHub with pyproject.toml or requirements.txt</a> - 2022-12-31</p>
 <p class="ablog-post-excerpt">This is a short post to demonstrate how to install packages directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> or <code class="docutils literal notranslate"><span class="pre">requirementst.txt</span></code>, including custom branches and commits.
 It will focus on <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> because this is newer and there’s less information about it, but the general pattern holds for <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> as well.</p>
@@ -517,7 +522,7 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
 <p class="ablog-post-excerpt">As part of <a class="reference external" href="https://github.com/choldgraf/sphinx-social-previews">my <code class="docutils literal notranslate"><span class="pre">sphinx-social-previews</span></code></a> prototype, I wanted to be able to use the <a class="reference external" href="https://fonts.google.com/specimen/Roboto">Roboto Font from Google</a> in image previews.
 However, Roboto is often not loaded on your local filesystem, so it took some digging to figure out how to make it possible to load via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">Matplotlib’s text plotting functionality</a>.</p>
 <p class="ablog-post-excerpt">Here’s the solution that finally worked for me, inspired <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">from this Tweet with a similar implementation</a> from <a class="reference external" href="https://github.com/whitead/dmol-book/blob/master/package/dmol/__init__.py">the <code class="docutils literal notranslate"><span class="pre">dmol</span></code> book</a>.</p>
-<img alt="_images/30cb13b66451a255ac673f98ac080f9e8a9fe21dd6e8fbd5103d921011b30811.png" class="ablog-post-excerpt" src="_images/30cb13b66451a255ac673f98ac080f9e8a9fe21dd6e8fbd5103d921011b30811.png" />
+<img alt="_images/012b3beed77c9e61ddc7d3adbda77bcccf684d9c2c28b6a5a3f220548b99c5d8.png" class="ablog-post-excerpt" src="_images/012b3beed77c9e61ddc7d3adbda77bcccf684d9c2c28b6a5a3f220548b99c5d8.png" />
 </li>
 <li class="ablog-post"><p class="ablog-post-title"><a class="reference internal" href="blog/2022/sphinx-update-config/">Update Sphinx configuration during the build by modifying app.config</a> - 2022-12-05</p>
 <p class="ablog-post-excerpt">As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
@@ -839,6 +844,7 @@ Here are a couple of thoughts from the experience.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
+</section>
 
 <div class="section">
    
@@ -902,7 +908,7 @@ Here are a couple of thoughts from the experience.</p>
     <div class="footer-item">
   <p class="copyright">
     
-      ©; Copyright 2022, Chris Holdgraf.
+      © Copyright 2022, Chris Holdgraf.
       <br/>
     
   </p>
@@ -911,7 +917,7 @@ Here are a couple of thoughts from the experience.</p>
     <div class="footer-item"><p class="theme-version">
   Built with the
   <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
-  0.12.1rc1.dev0.
+  0.13.0rc2.dev0.
 </p></div>
   
     <div class="footer-item">

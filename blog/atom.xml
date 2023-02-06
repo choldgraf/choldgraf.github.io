@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2023-01-08T15:05:46.759473+00:00</updated>
+  <updated>2023-02-06T12:34:25.033287+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.33">ABlog</generator>
@@ -8932,8 +8932,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmp6qjdwzgj/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f5e84ee2020&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpq39z6oc0/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7fd481fa8dc0&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8960,25 +8960,25 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Mono'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationSansNarrow-BoldItalic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Sans Narrow'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'condensed'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSans-Oblique.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Sans'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'oblique'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmp6qjdwzgj/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpq39z6oc0/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
@@ -9016,7 +9016,7 @@ To do so, use the &lt;code class="docutils literal notranslate"&gt;&lt;span clas
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;img alt="../_images/30cb13b66451a255ac673f98ac080f9e8a9fe21dd6e8fbd5103d921011b30811.png" src="../_images/30cb13b66451a255ac673f98ac080f9e8a9fe21dd6e8fbd5103d921011b30811.png" /&gt;
+&lt;img alt="../_images/012b3beed77c9e61ddc7d3adbda77bcccf684d9c2c28b6a5a3f220548b99c5d8.png" src="../_images/012b3beed77c9e61ddc7d3adbda77bcccf684d9c2c28b6a5a3f220548b99c5d8.png" /&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;p&gt;And that’s it!&lt;/p&gt;
@@ -9183,5 +9183,143 @@ It will focus on pyprojects.toml because this is newer and there’s less inform
 For example, to specify Sphinx as a dependency:</summary>
     <category term="softwaredevelopment" label="software development"/>
     <published>2022-12-31T00:00:00+00:00</published>
+  </entry>
+  <entry>
+    <id>https://chrisholdgraf.com/blog/2023/fosdem/</id>
+    <title>Reflections from FOSDEM23: the beautiful chaos of open source in a conference</title>
+    <updated>2023-02-06T00:00:00+00:00</updated>
+    <content type="html">&lt;section id="reflections-from-fosdem23-the-beautiful-chaos-of-open-source-in-a-conference"&gt;
+
+&lt;p&gt;I recently attended &lt;a class="reference external" href="https://fosdem.org/2023/"&gt;FOSDEM 2023&lt;/a&gt;, my first FOSDEM!
+I had heard of the conference before, but hadn’t really looked into it too much.
+Fortunately, after some urging from friends and social media, I took a deeper look and decided I should join to see what all the fuss was about.&lt;/p&gt;
+&lt;p&gt;Here are a few things that I noticed while I was there.&lt;/p&gt;
+&lt;section id="fosdem-is-beautiful-chaos"&gt;
+&lt;h2&gt;FOSDEM is beautiful chaos&lt;/h2&gt;
+&lt;p&gt;I feel like FOSDEM tries to bring the “beautiful chaos” of open source communities into a conference setting.
+There’s no registration, and little “conference infrastructure” compared to other conferences of its size and scope.
+People who attended for the first time seemed to be overwhelmed in a similar way to when they navigate a large open source community for the first time.&lt;/p&gt;
+&lt;p&gt;The conference relies heavily on volunteer labor, and only has a few roles and responsibilities where they deploy paid resources and equipment.
+Generally speaking, this seemed to work surprisingly well!
+The conference is &lt;strong&gt;very big&lt;/strong&gt;, and the fact that thousands of people can swarm a university in Brussels and largely have a productive time is a testament to FOSDEM’s ability to self-organize.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="but-yes-it-is-very-chaotic"&gt;
+&lt;h2&gt;But yes, it is very chaotic 🙃&lt;/h2&gt;
+&lt;p&gt;That said, the chaos occasionally gets in the way of having a good conference experience.
+I probably spent 20% of my time being confused about how to find the talk I was trying to attend, and it didn’t help that the &lt;a class="reference external" href="https://www.ulb.be/en"&gt;ULB Campus&lt;/a&gt; is large and hard to navigate.&lt;/p&gt;
+&lt;p&gt;There was also a lack of organization-wide policy and enforcement for a few high-level things.
+For example, there didn’t seem to be any kind of official policy towards COVID and masking procedures.
+The general vibe seemed to be “if you’re feeling sick you should probably wear a mask or stay home”, but there was no mechanism to enforce this.
+Some sessions had facilitators with stronger opinions on this, some had less-strong opinions, but your experience depended a lot on the specific groups you were hanging around with.&lt;/p&gt;
+&lt;p&gt;I suspect that this makes FOSDEM less accessible.
+Without a strong policy for community behavior in certain key areas, people will not know what to expect when they arrive.
+With enough uncertainty over important topics (e.g. if a person who really needs to avoid COVID), some people will simply filter themselves out.
+I bet this is one place where FOSDEM suffers from its lack of structure or resources - something like setting and enforcing a COVID policy takes a &lt;em&gt;lot&lt;/em&gt; of work and resources.
+It reminds me of the community policing and policy-setting parts of open communities that are often under-apprciated, very stressful, and very complex.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="it-is-huge-as-is-the-open-source-community"&gt;
+&lt;h2&gt;It is HUGE, as is the open source community&lt;/h2&gt;
+&lt;p&gt;FOSDEM reminded me just how gigantic the open source community is.
+I tend to spend my time in the scientific python and open research space (there was an &lt;a class="reference external" href="https://fosdem.org/2023/schedule/track/open_research_tools_and_technology/"&gt;Open Research Tools and Technology devroom&lt;/a&gt;), but this was just a &lt;em&gt;tiny&lt;/em&gt; part of the FOSDEM conference.&lt;/p&gt;
+&lt;p&gt;I often think of &lt;a class="reference external" href="https://jupyter.org"&gt;Project Jupyter&lt;/a&gt; as a “large” open source project, but you really get a feel for how tiny it is when see how many people show up representing &lt;a class="reference external" href="https://getfedora.org/"&gt;Fedora Linux&lt;/a&gt;.
+There are large and complex communities out there, with their own stakeholder dynamics and focus areas.
+A place like FOSDEM is an opportunity to cross community boundaries and learn about the problems others have, and how they’re trying to solve them.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="all-of-our-communities-have-the-same-problems"&gt;
+&lt;h2&gt;All of our communities have the same problems&lt;/h2&gt;
+&lt;p&gt;And on that note, every community seems to have the same problems.
+I spoke with a number of folks from adjacent communities, and many of the stories were the same:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;p&gt;We want to give sub-communities the freedom to do what they want, but find that it becomes hard to get everybody moving in the same direction.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We have a few large stakeholders that employ people to work directly on the project, and this gives them a level of power that many are not comfortable with.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We have a hard time attracting new core contributors unless they end up working at a specific subset of companies.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We are worried about company XXX building a similar tool that competes with our open source project because they didn’t want to abide by our community governance.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We systemically under-resource community guidance, management, and strategy efforts.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We are worried about our increasing reliance on a software and services that are controlled by a few giant tech companies.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The list goes on.
+In some ways, this was reassuring, the problems in all of my communities are certainly not unique.
+In other ways, it was discouraging that so many of these projects have the same problems and yet none have really managed to solve them.
+Maybe that’s because solving these problems can’t happen with a single action, but more like a series of mini-solutoins and continued improvements over time.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="it-is-really-a-bunch-of-mini-conferences-all-strung-together"&gt;
+&lt;h2&gt;It is really a bunch of mini-conferences all strung together&lt;/h2&gt;
+&lt;p&gt;As a result of a general lack of structure, FOSDEM really felt like a bunch of little conferences all strung together.
+The main “unit” of the conference is a &lt;a class="reference external" href="https://submission.fosdem.org/submission/devroom"&gt;&lt;strong&gt;devroom&lt;/strong&gt;&lt;/a&gt;, which is a way to organize talks and people around a particular subject.&lt;/p&gt;
+&lt;p&gt;Many people seemed to pick a single devroom and stick with it the whole time.
+You could also tell that there was a lot of cultural correlation between people in the same devroom, so you could have more consistent behavioal norms within each one.
+Devrooms were places where colleagues were more likely too meet up with each other, and the way to ensure you’re meeting other people with similar interests.
+You heard statements like “I’m going to spend the day hanging out in the security devroom.”
+Some of the devrooms even provided their own baked goods and snacks for those who attended!&lt;/p&gt;
+&lt;p&gt;If I go to FOSDEM again, I’ll pay more attention to the devrooms and pick one to three where I should hang out and learn.
+This seems like a better strategy than cherry-picking each talk.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="the-community-devroom-is-pretty-great"&gt;
+&lt;h2&gt;The community devroom is pretty great&lt;/h2&gt;
+&lt;p&gt;The devroom where I spent the most time was &lt;a class="reference external" href="https://fosdem.org/2023/schedule/event/welcome_community/"&gt;the community devroom&lt;/a&gt;.
+Perhaps unsurprisingly, I really enjoyed the talks that I heard, and felt that most people there came with a similar perspective to myself.
+I was happy to see that there was so much emphasis on the human and community aspects of open source, especially in light of recent &lt;a class="reference external" href="https://arstechnica.com/gadgets/2021/04/free-software-foundation-and-rms-issue-statements-on-stallmans-return/"&gt;cultural tensions in the “Free Software Foundation” world&lt;/a&gt;.
+It was worried that there would be a “it’s just code, don’t bother me with human problems like diversity and inclusion” vibe, but for the spaces that I participated in, this was not a huge issue (I suspect it would have been different in other devrooms).&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="we-don-t-do-that-here-is-a-nice-tool-for-policing-behavior"&gt;
+&lt;h2&gt;“We don’t do that here” is a nice tool for policing behavior&lt;/h2&gt;
+&lt;p&gt;One thing that stood out to me was the following phrase&lt;a class="footnote-reference brackets" href="#thx" id="id1" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;1&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;div&gt;&lt;p&gt;We don’t do that here.&lt;/p&gt;
+&lt;/div&gt;&lt;/blockquote&gt;
+&lt;p&gt;This described a way to politely but firmly tell somebody that their behavior wasn’t acceptible in a community.
+It is a way of making expectations clear without opening the floor up for debate about the cultural expectations themselves (there’s a time and a place for this, but the middle of a violation of that culture is not the moment to debate it).
+I’ll spend more time thinking about this and how I can practice it in my own work.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="people-were-more-explicit-about-their-open-source-and-employer-hats"&gt;
+&lt;h2&gt;People were more explicit about their open-source and employer hats&lt;/h2&gt;
+&lt;p&gt;One thing that I felt in almost all of the devrooms was a tension between “corporate” and “non-corporate” tech.
+On the one hand, you have those driven by ideals and values who believe in “Free as in speech” open source and see corporations as inherently mis-aligned with those ideals.
+On the other hand, there’s representation from a &lt;em&gt;lot&lt;/em&gt; of big tech companies at the conference and they clearly see it as a strategically important conference to attend.
+This is something that I’ve felt in basically every tech conference, but especially felt it at FOSDEM&lt;a class="footnote-reference brackets" href="#other-conferences" id="id2" role="doc-noteref"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;2&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;One way that this became clear is the fact that more people spoke about “hats” at this conference than I usually notice.
+I heard several stories of people intentionally not attending their company’s booth because they explicitly wanted to attend via their affiliation to an open source project.
+In some cases I heard of people not reimbursing their expenses because they didn’t want to feel beholden to their employer’s strategy at the conference.
+I thought that was pretty cool, as I’m a big fan of recognizing that employers and open source communities have distinct missions and goals.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="more-conferences-need-to-be-free"&gt;
+&lt;h2&gt;More conferences need to be free&lt;/h2&gt;
+&lt;p&gt;Finally, it really stood out to me that FOSDEM was free for &lt;strong&gt;anybody to attend&lt;/strong&gt;.
+I had many conversations with people who noted that they wouldn’t have attended if they had to pay a significant cost to do so (travel and hotels is already expensive enough!), and the extra effort of requiring “applications for financial aid” is both off-putting and a burden (why should people have to do extra work to attend just because they don’t make as much money?).&lt;/p&gt;
+&lt;p&gt;I wish that more conferences found a way to make attendence &lt;strong&gt;free with zero extra effort from attendees&lt;/strong&gt;.
+For example, I &lt;a class="reference external" href="https://source.opennews.org/articles/one-easy-way-make-conference-ticket-prices-more-eq/"&gt;really like how Open News prototyped a “pay what you can” model&lt;/a&gt; for their annual conference.
+If that means that we need to say in cities and venues with lower cost, and lower our production values a little bit, then I think that is 100% worth it.&lt;/p&gt;
+&lt;p&gt;I know that it takes (some financial) resources to run something complex like a conference.
+But come on, many of the organizations represented there have market capitalizations in the billions, we should be able to find a way to subsidize many tickets down to zero.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="a-conference-that-reflects-the-open-source-community"&gt;
+&lt;h2&gt;A conference that reflects the open source community&lt;/h2&gt;
+&lt;p&gt;It really is extraordinary that a conference like FOSDEM exists in the first place.
+The fact that thousands of people around the world just…show up in Brussles and arrive at the same place without any official registration is pretty cool.
+It reminds me of the ways that many people are surprised when they first learn how open source communities work.&lt;/p&gt;
+&lt;p&gt;And just as with open source communities, I suspect that there is &lt;strong&gt;a lot of unpaid and under-appreciated labor&lt;/strong&gt; that goes into organizing FOSDEM.
+So a million thanks to the organizers and those who participated.
+It is a conference format and a cultural phenomenon that shows off the power of open community models (as well as some of its challenges).
+Maybe I’ll see you in a devroom next time!&lt;/p&gt;
+&lt;hr class="footnotes docutils" /&gt;
+&lt;aside class="footnote-list brackets"&gt;
+&lt;aside class="footnote brackets" id="thx" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="#id1"&gt;1&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;This was originally &lt;a class="reference external" href="https://thagomizer.com/blog/2017/09/29/we-don-t-do-that-here.html"&gt;written about in this blog post from Aja Hammerly&lt;/a&gt; and described at the conference in &lt;a class="reference external" href="https://floord.github.io/"&gt;a talk by Floor’d&lt;/a&gt; for teaching me about it in their talk.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;aside class="footnote brackets" id="other-conferences" role="note"&gt;
+&lt;span class="label"&gt;&lt;span class="fn-bracket"&gt;[&lt;/span&gt;&lt;a role="doc-backlink" href="#id2"&gt;2&lt;/a&gt;&lt;span class="fn-bracket"&gt;]&lt;/span&gt;&lt;/span&gt;
+&lt;p&gt;Perhaps that is because the corporate side of tech has largely won the battle in many other tech conferences that have become expensive and inaccessible to many people who refuse to join the corporate secetor.&lt;/p&gt;
+&lt;/aside&gt;
+&lt;/aside&gt;
+&lt;/section&gt;
+&lt;/section&gt;
+</content>
+    <link href="https://chrisholdgraf.com/blog/2023/fosdem/" rel="alternate"/>
+    <summary>I recently attended FOSDEM 2023, my first FOSDEM!
+I had heard of the conference before, but hadn’t really looked into it too much.
+Fortunately, after some urging from friends and social media, I took a deeper look and decided I should join to see what all the fuss was about.Here are a few things that I noticed while I was there.</summary>
+    <category term="cloud" label="cloud"/>
+    <published>2023-02-06T00:00:00+00:00</published>
   </entry>
 </feed>
