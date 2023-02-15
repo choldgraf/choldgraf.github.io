@@ -14,9 +14,9 @@ TWITTER_TEMPLATE = """
 """
 
 MASTODON_TEMPLATE = """
-<iframe src="{url}/embed" class="socialpost mastodon-embed" style="width: 100%; border: 0" height="500" allowfullscreen="allowfullscreen"></iframe>'
+<iframe src="{url}/embed" class="socialpost mastodon-embed" style="width: 100%; border: 0; border-radius: .5rem;" height="500" allowfullscreen="allowfullscreen"></iframe>'
 """
-YOUTUBE_TEMPLATE = '<iframe width="{width}" class="socialpost youtube-embed" height="{height}" src="{url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+YOUTUBE_TEMPLATE = '<iframe width="{width}" class="socialpost youtube-embed" style="border-radius: .5rem;" height="{height}" src="{url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
 
 
 class SocialPost(Directive):
