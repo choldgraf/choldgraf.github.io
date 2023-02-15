@@ -642,8 +642,10 @@ document.write(`
 <h1>A Sphinx directive for social media embeds<a class="headerlink" href="#a-sphinx-directive-for-social-media-embeds" title="Permalink to this heading">#</a></h1>
 <p>I often want to link to social and other types of web-based media in my Sphinx documentation and blog.
 Rather than embedding it all in custom HTML code, I decided to write a little wrapper to turn it into a directive.</p>
-<p>It’s called <code class="docutils literal notranslate"><span class="pre">{socialpost}</span></code>, and it works with Twitter, Mastodon, and YouTube links.
-For example:</p>
+<p>It’s called <code class="docutils literal notranslate"><span class="pre">{socialpost}</span></code>, and it works with Twitter, Mastodon, and YouTube links.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<p>For example:</p>
 <div class="sd-container-fluid sd-sphinx-override sd-mt-0 sd-mb-2 sd-ml-0 sd-mr-0 sd-p-0 sd-example docutils">
 <div class="sd-row sd-g-0 sd-g-xs-0 sd-g-sm-0 sd-g-md-0 sd-g-lg-0 docutils">
 <div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12 sd-example-title docutils">
@@ -701,9 +703,31 @@ For example:</p>
 </div>
 </div>
 </div>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this heading">#</a></h2>
+<p>Here’s a brief description of how this directive works:</p>
+<ol class="arabic">
+<li><p>Parse the directive content (the thing that comes after <code class="docutils literal notranslate"><span class="pre">{socialpost}</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">https://twitter.com/choldgraf/status/1564614538309390345</span></code>)</p></li>
+<li><p>Do some basic pattern matching to decide if it is Twitter / Mastodon / YouTube</p></li>
+<li><p>Parse the URL for the proper unique identifier for the post (e.g. above it is <code class="docutils literal notranslate"><span class="pre">1564614538309390345</span></code>)</p></li>
+<li><p>Use an embed template that embeds this identifier into each service. E.g., for Twitter it is:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">blockquote</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;twitter-tweet&quot;</span><span class="p">&gt;&lt;</span><span class="nt">p</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span> <span class="na">dir</span><span class="o">=</span><span class="s">&quot;ltr&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://twitter.com/choldgraf/status/1564614538309390345&quot;</span><span class="p">&gt;</span>Tweet from @choldgraf<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">blockquote</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>This is all wrapped up in a <code class="docutils literal notranslate"><span class="pre">Directive</span></code> object that outputs an HTML <code class="docutils literal notranslate"><span class="pre">raw</span></code> node so I can pass through raw HTML.</p></li>
+<li><p>Load any necessary JS files if this directive is detected on a page.
+This is done with an <code class="docutils literal notranslate"><span class="pre">html-page-context</span></code> event.</p></li>
+<li><p>I then connected them both to Sphinx in my site’s <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> setup function.</p></li>
+</ol>
+</section>
 <section id="source-code">
 <h2>Source code<a class="headerlink" href="#source-code" title="Permalink to this heading">#</a></h2>
-<p>Check out the code that implements this directive below:</p>
+<p>Here’s the source code if you’d like to see how this works:</p>
+<p>The directive and event code:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Allows us to embed Google Drive videos into our docs.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span>
@@ -780,6 +804,13 @@ For example:</p>
             <span class="k">break</span>
 </pre></div>
 </div>
+<p>Where I connect it to my site:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="n">app</span><span class="p">):</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_directive</span><span class="p">(</span><span class="s2">&quot;socialpost&quot;</span><span class="p">,</span> <span class="n">SocialPost</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;html-page-context&quot;</span><span class="p">,</span> <span class="n">add_social_media_js</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">add_css_file</span><span class="p">(</span><span class="s2">&quot;custom.css&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -846,6 +877,8 @@ For example:</p>
   </div>
   <nav id="bd-toc-nav" class="page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-it-works">How it works</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#source-code">Source code</a></li>
 </ul>
   </nav></div>
