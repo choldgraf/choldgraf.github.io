@@ -1,4 +1,9 @@
 # -- Project information -----------------------------------------------------
+import sys
+
+sys.path.append("scripts")
+sys.path.append(".")
+from social_media import add_social_media_js, SocialPost
 
 project = "Chris Holdgraf"
 copyright = "2022, Chris Holdgraf"
@@ -23,10 +28,8 @@ exclude_patterns = [
     "**/pandoc_ipynb/inputs/*",
     ".nox/*",
     "README.md",
-    "**/.ipynb_checkpoints/*"
+    "**/.ipynb_checkpoints/*",
 ]
-import sys
-sys.path.append(".")
 
 # -- HTML output -------------------------------------------------
 
@@ -93,7 +96,9 @@ from pathlib import Path
 
 for old, new in redirect_folders.items():
     for newpath in Path(new).rglob("**/*"):
-        if newpath.suffix in [".ipynb", ".md"] and "ipynb_checkpoints" not in str(newpath):
+        if newpath.suffix in [".ipynb", ".md"] and "ipynb_checkpoints" not in str(
+            newpath
+        ):
             oldpath = str(newpath).replace("blog/", "posts/", 1)
             # Skip pandoc because for some reason it's broken
             if "pandoc" not in str(newpath):
@@ -127,5 +132,8 @@ myst_enable_extensions = [
 # Instead if I want something to execute, manually set it in the post's metadata.
 nb_execution_mode = "off"
 
+
 def setup(app):
+    app.add_directive("socialpost", SocialPost)
+    app.connect("html-page-context", add_social_media_js)
     app.add_css_file("custom.css")
