@@ -681,7 +681,7 @@ Rather than embedding it all in custom HTML code, I decided to write a little wr
 <div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12 sd-example-item p-3 sd-example-result sd-rounded-bottom docutils">
 <div class="result-content docutils">
 <div class='social-post-wrapper' style='max-width: 500px; margin: auto;'>
-<iframe src="https://hachyderm.io/@choldgraf/109858392098988533/embed" class="socialpost mastodon-embed" style="width: 100%; border: 0" height="500" allowfullscreen="allowfullscreen"></iframe>'
+<iframe src="https://hachyderm.io/@choldgraf/109858392098988533/embed" class="socialpost mastodon-embed" style="width: 100%; border: 0; border-radius: .5rem;" height="500" allowfullscreen="allowfullscreen"></iframe>'
 </div></div>
 </div>
 </div>
@@ -699,7 +699,7 @@ Rather than embedding it all in custom HTML code, I decided to write a little wr
 </div>
 <div class="sd-col sd-d-flex-column sd-col-12 sd-col-xs-12 sd-col-sm-12 sd-col-md-12 sd-col-lg-12 sd-example-item p-3 sd-example-result sd-rounded-bottom docutils">
 <div class="result-content docutils">
-<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'><iframe width="533" class="socialpost youtube-embed" height="300" src="https://www.youtube.com/embed/lZ2FHTkyaMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'><iframe width="533" class="socialpost youtube-embed" style="border-radius: .5rem;" height="300" src="https://www.youtube.com/embed/lZ2FHTkyaMU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
 </div>
 </div>
 </div>
@@ -744,9 +744,9 @@ This is done with an <code class="docutils literal notranslate"><span class="pre
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="n">MASTODON_TEMPLATE</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">&lt;iframe src=&quot;</span><span class="si">{url}</span><span class="s2">/embed&quot; class=&quot;socialpost mastodon-embed&quot; style=&quot;width: 100%; border: 0&quot; height=&quot;500&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt;&lt;/iframe&gt;&#39;</span>
+<span class="s2">&lt;iframe src=&quot;</span><span class="si">{url}</span><span class="s2">/embed&quot; class=&quot;socialpost mastodon-embed&quot; style=&quot;width: 100%; border: 0; border-radius: .5rem;&quot; height=&quot;500&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt;&lt;/iframe&gt;&#39;</span>
 <span class="s2">&quot;&quot;&quot;</span>
-<span class="n">YOUTUBE_TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;&lt;iframe width=&quot;</span><span class="si">{width}</span><span class="s1">&quot; class=&quot;socialpost youtube-embed&quot; height=&quot;</span><span class="si">{height}</span><span class="s1">&quot; src=&quot;</span><span class="si">{url}</span><span class="s1">&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span>
+<span class="n">YOUTUBE_TEMPLATE</span> <span class="o">=</span> <span class="s1">&#39;&lt;iframe width=&quot;</span><span class="si">{width}</span><span class="s1">&quot; class=&quot;socialpost youtube-embed&quot; style=&quot;border-radius: .5rem;&quot; height=&quot;</span><span class="si">{height}</span><span class="s1">&quot; src=&quot;</span><span class="si">{url}</span><span class="s1">&quot; title=&quot;YouTube video player&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span>
 
 
 <span class="k">class</span> <span class="nc">SocialPost</span><span class="p">(</span><span class="n">Directive</span><span class="p">):</span>
