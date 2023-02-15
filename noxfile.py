@@ -1,5 +1,6 @@
 import nox
 from shlex import split
+from os.path import realpath
 
 nox.options.reuse_existing_virtualenvs = True
 
@@ -10,7 +11,9 @@ def docs(session):
     session.install("-r", "execute-requirements.txt")
     if "live" in session.posargs:
         session.run(
-            *split("sphinx-autobuild -b dirhtml . _build/dirhtml --ignore **/_build/jupyter_execute")
+            *split(
+                f"sphinx-autobuild -b dirhtml . _build/dirhtml --ignore {realpath('_build')}"
+            )
         )
     else:
         session.run(
