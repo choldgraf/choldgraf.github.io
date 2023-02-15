@@ -64,6 +64,7 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-88310237-1');
             </script>
+    <script async="async" charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'blog/2022/cloud-services-academia';</script>
     <link rel="shortcut icon" href="../../../_static/profile-color-circle-small.png"/>
     <link rel="author" title="About these documents" href="../../../about/" />
@@ -493,6 +494,12 @@ document.write(`
   
   
   <li>
+    <a href="../../2023/social-directive/">
+      15 February - A Sphinx directive for social media embeds
+    </a>
+  </li>
+  
+  <li>
     <a href="../../2023/fosdem/">
       06 February - Report from FOSDEM23: beautiful chaos in a conference
     </a>
@@ -516,12 +523,6 @@ document.write(`
     </a>
   </li>
   
-  <li>
-    <a href="../sphinx-update-config/">
-      05 December - Update Sphinx configuration during the build by modifying app.config
-    </a>
-  </li>
-  
 </ul>
 </div>
 </div>
@@ -534,7 +535,7 @@ document.write(`
   
   
   <li>
-    <a href="../../2023/">2023 (1)</a>
+    <a href="../../2023/">2023 (2)</a>
   </li>
   
   
@@ -646,20 +647,21 @@ An ecosystem of modular tools and cloud services (often called <a class="referen
 Instead, they optimize for local workflows or shared infrastructure that exists on-premise.
 If you believe (as I do) that cloud infrastructure has the potential to help people do work more effectively and collaboratively, then it’s important to understand why people don’t use these kinds of tools.</p>
 <p>So, I decided to ask Twitter why academics tend to not utilize cloud infrastructure:</p>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
-  <a href="https://twitter.com/choldgraf/status/1564614538309390345">tweet</a>
+<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'>
+<blockquote class="socialpost twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/choldgraf/status/1564614538309390345">Tweet from @choldgraf</a>
 </blockquote>
-<p>Below is a brief summary of the major points that several people made.</p>
+</div><p>Below is a brief summary of the major points that several people made.</p>
 <section id="fear-of-high-costs">
 <h2>Fear of high costs<a class="headerlink" href="#fear-of-high-costs" title="Permalink to this heading">#</a></h2>
 <p>The most common challenge is the fear of over-running cloud costs.
 With on-prem infrastructure, you pay for allotments of time up-front (or don’t pay at all).
 Cloud infrastructure allows you to “pay as you go”, but this sometimes means <em>over-paying</em> if you used resources you didn’t expect:</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
-  <a href="https://twitter.com/anshulkundaje/status/1551585264262295552">tweet</a>
+<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'>
+<blockquote class="socialpost twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/anshulkundaje/status/1551585264262295552">Tweet from @anshulkundaje</a>
 </blockquote>
-<p><strong>Cost monitoring needs to be a more obvious part of cloud services</strong>.
+</div><p><strong>Cost monitoring needs to be a more obvious part of cloud services</strong>.
 Fortunately, most cloud providers have their own budgeting and cost monitoring services to prevent this from happening.
 However, these don’t seem to be well-understood or utilized.
 That brings us to the next concern:</p>
@@ -672,10 +674,11 @@ All of them make one thing a little bit easier, but you still need knowledge to:
 <li><p>Choose the right cloud services</p></li>
 <li><p>Integrate them together</p></li>
 </ul>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
-  <a href="https://twitter.com/cboettig/status/1564671199547838464">tweet</a>
+<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'>
+<blockquote class="socialpost twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/cboettig/status/1564671199547838464">Tweet from @cboettig</a>
 </blockquote>
-<p>As a result, many cloud services that <em>might</em> be useful are effectively not used because they get lost in all the noise out there.</p>
+</div><p>As a result, many cloud services that <em>might</em> be useful are effectively not used because they get lost in all the noise out there.</p>
 <p>In short, <strong>researchers need support in navigating this space</strong>.
 They need organizations to understand their workflows and recommend a few specific things to use instead of exposing them to the hundreds of options out there.</p>
 </section>
@@ -684,10 +687,11 @@ They need organizations to understand their workflows and recommend a few specif
 <p>Even if you <em>do</em> find the set of services that you want, you need some way to expose these services to your collaborators or research group.
 You also need to manage this integration over time as things change, break, etc.
 University groups often do not have dedicated cloud expertise, and so this lands at the feet of post-docs and graduate students with energy and interest to try things out.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
-  <a href="https://twitter.com/ixek/status/1565645082275057664">tweet</a>
+<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'>
+<blockquote class="socialpost twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/ixek/status/1565645082275057664">Tweet from @ixek</a>
 </blockquote>
-<p>However, asking a student to learn and run your cloud infrastructure is also a risky move.
+</div><p>However, asking a student to learn and run your cloud infrastructure is also a risky move.
 Students move on, and DevOps skills are in high demand.
 What happens if you lose that person, or if your grant runs out?</p>
 <p><strong>Researchers need others to manage cloud infrastructure for them</strong>.
@@ -698,10 +702,11 @@ We need more services that manage this complexity for them.</p>
 <h2>Pain to first compute is higher for cloud<a class="headerlink" href="#pain-to-first-compute-is-higher-for-cloud" title="Permalink to this heading">#</a></h2>
 <p>Universities recognize that managed services are useful to research - they just prioritize on-premises infrastructure over everything else.
 For example, many people noted that HPC is more heavily used simply because the university puts most of their resources into easing the use of this infrastructure.</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">
-  <a href="https://twitter.com/SpectralFilter/status/1564697622660763648">tweet</a>
+<div class='social-post-wrapper' style='max-width: 500px; margin: auto;'>
+<blockquote class="socialpost twitter-tweet"><p lang="en" dir="ltr">
+  <a href="https://twitter.com/SpectralFilter/status/1564697622660763648">Tweet from @SpectralFilter</a>
 </blockquote>
-<p><strong>Universities need to invest in lowering the energy barrier to cloud services as well as on-prem infrastructure</strong>. We don’t want universities to divest from all of their on-prem hardware and services, but we should make at least marginal investments in similarly reducing the barriers to using cloud infrastructure. What would it look like if universities made it as easy to set up and pay for cloud infrastructure as they do for HPC? I bet a lot more people would experiment and learn with the cloud.</p>
+</div><p><strong>Universities need to invest in lowering the energy barrier to cloud services as well as on-prem infrastructure</strong>. We don’t want universities to divest from all of their on-prem hardware and services, but we should make at least marginal investments in similarly reducing the barriers to using cloud infrastructure. What would it look like if universities made it as easy to set up and pay for cloud infrastructure as they do for HPC? I bet a lot more people would experiment and learn with the cloud.</p>
 </section>
 <section id="continuity-of-service-lock-in-concerns">
 <h2>Continuity of service / lock-in concerns<a class="headerlink" href="#continuity-of-service-lock-in-concerns" title="Permalink to this heading">#</a></h2>
