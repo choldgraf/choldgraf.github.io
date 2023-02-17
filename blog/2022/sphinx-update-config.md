@@ -4,7 +4,7 @@ date: "2022-12-05"
 category: "til"
 ---
 
-# Update Sphinx configuration during the build by modifying `app.config`
+# How to update Sphinx configuration and theme options during the build
 
 As part of [the `pydata-sphinx-theme`](https://github.com/pydata/pydata-sphinx-theme/pull/1075) we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly **during the Sphinx build**.
