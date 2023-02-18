@@ -8,16 +8,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-<meta property="og:title" content="Update Sphinx configuration during the build by modifying app.config" />
+<meta property="og:title" content="How to update Sphinx configuration and theme options during the build" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://chrisholdgraf.com/blog/2022/sphinx-update-config/" />
 <meta property="og:site_name" content="Chris Holdgraf" />
 <meta property="og:description" content="As part of the pydata-sphinx-theme we have a few settings that auto-enable extensions and configure them on behalf of the user. It has always been mysterious to me how to do this properly during th..." />
-<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_sphinx-update-config_3cec07f5.png" />
+<meta property="og:image" content="https://chrisholdgraf.com/_images/social_previews/summary_blog_2022_sphinx-update-config_54f4d385.png" />
 <meta property="og:image:alt" content="As part of the pydata-sphinx-theme we have a few settings that auto-enable extensions and configure them on behalf of the user. It has always been mysterious..." />
 <meta name="description" content="As part of the pydata-sphinx-theme we have a few settings that auto-enable extensions and configure them on behalf of the user. It has always been mysterious to me how to do this properly during th..." />
 
-    <title>Update Sphinx configuration during the build by modifying app.config &#8212; Chris Holdgraf</title>
+    <title>How to update Sphinx configuration and theme options during the build &#8212; Chris Holdgraf</title>
   
   
   
@@ -630,7 +630,7 @@ document.write(`
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page">Update Sphinx configuration during the build by modifying <code class="docutils literal notranslate"><span class="pre">app.config</span></code></li>
+    <li class="breadcrumb-item active" aria-current="page">How to update Sphinx configuration and theme options during the build</li>
   </ul>
 </nav>
 </div>
@@ -648,8 +648,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-<section id="update-sphinx-configuration-during-the-build-by-modifying-app-config">
-<h1>Update Sphinx configuration during the build by modifying <code class="docutils literal notranslate"><span class="pre">app.config</span></code><a class="headerlink" href="#update-sphinx-configuration-during-the-build-by-modifying-app-config" title="Permalink to this heading">#</a></h1>
+<section id="how-to-update-sphinx-configuration-and-theme-options-during-the-build">
+<h1>How to update Sphinx configuration and theme options during the build<a class="headerlink" href="#how-to-update-sphinx-configuration-and-theme-options-during-the-build" title="Permalink to this heading">#</a></h1>
 <p>As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly <strong>during the Sphinx build</strong>.
 It’s easy to configure things with <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> ahead of time, but what if you want to manually set a value during the build?</p>
