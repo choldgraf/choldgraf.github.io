@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=752cbf1e58c09e799737" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=752cbf1e58c09e799737" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=752cbf1e58c09e799737" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=752cbf1e58c09e799737" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -36,8 +36,8 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=752cbf1e58c09e799737" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=752cbf1e58c09e799737" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -76,7 +76,7 @@
   </head>
   
   
-  <body data-bs-spy="scroll" data-bs-target="#bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
   
@@ -115,13 +115,15 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
   <label class="sidebar-toggle primary-toggle" for="__primary">
     <span class="fa-solid fa-bars"></span>
   </label>
-  <div id="navbar-start">
+  
+  <div class="navbar-header-items__start">
     
-      
+      <div class="navbar-item">
   
 
 <a class="navbar-brand logo" href="../../../">
@@ -132,21 +134,23 @@
   
     <p class="title logo__title">Chris Holdgraf</p>
   
-</a>
+</a></div>
     
   </div>
   
+  
   <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="me-auto">
+    
+    <div class="me-auto navbar-header-items__center">
       
-        <div class="navbar-center-item"><nav class="navbar-nav">
+        <div class="navbar-item"><nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
      aria-label="Site Navigation">
     Site Navigation
   </p>
-  <ul id="navbar-main-elements" class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../about/">
@@ -186,9 +190,11 @@
 </nav></div>
       
     </div>
-    <div id="navbar-end">
+    
+    
+    <div class="navbar-header-items__end">
       
-        <div class="navbar-end-item navbar-persistent--container">
+        <div class="navbar-item navbar-persistent--container">
           
 <script>
 document.write(`
@@ -200,7 +206,7 @@ document.write(`
         </div>
       
       
-        <div class="navbar-end-item">
+        <div class="navbar-item">
 <script>
 document.write(`
   <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -211,8 +217,7 @@ document.write(`
 `);
 </script></div>
       
-        <div class="navbar-end-item"><ul id="navbar-icon-links"
-    class="navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -267,6 +272,7 @@ document.write(`
 </ul></div>
       
     </div>
+    
   </div>
   
   
@@ -283,6 +289,7 @@ document.write(`
 
   
 </div>
+
     </nav>
   
   <div class="bd-container">
@@ -290,20 +297,21 @@ document.write(`
       
       <div class="bd-sidebar-primary bd-sidebar">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-center-item"><nav class="navbar-nav">
+          <div class="navbar-item"><nav class="navbar-nav">
   <p class="sidebar-header-items__title"
      role="heading"
      aria-level="1"
      aria-label="Site Navigation">
     Site Navigation
   </p>
-  <ul id="navbar-main-elements" class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../../../about/">
@@ -348,7 +356,7 @@ document.write(`
     
       <div class="sidebar-header-items__end">
         
-          <div class="navbar-end-item">
+          <div class="navbar-item">
 <script>
 document.write(`
   <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -359,8 +367,7 @@ document.write(`
 `);
 </script></div>
         
-          <div class="navbar-end-item"><ul id="navbar-icon-links"
-    class="navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -418,8 +425,8 @@ document.write(`
     
   </div>
   
-    <div class="sidebar-start-items sidebar-primary__section">
-        <div class="sidebar-start-items__item">
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 <div class="ablog-sidebar-item ablog__recentposts">
 <h3>
   <a href="../../">Recent Posts</a>
@@ -460,7 +467,7 @@ document.write(`
 </ul>
 </div>
 </div>
-        <div class="sidebar-start-items__item">
+        <div class="sidebar-primary-item">
 <div class="ablog-sidebar-item ablog__archive">
 <h3>
   <a href="../../archive/">Archives</a>
@@ -527,23 +534,26 @@ document.write(`
     </div>
   
   
-  <div class="sidebar-end-items sidebar-primary__section">
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
   
   <div id="rtd-footer-container"></div>
 
+
       </div>
+      
       <main id="main-content" class="bd-main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article"><div class="header-article-items header-article__section">
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-start-item">
+        <div class="header-article-item">
 
 
 
@@ -563,7 +573,8 @@ document.write(`
     </div>
   
   
-</div></div>
+</div>
+</div>
               
               
 
@@ -681,12 +692,15 @@ This blog post is a place to keep track of the current state of affairs for this
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=752cbf1e58c09e799737"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=752cbf1e58c09e799737"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-  <footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-    <div class="footer-item">
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
   <p class="copyright">
     
       © Copyright 2022, Chris Holdgraf.
@@ -694,21 +708,29 @@ This blog post is a place to keep track of the current state of affairs for this
     
   </p>
 </div>
-  
-    <div class="footer-item"><p class="theme-version">
-  Built with the
-  <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
-  0.13.0rc3.dev0.
-</p></div>
-  
-    <div class="footer-item">
+      
+        <div class="footer-item">
   <p class="sphinx-version">
     Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
     <br/>
   </p>
 </div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the
+  <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a>
+  0.13.0rc4.
+</p></div>
+      
+    </div>
   
 </div>
+
   </footer>
   </body>
 </html>

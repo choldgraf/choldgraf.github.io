@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2023-02-15T15:57:22.674990+00:00</updated>
+  <updated>2023-02-18T20:53:05.777100+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.0rc2">ABlog</generator>
@@ -8861,32 +8861,52 @@ I use it to enforce things like flake8 and black in many of my projects.</summar
 &lt;p&gt;As part of &lt;a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075"&gt;the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pydata-sphinx-theme&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly &lt;strong&gt;during the Sphinx build&lt;/strong&gt;.
 It’s easy to configure things with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;conf.py&lt;/span&gt;&lt;/code&gt; ahead of time, but what if you want to manually set a value during the build?&lt;/p&gt;
-&lt;p&gt;I finally figured it out, so documenting the process here:&lt;/p&gt;
-&lt;ol class="arabic"&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Define a Sphinx event for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;builder-inited&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;. This will trigger after the builder has been selected, but before the environent is finalized for the build.
+&lt;p&gt;I finally figured it out, so documenting the process here.&lt;/p&gt;
+&lt;section id="use-the-builder-inited-event"&gt;
+&lt;h2&gt;Use the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;builder-inited&lt;/span&gt;&lt;/code&gt; event&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Define a Sphinx event for &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;builder-inited&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;. This will trigger after the builder has been selected, but before the environent is finalized for the build.
 This should be a function that takes a single &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;(app)&lt;/span&gt;&lt;/code&gt; parameter.&lt;/p&gt;
 &lt;div class="admonition seealso"&gt;
 &lt;p class="admonition-title"&gt;See also&lt;/p&gt;
 &lt;p&gt;See &lt;a class="reference external" href="https://www.sphinx-doc.org/en/master/extdev/appapi.html#sphinx-core-events"&gt;the Sphinx Core Events documentation&lt;/a&gt; for more information about Sphinx’s events system.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Grab the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object&lt;/strong&gt;. This is the configuration for your build.
-Altering its values will alter Sphinx’s behavior.
-However, it has a weird way of being updated…&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Update the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__dict__&lt;/span&gt;&lt;/code&gt; attribute of the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;Config&lt;/span&gt;&lt;/code&gt; object&lt;/strong&gt;.
-For some reason, it seems you need to update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;__dict__&lt;/span&gt;&lt;/code&gt; within the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object.
-This will update the configuration as expected.
-For example:&lt;/p&gt;
-&lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__dict__&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;mykey&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;myvalue&amp;quot;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;This seems to mirror &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L227-L240"&gt;how Sphinx sets up the config internally&lt;/a&gt;, and leads to the behavior I want.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="use-app-raw-config-to-find-the-user-provided-config"&gt;
+&lt;h2&gt;Use &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app._raw_config&lt;/span&gt;&lt;/code&gt; to find the user-provided config&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Use the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app._raw_config&lt;/span&gt;&lt;/code&gt; object to detect user-given config&lt;/strong&gt;. &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/ba080286b06cb9e0cadec59a6cf1f96aa11aef5a/sphinx/config.py#L151-L155"&gt;This is first written when Sphinx is initialized&lt;/a&gt; and should be a good indication of what the user provided.&lt;/p&gt;
+&lt;p&gt;This is useful if you only want to over-ride something if the &lt;em&gt;user didn’t set it themselves&lt;/em&gt;.
+However, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object will have &lt;em&gt;all&lt;/em&gt; of the config options, including defaults.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="update-configuration-options-with-the-config-values-object"&gt;
+&lt;h2&gt;Update configuration options with the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.values&lt;/span&gt;&lt;/code&gt; object&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;.
+You can access the config values at &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.valuename&lt;/span&gt;&lt;/code&gt;, but you can’t &lt;em&gt;set&lt;/em&gt; them there.
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt;&lt;/code&gt; contains the actual key/value pairs in the config.
+So, to set a value, use &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values[&amp;quot;key&amp;quot;]&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Running &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt; actually corresponds to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.values[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt;.
+If you directly set a value like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.foo&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;/code&gt;, then nothing happens because &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.values&lt;/span&gt;&lt;/code&gt; is not updated.&lt;/p&gt;
+&lt;p&gt;This seems to mirror &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L186-L195"&gt;how Sphinx sets up the config internally&lt;/a&gt;, and leads to the behavior I want.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="update-html-theme-options-with-app-builder-theme-options"&gt;
+&lt;h2&gt;Update HTML theme options with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.builder.theme_options&lt;/span&gt;&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.builder.theme_options&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;.
+Many people (including myself) incorrectly try to update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.html_theme_options&lt;/span&gt;&lt;/code&gt; during a build event.
+But this doesn’t do anything because the’ve already been copied over to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.builder.theme_options&lt;/span&gt;&lt;/code&gt; early in the build process.
+Annoyingly, the copied dictionary in &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.builder.theme_options&lt;/span&gt;&lt;/code&gt; does not point to the same points in memory as &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.html_theme_options&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;This &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/ba080286b06cb9e0cadec59a6cf1f96aa11aef5a/sphinx/builders/html/__init__.py#L301-L307"&gt;copy action is done here&lt;/a&gt;.&lt;/p&gt;
+&lt;/section&gt;
+&lt;section id="an-example"&gt;
+&lt;h2&gt;An example&lt;/h2&gt;
 &lt;p&gt;Here’s an example of the whole process in action:&lt;/p&gt;
 &lt;div class="highlight-python notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# This function will update a single configuration value&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;update_config&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-  &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__dict__&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;
+   &lt;span class="c1"&gt;# Check if a value was provided by the user&lt;/span&gt;
+   &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_raw_values&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="c1"&gt;# Update a config value&lt;/span&gt;
+      &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;
+
+   &lt;span class="c1"&gt;# Update an HTML theme value&lt;/span&gt;
+   &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;theme_options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar2&amp;quot;&lt;/span&gt;
 
 &lt;span class="c1"&gt;# Register the above function to be called during the builder-inited phase&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
@@ -8894,11 +8914,12 @@ For example:&lt;/p&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/section&gt;
+&lt;/section&gt;
 </content>
     <link href="https://chrisholdgraf.com/blog/2022/sphinx-update-config/" rel="alternate"/>
     <summary>As part of the pydata-sphinx-theme we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly during the Sphinx build.
-It’s easy to configure things with conf.py ahead of time, but what if you want to manually set a value during the build?I finally figured it out, so documenting the process here:</summary>
+It’s easy to configure things with conf.py ahead of time, but what if you want to manually set a value during the build?I finally figured it out, so documenting the process here.</summary>
     <category term="sphinx" label="sphinx"/>
     <published>2022-12-05T00:00:00+00:00</published>
   </entry>
@@ -8940,8 +8961,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpjdtlpwmg/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f1d67e40f40&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmprnqebhck/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f9add30cfd0&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8968,25 +8989,25 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Sans Mono'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'oblique'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-MediumItalic.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Mono'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;500&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpjdtlpwmg/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmprnqebhck/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
