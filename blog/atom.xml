@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2023-02-18T21:11:33.407779+00:00</updated>
+  <updated>2023-02-19T10:29:22.243092+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.0rc2">ABlog</generator>
@@ -8854,9 +8854,9 @@ I use it to enforce things like flake8 and black in many of my projects.</summar
   </entry>
   <entry>
     <id>https://chrisholdgraf.com/blog/2022/sphinx-update-config/</id>
-    <title>How to update Sphinx configuration and theme options during the build</title>
+    <title>How to update Sphinx options during the build</title>
     <updated>2022-12-05T00:00:00+00:00</updated>
-    <content type="html">&lt;section id="how-to-update-sphinx-configuration-and-theme-options-during-the-build"&gt;
+    <content type="html">&lt;section id="how-to-update-sphinx-options-during-the-build"&gt;
 
 &lt;p&gt;As part of &lt;a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075"&gt;the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;pydata-sphinx-theme&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly &lt;strong&gt;during the Sphinx build&lt;/strong&gt;.
@@ -8877,15 +8877,20 @@ This should be a function that takes a single &lt;code class="docutils literal n
 &lt;p&gt;This is useful if you only want to over-ride something if the &lt;em&gt;user didn’t set it themselves&lt;/em&gt;.
 However, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object will have &lt;em&gt;all&lt;/em&gt; of the config options, including defaults.&lt;/p&gt;
 &lt;/section&gt;
-&lt;section id="update-configuration-options-with-the-config-values-object"&gt;
-&lt;h2&gt;Update configuration options with the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.values&lt;/span&gt;&lt;/code&gt; object&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;.
+&lt;section id="update-configuration-options-with-the-config-dict-object"&gt;
+&lt;h2&gt;Update configuration options with the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.__dict__&lt;/span&gt;&lt;/code&gt; object&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;.
 You can access the config values at &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.valuename&lt;/span&gt;&lt;/code&gt;, but you can’t &lt;em&gt;set&lt;/em&gt; them there.
-&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt;&lt;/code&gt; contains the actual key/value pairs in the config.
-So, to set a value, use &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values[&amp;quot;key&amp;quot;]&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Running &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt; actually corresponds to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.values[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt;.
-If you directly set a value like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.foo&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;/code&gt;, then nothing happens because &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.values&lt;/span&gt;&lt;/code&gt; is not updated.&lt;/p&gt;
-&lt;p&gt;This seems to mirror &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L186-L195"&gt;how Sphinx sets up the config internally&lt;/a&gt;, and leads to the behavior I want.&lt;/p&gt;
+&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__&lt;/span&gt;&lt;/code&gt; contains the actual key/value pairs in the config.
+So, to set a value, use &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__[&amp;quot;key&amp;quot;]&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Running &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt; actually corresponds to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.__dict__[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt;.
+If you directly set a value like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.foo&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;/code&gt;, then nothing happens because &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.__dict__&lt;/span&gt;&lt;/code&gt; is not updated.&lt;/p&gt;
+&lt;p&gt;This seems to mirror &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238"&gt;how Sphinx sets up the config internally&lt;/a&gt;, and leads to the behavior I want.&lt;/p&gt;
+&lt;div class="admonition-app-config-values-has-the-defaults admonition"&gt;
+&lt;p class="admonition-title"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt;&lt;/code&gt; has the defaults!&lt;/p&gt;
+&lt;p&gt;It might seem like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt; &lt;span class="pre"&gt;is&lt;/span&gt; &lt;span class="pre"&gt;the&lt;/span&gt; &lt;span class="pre"&gt;right&lt;/span&gt; &lt;span class="pre"&gt;place&lt;/span&gt; &lt;span class="pre"&gt;for&lt;/span&gt; &lt;span class="pre"&gt;this,&lt;/span&gt; &lt;span class="pre"&gt;but&lt;/span&gt; &lt;span class="pre"&gt;that&lt;/span&gt; &lt;span class="pre"&gt;isn't&lt;/span&gt; &lt;span class="pre"&gt;the&lt;/span&gt; &lt;span class="pre"&gt;case.&lt;/span&gt; &lt;/code&gt;app.config.values` has the &lt;em&gt;defaults&lt;/em&gt; for Sphinx, and if you directly replace items, then Sphinx will behave unpredictably.
+&lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L186-L195"&gt;Here’s where Sphinx configures these defaults&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
 &lt;/section&gt;
 &lt;section id="update-html-theme-options-with-app-builder-theme-options"&gt;
 &lt;h2&gt;Update HTML theme options with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.builder.theme_options&lt;/span&gt;&lt;/code&gt;&lt;/h2&gt;
@@ -8903,7 +8908,7 @@ Annoyingly, the copied dictionary in &lt;code class="docutils literal notranslat
    &lt;span class="c1"&gt;# Check if a value was provided by the user&lt;/span&gt;
    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;_raw_values&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
       &lt;span class="c1"&gt;# Update a config value&lt;/span&gt;
-      &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;
+      &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__dict__&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;
 
    &lt;span class="c1"&gt;# Update an HTML theme value&lt;/span&gt;
    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;builder&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;theme_options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;foo2&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;bar2&amp;quot;&lt;/span&gt;
@@ -8961,8 +8966,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpq9id6a1q/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f44405510f0&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpkn6b_ve4/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f1062600d30&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8989,11 +8994,11 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Liberation Sans'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-LightItalic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;300&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
@@ -9007,7 +9012,7 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpq9id6a1q/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpkn6b_ve4/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,

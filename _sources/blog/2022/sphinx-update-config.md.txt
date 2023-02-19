@@ -4,7 +4,7 @@ date: "2022-12-05"
 category: "til"
 ---
 
-# How to update Sphinx configuration and theme options during the build
+# How to update Sphinx options during the build
 
 As part of [the `pydata-sphinx-theme`](https://github.com/pydata/pydata-sphinx-theme/pull/1075) we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly **during the Sphinx build**.
@@ -28,17 +28,23 @@ See [the Sphinx Core Events documentation](https://www.sphinx-doc.org/en/master/
 This is useful if you only want to over-ride something if the _user didn't set it themselves_.
 However, the `app.config` object will have _all_ of the config options, including defaults.
 
-## Update configuration options with the `config.values` object
+## Update configuration options with the `config.__dict__` object
 
-**Update `app.config.values`**.
+**Update `app.config.__dict__`**.
 You can access the config values at `app.config.valuename`, but you can't *set* them there.
-`app.config.values` contains the actual key/value pairs in the config.
-So, to set a value, use `app.config.values["key"] = "value"`.
+`app.config.__dict__` contains the actual key/value pairs in the config.
+So, to set a value, use `app.config.__dict__["key"] = "value"`.
 
-Running `config["key"]` actually corresponds to `config.values["key"]`.
-If you directly set a value like `config.foo = "bar"`, then nothing happens because `config.values` is not updated.
+Running `config["key"]` actually corresponds to `config.__dict__["key"]`.
+If you directly set a value like `config.foo = "bar"`, then nothing happens because `config.__dict__` is not updated.
 
-This seems to mirror [how Sphinx sets up the config internally](https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L186-L195), and leads to the behavior I want.
+This seems to mirror [how Sphinx sets up the config internally](https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238), and leads to the behavior I want.
+
+:::{admonition} `app.config.values` has the defaults!
+It might seem like `app.config.values is the right place for this, but that isn't the case.
+`app.config.values` has the *defaults* for Sphinx, and if you directly replace items, then Sphinx will behave unpredictably.
+[Here's where Sphinx configures these defaults](https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L186-L195)
+:::
 
 ## Update HTML theme options with `app.builder.theme_options`
 
@@ -59,7 +65,7 @@ def update_config(app):
    # Check if a value was provided by the user
    if "foo" in app.config._raw_values:
       # Update a config value
-      app.config.values["foo"] = "bar"
+      app.config.__dict__["foo"] = "bar"
 
    # Update an HTML theme value
    app.builder.theme_options["foo2"] = "bar2"
