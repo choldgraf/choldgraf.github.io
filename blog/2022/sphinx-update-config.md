@@ -28,17 +28,11 @@ See [the Sphinx Core Events documentation](https://www.sphinx-doc.org/en/master/
 This is useful if you only want to over-ride something if the _user didn't set it themselves_.
 However, the `app.config` object will have _all_ of the config options, including defaults.
 
-## Update configuration options with the `config.__dict__` object
+## Update configuration options with the `app.config` object
 
-**Update `app.config.__dict__`**.
-You can access the config values at `app.config.valuename`, but you can't *set* them there.
-`app.config.__dict__` contains the actual key/value pairs in the config.
-So, to set a value, use `app.config.__dict__["key"] = "value"`.
-
-Running `config["key"]` actually corresponds to `config.__dict__["key"]`.
-If you directly set a value like `config.foo = "bar"`, then nothing happens because `config.__dict__` is not updated.
-
-This seems to mirror [how Sphinx sets up the config internally](https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238), and leads to the behavior I want.
+**Update `app.config.keyname`**.
+You can set and update configuration values directly with `app.config.keyname = "foo"`.
+The way [Sphinx does this](https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238) is by directly setting `app.config.__dict__["keyname"] = "foo"`, but this doesn't seem to be necessary and I'm not sure why they do it that way.
 
 :::{admonition} `app.config.values` has the defaults!
 It might seem like `app.config.values is the right place for this, but that isn't the case.
