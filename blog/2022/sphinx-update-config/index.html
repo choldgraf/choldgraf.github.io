@@ -669,15 +669,11 @@ This should be a function that takes a single <code class="docutils literal notr
 <p>This is useful if you only want to over-ride something if the <em>user didn’t set it themselves</em>.
 However, the <code class="docutils literal notranslate"><span class="pre">app.config</span></code> object will have <em>all</em> of the config options, including defaults.</p>
 </section>
-<section id="update-configuration-options-with-the-config-dict-object">
-<h2>Update configuration options with the <code class="docutils literal notranslate"><span class="pre">config.__dict__</span></code> object<a class="headerlink" href="#update-configuration-options-with-the-config-dict-object" title="Permalink to this heading">#</a></h2>
-<p><strong>Update <code class="docutils literal notranslate"><span class="pre">app.config.__dict__</span></code></strong>.
-You can access the config values at <code class="docutils literal notranslate"><span class="pre">app.config.valuename</span></code>, but you can’t <em>set</em> them there.
-<code class="docutils literal notranslate"><span class="pre">app.config.__dict__</span></code> contains the actual key/value pairs in the config.
-So, to set a value, use <code class="docutils literal notranslate"><span class="pre">app.config.__dict__[&quot;key&quot;]</span> <span class="pre">=</span> <span class="pre">&quot;value&quot;</span></code>.</p>
-<p>Running <code class="docutils literal notranslate"><span class="pre">config[&quot;key&quot;]</span></code> actually corresponds to <code class="docutils literal notranslate"><span class="pre">config.__dict__[&quot;key&quot;]</span></code>.
-If you directly set a value like <code class="docutils literal notranslate"><span class="pre">config.foo</span> <span class="pre">=</span> <span class="pre">&quot;bar&quot;</span></code>, then nothing happens because <code class="docutils literal notranslate"><span class="pre">config.__dict__</span></code> is not updated.</p>
-<p>This seems to mirror <a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238">how Sphinx sets up the config internally</a>, and leads to the behavior I want.</p>
+<section id="update-configuration-options-with-the-app-config-object">
+<h2>Update configuration options with the <code class="docutils literal notranslate"><span class="pre">app.config</span></code> object<a class="headerlink" href="#update-configuration-options-with-the-app-config-object" title="Permalink to this heading">#</a></h2>
+<p><strong>Update <code class="docutils literal notranslate"><span class="pre">app.config.keyname</span></code></strong>.
+You can set and update configuration values directly with <code class="docutils literal notranslate"><span class="pre">app.config.keyname</span> <span class="pre">=</span> <span class="pre">&quot;foo&quot;</span></code>.
+The way <a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238">Sphinx does this</a> is by directly setting <code class="docutils literal notranslate"><span class="pre">app.config.__dict__[&quot;keyname&quot;]</span> <span class="pre">=</span> <span class="pre">&quot;foo&quot;</span></code>, but this doesn’t seem to be necessary and I’m not sure why they do it that way.</p>
 <div class="admonition-app-config-values-has-the-defaults admonition">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">app.config.values</span></code> has the defaults!</p>
 <p>It might seem like <code class="docutils literal notranslate"><span class="pre">app.config.values</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">right</span> <span class="pre">place</span> <span class="pre">for</span> <span class="pre">this,</span> <span class="pre">but</span> <span class="pre">that</span> <span class="pre">isn't</span> <span class="pre">the</span> <span class="pre">case.</span> </code>app.config.values` has the <em>defaults</em> for Sphinx, and if you directly replace items, then Sphinx will behave unpredictably.
@@ -787,7 +783,7 @@ Annoyingly, the copied dictionary in <code class="docutils literal notranslate">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-builder-inited-event">Use the <code class="docutils literal notranslate"><span class="pre">builder-inited</span></code> event</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-app-raw-config-to-find-the-user-provided-config">Use <code class="docutils literal notranslate"><span class="pre">app._raw_config</span></code> to find the user-provided config</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-configuration-options-with-the-config-dict-object">Update configuration options with the <code class="docutils literal notranslate"><span class="pre">config.__dict__</span></code> object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-configuration-options-with-the-app-config-object">Update configuration options with the <code class="docutils literal notranslate"><span class="pre">app.config</span></code> object</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-html-theme-options-with-app-builder-theme-options">Update HTML theme options with <code class="docutils literal notranslate"><span class="pre">app.builder.theme_options</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example">An example</a></li>
 </ul>

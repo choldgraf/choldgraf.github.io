@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>https://chrisholdgraf.com</id>
   <title>Chris Holdgraf</title>
-  <updated>2023-02-19T10:29:22.243092+00:00</updated>
+  <updated>2023-02-19T14:36:40.760972+00:00</updated>
   <link href="https://chrisholdgraf.com"/>
   <link href="https://chrisholdgraf.com/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.0rc2">ABlog</generator>
@@ -8877,15 +8877,11 @@ This should be a function that takes a single &lt;code class="docutils literal n
 &lt;p&gt;This is useful if you only want to over-ride something if the &lt;em&gt;user didn’t set it themselves&lt;/em&gt;.
 However, the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object will have &lt;em&gt;all&lt;/em&gt; of the config options, including defaults.&lt;/p&gt;
 &lt;/section&gt;
-&lt;section id="update-configuration-options-with-the-config-dict-object"&gt;
-&lt;h2&gt;Update configuration options with the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.__dict__&lt;/span&gt;&lt;/code&gt; object&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;Update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;.
-You can access the config values at &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.valuename&lt;/span&gt;&lt;/code&gt;, but you can’t &lt;em&gt;set&lt;/em&gt; them there.
-&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__&lt;/span&gt;&lt;/code&gt; contains the actual key/value pairs in the config.
-So, to set a value, use &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__[&amp;quot;key&amp;quot;]&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;value&amp;quot;&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Running &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt; actually corresponds to &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.__dict__[&amp;quot;key&amp;quot;]&lt;/span&gt;&lt;/code&gt;.
-If you directly set a value like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.foo&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;bar&amp;quot;&lt;/span&gt;&lt;/code&gt;, then nothing happens because &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;config.__dict__&lt;/span&gt;&lt;/code&gt; is not updated.&lt;/p&gt;
-&lt;p&gt;This seems to mirror &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238"&gt;how Sphinx sets up the config internally&lt;/a&gt;, and leads to the behavior I want.&lt;/p&gt;
+&lt;section id="update-configuration-options-with-the-app-config-object"&gt;
+&lt;h2&gt;Update configuration options with the &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config&lt;/span&gt;&lt;/code&gt; object&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Update &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.keyname&lt;/span&gt;&lt;/code&gt;&lt;/strong&gt;.
+You can set and update configuration values directly with &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.keyname&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;/code&gt;.
+The way &lt;a class="reference external" href="https://github.com/sphinx-doc/sphinx/blob/b1ca6b3e120d83c9bb64fdea310574afb9897c1a/sphinx/config.py#L233-L238"&gt;Sphinx does this&lt;/a&gt; is by directly setting &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.__dict__[&amp;quot;keyname&amp;quot;]&lt;/span&gt; &lt;span class="pre"&gt;=&lt;/span&gt; &lt;span class="pre"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;/code&gt;, but this doesn’t seem to be necessary and I’m not sure why they do it that way.&lt;/p&gt;
 &lt;div class="admonition-app-config-values-has-the-defaults admonition"&gt;
 &lt;p class="admonition-title"&gt;&lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt;&lt;/code&gt; has the defaults!&lt;/p&gt;
 &lt;p&gt;It might seem like &lt;code class="docutils literal notranslate"&gt;&lt;span class="pre"&gt;app.config.values&lt;/span&gt; &lt;span class="pre"&gt;is&lt;/span&gt; &lt;span class="pre"&gt;the&lt;/span&gt; &lt;span class="pre"&gt;right&lt;/span&gt; &lt;span class="pre"&gt;place&lt;/span&gt; &lt;span class="pre"&gt;for&lt;/span&gt; &lt;span class="pre"&gt;this,&lt;/span&gt; &lt;span class="pre"&gt;but&lt;/span&gt; &lt;span class="pre"&gt;that&lt;/span&gt; &lt;span class="pre"&gt;isn't&lt;/span&gt; &lt;span class="pre"&gt;the&lt;/span&gt; &lt;span class="pre"&gt;case.&lt;/span&gt; &lt;/code&gt;app.config.values` has the &lt;em&gt;defaults&lt;/em&gt; for Sphinx, and if you directly replace items, then Sphinx will behave unpredictably.
@@ -8966,8 +8962,8 @@ To download it locally into a &lt;strong&gt;temporary folder&lt;/strong&gt; usin
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell_output docutils container"&gt;
-&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmpkn6b_ve4/Fira-Code.ttf&amp;#39;),
- &amp;lt;http.client.HTTPMessage at 0x7f1062600d30&amp;gt;)
+&lt;div class="output text_plain highlight-myst-ansi notranslate"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;(PosixPath(&amp;#39;/tmp/tmp80jguxho/Fira-Code.ttf&amp;#39;),
+ &amp;lt;http.client.HTTPMessage at 0x7f01d3184fa0&amp;gt;)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -8994,25 +8990,25 @@ This allows you to &lt;strong&gt;register fonts that Matplotlib knows how to use
 &lt;div class="cell_output docutils container"&gt;
 &lt;div class="output text_html"&gt;&lt;pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"&gt;&lt;span style="font-weight: bold"&gt;[&lt;/span&gt;
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/lato/Lato-LightItalic.ttf'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Lato'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;300&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
-    &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
-    &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed-BoldItalic.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSerifCondensed.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Serif'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'italic'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;700&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'condensed'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
     &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
     &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
-        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmpkn6b_ve4/Fira-Code.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Oblique.ttf'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'DejaVu Sans Mono'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'oblique'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;weight&lt;/span&gt;=&lt;span style="color: #008080; text-decoration-color: #008080; font-weight: bold"&gt;400&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;stretch&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;size&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'scalable'&lt;/span&gt;
+    &lt;span style="font-weight: bold"&gt;)&lt;/span&gt;,
+    &lt;span style="color: #800080; text-decoration-color: #800080; font-weight: bold"&gt;FontEntry&lt;/span&gt;&lt;span style="font-weight: bold"&gt;(&lt;/span&gt;
+        &lt;span style="color: #808000; text-decoration-color: #808000"&gt;fname&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'/tmp/tmp80jguxho/Fira-Code.ttf'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;name&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'Fira-Downloaded'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;style&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
         &lt;span style="color: #808000; text-decoration-color: #808000"&gt;variant&lt;/span&gt;=&lt;span style="color: #008000; text-decoration-color: #008000"&gt;'normal'&lt;/span&gt;,
