@@ -6,7 +6,7 @@ category: "til"
 
 # Install dependencies from GitHub with `pyproject.toml` or `requirements.txt`
 
-This is a short post to demonstrate how to install packages directly from GitHub with `pyprojects.toml` or `requirementst.txt`, including custom branches and commits.
+This is a short post to demonstrate how to install packages directly from GitHub with `pyprojects.toml` or `requirements.txt`, including custom branches and commits.
 It will focus on `pyprojects.toml` because this is newer and there's less information about it, but the general pattern holds for `requirements.txt` as well.
 
 In `pyproject.toml`, you can specify dependencies for a project via the `dependencies` field.
