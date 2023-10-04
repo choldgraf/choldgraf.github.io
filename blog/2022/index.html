@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -33,11 +33,12 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -82,6 +83,15 @@
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
   <input type="checkbox"
           class="sidebar-toggle"
           name="__primary"
@@ -121,7 +131,8 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
   
@@ -137,7 +148,6 @@
 </a></div>
     
   </div>
-  
   
   <div class="col-lg-9 navbar-header-items">
     
@@ -196,23 +206,25 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -228,8 +240,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -240,8 +252,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
-            <label class="sr-only">Twitter</label></a>
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
         </li>
         <li class="nav-item">
             
@@ -254,8 +266,8 @@ document.write(`
           
           
           
-          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
-            <label class="sr-only">Mastodon</label></a>
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
           
@@ -266,8 +278,8 @@ document.write(`
           
           
           
-          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
-            <label class="sr-only">Blog RSS feed</label></a>
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Blog RSS feed</span></a>
         </li>
 </ul></div>
       
@@ -277,13 +289,15 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
@@ -359,10 +373,10 @@ document.write(`
           <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -378,8 +392,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -390,8 +404,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
-            <label class="sr-only">Twitter</label></a>
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
         </li>
         <li class="nav-item">
             
@@ -404,8 +418,8 @@ document.write(`
           
           
           
-          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
-            <label class="sr-only">Mastodon</label></a>
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
           
@@ -416,8 +430,8 @@ document.write(`
           
           
           
-          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
-            <label class="sr-only">Blog RSS feed</label></a>
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Blog RSS feed</span></a>
         </li>
 </ul></div>
         
@@ -433,6 +447,12 @@ document.write(`
 </h3>
 <ul>
   
+  
+  <li>
+    <a href="../2023/ai-for-good/">
+      02 October - A few random opportunities in AI for Social Good
+    </a>
+  </li>
   
   <li>
     <a href="../2023/social-directive/">
@@ -458,12 +478,6 @@ document.write(`
     </a>
   </li>
   
-  <li>
-    <a href="jupyterlite-workshop/">
-      10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool
-    </a>
-  </li>
-  
 </ul>
 </div>
 </div>
@@ -476,7 +490,7 @@ document.write(`
   
   
   <li>
-    <a href="../2023/">2023 (3)</a>
+    <a href="../2023/">2023 (4)</a>
   </li>
   
   
@@ -557,8 +571,8 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../" class="nav-link" aria-label="Home">
@@ -607,7 +621,8 @@ document.write(`
         31 December 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -643,13 +658,13 @@ document.write(`
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>This is a short post to demonstrate how to install packages directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> or <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, including custom branches and commits.
+    <p class="ablog-post-excerpt"><p>This is a short post to demonstrate how to install packages directly from GitHub with <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> or <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>, including custom branches and commits.
 It will focus on <code class="docutils literal notranslate"><span class="pre">pyprojects.toml</span></code> because this is newer and there’s less information about it, but the general pattern holds for <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> as well.</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, you can specify dependencies for a project via the <code class="docutils literal notranslate"><span class="pre">dependencies</span></code> field.
 For example, to specify <a class="reference external" href="https://sphinx-doc.org">Sphinx</a> as a dependency:</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="install-github-from-pyproject/"><em>Read more ...</em></a></p>
     <hr/>
@@ -668,7 +683,8 @@ For example, to specify <a class="reference external" href="https://sphinx-doc.o
         10 December 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -698,26 +714,26 @@ For example, to specify <a class="reference external" href="https://sphinx-doc.o
     </span>
   
   
-  <a href="../tag/jupyter/">jupyter</a>
-  
-  
-  
-  
-  
   <a href="../tag/webassembly/">webassembly</a>
+  
+  
+  
+  
+  
+  <a href="../tag/jupyter/">jupyter</a>
   
   
   
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I recently attended <a class="reference external" href="https://blog.jupyter.org/community-workshop-jupyterlite-e992c61f5d7f?source=collection_home---6------6-----------------------">the JupyterLite community workshop in Paris</a>, here are some quick thoughts from the three-day event<a class="footnote-reference brackets" href="#ack" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+    <p class="ablog-post-excerpt"><p>I recently attended <a class="reference external" href="https://blog.jupyter.org/community-workshop-jupyterlite-e992c61f5d7f?source=collection_home---6------6-----------------------">the JupyterLite community workshop in Paris</a>, here are some quick thoughts from the three-day event<a class="footnote-reference brackets" href="#ack" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>For those without any background, JupyterLite is a distribution of Jupyter’s user interfaces and a Python kernel that runs <strong>entirely in the browser</strong>.
 Its goal is to provide a low-overhead and accessible way to use a Jupyter interface via the browser.
 See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the <code class="docutils literal notranslate"><span class="pre">jupyterlite</span></code> documentation for more information</a>.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="jupyterlite-workshop/"><em>Read more ...</em></a></p>
     <hr/>
@@ -736,7 +752,8 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
         06 December 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -772,13 +789,12 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>As part of <a class="reference external" href="https://github.com/choldgraf/sphinx-social-previews">my <code class="docutils literal notranslate"><span class="pre">sphinx-social-previews</span></code></a> prototype, I wanted to be able to use the <a class="reference external" href="https://fonts.google.com/specimen/Roboto">Roboto Font from Google</a> in image previews.
+    <p class="ablog-post-excerpt"><p>As part of <a class="reference external" href="https://github.com/choldgraf/sphinx-social-previews">my <code class="docutils literal notranslate"><span class="pre">sphinx-social-previews</span></code></a> prototype, I wanted to be able to use the <a class="reference external" href="https://fonts.google.com/specimen/Roboto">Roboto Font from Google</a> in image previews.
 However, Roboto is often not loaded on your local filesystem, so it took some digging to figure out how to make it possible to load via <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">Matplotlib’s text plotting functionality</a>.</p>
 <p>Here’s the solution that finally worked for me, inspired <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html">from this Tweet with a similar implementation</a> from <a class="reference external" href="https://github.com/whitead/dmol-book/blob/master/package/dmol/__init__.py">the <code class="docutils literal notranslate"><span class="pre">dmol</span></code> book</a>.</p>
-<img alt="../../_images/504c3e97501f8adeae9e4f475631d209b7a124ed633b8c511754d67a6795f20a.png" src="../../_images/504c3e97501f8adeae9e4f475631d209b7a124ed633b8c511754d67a6795f20a.png" />
-</div>
+<img alt="../../_images/868fcd11b95a614186ca3a676d028d4548af86c0749233733e16ac5cf97f2fed.png" src="../../_images/868fcd11b95a614186ca3a676d028d4548af86c0749233733e16ac5cf97f2fed.png" /></p>
 
     <p class="ablog-post-expand"><a href="matplotlib-remote-font/"><em>Read more ...</em></a></p>
     <hr/>
@@ -797,7 +813,8 @@ However, Roboto is often not loaded on your local filesystem, so it took some di
         05 December 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -833,13 +850,13 @@ However, Roboto is often not loaded on your local filesystem, so it took some di
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
+    <p class="ablog-post-excerpt"><p>As part of <a class="reference external" href="https://github.com/pydata/pydata-sphinx-theme/pull/1075">the <code class="docutils literal notranslate"><span class="pre">pydata-sphinx-theme</span></code></a> we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly <strong>during the Sphinx build</strong>.
 It’s easy to configure things with <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> ahead of time, but what if you want to manually set a value during the build?</p>
 <p>I finally figured it out, so documenting the process here.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="sphinx-update-config/"><em>Read more ...</em></a></p>
     <hr/>
@@ -858,7 +875,8 @@ It’s easy to configure things with <code class="docutils literal notranslate">
         03 December 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -901,12 +919,12 @@ It’s easy to configure things with <code class="docutils literal notranslate">
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I figured out a way to automatically update all of the git <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook versions at once!</p>
+    <p class="ablog-post-excerpt"><p>I figured out a way to automatically update all of the git <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hook versions at once!</p>
 <p><a class="reference external" href="https://pre-commit.com/"><code class="docutils literal notranslate"><span class="pre">pre-commit</span></code></a> is a useful command line tool for running simple commands before every <code class="docutils literal notranslate"><span class="pre">git</span></code> commit.
 I use it to enforce things like <a class="reference external" href="https://flake8.pycqa.org/"><code class="docutils literal notranslate"><span class="pre">flake8</span></code></a> and <a class="reference external" href="https://github.com/psf/black"><code class="docutils literal notranslate"><span class="pre">black</span></code></a> in many of my projects.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="precommit-autoupdate/"><em>Read more ...</em></a></p>
     <hr/>
@@ -925,7 +943,8 @@ I use it to enforce things like <a class="reference external" href="https://flak
         29 November 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -968,14 +987,14 @@ I use it to enforce things like <a class="reference external" href="https://flak
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I often run shell commands in Python via the <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run"><code class="docutils literal notranslate"><span class="pre">subprocess.run</span></code> command</a>.
+    <p class="ablog-post-excerpt"><p>I often run shell commands in Python via the <a class="reference external" href="https://docs.python.org/3/library/subprocess.html#subprocess.run"><code class="docutils literal notranslate"><span class="pre">subprocess.run</span></code> command</a>.
 One thing that has always bugged me is that this required you to split commands into a list before it’d work properly.
 For example, you’d have to do:</p>
 <p>Today I discovered that you don’t have to do this!
 There’s a <code class="docutils literal notranslate"><span class="pre">shell=</span></code> keyword that can be used to tell subprocess to simply run the command directly in the shell.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="shell-split/"><em>Read more ...</em></a></p>
     <hr/>
@@ -994,7 +1013,8 @@ There’s a <code class="docutils literal notranslate"><span class="pre">shell=<
         27 November 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -1037,13 +1057,12 @@ There’s a <code class="docutils literal notranslate"><span class="pre">shell=<
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Have you ever had a GitHub pull request show “phantom” workflows that never pass?
+    <p class="ablog-post-excerpt"><p>Have you ever had a GitHub pull request show “phantom” workflows that never pass?
 This looks like one or more workflows that are in a constant <strong>waiting state</strong>, with a yellow status indicator, and that never complete.</p>
 <p>It looks something like this:</p>
-<img alt="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" src="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" />
-</div>
+<img alt="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" src="https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png" /></p>
 
     <p class="ablog-post-expand"><a href="phantom-workflows-pull-requests/"><em>Read more ...</em></a></p>
     <hr/>
@@ -1062,7 +1081,8 @@ This looks like one or more workflows that are in a constant <strong>waiting sta
         21 November 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -1098,24 +1118,24 @@ This looks like one or more workflows that are in a constant <strong>waiting sta
   
   
   
-  <a href="../tag/myst/">myst</a>
-  
-  
-  
-  
-  
   <a href="../tag/sphinx/">sphinx</a>
+  
+  
+  
+  
+  
+  <a href="../tag/myst/">myst</a>
   
   
   
 </li>
 
 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I was working on <a class="reference external" href="https://compass.2i2c.org">the roles and structure section of the 2i2c Team Compass</a> and found a nifty feature in Sphinx that I hadn’t known before.</p>
-<p>You can currently add labels to any section with the following MyST Markdown structure:</p>
 </div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>I was working on <a class="reference external" href="https://compass.2i2c.org">the roles and structure section of the 2i2c Team Compass</a> and found a nifty feature in Sphinx that I hadn’t known before.</p>
+<p>You can currently add labels to any section with the following MyST Markdown structure:</p>
+</p>
 
     <p class="ablog-post-expand"><a href="sphinx-custom-crossrefs/"><em>Read more ...</em></a></p>
     <hr/>
@@ -1134,7 +1154,8 @@ This looks like one or more workflows that are in a constant <strong>waiting sta
         19 November 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -1183,12 +1204,12 @@ This looks like one or more workflows that are in a constant <strong>waiting sta
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>For a while I’ve had a hand-crafted <code class="docutils literal notranslate"><span class="pre">.bibtex</span></code> file stored locally for <a class="reference internal" href="../../publications/"><span class="doc std std-doc">my <code class="docutils literal notranslate"><span class="pre">publications/</span></code> page</span></a>.
+    <p class="ablog-post-excerpt"><p>For a while I’ve had a hand-crafted <code class="docutils literal notranslate"><span class="pre">.bibtex</span></code> file stored locally for <a class="reference internal" href="../../publications/"><span class="doc std std-doc">my <code class="docutils literal notranslate"><span class="pre">publications/</span></code> page</span></a>.
 However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.</p>
 <p>A <a class="reference external" href="https://twitter.com/temorrell/status/1594749942316208128">helpful suggestion on Twitter</a> allowed me to include the full citation information, including lists of authors, using the doi.org API!</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="orcid-auto-update/"><em>Read more ...</em></a></p>
     <hr/>
@@ -1207,7 +1228,8 @@ However, manually updating local text file is a pain to remember, especially sin
         19 November 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -1228,13 +1250,13 @@ However, manually updating local text file is a pain to remember, especially sin
 
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
+    <p class="ablog-post-excerpt"><p>I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
 Along the way, I decided to redirect <code class="docutils literal notranslate"><span class="pre">/posts/</span></code> to <code class="docutils literal notranslate"><span class="pre">/blog/</span></code>, since it seems <code class="docutils literal notranslate"><span class="pre">/blog/</span></code> is a much more common folder to use for blog posts.</p>
 <p>This posed a problem, because <a class="reference external" href="https://github.com/wpilibsuite/sphinxext-rediraffe">the <code class="docutils literal notranslate"><span class="pre">sphinx-rediraffe</span></code> extension</a> does not allow you to redirect folders with wildcards.
 AKA, you cannot do:</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="sphinx-redirects-folder/"><em>Read more ...</em></a></p>
     <hr/>
@@ -1253,7 +1275,8 @@ AKA, you cannot do:</p>
         05 September 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -1289,12 +1312,12 @@ AKA, you cannot do:</p>
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p><em>this is an experiment at making my <a class="reference external" href="https://twitter.com/choldgraf">Twitter conversations</a> a bit more useful and archivable over time. It’s going to be a bit messy and unpolished, but hopefully that makes it more likely I’ll actually do it :-)</em></p>
+    <p class="ablog-post-excerpt"><p><em>this is an experiment at making my <a class="reference external" href="https://twitter.com/choldgraf">Twitter conversations</a> a bit more useful and archivable over time. It’s going to be a bit messy and unpolished, but hopefully that makes it more likely I’ll actually do it :-)</em></p>
 <p>Over the past decade, cloud infrastructure has become increasingly popular in industry.
 An ecosystem of modular tools and cloud services (often called <a class="reference external" href="https://future.com/emerging-architectures-modern-data-infrastructure/">the Modern Data Stack</a>) has filled many data needs for companies.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="cloud-services-academia/"><em>Read more ...</em></a></p>
     <hr/>
@@ -1322,7 +1345,9 @@ An ecosystem of modular tools and cloud services (often called <a class="referen
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
 </div>
@@ -1335,7 +1360,7 @@ An ecosystem of modular tools and cloud services (often called <a class="referen
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner"></div>
+            
           </footer>
         
       </main>
@@ -1343,8 +1368,8 @@ An ecosystem of modular tools and cloud services (often called <a class="referen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1362,7 +1387,7 @@ An ecosystem of modular tools and cloud services (often called <a class="referen
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     <br/>
   </p>
 </div>
@@ -1370,10 +1395,11 @@ An ecosystem of modular tools and cloud services (often called <a class="referen
     </div>
   
   
+  
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.1.
 </p></div>
       
     </div>

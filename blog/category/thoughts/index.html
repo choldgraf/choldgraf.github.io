@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -33,11 +33,12 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -82,6 +83,15 @@
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
   <input type="checkbox"
           class="sidebar-toggle"
           name="__primary"
@@ -121,7 +131,8 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
   
@@ -137,7 +148,6 @@
 </a></div>
     
   </div>
-  
   
   <div class="col-lg-9 navbar-header-items">
     
@@ -196,23 +206,25 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -228,8 +240,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -240,8 +252,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
-            <label class="sr-only">Twitter</label></a>
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
         </li>
         <li class="nav-item">
             
@@ -254,8 +266,8 @@ document.write(`
           
           
           
-          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
-            <label class="sr-only">Mastodon</label></a>
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
           
@@ -266,8 +278,8 @@ document.write(`
           
           
           
-          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
-            <label class="sr-only">Blog RSS feed</label></a>
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Blog RSS feed</span></a>
         </li>
 </ul></div>
       
@@ -277,13 +289,15 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
@@ -359,10 +373,10 @@ document.write(`
           <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -378,8 +392,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -390,8 +404,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
-            <label class="sr-only">Twitter</label></a>
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
         </li>
         <li class="nav-item">
             
@@ -404,8 +418,8 @@ document.write(`
           
           
           
-          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
-            <label class="sr-only">Mastodon</label></a>
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
           
@@ -416,8 +430,8 @@ document.write(`
           
           
           
-          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
-            <label class="sr-only">Blog RSS feed</label></a>
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Blog RSS feed</span></a>
         </li>
 </ul></div>
         
@@ -433,6 +447,12 @@ document.write(`
 </h3>
 <ul>
   
+  
+  <li>
+    <a href="../../2023/ai-for-good/">
+      02 October - A few random opportunities in AI for Social Good
+    </a>
+  </li>
   
   <li>
     <a href="../../2023/social-directive/">
@@ -458,12 +478,6 @@ document.write(`
     </a>
   </li>
   
-  <li>
-    <a href="../../2022/jupyterlite-workshop/">
-      10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool
-    </a>
-  </li>
-  
 </ul>
 </div>
 </div>
@@ -476,7 +490,7 @@ document.write(`
   
   
   <li>
-    <a href="../../2023/">2023 (3)</a>
+    <a href="../../2023/">2023 (4)</a>
   </li>
   
   
@@ -557,8 +571,8 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../" class="nav-link" aria-label="Home">
@@ -607,7 +621,8 @@ document.write(`
         08 November 2020
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 <li id="ablog-sidebar-item author ablog__author">
   <span>
@@ -651,24 +666,24 @@ document.write(`
     </span>
   
   
-  <a href="../../tag/sustainability/">sustainability</a>
-  
-  
-  
-  
-  
   <a href="../../tag/open-source/">open source</a>
+  
+  
+  
+  
+  
+  <a href="../../tag/sustainability/">sustainability</a>
   
   
   
 </li>
 
 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Over the years I’ve had a recurring question from people who are in organizations both big and small: <em>how can we participate in open source communities?</em></p>
-<p>Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc <em>want</em> to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you’re not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.</p>
 </div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>Over the years I’ve had a recurring question from people who are in organizations both big and small: <em>how can we participate in open source communities?</em></p>
+<p>Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc <em>want</em> to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you’re not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.</p>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2020/organizations-help-oss-guide/"><em>Read more ...</em></a></p>
     <hr/>
@@ -687,7 +702,8 @@ document.write(`
         13 October 2019
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -723,9 +739,9 @@ document.write(`
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>As I’ve written about before, I <a class="reference external" href="https://chrisholdgraf.com/rust-governance">like Rust’s governance structure</a>.
+    <p class="ablog-post-excerpt"><p>As I’ve written about before, I <a class="reference external" href="https://chrisholdgraf.com/rust-governance">like Rust’s governance structure</a>.
 I mean, who can’t get behind a community that
 <a class="reference external" href="https://www.rust-lang.org/governance">lists governance as a top-level page on its website</a>?</p>
 <p>Jupyter is currently in the middle of
@@ -733,7 +749,7 @@ I mean, who can’t get behind a community that
 and so I have been thinking about
 what this might look like. This post is a quick thought-experiment to explore what it’d mean
 to port over Rust’s governance directly into the Jupyter community.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2019/2019-10-13-rust-jupyter-governance/"><em>Read more ...</em></a></p>
     <hr/>
@@ -752,7 +768,8 @@ to port over Rust’s governance directly into the Jupyter community.</p>
         29 January 2019
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -801,16 +818,16 @@ to port over Rust’s governance directly into the Jupyter community.</p>
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I recently had to beef up the continuous deployment of Jupyter Book, and used
+    <p class="ablog-post-excerpt"><p>I recently had to beef up the continuous deployment of Jupyter Book, and used
 it as an opportunity to learn a bit more about CircleCI’s features. It turns out,
 they’re pretty cool! Here are a few of the things that I learned this time around.</p>
 <p>For those who aren’t familiar with CircleCI, it is a service that runs Continuous
 Integration and Continuous Deployment (CI/CD) workflows for projects. This basically
 means that they manage many kinds of infrastructure that can launch jobs that run
 test suites, deploy applications, and test on many different environments.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2019/2019-01-29-three-things-circleci/"><em>Read more ...</em></a></p>
     <hr/>
@@ -829,7 +846,8 @@ test suites, deploy applications, and test on many different environments.</p>
         05 December 2018
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -859,12 +877,6 @@ test suites, deploy applications, and test on many different environments.</p>
     </span>
   
   
-  <a href="../../tag/sustainability/">sustainability</a>
-  
-  
-  
-  
-  
   <a href="../../tag/open-communities/">open communities</a>
   
   
@@ -875,12 +887,18 @@ test suites, deploy applications, and test on many different environments.</p>
   
   
   
+  
+  
+  <a href="../../tag/sustainability/">sustainability</a>
+  
+  
+  
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>In the last couple of years, we’ve seen an increasing number of organizations start to
+    <p class="ablog-post-excerpt"><p>In the last couple of years, we’ve seen an increasing number of organizations start to
 spawn products that take a largely open stack (e.g., the SciPy ecosystem) and wrap
 it in a thin layer of proprietary/custom interface + infrastructure.
 On the face of it, this isn’t a problem - I really want people to be able to
@@ -890,7 +908,7 @@ of contributions <em>back</em> to those open source projects.</p>
 <p>I’d argue that using an open community’s software without contributing back is straight-up
 exploitative (legal, sure, but still exploitative), and we should think about ways to
 suppress this kind of behavior. This post is a collection of thoughts on that topic.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2018/free-labor-partners/"><em>Read more ...</em></a></p>
     <hr/>
@@ -909,7 +927,8 @@ suppress this kind of behavior. This post is a collection of thoughts on that to
         26 October 2018
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -958,14 +977,14 @@ suppress this kind of behavior. This post is a collection of thoughts on that to
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>How do open projects signal their “openness” to the outside community? This is
+    <p class="ablog-post-excerpt"><p>How do open projects signal their “openness” to the outside community? This is
 a really hard question, particularly because nowadays “open” has become a buzzword
 that doesn’t just signal a project’s position to the community, but is also used
 as a marketing term to increase support, users, or resources.</p>
 <p>I was thinking about this the other day, so decided to take to twitter:</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2018/kinds-of-openness/"><em>Read more ...</em></a></p>
     <hr/>
@@ -984,7 +1003,8 @@ as a marketing term to increase support, users, or resources.</p>
         18 October 2018
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -1014,7 +1034,7 @@ as a marketing term to increase support, users, or resources.</p>
     </span>
   
   
-  <a href="../../tag/community/">community</a>
+  <a href="../../tag/governance/">governance</a>
   
   
   
@@ -1026,22 +1046,21 @@ as a marketing term to increase support, users, or resources.</p>
   
   
   
-  <a href="../../tag/governance/">governance</a>
+  <a href="../../tag/community/">community</a>
   
   
   
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>Recently I’ve been reading up on governance models for several large-ish open
+    <p class="ablog-post-excerpt"><p>Recently I’ve been reading up on governance models for several large-ish open
 source projects. This is partially because I’m involved in a bunch of
 these projects myself, and partially because it’s fascinating to see distributed groups
 of people organizing themselves in effective (or not) ways on the internet.</p>
 <p>Governance is tricky, because there is an inherent tension between:</p>
-<img alt="Rust teams" src="../../../_images/2018-10-19-rust_logo.png" />
-</div>
+<img alt="Rust teams" src="../../../_images/2018-10-19-rust_logo.png" /></p>
 
     <p class="ablog-post-expand"><a href="../../2018/rust_governance/"><em>Read more ...</em></a></p>
     <hr/>
@@ -1069,7 +1088,9 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
 </div>
@@ -1082,7 +1103,7 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner"></div>
+            
           </footer>
         
       </main>
@@ -1090,8 +1111,8 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1109,7 +1130,7 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     <br/>
   </p>
 </div>
@@ -1117,10 +1138,11 @@ of people organizing themselves in effective (or not) ways on the internet.</p>
     </div>
   
   
+  
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.1.
 </p></div>
       
     </div>

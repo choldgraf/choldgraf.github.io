@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -33,11 +33,12 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-examples.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -82,6 +83,15 @@
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
   
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
   <input type="checkbox"
           class="sidebar-toggle"
           name="__primary"
@@ -121,7 +131,8 @@
     <span class="fa-solid fa-bars"></span>
   </label>
   
-  <div class="navbar-header-items__start">
+  
+  <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
   
@@ -137,7 +148,6 @@
 </a></div>
     
   </div>
-  
   
   <div class="col-lg-9 navbar-header-items">
     
@@ -196,23 +206,25 @@
       
         <div class="navbar-item navbar-persistent--container">
           
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
         </div>
       
       
         <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -228,8 +240,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -240,8 +252,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
-            <label class="sr-only">Twitter</label></a>
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
         </li>
         <li class="nav-item">
             
@@ -254,8 +266,8 @@ document.write(`
           
           
           
-          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
-            <label class="sr-only">Mastodon</label></a>
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
           
@@ -266,8 +278,8 @@ document.write(`
           
           
           
-          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
-            <label class="sr-only">Blog RSS feed</label></a>
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Blog RSS feed</span></a>
         </li>
 </ul></div>
       
@@ -277,13 +289,15 @@ document.write(`
   
   
     <div class="navbar-persistent--mobile">
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
     </div>
   
 
@@ -359,10 +373,10 @@ document.write(`
           <div class="navbar-item">
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script></div>
@@ -378,8 +392,8 @@ document.write(`
           
           
           
-          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          <a href="https://github.com/choldgraf/" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
         <li class="nav-item">
           
@@ -390,8 +404,8 @@ document.write(`
           
           
           
-          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter"></i></span>
-            <label class="sr-only">Twitter</label></a>
+          <a href="https://twitter.com/choldgraf" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
         </li>
         <li class="nav-item">
             
@@ -404,8 +418,8 @@ document.write(`
           
           
           
-          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon"></i></span>
-            <label class="sr-only">Mastodon</label></a>
+          <a href="https://hachyderm.io/@choldgraf" title="Mastodon" class="nav-link" rel="me" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-mastodon fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Mastodon</span></a>
         </li>
         <li class="nav-item">
           
@@ -416,8 +430,8 @@ document.write(`
           
           
           
-          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss"></i></span>
-            <label class="sr-only">Blog RSS feed</label></a>
+          <a href="https://chrisholdgraf.com/blog/atom.xml" title="Blog RSS feed" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-solid fa-rss fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Blog RSS feed</span></a>
         </li>
 </ul></div>
         
@@ -433,6 +447,12 @@ document.write(`
 </h3>
 <ul>
   
+  
+  <li>
+    <a href="../../2023/ai-for-good/">
+      02 October - A few random opportunities in AI for Social Good
+    </a>
+  </li>
   
   <li>
     <a href="../../2023/social-directive/">
@@ -458,12 +478,6 @@ document.write(`
     </a>
   </li>
   
-  <li>
-    <a href="../../2022/jupyterlite-workshop/">
-      10 December - Report from the JupyterLite workshop: WebAssembly is pretty cool
-    </a>
-  </li>
-  
 </ul>
 </div>
 </div>
@@ -476,7 +490,7 @@ document.write(`
   
   
   <li>
-    <a href="../../2023/">2023 (3)</a>
+    <a href="../../2023/">2023 (4)</a>
   </li>
   
   
@@ -557,8 +571,8 @@ document.write(`
 
 
 
-<nav aria-label="Breadcrumbs">
-  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
       <a href="../../../" class="nav-link" aria-label="Home">
@@ -607,7 +621,8 @@ document.write(`
         10 December 2022
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -637,26 +652,26 @@ document.write(`
     </span>
   
   
-  <a href="#">jupyter</a>
-  
-  
-  
-  
-  
   <a href="../webassembly/">webassembly</a>
+  
+  
+  
+  
+  
+  <a href="#">jupyter</a>
   
   
   
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I recently attended <a class="reference external" href="https://blog.jupyter.org/community-workshop-jupyterlite-e992c61f5d7f?source=collection_home---6------6-----------------------">the JupyterLite community workshop in Paris</a>, here are some quick thoughts from the three-day event<a class="footnote-reference brackets" href="#ack" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+    <p class="ablog-post-excerpt"><p>I recently attended <a class="reference external" href="https://blog.jupyter.org/community-workshop-jupyterlite-e992c61f5d7f?source=collection_home---6------6-----------------------">the JupyterLite community workshop in Paris</a>, here are some quick thoughts from the three-day event<a class="footnote-reference brackets" href="#ack" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>For those without any background, JupyterLite is a distribution of Jupyter’s user interfaces and a Python kernel that runs <strong>entirely in the browser</strong>.
 Its goal is to provide a low-overhead and accessible way to use a Jupyter interface via the browser.
 See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the <code class="docutils literal notranslate"><span class="pre">jupyterlite</span></code> documentation for more information</a>.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2022/jupyterlite-workshop/"><em>Read more ...</em></a></p>
     <hr/>
@@ -675,7 +690,8 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
         10 October 2020
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 <li id="ablog-sidebar-item author ablog__author">
   <span>
@@ -705,6 +721,12 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
     </span>
   
   
+  <a href="../sphinx/">sphinx</a>
+  
+  
+  
+  
+  
   <a href="../blogging/">blogging</a>
   
   
@@ -715,21 +737,14 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
   
   
   
-  
-  
-  <a href="../sphinx/">sphinx</a>
-  
-  
-  
 </li>
 
 
-    </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.</p>
-<p>This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)</p>
-<img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" />
 </div>
+    </ul>
+    <p class="ablog-post-excerpt"><p>I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.</p>
+<p>This is a great question. The answer to “should you re-work your blog to use a new SSG” is almost always “no, it’s a waste of your time”, but I think I had a few good reasons ;-)</p>
+<img alt="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" class="bg-dark" src="https://www.sphinx-doc.org/en/master/_static/sphinxheader.png" /></p>
 
     <p class="ablog-post-expand"><a href="../../2020/sphinx-blogging/"><em>Read more ...</em></a></p>
     <hr/>
@@ -748,7 +763,8 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
         30 March 2019
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -791,15 +807,15 @@ See <a class="reference external" href="https://jupyterlite.readthedocs.io/">the
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>I just got back from a week-long Jupyter team meeting that was somehow both
+    <p class="ablog-post-excerpt"><p>I just got back from a week-long Jupyter team meeting that was somehow both
 very tiring and energizing at the same time. In the spirit of openness, I’d
 like to share some of my experience. While it’s still fresh in my mind,
 here are a few takeaways that occurred to me throughout the week.</p>
 <p><em>Note that these are my personal (rough) impressions, but they shouldn’t be taken as a
 statement from the project/community itself.</em></p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2019/2019-03-16-jupyter-dev/"><em>Read more ...</em></a></p>
     <hr/>
@@ -818,7 +834,8 @@ statement from the project/community itself.</em></p>
         01 August 2018
         
       </li>
-      
+      <div class="ablog-sidebar-item ablog__postcard2">
+
 
 
 
@@ -848,18 +865,6 @@ statement from the project/community itself.</em></p>
     </span>
   
   
-  <a href="../conferences/">conferences</a>
-  
-  
-  
-  
-  
-  <a href="../communities/">communities</a>
-  
-  
-  
-  
-  
   <a href="../python/">python</a>
   
   
@@ -870,12 +875,24 @@ statement from the project/community itself.</em></p>
   
   
   
+  
+  
+  <a href="../conferences/">conferences</a>
+  
+  
+  
+  
+  
+  <a href="../communities/">communities</a>
+  
+  
+  
 </li>
 
 
+</div>
     </ul>
-    <div class="ablog-post-excerpt docutils container">
-<p>This is a short update on several of the conferences and workshops over the
+    <p class="ablog-post-excerpt"><p>This is a short update on several of the conferences and workshops over the
 summer of this year. There’s all kinds of exciting things going on in open
 source and open communities, so this is a quick way for me to collect my
 thoughts on some things I’ve learned this summer.</p>
@@ -886,7 +903,7 @@ the SciPy stack for a bunch of data analytics, and JupyterHub on
 Kubernetes for managing user instances and deploying on remote infrastructure.
 Pangeo has a neat demo of their hosted JupyterHub instance that people can use
 to access this otherwise-inaccessible dataset! See their video from SciPy below.</p>
-</div>
+</p>
 
     <p class="ablog-post-expand"><a href="../../2018/conferences-summer-2018/"><em>Read more ...</em></a></p>
     <hr/>
@@ -914,7 +931,9 @@ to access this otherwise-inaccessible dataset! See their video from SciPy below.
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
 </div>
@@ -927,7 +946,7 @@ to access this otherwise-inaccessible dataset! See their video from SciPy below.
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner"></div>
+            
           </footer>
         
       </main>
@@ -935,8 +954,8 @@ to access this otherwise-inaccessible dataset! See their video from SciPy below.
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -954,7 +973,7 @@ to access this otherwise-inaccessible dataset! See their video from SciPy below.
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     <br/>
   </p>
 </div>
@@ -962,10 +981,11 @@ to access this otherwise-inaccessible dataset! See their video from SciPy below.
     </div>
   
   
+  
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.1.
 </p></div>
       
     </div>
