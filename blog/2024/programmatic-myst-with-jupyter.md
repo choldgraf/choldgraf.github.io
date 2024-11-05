@@ -9,23 +9,19 @@ kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
----
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
----
 date: "2024-10-04"
 tags:
 - myst
 - jupyter
 ---
 
++++ {"editable": true, "slideshow": {"slide_type": ""}}
+
 # Generate MyST with Jupyter and insert it into content programmatically
 
-While I've been [converting my blog to use the new MyST engine](./mystmd-with-the-blog.md), I discovered another fun little MyST feature. Something that I miss from the Sphinx implementation of the MyST Parser is the [ability to parse Jupyter Markdown outputs as MyST](https://github.com/jupyter-book/mystmd/issues/1026). This is a really handy way to programmatically create MyST at build time.
+While I've been [converting my blog to use the new MyST engine](./mystmd-with-the-blog.md), I discovered a useful MyST feature. It's not yet possible to [natively parse Jupyter Markdown outputs as MyST](https://github.com/jupyter-book/mystmd/issues/1026) but there's a workaround if you don't mind generating a temporary file.
 
-It turns out that it is possible to programmatically generate MyST at build time and insert it into your documentation.
-The trick is to _write to a temporary file_ in your Jupyter cell, and then _include that cell with an `{include}` directive_ in your MyST markdown.
+The trick is to _write to a temporary file_ in your Jupyter cell, and then _include the temporary output file with an `{include}` directive_ in your MyST markdown.
 This allows you to directly write MyST Markdown without worrying about what the MyST AST specification looks like.
 
 For example, the following code cell writes some sample text to a `.txt` file in my MyST build directory.
@@ -56,3 +52,5 @@ And we can then include it in the page with MyST markdown like so:
 
 ```{include} ../_build/txt/tmp.txt
 ```
+
+The page will be executed first, and afterward, the page will be parsed into MyST, thus using the temporary file we've included.

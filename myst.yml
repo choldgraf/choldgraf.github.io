@@ -62,7 +62,7 @@ site:
     - choldgraf.github.io
   actions:
     - title: RSS
-      url: rss.xml
+      url: https://chrisholdgraf.com/rss.xml
   nav:
     - title: About
       url: /about

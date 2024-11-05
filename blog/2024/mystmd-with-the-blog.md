@@ -88,3 +88,10 @@ I found [the `python-feedgen` package](https://github.com/lkiesow/python-feedgen
 ```{literalinclude} ../../src/blogpost.py
 ```
 ````
+
+Annoyingly, you cannot just tell MyST to put a file in a particular location (see https://github.com/jupyter-book/mystmd/issues/1196 tracking this one). So I had to manually move this file to my build output folder in my GitHub action. Hopefully this functionality gets updated soon. Here's what that looks like:
+
+```{literalinclude} ../../.github/workflows/deploy.yml
+:start-at: # Move RSS feeds to output folder
+:end-at: # If we've pushed to main
+```

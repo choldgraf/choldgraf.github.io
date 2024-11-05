@@ -55,7 +55,7 @@ for ix, irow in posts.iterrows():
     fe.content(content=irow["content"])
 
 # Write an RSS feed with latest posts
-fg.atom_file(root / "../atom.xml", pretty=True)
+fg.atom_file(root / "atom.xml", pretty=True)
 fg.rss_file(root / "rss.xml", pretty=True)
 
 plugin = {

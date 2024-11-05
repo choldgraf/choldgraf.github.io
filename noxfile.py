@@ -3,16 +3,16 @@ from shlex import split
 from os.path import realpath
 
 nox.options.reuse_existing_virtualenvs = True
-
+nox.options.default_venv_backend = "uv"
 
 @nox.session
 def start(session):
-    session.install("-r", "requirements.txt")
-    session.install("-r", "execute-requirements.txt")
+    for ii in ["requirements.txt", "execute-requirements.txt"]:
+        session.run("uv", "pip", "install", "-U", "-r", ii, silent=True)
     session.run(*"myst start".split())
 
 @nox.session
 def lab(session):
-    session.install("-r", "requirements.txt")
-    session.install("-r", "execute-requirements.txt")
+    for ii in ["requirements.txt", "execute-requirements.txt"]:
+        session.run("uv", "pip", "install", "-U", "-r", ii, silent=True)
     session.run(*split("jupyter lab ."))

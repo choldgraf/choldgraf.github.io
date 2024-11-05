@@ -35,6 +35,12 @@ jobs:
       run: |
         myst build --html
 
+    # Move RSS feeds to output folder
+    - name: Move RSS feeds
+      run: |
+        cp feed.xml _build/html/feed.xml
+        cp rss.xml _build/html/rss.xml
+
     # If we've pushed to main, push the book's HTML to github-pages
     - if: ${{ github.ref == 'refs/heads/main' }}
       name: GitHub Pages action
