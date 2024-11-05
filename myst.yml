@@ -10,6 +10,7 @@ project:
   plugins:
     - type: executable
       path: src/blogpost.py
+    - src/socialpost.mjs
   toc:
     - file: index.md
     - file: about.md

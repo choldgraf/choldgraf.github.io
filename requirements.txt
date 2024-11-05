@@ -1,3 +1,4 @@
 mystmd
+jupyterlab-myst
 feedgen
 ipython!=8.7.0

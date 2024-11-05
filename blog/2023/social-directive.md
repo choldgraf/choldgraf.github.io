@@ -16,25 +16,6 @@ Rather than embedding it all in custom HTML code, I decided to write a little wr
 
 It's called `{socialpost}`, and it works with Twitter, Mastodon, and YouTube links.
 
-## Examples
-
-For example:
-
-````{example} Twitter
-```{socialpost} https://twitter.com/choldgraf/status/1564614538309390345
-```
-````
-
-````{example} Mastodon
-```{socialpost} https://hachyderm.io/@choldgraf/109858392098988533
-```
-````
-
-````{example} YouTube
-```{socialpost} https://www.youtube.com/watch?v=lZ2FHTkyaMU
-```
-````
-
 ## How it works
 
 Here's a brief description of how this directive works:

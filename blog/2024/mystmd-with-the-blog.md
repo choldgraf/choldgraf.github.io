@@ -88,33 +88,3 @@ I found [the `python-feedgen` package](https://github.com/lkiesow/python-feedgen
 ```{literalinclude} ../../src/blogpost.py
 ```
 ````
-
-## Bonus: Generate content with Jupyter
-
-Along the way I discovered another fun little MyST feature. Something that I miss from the Sphinx implementation of the MyST Parser is the [ability to parse Jupyter Markdown outputs as MyST](https://github.com/jupyter-book/mystmd/issues/1026). This is a really handy way to programmatically create MyST at build time, which is another way I could have built the list above.
-
-The trick is to _write to a temporary file_ in your Jupyter cell, and then _include that cell with an `{include}` directive_ in your MyST markdown.
-This allows you to directly write MyST Markdown without worrying about what the MyST AST specification looks like.
-
-For example, the following code cell writes some sample text to a `.txt` file in my MyST build directory.
-
-```{code-cell} python
-from pathlib import Path
-p = Path("../_build/txt/tmp.txt")
-p.parent.mkdir(parents=True, exist_ok=True)
-# Grab a list of all the filenames
-files = list(p.rglob("../**/*.md"))
-txt = "\n- ".join(files)
-_ = p.write_text(txt)
-```
-
-And we can then include it in the page with MyST markdown like so:
-
-````md
-```{include} ../_build/txt/tmp.txt
-```
-````
-
-```{include} ../_build/txt/tmp.txt
-```
-
