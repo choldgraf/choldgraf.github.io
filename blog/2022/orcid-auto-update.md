@@ -1,5 +1,8 @@
 ---
-tags: scholarship, doi, orcid
+tags:
+- scholarship
+- doi
+- orcid
 category: til
 date: "2022-11-19"
 ---

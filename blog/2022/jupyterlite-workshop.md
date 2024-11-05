@@ -1,7 +1,9 @@
 ---
 date: 2022-12-10
 category: reports
-tags: jupyter, webassembly
+tags:
+- jupyter
+- webassembly
 ---
 
 # Report from the JupyterLite workshop: WebAssembly is pretty cool

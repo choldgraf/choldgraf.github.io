@@ -1,5 +1,6 @@
 ---
-tags: governance
+tags:
+- governance
 category: thoughts
 title: What would Rust-style governance look like in Jupyter?
 date: 2019-10-13

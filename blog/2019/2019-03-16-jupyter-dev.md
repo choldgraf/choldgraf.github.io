@@ -1,5 +1,7 @@
 ---
-tags: jupyter, community
+tags:
+- jupyter
+- community
 title: Thoughts from the Jupyter team meeting 2019
 redirect: jupyter-team-meeting-2019
 category: report

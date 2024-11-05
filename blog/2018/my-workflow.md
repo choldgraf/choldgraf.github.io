@@ -1,5 +1,6 @@
 ---
-tags: productivity
+tags:
+- productivity
 permalink: weekly-workflow
 category: til
 date: 2018-10-26

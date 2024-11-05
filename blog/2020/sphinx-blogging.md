@@ -1,16 +1,18 @@
 ---
 author: Chris Holdgraf
 date: 2020-10-10
-tags: sphinx, blogging, jupyter
+tags:
+- sphinx
+- blogging
+- jupyter
 ---
 
 # A new blog with Sphinx
 
 I recently re-wrote all of the infrastructure for my blog so that it now builds on top of the Sphinx ecosystem! This is a short post to describe the reasons for doing so, and a bit about the implementation.
 
-````{image} https://www.sphinx-doc.org/en/master/_static/sphinxheader.png
+````{image} images/sphinx-logo.png
 :class: bg-dark
-:target: https://www.sphinx-doc.org/en/master/
 ````
 
 ## Why did you re-write your blog?

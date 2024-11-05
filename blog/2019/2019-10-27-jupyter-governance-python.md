@@ -1,5 +1,7 @@
 ---
-tags: governance, open source
+tags:
+- governance
+- open source
 title: What would Python-style governance look like in Jupyter?
 date: 2019-10-27
 redirect: python-jupyter-governance

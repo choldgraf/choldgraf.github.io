@@ -1,5 +1,6 @@
 ---
-tags: infrastructure
+tags:
+- infrastructure
 date: 2019-10-11
 redirect: automating-jb
 ---

@@ -1,5 +1,10 @@
 ---
-tags: python, open science, devops, jupyterhub, teams
+tags:
+- python
+- open science
+- devops
+- jupyterhub
+- teams
 category: report
 date: 2018-05-18
 ---
@@ -109,18 +114,18 @@ informative experience, and I'm looking forward to learning more about this comm
 * Amy Nguyen and Adam Barber shared their strategies for taking a [data-driven approach](https://www.devopsdays.org/events/2018-silicon-valley/program/amy-nguyen-adam-barber/) to user interface / experience design.
     * *Always collect data* from people you design things for.
     * Put in the legwork to interview and gather diverse perspectives before you build tools.
-* Fatema Boxwala ([@fatty_box](https://twitter.com/@fatty_box)) shared her experience as an intern, and gave some pointers for how to create a welcoming and productive environment for intern positions.
+* Fatema Boxwala ([fatty_box](https://twitter.com/@fatty_box)) shared her experience as an intern, and gave some pointers for how to create a welcoming and productive environment for intern positions.
     * Don't forget that interns have lives too. If they just moved to a new city, help them settle in.
     * Align your intern's project with something a team member (or yourself) will be actively work on.
-* Katy Farmer ([@TheKaterTot](https://twitter.com/@TheKaterTot)) reminded everybody that teams shouldn't _automatically_ aspire to use the workflows that gigantic tech companies use.
+* Katy Farmer ([TheKaterTot](https://twitter.com/@TheKaterTot)) reminded everybody that teams shouldn't _automatically_ aspire to use the workflows that gigantic tech companies use.
     * Just because it works for a big tech company doesn't mean it'll work for you.
     * Being a smaller-sized company isn't better or worse, it's just different. Don't treat company size as a reflection of quality, and don't assume larger companies do operations more effectively.
 * Frances Hocutt reassured everybody that it's OK if your tests wouldn't satisfy a production-level standard _all the time_.
     * Make sure your tests reflect _the current state of your code_.
     * Don't let perfect be an enemy of good. Testing 10% of the code is still better than testing 0%.
-* Jennelle Crothers ([@jkc137](https://twitter.com/@jkc137)) described how Windows is trying to shrink images that run Windows so that you can run them in containers more easily.
+* Jennelle Crothers ([jkc137](https://twitter.com/@jkc137)) described how Windows is trying to shrink images that run Windows so that you can run them in containers more easily.
     * It turns out that shrinking something from several GB to a few hundred MB makes it much easier to ship around :-)
     * As an aside, it's fascinating to see Microsoft focus on integrating itself with the container ecosystem (as opposed to trying to replace or compete with it). Maybe they really have learned something from their "[linux is a cancer](https://www.theregister.co.uk/2001/06/02/ballmer_linux_is_a_cancer/)" debacle.
-* Adrian Cockcroft ([@adrianco](https://twitter.com/@adrianco)) explained the importance of creating a [culture of reporting and logging](https://www.devopsdays.org/events/2018-silicon-valley/program/adrian-cockcroft/) incidents, even the small ones!
+* Adrian Cockcroft ([adrianco](https://twitter.com/@adrianco)) explained the importance of creating a [culture of reporting and logging](https://www.devopsdays.org/events/2018-silicon-valley/program/adrian-cockcroft/) incidents, even the small ones!
     * Instrument and study the "non-events" - look for "near-misses" and outliers. Never throw away information just because something catastrophic didn't happen.
     * Plan and practice for chaos! What will your team do if "everything goes wrong"?

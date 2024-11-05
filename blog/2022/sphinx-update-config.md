@@ -1,5 +1,6 @@
 ---
-tags: sphinx
+tags:
+- sphinx
 date: "2022-12-05"
 category: "til"
 ---

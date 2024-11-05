@@ -1,5 +1,6 @@
 ---
-tags: cloud
+tags:
+- cloud
 date: "2023-10-02"
 category: "til"
 ---

@@ -113,44 +113,19 @@ for iwork in progress.track(
     # Extract the DOI
     for ii in isummary["external-ids"]["external-id"]:
         if ii["external-id-type"] == "doi":
+            year = isummary["publication-date"]["year"]["value"]
             doi = ii["external-id-value"]
             break
-
-    meta = fetchmeta(doi, fmt="dict")
-    doi_url = meta["URL"]
-    title = meta["title"]
-    references_count = meta["references-count"]
-    year = meta["issued"]["date-parts"][0][0]
-    url = meta["URL"]
-
-    # Create authors list with links to their ORCIDs
-    authors = meta["author"]
-    autht = []
-    for author in authors:
-        name = f"{author['family']}, {author['given'][0]}."
-        if "holdgraf" in author["family"].lower():
-            name = f"**{name}**"
-        if "ORCID" in author:
-            autht.append(f"[{name}]({author['ORCID']})")
-        else:
-            autht.append(name)
-    autht = ", ".join(autht)
-
-    journal = meta["publisher"]
-
-    url_doi = url.split("//", 1)[-1]
-    reference = f"{autht} ({year}). **{title}**. {journal}. [{url_doi}]({url})"
-    df.append({"year": year, "reference": reference})
+    df.append({"year": year, "doi": doi})
 df = pd.DataFrame(df)
 
 # Convert into a markdown string
-md = []
+md = ["|Year|Publications|", "|===|===|"]
 for year, items in df.groupby("year", sort=False):
-    md.append(f"## {year}")
+    this_pubs = []
     for _, item in items.iterrows():
-        md.append(item["reference"])
-        md.append("")
-    md.append("")
+        this_pubs.append(f'{{cite}}`{item["doi"]}`')
+    md.append(f"|{year}|{', '.join(this_pubs)}|")
 mds = "\n".join(md)
 
 # +
