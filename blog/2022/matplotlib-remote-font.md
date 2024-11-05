@@ -12,7 +12,8 @@ kernelspec:
 mystnb:
   execution_mode: "cache"
 date: "2022-12-06"
-tags: matplotlib
+tags:
+- matplotlib
 category: til
 ---
 

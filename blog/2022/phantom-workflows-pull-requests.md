@@ -1,5 +1,7 @@
 ---
-tags: cicd, "github actions"
+tags:
+- cicd
+- "github actions"
 date: "2022-11-27"
 category: "til"
 ---

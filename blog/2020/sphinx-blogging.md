@@ -1,7 +1,10 @@
 ---
 author: Chris Holdgraf
 date: 2020-10-10
-tags: sphinx, blogging, jupyter
+tags:
+- sphinx
+- blogging
+- jupyter
 ---
 
 # A new blog with Sphinx

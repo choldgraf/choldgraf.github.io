@@ -1,5 +1,6 @@
 ---
-tags: software development
+tags:
+- software development
 date: "2022-12-31"
 category: "til"
 ---
@@ -58,7 +59,7 @@ Using these patterns with `requirements.txt` is nearly the same, but it's a bit 
 You don't need to specify the `packagename@` pattern used above.
 You can simply add a line that points to git like this:
 
-```{code-block}
+```{code-block} txt
 :caption: requirements.txt
 
 requirement1

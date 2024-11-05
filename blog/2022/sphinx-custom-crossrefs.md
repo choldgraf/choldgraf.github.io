@@ -1,7 +1,10 @@
 ---
 category: til
 date: "2022-11-21"
-tags: sphinx, scholarship, myst
+tags:
+- sphinx
+- scholarship
+- myst
 ---
 
 # Custom roles and domains in Sphinx with one line

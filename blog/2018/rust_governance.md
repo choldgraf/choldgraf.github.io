@@ -1,5 +1,8 @@
 ---
-tags: python, governance, community
+tags:
+- python
+- governance
+- community
 permalink: rust-governance
 category: thoughts
 date: 2018-10-18

@@ -1,40 +1,47 @@
 ---
-html_theme.sidebar_secondary.remove: true
+site:
+  hide_toc: true
 ---
-# Chris Holdgraf - about me
+# Hi, I'm Chris Holdgraf 👋
 
-I'm the Executive Director of [2i2c - the International Interactive Computing Collaboration](https://2i2c.org), a non-profit dedicated to open source infrastructure for interactive computing in research and education. I also work extensively with [Project Jupyter](https://jupyter.org), particularly [the Binder Project](https://mybinder.org) and [Jupyter Book](https://jupyterbook.org).
+:::{figure} ./images/profile-color-circle.png
+:class: col-gutter-left
+:alt: Profile picture of Dr Chris Holdgraf
+:align: center
+:width: 90%
+:::
+
+:::{table}
+:class: col-body-right
+| A bit about me... |
+|---|
+|💼 Executive Director @ [2i2c](https://2i2c.org/) |
+|☁️ Former Cloud DataHub team @ [Berkeley CDSS](https://cdss.berkeley.edu/) |
+|🌕 Distinguished Contributor @ [The Jupyter Project](https://jupyter.org) |
+|🧠 PhD graduate in neuroscience @ [UC Berkeley](https://berkeley.edu) |
+:::
+
+I also work extensively with [Project Jupyter](https://jupyter.org), particularly [the Binder Project](https://mybinder.org) and [Jupyter Book](https://jupyterbook.org).
 
 
 ::::{grid}
 :::{grid-item-card}
-:link: about
+:link: about.md
 About me ℹ️
 :::
 :::{grid-item-card}
-:link: projects
+:link: projects.md
 Projects I've worked on 🔧
 :::
 :::{grid-item-card}
-:link: blog
+:link: blog.md
 My blog ✍️
 :::
 ::::
 
+
 ## Recent blog posts
 
-```{postlist}
-:date: "%Y-%m-%d"
-:format: "{title} - {date}"
-:excerpts:
-```
-
-```{toctree}
-:maxdepth: 2
-:hidden:
-about
-projects
-publications
-talks
-blog
-```
+:::{postlist}
+:number: 10
+:::

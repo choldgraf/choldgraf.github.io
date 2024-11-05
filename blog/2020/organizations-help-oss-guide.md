@@ -1,7 +1,9 @@
 ---
 author: Chris Holdgraf
 date: 2020-11-08
-tags: open source, sustainability
+tags:
+- open source
+- sustainability
 category: thoughts
 ---
 

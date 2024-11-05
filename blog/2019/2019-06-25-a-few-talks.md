@@ -1,5 +1,6 @@
 ---
-tags: talks
+tags:
+- talks
 redirect: 2019-a-few-talks
 date: 2019-06-25
 ---

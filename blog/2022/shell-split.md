@@ -1,5 +1,7 @@
 ---
-tags: shell, python
+tags:
+- shell
+- python
 date: "2022-11-29"
 category: "til"
 ---

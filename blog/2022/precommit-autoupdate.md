@@ -1,5 +1,7 @@
 ---
-tags: python, git
+tags:
+- python
+- git
 date: "2022-12-03"
 category: "til"
 ---

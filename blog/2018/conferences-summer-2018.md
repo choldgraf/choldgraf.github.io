@@ -1,5 +1,9 @@
 ---
-tags: python, conferences, communities, jupyter
+tags:
+- python
+- conferences
+- communities
+- jupyter
 permalink: summer-conferences-2018
 category: report
 date: 2018-08-01

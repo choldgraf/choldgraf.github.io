@@ -1,5 +1,6 @@
 ---
-tags: cloud
+tags:
+- cloud
 date: "2022-09-05"
 category: "report"
 ---

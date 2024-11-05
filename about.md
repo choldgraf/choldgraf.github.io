@@ -1,21 +1,16 @@
----
-:description: A little bit about me...
----
 # About me
 
 I'm the Executive Director of [2i2c: the International Interactive Computing Collaboration](https://2i2c.org), a non-profit dedicated to open source infrastructure for interactive computing in research and education.
 
 ## What I do
 
-````{grid}
-
-```{grid-item}
-:columns: 3
+```{div}
+:class: col-gutter-left
 
 **Open Source and Open Community**
 ```
-```{grid-item}
-:columns: 9
+```{div}
+:class: col-body-right
 
 I work on projects that make research and education more effective, efficient, inclusive, and transparent. I also believe that it's important for open source technical projects to have healthy and inclusive _communities_ behind them.
 
@@ -26,26 +21,25 @@ I contribute to a number of open-source projects that support the research and e
 - [the Binder Project](https://mybinder.readthedocs.io/en/latest/about.html) - tools and standards for interactive, reproducible, sharable repositories.
 - [the Executable Books Project](https://executablebooks.org) - open source tools that facilitate publishing computational narratives using the Jupyter ecosystem.
 
-For an idea of the kinds of projects that I work on, check out my [{fa}`github,style=fab` GitHub page](https://github.com/choldgraf)
+For an idea of the kinds of projects that I work on, check out my [my GitHub page](https://github.com/choldgraf)
 ```
-```{grid-item}
-:columns: 3
+```{div}
+:class: col-gutter-left
 **Scientific Research and Open Scholarship**
 ```
-```{grid-item}
-:columns: 9
+```{div}
+:class: col-body-right
 
 I used to study cognitive and computational neuroscience, using predictive modeling to study the ways in which the human auditory system understands speech.
 
-- A good example of my work is this paper about [{fa}`file-alt`top-down speech representations influencing the perception of noisy speech](https://www.nature.com/articles/ncomms13654).
-- To learn about these methods, see my methods paper about [{fa}`file-alt` encoding and decoding models of speech perception](https://www.frontiersin.org/articles/10.3389/fnsys.2017.00061/full).
+- A good example of my work is this paper about [💬 representations influencing the perception of noisy speech](https://www.nature.com/articles/ncomms13654).
+- To learn about these methods, see my methods paper about [🧠 encoding and decoding models of speech perception](https://www.frontiersin.org/articles/10.3389/fnsys.2017.00061/full).
 
 I've also been involved with several projects across other fields in academic / scientific research, especially "meta" issues in open source communities and open standards and practices in scientific fields.
 
 For a list of publications and scholarly artifacts in which I've been involved,
 check out [my ORCID page](https://orcid.org/0000-0002-2391-0678) or [my Google Scholar page](https://scholar.google.com/citations?user=fJmcIEIAAAAJ&hl=en&oi=ao).
 ```
-````
 
 ## CV
 
@@ -68,58 +62,50 @@ This is an experiment in hosting my personal website and blog via Sphinx extensi
 
 Below is a (somewhat experimental) rough timeline of what I've been up to over the past several years.
 
-`````{grid} 2
-:class-container: timeline
+:::::::{div}
+:class: col-body-inset-left
 
-````{grid-item-card}
-:class-item: entry left
-
+:::::{card}
 2020: **Co-Founded [2i2c](https://2i2c.org)**
 ^^^
-
 2i2c is a non-profit organization that makes interactive computing environments more accessible to the research and education community. It supports the delpoyment of open infrastructure for this community, and also supports the open source communities underneath this infrastructure.
+:::::
 
-````
-````{grid-item}
-:class: right
-````
-````{grid-item}
-:class: left
-````
-````{grid-item-card}
-:class-item: entry right
+:::::::
 
+:::::::{div}
+:class: col-body-inset-right
 
+:::::{card}
 **2017** Joined the Jupyter Project
 ^^^
-
 After finishing graduate school I began a Post-Doc with [Fernando Perez](http://fperez.org/), focusing my work around applying and developing the Jupyter ecosystem to support workflows in research and education. Here are a few of the main things I did during this time:
-
 - Co-lead the [Binder Project](https://mybinder.org) for interactive, reproducible, sharable computational environments.
 - Co-lead the [JupyterHub team](https://jupyterhub-team-compass.readthedocs.io/en/latest/team.html), which builds tools for deploying interactive computing environments on shared infrastructure.
 - Served as "community architect" for the [Berkeley Data Science Education Program](https://data.berkeley.edu/dsep), which runs JupyterHubs on campus for education.
 - Co-launched the [Jupyter Book project](https://jupyterbook.org), a tool for building books from collections of notebooks and markdown files.
-````
-````{grid-item-card}
-:class-item: entry left
+:::::
 
+:::::::
+
+:::::::{div}
+:class: col-body-inset-left
+
+:::::{card}
 **2011** Graduate school at Berkeley
 ^^^
-
 My scientific training began as a neuroscientist, where I studied the ways that humans process speech and sound. I used computational models and machine learning to tie patterns of brain activity to spectral features of sound. In particular I focused on **speech in noise** to understand how our brain fills in missing details in auditory information.
-````
-````{grid-item}
-:class: right
-````
-````{grid-item}
-:class: left
-````
-````{grid-item-card}
-:class-item: entry right
+:::::
 
+:::::::
+
+:::::::{div}
+:class: col-body-inset-right
+
+:::::{card}
 **2009** Graduated from Tulane
 ^^^
-
 Graduated from Tulane University with a B.S. and an M.S. in Neuroscience.
-````
-`````
+:::::
+
+:::::::

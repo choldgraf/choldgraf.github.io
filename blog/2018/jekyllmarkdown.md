@@ -1,5 +1,8 @@
 ---
-tags: python, blogging, jekyll
+tags:
+- python
+- blogging
+- jekyll
 permalink: jekyll-markdown-nbconvert
 category: til
 date: 2018-05-23

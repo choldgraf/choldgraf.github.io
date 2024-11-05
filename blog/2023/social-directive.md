@@ -1,10 +1,15 @@
 ---
-tags: sphinx
+tags:
+- sphinx
 date: "2023-02-15"
 category: "til"
 ---
 
 # A Sphinx directive for social media embeds
+
+:::{note} This probably doesn't work anymore
+I've since moved my blog to use [the MyST Document Engine](https://mystmd.org) so this example will no longer work on my personal blog. See [this permalink for the latest working version](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2023/social-directive.md).
+:::
 
 I often want to link to social and other types of web-based media in my Sphinx documentation and blog.
 Rather than embedding it all in custom HTML code, I decided to write a little wrapper to turn it into a directive.
@@ -48,18 +53,3 @@ Here's a brief description of how this directive works:
 7. Load any necessary JS files if this directive is detected on a page.
    This is done with an `html-page-context` event.
 8. I then connected them both to Sphinx in my site's `conf.py` setup function.
-
-## Source code
-
-Here's the source code if you'd like to see how this works:
-
-The directive and event code:
-
-```{literalinclude} ../../scripts/social_media/__init__.py
-```
-
-Where I connect it to my site:
-
-```{literalinclude} ../../conf.py
-:start-at: "def setup(app):"
-```

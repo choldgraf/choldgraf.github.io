@@ -7,3 +7,6 @@ _build
 .nox
 .vscode
 __pycache__
+
+rss.xml
+feed.xml

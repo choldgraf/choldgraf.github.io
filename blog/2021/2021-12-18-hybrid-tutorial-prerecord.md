@@ -1,5 +1,6 @@
 ---
-tags: teaching
+tags:
+- teaching
 redirect: 2021-12-18-tutorials-pre-record
 category: til
 date: 2021-12-17
