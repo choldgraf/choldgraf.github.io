@@ -12,6 +12,12 @@ def start(session):
     session.run(*"myst start".split())
 
 @nox.session
+def test(session):
+    for ii in ["requirements.txt", "execute-requirements.txt"]:
+        session.run("uv", "pip", "install", "-U", "-r", ii, silent=True)
+    session.run("python", "src/blogpost.py") 
+
+@nox.session
 def lab(session):
     for ii in ["requirements.txt", "execute-requirements.txt"]:
         session.run("uv", "pip", "install", "-U", "-r", ii, silent=True)
