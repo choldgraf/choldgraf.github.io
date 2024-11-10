@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://chrisholdgraf.com</id>
   <title>Chris Holdgraf's blog</title>
-  <updated>2024-11-05T18:53:57.174853+00:00</updated>
+  <updated>2024-11-10T23:16:18.024752+00:00</updated>
   <author>
     <name>Chris Holdgraf</name>
     <email>choldgraf@gmail.com</email>
@@ -15,28 +15,21 @@
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</id>
     <title>An academic scientist goes to DevOps Days</title>
-    <updated>2024-11-05T18:53:57.178062+00:00</updated>
+    <updated>2024-11-10T23:16:18.027931+00:00</updated>
     <content>
 
 
 Last week I took a few days to attend [DevOpsDays Silicon Valley](https://www.devopsdays.org/events/2018-silicon-valley/program/). My goal
 was to learn a bit about how the DevOps culture works, what are the things
 people are excited about and discuss in this community. I'm also interested in
-learning a thing or two that could be brought back into the scientific / academic world.
-Here are a couple of thoughts from the experience.
-
-&gt; **tl;dr**: DevOps is more about culture and team process than it is about technology, maybe science should be too...
-
-
-This one is going to be hard to define ([though here's one definition](https://theagileadmin.com/what-is-devops/)),
-as I'm new to the community as</content>
+learning a thing or two that could be brought back into</content>
     <link href="http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018"/>
     <published>2018-05-18T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/jekyllmarkdown</id>
     <title>Blogging with Jupyter Notebooks and Jekyll using nbconvert templates</title>
-    <updated>2024-11-05T18:53:57.177994+00:00</updated>
+    <updated>2024-11-10T23:16:18.027857+00:00</updated>
     <content>
 
 
@@ -49,20 +42,14 @@ turn into blog posts for you.
 nbconvert --to markdown myfile.ipynb
 ```
 
-However, an annoying part of this is that Markdown doesn't include classes
-for input and outputs, which means they each get treated the same in the
-output. Not ideal.
-
-Fortunately, [you can customize nbconvert extensively](https://nbconvert.readthedocs.io/en/latest/external_exporters.html).
-First, it's possible to [create your *own* exporter class](https://nbconvert.readthedocs.io/en/latest/external_exporters.html#writing-a-custom-exporter), but this is a bit heavy for what we want to do. In our case, we'd
-simply like to _extend_</content>
+However, an annoying part of this is that Markdown</content>
     <link href="http://chrisholdgraf.com/blog/2018/jekyllmarkdown"/>
     <published>2018-05-23T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/sphinx-copy-buttons</id>
     <title>Adding copy buttons to code blocks in Sphinx</title>
-    <updated>2024-11-05T18:53:57.177926+00:00</updated>
+    <updated>2024-11-10T23:16:18.027790+00:00</updated>
     <content>
 
 
@@ -73,19 +60,14 @@ simply like to _extend_</content>
 documentation for your Python package. On the Jupyter project, we use it
 for almost all of our repositories.
 
-A common use for Sphinx is to step people through a chunk of code. For example,
-in the [Zero to JupyterHub for Kubernetes](https://zero-to-jupyterhub.readthedocs.io/en/latest/)
-guide we step users through a number of installation and configuration steps.
-
-A common annoyance is that there is a lot of copy/pasting involved. Sometimes
-you accidentally miss a character or some</content>
+A</content>
     <link href="http://chrisholdgraf.com/blog/2018/sphinx-copy-buttons"/>
     <published>2018-07-05T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/conferences-summer-2018</id>
     <title>Summer conference report back</title>
-    <updated>2024-11-05T18:53:57.177858+00:00</updated>
+    <updated>2024-11-10T23:16:18.027724+00:00</updated>
     <content>
 
 
@@ -96,38 +78,28 @@ thoughts on some things I've learned this summer.
 
 
 
-Pangeo is a project that provides
-**access to a gigantic geosciences dataset**. They use lots of tools in the
-open-source community, including Dask for efficient numerical computation,
-the SciPy stack for a bunch of data analytics, and JupyterHub on
-Kubernetes for managing user instances and deploying on remote infrastructure.
-Pangeo has a neat demo of their hosted JupyterHub</content>
+Pangeo is a</content>
     <link href="http://chrisholdgraf.com/blog/2018/conferences-summer-2018"/>
     <published>2018-08-01T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/circle-docs</id>
     <title>Using CircleCI to preview documentation in Pull Requests</title>
-    <updated>2024-11-05T18:53:57.177791+00:00</updated>
+    <updated>2024-11-10T23:16:18.027658+00:00</updated>
     <content>
 
 
 Writing documentation is important - it's the first point of contact between many users and your
 project, and can be a pivotal moment in whether they decide to adopt your tech or become a contributor.
 
-However, it can be a pain to iterate on documentation, as it is often involves a lot of rapid iteration
-locally, followed by a push to GitHub where you "just trust" that the author has done a good job of
-writing content, design, etc.
-
-A really helpful tip here is to use Continuous Integration to build and preview your documentation. This
-allows you to generate a link to the build docs,</content>
+However, it can be a pain to iterate on documentation, as it is often involves a lot</content>
     <link href="http://chrisholdgraf.com/blog/2018/circle-docs"/>
     <published>2018-10-16T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/rust_governance</id>
     <title>I like Rust's governance structure</title>
-    <updated>2024-11-05T18:53:57.177722+00:00</updated>
+    <updated>2024-11-10T23:16:18.027591+00:00</updated>
     <content>
 
 
@@ -137,43 +109,28 @@ these projects myself, and partially because it's fascinating to see distributed
 of people organizing themselves in effective (or not) ways on the internet.
 
 
-Governance is tricky, because there is an inherent tension between:
-
-* Being able to make important, complex, or sensitive decisions quickly
-* Being transparent and inclusive in the decision-making process
-
-For most companies and organizations, the above is (sort-of) solved with a relatively
-hierarchical decision-making structure. The "Chief Executive Officer" can
-decide high-level directions for the whole company. The team manager</content>
+Governance is tricky, because there is</content>
     <link href="http://chrisholdgraf.com/blog/2018/rust_governance"/>
     <published>2018-10-18T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/my-workflow</id>
     <title>My weekly workflow</title>
-    <updated>2024-11-05T18:53:57.177653+00:00</updated>
+    <updated>2024-11-10T23:16:18.027522+00:00</updated>
     <content>
 
 
 I've had a bunch of conversations with friends who were interested in how to
 keep track of the various projects they're working on, and to prioritize their
 time over the course of a week. I thought it might be helpful to post my own
-approach to planning time throughout the week in case it's useful for others to
-riff off of.
-
-
-First off, a few general principles that I use to guide my thinking on planning
-out the week.
-
-1. **Be intentional.** This seems obvious, but I find that if I don't explicitly define
-   what I want to work on, I have more of those</content>
+approach to planning time throughout the week in case</content>
     <link href="http://chrisholdgraf.com/blog/2018/my-workflow"/>
     <published>2018-10-26T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/kinds-of-openness</id>
     <title>How do projects signal how "open" they are?</title>
-    <updated>2024-11-05T18:53:57.177583+00:00</updated>
+    <updated>2024-11-10T23:16:18.027439+00:00</updated>
     <content>
 
 
@@ -182,44 +139,28 @@ a really hard question, particularly because nowadays "open" has become a buzzwo
 that doesn't just signal a project's position to the community, but is also used
 as a marketing term to increase support, users, or resources.
 
-I was thinking about this the other day, so decided to take to twitter:
-
-```{socialpost} https://twitter.com/choldgraf/status/1054478362209480704
-```
-
-I was surprised at how much this question resonated with people. Here are a few
-highlights from the (very interesting) conversation that came out of that question.
-
-
-
-Tal immediately brought up a really important point: many projects *want* to be
-inclusive and welcoming to</content>
+I was thinking about this</content>
     <link href="http://chrisholdgraf.com/blog/2018/kinds-of-openness"/>
     <published>2018-10-26T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/free-labor-partners</id>
     <title>Open communities need to be partners, not sources of free labor</title>
-    <updated>2024-11-05T18:53:57.177506+00:00</updated>
+    <updated>2024-11-10T23:16:18.027373+00:00</updated>
     <content>
 
 
 In the last couple of years, we've seen an increasing number of organizations start to
 spawn products that take a largely open stack (e.g., the SciPy ecosystem) and wrap
 it in a thin layer of proprietary/custom interface + infrastructure.
-On the face of it, this isn't a problem - I really want people to be able to
-make money using the open source stack - however, there is a big caveat. When you look
-at the work that those organizations have done over time, you often see a pretty thin trail
-of contributions *back* to those open source projects.
-
-I'd argue that using an open community's software</content>
+On the face of it, this isn't a problem - I really want people</content>
     <link href="http://chrisholdgraf.com/blog/2018/free-labor-partners"/>
     <published>2018-12-05T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/circlci-github</id>
     <title>Automatically mirror a github repository with CircleCI</title>
-    <updated>2024-11-05T18:53:57.177352+00:00</updated>
+    <updated>2024-11-10T23:16:18.027307+00:00</updated>
     <content>
 
 
@@ -227,20 +168,14 @@ I'd argue that using an open community's software</content>
   using CI/CD services like CircleCI. This post shows you one way to do it using
   secrets that let you push to a GitHub repository from a CircleCI process.
 
-We recently ran into an issue with the Data 8 course where we needed to mirror
-one GitHub site to another. In short, the textbook is built with a tool called
-[jupyter-book](https://chrisholdgraf.com/jupyter-book/intro.html), and we use [github-pages](https://pages.github.com/)
-to host the content at [inferentialthinking.com](https://inferentialthinking.com).
-For [weird URL-naming reasons](https://help.github.com/articles/custom-domain-redirects-for-github-pages-sites/),
-we had to create [a second organization](https://github.com/inferentialthinking/inferentialthinking.github.io)
-to host the actual site. This introduced the complexity that</content>
+We recently ran into an issue with</content>
     <link href="http://chrisholdgraf.com/blog/2018/circlci-github"/>
     <published>2018-12-18T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-01-29-three-things-circleci</id>
     <title>Three things I love about CircleCI</title>
-    <updated>2024-11-05T18:53:57.177284+00:00</updated>
+    <updated>2024-11-10T23:16:18.027241+00:00</updated>
     <content>
 
 
@@ -248,43 +183,27 @@ I recently had to beef up the continuous deployment of Jupyter Book, and used
 it as an opportunity to learn a bit more about CircleCI's features. It turns out,
 they're pretty cool! Here are a few of the things that I learned this time around.
 
-For those who aren't familiar with CircleCI, it is a service that runs Continuous
-Integration and Continuous Deployment (CI/CD) workflows for projects. This basically
-means that they manage many kinds of infrastructure that can launch jobs that run
-test suites, deploy applications, and test on many different environments.
-
-Here are some cool things that I now have a much better appreciation for:
-
-
-Often</content>
+For those who aren't familiar with CircleCI, it</content>
     <link href="http://chrisholdgraf.com/blog/2019/2019-01-29-three-things-circleci"/>
     <published>2019-01-29T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-03-16-jupyter-dev</id>
     <title>Thoughts from the Jupyter team meeting 2019</title>
-    <updated>2024-11-05T18:53:57.177216+00:00</updated>
+    <updated>2024-11-10T23:16:18.027174+00:00</updated>
     <content>
 
 I just got back from a week-long Jupyter team meeting that was somehow both
 very tiring and energizing at the same time. In the spirit of openness, I'd
 like to share some of my experience. While it's still fresh in my mind,
-here are a few takeaways that occurred to me throughout the week.
-
-*Note that these are my personal (rough) impressions, but they shouldn't be taken as a
-statement from the project/community itself.*
-
-
-The first thing is probably unsurprising to many people, but was really driven
-home at this meeting, is that there are **so many** Jupyter users our there. These
-people come from all different walks</content>
+here are a few takeaways that occurred to me throughout the</content>
     <link href="http://chrisholdgraf.com/blog/2019/2019-03-16-jupyter-dev"/>
     <published>2019-03-30T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-06-25-a-few-talks</id>
     <title>A few recent talks</title>
-    <updated>2024-11-05T18:53:57.177147+00:00</updated>
+    <updated>2024-11-10T23:16:18.027107+00:00</updated>
     <content>
 
 
@@ -292,21 +211,14 @@ Lately I've given quite a number of talks about the Jupyter and Binder
 ecosystems for various purposes. Before each of the talks, I make the
 slides available at a public address in case others are interested in
 following up with the material. For those who missed the talks (or the
-subsequent tweets about them), here are a few of the more recent ones.
-
-A word of warning: there's a lot of overlap between these talks - I'm not
-crazy enough to re-invent the wheel each time I have to speak. However, maybe
-folks will find some value in the different angles taken in each case.
-
-
-This talk covers</content>
+subsequent tweets about them),</content>
     <link href="http://chrisholdgraf.com/blog/2019/2019-06-25-a-few-talks"/>
     <published>2019-06-25T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-10-11-automating-jb</id>
     <title>Automating Jupyter Book deployments with CI/CD</title>
-    <updated>2024-11-05T18:53:57.177078+00:00</updated>
+    <updated>2024-11-10T23:16:18.027040+00:00</updated>
     <content>
 
 
@@ -314,20 +226,14 @@ Lately I've spent a lot of time trying to reduce the friction involved
 in deploying Jupyter Book as well as contributing to the project.
 Features are a great carrot, but ultimately getting engagement is also
 about lowering barriers to entry and showing people a path forward.
-Jupyter Book is a relatively straightforward project, but it involves
-a few technical pieces that can be painful to use (thanks Jekyll).
-
-Recently I experimented with whether we can **automate deploying a Jupyter Book online**.
-Using continuous integration / deployment services seems like a natural place
-to try this out. One can upload a barebones set of code to a GitHub repository,
-then</content>
+Jupyter Book is a relatively straightforward project, but</content>
     <link href="http://chrisholdgraf.com/blog/2019/2019-10-11-automating-jb"/>
     <published>2019-10-11T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-10-13-rust-jupyter-governance</id>
     <title>What would Rust-style governance look like in Jupyter?</title>
-    <updated>2024-11-05T18:53:57.177010+00:00</updated>
+    <updated>2024-11-10T23:16:18.026971+00:00</updated>
     <content>
 
 
@@ -338,18 +244,14 @@ I mean, who can't get behind a community that
 Jupyter is currently in the middle of
 [figuring out the next phase of its governance structure](https://discourse.jupyter.org/t/governance-office-hours-meeting-minutes/1480/26),
 and so I have been thinking about
-what this might look like. This post is a quick thought-experiment to explore what it'd mean
-to port over Rust's governance directly into the Jupyter community.
-
-*Note: I'm not an expert in Rust governance, so there are some assumptions made about its model
-based on my outside perspective. Apologies if I miss any important details about the Rust</content>
+what this might look like.</content>
     <link href="http://chrisholdgraf.com/blog/2019/2019-10-13-rust-jupyter-governance"/>
     <published>2019-10-13T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-10-27-jupyter-governance-python</id>
     <title>What would Python-style governance look like in Jupyter?</title>
-    <updated>2024-11-05T18:53:57.176942+00:00</updated>
+    <updated>2024-11-10T23:16:18.026902+00:00</updated>
     <content>
 
 
@@ -358,23 +260,14 @@ directly port the governance model of other communities into the Jupyter project
 You can find the [first post about Rust here](https://chrisholdgraf.com/rust-jupyter-governance).
 
 **Note**: These posts are meant as a thought experiment rather than a proposal. Moreover,
-all the usual caveats come with it, such as the
-fact that I don't know the Python governance
-structure *that* well, and I might totally
-botch my characterization of it.
-
-
-Recently, the Python community underwent a refactoring of their governance
-model. This was in large part due to [Guido's decision to step down as BDFL](https://mail.python.org/pipermail/python-committers/2018-July/005664.html).
-
-What transpired was</content>
+all the</content>
     <link href="http://chrisholdgraf.com/blog/2019/2019-10-27-jupyter-governance-python"/>
     <published>2019-10-27T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</id>
     <title>What do people think about rST?</title>
-    <updated>2024-11-05T18:53:57.176873+00:00</updated>
+    <updated>2024-11-10T23:16:18.026833+00:00</updated>
     <content>
 
 
@@ -383,21 +276,14 @@ and there is still a lot of work to be done in improving these use-cases. We've 
 a lot of progress in providing open infrastructure for reproducible science with
 [JupyterHub](https://jupyterhub.readthedocs.io/en/stable/) and
 [the Binder Project](https://mybinder.org/), but what about the documents themselves?
-We've recently been working on tools like [Jupyter Book](https://jupyterbook.org),
-which aim to improve the writing and publishing process with the Jupyter ecosystem.
-This is hopefully the first post of a few that ask how we can best-improve the state
-of publishing with Jupyter.
-
-:::{admonition} Update!
-:class: tip
-Many of the ideas in this post have now made their way</content>
+We've recently been</content>
     <link href="http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts"/>
     <published>2020-01-22T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</id>
     <title>Build a simple timeline with `sphinx-design`</title>
-    <updated>2024-11-05T18:53:57.176804+00:00</updated>
+    <updated>2024-11-10T23:16:18.026762+00:00</updated>
     <content>
 
 
@@ -412,7 +298,7 @@ If you want to see a version of this page that worked, [check out this file in G
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/sphinx-blogging</id>
     <title>A new blog with Sphinx</title>
-    <updated>2024-11-05T18:53:57.176735+00:00</updated>
+    <updated>2024-11-10T23:16:18.026686+00:00</updated>
     <content>
 
 
@@ -423,32 +309,27 @@ I recently re-wrote all of the infrastructure for my blog so that it now builds 
 ````
 
 
-This is a great question. The answer to "should you re-work your blog to use a new SSG" is almost always "no, it's a waste of your time", but I think I had a few good reasons ;-)
-
-🐶 Dog Fooding
-: First, I've been doing a lot of work with the [Executable Books Project](https://executablebooks.org) lately. As a result, [Jupyter Book now</content>
+This is a great question. The answer to "should you</content>
     <link href="http://chrisholdgraf.com/blog/2020/sphinx-blogging"/>
     <published>2020-10-10T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/organizations-help-oss-guide</id>
     <title>Contributing to open source: A short guide for organizations</title>
-    <updated>2024-11-05T18:53:57.176666+00:00</updated>
+    <updated>2024-11-10T23:16:18.026537+00:00</updated>
     <content>
 
 
 Over the years I've had a recurring question from people who are in organizations both big and small: _how can we participate in open source communities?_
 
-Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc _want_ to be involved in open source projects (particularly large and impactful ones like Jupyter), but getting involved can be an opaque and confusing process if you're not already familiar with open source. Each community has its own nuances and social dynamics, and approaching from the outside can be a challenge.
-
-So this post is a short guide to provide some</content>
+Whether it is because of altruism or strategic importance, many companies, research groups, non-profits, etc _want_ to be involved in open source projects (particularly large</content>
     <link href="http://chrisholdgraf.com/blog/2020/organizations-help-oss-guide"/>
     <published>2020-11-08T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2021/2021-12-18-hybrid-tutorial-prerecord</id>
     <title>Serving in two roles at once via pre-recorded tutorials</title>
-    <updated>2024-11-05T18:53:57.176598+00:00</updated>
+    <updated>2024-11-10T23:16:18.026470+00:00</updated>
     <content>
 
 
@@ -458,35 +339,28 @@ The tutorial was 30 minutes long, and the session was fully remote.
 This posed a few challenges:
 
 - Tutorials almost **always** go over time - particularly if you're taking questions from attendees.
-- It is tricky to go back and forth between lecture-style talking and going through steps yourself to make sure that you're not out-pacing the attendees.
-- My time working with [the Carpentries](https://carpentries.org/) taught me that having helpers in a tutorial is extremely useful to keep things on track.
-
-So, I decided to try an expriment this</content>
+- It is tricky to</content>
     <link href="http://chrisholdgraf.com/blog/2021/2021-12-18-hybrid-tutorial-prerecord"/>
     <published>2021-12-17T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/cloud-services-academia</id>
     <title>Ask Twitter: Why don't academic researchers use cloud services?</title>
-    <updated>2024-11-05T18:53:57.176528+00:00</updated>
+    <updated>2024-11-10T23:16:18.026402+00:00</updated>
     <content>
 
 
 _this is an experiment at making my [Twitter conversations](https://twitter.com/choldgraf) a bit more useful and archivable over time. It's going to be a bit messy and unpolished, but hopefully that makes it more likely I'll actually do it :-)_
 
 Over the past decade, cloud infrastructure has become increasingly popular in industry.
-An ecosystem of modular tools and cloud services (often called [the Modern Data Stack](https://future.com/emerging-architectures-modern-data-infrastructure/)) has filled many data needs for companies.
-
-However, academic research and education still largely does not utilize this stack.
-Instead, they optimize for local workflows or shared infrastructure that exists on-premise.
-If you believe (as I do) that cloud infrastructure has</content>
+An ecosystem</content>
     <link href="http://chrisholdgraf.com/blog/2022/cloud-services-academia"/>
     <published>2022-09-05T00:00:00-07:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/orcid-auto-update</id>
     <title>Automatically updating my publications page with ORCID and doi.org</title>
-    <updated>2024-11-05T18:53:57.176459+00:00</updated>
+    <updated>2024-11-10T23:16:18.026325+00:00</updated>
     <content>
 
 
@@ -494,46 +368,28 @@ For a while I've had a hand-crafted `.bibtex` file stored locally for [my `publi
 However, manually updating local text file is a pain to remember, especially since there are many services out there that automatically track new publications.
 
 :::{admonition} Update!
-A [helpful suggestion on Twitter](https://twitter.com/temorrell/status/1594749942316208128) allowed me to include the full citation information, including lists of authors, using the doi.org API!
-:::
-
-Here's the workflow I'd prefer:
-
-- Treat one online service provider as a **Single Source of Truth** for my publications list.
-- Use an API to programmatically ask this provider for the _latest_ data about my publications.
-- Reshape that data into a form that</content>
+A [helpful suggestion on Twitter](https://twitter.com/temorrell/status/1594749942316208128) allowed me to include the full citation</content>
     <link href="http://chrisholdgraf.com/blog/2022/orcid-auto-update"/>
     <published>2022-11-19T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</id>
     <title>Automatically redirect folders in Sphinx websites</title>
-    <updated>2024-11-05T18:53:57.176388+00:00</updated>
+    <updated>2024-11-10T23:16:18.026234+00:00</updated>
     <content>
 
 
 I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
 Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
 
-This posed a problem, because [the `sphinx-rediraffe` extension](https://github.com/wpilibsuite/sphinxext-rediraffe) does not allow you to redirect folders with wildcards.
-AKA, you cannot do:
-
-```python
-rediraffe_redirects = {
-    "posts/**/*.md": "blog/**/*.md",
-}
-```
-
-I also didn't want to have to manually specify every single blog post, since that'd be a very long list.
-
-Fortunately, I figured out a solution because _Sphinx's configuration is also a</content>
+This posed a problem, because [the `sphinx-rediraffe`</content>
     <link href="http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder"/>
     <published>2022-11-19T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/sphinx-custom-crossrefs</id>
     <title>Custom roles and domains in Sphinx with one line</title>
-    <updated>2024-11-05T18:53:57.176315+00:00</updated>
+    <updated>2024-11-10T23:16:18.026110+00:00</updated>
     <content>
 
 
@@ -547,21 +403,14 @@ You can currently add labels to any section with the following MyST Markdown str
 And now I [reference it](mylabel).
 ```
 
-However, there are no **semantics** attached to this label.
-Instead I'd like to be able to specify what _kind_ of a label this is.
-In my case, it's because I wanted to define a **group of labels attached to our organization's roles**.
-
-Fortunately this is pretty easy to do!
-Just not well-documented.
-
-Here's how to **define a custom role and reference it in</content>
+However, there are no **semantics** attached to this</content>
     <link href="http://chrisholdgraf.com/blog/2022/sphinx-custom-crossrefs"/>
     <published>2022-11-21T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/phantom-workflows-pull-requests</id>
     <title>Fix phantom GitHub workflows in your ci-cd with protected branch rules</title>
-    <updated>2024-11-05T18:53:57.176245+00:00</updated>
+    <updated>2024-11-10T23:16:18.026036+00:00</updated>
     <content>
 
 
@@ -573,19 +422,14 @@ It looks something like this:
 ```{image} https://user-images.githubusercontent.com/1839645/204134864-da2541f0-ff4f-4d9f-8c80-aa8c4437d8a0.png
 ```
 
-If you run into this, it may be because of [branch protection rules](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches) in their repository.
-These allow you to ensure that certain conditions are met before a pull request can be merged.
-
-In particular, a common step is to **ensure that a certain GitHub Workflow passes before you can merge**.
-This is often the source of the phantom workflows that never complete.
-This</content>
+If you run into this, it may be because of</content>
     <link href="http://chrisholdgraf.com/blog/2022/phantom-workflows-pull-requests"/>
     <published>2022-11-27T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/shell-split</id>
     <title>`subprocess.run` can execute shell commands directly</title>
-    <updated>2024-11-05T18:53:57.176174+00:00</updated>
+    <updated>2024-11-10T23:16:18.025967+00:00</updated>
     <content>
 
 
@@ -601,23 +445,14 @@ subprocess.run(*shlex.split("ls -l"))
 ```
 
 Today I discovered that you don't have to do this!
-There's a `shell=` keyword that can be used to tell subprocess to simply run the command directly in the shell.
-
-For example:
-
-```python
-import subprocess
-subprocess.run("ls -l", shell=True)
-```
-
-Apparently there are some [security considerations](https://docs.python.org/3/library/subprocess.html#security-considerations) but this seems like a big papercut saver to me.</content>
+There's a</content>
     <link href="http://chrisholdgraf.com/blog/2022/shell-split"/>
     <published>2022-11-29T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/precommit-autoupdate</id>
     <title>Automatically update pre-commit hook versions</title>
-    <updated>2024-11-05T18:53:57.176103+00:00</updated>
+    <updated>2024-11-10T23:16:18.025893+00:00</updated>
     <content>
 
 
@@ -626,66 +461,41 @@ I figured out a way to automatically update all of the git `pre-commit` hook ver
 [`pre-commit`](https://pre-commit.com/) is a useful command line tool for running simple commands before every `git` commit.
 I use it to enforce things like [`flake8`](https://flake8.pycqa.org/) and [`black`](https://github.com/psf/black) in many of my projects.
 
-However, I find it really annoying to keep manually updating my `pre-commit` hooks with new versions, particularly because `pre-commit` doesn't let you specify wild-cards.
-
-Fortunately, I recently came across [the `pre-commit autoupdate` documentation](https://pre-commit.com/#updating-hooks-automatically).
-This lets you automatically update to the latest released versions of all-precommit hooks.
-Simply run:
-
-```bash
-pre-commit autoupdate
-```
-
-And it will update your `.pre-commit-config.yaml` file with the latest versions.
-This</content>
+However, I find it really annoying</content>
     <link href="http://chrisholdgraf.com/blog/2022/precommit-autoupdate"/>
     <published>2022-12-03T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/sphinx-update-config</id>
     <title>How to update Sphinx options during the build</title>
-    <updated>2024-11-05T18:53:57.176031+00:00</updated>
+    <updated>2024-11-10T23:16:18.025817+00:00</updated>
     <content>
 
 
 As part of [the `pydata-sphinx-theme`](https://github.com/pydata/pydata-sphinx-theme/pull/1075) we have a few settings that auto-enable extensions and configure them on behalf of the user.
 It has always been mysterious to me how to do this properly **during the Sphinx build**.
-It's easy to configure things with `conf.py` ahead of time, but what if you want to manually set a value during the build?
-
-I finally figured it out, so documenting the process here.
-
-
-**Define a Sphinx event for `builder-inited`**. This will trigger after the builder has been selected, but before the environent is finalized for the build.
-This should be a function that takes a single `(app)` parameter.
-
-:::{seealso}
-See</content>
+It's easy to configure things with `conf.py` ahead of time, but what if you want</content>
     <link href="http://chrisholdgraf.com/blog/2022/sphinx-update-config"/>
     <published>2022-12-05T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/matplotlib-remote-font</id>
     <title>Load and plot a remote font with Matplotlib</title>
-    <updated>2024-11-05T18:53:57.175961+00:00</updated>
+    <updated>2024-11-10T23:16:18.025724+00:00</updated>
     <content>
 
 
 As part of [my `sphinx-social-previews`](https://github.com/choldgraf/sphinx-social-previews) prototype, I wanted to be able to use the [Roboto Font from Google](https://fonts.google.com/specimen/Roboto) in image previews.
 However, Roboto is often not loaded on your local filesystem, so it took some digging to figure out how to make it possible to load via [Matplotlib's text plotting functionality](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html).
 
-Here's the solution that finally worked for me, inspired [from this Tweet with a similar implementation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.text.html) from [the `dmol` book](https://github.com/whitead/dmol-book/blob/master/package/dmol/__init__.py).
-
-Below I'll use [the `Fira Code` font from Mozilla](http://mozilla.github.io/Fira/) but you could do this with any open font that you have the `.ttf` file for.
-
-
-I'll show how to do this with a</content>
+Here's</content>
     <link href="http://chrisholdgraf.com/blog/2022/matplotlib-remote-font"/>
     <published>2022-12-06T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/jupyterlite-workshop</id>
     <title>Report from the JupyterLite workshop: WebAssembly is pretty cool</title>
-    <updated>2024-11-05T18:53:57.175894+00:00</updated>
+    <updated>2024-11-10T23:16:18.025660+00:00</updated>
     <content>
 
 
@@ -693,45 +503,28 @@ I recently attended [the JupyterLite community workshop in Paris](https://blog.j
 
 [^ack]: Many thanks to the [QuantStack](http://quantstack.com/) team for organizing this event, and to [OVHCloud](https://www.ovhcloud.com/en/) for providing a physical space for everyone. 
 
-For those without any background, JupyterLite is a distribution of Jupyter's user interfaces and a Python kernel that runs **entirely in the browser**.
-Its goal is to provide a low-overhead and accessible way to use a Jupyter interface via the browser.
-See [the `jupyterlite` documentation for more information](https://jupyterlite.readthedocs.io/).
-
-
-We had a demonstration of [the `capytale` platform](https://www.ac-paris.fr/capytale-un-service-web-pour-creer-et-partager-des-activites-pedagogiques-de-codage-121816), a project run by the French educational system to</content>
+For those without any background, JupyterLite is a distribution of Jupyter's user</content>
     <link href="http://chrisholdgraf.com/blog/2022/jupyterlite-workshop"/>
     <published>2022-12-10T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/install-github-from-pyproject</id>
     <title>Install dependencies from GitHub with `pyproject.toml` or `requirements.txt`</title>
-    <updated>2024-11-05T18:53:57.175821+00:00</updated>
+    <updated>2024-11-10T23:16:18.025590+00:00</updated>
     <content>
 
 
 This is a short post to demonstrate how to install packages directly from GitHub with `pyprojects.toml` or `requirements.txt`, including custom branches and commits.
 It will focus on `pyprojects.toml` because this is newer and there's less information about it, but the general pattern holds for `requirements.txt` as well.
 
-In `pyproject.toml`, you can specify dependencies for a project via the `dependencies` field.
-For example, to specify [Sphinx](https://sphinx-doc.org) as a dependency:
-
-```{code-block} toml
-:caption: pyproject.toml
-dependencies = [
-  "sphinx",
-]
-```
-
-However, this will install the version that is published to [`PyPI`](Here's how to install a specific branch in `pyproject.toml`:
-).
-What if you want to install from `@main`, or from a specific</content>
+In `pyproject.toml`, you can specify</content>
     <link href="http://chrisholdgraf.com/blog/2022/install-github-from-pyproject"/>
     <published>2022-12-31T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/sphinx-add-extensions</id>
     <title>Bundle extensions with your Sphinx theme</title>
-    <updated>2024-11-05T18:53:57.175749+00:00</updated>
+    <updated>2024-11-10T23:16:18.025518+00:00</updated>
     <content>
 
 
@@ -739,18 +532,14 @@ Sphinx is great because it has a ton of useful extensions that let you grow its 
 However, a downside of this is that users have to actually _learn about_ those extensions and activate them manually.
 It's not hard, but it's a non-trivial amount of discovery work.
 
-One way to solve this is for **themes to bundle extensions on their own**.
-This way they can include functionality via an extension rather than writing custom code on their own.
-
-However, this doesn't often happen, I think because it can be pretty confusing how to do so.
-I believe I've figured out the major gotchas to avoid and</content>
+One way to solve this is</content>
     <link href="http://chrisholdgraf.com/blog/2023/sphinx-add-extensions"/>
     <published>2023-01-19T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/fosdem</id>
     <title>Report from FOSDEM23: beautiful chaos in a conference</title>
-    <updated>2024-11-05T18:53:57.175676+00:00</updated>
+    <updated>2024-11-10T23:16:18.025447+00:00</updated>
     <content>
 
 
@@ -758,19 +547,14 @@ I recently attended [FOSDEM 2023](https://fosdem.org/2023/), my first FOSDEM!
 I had heard of the conference before, but hadn't really looked into it too much.
 Fortunately, after some urging from friends and social media, I took a deeper look and decided I should join to see what all the fuss was about.
 
-Here are a few things that I noticed while I was there.
-
-
-I feel like FOSDEM tries to bring the "beautiful chaos" of open source communities into a conference setting.
-There's no registration, and little "conference infrastructure" compared to other conferences of its size and scope.
-People who attended for the first time seemed to be</content>
+Here are a</content>
     <link href="http://chrisholdgraf.com/blog/2023/fosdem"/>
     <published>2023-02-06T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/social-directive</id>
     <title>A Sphinx directive for social media embeds</title>
-    <updated>2024-11-05T18:53:57.175602+00:00</updated>
+    <updated>2024-11-10T23:16:18.025375+00:00</updated>
     <content>
 
 
@@ -778,62 +562,67 @@ People who attended for the first time seemed to be</content>
 I've since moved my blog to use [the MyST Document Engine](https://mystmd.org) so this example will no longer work on my personal blog. See [this permalink for the latest working version](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2023/social-directive.md).
 :::
 
-I often want to link to social and other types of web-based media in my Sphinx documentation and blog.
-Rather than embedding it all in custom HTML code, I decided to write a little wrapper to turn it into a directive.
-
-It's called `{socialpost}`, and it works with Twitter, Mastodon, and YouTube links.
-
-
-Here's a brief description of how this directive works:
-
-1. Parse the directive content (the thing that</content>
+I often want to link to social and other types of web-based media in my Sphinx</content>
     <link href="http://chrisholdgraf.com/blog/2023/social-directive"/>
     <published>2023-02-15T00:00:00-08:00</published>
   </entry>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/ai-for-good</id>
     <title>A few random opportunities in AI for Social Good</title>
-    <updated>2024-11-05T18:53:57.175525+00:00</updated>
+    <updated>2024-11-10T23:16:18.025303+00:00</updated>
     <content>
 
 
 Recently a few friends have reached out asking if I knew of any opportunities to work on AI-related things that also have some kind of pro-social tie-in.
-I think a lof people see AI as a technology with a lot of potential, but in an environment of companies that don't seem to prioritize the benefit of human-kind over the never-ending hype machine and the promise of hyperscale growth.
-
-So I asked around a few places to see if folks had recommendations for using skills in machine learning or artificial intelligence, but in a context that was explicitly for the benefit of humanity</content>
+I think a lof people see AI as a technology with a lot of potential, but in an environment of companies that don't seem</content>
     <link href="http://chrisholdgraf.com/blog/2023/ai-for-good"/>
     <published>2023-10-02T00:00:00-07:00</published>
   </entry>
   <entry>
-    <id>http://chrisholdgraf.com/blog/2024/programmatic-myst-with-jupyter</id>
-    <title>Generate MyST with Jupyter and insert it into content programmatically</title>
-    <updated>2024-11-05T18:53:57.175436+00:00</updated>
-    <content>
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-
-While I've been [converting my blog to use the new MyST engine](./mystmd-with-the-blog.md), I discovered a useful MyST feature. It's not yet possible to [natively parse Jupyter Markdown outputs as MyST](https://github.com/jupyter-book/mystmd/issues/1026) but there's a workaround if you don't mind generating a temporary file.
-
-The trick is to _write to a temporary file_ in your Jupyter cell, and then _include the temporary output file with an `{include}` directive_ in your MyST markdown.
-This allows you to directly write MyST Markdown without worrying about what the MyST AST specification looks like.
-
-For example, the following code cell writes some sample text</content>
-    <link href="http://chrisholdgraf.com/blog/2024/programmatic-myst-with-jupyter"/>
-    <published>2024-10-04T00:00:00-07:00</published>
-  </entry>
-  <entry>
     <id>http://chrisholdgraf.com/blog/2024/mystmd-with-the-blog</id>
     <title>Re-building my blog with MySTMD</title>
-    <updated>2024-11-05T18:53:57.175326+00:00</updated>
+    <updated>2024-11-10T23:16:18.025227+00:00</updated>
     <content>
 
 Wow it has been a long time since I've last-written here. It turns out that having two small children and a very demanding job means you don't have as much time for blogging. But that's a whole different blog post...
 
-I've decided to convert my blog to use the new [MyST Document Engine](https://mystmd.org). This is part of a dogfooding experiment to see what's possible with MyST, since it's where the Jupyter Book project is heading, and I want to see how close to "production-ready" we are already.
-
-To begin, I wanted to share a few things I learned today as I tried</content>
+I've decided to convert my blog to use the new [MyST</content>
     <link href="http://chrisholdgraf.com/blog/2024/mystmd-with-the-blog"/>
     <published>2024-11-01T00:00:00-07:00</published>
+  </entry>
+  <entry>
+    <id>http://chrisholdgraf.com/blog/2024/programmatic-myst-with-jupyter</id>
+    <title>Generate MyST with Jupyter and insert it into content programmatically</title>
+    <updated>2024-11-10T23:16:18.025149+00:00</updated>
+    <content>
+
+
+
+While I've been [converting my blog to use the new MyST engine](./mystmd-with-the-blog.md), I discovered a useful MyST feature. It's not yet possible to [natively parse Jupyter Markdown outputs as MyST](https://github.com/jupyter-book/mystmd/issues/1026) but there's a workaround if you don't mind generating a temporary file.
+
+The trick is to _write to a temporary file_</content>
+    <link href="http://chrisholdgraf.com/blog/2024/programmatic-myst-with-jupyter"/>
+    <published>2024-11-04T00:00:00-08:00</published>
+  </entry>
+  <entry>
+    <id>http://chrisholdgraf.com/blog/2024/blog-list</id>
+    <title>Better blog lists with the MyST AST</title>
+    <updated>2024-11-10T23:16:18.025049+00:00</updated>
+    <content>
+
+
+On my journey to learn more about writing with [the new MyST engine](https:///mystmd.org), I built upon [my recent update to my blog infrastructure](./programmatic-myst-with-jupyter.md) and made some improvements to my blog post list.
+Here's what it looks like now:
+
+````{note} Click here to see how it looks now
+:class: dropdown
+```{postlist}
+:number: 3
+```
+````
+
+Here's a quick rundown</content>
+    <link href="http://chrisholdgraf.com/blog/2024/blog-list"/>
+    <published>2024-11-09T00:00:00-08:00</published>
   </entry>
 </feed>

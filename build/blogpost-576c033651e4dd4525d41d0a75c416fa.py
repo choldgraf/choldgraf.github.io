@@ -6,6 +6,7 @@ from yaml import safe_load
 from pathlib import Path
 import pandas as pd
 from feedgen.feed import FeedGenerator
+import unist as u
 
 DEFAULTS = {"number": 10}
 
@@ -14,21 +15,35 @@ root = Path(__file__).parent.parent
 # Aggregate all posts from the markdown and ipynb files
 posts = []
 for ifile in root.rglob("blog/**/*.md"):
+    if "drafts" in str(ifile):
+        continue
+
     text = ifile.read_text()
-    yaml = safe_load(text.split("---")[1])
-    yaml["path"] = ifile.relative_to(root).with_suffix("")
-    if "title" not in yaml:
+    try:
+        _, meta, content = text.split("---", 2)
+    except Exception:
+        print(f"Skipping file with error: {ifile}", file=sys.stderr)
+        continue
+
+    # Load in YAML metadata
+    meta = safe_load(meta)
+    meta["path"] = ifile.relative_to(root).with_suffix("")
+    if "title" not in meta:
         lines = text.splitlines()
         for ii in lines:
             if ii.strip().startswith("#"):
-                yaml["title"] = ii.replace("#", "").strip()
+                meta["title"] = ii.replace("#", "").strip()
                 break
-    content = text.split("---", 2)[-1]
-    content = "\n".join(ii for ii in content.splitlines() if not ii.startswith("#"))
-    N_WORDS = 100
+    
+    # Summarize content
+    skip_lines = ["#", "--", "%", "++"]
+    content = "\n".join(ii for ii in content.splitlines() if not any(ii.startswith(char) for char in skip_lines))
+    N_WORDS = 50
     words = " ".join(content.split(" ")[:N_WORDS])
-    yaml["content"] = yaml.get("description", words)
-    posts.append(yaml)
+    if not "author" in meta or not meta["author"]:
+        meta["author"] = "Chris Holdgraf"
+    meta["content"] = meta.get("description", words)
+    posts.append(meta)
 posts = pd.DataFrame(posts)
 posts["date"] = pd.to_datetime(posts["date"]).dt.tz_localize("US/Pacific")
 posts = posts.dropna(subset=["date"])
@@ -80,21 +95,25 @@ children = []
 for ix, irow in posts.iterrows():
     children.append(
         {
-            "type": "listItem",
-            "spread": True,
-            "children": [
-                {
-                    "type": "link",
-                    "url": f"/{irow['path'].with_suffix('')}",
-                    "children": [
-                        {
-                            "type": "text",
-                            "value": irow["title"],
-                        }
-                    ],
-                },
-                {"type": "text", "value": f' - {irow["date"]:%B %d, %Y}'},
-            ],
+          "type": "card",
+          "url": f"/{irow['path'].with_suffix('')}",
+          "children": [
+            {
+              "type": "cardTitle",
+              "children": [u.text(irow["title"])]
+            },
+            {
+              "type": "paragraph",
+              "children": [u.text(irow['content'])]
+            },
+            {
+              "type": "footer",
+              "children": [
+                u.strong([u.text("Date: ")]), u.text(f"{irow['date']:%B %d, %Y} | "),
+                u.strong([u.text("Author: ")]), u.text(f"{irow['author']}"),
+              ]
+            },
+          ]
         }
     )
 
@@ -120,20 +139,7 @@ def run_directive(name, data):
     assert name == "postlist"
     opts = data["node"].get("options", {})
     number = int(opts.get("number", DEFAULTS["number"]))
-    output = (
-        {
-            "type": "list",
-            "ordered": False,
-            "spread": False,
-            "children": [
-                {
-                    "type": "listItem",
-                    "spread": True,
-                    "children": children[:number],
-                }
-            ],
-        },
-    )
+    output = children[:number]
     return output
 
 
