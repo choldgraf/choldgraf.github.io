@@ -4,6 +4,8 @@ date: "2024-11-22"
 tags:
 - open source
 - social media
+description: |
+  Some quick thoughts on moving from Twitter/X to BlueSky and how I'll try to use social media after being burned once by Twitter.
 ---
 # Thoughts on moving from Twitter/X to BlueSky
 
