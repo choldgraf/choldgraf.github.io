@@ -11,3 +11,6 @@ __pycache__
 rss.xml
 feed.xml
 atom.xml
+
+uv.lock
+.python-version

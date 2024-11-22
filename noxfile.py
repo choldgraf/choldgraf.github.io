@@ -9,7 +9,7 @@ nox.options.default_venv_backend = "uv"
 def start(session):
     for ii in ["requirements.txt", "execute-requirements.txt"]:
         session.run("uv", "pip", "install", "-U", "-r", ii, silent=True)
-    session.run(*"myst start".split())
+    session.run(*"myst start".split(), *session.posargs)
 
 @nox.session
 def test(session):

@@ -1,4 +1,6 @@
 mystmd
 jupyterlab-myst
 feedgen
+pyyaml
 ipython!=8.7.0
+rich
