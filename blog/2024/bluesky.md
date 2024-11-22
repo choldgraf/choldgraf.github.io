@@ -7,7 +7,7 @@ tags:
 description: |
   Some quick thoughts on moving from Twitter/X to BlueSky and how I'll try to use social media after being burned once by Twitter.
 ---
-# Thoughts on moving from Twitter/X to BlueSky
+# How I'm trying to use BlueSky without getting burned again
 
 I see a lot of individuals and communities in my network moving their primary social media presence over to [BlueSky](https://bsky.social) in the last few weeks.
 I've decided to give BlueSky a shot myself, and thought I'd share some of my rationale for why, and how I'm approaching it.
