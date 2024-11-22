@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Sun, 10 Nov 2024 23:16:18 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 Nov 2024 18:23:00 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -587,6 +587,19 @@ Here's what it looks like now:
 Here's a quick rundown</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2024/blog-list</guid>
       <pubDate>Sat, 09 Nov 2024 00:00:00 -0800</pubDate>
+    </item>
+    <item>
+      <title>Thoughts on moving from Twitter/X to BlueSky</title>
+      <link>http://chrisholdgraf.com/blog/2024/bluesky</link>
+      <description>
+
+I see a lot of individuals and communities in my network moving their primary social media presence over to [BlueSky](https://bsky.social) in the last few weeks.
+I've decided to give BlueSky a shot myself, and thought I'd share some of my rationale for why, and how I'm approaching it.
+
+
+A lot of my</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2024/bluesky</guid>
+      <pubDate>Fri, 22 Nov 2024 00:00:00 -0800</pubDate>
     </item>
   </channel>
 </rss>
