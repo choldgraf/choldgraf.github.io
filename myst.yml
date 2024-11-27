@@ -63,6 +63,7 @@ site:
   actions:
     - title: RSS
       url: https://chrisholdgraf.com/rss.xml
+  analytics_google: G-G5PMZM6RPE # Measurement ID or Tracking ID
   nav:
     - title: About
       url: /about

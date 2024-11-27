@@ -14,3 +14,8 @@ atom.xml
 
 uv.lock
 .python-version
+
+# Obsidian
+.makemd
+.obsidian
+.space
