@@ -8,9 +8,12 @@ project:
   # authors: [Chris Holdgraf]
   github: https://github.com/choldgraf/choldgraf.github.io
   plugins:
-    - type: executable
-      path: src/blogpost.py
+    - src/blog.mjs
     - src/socialpost.mjs
+  blog:
+    title: "Chris Holdgraf's blog"
+    description: "A blog about my projects and thoughts"
+    url: "https://chrisholdgraf.com"
   toc:
     - file: index.md
     - file: about.md
