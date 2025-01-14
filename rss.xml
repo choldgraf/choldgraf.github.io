@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 27 Nov 2024 17:00:46 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jan 2025 20:22:18 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -251,6 +251,20 @@ all the</description>
       <pubDate>Sun, 27 Oct 2019 00:00:00 -0700</pubDate>
     </item>
     <item>
+      <title>Build a simple timeline with `sphinx-design`</title>
+      <link>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</link>
+      <description>
+
+
+:::{warning} This probably doesn't work anymore
+I'm building my blog with the [MyST Markdown engine](https://mystmd.org) now, which means that all of this sphinx-specific stuff probably doesn't work anymore :-)
+
+If you want to see a version of this page that worked, [check out this file in GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2020/sphinx-design-timeline.md).
+:::</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</guid>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
+    </item>
+    <item>
       <title>What do people think about rST?</title>
       <link>http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</link>
       <description>
@@ -263,20 +277,6 @@ a lot of progress in providing open infrastructure for reproducible science with
 [the Binder Project](https://mybinder.org/), but what about the documents themselves?
 We've recently been</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</guid>
-      <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
-    </item>
-    <item>
-      <title>Build a simple timeline with `sphinx-design`</title>
-      <link>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</link>
-      <description>
-
-
-:::{warning} This probably doesn't work anymore
-I'm building my blog with the [MyST Markdown engine](https://mystmd.org) now, which means that all of this sphinx-specific stuff probably doesn't work anymore :-)
-
-If you want to see a version of this page that worked, [check out this file in GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2020/sphinx-design-timeline.md).
-:::</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</guid>
       <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
     </item>
     <item>
@@ -595,6 +595,19 @@ Here's a quick rundown</description>
 </description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2024/bluesky</guid>
       <pubDate>Fri, 22 Nov 2024 00:00:00 -0800</pubDate>
+    </item>
+    <item>
+      <title>Why I'm running for the Jupyter Executive Council</title>
+      <link>http://chrisholdgraf.com/blog/2025/jec</link>
+      <description>
+
+
+This year, I decided to nominate myself for the [Jupyter Executive Council](https://jupyter.org/governance/executive_council.html). This is a brief post explaining my rationale for doing so, the kind of service I'd hope to provide the project, and where I imagine the project moving.
+
+
+The [Jupyter Executive Council](https://jupyter.org/governance/executive_council.html) is the highest governing body within the</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/jec</guid>
+      <pubDate>Tue, 14 Jan 2025 00:00:00 -0800</pubDate>
     </item>
   </channel>
 </rss>
