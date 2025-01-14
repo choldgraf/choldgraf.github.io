@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
   <id>http://chrisholdgraf.com</id>
   <title>Chris Holdgraf's blog</title>
-  <updated>2025-01-14T20:22:18.495689+00:00</updated>
+  <updated>2025-01-14T20:39:41.299631+00:00</updated>
   <author>
     <name>Chris Holdgraf</name>
     <email>choldgraf@gmail.com</email>
@@ -15,7 +15,7 @@
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</id>
     <title>An academic scientist goes to DevOps Days</title>
-    <updated>2025-01-14T20:22:18.498575+00:00</updated>
+    <updated>2025-01-14T20:39:41.302441+00:00</updated>
     <content>
 
 
@@ -29,7 +29,7 @@ learning a thing or two that could be brought back into</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/jekyllmarkdown</id>
     <title>Blogging with Jupyter Notebooks and Jekyll using nbconvert templates</title>
-    <updated>2025-01-14T20:22:18.498520+00:00</updated>
+    <updated>2025-01-14T20:39:41.302388+00:00</updated>
     <content>
 
 
@@ -49,7 +49,7 @@ However, an annoying part of this is that Markdown</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/sphinx-copy-buttons</id>
     <title>Adding copy buttons to code blocks in Sphinx</title>
-    <updated>2025-01-14T20:22:18.498465+00:00</updated>
+    <updated>2025-01-14T20:39:41.302319+00:00</updated>
     <content>
 
 
@@ -67,7 +67,7 @@ A</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/conferences-summer-2018</id>
     <title>Summer conference report back</title>
-    <updated>2025-01-14T20:22:18.498408+00:00</updated>
+    <updated>2025-01-14T20:39:41.302242+00:00</updated>
     <content>
 
 
@@ -85,7 +85,7 @@ Pangeo is a</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/circle-docs</id>
     <title>Using CircleCI to preview documentation in Pull Requests</title>
-    <updated>2025-01-14T20:22:18.498337+00:00</updated>
+    <updated>2025-01-14T20:39:41.302181+00:00</updated>
     <content>
 
 
@@ -99,7 +99,7 @@ However, it can be a pain to iterate on documentation, as it is often involves a
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/rust_governance</id>
     <title>I like Rust's governance structure</title>
-    <updated>2025-01-14T20:22:18.498266+00:00</updated>
+    <updated>2025-01-14T20:39:41.302127+00:00</updated>
     <content>
 
 
@@ -116,7 +116,7 @@ Governance is tricky, because there is</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/my-workflow</id>
     <title>My weekly workflow</title>
-    <updated>2025-01-14T20:22:18.498207+00:00</updated>
+    <updated>2025-01-14T20:39:41.302069+00:00</updated>
     <content>
 
 
@@ -130,7 +130,7 @@ approach to planning time throughout the week in case</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/kinds-of-openness</id>
     <title>How do projects signal how "open" they are?</title>
-    <updated>2025-01-14T20:22:18.498148+00:00</updated>
+    <updated>2025-01-14T20:39:41.302010+00:00</updated>
     <content>
 
 
@@ -146,7 +146,7 @@ I was thinking about this</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/free-labor-partners</id>
     <title>Open communities need to be partners, not sources of free labor</title>
-    <updated>2025-01-14T20:22:18.498093+00:00</updated>
+    <updated>2025-01-14T20:39:41.301955+00:00</updated>
     <content>
 
 
@@ -160,7 +160,7 @@ On the face of it, this isn't a problem - I really want people</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2018/circlci-github</id>
     <title>Automatically mirror a github repository with CircleCI</title>
-    <updated>2025-01-14T20:22:18.498037+00:00</updated>
+    <updated>2025-01-14T20:39:41.301899+00:00</updated>
     <content>
 
 
@@ -175,7 +175,7 @@ We recently ran into an issue with</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-01-29-three-things-circleci</id>
     <title>Three things I love about CircleCI</title>
-    <updated>2025-01-14T20:22:18.497969+00:00</updated>
+    <updated>2025-01-14T20:39:41.301845+00:00</updated>
     <content>
 
 
@@ -190,7 +190,7 @@ For those who aren't familiar with CircleCI, it</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-03-16-jupyter-dev</id>
     <title>Thoughts from the Jupyter team meeting 2019</title>
-    <updated>2025-01-14T20:22:18.497910+00:00</updated>
+    <updated>2025-01-14T20:39:41.301791+00:00</updated>
     <content>
 
 I just got back from a week-long Jupyter team meeting that was somehow both
@@ -203,7 +203,7 @@ here are a few takeaways that occurred to me throughout the</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-06-25-a-few-talks</id>
     <title>A few recent talks</title>
-    <updated>2025-01-14T20:22:18.497849+00:00</updated>
+    <updated>2025-01-14T20:39:41.301735+00:00</updated>
     <content>
 
 
@@ -218,7 +218,7 @@ subsequent tweets about them),</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-10-11-automating-jb</id>
     <title>Automating Jupyter Book deployments with CI/CD</title>
-    <updated>2025-01-14T20:22:18.497791+00:00</updated>
+    <updated>2025-01-14T20:39:41.301679+00:00</updated>
     <content>
 
 
@@ -233,7 +233,7 @@ Jupyter Book is a relatively straightforward project, but</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-10-13-rust-jupyter-governance</id>
     <title>What would Rust-style governance look like in Jupyter?</title>
-    <updated>2025-01-14T20:22:18.497731+00:00</updated>
+    <updated>2025-01-14T20:39:41.301621+00:00</updated>
     <content>
 
 
@@ -251,7 +251,7 @@ what this might look like.</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2019/2019-10-27-jupyter-governance-python</id>
     <title>What would Python-style governance look like in Jupyter?</title>
-    <updated>2025-01-14T20:22:18.497666+00:00</updated>
+    <updated>2025-01-14T20:39:41.301557+00:00</updated>
     <content>
 
 
@@ -267,7 +267,7 @@ all the</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</id>
     <title>Build a simple timeline with `sphinx-design`</title>
-    <updated>2025-01-14T20:22:18.497507+00:00</updated>
+    <updated>2025-01-14T20:39:41.301424+00:00</updated>
     <content>
 
 
@@ -282,7 +282,7 @@ If you want to see a version of this page that worked, [check out this file in G
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</id>
     <title>What do people think about rST?</title>
-    <updated>2025-01-14T20:22:18.497448+00:00</updated>
+    <updated>2025-01-14T20:39:41.301365+00:00</updated>
     <content>
 
 
@@ -298,7 +298,7 @@ We've recently been</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/sphinx-blogging</id>
     <title>A new blog with Sphinx</title>
-    <updated>2025-01-14T20:22:18.497390+00:00</updated>
+    <updated>2025-01-14T20:39:41.301301+00:00</updated>
     <content>
 
 
@@ -316,7 +316,7 @@ This is a great question. The answer to "should you</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2020/organizations-help-oss-guide</id>
     <title>Contributing to open source: A short guide for organizations</title>
-    <updated>2025-01-14T20:22:18.497313+00:00</updated>
+    <updated>2025-01-14T20:39:41.301216+00:00</updated>
     <content>
 
 
@@ -329,7 +329,7 @@ Whether it is because of altruism or strategic importance, many companies, resea
   <entry>
     <id>http://chrisholdgraf.com/blog/2021/2021-12-18-hybrid-tutorial-prerecord</id>
     <title>Serving in two roles at once via pre-recorded tutorials</title>
-    <updated>2025-01-14T20:22:18.497258+00:00</updated>
+    <updated>2025-01-14T20:39:41.301162+00:00</updated>
     <content>
 
 
@@ -346,7 +346,7 @@ This posed a few challenges:
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/cloud-services-academia</id>
     <title>Ask Twitter: Why don't academic researchers use cloud services?</title>
-    <updated>2025-01-14T20:22:18.497200+00:00</updated>
+    <updated>2025-01-14T20:39:41.301106+00:00</updated>
     <content>
 
 
@@ -360,7 +360,7 @@ An ecosystem</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/orcid-auto-update</id>
     <title>Automatically updating my publications page with ORCID and doi.org</title>
-    <updated>2025-01-14T20:22:18.497143+00:00</updated>
+    <updated>2025-01-14T20:39:41.301052+00:00</updated>
     <content>
 
 
@@ -375,7 +375,7 @@ A [helpful suggestion on Twitter](https://twitter.com/temorrell/status/159474994
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</id>
     <title>Automatically redirect folders in Sphinx websites</title>
-    <updated>2025-01-14T20:22:18.497086+00:00</updated>
+    <updated>2025-01-14T20:39:41.300996+00:00</updated>
     <content>
 
 
@@ -389,7 +389,7 @@ This posed a problem, because [the `sphinx-rediraffe`</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/sphinx-custom-crossrefs</id>
     <title>Custom roles and domains in Sphinx with one line</title>
-    <updated>2025-01-14T20:22:18.497026+00:00</updated>
+    <updated>2025-01-14T20:39:41.300938+00:00</updated>
     <content>
 
 
@@ -410,7 +410,7 @@ However, there are no **semantics** attached to this</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/phantom-workflows-pull-requests</id>
     <title>Fix phantom GitHub workflows in your ci-cd with protected branch rules</title>
-    <updated>2025-01-14T20:22:18.496964+00:00</updated>
+    <updated>2025-01-14T20:39:41.300878+00:00</updated>
     <content>
 
 
@@ -429,7 +429,7 @@ If you run into this, it may be because of</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/shell-split</id>
     <title>`subprocess.run` can execute shell commands directly</title>
-    <updated>2025-01-14T20:22:18.496899+00:00</updated>
+    <updated>2025-01-14T20:39:41.300824+00:00</updated>
     <content>
 
 
@@ -452,7 +452,7 @@ There's a</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/precommit-autoupdate</id>
     <title>Automatically update pre-commit hook versions</title>
-    <updated>2025-01-14T20:22:18.496844+00:00</updated>
+    <updated>2025-01-14T20:39:41.300769+00:00</updated>
     <content>
 
 
@@ -468,7 +468,7 @@ However, I find it really annoying</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/sphinx-update-config</id>
     <title>How to update Sphinx options during the build</title>
-    <updated>2025-01-14T20:22:18.496788+00:00</updated>
+    <updated>2025-01-14T20:39:41.300713+00:00</updated>
     <content>
 
 
@@ -481,7 +481,7 @@ It's easy to configure things with `conf.py` ahead of time, but what if you want
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/matplotlib-remote-font</id>
     <title>Load and plot a remote font with Matplotlib</title>
-    <updated>2025-01-14T20:22:18.496730+00:00</updated>
+    <updated>2025-01-14T20:39:41.300656+00:00</updated>
     <content>
 
 
@@ -495,7 +495,7 @@ Here's</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/jupyterlite-workshop</id>
     <title>Report from the JupyterLite workshop: WebAssembly is pretty cool</title>
-    <updated>2025-01-14T20:22:18.496672+00:00</updated>
+    <updated>2025-01-14T20:39:41.300599+00:00</updated>
     <content>
 
 
@@ -510,7 +510,7 @@ For those without any background, JupyterLite is a distribution of Jupyter's use
   <entry>
     <id>http://chrisholdgraf.com/blog/2022/install-github-from-pyproject</id>
     <title>Install dependencies from GitHub with `pyproject.toml` or `requirements.txt`</title>
-    <updated>2025-01-14T20:22:18.496614+00:00</updated>
+    <updated>2025-01-14T20:39:41.300541+00:00</updated>
     <content>
 
 
@@ -524,7 +524,7 @@ In `pyproject.toml`, you can specify</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/sphinx-add-extensions</id>
     <title>Bundle extensions with your Sphinx theme</title>
-    <updated>2025-01-14T20:22:18.496557+00:00</updated>
+    <updated>2025-01-14T20:39:41.300483+00:00</updated>
     <content>
 
 
@@ -539,7 +539,7 @@ One way to solve this is</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/fosdem</id>
     <title>Report from FOSDEM23: beautiful chaos in a conference</title>
-    <updated>2025-01-14T20:22:18.496498+00:00</updated>
+    <updated>2025-01-14T20:39:41.300424+00:00</updated>
     <content>
 
 
@@ -554,7 +554,7 @@ Here are a</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/social-directive</id>
     <title>A Sphinx directive for social media embeds</title>
-    <updated>2025-01-14T20:22:18.496437+00:00</updated>
+    <updated>2025-01-14T20:39:41.300354+00:00</updated>
     <content>
 
 
@@ -569,7 +569,7 @@ I often want to link to social and other types of web-based media in my Sphinx</
   <entry>
     <id>http://chrisholdgraf.com/blog/2023/ai-for-good</id>
     <title>A few random opportunities in AI for Social Good</title>
-    <updated>2025-01-14T20:22:18.496374+00:00</updated>
+    <updated>2025-01-14T20:39:41.300291+00:00</updated>
     <content>
 
 
@@ -581,7 +581,7 @@ I think a lof people see AI as a technology with a lot of potential, but in an e
   <entry>
     <id>http://chrisholdgraf.com/blog/2024/mystmd-with-the-blog</id>
     <title>Re-building my blog with MySTMD</title>
-    <updated>2025-01-14T20:22:18.496290+00:00</updated>
+    <updated>2025-01-14T20:39:41.300210+00:00</updated>
     <content>
 
 Wow it has been a long time since I've last-written here. It turns out that having two small children and a very demanding job means you don't have as much time for blogging. But that's a whole different blog post...
@@ -593,7 +593,7 @@ I've decided to convert my blog to use the new [MyST</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2024/programmatic-myst-with-jupyter</id>
     <title>Generate MyST with Jupyter and insert it into content programmatically</title>
-    <updated>2025-01-14T20:22:18.496225+00:00</updated>
+    <updated>2025-01-14T20:39:41.300148+00:00</updated>
     <content>
 
 
@@ -607,7 +607,7 @@ The trick is to _write to a temporary file_</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2024/blog-list</id>
     <title>Better blog lists with the MyST AST</title>
-    <updated>2025-01-14T20:22:18.496159+00:00</updated>
+    <updated>2025-01-14T20:39:41.300083+00:00</updated>
     <content>
 
 
@@ -628,7 +628,7 @@ Here's a quick rundown</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2024/bluesky</id>
     <title>How I'm trying to use BlueSky without getting burned again</title>
-    <updated>2025-01-14T20:22:18.496085+00:00</updated>
+    <updated>2025-01-14T20:39:41.300009+00:00</updated>
     <content>Some quick thoughts on moving from Twitter/X to BlueSky and how I'll try to use social media after being burned once by Twitter.
 </content>
     <link href="http://chrisholdgraf.com/blog/2024/bluesky"/>
@@ -637,7 +637,7 @@ Here's a quick rundown</content>
   <entry>
     <id>http://chrisholdgraf.com/blog/2025/jec</id>
     <title>Why I'm running for the Jupyter Executive Council</title>
-    <updated>2025-01-14T20:22:18.495986+00:00</updated>
+    <updated>2025-01-14T20:39:41.299913+00:00</updated>
     <content>
 
 
