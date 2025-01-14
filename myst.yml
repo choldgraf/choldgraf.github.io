@@ -19,6 +19,8 @@ project:
   # keywords: []
   # authors: [Chris Holdgraf]
   github: https://github.com/choldgraf/choldgraf.github.io
+  # Figma for this thumbnail: https://www.figma.com/design/WZiIvmibgmn6kLH1QoQQLD/Chris-Website?node-id=0-1&p=f&t=QRja0fkrmqtnvnJz-0
+  thumbnail: _static/social_banner.png
   plugins:
     - type: executable
       path: src/blogpost.py
@@ -68,12 +70,11 @@ project:
 site:
   template: book-theme
   options:
-      folders: true
-      twitter: choldgraf
-      logo_text: Chris Holdgraf
-      analytics_google: G-G5PMZM6RPE # Measurement ID or Tracking ID
-  #   favicon: favicon.ico
-    # logo: site_logo.png
+    folders: true
+    twitter: choldgraf
+    logo_text: Chris Holdgraf
+    analytics_google: G-G5PMZM6RPE # Measurement ID or Tracking ID
+    favicon: _static/profile-color-circle-small.png
   domains:
     - choldgraf.github.io
   actions:
