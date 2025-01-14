@@ -15,6 +15,10 @@ atom.xml
 uv.lock
 .python-version
 
+# JavaScript
+node_modules
+package-lock.json
+
 # Obsidian
 .makemd
 .obsidian
