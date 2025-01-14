@@ -3,6 +3,18 @@ version: 1
 project:
   id: f84d70c6-7ee5-4bb9-9056-aa84134a33dd
   title: "Welcome"
+  authors:
+    - name: Chris Holdgraf
+      website: https://chrisholdgraf.com
+      id: chris
+      orcid: 0000-0002-2391-0678
+      github: choldgraf
+      twitter: choldgraf
+      affiliations:
+        - name: 2i2c
+          url: https://2i2c.org
+        - name: Project Jupyter
+          url: https://jupyter.org
   # description:
   # keywords: []
   # authors: [Chris Holdgraf]
@@ -19,6 +31,9 @@ project:
     - file: talks.md
     - file: blog.md
       children:
+      - title: "2025"
+        children:
+        - pattern: "blog/2025/**{.ipynb,.md}"
       - title: "2024"
         children:
         - pattern: "blog/2024/**{.ipynb,.md}"
@@ -56,6 +71,7 @@ site:
       folders: true
       twitter: choldgraf
       logo_text: Chris Holdgraf
+      analytics_google: G-G5PMZM6RPE # Measurement ID or Tracking ID
   #   favicon: favicon.ico
     # logo: site_logo.png
   domains:
@@ -63,7 +79,6 @@ site:
   actions:
     - title: RSS
       url: https://chrisholdgraf.com/rss.xml
-  analytics_google: G-G5PMZM6RPE # Measurement ID or Tracking ID
   nav:
     - title: About
       url: /about
