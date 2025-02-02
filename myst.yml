@@ -22,9 +22,12 @@ project:
   # Figma for this thumbnail: https://www.figma.com/design/WZiIvmibgmn6kLH1QoQQLD/Chris-Website?node-id=0-1&p=f&t=QRja0fkrmqtnvnJz-0
   thumbnail: _static/social_banner.png
   plugins:
-    - type: executable
-      path: src/blogpost.py
+    - src/blog.mjs
     - src/socialpost.mjs
+  blog:
+    title: "Chris Holdgraf's blog"
+    description: "A blog about my projects and thoughts"
+    url: "https://chrisholdgraf.com"
   toc:
     - file: index.md
     - file: about.md

@@ -12,6 +12,7 @@ rss.xml
 feed.xml
 atom.xml
 
+# Python
 uv.lock
 .python-version
 
@@ -23,3 +24,7 @@ package-lock.json
 .makemd
 .obsidian
 .space
+
+# JavaScript
+node_modules
+package-lock.json
