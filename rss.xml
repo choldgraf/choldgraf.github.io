@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 14 Jan 2025 20:39:41 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2025 18:29:47 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -110,19 +110,6 @@ Governance is tricky, because there is</description>
       <pubDate>Thu, 18 Oct 2018 00:00:00 -0700</pubDate>
     </item>
     <item>
-      <title>My weekly workflow</title>
-      <link>http://chrisholdgraf.com/blog/2018/my-workflow</link>
-      <description>
-
-
-I've had a bunch of conversations with friends who were interested in how to
-keep track of the various projects they're working on, and to prioritize their
-time over the course of a week. I thought it might be helpful to post my own
-approach to planning time throughout the week in case</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2018/my-workflow</guid>
-      <pubDate>Fri, 26 Oct 2018 00:00:00 -0700</pubDate>
-    </item>
-    <item>
       <title>How do projects signal how "open" they are?</title>
       <link>http://chrisholdgraf.com/blog/2018/kinds-of-openness</link>
       <description>
@@ -135,6 +122,19 @@ as a marketing term to increase support, users, or resources.
 
 I was thinking about this</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2018/kinds-of-openness</guid>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 -0700</pubDate>
+    </item>
+    <item>
+      <title>My weekly workflow</title>
+      <link>http://chrisholdgraf.com/blog/2018/my-workflow</link>
+      <description>
+
+
+I've had a bunch of conversations with friends who were interested in how to
+keep track of the various projects they're working on, and to prioritize their
+time over the course of a week. I thought it might be helpful to post my own
+approach to planning time throughout the week in case</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2018/my-workflow</guid>
       <pubDate>Fri, 26 Oct 2018 00:00:00 -0700</pubDate>
     </item>
     <item>
@@ -338,6 +338,19 @@ An ecosystem</description>
       <pubDate>Mon, 05 Sep 2022 00:00:00 -0700</pubDate>
     </item>
     <item>
+      <title>Automatically redirect folders in Sphinx websites</title>
+      <link>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</link>
+      <description>
+
+
+I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
+Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
+
+This posed a problem, because [the `sphinx-rediraffe`</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</guid>
+      <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
+    </item>
+    <item>
       <title>Automatically updating my publications page with ORCID and doi.org</title>
       <link>http://chrisholdgraf.com/blog/2022/orcid-auto-update</link>
       <description>
@@ -349,19 +362,6 @@ However, manually updating local text file is a pain to remember, especially sin
 :::{admonition} Update!
 A [helpful suggestion on Twitter](https://twitter.com/temorrell/status/1594749942316208128) allowed me to include the full citation</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/orcid-auto-update</guid>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
-    </item>
-    <item>
-      <title>Automatically redirect folders in Sphinx websites</title>
-      <link>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</link>
-      <description>
-
-
-I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
-Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
-
-This posed a problem, because [the `sphinx-rediraffe`</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</guid>
       <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
     </item>
     <item>
@@ -608,6 +608,15 @@ This year, I decided to nominate myself for the [Jupyter Executive Council](http
 The [Jupyter Executive Council](https://jupyter.org/governance/executive_council.html) is the highest governing body within the</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/jec</guid>
       <pubDate>Tue, 14 Jan 2025 00:00:00 -0800</pubDate>
+    </item>
+    <item>
+      <title>Ways the Jupyter Foundation could support open source projects</title>
+      <link>http://chrisholdgraf.com/blog/2025/os-support</link>
+      <description>
+
+The Jupyter Foundation has a pot of money and it aims to use that funding quickly to support the Jupyter Project. But what should it use the funding _for_? There are many things to do, and not enough time or money to try everything. This is a brief brainstorm and</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/os-support</guid>
+      <pubDate>Wed, 26 Feb 2025 00:00:00 -0800</pubDate>
     </item>
   </channel>
 </rss>
