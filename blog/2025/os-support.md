@@ -13,7 +13,7 @@ That group of people has made one thing very clear: Jupyter lacks enough **capac
 
 So I think the Jupyter Foundation's goal should be **finding leveraged opportunities to grow capacity**. That means finding ways to invest `1x` of resources to get `10x` of capacity within the project, ideally in a way that can be sustained over time (and potentially live longer than this funding cycle).
 
-I also think that the Foundation should prioritize _acting quickly_ and _learning_ over trying to get it perfect the first time around. It's more important that we deliver tangible value to the community and begin to iterate. So with that in mind, here are a few ideas for where I think we can grow capacity.
+I also think that the Foundation should prioritize _acting quickly_ and _learning_ rather than trying to get it perfect the first time around. It's more important that we deliver tangible value to the community and begin to iterate. So with that in mind, here are a few ideas for where I think we can grow capacity.
 
 ## Investing in the lifecycle of contributor growth
 
@@ -33,7 +33,7 @@ I'll explore each below.
 
 The biggest challenge I often see is projects that don't spend the time agreeing on what they want to do in the first place, and making it easy for others to discover their _goals and intent_. As a result, people make contributions, and realize that they must first convince a project that it's a good idea to try in the first place, rather than focus on getting the contribution improved and merged.
 
-**How could the Foundation support this?** Aligning a team on their goals (long or near-term) is not easy and requires a different skillset that we often see in open source projects. Sometimes it can be accomplished with facilitated sessions like a meeting or an asynchronous discussion. I wonder if the Foundation could cover the cost of facilitation or asynchronous triage and prioritization so that projects can agree (for a time) on the things they want to accomplish. If this were made publicly available, others could identify the problems that they want to solve too, and focus on solving them.
+**How could the Foundation support this?** Aligning a team on their goals (long or near-term) is not easy and requires a different skillset that we often see in open source projects. Sometimes it can be accomplished with facilitated sessions like a meeting or an asynchronous discussion. I wonder if the Foundation could cover the cost of meeting facilitation or asynchronous triage and prioritization so that projects can agree (for a time) on the things they want to accomplish. If this were made publicly available, others could identify the problems that they want to solve too, and focus on solving them.
 
 ### Guiding: Helping others learn how to navigate a project and contribute
 
