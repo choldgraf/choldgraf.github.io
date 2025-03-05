@@ -25,6 +25,12 @@ project:
     - type: executable
       path: src/blogpost.py
     - src/socialpost.mjs
+  abbreviations:
+    LF: The Linux Foundation
+    JF: The Jupyter Foundation
+    JEC: Jupyter Executive Council
+    JFB: The Jupyter Foundation Board
+    SSC: Software Steering Council
   toc:
     - file: index.md
     - file: about.md
