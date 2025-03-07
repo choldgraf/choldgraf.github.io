@@ -6,7 +6,7 @@ tags:
 - jupyter
 ---
 
-# The Relationship Between the Jupyter Executive Council, Software Steering Council, and Foundation
+# The relationship between the Jupyter Executive Council, Software Steering Council, and Foundation
 
 This is a question that I've been asked many times now that I'm serving on the JEC and the JF. I'm writing up a quick response so that I have something to refer back to and align my own thinking on.
 
