@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Sat, 22 Mar 2025 17:15:47 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Mar 2025 22:43:58 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -629,6 +629,15 @@ This is a question that I've been asked many times now that I'm serving on the J
 **How most Linux Foundation projects seem to be structured**. Linux</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/jupyter-org-structure</guid>
       <pubDate>Sun, 02 Mar 2025 00:00:00 -0800</pubDate>
+    </item>
+    <item>
+      <title>Jupyter can align the needs of its community and its foundation by enabling contribution</title>
+      <link>http://chrisholdgraf.com/blog/2025/more-contributors</link>
+      <description>
+
+This week was my first time attending the [Linux Foundation Member Summit](https://events.linuxfoundation.org/lf-member-summit/). This is an annual meeting for all of the Linux Foundation member organizations and projects. I joined because of my new role [on the Jupyter Executive Council](./jec.md), and so I tried to go into this meeting with the</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/more-contributors</guid>
+      <pubDate>Sat, 22 Mar 2025 00:00:00 -0700</pubDate>
     </item>
   </channel>
 </rss>

@@ -23,7 +23,6 @@ site:
 
 I also work extensively with [Project Jupyter](https://jupyter.org), particularly [the Binder Project](https://mybinder.org) and [Jupyter Book](https://jupyterbook.org).
 
-
 ::::{grid}
 :::{grid-item-card}
 :link: about.md
