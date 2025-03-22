@@ -46,4 +46,10 @@ Here are a few ideas that come to mind, I'd love to discuss each of these with o
 
 **Fund in-person community meetings**. If we had capacity to help manage and organize meetings in the form of a community manager, I'd love to use more funds to help us make _in-person_ meetings happen. This could bring together current or potential contributors across the Jupyter community, with a focus on having conversations or collaboration sessions that are best-done in-person.
 
+## I suspect it'll be best to bring in skills from outside the Jupyter community...
+
+Finally, I've been thinking about _where to find skills_ for roles and responsibilities like what I've described above. There are certainly many in the Jupyter community that have done things like what I've described above (for example, the [Jupyter Releaser](https://github.com/jupyter-server/jupyter_releaser) is a good example of a DevEx engineering project). However, I also think this kind of work is often done because it _has_ to be done, not necessarily because someone _wants_ to do it, or because they're the _right person_ to do it.
+
+I'll go out on a limb and say that this is an opportunity to bring in new skills and voices into Jupyter, and we should consider using these funds to bring in outside expertise, either in the form of people that would do this work directly, or consultation and training they can provide Jupyter's members. Ideally we could work out a "train the trainer" style model where Jupyter can grow its own capacity over time to do this kind of thing.
+
 OK that's what I've got for now... I'm going to think about these above, and if anybody has ideas for where to start, I'd love to hear them.
