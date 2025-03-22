@@ -25,12 +25,15 @@ project:
     - type: executable
       path: src/blogpost.py
     - src/socialpost.mjs
+  references:
+    ttw: https://book.the-turing-way.org/
   abbreviations:
     LF: The Linux Foundation
     JF: The Jupyter Foundation
     JEC: Jupyter Executive Council
     JFB: The Jupyter Foundation Board
     SSC: Software Steering Council
+    OSPO: Open Source Program Office
   toc:
     - file: index.md
     - file: about.md
