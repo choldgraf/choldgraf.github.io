@@ -52,4 +52,8 @@ Finally, I've been thinking about _where to find skills_ for roles and responsib
 
 I'll go out on a limb and say that this is an opportunity to bring in new skills and voices into Jupyter, and we should consider using these funds to bring in outside expertise, either in the form of people that would do this work directly, or consultation and training they can provide Jupyter's members. Ideally we could work out a "train the trainer" style model where Jupyter can grow its own capacity over time to do this kind of thing.
 
+I'll go one step further and say that we should ideally find somebody that _already has experience in this role in similar communities_. This is because the Foundation Board / JEC are going to have their own capacity challenges in properly guiding this role and holding it accountable. I think these hires will need to be high-trust and high-autonomy. That suggests to me that somebody with pre-existing experience will be much more likely than somebody that needs a lot of guidance and feedback.[^uni]
+
+[^uni]: I'm starting to worry that we are looking for a unicorn here...
+
 OK that's what I've got for now... I'm going to think about these above, and if anybody has ideas for where to start, I'd love to hear them.
