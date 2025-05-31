@@ -5,7 +5,7 @@ const socialPostDirective = {
   options: {},
   run(data) {
     const postlink = data.arg;
-    const size = data.options.size || '500x200';
+    const size = data.options?.size || '500x200';
     const link = {
       "type": "link",
       "url": postlink,
