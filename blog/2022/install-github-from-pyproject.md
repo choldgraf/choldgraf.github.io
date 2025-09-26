@@ -70,4 +70,4 @@ git+https://github.com/pydata/pydata-sphinx-theme
 This will install from the default branch.
 You can also specify specific branches or eggs in the same way as above.
 
-[^thanks]: Thanks to [Matthew Feickhart for reminding me of this](https://twitter.com/HEPfeickert/status/1609280067225681920).
+[^thanks]: Thanks to [Matthew Feickert for reminding me of this](https://twitter.com/HEPfeickert/status/1609280067225681920).
