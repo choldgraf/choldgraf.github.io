@@ -5,8 +5,8 @@ from os.path import realpath
 nox.options.reuse_existing_virtualenvs = True
 nox.options.default_venv_backend = "uv"
 
-@nox.session
-def start(session):
+@nox.session(name="docs-live")
+def docs_live(session):
     for ii in ["requirements.txt", "execute-requirements.txt"]:
         session.run("uv", "pip", "install", "-U", "-r", ii, silent=True)
     session.run(*"myst start".split(), *session.posargs)
