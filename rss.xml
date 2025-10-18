@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Fri, 26 Sep 2025 15:17:25 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Oct 2025 20:02:03 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -648,6 +648,18 @@ This is a brief reflection on something that I've been hearing consistently from
 &gt; Most foundations within the Linux Foundation network recommend</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/fund-systems-not-developmend</guid>
       <pubDate>Sat, 31 May 2025 00:00:00 -0700</pubDate>
+    </item>
+    <item>
+      <title>A practical guide to beating jet lag</title>
+      <link>http://chrisholdgraf.com/blog/2025/jet-lag</link>
+      <description>
+
+I travel internationally a lot, which means I deal with a lot of jet lag. This post is a quick summary of a system I've found helpful, based on [this paper](https://www.frontiersin.org/articles/10.3389/fphys.2019.00927/full).
+
+
+The basic idea is to shift your body's internal clock by timing your exposure to light, exercise, and melatonin around</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/jet-lag</guid>
+      <pubDate>Sat, 18 Oct 2025 00:00:00 -0700</pubDate>
     </item>
   </channel>
 </rss>
