@@ -1,10 +1,7 @@
 ---
-title: A practical guide to beating jet lag
+title: My system for beating jet lag
 date: "2025-10-18"
-tags:
-- travel
-- life-hacks
-- science
+tags: til
 ---
 
 I travel internationally a lot, which means I deal with a lot of jet lag. This post is a quick summary of a system I've found helpful, based on [this paper](https://www.frontiersin.org/articles/10.3389/fphys.2019.00927/full).
