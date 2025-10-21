@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Sat, 18 Oct 2025 20:06:51 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Oct 2025 16:44:51 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -110,6 +110,19 @@ Governance is tricky, because there is</description>
       <pubDate>Thu, 18 Oct 2018 00:00:00 -0700</pubDate>
     </item>
     <item>
+      <title>My weekly workflow</title>
+      <link>http://chrisholdgraf.com/blog/2018/my-workflow</link>
+      <description>
+
+
+I've had a bunch of conversations with friends who were interested in how to
+keep track of the various projects they're working on, and to prioritize their
+time over the course of a week. I thought it might be helpful to post my own
+approach to planning time throughout the week in case</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2018/my-workflow</guid>
+      <pubDate>Fri, 26 Oct 2018 00:00:00 -0700</pubDate>
+    </item>
+    <item>
       <title>How do projects signal how "open" they are?</title>
       <link>http://chrisholdgraf.com/blog/2018/kinds-of-openness</link>
       <description>
@@ -122,19 +135,6 @@ as a marketing term to increase support, users, or resources.
 
 I was thinking about this</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2018/kinds-of-openness</guid>
-      <pubDate>Fri, 26 Oct 2018 00:00:00 -0700</pubDate>
-    </item>
-    <item>
-      <title>My weekly workflow</title>
-      <link>http://chrisholdgraf.com/blog/2018/my-workflow</link>
-      <description>
-
-
-I've had a bunch of conversations with friends who were interested in how to
-keep track of the various projects they're working on, and to prioritize their
-time over the course of a week. I thought it might be helpful to post my own
-approach to planning time throughout the week in case</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2018/my-workflow</guid>
       <pubDate>Fri, 26 Oct 2018 00:00:00 -0700</pubDate>
     </item>
     <item>
@@ -251,6 +251,20 @@ all the</description>
       <pubDate>Sun, 27 Oct 2019 00:00:00 -0700</pubDate>
     </item>
     <item>
+      <title>Build a simple timeline with `sphinx-design`</title>
+      <link>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</link>
+      <description>
+
+
+:::{warning} This probably doesn't work anymore
+I'm building my blog with the [MyST Markdown engine](https://mystmd.org) now, which means that all of this sphinx-specific stuff probably doesn't work anymore :-)
+
+If you want to see a version of this page that worked, [check out this file in GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2020/sphinx-design-timeline.md).
+:::</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</guid>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
+    </item>
+    <item>
       <title>What do people think about rST?</title>
       <link>http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</link>
       <description>
@@ -263,20 +277,6 @@ a lot of progress in providing open infrastructure for reproducible science with
 [the Binder Project](https://mybinder.org/), but what about the documents themselves?
 We've recently been</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</guid>
-      <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
-    </item>
-    <item>
-      <title>Build a simple timeline with `sphinx-design`</title>
-      <link>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</link>
-      <description>
-
-
-:::{warning} This probably doesn't work anymore
-I'm building my blog with the [MyST Markdown engine](https://mystmd.org) now, which means that all of this sphinx-specific stuff probably doesn't work anymore :-)
-
-If you want to see a version of this page that worked, [check out this file in GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2020/sphinx-design-timeline.md).
-:::</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</guid>
       <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
     </item>
     <item>
@@ -660,6 +660,18 @@ I travel internationally a lot, which means I deal with a lot of jet lag. This p
 The basic idea is to shift your body's internal clock by timing your exposure to light, exercise, and melatonin around</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/jet-lag</guid>
       <pubDate>Sat, 18 Oct 2025 00:00:00 -0700</pubDate>
+    </item>
+    <item>
+      <title>The slow boring of hard boards in open source</title>
+      <link>http://chrisholdgraf.com/blog/2025/lock-files</link>
+      <description>
+
+
+Max Weber famously wrote that politics is "a strong and slow boring of hard boards." In [Why it took 4 years to get a lock files specification](https://snarky.ca/why-it-took-4-years-to-get-a-lock-files-specification/), Brett Cannon demonstrates how the same principle applies to technical coordination in open source.
+
+Python recently adopted [PEP 751](https://peps.python.org/pep-0751/) for lockfile specification. Doing so</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/lock-files</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 -0700</pubDate>
     </item>
   </channel>
 </rss>
