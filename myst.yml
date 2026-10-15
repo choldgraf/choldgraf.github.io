@@ -25,6 +25,7 @@ project:
     - type: executable
       path: src/blogpost.py
     - src/socialpost.mjs
+    - https://github.com/myst-contrib/myst-listing/releases/latest/download/plugin.mjs
   references:
     ttw: https://book.the-turing-way.org/
   abbreviations:

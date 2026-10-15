@@ -5,6 +5,8 @@ from os.path import realpath
 nox.options.reuse_existing_virtualenvs = True
 nox.options.default_venv_backend = "uv"
 
+@nox.session(name="docs:live")
+@nox.session(name="docs-live")
 @nox.session
 def start(session):
     for ii in ["requirements.txt", "execute-requirements.txt"]:
