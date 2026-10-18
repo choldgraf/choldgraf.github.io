@@ -7,7 +7,7 @@ tags:
 ---
 
 Something that has bugged me for a long time is that [MyST](https://mystmd.org) doesn't have a lot of support for *authors* to write MyST documents more effectively.
-MyST documents have a ton of rich metadata inside them, but it has mostly been utilized for making the *reader* experience more interesting, rather than the *author* experience.
+MyST documents have a ton of rich metadata inside them, but it has mostly been used for making the *reader* experience more interesting, rather than the *author* experience.
 
 For MyST to become a bigger part of the research or education workflow, I think it needs to have a cleaner author UX - at least, for some of the minimal features that writing in other languages often has.
 Over the last few months I've been playing around with various ways to do this, and this is a blog post to share what I've built and learned.
@@ -71,7 +71,7 @@ The main tool that I built is called [`myst-author`](https://chrisholdgraf.com/m
 Clicking a rendered block in `myst-author` shows its MyST source, typing edits it, and clicking away renders it again.
 ```
 
-I've been using Obsidian a lot lately, and find that it's a great hybrid between WYSIWYG and source code writing.
+I've been using [Obsidian](https://obsidian.md) a lot lately, and find that it's a great hybrid between WYSIWYG and source code writing.
 It means I can use diffing and merging tools more easily when writing MyST documents, but I still get the interactivity and immediate feedback from rendering things straight away.
 
 `myst-author` comes with VS Code and JupyterLab extensions, and you can try it out on Binder or Codespaces here:
@@ -84,7 +84,7 @@ Rather than running the MyST theme server, it starts `mystmd` in headless mode (
 It then renders the AST in the browser with the MyST react components.
 This means that we can do all the necessary re-writing of assets, etc. at render-time, so it will work even if you're not being served from the URL root.
 
-It uses CodeMirror 6 for the editing and rendering window, which means that it can be run in a bunch of different places, or potentially as part of a bigger editing application etc.
+It uses [CodeMirror 6](https://codemirror.net) for the editing and rendering window, which means that it can be run in a bunch of different places, or potentially as part of a bigger editing application etc.
 This made it a little bit more complicated for things like VS Code, but felt like a good tradeoff for the generalizability.
 
 **What I'd like to do with this repository:** Who knows!
@@ -96,10 +96,10 @@ I still haven't decided.
 ## `mystmd-lsp`: A language server protocol implementation that uses mystmd
 
 I wanted interactive auto-complete and drop-down hints for myst-author, but I also wanted to go beyond just "give me the basic directive syntax".
-I knew that `mystmd` has a ton of information about the objects in a MyST project contained inside it, so this tool is meant to leverage all of that complexity.
+I knew that `mystmd` has a ton of information about the objects in a MyST project contained inside it, so this tool is meant to use all of that information.
 
 `mystmd-lsp` spawns its own `mystmd` process in the background.
-It builds the project for whatever folder you're in, and then exposes that project's labels, references, etc. for an editor to use via the Language Server Protocol.
+It builds the project for whatever folder you're in, and then exposes that project's labels, references, etc. for an editor to use via the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/).
 
 This means that you can type MyST short-hand for references like `@` or `[](#` and `mystmd-lsp` will show you a list of all the labels that you can reference in the current MyST project (it even includes external references too!).
 
@@ -112,7 +112,7 @@ This means that you can type MyST short-hand for references like `@` or `[](#` a
 I needed a way for my LSP server, and for `myst-author`, to control the lifecycle of `mystmd`.
 However, `mystmd` doesn't expose the right APIs to do this naturally.
 It's built as a CLI, so there's no lightweight exported way to launch `myst start --headless`, talk to its content server, or parse a single page with the same settings that `myst build` uses.
-So [`mystmd-client`](https://chrisholdgraf.com/mystmd-client/) is just a little helper to re-use the same logic for controlling start/stop/etc of the myst server so I can re-use it in a few places.
+So [`mystmd-client`](https://chrisholdgraf.com/mystmd-client/) is just a little helper that holds the logic for controlling start/stop/etc of the myst server so I can re-use it in a few places.
 
 **What I'd like to do with this repository:** This feels like a good candidate for being in the core myst engine, since it's best to have a source of truth for this kind of thing.
 `mystmd-client` feels like it should just be an upstream improvement in the MyST engine.
@@ -127,24 +127,23 @@ This is generic stuff that can be re-used across many kinds of editors, and does
 
 ## `myst-parser-unified`: A native unifiedjs parser for MyST syntax
 
-I kept hitting challenges associated with MyST's current markdown parser: `markdown-it`.
+I kept hitting challenges associated with MyST's current markdown parser: [`markdown-it`](https://github.com/markdown-it/markdown-it).
 Right now, `mystmd` parses each document with `markdown-it`, then *converts* the document to a unifiedjs-style AST.
-That converted AST is what the MyST conformance tests in [myst-spec](https://github.com/jupyter-book/mystmd/tree/main/packages/myst-spec) check against.
 `markdown-it` doesn't give you column information as it is parsing, only line information.
-This is a bigger problem for things like an LSP that needs to know where in the line you're typing so that it knows how to parse each line for its autocomplete!
+This is a big problem for things like an LSP, which needs to know where in the line you're typing so that it knows what to autocomplete!
 
-UnifiedJS has its own native parser ecosystem, built on a tool called `remark`.
+[UnifiedJS](https://unifiedjs.com) has its own native parser ecosystem, built on a tool called [`remark`](https://github.com/remarkjs/remark).
 In principle it should be simpler to just parse MyST markdown directly with `remark`, rather than to use `markdown-it` and then convert it over to `remark` AST.
 So [this tool](https://chrisholdgraf.com/myst-parser-unified/) is an experiment at making that happen.
 It's not actually used in the stack above, mostly because I wanted to keep them dependent on `mystmd` and not totally side-step the core engine.
 But it seems doable to move this into the core MyST engine at some point.
 
-At a first pass, I ran the parser against the examples in the MyST conformance tests, and compared its output to the tree that `mystmd`'s own parser builds for each one.
-I split this up into commonmark tests vs. MyST Markdown tests to get a better feel for this.
-
-Because the MyST conformance tests have some carry-over from `markdown-it` in them, it was hard to know whether some tests were failing for the wrong reasons (`mystmd`'s own parser only matches 53 of the 90 MyST examples!).
-So I compared against `mystmd`'s parser, and built a little "converter" to transform the remark AST into the idiosyncratic AST that `mystmd` produces (we should really fix that!).
+At a first pass, I ran the parser against the examples in the MyST conformance tests in [myst-spec](https://github.com/jupyter-book/mystmd/tree/main/packages/myst-spec).
+Because these tests have some carry-over from `markdown-it` in them, it was hard to know whether some tests were failing for the wrong reasons (`mystmd`'s own parser only matches 53 of the 90 MyST examples!).
+So instead of using the tests' expected output, I compared against the tree that `mystmd`'s own parser builds for each example.
+I also built a little "converter" to transform the remark AST into the idiosyncratic AST that `mystmd` produces (we should really fix that!).
 This drove a few useful cycles of iteration to get the parsing to behave properly.
+I split this up into commonmark tests vs. MyST Markdown tests to get a better feel for this.
 
 Here's where things stood in October 2026 (the [parser docs](https://chrisholdgraf.com/myst-parser-unified/#score-per-file) have the latest numbers):
 
