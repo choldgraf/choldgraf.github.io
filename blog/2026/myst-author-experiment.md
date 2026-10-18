@@ -176,27 +176,26 @@ Here are the upstream improvements that would let us remove some complexity and 
 **`mystmd`**
 
 - If `myst start` could [run on JupyterHub](https://github.com/jupyter-book/mystmd/issues/302) and [serve a live preview from a sub-path](https://github.com/jupyter-book/mystmd/issues/3012), `myst-author` could drop its custom rendering logic.
-- `mystmd` [doesn't export helpers for tools that run it](../myst-upstream/mystmd-export-client-helpers.md), which is why `mystmd-client` exists.
+- `mystmd` [doesn't export helpers for tools that run it](https://github.com/jupyter-book/mystmd/issues/3095), which is why `mystmd-client` exists.
   It also works around [`myst start` only listening on IPv6 `localhost`](https://github.com/jupyter-book/mystmd/issues/2471), which breaks tools that connect to `127.0.0.1`.
-- `myst.xref.json` [doesn't include each label's `title` or `enumerator`](../myst-upstream/mystmd-xref-title-enumerator.md), and `myst start` [doesn't update it when a page changes](../myst-upstream/mystmd-xref-rewrite-on-edit.md).
+- `config.json` [doesn't include each page's file](https://github.com/jupyter-book/mystmd/issues/3093), so tools fetch every page's JSON to build a table of contents.
+- `myst.xref.json` [doesn't include each label's `title` or `enumerator`](https://github.com/jupyter-book/mystmd/issues/3098), and `myst start` [doesn't update it when a page changes](https://github.com/jupyter-book/mystmd/issues/3097).
   So the LSP re-reads every page's JSON after each rebuild instead, which is pretty inefficient!
-- `myst start` only sends "reload" messages over its websocket, [not structured warnings](../myst-upstream/mystmd-structured-diagnostics.md), so editors can't show build warnings at the right file and line.
-- [Nodes created by directives have no position](../myst-upstream/mystmd-directive-positions.md) in `mystmd`'s output, so "go to definition" for a figure lands on its caption instead of the directive.
+- `myst start` only sends "reload" messages over its websocket, [not structured warnings](https://github.com/jupyter-book/mystmd/issues/3096), so editors can't show build warnings at the right file and line.
+- [Nodes created by directives have no position](https://github.com/jupyter-book/mystmd/issues/3094) in `mystmd`'s output, so "go to definition" for a figure lands on its caption instead of the directive.
 - [Column-accurate positions in the parser](https://github.com/jupyter-book/mystmd/issues/2864) (e.g. via remark) would let us delete the regexes that the LSP uses to find references.
   We should decide whether we want this enough to justify [switching parsers to something like remark](https://github.com/jupyter-book/mystmd/issues/1705).
 - [Update the MyST conformance tests](https://github.com/jupyter-book/mystmd/issues/3078) so that they describe intended MyST behavior (and not `markdown-it`'s quirks) and also cover the syntax we've added in the last couple of years.
 
 **`myst-theme`**
 
-- The MyST theme's preview is [hard to embed elsewhere](../myst-upstream/myst-theme-embeddable-preview.md) (e.g., you need to know about some undocumented KaTeX CSS, and there's no pre-built CSS).
+- The MyST theme's preview is [hard to embed elsewhere](https://github.com/jupyter-book/myst-theme/issues/986) (e.g., you need to know about some undocumented KaTeX CSS, and there's no pre-built CSS).
 
 **Other projects**
 
-- `jupyterlab-lsp` [doesn't send notebook Markdown cells to language servers](../myst-upstream/jupyterlab-lsp-markdown-cells.md), so `myst-author`'s JupyterLab extension carries its own LSP client just to be able to handle markdown.
-- JupyterLab doesn't have a [documented way to add CodeMirror extensions to a language that is already registered in JupyterLab](../myst-upstream/jupyterlab-extend-registered-language.md), so the `myst-syntax` JupyterLab extension overwrites part of Lab's Markdown entry.
-- CodeMirror's LSP client doesn't support [inlay hints](../myst-upstream/codemirror-lsp-client-inlay-hints.md) or [requests from the server](../myst-upstream/codemirror-lsp-client-request-handlers.md), so `myst-author` adds its own inlay hints (the faint "Figure 1" after a reference).
-- Shiki [drops injected grammars](../myst-upstream/shiki-injection-load-order.md) after Markdown loads two embedded languages (e.g. `yaml` and `python`), so MyST highlighting quietly disappears.
-  The `myst-syntax` README works around it by loading languages in a specific order.
+- `jupyterlab-lsp` [doesn't send notebook Markdown cells to language servers](https://github.com/jupyter-lsp/jupyterlab-lsp/issues/1202), so `myst-author`'s JupyterLab extension carries its own LSP client just to be able to handle markdown.
+- JupyterLab doesn't have a [documented way to add CodeMirror extensions to a language that is already registered in JupyterLab](https://github.com/jupyterlab/jupyterlab/issues/20127), so the `myst-syntax` JupyterLab extension overwrites part of Lab's Markdown entry.
+- CodeMirror's LSP client doesn't support [inlay hints](https://code.haverbeke.berlin/codemirror/dev/issues/1772), so `myst-author` adds its own inlay hints (the faint "Figure 1" after a reference).
 
 ## Overall what did I learn
 

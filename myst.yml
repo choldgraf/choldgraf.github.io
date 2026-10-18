@@ -46,9 +46,6 @@ project:
       - title: "2026"
         children:
         - pattern: "blog/2026/**{.ipynb,.md}"
-      # Drafts of upstream issues linked from blog posts, kept out of the nav
-      - pattern: "blog/myst-upstream/*.md"
-        hidden: true
       - title: "2025"
         children:
         - pattern: "blog/2025/**{.ipynb,.md}"
