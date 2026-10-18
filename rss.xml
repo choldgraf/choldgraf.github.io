@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 21 Oct 2025 16:44:51 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 00:39:47 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -251,20 +251,6 @@ all the</description>
       <pubDate>Sun, 27 Oct 2019 00:00:00 -0700</pubDate>
     </item>
     <item>
-      <title>Build a simple timeline with `sphinx-design`</title>
-      <link>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</link>
-      <description>
-
-
-:::{warning} This probably doesn't work anymore
-I'm building my blog with the [MyST Markdown engine](https://mystmd.org) now, which means that all of this sphinx-specific stuff probably doesn't work anymore :-)
-
-If you want to see a version of this page that worked, [check out this file in GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2020/sphinx-design-timeline.md).
-:::</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</guid>
-      <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
-    </item>
-    <item>
       <title>What do people think about rST?</title>
       <link>http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</link>
       <description>
@@ -277,6 +263,20 @@ a lot of progress in providing open infrastructure for reproducible science with
 [the Binder Project](https://mybinder.org/), but what about the documents themselves?
 We've recently been</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/2020-01-22-rst-thoughts</guid>
+      <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
+    </item>
+    <item>
+      <title>Build a simple timeline with `sphinx-design`</title>
+      <link>http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</link>
+      <description>
+
+
+:::{warning} This probably doesn't work anymore
+I'm building my blog with the [MyST Markdown engine](https://mystmd.org) now, which means that all of this sphinx-specific stuff probably doesn't work anymore :-)
+
+If you want to see a version of this page that worked, [check out this file in GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/ae8ee9792c74aac72f46c645d19352abc439d572/blog/2020/sphinx-design-timeline.md).
+:::</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2020/sphinx-design-timeline</guid>
       <pubDate>Wed, 22 Jan 2020 00:00:00 -0800</pubDate>
     </item>
     <item>
@@ -338,19 +338,6 @@ An ecosystem</description>
       <pubDate>Mon, 05 Sep 2022 00:00:00 -0700</pubDate>
     </item>
     <item>
-      <title>Automatically redirect folders in Sphinx websites</title>
-      <link>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</link>
-      <description>
-
-
-I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
-Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
-
-This posed a problem, because [the `sphinx-rediraffe`</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</guid>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
-    </item>
-    <item>
       <title>Automatically updating my publications page with ORCID and doi.org</title>
       <link>http://chrisholdgraf.com/blog/2022/orcid-auto-update</link>
       <description>
@@ -362,6 +349,19 @@ However, manually updating local text file is a pain to remember, especially sin
 :::{admonition} Update!
 A [helpful suggestion on Twitter](https://twitter.com/temorrell/status/1594749942316208128) allowed me to include the full citation</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/orcid-auto-update</guid>
+      <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
+    </item>
+    <item>
+      <title>Automatically redirect folders in Sphinx websites</title>
+      <link>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</link>
+      <description>
+
+
+I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
+Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
+
+This posed a problem, because [the `sphinx-rediraffe`</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</guid>
       <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
     </item>
     <item>
@@ -672,6 +672,16 @@ Max Weber famously wrote that politics is "a strong and slow boring of hard boar
 Python recently adopted [PEP 751](https://peps.python.org/pep-0751/) for lockfile specification. Doing so</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2025/lock-files</guid>
       <pubDate>Tue, 21 Oct 2025 00:00:00 -0700</pubDate>
+    </item>
+    <item>
+      <title>Building a MyST authoring environment to identify things that MyST core could improve</title>
+      <link>http://chrisholdgraf.com/blog/2026/myst-author-experiment</link>
+      <description>
+
+Something that has bugged me for a long time is that [MyST](https://mystmd.org) doesn't have a lot of support for *authors* to write MyST documents more effectively.
+MyST documents have a ton of rich metadata inside them, but it has mostly been used for making the *reader* experience more interesting, rather than</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2026/myst-author-experiment</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 -0700</pubDate>
     </item>
   </channel>
 </rss>
