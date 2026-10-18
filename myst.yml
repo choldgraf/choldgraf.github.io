@@ -25,6 +25,7 @@ project:
     - type: executable
       path: src/blogpost.py
     - src/socialpost.mjs
+    - https://github.com/myst-contrib/myst-listing/releases/latest/download/plugin.mjs
   references:
     ttw: https://book.the-turing-way.org/
   abbreviations:
@@ -42,6 +43,9 @@ project:
     - file: talks.md
     - file: blog.md
       children:
+      - title: "2026"
+        children:
+        - pattern: "blog/2026/**{.ipynb,.md}"
       - title: "2025"
         children:
         - pattern: "blog/2025/**{.ipynb,.md}"
