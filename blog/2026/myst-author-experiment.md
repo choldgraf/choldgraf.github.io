@@ -1,5 +1,5 @@
 ---
-title: Building a MyST authoring environment to find things that MyST core could improve
+title: Building a MyST authoring environment to identify things that MyST core could improve
 date: "2026-10-25"
 tags:
   - myst
