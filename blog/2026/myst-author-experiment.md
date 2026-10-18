@@ -12,13 +12,13 @@ MyST documents have a ton of rich metadata inside them, but it has mostly been u
 For MyST to become a bigger part of the research or education workflow, I think it needs to have a cleaner author UX - at least, for some of the minimal features that writing in other languages often has.
 Over the last few months I've been playing around with various ways to do this, and this is a blog post to share what I've built and learned.
 
-**tl;dr**: I've prototyped a couple of interesting things in the MyST ecosystem and learned a lot from it!
+**tl;dr**: I've built a few new tools in the MyST ecosystem in order to improve the authoring experience and drive the creation of a few building blocks and improvements in core MyST along the way! Here are the main things I worked on:
 
-- One "opinionated end-user" thing (`myst-author`).
-- A bunch of "building blocks" that should be more generally useful to the community (`mystmd-lsp`, `myst-syntax`, `myst-parser-unified`).
+- An "opinionated end-user interface for authoring MyST documents" (`myst-author`).
+- A bunch of "building blocks" that should be more generally useful to the community (`mystmd-lsp`, `myst-syntax`, `mystmd-client`, `myst-parser-unified`).
 - [A list of upstream improvements](#upstream-improvements) that we can make in MyST that would let us remove some complexity and hacks from these tools.
 
-Here's a list of the tools I built:
+Here's a list of the tools I built along the way:
 
 :::{listing}
 :source: yaml
@@ -210,8 +210,13 @@ Here are the upstream improvements that would let us remove some complexity and 
 
 ## Overall what did I learn
 
+This was a really interesting exercise! It uncovered a bunch of stuff that probably wouldn't have been discovered until somebody had tried to do something specific, and it also resulted in some hopefully useful technology. I tried to create issues for any of the clear stuff that was actionable, and will (hopefully) have time to work through those or work with others in the community that want to tackle them.
+Here are a few things that stood out to me:
+
 - It was surprisingly easy to get a pretty rich editor experience up and running with MyST.
 - Having a high-quality source of truth makes this a million times easier.
   If the [MyST conformance tests](#issue:conformance-tests) were a bit better, I suspect somebody could do this in a half day of work pretty easily with an LLM.
 - There are some core editing building blocks missing in MyST (like an LSP for the MyST engine), but these aren't terribly complex to build.
   I think the MyST team should just maintain some core pieces so that everybody doesn't need to write their own.
+- Obsidian-style rendering feels like a nice mixture of "source" and "WYSIWYG" and I'm really enjoying writing with that workflow.
+- The LSP is also super useful for MyST because of all the structured data that exists in a MyST document and project. You can do a lot of cool stuff when there is metadata and machine-readable structure! It makes me more confident in building on MyST as a core block for scientific communication.
