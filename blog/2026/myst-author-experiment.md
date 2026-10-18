@@ -102,6 +102,7 @@ I knew that `mystmd` has a ton of information about the objects in a MyST projec
 It builds the project for whatever folder you're in, and then exposes that project's labels, references, etc. for an editor to use via the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/).
 
 This means that you can type MyST short-hand for references like `@` or `[](#` and `mystmd-lsp` will show you a list of all the labels that you can reference in the current MyST project (it even includes external references too!).
+It also autocompletes directives and roles from the project's plugins, though it [has to dig them out of mystmd's cache](#issue:plugin-specs) to do so.
 
 ```{figure} https://raw.githubusercontent.com/choldgraf/mystmd-lsp/main/docs/images/mystmd-lsp.gif
 :alt: Animated demo of mystmd-lsp autocompleting a reference and a citation in VS Code.
@@ -207,6 +208,8 @@ Here are the upstream improvements that would let us remove some complexity and 
   So the LSP re-reads every page's JSON after each rebuild instead, which is pretty inefficient!
 - (issue:warnings)=
   `myst start` only sends "reload" messages over its websocket, [not structured warnings](https://github.com/jupyter-book/mystmd/issues/3096), so editors can't show build warnings at the right file and line.
+- (issue:plugin-specs)=
+  `myst start` [doesn't share the directives and roles that are defined in `myst.yml`](https://github.com/jupyter-book/mystmd/issues/3099), so the LSP imports each plugin itself, with some hacky guessing for the file name where mystmd caches remote plugins.
 - (issue:directive-positions)=
   [Nodes created by directives have no position](https://github.com/jupyter-book/mystmd/issues/3094) in `mystmd`'s output, so "go to definition" for a figure lands on its caption instead of the directive.
 - (issue:columns)=
