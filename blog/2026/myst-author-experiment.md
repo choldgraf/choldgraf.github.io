@@ -39,9 +39,12 @@ Here's a list of the tools I built along the way:
 - title: myst-parser-unified
   url: https://chrisholdgraf.com/myst-parser-unified/
   description: A remark-based parser for MyST - this is a proof of concept to understand the extra ground we'd have to cover to bring this into core.
+- title: codemirror-lsp-inlay-hints
+  url: https://chrisholdgraf.com/codemirror-lsp-inlay-hints/
+  description: A small extension to CodeMirror's LSP client that displays inlay hints.
 :::
 
-`myst-author` is the editor, and it uses `myst-syntax` for highlighting and `mystmd-lsp` for autocomplete.
+`myst-author` is the editor, and it uses `myst-syntax` for highlighting, `mystmd-lsp` for autocomplete, and `codemirror-lsp-inlay-hints` for [inlay hints](#issue:inlay-hints).
 Both `myst-author` and `mystmd-lsp` use `mystmd-client` to run `mystmd` in the background.
 `myst-parser-unified` is a standalone experiment that isn't used in the stack above, but addresses some problems I kept running into (especially with the LSP).
 
@@ -230,7 +233,7 @@ Here are the upstream improvements that would let us remove some complexity and 
 - (issue:jupyterlab-codemirror)=
   JupyterLab doesn't have a [documented way to add CodeMirror extensions to a language that is already registered in JupyterLab](https://github.com/jupyterlab/jupyterlab/issues/20127), so the `myst-syntax` JupyterLab extension overwrites part of Lab's Markdown entry.
 - (issue:inlay-hints)=
-  CodeMirror's LSP client doesn't support [inlay hints](https://code.haverbeke.berlin/codemirror/dev/issues/1772), so `myst-author` adds its own inlay hints (the faint "Figure 1" after a reference).
+  CodeMirror's LSP client doesn't support [inlay hints](https://code.haverbeke.berlin/codemirror/dev/issues/1772), so I made a small extension for this, [`codemirror-lsp-inlay-hints`](https://github.com/choldgraf/codemirror-lsp-inlay-hints), which `myst-author` uses to show the faint "Figure 1" after a reference.
 
 ## Overall what did I learn
 
