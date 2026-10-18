@@ -109,6 +109,12 @@ This means that you can type MyST short-hand for references like `@` or `[](#` a
 `mystmd-lsp` in VS Code: autocompleting a `{numref}` reference and a citation, then hovering the reference.
 ```
 
+It comes with a VS Code extension, and works with any editor that has an LSP client (`npm install -g mystmd-lsp`).
+You can try it out in VS Code on Codespaces, or in JupyterLab (via `jupyterlab-lsp`) on Binder here:
+
+[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/choldgraf/mystmd-lsp/main?urlpath=lab/tree/index.md)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/choldgraf/mystmd-lsp)
+
 I needed a way for my LSP server, and for `myst-author`, to control the lifecycle of `mystmd`.
 However, `mystmd` [doesn't expose the right APIs to do this naturally](#issue:mystmd-client).
 It's built as a CLI, so there's no lightweight exported way to launch `myst start --headless`, talk to its content server, or parse a single page with the same settings that `myst build` uses.
@@ -122,6 +128,18 @@ So [`mystmd-client`](https://chrisholdgraf.com/mystmd-client/) is just a little 
 I realized that the core "grammar rules" for things like syntax highlighting were more generically useful, so that got its own repository as well!
 These are essentially a bunch of `regex` style patterns that tell an editor how to chunk up the symbols on the screen (e.g. `:::{note}`) into discrete units and color them appropriately.
 This is generic stuff that can be re-used across many kinds of editors, and doesn't depend on a "server" to understand.
+
+It comes in three flavors:
+
+- An npm package with a TextMate grammar (what VS Code and [Shiki](https://shiki.style) use) and a CodeMirror mode, for anyone building their own editor or site.
+- A VS Code extension that adds MyST highlighting on top of VS Code's normal Markdown highlighting.
+- A JupyterLab extension that does the same for notebook Markdown cells and Markdown files (though it [has to overwrite part of JupyterLab's Markdown support to do so](#issue:jupyterlab-codemirror)).
+
+`myst-author` and `mystmd-lsp` both use it instead of shipping their own highlighting.
+You can try out the extensions on Binder or Codespaces here:
+
+[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/choldgraf/myst-syntax/main?urlpath=lab/tree/demo/index.md)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/choldgraf/myst-syntax)
 
 **What I'd like to do with this repository:** Same as `mystmd-lsp`, this feels like a good candidate for being in the core myst engine.
 
@@ -137,6 +155,9 @@ In principle it should be simpler to just parse MyST markdown directly with `rem
 So [this tool](https://chrisholdgraf.com/myst-parser-unified/) is an experiment at making that happen.
 It's not actually used in the stack above, mostly because I wanted to keep them dependent on `mystmd` and not totally side-step the core engine.
 But it seems doable to move this into the core MyST engine at some point.
+
+**Note**: This one I haven't used as much, but I think of it more like a proof of concept that should drive improvements to the spec, and might be a helpful starting point for [a remark parser](https://github.com/jupyter-book/mystmd/issues/1705).
+If you want to play with it, you can install it with `npm install github:choldgraf/myst-parser-unified` and use it as a `remark` plugin.
 
 At a first pass, I ran the parser against the examples in the MyST conformance tests in [myst-spec](https://github.com/jupyter-book/mystmd/tree/main/packages/myst-spec).
 Because these tests have some carry-over from `markdown-it` in them, it was hard to know whether some tests were failing for the wrong reasons (`mystmd`'s own parser only matches 53 of the 90 MyST examples!).
