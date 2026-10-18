@@ -79,9 +79,9 @@ It means I can use diffing and merging tools more easily when writing MyST docum
 [![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/choldgraf/myst-author/main?urlpath=lab/tree/docs/examples/tour/index.md)
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/choldgraf/myst-author)
 
-It does some interesting hacky things to get around the fact that [the mystmd engine doesn't easily run on JupyterHub or Binder](https://github.com/jupyter-book/mystmd/issues/302).
+It does some interesting hacky things to get around the fact that [the mystmd engine doesn't easily run on JupyterHub or Binder](#issue:jupyterhub).
 Rather than running the MyST theme server, it starts `mystmd` in headless mode (which builds and serves your content without the website theme).
-It then renders the AST in the browser with the MyST react components.
+It then renders the AST in the browser with [the MyST react components](#issue:theme-embed).
 This means that we can do all the necessary re-writing of assets, etc. at render-time, so it will work even if you're not being served from the URL root.
 
 It uses [CodeMirror 6](https://codemirror.net) for the editing and rendering window, which means that it can be run in a bunch of different places, or potentially as part of a bigger editing application etc.
@@ -110,7 +110,7 @@ This means that you can type MyST short-hand for references like `@` or `[](#` a
 ```
 
 I needed a way for my LSP server, and for `myst-author`, to control the lifecycle of `mystmd`.
-However, `mystmd` doesn't expose the right APIs to do this naturally.
+However, `mystmd` [doesn't expose the right APIs to do this naturally](#issue:mystmd-client).
 It's built as a CLI, so there's no lightweight exported way to launch `myst start --headless`, talk to its content server, or parse a single page with the same settings that `myst build` uses.
 So [`mystmd-client`](https://chrisholdgraf.com/mystmd-client/) is just a little helper that holds the logic for controlling start/stop/etc of the myst server so I can re-use it in a few places.
 
@@ -129,7 +129,7 @@ This is generic stuff that can be re-used across many kinds of editors, and does
 
 I kept hitting challenges associated with MyST's current markdown parser: [`markdown-it`](https://github.com/markdown-it/markdown-it).
 Right now, `mystmd` parses each document with `markdown-it`, then *converts* the document to a unifiedjs-style AST.
-`markdown-it` doesn't give you column information as it is parsing, only line information.
+`markdown-it` [doesn't give you column information](#issue:columns) as it is parsing, only line information.
 This is a big problem for things like an LSP, which needs to know where in the line you're typing so that it knows what to autocomplete!
 
 [UnifiedJS](https://unifiedjs.com) has its own native parser ecosystem, built on a tool called [`remark`](https://github.com/remarkjs/remark).
@@ -163,8 +163,8 @@ In practice that's ~0.4 ms vs. ~0.2 ms for a typical page, or ~1 s vs. ~0.5 s ac
 That's small next to the rest of a build, but still worth discussing.
 
 **What I'd like to do with this repository:** I'd also love for this to serve as inspiration for an upstream contribution into the MyST engine itself!
-We've been talking about a unified-native parser for a long time, and if we improved our conformance tests I don't think that it should be too difficult.
-The conformance tests themselves haven't been updated in a while!
+We've been talking about [a unified-native parser](#issue:columns) for a long time, and if we improved our conformance tests I don't think that it should be too difficult.
+[The conformance tests themselves haven't been updated in a while!](#issue:conformance-tests)
 They are missing some core syntax features that have been added over the past year or two, and need a few more tests to make it easier for others to write their own parsers etc.
 
 (upstream-improvements)=
@@ -174,32 +174,44 @@ Here are the upstream improvements that would let us remove some complexity and 
 
 **`mystmd`**
 
-- If `myst start` could [run on JupyterHub](https://github.com/jupyter-book/mystmd/issues/302) and [serve a live preview from a sub-path](https://github.com/jupyter-book/mystmd/issues/3012), `myst-author` could drop its custom rendering logic.
-- `mystmd` [doesn't export helpers for tools that run it](https://github.com/jupyter-book/mystmd/issues/3095), which is why `mystmd-client` exists.
+- (issue:jupyterhub)=
+  If `myst start` could [run on JupyterHub](https://github.com/jupyter-book/mystmd/issues/302) and [serve a live preview from a sub-path](https://github.com/jupyter-book/mystmd/issues/3012), `myst-author` could drop its custom rendering logic.
+- (issue:mystmd-client)=
+  `mystmd` [doesn't export helpers for tools that run it](https://github.com/jupyter-book/mystmd/issues/3095), which is why `mystmd-client` exists.
   It also works around [`myst start` only listening on IPv6 `localhost`](https://github.com/jupyter-book/mystmd/issues/2471), which breaks tools that connect to `127.0.0.1`.
-- `config.json` [doesn't include each page's file](https://github.com/jupyter-book/mystmd/issues/3093), so tools fetch every page's JSON to build a table of contents.
-- `myst.xref.json` [doesn't include each label's `title` or `enumerator`](https://github.com/jupyter-book/mystmd/issues/3098), and `myst start` [doesn't update it when a page changes](https://github.com/jupyter-book/mystmd/issues/3097).
+- (issue:config-files)=
+  `config.json` [doesn't include each page's file](https://github.com/jupyter-book/mystmd/issues/3093), so tools fetch every page's JSON to build a table of contents.
+- (issue:xref)=
+  `myst.xref.json` [doesn't include each label's `title` or `enumerator`](https://github.com/jupyter-book/mystmd/issues/3098), and `myst start` [doesn't update it when a page changes](https://github.com/jupyter-book/mystmd/issues/3097).
   So the LSP re-reads every page's JSON after each rebuild instead, which is pretty inefficient!
-- `myst start` only sends "reload" messages over its websocket, [not structured warnings](https://github.com/jupyter-book/mystmd/issues/3096), so editors can't show build warnings at the right file and line.
-- [Nodes created by directives have no position](https://github.com/jupyter-book/mystmd/issues/3094) in `mystmd`'s output, so "go to definition" for a figure lands on its caption instead of the directive.
-- [Column-accurate positions in the parser](https://github.com/jupyter-book/mystmd/issues/2864) (e.g. via remark) would let us delete the regexes that the LSP uses to find references.
+- (issue:warnings)=
+  `myst start` only sends "reload" messages over its websocket, [not structured warnings](https://github.com/jupyter-book/mystmd/issues/3096), so editors can't show build warnings at the right file and line.
+- (issue:directive-positions)=
+  [Nodes created by directives have no position](https://github.com/jupyter-book/mystmd/issues/3094) in `mystmd`'s output, so "go to definition" for a figure lands on its caption instead of the directive.
+- (issue:columns)=
+  [Column-accurate positions in the parser](https://github.com/jupyter-book/mystmd/issues/2864) (e.g. via remark) would let us delete the regexes that the LSP uses to find references.
   We should decide whether we want this enough to justify [switching parsers to something like remark](https://github.com/jupyter-book/mystmd/issues/1705).
-- [Update the MyST conformance tests](https://github.com/jupyter-book/mystmd/issues/3078) so that they describe intended MyST behavior (and not `markdown-it`'s quirks) and also cover the syntax we've added in the last couple of years.
+- (issue:conformance-tests)=
+  [Update the MyST conformance tests](https://github.com/jupyter-book/mystmd/issues/3078) so that they describe intended MyST behavior (and not `markdown-it`'s quirks) and also cover the syntax we've added in the last couple of years.
 
 **`myst-theme`**
 
-- The MyST theme's preview is [hard to embed elsewhere](https://github.com/jupyter-book/myst-theme/issues/986) (e.g., you need to know about some undocumented KaTeX CSS, and there's no pre-built CSS).
+- (issue:theme-embed)=
+  The MyST theme's preview is [hard to embed elsewhere](https://github.com/jupyter-book/myst-theme/issues/986) (e.g., you need to know about some undocumented KaTeX CSS, and there's no pre-built CSS).
 
 **Other projects**
 
-- `jupyterlab-lsp` [doesn't send notebook Markdown cells to language servers](https://github.com/jupyter-lsp/jupyterlab-lsp/issues/1202), so `myst-author`'s JupyterLab extension carries its own LSP client just to be able to handle markdown.
-- JupyterLab doesn't have a [documented way to add CodeMirror extensions to a language that is already registered in JupyterLab](https://github.com/jupyterlab/jupyterlab/issues/20127), so the `myst-syntax` JupyterLab extension overwrites part of Lab's Markdown entry.
-- CodeMirror's LSP client doesn't support [inlay hints](https://code.haverbeke.berlin/codemirror/dev/issues/1772), so `myst-author` adds its own inlay hints (the faint "Figure 1" after a reference).
+- (issue:jupyterlab-lsp)=
+  `jupyterlab-lsp` [doesn't send notebook Markdown cells to language servers](https://github.com/jupyter-lsp/jupyterlab-lsp/issues/1202), so `myst-author`'s JupyterLab extension carries its own LSP client just to be able to handle markdown.
+- (issue:jupyterlab-codemirror)=
+  JupyterLab doesn't have a [documented way to add CodeMirror extensions to a language that is already registered in JupyterLab](https://github.com/jupyterlab/jupyterlab/issues/20127), so the `myst-syntax` JupyterLab extension overwrites part of Lab's Markdown entry.
+- (issue:inlay-hints)=
+  CodeMirror's LSP client doesn't support [inlay hints](https://code.haverbeke.berlin/codemirror/dev/issues/1772), so `myst-author` adds its own inlay hints (the faint "Figure 1" after a reference).
 
 ## Overall what did I learn
 
 - It was surprisingly easy to get a pretty rich editor experience up and running with MyST.
 - Having a high-quality source of truth makes this a million times easier.
-  If the MyST conformance tests were a bit better, I suspect somebody could do this in a half day of work pretty easily with an LLM.
+  If the [MyST conformance tests](#issue:conformance-tests) were a bit better, I suspect somebody could do this in a half day of work pretty easily with an LLM.
 - There are some core editing building blocks missing in MyST (like an LSP for the MyST engine), but these aren't terribly complex to build.
   I think the MyST team should just maintain some core pieces so that everybody doesn't need to write their own.
