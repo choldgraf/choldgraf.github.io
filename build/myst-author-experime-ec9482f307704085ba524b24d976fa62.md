@@ -247,3 +247,11 @@ Here are a few things that stood out to me:
   I think the MyST team should just maintain some core pieces so that everybody doesn't need to write their own.
 - Obsidian-style rendering feels like a nice mixture of "source" and "WYSIWYG" and I'm really enjoying writing with that workflow.
 - The LSP is also super useful for MyST because of all the structured data that exists in a MyST document and project. You can do a lot of cool stuff when there is metadata and machine-readable structure! It makes me more confident in building on MyST as a core block for scientific communication.
+
+## Acknowledgements
+
+I did a lot of this work on nights and weekends, but also did a chunk of it on funded time mostly driven by two projects:
+
+- [Project Pythia](https://2i2c.org/collaborators/pythia/), which has a lot of MyST usage across their repositories.
+- [NASA VEDA](https://2i2c.org/collaborators/nasa-veda/) as part of a hackweek project
+- [JupyterHealth](https://2i2c.org/collaborators/jupyterhealth/) since I was inspired to spend more time working on this when I was helping them update their documentation at [docs.jupyterhealth.org](https://docs.jupyterhealth.org/)
