@@ -28,13 +28,13 @@ Here's a list of the tools I built along the way:
   url: https://chrisholdgraf.com/myst-author/
   description: An opinionated, Obsidian-style editing interface for MyST built on CodeMirror 6 (used as a web editor, or as a JupyterLab or VS Code extension).
 - title: mystmd-lsp
-  url: https://chrisholdgraf.com/mystmd-lsp/
+  url: https://contrib.mystmd.org/mystmd-lsp/
   description: A language server protocol (LSP) implementation for MyST that uses the mystmd server to expose labels, references, etc. in addition to basic syntax.
 - title: mystmd-client
-  url: https://chrisholdgraf.com/mystmd-client/
+  url: https://contrib.mystmd.org/mystmd-client/
   description: A small helper library to manage the lifecycle of a mystmd process (used by the LSP and myst-author, I hope this can be deleted once some upstream improvements are made!)
 - title: myst-syntax
-  url: https://chrisholdgraf.com/myst-syntax/
+  url: https://contrib.mystmd.org/myst-syntax/
   description: A syntax grammar that can be re-used for highlighting across code editors.
 - title: myst-parser-unified
   url: https://chrisholdgraf.com/myst-parser-unified/
@@ -107,7 +107,7 @@ It builds the project for whatever folder you're in, and then exposes that proje
 This means that you can type MyST short-hand for references like `@` or `[](#` and `mystmd-lsp` will show you a list of all the labels that you can reference in the current MyST project (it even includes external references too!).
 It also autocompletes directives and roles from the project's plugins, though it [has to dig them out of mystmd's cache](#issue:plugin-specs) to do so.
 
-```{figure} https://raw.githubusercontent.com/choldgraf/mystmd-lsp/main/docs/images/mystmd-lsp.gif
+```{figure} https://raw.githubusercontent.com/myst-contrib/mystmd-lsp/29cf850b90f38c0cbeb8c622ceb162c86d9770be/docs/images/mystmd-lsp.gif
 :alt: Animated demo of mystmd-lsp autocompleting a reference and a citation in VS Code.
 
 `mystmd-lsp` in VS Code: autocompleting a `{numref}` reference and a citation, then hovering the reference.
@@ -116,13 +116,13 @@ It also autocompletes directives and roles from the project's plugins, though it
 It comes with a VS Code extension, and works with any editor that has an LSP client (`npm install -g mystmd-lsp`).
 You can try it out in VS Code on Codespaces, or in JupyterLab (via `jupyterlab-lsp`) on Binder here:
 
-[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/choldgraf/mystmd-lsp/main?urlpath=lab/tree/index.md)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/choldgraf/mystmd-lsp)
+[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/myst-contrib/mystmd-lsp/main?urlpath=lab/tree/index.md)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/myst-contrib/mystmd-lsp)
 
 I needed a way for my LSP server, and for `myst-author`, to control the lifecycle of `mystmd`.
 However, `mystmd` [doesn't expose the right APIs to do this naturally](#issue:mystmd-client).
 It's built as a CLI, so there's no lightweight exported way to launch `myst start --headless`, talk to its content server, or parse a single page with the same settings that `myst build` uses.
-So [`mystmd-client`](https://chrisholdgraf.com/mystmd-client/) is just a little helper that holds the logic for controlling start/stop/etc of the myst server so I can re-use it in a few places.
+So [`mystmd-client`](https://contrib.mystmd.org/mystmd-client/) is just a little helper that holds the logic for controlling start/stop/etc of the myst server so I can re-use it in a few places.
 
 **What I'd like to do with this repository:** This feels like a good candidate for being in the core myst engine, since it's best to have a source of truth for this kind of thing.
 `mystmd-client` feels like it should just be an upstream improvement in the MyST engine.
@@ -142,8 +142,8 @@ It comes in three flavors:
 `myst-author` and `mystmd-lsp` both use it instead of shipping their own highlighting.
 You can try out the extensions on Binder or Codespaces here:
 
-[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/choldgraf/myst-syntax/main?urlpath=lab/tree/demo/index.md)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/choldgraf/myst-syntax)
+[![Launch on Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/myst-contrib/myst-syntax/main?urlpath=lab/tree/demo/index.md)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/myst-contrib/myst-syntax)
 
 **What I'd like to do with this repository:** Same as `mystmd-lsp`, this feels like a good candidate for being in the core myst engine.
 

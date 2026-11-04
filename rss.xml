@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:49:14 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 18:34:03 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -338,6 +338,19 @@ An ecosystem</description>
       <pubDate>Mon, 05 Sep 2022 00:00:00 -0700</pubDate>
     </item>
     <item>
+      <title>Automatically redirect folders in Sphinx websites</title>
+      <link>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</link>
+      <description>
+
+
+I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
+Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
+
+This posed a problem, because [the `sphinx-rediraffe`</description>
+      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</guid>
+      <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
+    </item>
+    <item>
       <title>Automatically updating my publications page with ORCID and doi.org</title>
       <link>http://chrisholdgraf.com/blog/2022/orcid-auto-update</link>
       <description>
@@ -349,19 +362,6 @@ However, manually updating local text file is a pain to remember, especially sin
 :::{admonition} Update!
 A [helpful suggestion on Twitter](https://twitter.com/temorrell/status/1594749942316208128) allowed me to include the full citation</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/orcid-auto-update</guid>
-      <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
-    </item>
-    <item>
-      <title>Automatically redirect folders in Sphinx websites</title>
-      <link>http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</link>
-      <description>
-
-
-I spent a bit of time today updating my website after some changes in the MyST-NB and Sphinx Design ecosystems.
-Along the way, I decided to redirect `/posts/` to `/blog/`, since it seems `/blog/` is a much more common folder to use for blog posts.
-
-This posed a problem, because [the `sphinx-rediraffe`</description>
-      <guid isPermaLink="false">http://chrisholdgraf.com/blog/2022/sphinx-redirects-folder</guid>
       <pubDate>Sat, 19 Nov 2022 00:00:00 -0800</pubDate>
     </item>
     <item>
