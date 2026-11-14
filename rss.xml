@@ -13,7 +13,7 @@
       <link>http://chrisholdgraf.com/rss.xml</link>
     </image>
     <language>en</language>
-    <lastBuildDate>Wed, 04 Nov 2026 18:34:03 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 18:08:15 +0000</lastBuildDate>
     <item>
       <title>An academic scientist goes to DevOps Days</title>
       <link>http://chrisholdgraf.com/blog/2018/devopsdays-sv-2018</link>
@@ -549,9 +549,12 @@ I think a lof people see AI as a technology with a lot of potential, but in an e
       <link>http://chrisholdgraf.com/blog/2024/mystmd-with-the-blog</link>
       <description>
 
-Wow it has been a long time since I've last-written here. It turns out that having two small children and a very demanding job means you don't have as much time for blogging. But that's a whole different blog post...
+:::{note} Update: November 2026
+I've since replaced the `postlist` directive described here with [myst-listing](https://github.com/myst-contrib/myst-listing), so I'm developing and re-using more central MyST infrastructure instead of maintaining my own.
+You can see [the original `postlist` script on GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/cd737d0b5f820e4126ec08b3763bc9c1037eb177/src/blogpost.py).
+:::
 
-I've decided to convert my blog to use the new [MyST</description>
+Wow it has been a long time since I've last-written here. It turns out that having</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2024/mystmd-with-the-blog</guid>
       <pubDate>Fri, 01 Nov 2024 00:00:00 -0700</pubDate>
     </item>
@@ -574,17 +577,12 @@ The trick is to _write to a temporary file_</description>
       <description>
 
 
-On my journey to learn more about writing with [the new MyST engine](https:///mystmd.org), I built upon [my recent update to my blog infrastructure](./programmatic-myst-with-jupyter.md) and made some improvements to my blog post list.
-Here's what it looks like now:
+:::{note} Update: November 2026
+I've since replaced the `postlist` directive described here with [myst-listing](https://github.com/myst-contrib/myst-listing), so I'm developing and re-using more central MyST infrastructure instead of maintaining my own.
+You can see [the original `postlist` script on GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/cd737d0b5f820e4126ec08b3763bc9c1037eb177/src/blogpost.py).
+:::
 
-````{note} Click here to see how it looks now
-:class: dropdown
-```{postlist}
-:number: 3
-```
-````
-
-Here's a quick rundown</description>
+On my journey to learn more about writing with [the new MyST engine](https:///mystmd.org), I built upon</description>
       <guid isPermaLink="false">http://chrisholdgraf.com/blog/2024/blog-list</guid>
       <pubDate>Sat, 09 Nov 2024 00:00:00 -0800</pubDate>
     </item>
