@@ -6,9 +6,6 @@ from yaml import safe_load
 from pathlib import Path
 import pandas as pd
 from feedgen.feed import FeedGenerator
-import unist as u
-
-DEFAULTS = {"number": 10}
 
 root = Path(__file__).parent.parent
 
@@ -34,10 +31,14 @@ for ifile in root.rglob("blog/**/*.md"):
             if ii.strip().startswith("#"):
                 meta["title"] = ii.replace("#", "").strip()
                 break
-    
+
     # Summarize content
     skip_lines = ["#", "--", "%", "++"]
-    content = "\n".join(ii for ii in content.splitlines() if not any(ii.startswith(char) for char in skip_lines))
+    content = "\n".join(
+        ii
+        for ii in content.splitlines()
+        if not any(ii.startswith(char) for char in skip_lines)
+    )
     N_WORDS = 50
     words = " ".join(content.split(" ")[:N_WORDS])
     if not "author" in meta or not meta["author"]:
@@ -73,49 +74,8 @@ for ix, irow in posts.iterrows():
 fg.atom_file(root / "atom.xml", pretty=True)
 fg.rss_file(root / "rss.xml", pretty=True)
 
-plugin = {
-    "name": "Blog Post list",
-    "directives": [
-        {
-            "name": "postlist",
-            "doc": "An example directive for showing a nice random image at a custom size.",
-            "alias": ["bloglist"],
-            "arg": {},
-            "options": {
-                "number": {
-                    "type": "int",
-                    "doc": "The number of posts to include",
-                }
-            },
-        }
-    ],
-}
-
-children = []
-for ix, irow in posts.iterrows():
-    children.append(
-        {
-          "type": "card",
-          "url": f"/{irow['path'].with_suffix('')}",
-          "children": [
-            {
-              "type": "cardTitle",
-              "children": [u.text(irow["title"])]
-            },
-            {
-              "type": "paragraph",
-              "children": [u.text(irow['content'])]
-            },
-            {
-              "type": "footer",
-              "children": [
-                u.strong([u.text("Date: ")]), u.text(f"{irow['date']:%B %d, %Y} | "),
-                u.strong([u.text("Author: ")]), u.text(f"{irow['author']}"),
-              ]
-            },
-          ]
-        }
-    )
+# ponytail: no directives; loading this as a plugin is what regenerates the RSS feed each build.
+plugin = {"name": "Blog RSS feed", "directives": []}
 
 
 def declare_result(content):
@@ -130,19 +90,6 @@ def declare_result(content):
     raise SystemExit(0)
 
 
-def run_directive(name, data):
-    """Execute a directive with the given name and data
-
-    :param name: name of the directive to run
-    :param data: data of the directive to run
-    """
-    assert name == "postlist"
-    opts = data["node"].get("options", {})
-    number = int(opts.get("number", DEFAULTS["number"]))
-    output = children[:number]
-    return output
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     group = parser.add_mutually_exclusive_group()
@@ -151,12 +98,6 @@ if __name__ == "__main__":
     group.add_argument("--transform")
     args = parser.parse_args()
 
-    if args.directive:
-        data = json.load(sys.stdin)
-        declare_result(run_directive(args.directive, data))
-    elif args.transform:
+    if args.directive or args.transform or args.role:
         raise NotImplementedError
-    elif args.role:
-        raise NotImplementedError
-    else:
-        declare_result(plugin)
+    declare_result(plugin)

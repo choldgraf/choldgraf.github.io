@@ -41,6 +41,9 @@ My blog ✍️
 
 ## Recent blog posts
 
-:::{postlist}
-:number: 10
+:::{listing}
+:path: blog/20*/*.md
+:display: feed
+:body-limit: 1
+:limit: 10
 :::

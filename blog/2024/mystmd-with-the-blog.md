@@ -6,6 +6,11 @@ kernelspec:
   display_name: 'Python 3'
 ---
 
+:::{note} Update: November 2026
+I've since replaced the `postlist` directive described here with [myst-listing](https://github.com/myst-contrib/myst-listing), so I'm developing and re-using more central MyST infrastructure instead of maintaining my own.
+You can see [the original `postlist` script on GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/cd737d0b5f820e4126ec08b3763bc9c1037eb177/src/blogpost.py).
+:::
+
 Wow it has been a long time since I've last-written here. It turns out that having two small children and a very demanding job means you don't have as much time for blogging. But that's a whole different blog post...
 
 I've decided to convert my blog to use the new [MyST Document Engine](https://mystmd.org). This is part of a dogfooding experiment to see what's possible with MyST, since it's where the Jupyter Book project is heading, and I want to see how close to "production-ready" we are already.
@@ -69,12 +74,15 @@ With this in mind, I wrote a little Python extension that:
 2. Defines a `bloglist` directive that will insert a list of blog posts where it exists.
 3. Manually converts the blog post metadata into MyST AST that it prints to `stdout`.
 
-As a result, when I call the directive in my blog, it will _replace the directive with whatever AST is spit out by the Python script_. You can take a look at [the entire Python script here](../../src/blogpost.py).
+As a result, when I call the directive in my blog, it will _replace the directive with whatever AST is spit out by the Python script_. You can take a look at [the entire Python script here](https://github.com/choldgraf/choldgraf.github.io/blob/cd737d0b5f820e4126ec08b3763bc9c1037eb177/src/blogpost.py).
 
 Now I can insert lists of blog posts wherever I like, for example here's a list of the latest three:
 
-:::{postlist}
-:number: 3
+:::{listing}
+:path: ../20*/*.md
+:display: feed
+:body-limit: 1
+:limit: 3
 :::
 
 ## Adding an RSS feed
@@ -83,11 +91,7 @@ Because I'm running Python to define my MyST plugin, I can also use Python to bu
 
 I found [the `python-feedgen` package](https://github.com/lkiesow/python-feedgen), which is a little helper package for generating RSS feeds in Python. Since my MyST plugin was already written in Python, I just added a few more lines to do so.
 
-````{note} Click to see the whole Python plugin script
-:class: dropdown
-```{literalinclude} ../../src/blogpost.py
-```
-````
+You can see [the whole Python plugin script on GitHub](https://github.com/choldgraf/choldgraf.github.io/blob/cd737d0b5f820e4126ec08b3763bc9c1037eb177/src/blogpost.py).
 
 Annoyingly, you cannot just tell MyST to put a file in a particular location (see https://github.com/jupyter-book/mystmd/issues/1196 tracking this one). So I had to manually move this file to my build output folder in my GitHub action. Hopefully this functionality gets updated soon. Here's what that looks like:
 
